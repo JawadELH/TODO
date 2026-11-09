@@ -155,8 +155,96 @@ select.ctl,.btn{border:1px solid var(--line);background:var(--surface);border-ra
 .pill.q{background:color-mix(in srgb,var(--qc) 14%,transparent);color:var(--qc)}
 .pill.hp{color:var(--late);background:var(--late-soft)}
 .pill.theme{background:transparent;padding-left:0;font-weight:500}
+.pill.plan{background:var(--accent-soft);color:var(--accent);font-family:var(--f-mono);font-weight:500}
+.pill.plan.late{background:var(--late-soft);color:var(--late)}
+.pill.rec{background:transparent;border:1px dashed var(--muted);color:var(--muted)}
+/* Planning */
+.pnav{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.segbar{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--surface)}
+.segbar button{border:0;background:transparent;padding:8px 12px;font-weight:500;color:var(--muted)}
+.segbar button+button{border-left:1px solid var(--line)}
+.segbar button[aria-pressed="true"]{background:var(--ink);color:var(--surface)}
+.plan-layout{display:grid;grid-template-columns:280px minmax(0,1fr);gap:14px;align-items:start}
+.plan-layout.annee{grid-template-columns:minmax(0,1fr)}
+.backlog{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:10px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 70px);max-height:calc(100vh - 110px);overflow:auto}
+.backlog summary{list-style:none;display:flex;align-items:center;gap:8px;cursor:pointer}
+.backlog summary::-webkit-details-marker{display:none}
+.backlog .count{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.bl-list{display:grid;gap:6px;margin-top:8px}
+.pcard{background:var(--bg);border:1px solid var(--line);border-left:3px solid var(--pc);border-radius:8px;padding:7px 9px;cursor:grab;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.pcard .t-title{font-size:13.5px}
+.pc-quick{display:flex;gap:4px;margin-top:6px;flex-wrap:wrap}
+.pc-quick button{border:1px solid var(--line);background:var(--surface);border-radius:6px;font-size:11.5px;padding:2px 8px;font-weight:600;color:var(--accent)}
+.pcal{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;min-width:0}
+.pwk-head{display:grid;border-bottom:1px solid var(--line);background:var(--surface-2)}
+.pwk-head div{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:6px 8px}
+.pweek+.pweek{border-top:1px solid var(--line)}
+.pdays{display:grid}
+.pday{padding:6px 8px 4px;border-left:1px solid var(--line);min-width:0;display:flex;flex-direction:column;gap:2px}
+.pday:first-child{border-left:0}
+.pday.is-today{background:var(--accent-soft)}
+.pday.out .pd-num{opacity:.4}
+.pday.drop{background:color-mix(in srgb,var(--accent) 24%,transparent)}
+.pday.we{background:var(--surface-2)}
+.pd-row{display:flex;align-items:center;gap:4px;min-width:0}
+.pd-num{border:0;background:none;padding:0;text-align:left;font-weight:600;font-size:12.5px;color:var(--muted);white-space:nowrap}
+.pd-num b{font-family:var(--f-display);font-size:19px;font-weight:800;color:var(--ink);margin-left:3px}
+.is-today .pd-num b{color:var(--accent)}
+.pd-add{margin-left:auto;border:0;background:none;color:var(--muted);width:22px;height:22px;border-radius:6px;display:grid;place-items:center;padding:0}
+.pd-add:hover{background:var(--line);color:var(--accent)}
+.pd-add svg{width:14px;height:14px}
+.pload{font-family:var(--f-mono);font-size:10.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pload.over{color:var(--late);font-weight:600}
+.pdl{font-size:11px;color:var(--late);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border:0;background:none;padding:0;text-align:left}
+.pdot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--late);margin-left:4px;vertical-align:2px}
+.pgrid{display:grid;position:relative;padding:4px 0 8px;grid-auto-rows:30px;row-gap:3px;min-height:70px}
+.pgrid.compact{grid-auto-rows:20px;row-gap:2px;min-height:58px;padding:2px 0 4px}
+.pcell{border-left:1px solid var(--line);margin:-4px 0 -8px}
+.pcell.c0{border-left:0}
+.pcell.we{background:var(--surface-2)}
+.pcell.td{background:color-mix(in srgb,var(--accent-soft) 70%,transparent)}
+.pbar{position:relative;z-index:1;margin:0 3px;border-radius:6px;background:color-mix(in srgb,var(--pc) 17%,var(--surface));border-left:3px solid var(--pc);color:var(--ink);font-size:12.5px;font-weight:500;padding:0 18px 0 7px;display:flex;align-items:center;gap:6px;overflow:hidden;white-space:nowrap;cursor:grab;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;min-width:0;text-align:left}
+.compact .pbar{font-size:11px;padding:0 12px 0 5px;border-left-width:2px;border-radius:4px}
+.pbar .pb-t{overflow:hidden;text-overflow:ellipsis}
+.pbar .pb-h{font-family:var(--f-mono);font-size:10.5px;color:var(--muted);margin-left:auto;flex-shrink:0}
+.pbar.cutL{border-top-left-radius:0;border-bottom-left-radius:0;margin-left:0}
+.pbar.cutR{border-top-right-radius:0;border-bottom-right-radius:0;margin-right:0;padding-right:7px}
+.pbar.done{opacity:.5}
+.pbar.done .pb-t{text-decoration:line-through}
+.pbar.late{box-shadow:inset 0 0 0 1.5px var(--late)}
+.pbar.rec{background:transparent;border:1px dashed var(--pc);border-left:3px solid var(--pc);cursor:pointer;padding-right:7px}
+.pbar.dragging,.pcard.dragging{opacity:.35}
+.pb-rz{position:absolute;right:0;top:0;bottom:0;width:16px;cursor:ew-resize;touch-action:none;display:flex;align-items:center;justify-content:center}
+.pb-rz::after{content:"";width:3px;height:50%;border-left:1.5px solid var(--muted);border-right:1.5px solid var(--muted);opacity:.7}
+.compact .pb-rz{width:11px}
+.pmore{border:0;background:none;font-size:11px;color:var(--muted);text-align:left;padding:0 6px;font-weight:600;z-index:1}
+.pghost{position:fixed;left:0;top:0;z-index:200;pointer-events:none;background:var(--ink);color:var(--surface);padding:6px 10px;border-radius:8px;font-size:13px;max-width:240px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;box-shadow:var(--shadow)}
+body.is-dragging{-webkit-user-select:none;user-select:none;cursor:grabbing}
+.psum{display:flex;gap:16px;flex-wrap:wrap;padding:10px 12px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+.psum b{color:var(--ink);font-variant-numeric:tabular-nums}
+.yr-wrap{overflow-x:auto;padding:10px}
+table.yr{border-collapse:separate;border-spacing:2px;font-size:11px;font-variant-numeric:tabular-nums}
+.yr th{font-weight:600;color:var(--muted);font-size:10.5px;padding:0 2px;text-align:center}
+.yr th.m{text-align:left;padding-right:8px;font-size:12px;color:var(--ink);white-space:nowrap}
+.yr td{width:20px;height:20px;border-radius:4px;background:var(--surface-2);position:relative;padding:0}
+.yr td button{position:absolute;inset:0;border:0;background:transparent;border-radius:4px;padding:0}
+.yr td.na{background:transparent}
+.yr td.we{background:color-mix(in srgb,var(--surface-2) 50%,var(--bg))}
+.yr td.l1{background:color-mix(in srgb,var(--accent) 22%,var(--surface))}
+.yr td.l2{background:color-mix(in srgb,var(--accent) 45%,var(--surface))}
+.yr td.l3{background:color-mix(in srgb,var(--accent) 70%,var(--surface))}
+.yr td.l4{background:var(--accent)}
+.yr td.td{outline:2px solid var(--ink);outline-offset:-1px}
+.yr td.dl::after{content:"";position:absolute;right:2px;top:2px;width:5px;height:5px;border-radius:50%;background:var(--late)}
+.yr td.n{width:auto;background:none;color:var(--muted);font-family:var(--f-mono);padding-left:8px;white-space:nowrap}
+.yr-leg{display:flex;flex-wrap:wrap;gap:12px;align-items:center;font-size:12px;color:var(--muted);padding:0 12px 12px}
+.yr-leg i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:4px;vertical-align:-2px}
+.plan-box{border:1px solid var(--line);border-radius:10px;padding:10px;display:grid;gap:12px;background:color-mix(in srgb,var(--accent-soft) 45%,transparent)}
+.plan-box .ttl{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.field input[type=number]{border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:9px 10px;width:100%;min-width:0}
+.segc.days button{min-width:34px}
 .reason{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;width:92px;flex-shrink:0;padding-top:3px}
-.reason.late{color:var(--late)} .reason.today{color:var(--today)} .reason.week{color:var(--week)} .reason.q1{color:var(--q1)} .reason.enc{color:var(--s-encours)}
+.reason.plan{color:var(--accent)} .reason.late{color:var(--late)} .reason.today{color:var(--today)} .reason.week{color:var(--week)} .reason.q1{color:var(--q1)} .reason.enc{color:var(--s-encours)}
 
 .empty{background:var(--surface);border:1px dashed var(--line);border-radius:var(--r);padding:28px 20px;text-align:center;color:var(--muted)}
 .empty h2{color:var(--ink);margin-bottom:6px}
@@ -263,7 +351,7 @@ table.tbl{width:100%;border-collapse:collapse;font-size:13.5px;font-variant-nume
 @media (max-width:820px){
   nav.tabs{display:none}
   .cartouche{margin-left:auto}
-  .mobile-tabs{display:grid;grid-template-columns:repeat(5,1fr);position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--surface);border-top:1px solid var(--line);padding:6px max(8px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px))}
+  .mobile-tabs{display:grid;grid-template-columns:repeat(6,1fr);position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--surface);border-top:1px solid var(--line);padding:6px max(8px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px))}
   .mobile-tabs a{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:10.5px;font-weight:500;color:var(--muted);text-decoration:none;padding:4px 0;position:relative}
   .mobile-tabs a[aria-current="page"]{color:var(--accent)}
   .mobile-tabs svg{width:22px;height:22px}
@@ -280,6 +368,16 @@ table.tbl{width:100%;border-collapse:collapse;font-size:13.5px;font-variant-nume
   .jour .task{flex-wrap:wrap}
   .jour .task .reason{order:-1;width:100%;margin-left:32px}
   .group-h{top:calc(env(safe-area-inset-top,0px) + 52px)}
+  .plan-layout{grid-template-columns:1fr}
+  .backlog{position:static;max-height:none}
+  .backlog .bl-list{max-height:38vh;overflow:auto}
+  .plan-layout .pcal{order:-1}
+  .ld-w,.pbar .pb-h{display:none}
+  .pnav{width:100%}
+  .pday{padding:5px 4px 3px}
+  .pd-num{font-size:11px}
+  .pd-num b{font-size:16px}
+  .pbar{font-size:11px;padding-left:5px}
 }
 @media (max-width:460px){
   .brand{font-size:19px}
@@ -467,6 +565,7 @@ const QMAP = Object.fromEntries(QUADS.map(q => [q.k, q]));
 const VIEWS = [
   {k:"jour", label:"Ma journée", icon:'<path d="M12 3v2M12 19v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M3 12h2M19 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/><circle cx="12" cy="12" r="4"/>'},
   {k:"taches", label:"Tâches", icon:'<path d="M9 6h11M9 12h11M9 18h11"/><path d="M4 6l1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"/>'},
+  {k:"planning", label:"Planning", icon:'<rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9.5h18M8 3v3M16 3v3M7 13.5h4M7 17h7"/>'},
   {k:"matrice", label:"Matrice", icon:'<rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/>'},
   {k:"bord", label:"Bord", icon:'<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>'},
   {k:"reglages", label:"Réglages", icon:'<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>'},
@@ -485,11 +584,12 @@ const S = {
   view:"jour", built:null, pendingRender:false, edit:null, delArmed:false,
   f:{q:"", projets:[], statuts:[], quads:[], hideDone:true, showArch:false, sort:"projet"},
   jourProjet:"", matProjet:"", lastProjet:"", backupAt:"",
+  plan:{mode:"semaine", ref:"", weekend:false, proj:""},
 };
 try { S.backupAt = localStorage.getItem("todobim.backupAt") || ""; } catch (e) {}
 try { const saved = JSON.parse(localStorage.getItem("todobim.ui") || "null");
-  if (saved) { Object.assign(S.f, saved.f || {}); S.f.q = ""; S.jourProjet = saved.jourProjet || ""; S.matProjet = saved.matProjet || ""; S.lastProjet = saved.lastProjet || ""; } } catch (e) {}
-function saveUi(){ try { localStorage.setItem("todobim.ui", JSON.stringify({f:{...S.f, q:""}, jourProjet:S.jourProjet, matProjet:S.matProjet, lastProjet:S.lastProjet})); } catch (e) {} }
+  if (saved) { Object.assign(S.f, saved.f || {}); S.f.q = ""; S.jourProjet = saved.jourProjet || ""; S.matProjet = saved.matProjet || ""; S.lastProjet = saved.lastProjet || ""; if (saved.plan) Object.assign(S.plan, saved.plan); } } catch (e) {}
+function saveUi(){ try { localStorage.setItem("todobim.ui", JSON.stringify({f:{...S.f, q:""}, jourProjet:S.jourProjet, matProjet:S.matProjet, lastProjet:S.lastProjet, plan:{...S.plan, ref:""}})); } catch (e) {} }
 
 /* ---------- Outils ---------- */
 const $ = (s, r = document) => r.querySelector(s);
@@ -520,7 +620,8 @@ function quadrant(t){
 function score(t){
   if (isDone(t) || t.archived) return 0;
   const a = alerte(t), q = quadrant(t);
-  const base = (a === "late" ? 4000 : a === "today" ? 3000 : a === "week" ? 2000 : 0) + (q === "Faire" ? 1000 : 0) + (t.statut === "En cours" ? 500 : 0);
+  const ps = planState(t), rt = recToday(t);
+  const base = (a === "late" ? 4000 : a === "today" ? 3000 : a === "week" ? 2000 : 0) + (ps === "late" ? 2800 : ps === "today" || rt ? 2600 : 0) + (q === "Faire" ? 1000 : 0) + (t.statut === "En cours" ? 500 : 0);
   return base ? base + ({Haute:300, Moyenne:200, Basse:100}[t.priorite] || 0) : 0;
 }
 const byDue = (a, b) => (a.echeance || "9999") < (b.echeance || "9999") ? -1 : (a.echeance || "9999") > (b.echeance || "9999") ? 1 : (a.created || "") < (b.created || "") ? -1 : 1;
@@ -547,6 +648,10 @@ function pills(t, opts = {}){
   const q = quadrant(t);
   if (q && !opts.noQuad) out.push(`<span class="pill q" style="--qc:var(${QMAP[q].v})">${QMAP[q].label}</span>`);
   if (t.theme && !opts.noTheme) out.push(`<span class="pill theme">${esc(t.theme)}</span>`);
+  const sp = planSpan(t);
+  if (sp && !opts.noPlan) { const ps = planState(t); out.push(`<span class="pill plan ${ps}">${ps === "late" ? "planning dépassé · " : ""}${fmt(sp[0])}${sp[1] !== sp[0] ? "→" + fmt(sp[1]) : ""}${t.heures ? " · " + String(t.heures).replace(".", ",") + " h" : ""}</span>`); }
+  else if (t.heures && !opts.noPlan) out.push(`<span class="pill plan">${String(t.heures).replace(".", ",")} h</span>`);
+  if (Array.isArray(t.jours) && t.jours.length) out.push(`<span class="pill rec">chaque ${t.jours.slice().sort((x, y) => ((x + 6) % 7) - ((y + 6) % 7)).map(n => JOURS_COURTS[n]).join(", ")}</span>`);
   if (t.responsable && opts.resp) out.push(`<span class="pill">${esc(t.responsable)}</span>`);
   if (isDone(t) && validYmd(t.cloture)) out.push(`<span class="pill">clôturée ${fmt(t.cloture)}</span>`);
   return out.join("");
@@ -612,15 +717,16 @@ function viewJour(){
   const doneToday = scope.filter(t => isDone(t) && t.cloture === today()).length;
   const kpis = [
     ["late", c("late"), "En retard"], ["today", c("today"), "Aujourd'hui"], ["week", c("week"), "Sous 7 jours"],
-    ["enc", scope.filter(t => t.statut === "En cours").length, "En cours"], ["q1", scope.filter(t => quadrant(t) === "Faire").length, "Quadrant Faire"],
+    ["enc", scope.filter(t => planState(t) === "today" || recToday(t)).length, "Planifiées aujourd'hui"], ["q1", scope.filter(t => quadrant(t) === "Faire").length, "Quadrant Faire"],
     ["done", doneToday, "Terminées aujourd'hui"],
   ];
   const reasonOf = t => { const a = alerte(t);
-    return a === "late" ? ["late", "En retard"] : a === "today" ? ["today", "Aujourd'hui"] : a === "week" ? ["week", "Sous 7 j"] : quadrant(t) === "Faire" ? ["q1", "Faire"] : ["enc", "En cours"]; };
+    const ps = planState(t);
+    return a === "late" ? ["late", "En retard"] : a === "today" ? ["today", "Aujourd'hui"] : ps === "late" ? ["late", "Planning dépassé"] : ps === "today" ? ["plan", "Planifiée"] : recToday(t) ? ["plan", "Récurrent"] : a === "week" ? ["week", "Sous 7 j"] : quadrant(t) === "Faire" ? ["q1", "Faire"] : ["enc", "En cours"]; };
   const projBtns = [segBtn("jour", "", "Tous", !pf), ...allProjets().map(p => segBtn("jour", p, p, pf === p, all.filter(t => t.projet === p && score(t) > 0).length))].join("");
   return `<div class="jour">
     <div class="view-head"><div><div class="eyebrow">Semaine ${isoWeek(now)}</div><h1>${JOURS[now.getDay()]} ${now.getDate()} ${MOIS[now.getMonth()]}</h1>
-      <div class="sub">En retard, dû bientôt, quadrant « Faire » et en cours. Trié par urgence, priorité puis échéance.</div></div></div>
+      <div class="sub">En retard, planifié aujourd'hui, dû bientôt, quadrant « Faire » et en cours. Trié par urgence, priorité puis échéance.</div></div></div>
     <div class="kpis">${kpis.map(([k, n, l]) => `<div class="kpi ${k}"><div class="n">${n}</div><div class="l">${l}</div></div>`).join("")}</div>
     <div class="seg-block" style="margin-bottom:14px"><span class="seg-label">Projet</span>${projBtns}</div>
     ${!all.length ? emptyState() : items.length ? `<div class="list">${items.map(t => { const [k, l] = reasonOf(t); return taskRow(t, `<span class="reason ${k}">${l}</span>`); }).join("")}</div>`
@@ -757,7 +863,7 @@ function viewReglages(){
     ${listBlock("projets", "Projets", "Ordre d'affichage des projets dans les filtres et le tableau de bord.")}
     ${listBlock("responsables", "Responsables", "Proposés dans le champ Responsable.")}
     ${listBlock("types", "Types", "Exemples : Amélioration, Ajout, Correctif.")}
-    <div class="panel"><h2>Importer</h2><p>Fichier <b>mes_taches.json</b>, sauvegarde .json, classeur .xlsx (onglet « TO DO ») ou .csv. Pour Excel et CSV, les colonnes sont reconnues par leur en-tête : Projet, Tâche, Statut, Priorité, Urgent, Important, Échéance, Responsable, Thème, Type, Clôturé le, Commentaires.</p>
+    <div class="panel"><h2>Importer</h2><p>Fichier <b>mes_taches.json</b>, sauvegarde .json, classeur .xlsx (onglet « TO DO ») ou .csv. Pour Excel et CSV, les Les colonnes sont reconnues par leur en-tête : Projet, Tâche, Statut, Priorité, Urgent, Important, Échéance, Responsable, Thème, Type, Clôturé le, Commentaires.</p>
       ${S.canWrite === false ? `<p>Lecture seule.</p>` : `<div class="row" style="margin:10px 0"><label class="toggle"><input type="radio" name="imode" value="add" checked> Ajouter aux tâches existantes</label><label class="toggle"><input type="radio" name="imode" value="replace"> Remplacer toutes les tâches</label></div>
       <div class="row"><input type="file" id="imp-file" accept=".json,.xlsx,.xls,.csv,application/json" hidden><button class="btn primary" data-act="import">Choisir un fichier…</button></div>`}
       <div class="progress-line" id="imp-progress">${esc(S.impMsg || "")}</div></div>
@@ -775,6 +881,237 @@ function viewReglages(){
   </div>`;
 }
 
+/* ---------- Planning (semaine / mois / année) ---------- */
+const JOURS_COURTS = ["Dim","Lun","Mar","Mer","Jeu","Ven","Sam"];
+const JLETTRES = [[1,"L"],[2,"M"],[3,"M"],[4,"J"],[5,"V"],[6,"S"],[0,"D"]];
+const MOIS_COURTS = ["janv.","févr.","mars","avr.","mai","juin","juil.","août","sept.","oct.","nov.","déc."];
+const mondayOf = s => addDays(s, -((parseYmd(s).getDay() + 6) % 7));
+const isWe = s => { const g = parseYmd(s).getDay(); return g === 0 || g === 6; };
+function planSpan(t){
+  if (!t || !validYmd(t.debut)) return null;
+  return [t.debut, validYmd(t.fin) && t.fin >= t.debut ? t.fin : t.debut];
+}
+function planState(t){
+  const sp = planSpan(t); if (!sp || isDone(t) || t.archived) return "";
+  const d = today(); return sp[1] < d ? "late" : sp[0] <= d ? "today" : "";
+}
+function recToday(t){ return !isDone(t) && !t.archived && Array.isArray(t.jours) && t.jours.includes(new Date().getDay()); }
+function workDays(a, b){ let n = 0; for (let d = a; d <= b; d = addDays(d, 1)) if (!isWe(d)) n++; return n || diffDays(b, a) + 1; }
+function planItems(a, b, pf){
+  const out = [];
+  for (const t of live()) {
+    if (pf && t.projet !== pf) continue;
+    const sp = planSpan(t);
+    if (sp && sp[1] >= a && sp[0] <= b) out.push({t, s:sp[0] < a ? a : sp[0], e:sp[1] > b ? b : sp[1], cutL:sp[0] < a, cutR:sp[1] > b});
+    if (Array.isArray(t.jours) && t.jours.length && !isDone(t)) {
+      for (let d = a; d <= b; d = addDays(d, 1)) {
+        if (t.jours.includes(parseYmd(d).getDay()) && !(sp && d >= sp[0] && d <= sp[1])) out.push({t, s:d, e:d, rec:true});
+      }
+    }
+  }
+  return out;
+}
+function dayLoad(d, items){
+  let n = 0, h = 0;
+  for (const it of items) {
+    if (it.s > d || it.e < d) continue;
+    n++;
+    const hh = Number(it.t.heures) || 0; if (!hh) continue;
+    if (it.rec) { h += hh; continue; }
+    const sp = planSpan(it.t); const wd = workDays(sp[0], sp[1]);
+    if (isWe(d) && wd !== diffDays(sp[1], sp[0]) + 1) continue;
+    h += hh / wd;
+  }
+  return {n, h:Math.round(h * 10) / 10};
+}
+function deadlines(d, pf){ return live().filter(t => !isDone(t) && t.echeance === d && (!pf || t.projet === pf)); }
+function laneRow(dates, items){
+  const first = dates[0], lastD = dates[dates.length - 1], out = [];
+  for (const it of items) {
+    if (it.e < first || it.s > lastD) continue;
+    const c0 = dates.findIndex(d => d >= it.s);
+    let c1 = -1; for (let i = dates.length - 1; i >= 0; i--) if (dates[i] <= it.e) { c1 = i; break; }
+    if (c0 < 0 || c1 < c0) continue;
+    out.push({...it, c0, c1, cutL:it.cutL || it.s < first, cutR:it.cutR || it.e > lastD});
+  }
+  out.sort((x, y) => x.c0 - y.c0 || (y.c1 - y.c0) - (x.c1 - x.c0) || (x.rec ? 1 : 0) - (y.rec ? 1 : 0));
+  const lanes = [];
+  for (const it of out) { let l = 0; while (lanes[l] !== undefined && lanes[l] >= it.c0) l++; lanes[l] = it.c1; it.lane = l; }
+  return out;
+}
+function barHtml(it, compact){
+  const t = it.t, ro = S.canWrite === false;
+  const cls = ["pbar", it.rec ? "rec" : "", isDone(t) ? "done" : "", !it.rec && planState(t) === "late" ? "late" : "", it.cutL ? "cutL" : "", it.cutR ? "cutR" : ""].filter(Boolean).join(" ");
+  const sp = planSpan(t);
+  const tip = `${t.tache}${t.projet ? " · " + t.projet : ""}${sp && !it.rec ? " · " + fmt(sp[0]) + (sp[1] !== sp[0] ? " → " + fmt(sp[1]) : "") : ""}${t.heures ? " · " + t.heures + " h" : ""}`;
+  return `<div class="${cls}" data-id="${esc(t.id)}" data-act="edit" ${!ro && !it.rec ? 'data-drag="bar"' : ""} role="button" tabindex="0" title="${esc(tip)}"
+    style="grid-column:${it.c0 + 1} / span ${it.c1 - it.c0 + 1};grid-row:${it.lane + 1};--pc:${projColor(t.projet)}">
+    <span class="pb-t">${isDone(t) ? "✓ " : ""}${esc(t.tache)}</span>${!compact && t.heures && !it.rec ? `<span class="pb-h">${String(t.heures).replace(".", ",")} h</span>` : ""}
+    ${!ro && !it.rec && !it.cutR ? '<span class="pb-rz" data-drag="rz" aria-label="Allonger la tâche"></span>' : ""}</div>`;
+}
+function weekRow(dates, items, opts){
+  const compact = !!opts.compact, pf = S.plan.proj, td = today();
+  const its = laneRow(dates, items);
+  const limit = compact ? 3 : 99;
+  const shown = its.filter(i => i.lane < limit);
+  const hiddenPer = dates.map((d, i) => its.filter(x => x.lane >= limit && x.c0 <= i && x.c1 >= i).length);
+  const rows = Math.max(compact ? 2 : 3, (shown.reduce((m, i) => Math.max(m, i.lane), -1) + 1) + (hiddenPer.some(Boolean) ? 1 : 0));
+  const cols = `repeat(${dates.length},minmax(0,1fr))`;
+  const heads = dates.map(d => {
+    const dt = parseYmd(d), L = dayLoad(d, items), dls = deadlines(d, pf);
+    const out = opts.month != null && dt.getMonth() !== opts.month;
+    const loadTxt = L.n ? `${L.n}<span class="ld-w"> tâche${L.n > 1 ? "s" : ""}</span>${L.h ? " · " + String(L.h).replace(".", ",") + " h" : ""}` : "";
+    return `<div class="pday${d === td ? " is-today" : ""}${out ? " out" : ""}${isWe(d) ? " we" : ""}" data-dayhead="${d}">
+      <div class="pd-row"><button class="pd-num" data-act="goweek" data-d="${d}">${compact ? "" : JOURS_COURTS[dt.getDay()]}<b>${dt.getDate()}</b>${compact && dls.length ? '<span class="pdot"></span>' : ""}</button>
+      ${!compact && S.canWrite !== false ? `<button class="pd-add" data-act="plan-new" data-d="${d}" aria-label="Nouvelle tâche le ${fmt(d, true)}">${I.plus}</button>` : ""}</div>
+      ${!compact ? `<div class="pload${L.h > 7.5 ? " over" : ""}">${loadTxt || "&nbsp;"}</div>${dls.map(t => `<button class="pdl" data-id="${esc(t.id)}" data-act="edit" title="Échéance : ${esc(t.tache)}">◆ ${esc(t.tache)}</button>`).join("")}` : ""}
+    </div>`;
+  }).join("");
+  const cells = dates.map((d, i) => `<div class="pcell c${i}${isWe(d) ? " we" : ""}${d === td ? " td" : ""}" style="grid-column:${i + 1};grid-row:1 / ${rows + 1}"></div>`).join("");
+  const more = hiddenPer.map((n, i) => n ? `<button class="pmore" data-act="goweek" data-d="${dates[i]}" style="grid-column:${i + 1};grid-row:${rows}">+${n}</button>` : "").join("");
+  return `<div class="pweek"><div class="pdays" style="grid-template-columns:${cols}">${heads}</div>
+    <div class="pgrid${compact ? " compact" : ""}" data-dates="${dates.join(",")}" style="grid-template-columns:${cols};grid-template-rows:repeat(${rows},${compact ? 20 : 30}px)">${cells}${shown.map(i => barHtml(i, compact)).join("")}${more}</div></div>`;
+}
+function visibleWeek(mon){ const ds = []; for (let i = 0; i < 7; i++) { const d = addDays(mon, i); if (S.plan.weekend || !isWe(d)) ds.push(d); } return ds; }
+function backlogTasks(pf){
+  return live().filter(t => !isDone(t) && t.statut !== "Récurrent" && !planSpan(t) && !(Array.isArray(t.jours) && t.jours.length) && (!pf || t.projet === pf))
+    .sort((a, b) => score(b) - score(a) || byDue(a, b));
+}
+function viewPlanning(){
+  const P = S.plan; if (!validYmd(P.ref)) P.ref = today();
+  const pf = P.proj, td = today(), ref = P.ref, rd = parseYmd(ref);
+  let title = "", body = "", sub = "";
+  if (P.mode === "semaine") {
+    const mon = mondayOf(ref), sun = addDays(mon, 6), dates = visibleWeek(mon);
+    const items = planItems(mon, sun, pf);
+    const m1 = parseYmd(mon), m2 = parseYmd(sun);
+    title = `Semaine ${isoWeek(m1)} · ${m1.getDate()}${m1.getMonth() !== m2.getMonth() ? " " + MOIS_COURTS[m1.getMonth()] : ""} – ${m2.getDate()} ${MOIS_COURTS[m2.getMonth()]} ${m2.getFullYear()}`;
+    const planned = new Set(items.filter(i => !i.rec).map(i => i.t.id));
+    const hours = dates.reduce((s, d) => s + dayLoad(d, items).h, 0);
+    const dls = live().filter(t => !isDone(t) && validYmd(t.echeance) && t.echeance >= mon && t.echeance <= sun && (!pf || t.projet === pf)).length;
+    const doneN = items.filter(i => !i.rec && isDone(i.t)).length;
+    body = weekRow(dates, items, {}) + `<div class="psum"><span><b>${planned.size}</b> tâche${planned.size > 1 ? "s" : ""} planifiée${planned.size > 1 ? "s" : ""}</span><span><b>${doneN}</b> terminée${doneN > 1 ? "s" : ""}</span><span><b>${String(Math.round(hours * 10) / 10).replace(".", ",")} h</b> estimées</span><span><b>${dls}</b> échéance${dls > 1 ? "s" : ""}</span></div>`;
+    sub = "Glisse une tâche « À planifier » sur un jour, déplace une barre, ou tire son bord droit pour l'allonger.";
+  } else if (P.mode === "mois") {
+    const y = rd.getFullYear(), m = rd.getMonth();
+    const first = ymd(new Date(y, m, 1)), lastD = ymd(new Date(y, m + 1, 0));
+    title = `${MOIS[m].charAt(0).toUpperCase() + MOIS[m].slice(1)} ${y}`;
+    const start = mondayOf(first), items = planItems(start, addDays(mondayOf(lastD), 6), pf);
+    const wdays = visibleWeek(start).map(d => JOURS_COURTS[parseYmd(d).getDay()]);
+    const cols = `repeat(${wdays.length},minmax(0,1fr))`;
+    let rowsHtml = "";
+    for (let w = start; w <= lastD; w = addDays(w, 7)) rowsHtml += weekRow(visibleWeek(w), items, {compact:true, month:m});
+    body = `<div class="pwk-head" style="grid-template-columns:${cols}">${wdays.map(d => `<div>${d}</div>`).join("")}</div>${rowsHtml}`;
+    sub = "Vue d'ensemble du mois : touche un jour pour ouvrir sa semaine. Les points rouges signalent une échéance.";
+  } else {
+    const y = rd.getFullYear(); title = `Année ${y}`;
+    const items = planItems(`${y}-01-01`, `${y}-12-31`, pf).filter(i => !i.rec);
+    const dlSet = new Set(live().filter(t => !isDone(t) && validYmd(t.echeance) && (!pf || t.projet === pf)).map(t => t.echeance));
+    let rowsH = "";
+    for (let m = 0; m < 12; m++) {
+      const nd = new Date(y, m + 1, 0).getDate(); let cells = "", monthCount = new Set();
+      for (let d = 1; d <= 31; d++) {
+        if (d > nd) { cells += '<td class="na"></td>'; continue; }
+        const ds = ymd(new Date(y, m, d)); const cov = items.filter(i => i.s <= ds && i.e >= ds);
+        cov.forEach(i => monthCount.add(i.t.id));
+        const n = cov.length, lv = n === 0 ? "" : n === 1 ? "l1" : n === 2 ? "l2" : n <= 4 ? "l3" : "l4";
+        cells += `<td class="${[lv, isWe(ds) && !n ? "we" : "", ds === td ? "td" : "", dlSet.has(ds) ? "dl" : ""].filter(Boolean).join(" ")}" title="${fmt(ds, true)} : ${n} tâche${n > 1 ? "s" : ""}${dlSet.has(ds) ? " · échéance" : ""}"><button data-act="goweek" data-d="${ds}" aria-label="${fmt(ds, true)}"></button></td>`;
+      }
+      rowsH += `<tr><th class="m">${MOIS_COURTS[m]}</th>${cells}<td class="n">${monthCount.size || ""}</td></tr>`;
+    }
+    body = `<div class="yr-wrap"><table class="yr"><thead><tr><th></th>${Array.from({length:31}, (_, i) => `<th>${i + 1}</th>`).join("")}<th></th></tr></thead><tbody>${rowsH}</tbody></table></div>
+      <div class="yr-leg"><span><i style="background:var(--surface-2)"></i>libre</span><span><i style="background:color-mix(in srgb,var(--accent) 22%,var(--surface))"></i>1 tâche</span><span><i style="background:color-mix(in srgb,var(--accent) 45%,var(--surface))"></i>2</span><span><i style="background:color-mix(in srgb,var(--accent) 70%,var(--surface))"></i>3–4</span><span><i style="background:var(--accent)"></i>5 et +</span><span><i style="background:var(--late);border-radius:50%;width:8px;height:8px"></i>échéance</span><span>Chiffre de droite : tâches planifiées dans le mois</span></div>`;
+    sub = "Charge de travail jour par jour sur l'année. Touche un jour pour ouvrir sa semaine.";
+  }
+  const bl = backlogTasks(pf);
+  const nm = addDays(mondayOf(td), 7);
+  const card = t => `<div class="pcard" data-id="${esc(t.id)}" ${S.canWrite !== false ? 'data-drag="card"' : ""} style="--pc:${projColor(t.projet)}">
+      <button class="t-main" data-act="edit"><div class="t-title">${esc(t.tache)}</div><div class="t-meta">${pills(t, {noTheme:true})}</div></button>
+      ${S.canWrite !== false ? `<div class="pc-quick"><button data-act="plan-day" data-d="${td}">Auj.</button><button data-act="plan-day" data-d="${addDays(td, 1)}">Demain</button><button data-act="plan-day" data-d="${nm}">Lun. ${parseYmd(nm).getDate()}</button>${P.mode === "semaine" && mondayOf(P.ref) !== mondayOf(td) ? `<button data-act="plan-day" data-d="${P.ref < td ? mondayOf(P.ref) : mondayOf(P.ref)}">Sem. affichée</button>` : ""}</div>` : ""}</div>`;
+  const projBtns = [segBtn("plan", "", "Tous", !pf), ...allProjets().map(p => segBtn("plan", p, p, pf === p))].join("");
+  const mode = (k, l) => `<button data-act="plan-mode" data-m="${k}" aria-pressed="${P.mode === k}">${l}</button>`;
+  return `<div class="view-head"><div><div class="eyebrow">Planning</div><h1>${title}</h1><div class="sub">${sub}</div></div>
+      <div class="pnav"><div class="segbar">${mode("semaine", "Semaine")}${mode("mois", "Mois")}${mode("annee", "Année")}</div>
+        <div class="segbar"><button data-act="plan-prev" aria-label="Précédent">‹</button><button data-act="plan-today">Aujourd'hui</button><button data-act="plan-next" aria-label="Suivant">›</button></div>
+        ${P.mode !== "annee" ? `<label class="toggle"><input type="checkbox" id="p-we" ${P.weekend ? "checked" : ""}> Week-end</label>` : ""}</div></div>
+    <div class="seg-block" style="margin-bottom:12px"><span class="seg-label">Projet</span>${projBtns}</div>
+    ${!S.tasks.size ? emptyState() : `<div class="plan-layout ${P.mode}">
+      ${P.mode !== "annee" ? `<details class="backlog" open><summary><h2>À planifier</h2><span class="count">${bl.length}</span></summary>
+        <p class="sub">Tâches ouvertes sans date de planning, les plus urgentes d'abord. Glisse-les sur un jour (appui long sur iPhone) ou touche un raccourci.</p>
+        <div class="bl-list">${bl.map(card).join("") || `<p class="sub">Tout est planifié 🎯</p>`}</div></details>` : ""}
+      <section class="pcal">${body}</section></div>`}`;
+}
+async function planAction(act, a, id){
+  const P = S.plan;
+  if (act === "plan-mode") { P.mode = a.dataset.m; saveUi(); render(true); return; }
+  if (act === "plan-today") { P.ref = today(); render(true); return; }
+  if (act === "plan-prev" || act === "plan-next") {
+    const k = act === "plan-next" ? 1 : -1, d = parseYmd(validYmd(P.ref) ? P.ref : today());
+    P.ref = P.mode === "semaine" ? addDays(ymd(d), 7 * k) : P.mode === "mois" ? ymd(new Date(d.getFullYear(), d.getMonth() + k, 1)) : ymd(new Date(d.getFullYear() + k, 0, 1));
+    render(true); return;
+  }
+  if (act === "goweek") { if (dragMoved) return; P.ref = a.dataset.d; P.mode = "semaine"; if (isWe(P.ref)) P.weekend = true; saveUi(); render(true); window.scrollTo(0, 0); return; }
+  if (act === "plan-new") { openEditor(null, {projet:P.proj, debut:a.dataset.d}); return; }
+  if (act === "plan-day" && id) {
+    const d = a.dataset.d, t = S.tasks.get(id); if (!t) return;
+    try { await S.db.doc("tasks/" + id).update({debut:d, fin:d, updated:nowIso()}); toast(`Planifiée le ${fmt(d)}`); } catch (e) { fail(e); }
+  }
+}
+/* Glisser-déposer du planning (souris : direct ; tactile : appui long) */
+let PD = null;
+function dateAt(x, y){
+  const el = document.elementFromPoint(x, y); const g = el && el.closest ? el.closest("[data-dates]") : null; if (!g) return null;
+  const ds = g.dataset.dates.split(","), r = g.getBoundingClientRect();
+  return ds[Math.max(0, Math.min(ds.length - 1, Math.floor((x - r.left) / r.width * ds.length)))];
+}
+function dropHint(d){ document.querySelectorAll(".pday.drop").forEach(x => x.classList.remove("drop")); if (d) document.querySelectorAll(`.pday[data-dayhead="${d}"]`).forEach(x => x.classList.add("drop")); }
+function startDrag(){
+  if (!PD) return; PD.active = true; dragMoved = true; document.body.classList.add("is-dragging"); PD.host.classList.add("dragging");
+  if (PD.kind !== "rz") { const g = document.createElement("div"); g.className = "pghost"; g.textContent = (S.tasks.get(PD.id) || {}).tache || ""; document.body.appendChild(g); PD.ghost = g; moveGhost(PD.x, PD.y); }
+}
+function moveGhost(x, y){ if (PD && PD.ghost) PD.ghost.style.transform = `translate(${x + 12}px, ${y + 12}px)`; }
+document.addEventListener("pointerdown", ev => {
+  if (S.view !== "planning" || S.canWrite === false || ev.button > 0 || ev.target.closest(".pc-quick")) return;
+  const h = ev.target.closest("[data-drag]"); if (!h) return;
+  const host = h.closest("[data-id]"), t = host && S.tasks.get(host.dataset.id); if (!t) return;
+  PD = {kind:h.dataset.drag, id:t.id, x:ev.clientX, y:ev.clientY, active:false, touch:ev.pointerType !== "mouse", host, off:0};
+  if (PD.kind === "bar") { const d = dateAt(ev.clientX, ev.clientY), sp = planSpan(t); PD.off = d && sp ? Math.max(0, diffDays(d, sp[0])) : 0; }
+  if (PD.kind === "rz") { ev.preventDefault(); startDrag(); }
+  else if (PD.touch) PD.timer = setTimeout(startDrag, 320);
+});
+document.addEventListener("pointermove", ev => {
+  if (!PD) return;
+  if (!PD.active) {
+    if (Math.hypot(ev.clientX - PD.x, ev.clientY - PD.y) > 8) { if (PD.touch) { clearTimeout(PD.timer); PD = null; return; } startDrag(); }
+    else return;
+  }
+  moveGhost(ev.clientX, ev.clientY);
+  const d = dateAt(ev.clientX, ev.clientY); PD.target = d || PD.target; dropHint(d);
+  if (PD.kind === "rz" && d) {
+    const g = PD.host.closest("[data-dates]"); if (!g) return; const ds = g.dataset.dates.split(",");
+    const c0 = parseInt(PD.host.style.gridColumnStart, 10) - 1, i1 = ds.indexOf(d);
+    if (i1 >= c0) PD.host.style.gridColumn = `${c0 + 1} / span ${i1 - c0 + 1}`;
+  }
+});
+document.addEventListener("touchmove", ev => { if (PD && PD.active) ev.preventDefault(); }, {passive:false});
+async function endDrag(ev, ok){
+  if (!PD) return; clearTimeout(PD.timer); const p = PD; PD = null; if (!p.active) return;
+  if (p.ghost) p.ghost.remove(); p.host.classList.remove("dragging"); document.body.classList.remove("is-dragging"); dropHint(null);
+  setTimeout(() => { dragMoved = false; }, 80);
+  const d = ok ? (dateAt(ev.clientX, ev.clientY) || p.target) : null;
+  const t = S.tasks.get(p.id); if (!d || !t) { render(true); return; }
+  const sp = planSpan(t); let upd;
+  if (p.kind === "card") upd = {debut:d, fin:d};
+  else if (p.kind === "bar" && sp) { const ns = addDays(d, -p.off); upd = {debut:ns, fin:addDays(ns, diffDays(sp[1], sp[0]))}; }
+  else if (p.kind === "rz" && sp) upd = {debut:sp[0], fin:d < sp[0] ? sp[0] : d};
+  if (!upd || (sp && upd.debut === sp[0] && upd.fin === sp[1])) { render(true); return; }
+  try { await S.db.doc("tasks/" + p.id).update({...upd, updated:nowIso()});
+    toast(p.kind === "rz" ? `Jusqu'au ${fmt(upd.fin)} (${diffDays(upd.fin, upd.debut) + 1} j)` : `Planifiée le ${fmt(upd.debut)}${upd.fin !== upd.debut ? " → " + fmt(upd.fin) : ""}`); } catch (e) { fail(e); }
+  render(true);
+}
+document.addEventListener("pointerup", ev => endDrag(ev, true));
+document.addEventListener("pointercancel", ev => endDrag(ev, false));
+
 /* ---------- Rendu principal ---------- */
 function render(force){
   renderChrome();
@@ -788,7 +1125,8 @@ function render(force){
     updateTaches();
     return;
   }
-  const html = {jour:viewJour, matrice:viewMatrice, bord:viewBord, reglages:viewReglages}[S.view]();
+  if (!force && PD && PD.active) { S.pendingRender = true; return; }
+  const html = {jour:viewJour, planning:viewPlanning, matrice:viewMatrice, bord:viewBord, reglages:viewReglages}[S.view]();
   v.innerHTML = html; S.built = S.view;
 }
 let raf = 0;
@@ -845,7 +1183,8 @@ async function setQuad(id, qk){
 /* ---------- Éditeur ---------- */
 function openEditor(id, preset = {}){
   const src = id ? S.tasks.get(id) : null;
-  S.edit = src ? {...src} : {id:null, projet: preset.projet || S.lastProjet || allProjets()[0] || "", tache:"", statut:"À faire", priorite:"", urgent:null, important:null, echeance:"", responsable: S.lists.responsables[0] || "", theme:"", type:"", cloture:"", commentaires:""};
+  S.edit = src ? {...src} : {id:null, projet: preset.projet || S.lastProjet || allProjets()[0] || "", tache:"", statut:"À faire", priorite:"", urgent:null, important:null, echeance:"", responsable: S.lists.responsables[0] || "", theme:"", type:"", cloture:"", commentaires:"", debut: preset.debut || "", fin: preset.debut || "", heures:"", jours:[]};
+  if (!Array.isArray(S.edit.jours)) S.edit.jours = [];
   S.delArmed = false;
   renderEditor(true);
 }
@@ -871,6 +1210,18 @@ function renderEditor(first){
         <div class="field"><label for="e-ech">Échéance</label><input type="date" id="e-ech" value="${esc(e.echeance)}" ${ro ? "readonly" : ""}>
           ${ro ? "" : `<div class="dates"><button type="button" data-date="0">Aujourd'hui</button><button type="button" data-date="1">Demain</button><button type="button" data-date="7">+7 j</button><button type="button" data-date="fri">Vendredi</button><button type="button" data-date="">Effacer</button></div>`}</div>
         <div class="field"><span class="lbl">Priorité</span><div class="segc">${PRIOS.map(p => `<button type="button" data-ed="priorite" data-v="${p}" aria-pressed="${e.priorite === p}">${p}</button>`).join("")}</div></div>
+      </div>
+      <div class="plan-box"><div class="ttl">Planning</div>
+        <div class="cols2">
+          <div class="field"><label for="e-deb">Planifiée du</label><input type="date" id="e-deb" value="${esc(e.debut || "")}" ${ro ? "readonly" : ""}>
+            ${ro ? "" : `<div class="dates"><button type="button" data-pd="0">Aujourd'hui</button><button type="button" data-pd="1">Demain</button><button type="button" data-pd="mon">Lundi proch.</button><button type="button" data-pd="">Effacer</button></div>`}</div>
+          <div class="field"><label for="e-fin">au</label><input type="date" id="e-fin" value="${esc(e.fin || "")}" ${ro ? "readonly" : ""}>
+            ${ro ? "" : `<div class="dates"><button type="button" data-pf="-1">−1 jour</button><button type="button" data-pf="1">+1 jour</button><button type="button" data-pf="fri">Jusqu'à vendredi</button></div>`}</div>
+        </div>
+        <div class="cols2">
+          <div class="field"><label for="e-h">Temps estimé (heures)</label><input type="text" id="e-h" inputmode="decimal" autocomplete="off" placeholder="ex. 3,5" value="${e.heures === "" || e.heures == null ? "" : esc(e.heures)}" ${ro ? "readonly" : ""}></div>
+          <div class="field"><span class="lbl">Répéter chaque semaine</span><div class="segc days">${JLETTRES.map(([n, l]) => `<button type="button" data-ed="jour" data-v="${n}" aria-pressed="${(e.jours || []).includes(n)}" aria-label="${JOURS[n]}">${l}</button>`).join("")}</div></div>
+        </div>
       </div>
       <div class="cols2">
         <div class="field"><label for="e-resp">Responsable</label><input type="text" id="e-resp" list="dl-resp" value="${esc(e.responsable)}" ${ro ? "readonly" : ""}><datalist id="dl-resp">${S.lists.responsables.map(r => `<option value="${esc(r)}">`).join("")}</datalist></div>
@@ -902,6 +1253,11 @@ function readEditorInputs(){
   e.type = (val("#e-type") ?? e.type).trim();
   e.commentaires = (val("#e-com") ?? e.commentaires).trim();
   const clo = $("#e-clo"); if (clo && !clo.disabled) e.cloture = clo.value;
+  e.debut = val("#e-deb") ?? e.debut ?? ""; e.fin = val("#e-fin") ?? e.fin ?? "";
+  if (!validYmd(e.debut)) { e.debut = ""; e.fin = ""; } else if (!validYmd(e.fin) || e.fin < e.debut) e.fin = e.debut;
+  const hv = val("#e-h");
+  if (hv !== undefined) { const n = parseFloat(String(hv).replace(",", ".")); e.heures = isFinite(n) && n > 0 ? Math.round(n * 4) / 4 : ""; }
+  if (!Array.isArray(e.jours)) e.jours = [];
 }
 async function saveEditor(){
   readEditorInputs();
@@ -921,7 +1277,7 @@ function loadXLSX(){
   if (!xlsxP) xlsxP = new Promise((res, rej) => { const s = document.createElement("script"); s.src = "./xlsx.core.min.js"; s.onload = () => res(window.XLSX); s.onerror = () => { xlsxP = null; rej(new Error("xlsx")); }; document.head.appendChild(s); });
   return xlsxP;
 }
-const HEAD = {projet:"projet", tache:"tache", statut:"statut", priorite:"priorite", urgent:"urgent", important:"important", echeance:"echeance", responsable:"responsable", theme:"theme", type:"type", "cloture le":"cloture", "cloturee le":"cloture", cloture:"cloture", commentaires:"commentaires", commentaire:"commentaires"};
+const HEAD = {projet:"projet", tache:"tache", statut:"statut", priorite:"priorite", urgent:"urgent", important:"important", echeance:"echeance", responsable:"responsable", theme:"theme", type:"type", "cloture le":"cloture", "cloturee le":"cloture", cloture:"cloture", commentaires:"commentaires", commentaire:"commentaires", "planifiee du":"debut", debut:"debut", au:"fin", fin:"fin", "temps estime (h)":"heures", "temps estime":"heures"};
 function toYmd(v, X){
   if (v == null || v === "") return "";
   if (typeof v === "number" && X) { const d = X.SSF.parse_date_code(v); return d ? `${d.y}-${z2(d.m)}-${z2(d.d)}` : ""; }
@@ -979,7 +1335,8 @@ async function importFile(file){
       tasks.push({projet:String(o.projet ?? "").trim(), tache, statut, priorite: PRIOS.find(p => norm(p) === norm(o.priorite)) || "",
         urgent: yesNo(o.urgent), important: yesNo(o.important), echeance: toYmd(o.echeance, X), responsable: String(o.responsable ?? "").trim(),
         theme: String(o.theme ?? "").trim(), type: String(o.type ?? "").trim(), cloture: statut === "Terminé" ? (toYmd(o.cloture, X) || today()) : "",
-        commentaires: String(o.commentaires ?? "").trim(), created: nowIso(), updated: nowIso()});
+        commentaires: String(o.commentaires ?? "").trim(), debut: toYmd(o.debut, X), fin: toYmd(o.fin, X) || toYmd(o.debut, X),
+        heures: isFinite(parseFloat(String(o.heures ?? "").replace(",", "."))) ? parseFloat(String(o.heures).replace(",", ".")) : "", jours: [], created: nowIso(), updated: nowIso()});
     }
     if (!tasks.length) { say("Aucune tâche trouvée sous l'en-tête."); return; }
     const replace = (document.querySelector('input[name="imode"]:checked') || {}).value === "replace";
@@ -995,9 +1352,10 @@ function exportRows(){
   const po = allProjets();
   return [...S.tasks.values()].sort((a, b) => po.indexOf(a.projet) - po.indexOf(b.projet) || byDue(a, b)).map((t, i) => [i + 1, t.projet || "", t.tache || "", t.statut || "", t.priorite || "",
     t.urgent === true ? "Oui" : t.urgent === false ? "Non" : "", t.important === true ? "Oui" : t.important === false ? "Non" : "",
-    t.echeance || "", quadrant(t), t.responsable || "", t.theme || "", t.type || "", t.cloture || "", t.commentaires || "", t.archived ? "Oui" : ""]);
+    t.echeance || "", quadrant(t), t.responsable || "", t.theme || "", t.type || "", t.cloture || "", t.commentaires || "", t.archived ? "Oui" : "", t.debut || "", t.fin || "", t.heures || "",
+    Array.isArray(t.jours) ? t.jours.map(n => JOURS_COURTS[n]).join(" ") : ""]);
 }
-const EXP_HEAD = ["N°","Projet","Tâche","Statut","Priorité","Urgent","Important","Échéance","Quadrant","Responsable","Thème","Type","Clôturé le","Commentaires","Archivée"];
+const EXP_HEAD = ["N°","Projet","Tâche","Statut","Priorité","Urgent","Important","Échéance","Quadrant","Responsable","Thème","Type","Clôturé le","Commentaires","Archivée","Planifiée du","au","Temps estimé (h)","Répétition"];
 async function doBackup(){
   const prog = $("#bak-progress"); const say = m => { if (prog) prog.textContent = m; };
   const dl = await window.claude.use("downloads");
@@ -1015,15 +1373,15 @@ async function doExport(kind){
   try {
     if (kind === "csv") {
       const q = v => { const s = String(v ?? ""); return /[;"\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
-      const lines = [EXP_HEAD, ...exportRows().map(r => r.map((v, j) => (j === 7 || j === 12) && v ? fmt(v, true) : v))].map(r => r.map(q).join(";"));
+      const lines = [EXP_HEAD, ...exportRows().map(r => r.map((v, j) => (j === 7 || j === 12 || j === 15 || j === 16) && v ? fmt(v, true) : v))].map(r => r.map(q).join(";"));
       await dl.save({filename:`TODO_BIM_${stamp}.csv`, data:"﻿" + lines.join("\r\n")});
     } else {
       say("Préparation du fichier…");
       const X = await loadXLSX();
       const ws = X.utils.aoa_to_sheet([EXP_HEAD, ...exportRows()]);
       const rows = exportRows().length;
-      for (let r = 1; r <= rows; r++) for (const c of [7, 12]) { const ref = X.utils.encode_cell({r, c}); const cell = ws[ref]; if (cell && validYmd(cell.v)) { const [y, m, d] = cell.v.split("-").map(Number); ws[ref] = {t:"n", v:(Date.UTC(y, m - 1, d) - Date.UTC(1899, 11, 30)) / 86400000, z:"dd/mm/yyyy"}; } }
-      ws["!cols"] = [6,10,58,12,10,8,10,12,11,14,26,14,12,40,9].map(w => ({wch:w}));
+      for (let r = 1; r <= rows; r++) for (const c of [7, 12, 15, 16]) { const ref = X.utils.encode_cell({r, c}); const cell = ws[ref]; if (cell && validYmd(cell.v)) { const [y, m, d] = cell.v.split("-").map(Number); ws[ref] = {t:"n", v:(Date.UTC(y, m - 1, d) - Date.UTC(1899, 11, 30)) / 86400000, z:"dd/mm/yyyy"}; } }
+      ws["!cols"] = [6,10,58,12,10,8,10,12,11,14,26,14,12,40,9,12,12,10,12].map(w => ({wch:w}));
       ws["!autofilter"] = {ref: X.utils.encode_range({s:{r:0, c:0}, e:{r:rows, c:EXP_HEAD.length - 1}})};
       const wb = X.utils.book_new(); X.utils.book_append_sheet(wb, ws, "TO DO");
       const buf = X.write(wb, {bookType:"xlsx", type:"array"});
@@ -1040,10 +1398,26 @@ document.addEventListener("click", async ev => {
     const kind = segEl.dataset.seg, val = segEl.dataset.val;
     if (kind === "jour") { S.jourProjet = val; saveUi(); render(true); return; }
     if (kind === "mat") { S.matProjet = val; saveUi(); render(true); return; }
+    if (kind === "plan") { S.plan.proj = val; saveUi(); render(true); return; }
     const arr = S.f[kind]; const i = arr.indexOf(val);
     if (ev.metaKey || ev.ctrlKey || ev.shiftKey) { i >= 0 ? arr.splice(i, 1) : arr.push(val); }
     else { S.f[kind] = (i >= 0 && arr.length === 1) ? [] : [val]; }
     saveUi(); updateTaches(); return;
+  }
+  const pdBtn = ev.target.closest("[data-pd]");
+  if (pdBtn && S.edit) {
+    const v = pdBtn.dataset.pd; const deb = $("#e-deb"), fin = $("#e-fin");
+    const d = v === "" ? "" : v === "mon" ? addDays(mondayOf(today()), 7) : addDays(today(), Number(v));
+    const len = validYmd(deb.value) && validYmd(fin.value) ? Math.max(0, diffDays(fin.value, deb.value)) : 0;
+    deb.value = d; fin.value = d ? addDays(d, len) : ""; return;
+  }
+  const pfBtn = ev.target.closest("[data-pf]");
+  if (pfBtn && S.edit) {
+    const deb = $("#e-deb"), fin = $("#e-fin"); const v = pfBtn.dataset.pf;
+    const start = validYmd(deb.value) ? deb.value : today(); if (!validYmd(deb.value)) deb.value = start;
+    const base = validYmd(fin.value) ? fin.value : start;
+    let d = v === "fri" ? addDays(mondayOf(start), 4) : addDays(base, Number(v));
+    if (d < start) d = start; fin.value = d; return;
   }
   const dateBtn = ev.target.closest("[data-date]");
   if (dateBtn && S.edit) {
@@ -1056,6 +1430,7 @@ document.addEventListener("click", async ev => {
   if (edBtn && S.edit && S.canWrite !== false) {
     readEditorInputs();
     const f = edBtn.dataset.ed; let v = edBtn.dataset.v;
+    if (f === "jour") { const n = Number(v), j = S.edit.jours || []; S.edit.jours = j.includes(n) ? j.filter(x => x !== n) : [...j, n]; renderEditor(); return; }
     if (f === "urgent" || f === "important") v = v === "true";
     S.edit[f] = (S.edit[f] === v && (f === "priorite" || f === "urgent" || f === "important")) ? (f === "priorite" ? "" : null) : v;
     if (f === "statut" && v === "Terminé" && !validYmd(S.edit.cloture)) S.edit.cloture = today();
@@ -1068,6 +1443,7 @@ document.addEventListener("click", async ev => {
   if (act === "close-ed") { if (ev.target === a || a.tagName === "BUTTON") closeEditor(); return; }
   if (act === "edit" && id) { if (dragMoved) return; openEditor(id); return; }
   if (act === "new") { openEditor(null, {projet: a.dataset.proj}); return; }
+  if (act.startsWith("plan-") || act === "goweek") { planAction(act, a, id); return; }
   if (act === "done" && id) { toggleDone(id); return; }
   if (act === "setq" && id) { setQuad(id, a.dataset.q); return; }
   if (act === "save") { saveEditor(); return; }
@@ -1090,7 +1466,7 @@ document.addEventListener("click", async ev => {
     render(true); return;
   }
 });
-$("#fab").addEventListener("click", () => openEditor(null, {projet: S.view === "jour" ? S.jourProjet : S.view === "matrice" ? S.matProjet : (S.f.projets.length === 1 ? S.f.projets[0] : "")}));
+$("#fab").addEventListener("click", () => openEditor(null, {projet: S.view === "jour" ? S.jourProjet : S.view === "matrice" ? S.matProjet : S.view === "planning" ? S.plan.proj : (S.f.projets.length === 1 ? S.f.projets[0] : "")}));
 document.addEventListener("keydown", ev => {
   if (ev.key === "Escape" && S.edit) closeEditor();
   if (S.edit && ev.key === "Enter" && (ev.metaKey || ev.ctrlKey)) saveEditor();
@@ -1106,6 +1482,7 @@ document.addEventListener("change", ev => {
   if (t.id === "t-sort") { S.f.sort = t.value; saveUi(); updateTaches(); }
   if (t.id === "t-hide") { S.f.hideDone = t.checked; saveUi(); updateTaches(); }
   if (t.id === "t-arch") { S.f.showArch = t.checked; saveUi(); updateTaches(); }
+  if (t.id === "p-we") { S.plan.weekend = t.checked; saveUi(); render(true); }
   if (t.id === "imp-file" && t.files && t.files[0]) { importFile(t.files[0]); t.value = ""; }
   if (t.id === "e-ech" && S.edit) S.edit.echeance = t.value;
 });
