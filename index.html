@@ -1,0 +1,1167 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>TO DO BIM</title>
+<meta name="description" content="TO DO BIM : tâches, Ma journée, matrice d'Eisenhower. Compte personnel synchronisé.">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="TO DO BIM">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#151D2E" media="(prefers-color-scheme: dark)">
+<meta name="format-detection" content="telephone=no">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="apple-touch-icon" href="./apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png">
+<style>
+/* Layout : app à onglets. En-tête « cartouche » (comme un cartouche de plan), vues Ma journée / Tâches / Matrice / Bord / Réglages ; barre d'onglets en bas sur téléphone. */
+:root{
+  --bg:#F2F4F8; --surface:#FFFFFF; --surface-2:#E9EDF4; --ink:#15213B; --muted:#5A6680; --line:#D4DBE6;
+  --accent:#2346B8; --accent-ink:#FFFFFF; --accent-soft:#E2E8FA;
+  --late:#C42B2B; --late-soft:#FCE7E7; --today:#C9580C; --today-soft:#FCEADB; --week:#946B00; --week-soft:#FFF2CC;
+  --done:#2C7A4B; --done-soft:#E0F2E7;
+  --q1:#C42B2B; --q2:#2346B8; --q3:#C2620F; --q4:#687187;
+  --s-afaire:#946B00; --s-encours:#2346B8; --s-attente:#C2620F; --s-recurrent:#7A3FB0; --s-termine:#2C7A4B;
+  --p0:#2346B8; --p1:#B23A7A; --p2:#2C7A4B; --p3:#C2620F; --p4:#6A44B8; --p5:#0E7C86; --p6:#8A5A12; --p7:#C42B2B;
+  --shadow:0 1px 2px rgba(21,33,59,.06),0 6px 20px rgba(21,33,59,.08);
+  --f-display:-apple-system,"SF Pro Display","Helvetica Neue",Arial,sans-serif;
+  --f-body:-apple-system,"SF Pro Text","Segoe UI",Arial,sans-serif;
+  --f-mono:ui-monospace,"SF Mono",Menlo,monospace;
+  --r:10px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0D1320; --surface:#151D2E; --surface-2:#1C263B; --ink:#E5EAF4; --muted:#93A0B9; --line:#29344C;
+  --accent:#7C9BFF; --accent-ink:#0D1320; --accent-soft:#1E2A50;
+  --late:#FF7B7B; --late-soft:#3A1B22; --today:#FFA066; --today-soft:#3A2516; --week:#E8C35C; --week-soft:#352C12;
+  --done:#6DD49C; --done-soft:#163325;
+  --q1:#FF7B7B; --q2:#7C9BFF; --q3:#FFA066; --q4:#9AA5BC;
+  --s-afaire:#E8C35C; --s-encours:#7C9BFF; --s-attente:#FFA066; --s-recurrent:#C29BFF; --s-termine:#6DD49C;
+  --p0:#7C9BFF; --p1:#F08CC0; --p2:#6DD49C; --p3:#FFA066; --p4:#B79BFF; --p5:#5FD0D8; --p6:#E0B467; --p7:#FF7B7B;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0D1320; --surface:#151D2E; --surface-2:#1C263B; --ink:#E5EAF4; --muted:#93A0B9; --line:#29344C;
+  --accent:#7C9BFF; --accent-ink:#0D1320; --accent-soft:#1E2A50;
+  --late:#FF7B7B; --late-soft:#3A1B22; --today:#FFA066; --today-soft:#3A2516; --week:#E8C35C; --week-soft:#352C12;
+  --done:#6DD49C; --done-soft:#163325;
+  --q1:#FF7B7B; --q2:#7C9BFF; --q3:#FFA066; --q4:#9AA5BC;
+  --s-afaire:#E8C35C; --s-encours:#7C9BFF; --s-attente:#FFA066; --s-recurrent:#C29BFF; --s-termine:#6DD49C;
+  --p0:#7C9BFF; --p1:#F08CC0; --p2:#6DD49C; --p3:#FFA066; --p4:#B79BFF; --p5:#5FD0D8; --p6:#E0B467; --p7:#FF7B7B;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35); color-scheme:dark}
+
+*{box-sizing:border-box}
+html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);-webkit-text-size-adjust:100%}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+html,body{overscroll-behavior-y:none}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.45;-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* En-tête */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--surface);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:16px;padding-block:10px}
+.brand{font-family:var(--f-display);font-weight:800;font-size:22px;letter-spacing:.01em;white-space:nowrap}
+.brand b{color:var(--accent)}
+.cartouche{display:flex;border:1.5px solid var(--ink);font-family:var(--f-mono);font-size:11px;line-height:1.15;flex-shrink:0}
+.cartouche div{padding:3px 8px;border-left:1px solid var(--ink);display:flex;flex-direction:column}
+.cartouche div:first-child{border-left:0}
+.cartouche small{font-family:var(--f-body);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+nav.tabs{display:flex;gap:4px;margin-left:auto}
+nav.tabs a{display:flex;align-items:center;gap:6px;padding:8px 12px;border-radius:8px;text-decoration:none;color:var(--muted);font-weight:500;white-space:nowrap}
+nav.tabs a:hover{background:var(--surface-2);color:var(--ink)}
+nav.tabs a[aria-current="page"]{background:var(--ink);color:var(--surface)}
+nav.tabs svg{width:18px;height:18px;flex-shrink:0}
+nav.tabs .badge{font-family:var(--f-mono);font-size:11px;background:var(--late);color:#fff;border-radius:9px;padding:0 6px;line-height:17px}
+
+main{padding-block:20px 120px}
+.view-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:16px}
+h1{font-family:var(--f-display);font-weight:800;font-size:clamp(26px,4vw,34px);line-height:1.05;margin:0;text-wrap:balance}
+h2{font-family:var(--f-display);font-weight:700;font-size:18px;margin:0}
+.sub{color:var(--muted);font-size:13px;margin-top:4px}
+.eyebrow{font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+
+/* KPI */
+.kpis{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-bottom:18px}
+.kpi{background:var(--surface);padding:10px 12px;min-width:0}
+.kpi .n{font-family:var(--f-display);font-weight:800;font-size:30px;line-height:1;font-variant-numeric:tabular-nums}
+.kpi .l{font-size:12px;color:var(--muted);margin-top:4px}
+.kpi.late .n{color:var(--late)} .kpi.today .n{color:var(--today)} .kpi.week .n{color:var(--week)}
+.kpi.enc .n{color:var(--s-encours)} .kpi.q1 .n{color:var(--q1)} .kpi.done .n{color:var(--done)}
+
+/* Segments (filtres à boutons) */
+.seg-block{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.seg-label{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);min-width:68px}
+.seg{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:5px 11px;font-size:13px;font-weight:500;display:inline-flex;align-items:center;gap:6px;color:var(--ink)}
+.seg .c{font-family:var(--f-mono);font-size:11px;color:var(--muted)}
+.seg:hover{border-color:var(--muted)}
+.seg[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--surface)}
+.seg[aria-pressed="true"] .c{color:inherit;opacity:.75}
+.seg.clear{border-style:dashed;color:var(--muted)}
+.filters{display:grid;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px;margin-bottom:14px}
+
+/* Barre d'outils tâches */
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.search{flex:1 1 260px;display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:0 12px;min-width:0}
+.search input{border:0;background:transparent;outline:none;padding:10px 0;width:100%;min-width:0}
+.search svg{width:18px;height:18px;color:var(--muted);flex-shrink:0}
+.search:focus-within{border-color:var(--accent)}
+select.ctl,.btn{border:1px solid var(--line);background:var(--surface);border-radius:var(--r);padding:9px 12px;font-weight:500}
+.btn{display:inline-flex;align-items:center;gap:6px;justify-content:center}
+.btn:hover{border-color:var(--muted)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.danger{color:var(--late);border-color:var(--late)}
+.btn.danger.armed{background:var(--late);color:#fff}
+.btn.ghost{background:transparent;border-color:transparent;color:var(--muted)}
+.btn svg{width:16px;height:16px}
+.toggle{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);padding:0 4px;cursor:pointer}
+.toggle input{accent-color:var(--accent);width:16px;height:16px}
+
+.quick{display:flex;gap:8px;background:var(--surface);border:1.5px dashed var(--line);border-radius:var(--r);padding:6px;margin-bottom:14px;flex-wrap:wrap}
+.quick input{flex:1 1 220px;border:0;background:transparent;outline:none;padding:8px;min-width:0}
+.quick select{border:0;background:var(--surface-2);border-radius:8px;padding:6px 8px;font-weight:500}
+.quick:focus-within{border-color:var(--accent);border-style:solid}
+
+/* Liste */
+.group{margin-bottom:18px}
+.group-h{display:flex;align-items:center;gap:10px;padding:6px 2px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 58px);background:var(--bg);z-index:5}
+.group-h h2{display:flex;align-items:center;gap:8px}
+.group-h .count{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.group-h .add{margin-left:auto}
+.list{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.task{display:flex;gap:10px;align-items:flex-start;background:var(--surface);padding:10px 12px;min-width:0}
+.task:hover{background:color-mix(in srgb,var(--surface-2) 55%,var(--surface))}
+.task.is-done .t-title{text-decoration:line-through;color:var(--muted)}
+.task.hit{box-shadow:inset 3px 0 0 var(--week)}
+.check{width:22px;height:22px;flex-shrink:0;margin-top:1px;border-radius:6px;border:1.5px solid var(--muted);background:transparent;display:grid;place-items:center;padding:0;color:transparent}
+.check:hover{border-color:var(--done);color:var(--done)}
+.check svg{width:14px;height:14px}
+.is-done .check{background:var(--done);border-color:var(--done);color:#fff}
+.t-main{flex:1;min-width:0;cursor:pointer;text-align:left;background:none;border:0;padding:0}
+.t-title{font-weight:500;overflow-wrap:anywhere}
+.t-meta{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px;align-items:center}
+.t-note{font-size:12.5px;color:var(--muted);margin-top:4px;overflow-wrap:anywhere}
+.pill{font-size:11.5px;font-weight:600;border-radius:5px;padding:1px 7px;line-height:18px;white-space:nowrap;background:var(--surface-2);color:var(--muted)}
+.pill.proj{color:var(--pc);background:color-mix(in srgb,var(--pc) 13%,transparent)}
+.pill.st{background:transparent;color:var(--sc);padding-left:0}
+.pill.st::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--sc);margin-right:5px;vertical-align:1px}
+.pill.due{font-family:var(--f-mono);font-weight:500}
+.pill.late{background:var(--late);color:#fff} .pill.today{background:var(--today);color:#fff} .pill.week{background:var(--week-soft);color:var(--week)}
+.pill.q{background:color-mix(in srgb,var(--qc) 14%,transparent);color:var(--qc)}
+.pill.hp{color:var(--late);background:var(--late-soft)}
+.pill.theme{background:transparent;padding-left:0;font-weight:500}
+.reason{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;width:92px;flex-shrink:0;padding-top:3px}
+.reason.late{color:var(--late)} .reason.today{color:var(--today)} .reason.week{color:var(--week)} .reason.q1{color:var(--q1)} .reason.enc{color:var(--s-encours)}
+
+.empty{background:var(--surface);border:1px dashed var(--line);border-radius:var(--r);padding:28px 20px;text-align:center;color:var(--muted)}
+.empty h2{color:var(--ink);margin-bottom:6px}
+.empty .actions{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+.notice{background:var(--week-soft);color:var(--ink);border-radius:var(--r);padding:10px 14px;font-size:13.5px;margin-bottom:14px}
+
+/* Matrice */
+.matrix{display:grid;grid-template-columns:28px 1fr 1fr;grid-template-rows:auto 1fr 1fr;gap:10px}
+.axis{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;justify-content:center}
+.axis.v{writing-mode:vertical-rl;transform:rotate(180deg)}
+.quad{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--qc);border-radius:var(--r);padding:10px;min-height:180px;min-width:0;display:flex;flex-direction:column;gap:6px;transition:background .15s}
+.quad.over{background:color-mix(in srgb,var(--qc) 10%,var(--surface))}
+.quad-h{display:flex;align-items:baseline;gap:8px;margin-bottom:2px}
+.quad-h h2{color:var(--qc)}
+.quad-h span{font-size:12px;color:var(--muted)}
+.quad-h .count{margin-left:auto;font-family:var(--f-mono);font-size:13px;color:var(--qc)}
+.card{display:flex;gap:8px;align-items:flex-start;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:7px 9px;cursor:grab;min-width:0}
+.card:active{cursor:grabbing}
+.card.dragging{opacity:.4}
+.card .t-title{font-size:13.5px}
+.tray{margin-top:14px}
+.tray .quad{min-height:0;border-top-color:var(--line)}
+.tray .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:6px}
+.qpick{display:flex;gap:4px;flex-wrap:wrap;margin-top:6px}
+.qpick button{font-size:11px;font-weight:600;border:1px solid var(--qc);color:var(--qc);background:transparent;border-radius:5px;padding:2px 7px}
+
+/* Tableau de bord */
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0}
+.grid2{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:14px}
+.tbl-wrap{overflow-x:auto}
+table.tbl{width:100%;border-collapse:collapse;font-size:13.5px;font-variant-numeric:tabular-nums}
+.tbl th{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:right;padding:6px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+.tbl th:first-child,.tbl td:first-child{text-align:left}
+.tbl td{padding:8px;border-bottom:1px solid var(--line);text-align:right;font-family:var(--f-mono);font-size:13px}
+.tbl td:first-child{font-family:var(--f-body);font-weight:600}
+.tbl tr:last-child td{border-bottom:0}
+.tbl td.z{color:var(--line)}
+.tbl td.warn{color:var(--late);font-weight:600}
+.prog{display:flex;align-items:center;gap:8px;justify-content:flex-end}
+.prog i{display:block;width:70px;height:6px;border-radius:3px;background:var(--surface-2);overflow:hidden}
+.prog i b{display:block;height:100%;background:var(--done)}
+.stack{display:flex;height:12px;border-radius:3px;overflow:hidden;background:var(--surface-2);min-width:120px}
+.stack span{display:block;height:100%}
+.legend{display:flex;flex-wrap:wrap;gap:10px;font-size:12px;color:var(--muted);margin-top:10px}
+.legend i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px;vertical-align:0}
+.qbars{display:grid;gap:10px;margin-top:8px}
+.qbar{display:grid;grid-template-columns:86px 1fr 30px;gap:8px;align-items:center;font-size:13px}
+.qbar i{display:block;height:10px;border-radius:3px;background:var(--surface-2);overflow:hidden}
+.qbar i b{display:block;height:100%;background:var(--qc)}
+.qbar span:last-child{font-family:var(--f-mono);text-align:right}
+
+/* Réglages */
+.settings{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.chip-x{display:inline-flex;align-items:center;gap:4px;background:var(--surface-2);border-radius:999px;padding:3px 4px 3px 11px;font-size:13px;font-weight:500}
+.chip-x button{border:0;background:transparent;width:22px;height:22px;border-radius:50%;color:var(--muted);display:grid;place-items:center;padding:0}
+.chip-x button:hover{background:var(--line);color:var(--late)}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.row input[type=text]{flex:1 1 140px;min-width:0;border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:8px 10px}
+.panel p{margin:6px 0;color:var(--muted);font-size:13.5px}
+.steps{margin:8px 0 0;padding-left:20px;font-size:13.5px}
+.progress-line{font-family:var(--f-mono);font-size:12px;color:var(--muted);margin-top:8px;min-height:1em}
+
+/* Éditeur */
+.overlay{position:fixed;inset:0;background:rgba(10,16,30,.45);z-index:50;display:flex;align-items:center;justify-content:center;padding:16px}
+.sheet{background:var(--surface);border-radius:14px;box-shadow:var(--shadow);width:min(640px,100%);max-height:calc(100% - 20px);display:flex;flex-direction:column;overflow:hidden}
+.sheet-h{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--line)}
+.sheet-h h2{flex:1}
+.sheet-b{padding:14px 16px;overflow-y:auto;display:grid;gap:14px}
+.sheet-f{display:flex;gap:8px;padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);flex-wrap:wrap}
+.sheet-f .spacer{flex:1}
+.field{display:grid;gap:6px;min-width:0;align-content:start}
+.field>label,.field>.lbl{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.field input[type=text],.field input[type=date],.field textarea,.field select{border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:9px 10px;width:100%;min-width:0}
+.field textarea{resize:vertical;min-height:44px}
+.field textarea#e-tache{font-size:16px;font-weight:500}
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.segc{display:flex;flex-wrap:wrap;gap:4px;align-items:flex-start}
+.segc button{border:1px solid var(--line);background:var(--bg);border-radius:7px;padding:6px 10px;font-size:13px;font-weight:500}
+.segc button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--surface)}
+.segc.status button[aria-pressed="true"]{background:var(--sc);border-color:var(--sc);color:var(--surface)}
+.dates{display:flex;gap:4px;flex-wrap:wrap;margin-top:2px}
+.dates button{border:0;background:var(--surface-2);border-radius:6px;padding:3px 8px;font-size:12px}
+.qprev{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.qprev .yn{display:flex;gap:4px}
+.qbadge{font-size:12.5px;padding:6px 10px;border-radius:7px;background:color-mix(in srgb,var(--qc) 13%,transparent);color:var(--qc);font-weight:600}
+
+/* Toast + FAB + barre d'onglets mobile */
+.fab{position:fixed;right:max(18px,calc(env(safe-area-inset-right,0px) + 18px));bottom:calc(env(safe-area-inset-bottom,0px) + 24px);z-index:30;width:56px;height:56px;border-radius:16px;border:0;background:var(--accent);color:var(--accent-ink);box-shadow:var(--shadow);display:grid;place-items:center}
+.fab svg{width:26px;height:26px}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(env(safe-area-inset-bottom,0px) + 96px);background:var(--ink);color:var(--surface);padding:9px 16px;border-radius:9px;font-size:14px;z-index:60;box-shadow:var(--shadow);max-width:calc(100% - 32px)}
+.mobile-tabs{display:none}
+.auth{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:24px max(16px,env(safe-area-inset-right,0px)) 24px max(16px,env(safe-area-inset-left,0px));overflow-y:auto}
+.auth-card{width:min(400px,100%);display:grid;gap:12px}
+.auth-card h1{margin-top:18px}
+.auth-card form{display:grid;gap:12px;margin-top:6px}
+.auth-card input{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:12px;font-size:16px;width:100%}
+.auth-card input:focus{border-color:var(--accent);outline:none}
+.auth-card .btn.primary{padding:12px;font-size:16px}
+.auth-err{min-height:1.2em;margin:0;color:var(--late);font-size:14px}
+.auth-links{display:flex;flex-wrap:wrap;gap:4px;justify-content:space-between}
+.auth-card code{font-family:var(--f-mono);font-size:13px;background:var(--surface-2);padding:1px 5px;border-radius:4px}
+
+@media (max-width:820px){
+  nav.tabs{display:none}
+  .cartouche{margin-left:auto}
+  .mobile-tabs{display:grid;grid-template-columns:repeat(5,1fr);position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--surface);border-top:1px solid var(--line);padding:6px max(8px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px))}
+  .mobile-tabs a{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:10.5px;font-weight:500;color:var(--muted);text-decoration:none;padding:4px 0;position:relative}
+  .mobile-tabs a[aria-current="page"]{color:var(--accent)}
+  .mobile-tabs svg{width:22px;height:22px}
+  .mobile-tabs .badge{position:absolute;top:0;left:calc(50% + 6px);font-family:var(--f-mono);font-size:10px;background:var(--late);color:#fff;border-radius:8px;padding:0 5px;line-height:15px}
+  .fab{bottom:calc(env(safe-area-inset-bottom,0px) + 76px)}
+  .toast{bottom:calc(env(safe-area-inset-bottom,0px) + 140px)}
+  .kpis{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .grid2{grid-template-columns:1fr}
+  .matrix{grid-template-columns:1fr;grid-template-rows:none}
+  .matrix .axis{display:none}
+  .overlay{align-items:flex-end;padding:0}
+  .sheet{border-radius:16px 16px 0 0;width:100%;max-height:92%}
+  .reason{width:auto;padding-top:0}
+  .jour .task{flex-wrap:wrap}
+  .jour .task .reason{order:-1;width:100%;margin-left:32px}
+  .group-h{top:calc(env(safe-area-inset-top,0px) + 52px)}
+}
+@media (max-width:460px){
+  .brand{font-size:19px}
+  .cartouche div:nth-child(3){display:none}
+  .cols2,.qprev{grid-template-columns:1fr}
+  .seg-label{width:100%}
+}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+</style>
+<script src="./config.js"></script>
+<script src="./firebase-bundle.js"></script>
+<script>
+/* Comptes + synchronisation (Firebase). Chaque utilisateur ne lit et n'écrit que users/<son uid>/... */
+(function(){
+  "use strict";
+  var cfg = window.FIREBASE_CONFIG || (typeof firebaseConfig !== "undefined" ? firebaseConfig : null);
+  var configured = !!(cfg && cfg.apiKey && !/REMPLACER/.test(cfg.apiKey) && cfg.projectId && !/REMPLACER/.test(cfg.projectId));
+  var F = window.FB;
+  var app = null, auth = null, fs = null;
+  if (configured && F) {
+    try {
+      app = F.initializeApp(cfg);
+      auth = F.initializeAuth(app, {persistence:[F.indexedDBLocalPersistence, F.browserLocalPersistence]});
+      try { fs = F.initializeFirestore(app, {localCache: F.persistentLocalCache({tabManager: F.persistentMultipleTabManager()})}); }
+      catch (e) { fs = F.initializeFirestore(app, {}); }
+    } catch (e) { console.error(e); configured = false; }
+  }
+
+  /* ---- Adaptateur : même interface que le stockage de l'app ---- */
+  function wrapDoc(s){ return {id:s.id, exists:s.exists(), data:function(){ return s.data(); }, metadata:{fromCache:s.metadata.fromCache, hasPendingWrites:s.metadata.hasPendingWrites}}; }
+  function soft(p){ p.catch(function(e){ console.warn("Écriture refusée", e); }); return Promise.race([p, new Promise(function(r){ setTimeout(r, 1200); })]); }
+  function mapErr(e){ var err = new Error(e && e.message || "erreur"); err.code = e && e.code === "permission-denied" ? "invalid_argument" : e && e.code === "resource-exhausted" ? "quota_exceeded" : "unavailable"; return err; }
+  function makeDb(uid){
+    function ref(path){ var p = path.split("/"); return F.doc(fs, "users", uid, p[0], p[1]); }
+    function wrapRef(r){
+      return {
+        id:r.id, path:r.path,
+        set:function(d){ return soft(F.setDoc(r, d)).catch(function(e){ throw mapErr(e); }); },
+        update:function(d){ return soft(F.updateDoc(r, d)).catch(function(e){ throw mapErr(e); }); },
+        delete:function(){ return soft(F.deleteDoc(r)).catch(function(e){ throw mapErr(e); }); },
+        onSnapshot:function(next, error){ return F.onSnapshot(r, {includeMetadataChanges:true}, function(s){ next(wrapDoc(s)); }, function(e){ error && error({code:"revoked", message:String(e && e.message)}); }); }
+      };
+    }
+    return {
+      doc:function(path){ return wrapRef(ref(path)); },
+      collection:function(name){
+        var c = F.collection(fs, "users", uid, name);
+        return {
+          path:name,
+          doc:function(id){ return wrapRef(id ? F.doc(c, id) : F.doc(c)); },
+          onSnapshot:function(next, error){
+            return F.onSnapshot(c, {includeMetadataChanges:true}, function(qs){
+              var docs = qs.docs.map(wrapDoc);
+              next({docs:docs, size:docs.length, empty:!docs.length, metadata:{fromCache:qs.metadata.fromCache, hasPendingWrites:qs.metadata.hasPendingWrites}, docChanges:function(){ return []; }});
+            }, function(e){ error && error({code:"revoked", message:String(e && e.message)}); });
+          }
+        };
+      }
+    };
+  }
+
+  /* ---- Export de fichiers (feuille de partage iOS / téléchargement Mac) ---- */
+  var MIME = {json:"application/json", csv:"text/csv", xlsx:"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"};
+  var downloads = {
+    save:function(req){
+      var ext = (req.filename.split(".").pop() || "").toLowerCase();
+      var blob = new Blob([req.data], {type:MIME[ext] || "application/octet-stream"});
+      try {
+        var file = new File([blob], req.filename, {type:blob.type});
+        var mobile = /iPhone|iPad|Android/i.test(navigator.userAgent) || (navigator.maxTouchPoints > 1 && /Mac/.test(navigator.userAgent));
+        if (mobile && navigator.canShare && navigator.canShare({files:[file]})) {
+          return navigator.share({files:[file], title:req.filename}).then(function(){ return {status:"saved"}; }, function(e){ var err = new Error("declined"); err.code = (e && e.name === "AbortError") ? "declined" : "unavailable"; throw err; });
+        }
+      } catch (e) {}
+      var url = URL.createObjectURL(blob), a = document.createElement("a");
+      a.href = url; a.download = req.filename; document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function(){ URL.revokeObjectURL(url); }, 4000);
+      return Promise.resolve({status:"saved"});
+    }
+  };
+
+  /* ---- Écran de connexion ---- */
+  var resolveDb, dbPromise = new Promise(function(r){ resolveDb = r; });
+  var ERR = {
+    "auth/invalid-credential":"E-mail ou mot de passe incorrect.", "auth/wrong-password":"E-mail ou mot de passe incorrect.", "auth/user-not-found":"Aucun compte avec cet e-mail. Crée-le avec « Créer un compte ».",
+    "auth/invalid-email":"Adresse e-mail invalide.", "auth/email-already-in-use":"Un compte existe déjà avec cet e-mail : connecte-toi.", "auth/weak-password":"Mot de passe trop court : 6 caractères minimum.",
+    "auth/network-request-failed":"Pas de connexion internet. La première connexion doit se faire en ligne.", "auth/too-many-requests":"Trop d'essais. Réessaie dans quelques minutes.",
+    "auth/operation-not-allowed":"La connexion par e-mail n'est pas activée dans Firebase (étape 2 du guide).", "auth/missing-password":"Saisis ton mot de passe."
+  };
+  function el(html){ var d = document.createElement("div"); d.innerHTML = html.trim(); return d.firstChild; }
+  function gate(){
+    var g = document.getElementById("auth-gate"); if (g) return g;
+    g = el('<div id="auth-gate" class="auth"><div class="auth-card"></div></div>'); document.body.appendChild(g); return g;
+  }
+  function showConfigMissing(){
+    gate().firstChild.innerHTML = '<div class="brand">TO DO <b>BIM</b></div><h1>Configuration à terminer</h1><p class="sub">Le fichier <b>config.js</b> ne contient pas encore la configuration Firebase. Ouvre-le sur GitHub, colle le bloc <code>const firebaseConfig = {…};</code> copié depuis Firebase, puis enregistre (étape 8 du guide).</p>';
+  }
+  function showLogin(mode){
+    var create = mode === "create";
+    var c = gate().firstChild;
+    c.innerHTML = '<div class="brand">TO DO <b>BIM</b></div>'
+      + '<h1>' + (create ? "Créer un compte" : "Connexion") + '</h1>'
+      + '<p class="sub">' + (create ? "Tes tâches seront enregistrées dans ce compte et synchronisées sur tous tes appareils." : "Connecte-toi pour retrouver tes tâches sur cet appareil.") + '</p>'
+      + '<form id="auth-form" novalidate>'
+      + '<label class="field"><span class="lbl">E-mail</span><input id="auth-email" type="email" autocomplete="username" inputmode="email" autocapitalize="off" required></label>'
+      + '<label class="field"><span class="lbl">Mot de passe</span><input id="auth-pass" type="password" autocomplete="' + (create ? "new-password" : "current-password") + '" required minlength="6"></label>'
+      + '<p class="auth-err" id="auth-err" role="alert"></p>'
+      + '<button class="btn primary" type="submit" id="auth-go">' + (create ? "Créer mon compte" : "Se connecter") + '</button>'
+      + '</form>'
+      + '<div class="auth-links">' + (create ? '<button class="btn ghost" data-auth="login">J\'ai déjà un compte</button>' : '<button class="btn ghost" data-auth="create">Créer un compte</button><button class="btn ghost" data-auth="reset">Mot de passe oublié ?</button>') + '</div>';
+    var form = c.querySelector("#auth-form"), errEl = c.querySelector("#auth-err");
+    form.addEventListener("submit", function(ev){
+      ev.preventDefault();
+      var email = c.querySelector("#auth-email").value.trim(), pass = c.querySelector("#auth-pass").value;
+      errEl.textContent = ""; var btn = c.querySelector("#auth-go"); btn.disabled = true;
+      (create ? F.createUserWithEmailAndPassword(auth, email, pass) : F.signInWithEmailAndPassword(auth, email, pass))
+        .catch(function(e){ errEl.textContent = ERR[e && e.code] || ("Connexion impossible (" + (e && e.code || "erreur") + ")."); btn.disabled = false; });
+    });
+    c.querySelectorAll("[data-auth]").forEach(function(b){ b.addEventListener("click", function(){
+      var k = b.getAttribute("data-auth");
+      if (k === "reset") {
+        var email = c.querySelector("#auth-email").value.trim();
+        if (!email) { errEl.textContent = "Saisis ton e-mail ci-dessus, puis touche « Mot de passe oublié ? »."; return; }
+        F.sendPasswordResetEmail(auth, email).then(function(){ errEl.textContent = "E-mail de réinitialisation envoyé (vérifie aussi les spams)."; }, function(e){ errEl.textContent = ERR[e && e.code] || "Envoi impossible."; });
+        return;
+      }
+      showLogin(k);
+    }); });
+  }
+  var started = false;
+  function boot(){
+    if (!configured) { showConfigMissing(); return; }
+    F.onAuthStateChanged(auth, function(user){
+      if (user) {
+        var g = document.getElementById("auth-gate"); if (g) g.remove();
+        window.TODO_ACCOUNT = {email:user.email, signOut:function(){ return F.signOut(auth).then(function(){ location.hash = "#jour"; location.reload(); }); }};
+        if (!started) { started = true; resolveDb(makeDb(user.uid)); }
+      } else {
+        if (started) { location.reload(); return; }
+        showLogin("login");
+      }
+    });
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot); else boot();
+
+  window.claude = {use:function(name){ return name === "db" ? dbPromise : Promise.resolve(name === "downloads" ? downloads : null); }};
+})();
+
+</script>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">TO DO <b>BIM</b></div>
+    <div class="cartouche" aria-label="Date du jour">
+      <div><small>Date</small><span id="c-date">—</span></div>
+      <div><small>Sem.</small><span id="c-week">—</span></div>
+      <div><small>Ouvertes</small><span id="c-open">—</span></div>
+    </div>
+    <nav class="tabs" id="tabs" aria-label="Vues"></nav>
+  </div>
+</header>
+
+<main class="wrap" id="view" aria-live="polite"></main>
+<nav class="mobile-tabs" id="mtabs" aria-label="Vues"></nav>
+<button class="fab" id="fab" aria-label="Nouvelle tâche" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+<div id="editor"></div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+(() => {
+"use strict";
+/* ---------- Constantes ---------- */
+const STATUTS = ["À faire", "En cours", "En attente", "Récurrent", "Terminé"];
+const ST_VAR = {"À faire":"--s-afaire","En cours":"--s-encours","En attente":"--s-attente","Récurrent":"--s-recurrent","Terminé":"--s-termine"};
+const PRIOS = ["Haute", "Moyenne", "Basse"];
+const QUADS = [
+  {k:"Faire", label:"Faire", hint:"Urgent et important", v:"--q1", u:true, i:true},
+  {k:"Planifier", label:"Planifier", hint:"Important, pas urgent", v:"--q2", u:false, i:true},
+  {k:"Déléguer", label:"Déléguer", hint:"Urgent, pas important", v:"--q3", u:true, i:false},
+  {k:"Éliminer", label:"Plus tard", hint:"Ni urgent ni important", v:"--q4", u:false, i:false},
+];
+const QMAP = Object.fromEntries(QUADS.map(q => [q.k, q]));
+const VIEWS = [
+  {k:"jour", label:"Ma journée", icon:'<path d="M12 3v2M12 19v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M3 12h2M19 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/><circle cx="12" cy="12" r="4"/>'},
+  {k:"taches", label:"Tâches", icon:'<path d="M9 6h11M9 12h11M9 18h11"/><path d="M4 6l1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"/>'},
+  {k:"matrice", label:"Matrice", icon:'<rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/>'},
+  {k:"bord", label:"Bord", icon:'<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>'},
+  {k:"reglages", label:"Réglages", icon:'<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>'},
+];
+const I = {
+  check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg>',
+  search:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>',
+  plus:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>',
+  close:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>',
+};
+
+/* ---------- État ---------- */
+const S = {
+  db:null, user:null, canWrite:true, status:"loading", slow:false, confirmed:false,
+  tasks:new Map(), lists:{projets:[], responsables:[], types:[]}, listsLoaded:false,
+  view:"jour", built:null, pendingRender:false, edit:null, delArmed:false,
+  f:{q:"", projets:[], statuts:[], quads:[], hideDone:true, showArch:false, sort:"projet"},
+  jourProjet:"", matProjet:"", lastProjet:"", backupAt:"",
+};
+try { S.backupAt = localStorage.getItem("todobim.backupAt") || ""; } catch (e) {}
+try { const saved = JSON.parse(localStorage.getItem("todobim.ui") || "null");
+  if (saved) { Object.assign(S.f, saved.f || {}); S.f.q = ""; S.jourProjet = saved.jourProjet || ""; S.matProjet = saved.matProjet || ""; S.lastProjet = saved.lastProjet || ""; } } catch (e) {}
+function saveUi(){ try { localStorage.setItem("todobim.ui", JSON.stringify({f:{...S.f, q:""}, jourProjet:S.jourProjet, matProjet:S.matProjet, lastProjet:S.lastProjet})); } catch (e) {} }
+
+/* ---------- Outils ---------- */
+const $ = (s, r = document) => r.querySelector(s);
+const esc = v => String(v ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const norm = v => String(v ?? "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().trim();
+const z2 = n => String(n).padStart(2, "0");
+const ymd = d => d.getFullYear() + "-" + z2(d.getMonth() + 1) + "-" + z2(d.getDate());
+const today = () => ymd(new Date());
+const parseYmd = s => { const [y, m, d] = s.split("-").map(Number); return new Date(y, m - 1, d); };
+const addDays = (s, n) => { const d = parseYmd(s); d.setDate(d.getDate() + n); return ymd(d); };
+const diffDays = (a, b) => Math.round((parseYmd(a) - parseYmd(b)) / 86400000);
+const fmt = (s, long) => { if (!s) return ""; const [y, m, d] = s.split("-"); return long ? `${d}/${m}/${y}` : `${d}/${m}`; };
+const validYmd = s => typeof s === "string" && /^\d{4}-\d{2}-\d{2}$/.test(s);
+function isoWeek(d){ const t = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate())); const day = t.getUTCDay() || 7; t.setUTCDate(t.getUTCDate() + 4 - day); const y0 = new Date(Date.UTC(t.getUTCFullYear(), 0, 1)); return Math.ceil(((t - y0) / 86400000 + 1) / 7); }
+const JOURS = ["dimanche","lundi","mardi","mercredi","jeudi","vendredi","samedi"];
+const MOIS = ["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"];
+
+const isDone = t => t.statut === "Terminé";
+function alerte(t){
+  if (!validYmd(t.echeance) || isDone(t) || t.statut === "Récurrent") return "";
+  const d = diffDays(t.echeance, today());
+  return d < 0 ? "late" : d === 0 ? "today" : d <= 7 ? "week" : "";
+}
+function quadrant(t){
+  if (isDone(t) || t.statut === "Récurrent" || typeof t.urgent !== "boolean" || typeof t.important !== "boolean") return "";
+  return t.urgent ? (t.important ? "Faire" : "Déléguer") : (t.important ? "Planifier" : "Éliminer");
+}
+function score(t){
+  if (isDone(t) || t.archived) return 0;
+  const a = alerte(t), q = quadrant(t);
+  const base = (a === "late" ? 4000 : a === "today" ? 3000 : a === "week" ? 2000 : 0) + (q === "Faire" ? 1000 : 0) + (t.statut === "En cours" ? 500 : 0);
+  return base ? base + ({Haute:300, Moyenne:200, Basse:100}[t.priorite] || 0) : 0;
+}
+const byDue = (a, b) => (a.echeance || "9999") < (b.echeance || "9999") ? -1 : (a.echeance || "9999") > (b.echeance || "9999") ? 1 : (a.created || "") < (b.created || "") ? -1 : 1;
+function allProjets(){
+  const set = [...S.lists.projets];
+  for (const t of S.tasks.values()) if (t.projet && !set.includes(t.projet)) set.push(t.projet);
+  return set;
+}
+function projColor(p){ const i = Math.max(0, allProjets().indexOf(p)); return `var(--p${i % 8})`; }
+const live = () => [...S.tasks.values()].filter(t => !t.archived);
+
+/* ---------- Rendu de morceaux ---------- */
+function pills(t, opts = {}){
+  const out = [];
+  if (t.projet && !opts.noProj) out.push(`<span class="pill proj" style="--pc:${projColor(t.projet)}">${esc(t.projet)}</span>`);
+  out.push(`<span class="pill st" style="--sc:var(${ST_VAR[t.statut] || "--muted"})">${esc(t.statut || "À faire")}</span>`);
+  const a = alerte(t);
+  if (validYmd(t.echeance)) {
+    const lbl = a === "late" ? `${fmt(t.echeance)} · en retard` : a === "today" ? "aujourd'hui" : fmt(t.echeance);
+    out.push(`<span class="pill due ${a}">${lbl}</span>`);
+  }
+  if (t.priorite === "Haute") out.push(`<span class="pill hp">Haute</span>`);
+  else if (t.priorite) out.push(`<span class="pill">${esc(t.priorite)}</span>`);
+  const q = quadrant(t);
+  if (q && !opts.noQuad) out.push(`<span class="pill q" style="--qc:var(${QMAP[q].v})">${QMAP[q].label}</span>`);
+  if (t.theme && !opts.noTheme) out.push(`<span class="pill theme">${esc(t.theme)}</span>`);
+  if (t.responsable && opts.resp) out.push(`<span class="pill">${esc(t.responsable)}</span>`);
+  if (isDone(t) && validYmd(t.cloture)) out.push(`<span class="pill">clôturée ${fmt(t.cloture)}</span>`);
+  return out.join("");
+}
+function taskRow(t, extra = ""){
+  return `<article class="task${isDone(t) ? " is-done" : ""}" data-id="${esc(t.id)}">
+    ${S.canWrite === false ? "" : `<button class="check" data-act="done" aria-label="${isDone(t) ? "Rouvrir" : "Marquer terminée"}">${I.check}</button>`}
+    ${extra}
+    <button class="t-main" data-act="edit"><div class="t-title">${esc(t.tache)}</div>
+      <div class="t-meta">${pills(t)}</div>
+      ${t.commentaires ? `<div class="t-note">${esc(t.commentaires)}</div>` : ""}</button>
+  </article>`;
+}
+function segBtn(attr, val, label, pressed, count){
+  return `<button class="seg" data-seg="${attr}" data-val="${esc(val)}" aria-pressed="${pressed}">${esc(label)}${count != null ? ` <span class="c">${count}</span>` : ""}</button>`;
+}
+
+/* ---------- En-tête / onglets ---------- */
+function renderChrome(){
+  const now = new Date();
+  $("#c-date").textContent = `${z2(now.getDate())}/${z2(now.getMonth() + 1)}/${now.getFullYear()}`;
+  $("#c-week").textContent = "S" + z2(isoWeek(now));
+  const open = live().filter(t => !isDone(t)).length;
+  $("#c-open").textContent = S.status === "ready" ? open : "—";
+  const late = live().filter(t => alerte(t) === "late").length;
+  const link = v => `<a href="#${v.k}" ${S.view === v.k ? 'aria-current="page"' : ""}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${v.icon}</svg><span>${v.label}</span>${v.k === "jour" && late ? `<span class="badge">${late}</span>` : ""}</a>`;
+  $("#tabs").innerHTML = VIEWS.map(link).join("");
+  $("#mtabs").innerHTML = VIEWS.map(link).join("");
+  $("#fab").hidden = !(S.status === "ready" && S.canWrite !== false && S.view !== "reglages");
+}
+
+/* ---------- Vues ---------- */
+function renderStatus(){
+  const v = $("#view");
+  if (S.status === "nodb") {
+    v.innerHTML = `<div class="empty"><h2>Connexion nécessaire</h2><p>Ouvre cette app depuis claude.ai, connecté à ton compte, pour retrouver et enregistrer tes tâches.</p></div>`;
+    return true;
+  }
+  if (S.status === "error") {
+    v.innerHTML = `<div class="empty"><h2>Les tâches ne sont pas accessibles</h2><p>L'accès aux données a été refusé ou coupé (code ${esc(S.error)}). Recharge la page ; si ça continue, vérifie que tu es connecté avec le compte propriétaire.</p></div>`;
+    return true;
+  }
+  if (S.status === "loading") {
+    v.innerHTML = `<div class="empty"><h2>Chargement de tes tâches…</h2><p>${S.slow ? "Les données ne répondent pas encore. Vérifie ta connexion : la page se mettra à jour toute seule." : "Ouverture…"}</p></div>`;
+    return true;
+  }
+  return false;
+}
+function emptyState(){
+  return `<div class="empty"><h2>Aucune tâche pour l'instant</h2>
+    <p>Ajoute ta première tâche, ou importe ton fichier <b>mes_taches.json</b> (ou ton Excel) depuis les Réglages.</p>
+    <div class="actions"><button class="btn primary" data-act="new">${I.plus} Nouvelle tâche</button><a class="btn" href="#reglages">Importer mes tâches</a></div></div>`;
+}
+
+/* Ma journée */
+function viewJour(){
+  const all = live();
+  const pf = S.jourProjet;
+  const scope = pf ? all.filter(t => t.projet === pf) : all;
+  const items = scope.filter(t => score(t) > 0).sort((a, b) => score(b) - score(a) || byDue(a, b));
+  const c = k => scope.filter(t => alerte(t) === k).length;
+  const now = new Date();
+  const doneToday = scope.filter(t => isDone(t) && t.cloture === today()).length;
+  const kpis = [
+    ["late", c("late"), "En retard"], ["today", c("today"), "Aujourd'hui"], ["week", c("week"), "Sous 7 jours"],
+    ["enc", scope.filter(t => t.statut === "En cours").length, "En cours"], ["q1", scope.filter(t => quadrant(t) === "Faire").length, "Quadrant Faire"],
+    ["done", doneToday, "Terminées aujourd'hui"],
+  ];
+  const reasonOf = t => { const a = alerte(t);
+    return a === "late" ? ["late", "En retard"] : a === "today" ? ["today", "Aujourd'hui"] : a === "week" ? ["week", "Sous 7 j"] : quadrant(t) === "Faire" ? ["q1", "Faire"] : ["enc", "En cours"]; };
+  const projBtns = [segBtn("jour", "", "Tous", !pf), ...allProjets().map(p => segBtn("jour", p, p, pf === p, all.filter(t => t.projet === p && score(t) > 0).length))].join("");
+  return `<div class="jour">
+    <div class="view-head"><div><div class="eyebrow">Semaine ${isoWeek(now)}</div><h1>${JOURS[now.getDay()]} ${now.getDate()} ${MOIS[now.getMonth()]}</h1>
+      <div class="sub">En retard, dû bientôt, quadrant « Faire » et en cours. Trié par urgence, priorité puis échéance.</div></div></div>
+    <div class="kpis">${kpis.map(([k, n, l]) => `<div class="kpi ${k}"><div class="n">${n}</div><div class="l">${l}</div></div>`).join("")}</div>
+    <div class="seg-block" style="margin-bottom:14px"><span class="seg-label">Projet</span>${projBtns}</div>
+    ${!all.length ? emptyState() : items.length ? `<div class="list">${items.map(t => { const [k, l] = reasonOf(t); return taskRow(t, `<span class="reason ${k}">${l}</span>`); }).join("")}</div>`
+      : `<div class="empty"><h2>Rien d'urgent</h2><p>Aucune tâche en retard, due cette semaine ou classée « Faire »${pf ? " pour " + esc(pf) : ""}. Regarde le quadrant « Planifier » de la Matrice.</p><div class="actions"><a class="btn" href="#matrice">Ouvrir la Matrice</a></div></div>`}
+  </div>`;
+}
+
+/* Tâches : structure fixe + zones dynamiques */
+function viewTachesShell(){
+  const projOpts = allProjets().map(p => `<option ${p === (S.lastProjet || allProjets()[0]) ? "selected" : ""}>${esc(p)}</option>`).join("");
+  return `<div class="view-head"><div><h1>Tâches</h1><div class="sub" id="t-sub"></div></div></div>
+  ${S.canWrite === false ? "" : `<form class="quick" id="quick" autocomplete="off"><input id="qa-text" placeholder="Ajout rapide : tape une tâche puis Entrée" aria-label="Nouvelle tâche">
+    <select id="qa-proj" aria-label="Projet">${projOpts}</select><button class="btn primary" type="submit">${I.plus} Ajouter</button></form>`}
+  <div class="toolbar">
+    <label class="search">${I.search}<input id="t-search" type="search" placeholder="Rechercher : tâche, projet, thème, commentaire…" value="${esc(S.f.q)}" aria-label="Rechercher"></label>
+    <select class="ctl" id="t-sort" aria-label="Trier par">
+      ${[["projet","Par projet"],["echeance","Par échéance"],["priorite","Par priorité"],["statut","Par statut"],["recent","Modifiées récemment"]].map(([v, l]) => `<option value="${v}" ${S.f.sort === v ? "selected" : ""}>${l}</option>`).join("")}
+    </select>
+  </div>
+  <div class="filters" id="t-segs"></div>
+  <div id="t-list"></div>`;
+}
+function filteredTasks(){
+  const f = S.f;
+  let arr = [...S.tasks.values()].filter(t => f.showArch ? true : !t.archived);
+  if (f.hideDone) arr = arr.filter(t => !isDone(t));
+  if (f.projets.length) arr = arr.filter(t => f.projets.includes(t.projet || ""));
+  if (f.statuts.length) arr = arr.filter(t => f.statuts.includes(t.statut));
+  if (f.quads.length) arr = arr.filter(t => f.quads.includes(quadrant(t) || "—"));
+  const words = norm(f.q).split(/\s+/).filter(Boolean);
+  if (words.length) arr = arr.filter(t => { const hay = norm([t.projet, t.tache, t.theme, t.responsable, t.commentaires, t.type, t.statut].join(" ")); return words.every(w => hay.includes(w)); });
+  const po = allProjets(), so = STATUTS, pr = {Haute:0, Moyenne:1, Basse:2};
+  const sorters = {
+    projet: (a, b) => po.indexOf(a.projet) - po.indexOf(b.projet) || so.indexOf(a.statut) - so.indexOf(b.statut) || byDue(a, b),
+    echeance: byDue,
+    priorite: (a, b) => (pr[a.priorite] ?? 3) - (pr[b.priorite] ?? 3) || byDue(a, b),
+    statut: (a, b) => so.indexOf(a.statut) - so.indexOf(b.statut) || byDue(a, b),
+    recent: (a, b) => (b.updated || "").localeCompare(a.updated || ""),
+  };
+  return arr.sort(sorters[f.sort] || sorters.projet);
+}
+function updateTaches(){
+  const f = S.f, base = [...S.tasks.values()].filter(t => (f.showArch || !t.archived) && (!f.hideDone || !isDone(t)));
+  const cnt = (fn) => base.filter(fn).length;
+  const segs = [
+    `<div class="seg-block"><span class="seg-label">Projet</span>${allProjets().map(p => segBtn("projets", p, p, f.projets.includes(p), cnt(t => t.projet === p))).join("")}</div>`,
+    `<div class="seg-block"><span class="seg-label">Statut</span>${STATUTS.filter(s => !(f.hideDone && s === "Terminé")).map(s => segBtn("statuts", s, s, f.statuts.includes(s), cnt(t => t.statut === s))).join("")}</div>`,
+    `<div class="seg-block"><span class="seg-label">Quadrant</span>${QUADS.map(q => segBtn("quads", q.k, q.label, f.quads.includes(q.k), cnt(t => quadrant(t) === q.k))).join("")}${segBtn("quads", "—", "Non classé", f.quads.includes("—"), cnt(t => !quadrant(t)))}</div>`,
+    `<div class="seg-block"><span class="seg-label">Affichage</span>
+      <label class="toggle"><input type="checkbox" id="t-hide" ${f.hideDone ? "checked" : ""}> Masquer les terminées</label>
+      <label class="toggle"><input type="checkbox" id="t-arch" ${f.showArch ? "checked" : ""}> Voir les archives</label>
+      ${(f.projets.length || f.statuts.length || f.quads.length || f.q) ? `<button class="seg clear" data-act="clear-filters">Effacer les filtres</button>` : ""}</div>`,
+  ];
+  $("#t-segs").innerHTML = segs.join("");
+  const list = filteredTasks();
+  $("#t-sub").textContent = `${list.length} tâche${list.length > 1 ? "s" : ""} affichée${list.length > 1 ? "s" : ""} sur ${S.tasks.size}`;
+  const el = $("#t-list");
+  if (!S.tasks.size) { el.innerHTML = emptyState(); return; }
+  if (!list.length) { el.innerHTML = `<div class="empty"><h2>Aucun résultat</h2><p>Aucune tâche ne correspond à ces filtres.</p><div class="actions"><button class="btn" data-act="clear-filters">Effacer les filtres</button></div></div>`; return; }
+  if (f.sort === "projet") {
+    const groups = new Map();
+    for (const t of list) { const k = t.projet || "Sans projet"; if (!groups.has(k)) groups.set(k, []); groups.get(k).push(t); }
+    el.innerHTML = [...groups].map(([p, ts]) => `<section class="group"><div class="group-h"><h2><span class="pill proj" style="--pc:${projColor(p)};font-size:14px">${esc(p)}</span></h2><span class="count">${ts.length}</span>
+      ${S.canWrite === false ? "" : `<button class="btn ghost add" data-act="new" data-proj="${esc(p)}">${I.plus} Ajouter</button>`}</div>
+      <div class="list">${ts.map(t => taskRow(t)).join("")}</div></section>`).join("");
+    el.querySelectorAll(".task .pill.proj").forEach(n => n.remove());
+  } else {
+    el.innerHTML = `<div class="list">${list.map(t => taskRow(t)).join("")}</div>`;
+  }
+}
+
+/* Matrice */
+function viewMatrice(){
+  const pf = S.matProjet;
+  const scope = live().filter(t => !isDone(t) && t.statut !== "Récurrent" && (!pf || t.projet === pf));
+  const card = t => `<div class="card" draggable="${S.canWrite !== false}" data-id="${esc(t.id)}">
+      <button class="t-main" data-act="edit"><div class="t-title">${esc(t.tache)}</div><div class="t-meta">${pills(t, {noQuad:true, noTheme:true})}</div></button></div>`;
+  const quad = q => { const ts = scope.filter(t => quadrant(t) === q.k).sort(byDue);
+    return `<section class="quad" data-quad="${q.k}" style="--qc:var(${q.v})"><div class="quad-h"><h2>${q.label}</h2><span>${q.hint}</span><span class="count">${ts.length}</span></div>
+      ${ts.map(card).join("") || `<p class="sub">Glisse une tâche ici.</p>`}</section>`; };
+  const uncl = scope.filter(t => !quadrant(t)).sort(byDue);
+  const projBtns = [segBtn("mat", "", "Tous", !pf), ...allProjets().map(p => segBtn("mat", p, p, pf === p))].join("");
+  return `<div class="view-head"><div><h1>Matrice d'Eisenhower</h1><div class="sub">Glisse une tâche d'un quadrant à l'autre (ordinateur), ou touche-la pour choisir Urgent / Important.</div></div></div>
+    <div class="seg-block" style="margin-bottom:14px"><span class="seg-label">Projet</span>${projBtns}</div>
+    ${!S.tasks.size ? emptyState() : `<div class="matrix">
+      <div></div><div class="axis">Urgent</div><div class="axis">Pas urgent</div>
+      <div class="axis v">Important</div>${quad(QUADS[0])}${quad(QUADS[1])}
+      <div class="axis v">Pas important</div>${quad(QUADS[2])}${quad(QUADS[3])}
+    </div>
+    ${uncl.length ? `<div class="tray"><section class="quad" data-quad="—" style="--qc:var(--muted)"><div class="quad-h"><h2>Non classées</h2><span>Urgent / Important pas encore renseignés</span><span class="count">${uncl.length}</span></div>
+      <div class="cards">${uncl.map(t => `<div class="card" draggable="${S.canWrite !== false}" data-id="${esc(t.id)}"><div style="flex:1;min-width:0"><button class="t-main" data-act="edit"><div class="t-title">${esc(t.tache)}</div><div class="t-meta">${pills(t, {noTheme:true})}</div></button>
+        ${S.canWrite === false ? "" : `<div class="qpick">${QUADS.map(q => `<button data-act="setq" data-q="${q.k}" style="--qc:var(${q.v})">${q.label}</button>`).join("")}</div>`}</div></div>`).join("")}</div></section></div>` : ""}`}`;
+}
+
+/* Tableau de bord */
+function viewBord(){
+  const all = live(), t0 = today();
+  const k = [
+    ["", all.filter(t => !isDone(t)).length, "Ouvertes"], ["late", all.filter(t => alerte(t) === "late").length, "En retard"],
+    ["week", all.filter(t => ["today", "week"].includes(alerte(t))).length, "Échéance ≤ 7 j"],
+    ["done", [...S.tasks.values()].filter(t => isDone(t) && validYmd(t.cloture) && diffDays(t0, t.cloture) <= 7).length, "Terminées (7 j)"],
+    ["done", [...S.tasks.values()].filter(t => isDone(t) && validYmd(t.cloture) && diffDays(t0, t.cloture) <= 30).length, "Terminées (30 j)"],
+    ["", all.filter(t => !isDone(t) && t.statut !== "Récurrent" && !validYmd(t.echeance)).length, "Sans échéance"],
+  ];
+  const rows = allProjets().map(p => { const ts = all.filter(t => t.projet === p); const by = s => ts.filter(t => t.statut === s).length;
+    const nonRec = ts.length - by("Récurrent"); const pct = nonRec ? Math.round(by("Terminé") / nonRec * 100) : 0;
+    return {p, ts, by, pct, late: ts.filter(t => alerte(t) === "late").length, q1: ts.filter(t => quadrant(t) === "Faire").length}; }).filter(r => r.ts.length);
+  const cell = n => `<td class="${n ? "" : "z"}">${n}</td>`;
+  const table = `<div class="tbl-wrap"><table class="tbl"><thead><tr><th>Projet</th><th>Ouvertes</th>${STATUTS.map(s => `<th>${s}</th>`).join("")}<th>Retard</th><th>Faire</th><th>Avancement</th></tr></thead><tbody>
+    ${rows.map(r => `<tr><td><span class="pill proj" style="--pc:${projColor(r.p)};font-size:13px">${esc(r.p)}</span></td>${cell(r.ts.length - r.by("Terminé"))}${STATUTS.map(s => cell(r.by(s))).join("")}
+      <td class="${r.late ? "warn" : "z"}">${r.late}</td>${cell(r.q1)}<td><div class="prog"><i><b style="width:${r.pct}%"></b></i>${r.pct}%</div></td></tr>`).join("")}
+    </tbody></table></div>`;
+  const stack = `<div style="display:grid;gap:10px;margin-top:8px">${rows.map(r => `<div style="display:grid;grid-template-columns:80px 1fr;gap:10px;align-items:center;font-size:13px"><span>${esc(r.p)}</span>
+      <div class="stack">${STATUTS.map(s => r.by(s) ? `<span title="${s} : ${r.by(s)}" style="width:${r.by(s) / r.ts.length * 100}%;background:var(${ST_VAR[s]})"></span>` : "").join("")}</div></div>`).join("")}</div>
+    <div class="legend">${STATUTS.map(s => `<span><i style="background:var(${ST_VAR[s]})"></i>${s}</span>`).join("")}</div>`;
+  const open = all.filter(t => !isDone(t));
+  const qmax = Math.max(1, ...QUADS.map(q => open.filter(t => quadrant(t) === q.k).length));
+  const qb = `<div class="qbars">${QUADS.map(q => { const n = open.filter(t => quadrant(t) === q.k).length; return `<div class="qbar" style="--qc:var(${q.v})"><span>${q.label}</span><i><b style="width:${n / qmax * 100}%"></b></i><span>${n}</span></div>`; }).join("")}
+    <div class="qbar" style="--qc:var(--muted)"><span>Non classé</span><i><b style="width:${open.filter(t => !quadrant(t) && t.statut !== "Récurrent").length / qmax * 100}%"></b></i><span>${open.filter(t => !quadrant(t) && t.statut !== "Récurrent").length}</span></div></div>`;
+  return `<div class="view-head"><div><h1>Tableau de bord</h1><div class="sub">Calculé en direct à partir de tes tâches (hors archives).</div></div></div>
+    <div class="kpis">${k.map(([c, n, l]) => `<div class="kpi ${c}"><div class="n">${n}</div><div class="l">${l}</div></div>`).join("")}</div>
+    ${!rows.length ? emptyState() : `<div class="panel" style="margin-bottom:14px"><h2>Par projet</h2>${table}</div>
+    <div class="grid2"><div class="panel"><h2>Répartition des statuts</h2>${stack}</div><div class="panel"><h2>Tâches ouvertes par quadrant</h2>${qb}</div></div>`}`;
+}
+
+/* Réglages */
+function viewReglages(){
+  const listBlock = (key, title, help) => `<div class="panel"><h2>${title}</h2><p>${help}</p>
+    <div class="chips">${S.lists[key].map(v => `<span class="chip-x">${esc(v)}${S.canWrite === false ? "" : `<button data-act="list-del" data-list="${key}" data-val="${esc(v)}" aria-label="Retirer ${esc(v)}">${I.close}</button>`}</span>`).join("") || `<span class="sub">Aucun pour l'instant.</span>`}</div>
+    ${S.canWrite === false ? "" : `<form class="row" data-list-form="${key}"><input type="text" id="add-${key}" placeholder="Ajouter…" aria-label="Ajouter à ${title}"><button class="btn" type="submit">Ajouter</button></form>`}</div>`;
+  const doneOld = live().filter(t => isDone(t) && validYmd(t.cloture) && diffDays(today(), t.cloture) > 30).length;
+  return `<div class="view-head"><div><h1>Réglages</h1><div class="sub">Listes, import / export Excel, archives et installation sur iPhone.</div></div></div>
+  <div class="settings">
+    ${listBlock("projets", "Projets", "Ordre d'affichage des projets dans les filtres et le tableau de bord.")}
+    ${listBlock("responsables", "Responsables", "Proposés dans le champ Responsable.")}
+    ${listBlock("types", "Types", "Exemples : Amélioration, Ajout, Correctif.")}
+    <div class="panel"><h2>Importer</h2><p>Fichier <b>mes_taches.json</b>, sauvegarde .json, classeur .xlsx (onglet « TO DO ») ou .csv. Pour Excel et CSV, les colonnes sont reconnues par leur en-tête : Projet, Tâche, Statut, Priorité, Urgent, Important, Échéance, Responsable, Thème, Type, Clôturé le, Commentaires.</p>
+      ${S.canWrite === false ? `<p>Lecture seule.</p>` : `<div class="row" style="margin:10px 0"><label class="toggle"><input type="radio" name="imode" value="add" checked> Ajouter aux tâches existantes</label><label class="toggle"><input type="radio" name="imode" value="replace"> Remplacer toutes les tâches</label></div>
+      <div class="row"><input type="file" id="imp-file" accept=".json,.xlsx,.xls,.csv,application/json" hidden><button class="btn primary" data-act="import">Choisir un fichier…</button></div>`}
+      <div class="progress-line" id="imp-progress">${esc(S.impMsg || "")}</div></div>
+    <div class="panel"><h2>Sauvegarde</h2><p>Tes tâches sont enregistrées dans ton compte et synchronisées sur tous tes appareils. Tu peux en garder une copie (.json) dans Fichiers ou iCloud Drive.</p>
+      <p>Dernière sauvegarde : <b style="color:var(--ink)">${S.backupAt ? fmt(S.backupAt, true) : "jamais"}</b></p>
+      <div class="row"><button class="btn primary" data-act="export-json">Sauvegarder (.json)</button></div><div class="progress-line" id="bak-progress"></div></div>
+    <div class="panel"><h2>Exporter</h2><p>Toutes tes tâches (archives comprises) pour les retrouver dans Excel.</p>
+      <div class="row"><button class="btn" data-act="export-xlsx">Excel (.xlsx)</button><button class="btn" data-act="export-csv">CSV</button></div><div class="progress-line" id="exp-progress"></div></div>
+    <div class="panel"><h2>Archives</h2><p>Les tâches archivées disparaissent des vues mais restent consultables (Tâches ▸ « Voir les archives ») et dans l'export.</p>
+      <p><b style="color:var(--ink)">${doneOld}</b> tâche${doneOld > 1 ? "s" : ""} terminée${doneOld > 1 ? "s" : ""} depuis plus de 30 jours.</p>
+      ${S.canWrite === false ? "" : `<button class="btn" data-act="archive" ${doneOld ? "" : "disabled"}>Archiver ces tâches</button>`}</div>
+    <div class="panel"><h2>Compte</h2><p>Connecté : <b style="color:var(--ink)">${esc((window.TODO_ACCOUNT || {}).email || "")}</b></p>
+      <p>Tes tâches sont privées : personne d'autre ne peut les voir. Sur un autre iPhone ou Mac, installe l'app et connecte-toi avec le même e-mail.</p>
+      <div class="row"><button class="btn" data-act="logout">Se déconnecter</button></div></div>
+  </div>`;
+}
+
+/* ---------- Rendu principal ---------- */
+function render(force){
+  renderChrome();
+  if (renderStatus()) { S.built = null; return; }
+  const v = $("#view");
+  const ae = document.activeElement;
+  if (!force && ae && v.contains(ae) && /INPUT|TEXTAREA|SELECT/.test(ae.tagName) && S.view !== "taches") { S.pendingRender = true; return; }
+  S.pendingRender = false;
+  if (S.view === "taches") {
+    if (S.built !== "taches" || force === "shell") { v.innerHTML = viewTachesShell(); S.built = "taches"; }
+    updateTaches();
+    return;
+  }
+  const html = {jour:viewJour, matrice:viewMatrice, bord:viewBord, reglages:viewReglages}[S.view]();
+  v.innerHTML = html; S.built = S.view;
+}
+let raf = 0;
+function schedule(){ if (raf) return; raf = requestAnimationFrame(() => { raf = 0; render(); }); }
+document.addEventListener("focusout", () => setTimeout(() => { if (S.pendingRender && !(document.activeElement && $("#view").contains(document.activeElement) && /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName))) render(); }, 0));
+
+function route(){
+  const h = (location.hash || "").replace("#", "");
+  S.view = VIEWS.some(v => v.k === h) ? h : "jour";
+  S.built = null; render(true); window.scrollTo(0, 0);
+}
+window.addEventListener("hashchange", route);
+
+/* ---------- Toast ---------- */
+let toastT = 0;
+function toast(msg){ const el = $("#toast"); el.textContent = msg; el.hidden = false; clearTimeout(toastT); toastT = setTimeout(() => { el.hidden = true; }, 2600); }
+function fail(e){ const code = e && e.code; toast(code === "quota_exceeded" ? "Stockage plein : archive ou supprime des tâches." : code === "invalid_argument" ? "Enregistrement refusé (droits en lecture seule ?)." : "Échec de l'enregistrement. Réessaie dans un instant."); if (code === "invalid_argument") { S.canWrite = false; render(true); } }
+
+/* ---------- Écritures ---------- */
+const nowIso = () => new Date().toISOString();
+function clean(t){ const {id, ...body} = t; for (const k of Object.keys(body)) if (body[k] === undefined) delete body[k]; return body; }
+async function saveTask(t){
+  if (!S.db) return;
+  const isNew = !t.id;
+  const ref = isNew ? S.db.collection("tasks").doc() : S.db.doc("tasks/" + t.id);
+  const body = clean({...t, updated: nowIso(), created: t.created || nowIso()});
+  await ref.set(body);
+  if (t.projet) { S.lastProjet = t.projet; saveUi(); }
+  await ensureInLists(t);
+  return ref.id;
+}
+async function ensureInLists(t){
+  const L = S.lists, next = {projets:[...L.projets], responsables:[...L.responsables], types:[...L.types]};
+  let ch = false;
+  if (t.projet && !next.projets.includes(t.projet)) { next.projets.push(t.projet); ch = true; }
+  if (t.responsable && !next.responsables.includes(t.responsable)) { next.responsables.push(t.responsable); ch = true; }
+  if (t.type && !next.types.includes(t.type)) { next.types.push(t.type); ch = true; }
+  if (ch) await saveLists(next);
+}
+let listsWriting = Promise.resolve();
+function saveLists(next){ S.lists = next; listsWriting = listsWriting.then(() => S.db.doc("meta/lists").set(next)).catch(fail); return listsWriting; }
+async function toggleDone(id){
+  const t = S.tasks.get(id); if (!t) return;
+  const done = !isDone(t);
+  try { await S.db.doc("tasks/" + id).update({statut: done ? "Terminé" : (t.statutAvant && t.statutAvant !== "Terminé" ? t.statutAvant : "À faire"), statutAvant: done ? t.statut : "", cloture: done ? today() : "", updated: nowIso()});
+    toast(done ? "Tâche terminée" : "Tâche rouverte"); } catch (e) { fail(e); }
+}
+async function setQuad(id, qk){
+  const q = QMAP[qk], t = S.tasks.get(id); if (!q || !t) return;
+  if (quadrant(t) === qk) return;
+  try { await S.db.doc("tasks/" + id).update({urgent:q.u, important:q.i, updated: nowIso()}); toast("Déplacée dans « " + q.label + " »"); } catch (e) { fail(e); }
+}
+
+/* ---------- Éditeur ---------- */
+function openEditor(id, preset = {}){
+  const src = id ? S.tasks.get(id) : null;
+  S.edit = src ? {...src} : {id:null, projet: preset.projet || S.lastProjet || allProjets()[0] || "", tache:"", statut:"À faire", priorite:"", urgent:null, important:null, echeance:"", responsable: S.lists.responsables[0] || "", theme:"", type:"", cloture:"", commentaires:""};
+  S.delArmed = false;
+  renderEditor(true);
+}
+function closeEditor(){ S.edit = null; $("#editor").innerHTML = ""; document.body.style.overflow = ""; }
+function renderEditor(first){
+  const e = S.edit; if (!e) return;
+  const ro = S.canWrite === false;
+  const themes = [...new Set([...S.tasks.values()].filter(t => !e.projet || t.projet === e.projet).map(t => t.theme).filter(Boolean))];
+  const q = quadrant({...e, statut: e.statut === "Terminé" || e.statut === "Récurrent" ? "À faire" : e.statut});
+  const yn = (field, val, label) => `<button type="button" data-ed="${field}" data-v="${val}" aria-pressed="${e[field] === val}">${label}</button>`;
+  $("#editor").innerHTML = `<div class="overlay" data-act="close-ed"><div class="sheet" role="dialog" aria-modal="true" aria-labelledby="ed-title">
+    <div class="sheet-h"><h2 id="ed-title">${e.id ? "Modifier la tâche" : "Nouvelle tâche"}</h2><button class="btn ghost" data-act="close-ed" aria-label="Fermer">${I.close}</button></div>
+    <div class="sheet-b">
+      <div class="field"><label for="e-tache">Tâche</label><textarea id="e-tache" rows="2" ${ro ? "readonly" : ""}>${esc(e.tache)}</textarea></div>
+      <div class="field"><span class="lbl">Projet</span><div class="segc">${allProjets().map(p => `<button type="button" data-ed="projet" data-v="${esc(p)}" aria-pressed="${e.projet === p}">${esc(p)}</button>`).join("")}</div></div>
+      <div class="field"><span class="lbl">Statut</span><div class="segc status">${STATUTS.map(s => `<button type="button" data-ed="statut" data-v="${s}" aria-pressed="${e.statut === s}" style="--sc:var(${ST_VAR[s]})">${s}</button>`).join("")}</div></div>
+      <div class="qprev">
+        <div class="field"><span class="lbl">Urgent</span><div class="segc">${yn("urgent", true, "Oui")}${yn("urgent", false, "Non")}</div></div>
+        <div class="field"><span class="lbl">Important</span><div class="segc">${yn("important", true, "Oui")}${yn("important", false, "Non")}</div></div>
+      </div>
+      ${q ? `<div class="qbadge" style="--qc:var(${QMAP[q].v})">Quadrant : ${QMAP[q].label} · ${QMAP[q].hint}</div>` : ""}
+      <div class="cols2">
+        <div class="field"><label for="e-ech">Échéance</label><input type="date" id="e-ech" value="${esc(e.echeance)}" ${ro ? "readonly" : ""}>
+          ${ro ? "" : `<div class="dates"><button type="button" data-date="0">Aujourd'hui</button><button type="button" data-date="1">Demain</button><button type="button" data-date="7">+7 j</button><button type="button" data-date="fri">Vendredi</button><button type="button" data-date="">Effacer</button></div>`}</div>
+        <div class="field"><span class="lbl">Priorité</span><div class="segc">${PRIOS.map(p => `<button type="button" data-ed="priorite" data-v="${p}" aria-pressed="${e.priorite === p}">${p}</button>`).join("")}</div></div>
+      </div>
+      <div class="cols2">
+        <div class="field"><label for="e-resp">Responsable</label><input type="text" id="e-resp" list="dl-resp" value="${esc(e.responsable)}" ${ro ? "readonly" : ""}><datalist id="dl-resp">${S.lists.responsables.map(r => `<option value="${esc(r)}">`).join("")}</datalist></div>
+        <div class="field"><label for="e-theme">Thème</label><input type="text" id="e-theme" list="dl-theme" value="${esc(e.theme)}" ${ro ? "readonly" : ""}><datalist id="dl-theme">${themes.map(r => `<option value="${esc(r)}">`).join("")}</datalist></div>
+      </div>
+      <div class="cols2">
+        <div class="field"><label for="e-type">Type</label><input type="text" id="e-type" list="dl-type" value="${esc(e.type)}" ${ro ? "readonly" : ""}><datalist id="dl-type">${S.lists.types.map(r => `<option value="${esc(r)}">`).join("")}</datalist></div>
+        <div class="field"><label for="e-clo">Clôturée le</label><input type="date" id="e-clo" value="${esc(e.cloture)}" ${ro || e.statut !== "Terminé" ? "disabled" : ""}></div>
+      </div>
+      <div class="field"><label for="e-com">Commentaires</label><textarea id="e-com" rows="2" ${ro ? "readonly" : ""}>${esc(e.commentaires)}</textarea></div>
+    </div>
+    <div class="sheet-f">
+      ${e.id && !ro ? `<button class="btn danger ${S.delArmed ? "armed" : ""}" data-act="delete">${S.delArmed ? "Confirmer la suppression" : "Supprimer"}</button>
+        <button class="btn" data-act="archive-one">${e.archived ? "Désarchiver" : "Archiver"}</button>` : ""}
+      <span class="spacer"></span>
+      <button class="btn" data-act="close-ed">${ro ? "Fermer" : "Annuler"}</button>
+      ${ro ? "" : `<button class="btn primary" data-act="save">Enregistrer</button>`}
+    </div></div></div>`;
+  document.body.style.overflow = "hidden";
+  if (first && !e.id) setTimeout(() => $("#e-tache")?.focus(), 30);
+}
+function readEditorInputs(){
+  const e = S.edit; if (!e) return;
+  const val = id => { const el = $(id); return el ? el.value : undefined; };
+  e.tache = (val("#e-tache") ?? e.tache).trim();
+  e.echeance = val("#e-ech") ?? e.echeance;
+  e.responsable = (val("#e-resp") ?? e.responsable).trim();
+  e.theme = (val("#e-theme") ?? e.theme).trim();
+  e.type = (val("#e-type") ?? e.type).trim();
+  e.commentaires = (val("#e-com") ?? e.commentaires).trim();
+  const clo = $("#e-clo"); if (clo && !clo.disabled) e.cloture = clo.value;
+}
+async function saveEditor(){
+  readEditorInputs();
+  const e = S.edit;
+  if (!e.tache) { toast("Écris le nom de la tâche."); $("#e-tache")?.focus(); return; }
+  if (e.statut === "Terminé" && !validYmd(e.cloture)) e.cloture = today();
+  if (e.statut !== "Terminé") e.cloture = "";
+  const isNew = !e.id;
+  closeEditor();
+  try { await saveTask(e); toast(isNew ? "Tâche ajoutée" : "Modifications enregistrées"); } catch (err) { fail(err); }
+}
+
+/* ---------- Import / export ---------- */
+let xlsxP = null;
+function loadXLSX(){
+  if (window.XLSX) return Promise.resolve(window.XLSX);
+  if (!xlsxP) xlsxP = new Promise((res, rej) => { const s = document.createElement("script"); s.src = "./xlsx.core.min.js"; s.onload = () => res(window.XLSX); s.onerror = () => { xlsxP = null; rej(new Error("xlsx")); }; document.head.appendChild(s); });
+  return xlsxP;
+}
+const HEAD = {projet:"projet", tache:"tache", statut:"statut", priorite:"priorite", urgent:"urgent", important:"important", echeance:"echeance", responsable:"responsable", theme:"theme", type:"type", "cloture le":"cloture", "cloturee le":"cloture", cloture:"cloture", commentaires:"commentaires", commentaire:"commentaires"};
+function toYmd(v, X){
+  if (v == null || v === "") return "";
+  if (typeof v === "number" && X) { const d = X.SSF.parse_date_code(v); return d ? `${d.y}-${z2(d.m)}-${z2(d.d)}` : ""; }
+  if (v instanceof Date) return ymd(v);
+  const s = String(v).trim(); let m;
+  if ((m = s.match(/^(\d{1,2})[\/.-](\d{1,2})[\/.-](\d{2,4})$/))) { const y = m[3].length === 2 ? "20" + m[3] : m[3]; return `${y}-${z2(m[2])}-${z2(m[1])}`; }
+  if ((m = s.match(/^(\d{4})-(\d{2})-(\d{2})/))) return `${m[1]}-${m[2]}-${m[3]}`;
+  return "";
+}
+const yesNo = v => { const s = norm(v); return s === "oui" || s === "yes" || s === "1" || s === "true" ? true : s === "non" || s === "no" || s === "0" || s === "false" ? false : null; };
+async function runPool(items, fn, n = 4, onStep){
+  let i = 0, done = 0;
+  const workers = Array.from({length: Math.min(n, items.length)}, async () => { while (i < items.length) { const it = items[i++]; await fn(it); done++; onStep && onStep(done); } });
+  await Promise.all(workers);
+}
+async function importJson(file, say){
+  let data;
+  try { data = JSON.parse(await file.text()); } catch (e) { say("Ce fichier JSON est illisible."); return; }
+  const raw = Array.isArray(data) ? data : Array.isArray(data.tasks) ? data.tasks : null;
+  if (!raw) { say("Aucune tâche trouvée dans ce fichier."); return; }
+  const tasks = raw.map(t => t && t.data && !t.tache ? {id:t.id, ...t.data} : t).filter(t => t && String(t.tache || "").trim());
+  const replace = (document.querySelector('input[name="imode"]:checked') || {}).value === "replace";
+  if (replace) { for (const id of [...S.tasks.keys()]) await S.db.doc("tasks/" + id).delete(); }
+  let n = 0;
+  for (const t of tasks) {
+    const {id, ...body} = t;
+    const ref = id && !replace && S.tasks.has(id) ? S.db.collection("tasks").doc() : (id ? S.db.doc("tasks/" + id) : S.db.collection("tasks").doc());
+    await ref.set({...body, statut: STATUTS.includes(body.statut) ? body.statut : "À faire", created: body.created || nowIso(), updated: body.updated || nowIso()});
+    n++;
+  }
+  const L = S.lists, inc = data.lists || {}, next = {projets:[...L.projets], responsables:[...L.responsables], types:[...L.types]};
+  for (const k of ["projets", "responsables", "types"]) for (const v of (inc[k] || [])) if (v && !next[k].includes(v)) next[k].push(v);
+  for (const t of tasks) { if (t.projet && !next.projets.includes(t.projet)) next.projets.push(t.projet); if (t.responsable && !next.responsables.includes(t.responsable)) next.responsables.push(t.responsable); if (t.type && !next.types.includes(t.type)) next.types.push(t.type); }
+  await saveLists(next);
+  say(`${n} tâche${n > 1 ? "s" : ""} importée${n > 1 ? "s" : ""}.`); toast("Import terminé");
+}
+async function importFile(file){
+  const say = m => { S.impMsg = m; const el = $("#imp-progress"); if (el) el.textContent = m; };
+  try {
+    say("Lecture du fichier…");
+    if (/\.json$/i.test(file.name) || file.type === "application/json") { await importJson(file, say); return; }
+    const X = await loadXLSX();
+    const wb = X.read(await file.arrayBuffer(), {type:"array"});
+    let rows = null;
+    const names = [...wb.SheetNames].sort((a, b) => (norm(b) === "to do") - (norm(a) === "to do"));
+    let hi = -1;
+    for (const n of names) { const r = X.utils.sheet_to_json(wb.Sheets[n], {header:1, raw:true, defval:""}); const k = r.findIndex(row => row.some(c => norm(c) === "tache")); if (k >= 0) { rows = r; hi = k; break; } }
+    if (!rows) { say("Aucune colonne « Tâche » trouvée dans ce fichier."); return; }
+    const head = rows[hi].map(c => HEAD[norm(c)] || null);
+    const tasks = [];
+    for (const r of rows.slice(hi + 1)) {
+      const o = {}; head.forEach((h, j) => { if (h) o[h] = r[j]; });
+      const tache = String(o.tache ?? "").trim(); if (!tache) continue;
+      const statut = STATUTS.find(s => norm(s) === norm(o.statut)) || "À faire";
+      tasks.push({projet:String(o.projet ?? "").trim(), tache, statut, priorite: PRIOS.find(p => norm(p) === norm(o.priorite)) || "",
+        urgent: yesNo(o.urgent), important: yesNo(o.important), echeance: toYmd(o.echeance, X), responsable: String(o.responsable ?? "").trim(),
+        theme: String(o.theme ?? "").trim(), type: String(o.type ?? "").trim(), cloture: statut === "Terminé" ? (toYmd(o.cloture, X) || today()) : "",
+        commentaires: String(o.commentaires ?? "").trim(), created: nowIso(), updated: nowIso()});
+    }
+    if (!tasks.length) { say("Aucune tâche trouvée sous l'en-tête."); return; }
+    const replace = (document.querySelector('input[name="imode"]:checked') || {}).value === "replace";
+    if (replace) { const old = [...S.tasks.keys()]; say(`Suppression des ${old.length} tâches existantes…`); await runPool(old, id => S.db.doc("tasks/" + id).delete()); }
+    await runPool(tasks, t => S.db.collection("tasks").doc().set(t), 4, d => say(`Import : ${d} / ${tasks.length}`));
+    const L = S.lists, next = {projets:[...L.projets], responsables:[...L.responsables], types:[...L.types]};
+    for (const t of tasks) { if (t.projet && !next.projets.includes(t.projet)) next.projets.push(t.projet); if (t.responsable && !next.responsables.includes(t.responsable)) next.responsables.push(t.responsable); if (t.type && !next.types.includes(t.type)) next.types.push(t.type); }
+    await saveLists(next);
+    say(`${tasks.length} tâche${tasks.length > 1 ? "s" : ""} importée${tasks.length > 1 ? "s" : ""}.`); toast("Import terminé");
+  } catch (e) { say(e && e.message === "xlsx" ? "Le lecteur Excel n'a pas pu se charger. Vérifie ta connexion." : "Import interrompu : " + (e && (e.code || e.message) || "erreur")); }
+}
+function exportRows(){
+  const po = allProjets();
+  return [...S.tasks.values()].sort((a, b) => po.indexOf(a.projet) - po.indexOf(b.projet) || byDue(a, b)).map((t, i) => [i + 1, t.projet || "", t.tache || "", t.statut || "", t.priorite || "",
+    t.urgent === true ? "Oui" : t.urgent === false ? "Non" : "", t.important === true ? "Oui" : t.important === false ? "Non" : "",
+    t.echeance || "", quadrant(t), t.responsable || "", t.theme || "", t.type || "", t.cloture || "", t.commentaires || "", t.archived ? "Oui" : ""]);
+}
+const EXP_HEAD = ["N°","Projet","Tâche","Statut","Priorité","Urgent","Important","Échéance","Quadrant","Responsable","Thème","Type","Clôturé le","Commentaires","Archivée"];
+async function doBackup(){
+  const prog = $("#bak-progress"); const say = m => { if (prog) prog.textContent = m; };
+  const dl = await window.claude.use("downloads");
+  const payload = {app:"TO DO BIM", format:1, saved: nowIso(), lists:S.lists, tasks:[...S.tasks.values()]};
+  try { await dl.save({filename:`TODO_BIM_sauvegarde_${today()}.json`, data:JSON.stringify(payload, null, 1)});
+    S.backupAt = today(); try { localStorage.setItem("todobim.backupAt", S.backupAt); } catch (e) {}
+    say("Sauvegarde prête. Range-la dans Fichiers ▸ iCloud Drive."); render(true);
+  } catch (e) { say(e && e.code === "declined" ? "Sauvegarde annulée." : "Sauvegarde impossible pour l'instant."); }
+}
+async function doExport(kind){
+  const prog = $("#exp-progress"); const say = m => { if (prog) prog.textContent = m; };
+  const dl = window.claude && window.claude.use ? await window.claude.use("downloads") : null;
+  if (!dl) { say("L'export n'est pas disponible sur cet appareil."); return; }
+  const stamp = today();
+  try {
+    if (kind === "csv") {
+      const q = v => { const s = String(v ?? ""); return /[;"\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
+      const lines = [EXP_HEAD, ...exportRows().map(r => r.map((v, j) => (j === 7 || j === 12) && v ? fmt(v, true) : v))].map(r => r.map(q).join(";"));
+      await dl.save({filename:`TODO_BIM_${stamp}.csv`, data:"﻿" + lines.join("\r\n")});
+    } else {
+      say("Préparation du fichier…");
+      const X = await loadXLSX();
+      const ws = X.utils.aoa_to_sheet([EXP_HEAD, ...exportRows()]);
+      const rows = exportRows().length;
+      for (let r = 1; r <= rows; r++) for (const c of [7, 12]) { const ref = X.utils.encode_cell({r, c}); const cell = ws[ref]; if (cell && validYmd(cell.v)) { const [y, m, d] = cell.v.split("-").map(Number); ws[ref] = {t:"n", v:(Date.UTC(y, m - 1, d) - Date.UTC(1899, 11, 30)) / 86400000, z:"dd/mm/yyyy"}; } }
+      ws["!cols"] = [6,10,58,12,10,8,10,12,11,14,26,14,12,40,9].map(w => ({wch:w}));
+      ws["!autofilter"] = {ref: X.utils.encode_range({s:{r:0, c:0}, e:{r:rows, c:EXP_HEAD.length - 1}})};
+      const wb = X.utils.book_new(); X.utils.book_append_sheet(wb, ws, "TO DO");
+      const buf = X.write(wb, {bookType:"xlsx", type:"array"});
+      await dl.save({filename:`TODO_BIM_${stamp}.xlsx`, data:new Blob([buf])});
+    }
+    say("Fichier prêt.");
+  } catch (e) { say(e && e.code === "declined" ? "Téléchargement annulé." : e && e.message === "xlsx" ? "Le module Excel n'a pas pu se charger." : "Export impossible pour l'instant."); }
+}
+
+/* ---------- Événements ---------- */
+document.addEventListener("click", async ev => {
+  const segEl = ev.target.closest("[data-seg]");
+  if (segEl) {
+    const kind = segEl.dataset.seg, val = segEl.dataset.val;
+    if (kind === "jour") { S.jourProjet = val; saveUi(); render(true); return; }
+    if (kind === "mat") { S.matProjet = val; saveUi(); render(true); return; }
+    const arr = S.f[kind]; const i = arr.indexOf(val);
+    if (ev.metaKey || ev.ctrlKey || ev.shiftKey) { i >= 0 ? arr.splice(i, 1) : arr.push(val); }
+    else { S.f[kind] = (i >= 0 && arr.length === 1) ? [] : [val]; }
+    saveUi(); updateTaches(); return;
+  }
+  const dateBtn = ev.target.closest("[data-date]");
+  if (dateBtn && S.edit) {
+    const v = dateBtn.dataset.date; let d = "";
+    if (v === "fri") { const n = new Date(); const add = (5 - n.getDay() + 7) % 7; d = addDays(today(), add); }
+    else if (v !== "") d = addDays(today(), Number(v));
+    $("#e-ech").value = d; return;
+  }
+  const edBtn = ev.target.closest("[data-ed]");
+  if (edBtn && S.edit && S.canWrite !== false) {
+    readEditorInputs();
+    const f = edBtn.dataset.ed; let v = edBtn.dataset.v;
+    if (f === "urgent" || f === "important") v = v === "true";
+    S.edit[f] = (S.edit[f] === v && (f === "priorite" || f === "urgent" || f === "important")) ? (f === "priorite" ? "" : null) : v;
+    if (f === "statut" && v === "Terminé" && !validYmd(S.edit.cloture)) S.edit.cloture = today();
+    renderEditor(); return;
+  }
+  const a = ev.target.closest("[data-act]");
+  if (!a) return;
+  const act = a.dataset.act;
+  const id = a.closest("[data-id]")?.dataset.id;
+  if (act === "close-ed") { if (ev.target === a || a.tagName === "BUTTON") closeEditor(); return; }
+  if (act === "edit" && id) { if (dragMoved) return; openEditor(id); return; }
+  if (act === "new") { openEditor(null, {projet: a.dataset.proj}); return; }
+  if (act === "done" && id) { toggleDone(id); return; }
+  if (act === "setq" && id) { setQuad(id, a.dataset.q); return; }
+  if (act === "save") { saveEditor(); return; }
+  if (act === "delete") {
+    if (!S.delArmed) { readEditorInputs(); S.delArmed = true; renderEditor(); return; }
+    const tid = S.edit.id; closeEditor();
+    try { await S.db.doc("tasks/" + tid).delete(); toast("Tâche supprimée"); } catch (e) { fail(e); } return;
+  }
+  if (act === "archive-one") { readEditorInputs(); const t = S.edit; t.archived = !t.archived; closeEditor(); try { await saveTask(t); toast(t.archived ? "Tâche archivée" : "Tâche désarchivée"); } catch (e) { fail(e); } return; }
+  if (act === "clear-filters") { S.f.projets = []; S.f.statuts = []; S.f.quads = []; S.f.q = ""; const s = $("#t-search"); if (s) s.value = ""; saveUi(); updateTaches(); return; }
+  if (act === "list-del") { const k = a.dataset.list, v = a.dataset.val; saveLists({...S.lists, [k]: S.lists[k].filter(x => x !== v)}); render(true); return; }
+  if (act === "import") { $("#imp-file").click(); return; }
+  if (act === "export-xlsx") { doExport("xlsx"); return; }
+  if (act === "export-csv") { doExport("csv"); return; }
+  if (act === "export-json") { doBackup(); return; }
+  if (act === "logout") { if (window.TODO_ACCOUNT) window.TODO_ACCOUNT.signOut(); return; }
+  if (act === "archive") {
+    const old = live().filter(t => isDone(t) && validYmd(t.cloture) && diffDays(today(), t.cloture) > 30).map(t => t.id);
+    try { await runPool(old, tid => S.db.doc("tasks/" + tid).update({archived:true, updated: nowIso()})); toast(`${old.length} tâche(s) archivée(s)`); } catch (e) { fail(e); }
+    render(true); return;
+  }
+});
+$("#fab").addEventListener("click", () => openEditor(null, {projet: S.view === "jour" ? S.jourProjet : S.view === "matrice" ? S.matProjet : (S.f.projets.length === 1 ? S.f.projets[0] : "")}));
+document.addEventListener("keydown", ev => {
+  if (ev.key === "Escape" && S.edit) closeEditor();
+  if (S.edit && ev.key === "Enter" && (ev.metaKey || ev.ctrlKey)) saveEditor();
+  if (!S.edit && ev.key === "n" && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement?.tagName || "") && S.status === "ready" && S.canWrite !== false) { ev.preventDefault(); openEditor(null); }
+  if (!S.edit && ev.key === "/" && S.view === "taches" && document.activeElement?.id !== "t-search") { ev.preventDefault(); $("#t-search")?.focus(); }
+});
+let searchT = 0;
+document.addEventListener("input", ev => {
+  if (ev.target.id === "t-search") { clearTimeout(searchT); searchT = setTimeout(() => { S.f.q = ev.target.value; updateTaches(); }, 120); }
+});
+document.addEventListener("change", ev => {
+  const t = ev.target;
+  if (t.id === "t-sort") { S.f.sort = t.value; saveUi(); updateTaches(); }
+  if (t.id === "t-hide") { S.f.hideDone = t.checked; saveUi(); updateTaches(); }
+  if (t.id === "t-arch") { S.f.showArch = t.checked; saveUi(); updateTaches(); }
+  if (t.id === "imp-file" && t.files && t.files[0]) { importFile(t.files[0]); t.value = ""; }
+  if (t.id === "e-ech" && S.edit) S.edit.echeance = t.value;
+});
+document.addEventListener("submit", async ev => {
+  ev.preventDefault();
+  const form = ev.target;
+  if (form.id === "quick") {
+    const inp = $("#qa-text"), txt = inp.value.trim(); if (!txt) return;
+    const projet = $("#qa-proj")?.value || "";
+    inp.value = "";
+    try { await saveTask({id:null, projet, tache:txt, statut:"À faire", priorite:"", urgent:null, important:null, echeance:"", responsable:S.lists.responsables[0] || "", theme:"", type:"", cloture:"", commentaires:""}); toast("Ajoutée à " + (projet || "la liste")); } catch (e) { fail(e); }
+    inp.focus(); return;
+  }
+  const lk = form.dataset.listForm;
+  if (lk) { const inp = form.querySelector("input"); const v = inp.value.trim(); if (!v || S.lists[lk].includes(v)) { inp.value = ""; return; }
+    inp.value = ""; inp.blur(); await saveLists({...S.lists, [lk]: [...S.lists[lk], v]}); render(true); }
+});
+
+/* Glisser-déposer (Matrice) */
+let dragId = null, dragMoved = false;
+document.addEventListener("dragstart", ev => { const c = ev.target.closest?.(".card"); if (!c) return; dragId = c.dataset.id; dragMoved = true; c.classList.add("dragging"); try { ev.dataTransfer.setData("text/plain", dragId); ev.dataTransfer.effectAllowed = "move"; } catch (e) {} });
+document.addEventListener("dragend", ev => { ev.target.closest?.(".card")?.classList.remove("dragging"); document.querySelectorAll(".quad.over").forEach(q => q.classList.remove("over")); dragId = null; setTimeout(() => { dragMoved = false; }, 50); });
+document.addEventListener("dragover", ev => { const q = ev.target.closest?.(".quad[data-quad]"); if (!q || !dragId || q.dataset.quad === "—") return; ev.preventDefault(); document.querySelectorAll(".quad.over").forEach(x => x !== q && x.classList.remove("over")); q.classList.add("over"); });
+document.addEventListener("drop", ev => { const q = ev.target.closest?.(".quad[data-quad]"); if (!q || !dragId) return; ev.preventDefault(); q.classList.remove("over"); if (q.dataset.quad !== "—") setQuad(dragId, q.dataset.quad); });
+
+/* ---------- Démarrage ---------- */
+async function init(){
+  route();
+  const use = window.claude && window.claude.use ? window.claude.use.bind(window.claude) : null;
+  const db = use ? await use("db") : null;
+  if (!db) { S.status = "nodb"; render(true); return; }
+  S.db = db;
+  const timer = setTimeout(() => { if (!S.confirmed) { S.slow = true; render(); } }, 10000);
+  db.collection("tasks").onSnapshot(snap => {
+    S.tasks = new Map(snap.docs.map(d => [d.id, {id:d.id, ...d.data()}]));
+    if (S.status === "loading") { S.status = "ready"; S.built = null; }
+    if (!snap.metadata.fromCache) { S.confirmed = true; S.slow = false; clearTimeout(timer); }
+    schedule();
+  }, err => { clearTimeout(timer); S.status = "error"; S.error = err && err.code; render(true); });
+  db.doc("meta/lists").onSnapshot(s => {
+    const d = (s.exists && s.data()) || {};
+    S.lists = {projets: Array.isArray(d.projets) ? d.projets : [], responsables: Array.isArray(d.responsables) ? d.responsables : [], types: Array.isArray(d.types) ? d.types : []};
+    S.listsLoaded = true;
+    if (S.view === "taches") S.built = null;
+    schedule();
+  }, () => {});
+  const user = use ? await use("user") : null;
+  if (user) { try { const w = await user.can("data.write"); if (w === false) { S.canWrite = false; render(true); } } catch (e) {} }
+}
+setInterval(() => { if (S.status === "ready" && !S.edit) render(); }, 60000);
+init();
+})();
+</script>
+
+<script>
+if ("serviceWorker" in navigator) { window.addEventListener("load", () => { navigator.serviceWorker.register("./sw.js").catch(() => {}); }); }
+</script>
+</body>
+</html>
