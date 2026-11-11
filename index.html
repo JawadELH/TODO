@@ -552,25 +552,44 @@ button.gt-name:hover{background:var(--surface-2)}
 .blk-add input,.blk-add select{border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:8px;min-width:0}
 input[type=range]{accent-color:var(--accent);width:100%}
 
-/* Info-bulles */
-.tip{position:fixed;left:0;top:0;z-index:300;width:max-content;max-width:340px;min-width:250px;background:color-mix(in srgb,var(--surface) 94%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid var(--line-2);border-top:3px solid var(--pc);border-radius:10px;box-shadow:0 18px 44px rgba(0,0,0,.6),0 0 0 1px rgba(0,0,0,.2);padding:10px 12px 9px;pointer-events:none;opacity:0;transform:translateY(4px);transition:opacity .12s ease,transform .12s ease;font-size:12.5px;line-height:1.4;color:var(--ink)}
+/* Info-bulles : bulle ancrée (ordinateur) + fiche pop-up (smartphone) */
+.tip{position:fixed;left:0;top:0;z-index:300;width:max-content;min-width:300px;max-width:min(400px,calc(100vw - 20px));background:var(--surface);border:1px solid color-mix(in srgb,var(--pc) 60%,var(--line-2));border-radius:12px;box-shadow:0 24px 60px rgba(0,0,0,.75),0 0 0 1px rgba(0,0,0,.35),0 0 34px color-mix(in srgb,var(--pc) 30%,transparent);pointer-events:none;opacity:0;transform:translateY(6px) scale(.98);transform-origin:top center;transition:opacity .14s ease,transform .14s ease;font-size:13.5px;line-height:1.45;color:var(--ink)}
+.tip.up{transform-origin:bottom center}
 .tip.on{opacity:1;transform:none}
-.tip-top{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:6px}
-.tip-t{font-weight:600;font-size:14px;line-height:1.3;margin-bottom:7px;overflow-wrap:anywhere}
-.tip-slot{display:inline-block;font-family:var(--f-mono);font-size:11.5px;color:var(--accent);background:var(--accent-soft);border-radius:5px;padding:2px 7px;margin-bottom:8px}
-.tip dl{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin:0}
-.tip dt{color:var(--muted);font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;padding-top:2px;white-space:nowrap}
+.tip-arrow{position:absolute;top:-8px;width:14px;height:14px;margin-left:-7px;transform:rotate(45deg);background:color-mix(in srgb,var(--pc) 32%,var(--surface));border-left:1px solid color-mix(in srgb,var(--pc) 60%,var(--line-2));border-top:1px solid color-mix(in srgb,var(--pc) 60%,var(--line-2))}
+.tip.up .tip-arrow{top:auto;bottom:-8px;background:var(--surface);border:0;border-right:1px solid color-mix(in srgb,var(--pc) 60%,var(--line-2));border-bottom:1px solid color-mix(in srgb,var(--pc) 60%,var(--line-2))}
+.tip-head{position:relative;padding:12px 15px 11px;border-radius:12px 12px 0 0;background:linear-gradient(120deg,color-mix(in srgb,var(--pc) 32%,var(--surface)),color-mix(in srgb,var(--pc) 10%,var(--surface)) 70%);border-bottom:1px solid color-mix(in srgb,var(--pc) 35%,var(--line))}
+.tip-top{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:7px}
+.tip-top .pill{font-size:11.5px}
+.tip-t{font-family:var(--f-display);font-weight:800;font-size:17px;line-height:1.25;overflow-wrap:anywhere}
+.tip-slot{display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-family:var(--f-mono);font-size:12px;font-weight:600;color:var(--accent-ink);background:var(--accent);border-radius:6px;padding:3px 9px}
+.tip-body{padding:11px 15px 12px}
+.tip dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:0}
+.tip dt{color:var(--muted);font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;padding-top:2px;white-space:nowrap}
 .tip dd{margin:0;min-width:0;overflow-wrap:anywhere}
-.tip .late{color:var(--late);font-weight:600} .tip .today{color:var(--today);font-weight:600} .tip .week{color:var(--week);font-weight:600}
-.tip .warn{color:var(--today);font-weight:600} .tip .ok{color:var(--done);font-weight:600} .tip .mut{color:var(--muted)}
-.tip-pr{display:flex;align-items:center;gap:8px}
-.tip-bar{flex:1;height:5px;border-radius:3px;background:var(--surface-2);overflow:hidden;min-width:90px}
-.tip-bar i{display:block;height:100%;background:var(--pc);box-shadow:0 0 8px var(--pc)}
-.tip-next{display:flex;flex-wrap:wrap;gap:4px 6px;align-items:center;margin-top:8px;padding-top:7px;border-top:1px solid var(--line)}
-.tip-next span{width:100%;color:var(--muted);font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
-.tip-next em{font-style:normal;font-family:var(--f-mono);font-size:11px;background:var(--surface-2);border-radius:5px;padding:1px 6px}
-.tip-com{margin-top:8px;padding-top:7px;border-top:1px solid var(--line);color:var(--muted);font-style:italic;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.tip-hint{margin-top:8px;font-size:10.5px;color:var(--muted);opacity:.8}
+.tip .late{color:var(--late);font-weight:700} .tip .today{color:var(--today);font-weight:700} .tip .week{color:var(--week);font-weight:700}
+.tip .warn{color:var(--today);font-weight:700} .tip .ok{color:var(--done);font-weight:700} .tip .mut{color:var(--muted)}
+.tip-pr{display:flex;align-items:center;gap:9px}
+.tip-bar{flex:1;height:7px;border-radius:4px;background:var(--surface-2);overflow:hidden;min-width:110px}
+.tip-bar i{display:block;height:100%;border-radius:4px;background:var(--pc);box-shadow:0 0 10px var(--pc)}
+.tip-next{display:flex;flex-wrap:wrap;gap:5px 6px;align-items:center;margin-top:10px;padding-top:9px;border-top:1px solid var(--line)}
+.tip-next span{width:100%;color:var(--muted);font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em}
+.tip-next em{font-style:normal;font-family:var(--f-mono);font-size:11.5px;background:var(--surface-2);border:1px solid var(--line);border-radius:6px;padding:2px 7px}
+.tip-com{margin-top:10px;padding:8px 10px;border-radius:8px;background:var(--surface-2);color:color-mix(in srgb,var(--ink) 80%,transparent);font-style:italic;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.tip-hint{margin-top:10px;font-size:11px;color:var(--muted)}
+/* fiche pop-up mobile */
+.tip-back{position:fixed;inset:0;z-index:290;background:rgba(2,4,8,.6);opacity:0;transition:opacity .16s ease}
+.tip-back.on{opacity:1}
+.tip.tip-sheet{left:max(10px,env(safe-area-inset-left,0px));right:max(10px,env(safe-area-inset-right,0px));top:auto!important;bottom:calc(env(safe-area-inset-bottom,0px) + 80px);width:auto;min-width:0;max-width:560px;margin:0 auto;max-height:72vh;overflow-y:auto;pointer-events:auto;border-radius:18px;transform:translateY(24px);font-size:15px}
+.tip.tip-sheet.on{transform:none}
+.tip-sheet .tip-head{border-radius:18px 18px 0 0;padding:16px 16px 13px}
+.tip-sheet .tip-t{font-size:20px;padding-right:34px}
+.tip-sheet .tip-body{padding:13px 16px}
+.tip-sheet dt{font-size:11px}
+.tip-grip{display:block;width:40px;height:4px;border-radius:2px;background:var(--line-2);margin:8px auto -4px;position:relative;z-index:1}
+.tip-x{position:absolute;top:12px;right:12px;width:34px;height:34px;border-radius:10px;border:1px solid var(--line-2);background:color-mix(in srgb,var(--surface) 70%,transparent);color:var(--ink);font-size:20px;line-height:1;padding:0}
+.tip-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;padding:0 16px 16px}
+.tip-actions .btn{padding:12px 10px;font-size:15px;font-weight:600}
 
 .mobile-tabs{display:none}
 .auth{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:24px max(16px,env(safe-area-inset-right,0px)) 24px max(16px,env(safe-area-inset-left,0px));overflow-y:auto}
@@ -1553,27 +1572,28 @@ async function endDrag(ev, ok){
 document.addEventListener("pointerup", ev => endDrag(ev, true));
 document.addEventListener("pointercancel", ev => endDrag(ev, false));
 
-/* ---------- Info-bulles au survol (souris) et au focus clavier ---------- */
-const TT = {el:null, timer:0, cur:null, x:0, y:0};
+/* ---------- Info-bulles : survol (ordinateur) et fiche pop-up au toucher (smartphone) ---------- */
+const TT = {el:null, timer:0, cur:null, x:0, y:0, lastType:"mouse", sheet:null, back:null};
 function relDay(d){
   const n = diffDays(d, today());
   return n < 0 ? `en retard de ${-n} j` : n === 0 ? "aujourd'hui" : n === 1 ? "demain" : `dans ${n} j`;
 }
-function tipHtml(t, host){
+function tipHtml(t, host, opts = {}){
   const sp = planSpan(t), bl = blocsOf(t), est = Number(t.heures) || 0, sch = schedMin(t) / 60;
   const q = quadrant(t), a = alerte(t), pr = isDone(t) ? 100 : Math.max(0, Math.min(100, Number(t.avancement) || 0));
   const rows = [];
   let slot = "";
   const i = host && host.dataset && host.dataset.i != null ? Number(host.dataset.i) : NaN;
-  if (host && host.classList.contains("blk")) {
+  const isBlk = host && host.classList && host.classList.contains("blk");
+  if (isBlk) {
     if (i >= 0 && bl[i]) { const b = bl[i]; slot = `${JOURS[parseYmd(b.d).getDay()]} ${fmt(b.d)} · ${hhmm(b.s)} – ${hhmm(b.s + b.m)} (${hfmt(b.m / 60)} h)`; }
-    else if (Array.isArray(t.jours) && t.jours.length) { const s0 = isFinite(t.recH) ? t.recH : 540; slot = `Réunion récurrente · ${hhmm(s0)} – ${hhmm(s0 + Math.max(15, Math.round((est || 1) * 60)))}`; }
+    else if (Array.isArray(t.jours) && t.jours.length) { const s0 = isFinite(t.recH) ? t.recH : 540; slot = `Récurrent · ${hhmm(s0)} – ${hhmm(s0 + Math.max(15, Math.round((est || 1) * 60)))}`; }
   }
   if (validYmd(t.echeance)) rows.push(["Échéance", `<span class="${isDone(t) ? "" : a}">${fmt(t.echeance, true)}${isDone(t) ? "" : " · " + relDay(t.echeance)}</span>`]);
   if (sp) rows.push(["Planning", `${fmt(sp[0])}${sp[1] !== sp[0] ? " → " + fmt(sp[1]) + ` <span class="mut">(${diffDays(sp[1], sp[0]) + 1} j)</span>` : ""}${planState(t) === "late" ? ' <span class="late">dépassé</span>' : ""}`]);
   if (est || sch) {
     const rem = est ? est - sch : 0;
-    rows.push(["Temps", `${est ? hfmt(est) + " h estimées" : "non estimé"}${sch ? " · " + hfmt(sch) + " h placées" : ""}${est && !isDone(t) ? (rem > 0 ? ` · <b>reste ${hfmt(rem)} h</b>` : rem < 0 ? ` · <span class="warn">+${hfmt(-rem)} h</span>` : ' · <span class="ok">tout placé</span>') : ""}`]);
+    rows.push(["Temps", `${est ? hfmt(est) + " h estimées" : "non estimé"}${sch ? " · " + hfmt(sch) + " h placées" : ""}${est && !isDone(t) ? (rem > 0 ? ` · <b class="warn">reste ${hfmt(rem)} h</b>` : rem < 0 ? ` · <span class="warn">+${hfmt(-rem)} h</span>` : ' · <span class="ok">tout placé</span>') : ""}`]);
   }
   if (pr || sp) rows.push(["Avancement", `<span class="tip-pr"><span class="tip-bar"><i style="width:${pr}%"></i></span><b>${pr} %</b></span>`]);
   if (t.priorite) rows.push(["Priorité", `<span class="${t.priorite === "Haute" ? "late" : ""}">${esc(t.priorite)}</span>`]);
@@ -1581,38 +1601,54 @@ function tipHtml(t, host){
   if (t.theme) rows.push(["Thème", esc(t.theme)]);
   if (Array.isArray(t.jours) && t.jours.length) rows.push(["Répétition", `chaque ${t.jours.slice().sort((x, y) => ((x + 6) % 7) - ((y + 6) % 7)).map(n => JOURS_COURTS[n]).join(", ")} à ${hhmm(isFinite(t.recH) ? t.recH : 540)}`]);
   const nowM = nowMin(), td = today();
-  const next = bl.map((b, k) => ({...b, k})).filter(b => b.d > td || (b.d === td && b.s + b.m > nowM)).sort((x, y) => x.d.localeCompare(y.d) || x.s - y.s).filter(b => !(host && host.classList.contains("blk") && b.k === i)).slice(0, 3);
-  const inPlan = S.view === "planning";
-  return `<div class="tip-top"><span class="pill proj" style="--pc:${projColor(t.projet)}">${esc(t.projet || "Sans projet")}</span>
-      <span class="pill st" style="--sc:var(${ST_VAR[t.statut] || "--muted"})">${esc(t.statut || "À faire")}</span>
-      ${q ? `<span class="pill q" style="--qc:var(${QMAP[q].v})">${QMAP[q].label}</span>` : ""}</div>
-    <div class="tip-t">${isDone(t) ? "✓ " : ""}${esc(t.tache)}</div>
-    ${slot ? `<div class="tip-slot">${slot}</div>` : ""}
-    ${rows.length ? `<dl>${rows.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("")}</dl>` : ""}
-    ${next.length ? `<div class="tip-next"><span>Prochains créneaux</span>${next.map(b => `<em>${JOURS_COURTS[parseYmd(b.d).getDay()]} ${fmt(b.d)} · ${hhmm(b.s)}–${hhmm(b.s + b.m)}</em>`).join("")}</div>` : ""}
-    ${t.commentaires ? `<div class="tip-com">${esc(t.commentaires)}</div>` : ""}
-    <div class="tip-hint">${inPlan && S.canWrite !== false ? "Clic : modifier · Glisser : déplacer" : "Clic : modifier"}</div>`;
+  const next = bl.map((b, k) => ({...b, k})).filter(b => b.d > td || (b.d === td && b.s + b.m > nowM)).sort((x, y) => x.d.localeCompare(y.d) || x.s - y.s).filter(b => !(isBlk && b.k === i)).slice(0, 3);
+  const ro = S.canWrite === false;
+  const acts = opts.actions ? `<div class="tip-actions">
+      <button class="btn primary" data-act="tip-edit">Modifier</button>
+      ${ro ? "" : `<button class="btn" data-act="tip-done">${isDone(t) ? "Rouvrir" : "✓ Terminée"}</button>`}
+      ${!ro && isBlk && i >= 0 ? `<button class="btn" data-act="tip-blkdel">Retirer le créneau</button>` : ""}
+      ${!ro && !isDone(t) && S.view === "planning" && S.plan.mode === "agenda" && !isBlk ? `<button class="btn" data-act="tip-caser">Caser</button>` : ""}
+    </div>` : "";
+  return `<div class="tip-head">
+      <div class="tip-top"><span class="pill proj" style="--pc:${projColor(t.projet)}">${esc(t.projet || "Sans projet")}</span>
+        <span class="pill st" style="--sc:var(${ST_VAR[t.statut] || "--muted"})">${esc(t.statut || "À faire")}</span>
+        ${q ? `<span class="pill q" style="--qc:var(${QMAP[q].v})">${QMAP[q].label}</span>` : ""}
+        ${opts.actions ? '<button class="tip-x" data-act="tip-close" aria-label="Fermer">×</button>' : ""}</div>
+      <div class="tip-t">${isDone(t) ? "✓ " : ""}${esc(t.tache)}</div>
+      ${slot ? `<div class="tip-slot">${slot}</div>` : ""}
+    </div>
+    <div class="tip-body">
+      ${rows.length ? `<dl>${rows.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("")}</dl>` : '<p class="mut" style="margin:0">Aucun détail renseigné.</p>'}
+      ${next.length ? `<div class="tip-next"><span>Prochains créneaux</span>${next.map(b => `<em>${JOURS_COURTS[parseYmd(b.d).getDay()]} ${fmt(b.d)} · ${hhmm(b.s)}–${hhmm(b.s + b.m)}</em>`).join("")}</div>` : ""}
+      ${t.commentaires ? `<div class="tip-com">${esc(t.commentaires)}</div>` : ""}
+      ${opts.actions ? "" : `<div class="tip-hint">${S.view === "planning" && !ro ? "Clic : modifier · Glisser : déplacer" : "Clic : modifier"}</div>`}
+    </div>${acts}`;
 }
 function tipTarget(el){
-  if (!el || !el.closest || el.closest(".sheet,.tip")) return null;
+  if (!el || !el.closest || el.closest(".sheet,.tip,.tip-sheet")) return null;
   const host = el.closest("[data-id]"); if (!host) return null;
   if (host.classList.contains("gt-row") && !el.closest(".gt-name,.gb,.gd")) return null;  // Gantt : seulement le nom et la barre
   if (host.classList.contains("gt-tl")) return null;
   return S.tasks.has(host.dataset.id) ? host : null;
 }
+/* ----- ordinateur : bulle ancrée sur l'élément survolé, avec flèche ----- */
 function placeTip(){
-  const el = TT.el; if (!el) return;
-  const w = el.offsetWidth, h = el.offsetHeight, vw = window.innerWidth, vh = window.innerHeight;
-  let x = TT.x + 16, y = TT.y + 18;
-  if (x + w > vw - 8) x = Math.max(8, TT.x - w - 16);
-  if (y + h > vh - 8) y = Math.max(8, TT.y - h - 14);
-  el.style.left = x + "px"; el.style.top = y + "px";
+  const el = TT.el, host = TT.cur; if (!el || !host) return;
+  const r = (TT.anchor || host).getBoundingClientRect(), w = el.offsetWidth, h = el.offsetHeight, vw = window.innerWidth, vh = window.innerHeight;
+  const ax = Math.max(r.left + 12, Math.min(r.right - 12, TT.x));
+  let x = Math.max(10, Math.min(vw - w - 10, ax - w / 2));
+  let below = r.bottom + 12 + h <= vh - 10 || r.top - 12 - h < 10;
+  let y = below ? Math.min(r.bottom + 12, vh - h - 10) : r.top - 12 - h;
+  el.style.left = x + "px"; el.style.top = Math.max(10, y) + "px";
+  el.classList.toggle("up", !below);
+  const ar = el.querySelector(".tip-arrow"); if (ar) ar.style.left = Math.max(16, Math.min(w - 16, ax - x)) + "px";
 }
 function showTip(host){
-  const t = S.tasks.get(host.dataset.id); if (!t || !document.body.contains(host) || (PD && PD.active)) return;
+  const t = S.tasks.get(host.dataset.id); if (!t || !document.body.contains(host) || (PD && PD.active) || TT.sheet) return;
   if (!TT.el) { TT.el = document.createElement("div"); TT.el.className = "tip"; TT.el.setAttribute("role", "tooltip"); document.body.appendChild(TT.el); }
   TT.el.style.setProperty("--pc", projColor(t.projet));
-  TT.el.innerHTML = tipHtml(t, host);
+  TT.el.innerHTML = '<span class="tip-arrow"></span>' + tipHtml(t, host);
+  TT.anchor = host.classList.contains("gt-row") ? (host.querySelector(".gb") && TT.overBar ? host.querySelector(".gb") : host.querySelector(".gt-name")) : host;
   placeTip();
   requestAnimationFrame(() => TT.el && TT.el.classList.add("on"));
 }
@@ -1621,25 +1657,50 @@ document.addEventListener("pointerover", ev => {
   if (ev.pointerType && ev.pointerType !== "mouse") return;
   if (PD && PD.active) return;
   const host = tipTarget(ev.target);
+  TT.overBar = !!(ev.target.closest && ev.target.closest(".gb"));
   if (host === TT.cur) return;
   hideTip(); if (!host) return;
   TT.cur = host; TT.x = ev.clientX; TT.y = ev.clientY;
-  TT.timer = setTimeout(() => showTip(host), 320);
+  TT.timer = setTimeout(() => showTip(host), 220);
 });
-document.addEventListener("pointermove", ev => {
-  if (!TT.cur || (ev.pointerType && ev.pointerType !== "mouse")) return;
-  TT.x = ev.clientX; TT.y = ev.clientY;
-  if (TT.el && TT.el.classList.contains("on")) placeTip();
-});
+document.addEventListener("pointermove", ev => { if (TT.cur && ev.pointerType === "mouse" && !(TT.el && TT.el.classList.contains("on"))) { TT.x = ev.clientX; TT.y = ev.clientY; } });
 document.addEventListener("pointerout", ev => { if (TT.cur && !(ev.relatedTarget && TT.cur.contains(ev.relatedTarget))) hideTip(); });
-document.addEventListener("pointerdown", hideTip, true);
+document.addEventListener("pointerdown", ev => { TT.lastType = ev.pointerType || "mouse"; hideTip(); }, true);
 document.addEventListener("scroll", hideTip, true);
-document.addEventListener("keydown", ev => { if (ev.key === "Escape") hideTip(); });
+document.addEventListener("keydown", ev => { if (ev.key === "Escape") { hideTip(); closeTipSheet(); } });
 document.addEventListener("focusin", ev => {
   const host = tipTarget(ev.target); if (!host || !ev.target.matches(":focus-visible")) return;
-  const r = host.getBoundingClientRect(); TT.cur = host; TT.x = r.left; TT.y = r.bottom; clearTimeout(TT.timer); showTip(host);
+  const r = host.getBoundingClientRect(); TT.cur = host; TT.x = r.left + Math.min(r.width / 2, 60); TT.y = r.bottom; clearTimeout(TT.timer); showTip(host);
 });
 document.addEventListener("focusout", () => hideTip());
+/* ----- smartphone / tablette : fiche pop-up au toucher, avec actions ----- */
+function openTipSheet(host){
+  const t = S.tasks.get(host.dataset.id); if (!t) return;
+  hideTip(); closeTipSheet(true);
+  const back = document.createElement("div"); back.className = "tip-back"; back.dataset.act = "tip-close";
+  const sh = document.createElement("div"); sh.className = "tip tip-sheet"; sh.setAttribute("role", "dialog"); sh.setAttribute("aria-label", t.tache);
+  sh.dataset.id = t.id; if (host.classList.contains("blk")) sh.dataset.i = host.dataset.i;
+  sh.style.setProperty("--pc", projColor(t.projet));
+  sh.innerHTML = '<span class="tip-grip"></span>' + tipHtml(t, host, {actions:true});
+  document.body.append(back, sh); TT.sheet = sh; TT.back = back;
+  requestAnimationFrame(() => { back.classList.add("on"); sh.classList.add("on"); });
+}
+function closeTipSheet(now){
+  const sh = TT.sheet, bk = TT.back; TT.sheet = null; TT.back = null; if (!sh) return;
+  if (now) { sh.remove(); bk && bk.remove(); return; }
+  sh.classList.remove("on"); bk && bk.classList.remove("on"); setTimeout(() => { sh.remove(); bk && bk.remove(); }, 180);
+}
+async function tipAction(act, a){
+  const sh = a.closest(".tip-sheet"), id = sh ? sh.dataset.id : null, t = id && S.tasks.get(id);
+  if (act === "tip-close" || !t) { closeTipSheet(); return; }
+  closeTipSheet();
+  if (act === "tip-edit") openEditor(id);
+  if (act === "tip-done") toggleDone(id);
+  if (act === "tip-blkdel") { const i = Number(sh.dataset.i); await writeBlocs(t, blocsOf(t).filter((_, k) => k !== i), "Créneau retiré"); }
+  if (act === "tip-caser") { const fake = {dataset:{}, closest:() => null}; await planClick("ag-auto", fake, id); }
+}
+/* au toucher, « ouvrir la fiche » montre d'abord la pop-up d'infos */
+const wantsSheet = () => TT.lastType !== "mouse";
 
 /* ---------- Rendu principal ---------- */
 function render(force){
@@ -1985,6 +2046,8 @@ document.addEventListener("click", async ev => {
   const act = a.dataset.act;
   const id = a.closest("[data-id]")?.dataset.id;
   if (await planClick(act, a, id, ev)) return;
+  if (act.startsWith("tip-")) { tipAction(act, a); return; }
+  if (act === "edit" && id && wantsSheet() && !dragMoved && !S.edit && !a.closest(".tip-sheet")) { openTipSheet(a.closest("[data-id]")); return; }
   if (act === "close-ed") { if (ev.target === a || a.tagName === "BUTTON") closeEditor(); return; }
   if (act === "edit" && id) { if (dragMoved) return; openEditor(id); return; }
   if (act === "new") { openEditor(null, {projet: a.dataset.proj}); return; }
