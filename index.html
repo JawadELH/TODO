@@ -678,6 +678,11 @@ input[type=range]{accent-color:var(--accent);width:100%}
   .dec-hint{display:none}
   .dd-act{margin-left:0}
 }
+.dec-year td:first-child{font-family:var(--f-body)} .dec-year td{font-family:var(--f-mono)}
+.dec-year .dt-ok{color:var(--done)} .dec-year .dt-over{color:var(--week)} .dec-year .dt-under{color:var(--today)}
+.dec-ytot td{font-weight:700;border-top:1px solid var(--line-2)}
+.dec-main .tbl-wrap{padding:6px 10px}
+.btn.armed{border-color:var(--late);color:var(--late)}
 .mobile-tabs{display:none}
 .auth{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:24px max(16px,env(safe-area-inset-right,0px)) 24px max(16px,env(safe-area-inset-left,0px));overflow-y:auto}
 .auth-card{width:min(400px,100%);display:grid;gap:12px}
@@ -1823,6 +1828,7 @@ const ABS_PART = {j:"Journée", am:"Matin", pm:"Après-midi"};
 const refList = () => (S.prefs && Array.isArray(S.prefs.refs) && S.prefs.refs.length ? S.prefs.refs : DEC_REFS);
 function refGuess(p){ if (!p) return ""; const n = norm(p); const m = refList().filter(r => norm(r).includes(n)); return m.length === 1 ? m[0] : ""; }
 function refOfProj(p){ const map = (S.prefs && S.prefs.refMap) || {}; return Object.prototype.hasOwnProperty.call(map, p) ? map[p] : refGuess(p); }
+function projOfRef(ref){ if (!ref) return []; const p = allProjets().filter(x => refOfProj(x) === ref); return p.length ? [p[0]] : []; }
 const refOfTask = t => (t.reference || refOfProj(t.projet) || "");
 const decArr = () => { const n = Number(S.prefs && S.prefs.arr); return [1, 5, 15, 30].includes(n) ? n : 15; };
 function collabName(){ const p = S.prefs && S.prefs.collab; if (p) return p; const em = window.TODO_ACCOUNT && window.TODO_ACCOUNT.email; return em ? em.split("@")[0].split(/[._+-]/)[0].toUpperCase() : "JAWAD"; }
@@ -1883,7 +1889,8 @@ const roundArr = min => { const r = decArr(); return min > 0 ? Math.max(r, Math.
 /* lignes d'une journée : calculées + saisies à la main */
 function decRows(d){
   const doc = decDoc(d), ov = doc.rows || {}, rows = [];
-  for (const g of decSplit(decItems(d), refOfTask)) {
+  const hasImp = (doc.manual || []).some(x => x.d === d && x.imp);
+  for (const g of hasImp ? [] : decSplit(decItems(d), refOfTask)) {
     const key = d + "|" + g.k, o = ov[key] || {};
     const tasks = [...g.tasks.values()].sort((x, y) => x.s - y.s).map(x => x.t);
     const autoDesc = [...new Set(tasks.map(t => String(t.tache || "").trim()).filter(Boolean))].join(" + ");
@@ -1892,16 +1899,17 @@ function decRows(d){
       desc:o.desc != null ? o.desc : autoDesc, autoDesc, descOv:o.desc != null, dep:!!o.dep, lieu:o.lieu || "", km:o.km || "", fact:o.fact || "",
       tasks, projets:[...new Set(tasks.map(t => t.projet).filter(Boolean))], src:"planning"});
   }
-  for (const r of (doc.manual || []).filter(x => x.d === d)) rows.push({key:"m:" + r.id, id:r.id, d, ref:r.ref || "", auto:0, m:Number(r.m) || 0, desc:r.desc || "", dep:!!r.dep, lieu:r.lieu || "", km:r.km || "", fact:r.fact || "", tasks:[], projets:[], src:"manuel"});
+  for (const r of (doc.manual || []).filter(x => x.d === d)) rows.push({key:"m:" + r.id, id:r.id, d, ref:r.ref || "", auto:0, m:Number(r.m) || 0, desc:r.desc || "", dep:!!r.dep, lieu:r.lieu || "", km:r.km || "", fact:r.fact || "", tasks:[], projets:projOfRef(r.ref), src:"manuel", imp:!!r.imp});
   return rows;
 }
 function decPeriod(){
   const D = S.dec; if (!validYmd(D.ref)) D.ref = today();
   let a, b, label;
-  if (D.mode === "semaine") { a = mondayOf(D.ref); b = addDays(a, 6); const m1 = parseYmd(a), m2 = parseYmd(b); label = `Semaine ${isoWeek(m1)} <span class="ttl-d">${m1.getDate()}${m1.getMonth() !== m2.getMonth() ? " " + MOIS_COURTS[m1.getMonth()] : ""} – ${m2.getDate()} ${MOIS_COURTS[m2.getMonth()]} ${m2.getFullYear()}</span>`; }
+  if (D.mode === "annee") { const y = parseYmd(D.ref).getFullYear(); a = `${y}-01-01`; b = `${y}-12-31`; label = `Année <span class="ttl-d">${y}</span>`; }
+  else if (D.mode === "semaine") { a = mondayOf(D.ref); b = addDays(a, 6); const m1 = parseYmd(a), m2 = parseYmd(b); label = `Semaine ${isoWeek(m1)} <span class="ttl-d">${m1.getDate()}${m1.getMonth() !== m2.getMonth() ? " " + MOIS_COURTS[m1.getMonth()] : ""} – ${m2.getDate()} ${MOIS_COURTS[m2.getMonth()]} ${m2.getFullYear()}</span>`; }
   else { const r = parseYmd(D.ref); a = ymd(new Date(r.getFullYear(), r.getMonth(), 1)); b = ymd(new Date(r.getFullYear(), r.getMonth() + 1, 0)); label = `${MOIS[r.getMonth()].charAt(0).toUpperCase() + MOIS[r.getMonth()].slice(1)} <span class="ttl-d">${r.getFullYear()}</span>`; }
   const td = today(), lim = D.upto && td >= a && td <= b ? td : b;
-  return {a, b, lim, label, file: D.mode === "semaine" ? `S${z2(isoWeek(parseYmd(a)))}-${parseYmd(a).getFullYear()}` : a.slice(0, 7)};
+  return {a, b, lim, label, file: D.mode === "annee" ? a.slice(0, 4) : D.mode === "semaine" ? `S${z2(isoWeek(parseYmd(a)))}-${parseYmd(a).getFullYear()}` : a.slice(0, 7)};
 }
 function decData(){
   const P = decPeriod(), days = [];
@@ -1911,6 +1919,7 @@ function decData(){
     const tot = rows.reduce((s, r) => s + r.m, 0);
     days.push({d, rows, cap, ab, absH:absHours(d), tot});
   }
+  if (S.dec.mode === "annee") { const act = new Set(days.filter(x => x.rows.some(r => r.m)).map(x => monthOf(x.d))); return {P, days:days.filter(x => act.has(monthOf(x.d)))}; }
   return {P, days};
 }
 
@@ -1922,7 +1931,7 @@ function refSelect(r){
 }
 function decRowHtml(r, future){
   const ro = S.canWrite === false;
-  const info = r.src === "manuel" ? '<span class="dec-src man">saisie manuelle</span>'
+  const info = r.src === "manuel" ? `${r.projets.map(p => `<span class="pill proj" style="--pc:${projColor(p)}">${esc(p)}</span>`).join("")}<span class="dec-src man">${r.imp ? "importée" : "saisie manuelle"}</span>`
     : `${r.projets.map(p => `<span class="pill proj" style="--pc:${projColor(p)}">${esc(p)}</span>`).join("")}<span class="dec-src">${r.tasks.length} tâche${r.tasks.length > 1 ? "s" : ""} · planning ${durTxt(r.auto)}</span>`;
   return `<div class="dec-row ${r.m === 0 ? "off" : ""} ${future ? "fut" : ""}" data-key="${esc(r.key)}" data-d="${r.d}" ${r.id ? `data-mid="${esc(r.id)}"` : ""}>
     <div class="c-dur">${decIn("m", r, durTxt(r.m), 'inputmode="decimal" aria-label="Durée"')}${r.mOv ? `<button class="dec-reset" data-act="dec-reset" data-f="m" title="Revenir au temps du planning (${durTxt(r.auto)})">↺</button>` : ""}</div>
@@ -1948,12 +1957,12 @@ function decRecap(days){
     for (const r of D.rows) { if (!r.m) continue; tot += r.m; byRef.set(r.ref, (byRef.get(r.ref) || 0) + r.m); km += parseFloat(String(r.km).replace(",", ".")) || 0; if (!r.ref) noRef++; }
     /* projets : même partage du temps en parallèle, calé sur les durées déclarées */
     const sp = decSplit(decItems(D.d), t => t.projet || "Sans projet"), spTot = sp.reduce((s, x) => s + x.min, 0);
-    const decl = D.rows.filter(r => r.src !== "manuel").reduce((s, r) => s + r.m, 0), man = D.rows.filter(r => r.src === "manuel").reduce((s, r) => s + r.m, 0);
+    const decl = D.rows.filter(r => r.src !== "manuel").reduce((s, r) => s + r.m, 0);
     for (const x of sp) byProj.set(x.k, (byProj.get(x.k) || 0) + (spTot ? x.min / spTot * decl : 0));
-    if (man) byProj.set("Saisie manuelle", (byProj.get("Saisie manuelle") || 0) + man);
+    for (const r of D.rows.filter(r => r.src === "manuel" && r.m)) { const k = r.projets[0] || "Autres références"; byProj.set(k, (byProj.get(k) || 0) + r.m); }
   }
   const refs = [...byRef].map(([k, m]) => ({k, m})).sort((a, b) => b.m - a.m);
-  const projs = [...byProj].map(([k, m]) => ({k, m, c: k === "Saisie manuelle" || k === "Sans projet" ? "" : projColor(k)})).filter(x => x.m > 0).sort((a, b) => b.m - a.m);
+  const projs = [...byProj].map(([k, m]) => ({k, m, c: k === "Autres références" || k === "Sans projet" ? "" : projColor(k)})).filter(x => x.m > 0).sort((a, b) => b.m - a.m);
   return {tot, cap:cap * 60, absJ, km, noRef, refs, projs};
 }
 function viewHeures(){
@@ -1978,7 +1987,9 @@ function viewHeures(){
     </section>`;
   }
   flushWk();
-  const nav = `<div class="segbar big"><button data-act="dec-mode" data-m="semaine" aria-pressed="${D.mode === "semaine"}">Semaine</button><button data-act="dec-mode" data-m="mois" aria-pressed="${D.mode !== "semaine"}">Mois</button></div>
+  if (D.mode === "annee") html = decYearHtml(days);
+  const nImp = days.reduce((s, x) => s + x.rows.filter(r => r.imp).length, 0);
+  const nav = `<div class="segbar big"><button data-act="dec-mode" data-m="semaine" aria-pressed="${D.mode === "semaine"}">Semaine</button><button data-act="dec-mode" data-m="mois" aria-pressed="${D.mode === "mois"}">Mois</button><button data-act="dec-mode" data-m="annee" aria-pressed="${D.mode === "annee"}">Année</button></div>
     <div class="segbar"><button data-act="dec-prev" aria-label="Précédent">‹</button><button data-act="dec-today">Aujourd'hui</button><button data-act="dec-next" aria-label="Suivant">›</button></div>
     <label class="toggle"><input type="checkbox" id="dec-upto" ${D.upto ? "checked" : ""}> Jusqu'à aujourd'hui</label>`;
   return `<div class="view-head plan-head"><div><div class="eyebrow">Décompte des heures · ${esc(collabName())}</div><h1>${P.label}</h1></div><div class="pnav">${nav}</div></div>
@@ -1989,12 +2000,12 @@ function viewHeures(){
       <div class="kc"><span class="kc-l">Absences</span><span class="kc-v">${hfmt(R.absJ)} j</span></div>
       <div class="kc"><span class="kc-l">Sans référence</span><span class="kc-v ${R.noRef ? "warn" : ""}">${R.noRef}</span></div>
     </div>
-    <div class="dec-tools">${ro ? "" : `<button class="btn primary" data-act="dec-copy">Copier pour Excel</button>`}<button class="btn" data-act="dec-xlsx">Exporter en .xlsx</button>${ro ? "" : `<button class="btn" data-act="dec-add" data-d="${P.lim >= td && P.a <= td ? td : P.a}">${I.plus} Ligne hors planning</button>`}
-      <span class="sub dec-hint">« Copier » met les colonnes A à I (Collaborateur → Facture) dans le presse-papiers, sans l'en-tête : colle-les directement sous ton tableau.</span><span class="progress-line" id="dec-progress"></span></div>
+    <div class="dec-tools">${ro ? "" : `<button class="btn primary" data-act="dec-copy">Copier pour Excel</button>`}<button class="btn" data-act="dec-xlsx">Exporter en .xlsx</button>${ro ? "" : `<button class="btn" data-act="dec-add" data-d="${P.lim >= td && P.a <= td ? td : P.a}">${I.plus} Ligne hors planning</button><button class="btn" data-act="dec-import">Importer un décompte…</button><input type="file" id="dec-imp-file" accept=".xlsx,.xls,.xlsm,.csv" hidden>${nImp ? `<button class="btn ghost" data-act="dec-unimport" title="Supprime les ${nImp} lignes importées de cette période">Retirer l'import (${nImp})</button>` : ""}`}
+      <span class="sub dec-hint">« Copier » met les colonnes A à I (Collaborateur → Facture) dans le presse-papiers, sans l'en-tête : colle-les directement sous ton tableau.</span><span class="progress-line" id="dec-progress">${esc(S.decMsg || "")}</span></div>
     ${R.noRef ? `<div class="dec-warn">⚠ ${R.noRef} ligne${R.noRef > 1 ? "s" : ""} sans référence. Choisis-la sur la ligne (elle s'applique aux tâches concernées), ou associe une référence par défaut à chaque projet dans Réglages ▸ Décompte des heures.</div>` : ""}
     <div class="dec-layout">
       <div class="dec-main">
-        <div class="dec-row dec-head" aria-hidden="true"><div>Durée</div><div>Référence</div><div>Dépl.</div><div>Lieu</div><div>Km</div><div>Description</div><div>Facture</div><div></div></div>
+        ${D.mode === "annee" ? "" : `<div class="dec-row dec-head" aria-hidden="true"><div>Durée</div><div>Référence</div><div>Dépl.</div><div>Lieu</div><div>Km</div><div>Description</div><div>Facture</div><div></div></div>`}
         ${html || '<div class="empty"><p>Aucun jour sur cette période.</p></div>'}
       </div>
       <aside class="dec-side">
@@ -2045,11 +2056,20 @@ async function decChange(el){
 }
 async function decAction(act, a){
   const D = S.dec;
+  if (/^dec-(mode|prev|next|today|month)$/.test(act)) S.decMsg = "";
   if (act === "dec-mode") { D.mode = a.dataset.m; saveDecUi(); render(true); return; }
+  if (act === "dec-month") { D.mode = "mois"; D.ref = a.dataset.d; saveDecUi(); render(true); window.scrollTo(0, 0); return; }
+  if (act === "dec-import") { $("#dec-imp-file").click(); return; }
+  if (act === "dec-unimport") {
+    const P = decPeriod(), months = [...new Set(Object.keys(S.decDocs || {}).filter(m => m >= P.a.slice(0, 7) && m <= P.b.slice(0, 7)))];
+    if (!a.classList.contains("armed")) { a.classList.add("armed"); a.textContent = "Confirmer : retirer l'import"; return; }
+    let n = 0; for (const m of months) { const k = ((S.decDocs[m] || {}).manual || []).filter(x => x.imp).length; if (k) { n += k; await decSave(m, c => { c.manual = c.manual.filter(x => !x.imp); }); } }
+    toast(`${n} ligne${n > 1 ? "s" : ""} importée${n > 1 ? "s" : ""} retirée${n > 1 ? "s" : ""}`); render(true); return;
+  }
   if (act === "dec-today") { D.ref = today(); render(true); return; }
   if (act === "dec-prev" || act === "dec-next") {
     const k = act === "dec-next" ? 1 : -1, r = parseYmd(validYmd(D.ref) ? D.ref : today());
-    D.ref = D.mode === "semaine" ? addDays(ymd(r), 7 * k) : ymd(new Date(r.getFullYear(), r.getMonth() + k, 1));
+    D.ref = D.mode === "semaine" ? addDays(ymd(r), 7 * k) : D.mode === "annee" ? ymd(new Date(r.getFullYear() + k, 0, 1)) : ymd(new Date(r.getFullYear(), r.getMonth() + k, 1));
     render(true); return;
   }
   if (act === "dec-add") {
@@ -2094,7 +2114,7 @@ async function decExport(){
     say("Préparation du fichier…");
     const X = await loadXLSX(), {P, days} = decData(), R = decRecap(days), rows = days.flatMap(x => x.rows).filter(r => r.m > 0);
     const EXTRA = ["Jour", "Semaine", "Heures (décimal)", "Projet(s)", "Source", "Tâches du planning"];
-    const aoa = [[...DEC_HEAD, ...EXTRA], ...rows.map(r => [...decLine(r), JOURS[parseYmd(r.d).getDay()], isoWeek(parseYmd(r.d)), Math.round(r.m / 60 * 100) / 100, r.projets.join(", "), r.src === "manuel" ? "Saisie manuelle" : r.mOv || r.descOv ? "Planning (modifié)" : "Planning", r.tasks.map(t => t.tache).join(" | ")])];
+    const aoa = [[...DEC_HEAD, ...EXTRA], ...rows.map(r => [...decLine(r), JOURS[parseYmd(r.d).getDay()], isoWeek(parseYmd(r.d)), Math.round(r.m / 60 * 100) / 100, r.projets.join(", "), r.src === "manuel" ? (r.imp ? "Import" : "Saisie manuelle") : r.mOv || r.descOv ? "Planning (modifié)" : "Planning", r.tasks.map(t => t.tache).join(" | ")])];
     const ws = X.utils.aoa_to_sheet(aoa);
     rows.forEach((r, i) => {
       ws[X.utils.encode_cell({r:i + 1, c:1})] = {t:"n", v:xlDate(r.d), z:"dd/mm/yyyy"};
@@ -2120,7 +2140,7 @@ async function decExport(){
   } catch (e) { say(e && e.code === "declined" ? "Téléchargement annulé." : e && e.message === "xlsx" ? "Le module Excel n'a pas pu se charger." : "Export impossible pour l'instant."); }
 }
 function saveDecUi(){ try { localStorage.setItem("todobim.dec", JSON.stringify({mode:S.dec.mode, upto:S.dec.upto})); } catch (e) {} }
-try { const sd = JSON.parse(localStorage.getItem("todobim.dec") || "null"); if (sd) { if (sd.mode === "semaine" || sd.mode === "mois") S.dec.mode = sd.mode; if (typeof sd.upto === "boolean") S.dec.upto = sd.upto; } } catch (e) {}
+try { const sd = JSON.parse(localStorage.getItem("todobim.dec") || "null"); if (sd) { if (["semaine", "mois", "annee"].includes(sd.mode)) S.dec.mode = sd.mode; if (typeof sd.upto === "boolean") S.dec.upto = sd.upto; } } catch (e) {}
 
 /* ----- Réglages ----- */
 function decSettingsPanel(){
@@ -2156,6 +2176,80 @@ async function decRefsSave(){
 function decFit(root){ (root || document).querySelectorAll(".dec-row textarea").forEach(ta => { ta.style.height = "auto"; ta.style.height = ta.scrollHeight + 2 + "px"; }); }
 document.addEventListener("input", ev => { if (ev.target.matches && ev.target.matches(".dec-row textarea")) decFit(ev.target.parentNode); });
 window.addEventListener("resize", () => { if (S.view === "heures") decFit(); });
+
+/* vue Année : un récapitulatif par mois */
+function decYearHtml(days){
+  const by = new Map();
+  for (const Dy of days) { const m = monthOf(Dy.d), o = by.get(m) || {h:0, c:0, ab:0, n:0, nr:0, imp:0}; o.h += Dy.tot; o.c += Math.max(0, Dy.cap - Dy.absH) * 60; if (Dy.ab) o.ab += Dy.ab.part === "j" ? 1 : 0.5; o.n += Dy.rows.filter(r => r.m).length; o.nr += Dy.rows.filter(r => r.m && !r.ref).length; o.imp += Dy.rows.filter(r => r.imp).length; by.set(m, o); }
+  const rows = [...by].filter(([, o]) => o.n > 0).sort((a, b) => a[0].localeCompare(b[0]));
+  if (!rows.length) return '<div class="dec-none">Aucune heure sur cette année.</div>';
+  const tH = rows.reduce((s, [, o]) => s + o.h, 0), tC = rows.reduce((s, [, o]) => s + o.c, 0);
+  const ec = (h, c) => { const e = (h - c) / 60; return `<span class="${Math.abs(e) < 0.25 ? "dt-ok" : e > 0 ? "dt-over" : "dt-under"}">${e >= 0 ? "+" : "−"}${hfmt(Math.abs(e))} h</span>`; };
+  return `<div class="tbl-wrap"><table class="tbl dec-year"><thead><tr><th>Mois</th><th>Heures</th><th>Dues</th><th>Écart</th><th>Absences</th><th>Lignes</th><th></th></tr></thead><tbody>
+    ${rows.map(([m, o]) => { const dt = parseYmd(m + "-01"); return `<tr><td>${MOIS[dt.getMonth()].charAt(0).toUpperCase() + MOIS[dt.getMonth()].slice(1)}${o.imp ? ' <span class="dec-src man">importé</span>' : ""}</td><td>${hfmt(o.h / 60)} h</td><td>${hfmt(o.c / 60)} h</td><td>${ec(o.h, o.c)}</td><td>${o.ab ? hfmt(o.ab) + " j" : "–"}</td><td>${o.n}${o.nr ? ` <span class="dt-under">(${o.nr} sans réf.)</span>` : ""}</td><td><button class="btn ghost sm" data-act="dec-month" data-d="${m}-01">Voir</button></td></tr>`; }).join("")}
+    <tr class="dec-ytot"><td>Total</td><td>${hfmt(tH / 60)} h</td><td>${hfmt(tC / 60)} h</td><td>${ec(tH, tC)}</td><td></td><td></td><td></td></tr></tbody></table>
+    <p class="sub" style="margin:8px 2px">Seuls les mois qui contiennent des heures sont affichés et comptés dans le total.</p></div>`;
+}
+
+/* ----- Import d'un décompte existant (.xlsx / .csv) ----- */
+const DEC_IMP_HEAD = {collaborateur:"collab", date:"d", duree:"m", reference:"ref", deplacement:"dep", lieu:"lieu", kilometres:"km", km:"km", description:"desc", facture:"fact"};
+function impDur(v){
+  if (v == null || v === "") return null;
+  if (typeof v === "number") return v < 1 ? Math.round(v * 1440) : v <= 24 ? Math.round(v * 60) : null;
+  if (v instanceof Date) return v.getHours() * 60 + v.getMinutes();
+  const n = parseDur(v); return n === null || isNaN(n) ? null : n;
+}
+async function decImport(file){
+  const say = m => { const el = $("#dec-progress"); if (el) el.textContent = m; S.decMsg = m; };
+  try {
+    say("Lecture du fichier…");
+    const X = await loadXLSX(), wb = X.read(await file.arrayBuffer(), {type:"array"});
+    let rows = null, hi = -1, refsFound = [];
+    for (const n of wb.SheetNames) {
+      const r = X.utils.sheet_to_json(wb.Sheets[n], {header:1, raw:true, defval:""});
+      const k = r.findIndex(row => row.some(c => norm(c) === "date") && row.some(c => norm(c) === "duree"));
+      if (k >= 0 && !rows) { rows = r; hi = k; }
+      /* une feuille « REFERENCE » complète la liste des références */
+      const kr = r.findIndex(row => row.length && norm(row[0]) === "reference" && !row.some(c => norm(c) === "date"));
+      if (kr >= 0) refsFound.push(...r.slice(kr + 1).map(x => String(x[0] ?? "").trim()).filter(Boolean));
+    }
+    if (!rows) { say("Aucune colonne « Date » et « Durée » trouvée dans ce fichier."); return; }
+    const head = rows[hi].map(c => DEC_IMP_HEAD[norm(c)] || null);
+    let list = [];
+    for (const row of rows.slice(hi + 1)) {
+      const o = {}; head.forEach((h, j) => { if (h && o[h] === undefined) o[h] = row[j]; });
+      const d = toYmd(o.d, X), m = impDur(o.m);
+      if (!validYmd(d) || !m) continue;
+      list.push({collab:String(o.collab ?? "").trim(), d, m, ref:String(o.ref ?? "").trim(), dep:norm(o.dep) === "oui", lieu:String(o.lieu ?? "").trim(), km:o.km === "" || o.km == null ? "" : String(o.km).replace(".", ","), desc:String(o.desc ?? "").replace(/\s+/g, " ").trim(), fact:String(o.fact ?? "").trim()});
+    }
+    if (!list.length) { say("Aucune ligne datée avec une durée sous l'en-tête."); return; }
+    const names = [...new Set(list.map(x => x.collab).filter(Boolean))], me = norm(collabName());
+    let skipped = 0;
+    if (names.length > 1) {
+      if (!names.some(n => norm(n) === me)) { say(`Ce fichier contient plusieurs collaborateurs (${names.slice(0, 5).join(", ")}…) et aucun ne s'appelle « ${collabName()} ». Corrige le nom dans Réglages ▸ Décompte des heures.`); return; }
+      const before = list.length; list = list.filter(x => norm(x.collab) === me); skipped = before - list.length;
+    }
+    /* regroupement par mois, sans doublon si on réimporte le même fichier */
+    const sig = x => [x.d, x.ref, x.m, norm(x.desc)].join("|");
+    const byM = new Map(); for (const x of list) { const k = monthOf(x.d); if (!byM.has(k)) byM.set(k, []); byM.get(k).push(x); }
+    let added = 0, dup = 0, i = 0;
+    for (const [mo, arr] of byM) {
+      i++; say(`Import : mois ${i} / ${byM.size}…`);
+      await decSave(mo, c => {
+        const have = new Set(c.manual.map(sig));
+        for (const x of arr) { const s = sig(x); if (have.has(s)) { dup++; continue; } have.add(s); added++;
+          c.manual.push({id:Date.now().toString(36) + Math.random().toString(36).slice(2, 7), d:x.d, ref:x.ref, m:x.m, desc:x.desc, dep:x.dep, lieu:x.lieu, km:x.km, fact:x.fact, imp:true}); }
+      });
+    }
+    /* références inconnues ajoutées à la liste */
+    const known = new Set(refList()), extra = [...new Set([...refsFound, ...list.map(x => x.ref)].filter(r => r && !known.has(r)))];
+    if (extra.length) await savePrefs({refs:[...refList(), ...extra].sort((a, b) => a.localeCompare(b, "fr"))});
+    const ms = [...byM.keys()].sort();
+    say(`${added} ligne${added > 1 ? "s" : ""} importée${added > 1 ? "s" : ""} (${ms.length} mois, de ${ms[0].split("-").reverse().join("/")} à ${ms[ms.length - 1].split("-").reverse().join("/")})${dup ? ` · ${dup} déjà présente${dup > 1 ? "s" : ""}` : ""}${skipped ? ` · ${skipped} d'autres collaborateurs ignorées` : ""}${extra.length ? ` · ${extra.length} nouvelle${extra.length > 1 ? "s" : ""} référence${extra.length > 1 ? "s" : ""}` : ""}.`);
+    toast("Import du décompte terminé");
+    S.dec.mode = "annee"; S.dec.ref = ms[ms.length - 1] + "-01"; saveDecUi(); render(true);
+  } catch (e) { say(e && e.message === "xlsx" ? "Le lecteur Excel n'a pas pu se charger. Vérifie ta connexion." : "Import interrompu : " + (e && (e.code || e.message) || "erreur")); }
+}
 
 /* ---------- Rendu principal ---------- */
 function render(force){
@@ -2551,6 +2645,7 @@ document.addEventListener("input", ev => {
 document.addEventListener("change", ev => {
   const t = ev.target;
   if (t.dataset && t.dataset.dec) { decChange(t); return; }
+  if (t.id === "dec-imp-file" && t.files && t.files[0]) { decImport(t.files[0]); t.value = ""; return; }
   if (t.id === "dec-upto") { S.dec.upto = t.checked; saveDecUi(); render(true); return; }
   if (decSettingsChange(t)) return;
   if (t.id === "t-sort") { S.f.sort = t.value; saveUi(); updateTaches(); }
