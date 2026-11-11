@@ -552,6 +552,26 @@ button.gt-name:hover{background:var(--surface-2)}
 .blk-add input,.blk-add select{border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:8px;min-width:0}
 input[type=range]{accent-color:var(--accent);width:100%}
 
+/* Info-bulles */
+.tip{position:fixed;left:0;top:0;z-index:300;width:max-content;max-width:340px;min-width:250px;background:color-mix(in srgb,var(--surface) 94%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid var(--line-2);border-top:3px solid var(--pc);border-radius:10px;box-shadow:0 18px 44px rgba(0,0,0,.6),0 0 0 1px rgba(0,0,0,.2);padding:10px 12px 9px;pointer-events:none;opacity:0;transform:translateY(4px);transition:opacity .12s ease,transform .12s ease;font-size:12.5px;line-height:1.4;color:var(--ink)}
+.tip.on{opacity:1;transform:none}
+.tip-top{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:6px}
+.tip-t{font-weight:600;font-size:14px;line-height:1.3;margin-bottom:7px;overflow-wrap:anywhere}
+.tip-slot{display:inline-block;font-family:var(--f-mono);font-size:11.5px;color:var(--accent);background:var(--accent-soft);border-radius:5px;padding:2px 7px;margin-bottom:8px}
+.tip dl{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin:0}
+.tip dt{color:var(--muted);font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;padding-top:2px;white-space:nowrap}
+.tip dd{margin:0;min-width:0;overflow-wrap:anywhere}
+.tip .late{color:var(--late);font-weight:600} .tip .today{color:var(--today);font-weight:600} .tip .week{color:var(--week);font-weight:600}
+.tip .warn{color:var(--today);font-weight:600} .tip .ok{color:var(--done);font-weight:600} .tip .mut{color:var(--muted)}
+.tip-pr{display:flex;align-items:center;gap:8px}
+.tip-bar{flex:1;height:5px;border-radius:3px;background:var(--surface-2);overflow:hidden;min-width:90px}
+.tip-bar i{display:block;height:100%;background:var(--pc);box-shadow:0 0 8px var(--pc)}
+.tip-next{display:flex;flex-wrap:wrap;gap:4px 6px;align-items:center;margin-top:8px;padding-top:7px;border-top:1px solid var(--line)}
+.tip-next span{width:100%;color:var(--muted);font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.tip-next em{font-style:normal;font-family:var(--f-mono);font-size:11px;background:var(--surface-2);border-radius:5px;padding:1px 6px}
+.tip-com{margin-top:8px;padding-top:7px;border-top:1px solid var(--line);color:var(--muted);font-style:italic;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.tip-hint{margin-top:8px;font-size:10.5px;color:var(--muted);opacity:.8}
+
 .mobile-tabs{display:none}
 .auth{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:24px max(16px,env(safe-area-inset-right,0px)) 24px max(16px,env(safe-area-inset-left,0px));overflow-y:auto}
 .auth-card{width:min(400px,100%);display:grid;gap:12px}
@@ -1225,7 +1245,6 @@ function blockHtml(it, h0, h1){
   if (bot <= 0 || top >= (h1 - h0) * AG_H) return "";
   const hgt = Math.max(20, bot - top - 2), small = hgt < 40;
   return `<div class="blk${it.rec ? " rec" : ""}${isDone(t) ? " done" : ""}${small ? " small" : ""}" data-id="${esc(t.id)}" data-i="${it.i}" data-act="edit" ${!ro && !it.rec ? 'data-drag="blk"' : ""} role="button" tabindex="0"
-    title="${esc(`${hhmm(it.s)}–${hhmm(it.e)} · ${t.tache}${t.projet ? " · " + t.projet : ""}`)}"
     style="top:${top}px;height:${hgt}px;left:calc(${it.lane} / ${it.lanes} * 100% + 2px);width:calc(100% / ${it.lanes} - 4px);--pc:${projColor(t.projet)}">
     <div class="blk-t">${stateIcons(t)}${isDone(t) ? "✓ " : ""}${esc(t.tache)}</div>
     ${small ? "" : `<div class="blk-h">${hhmm(it.s)}–${hhmm(it.e)}${t.projet ? " · " + esc(t.projet) : ""}${it.rec ? " · récurrent" : ""}</div>`}
@@ -1242,13 +1261,13 @@ function agendaView(){
       <div class="ag-dn"><span>${JOURS_COURTS[dt.getDay()]}</span><b>${dt.getDate()}</b>${d === td ? '<em>auj.</em>' : ""}</div>
       <div class="gauge ${lvl}" title="${hfmt(h)} h planifiées sur ${hfmt(cap)} h"><i style="width:${pct}%"></i></div>
       <div class="ag-load">${h ? hfmt(h) + " h" : "libre"}<span>/ ${hfmt(cap)} h</span></div>
-      ${dls.length ? `<button class="ag-dl" data-id="${esc(dls[0].id)}" data-act="edit" title="${esc(dls.map(t => "Échéance : " + t.tache).join("\n"))}">◆ ${dls.length > 1 ? dls.length + " échéances" : esc(dls[0].tache)}</button>` : ""}
+      ${dls.length ? `<button class="ag-dl" data-id="${esc(dls[0].id)}" data-act="edit">◆ ${dls.length > 1 ? dls.length + " échéances" : esc(dls[0].tache)}</button>` : ""}
     </div>`;
   }).join("");
   const allday = days.map(d => {
     const ts = live().filter(t => !isDone(t) && (!pf || t.projet === pf) && !(Array.isArray(t.jours) && t.jours.length) && planSpan(t) && planSpan(t)[0] <= d && planSpan(t)[1] >= d && !blocsOf(t).length);
     const shown = ts.slice(0, 3);
-    return `<div class="ag-ad${isWe(d) ? " we" : ""}" data-agday="${d}">${shown.map(t => `<div class="ad-chip" data-id="${esc(t.id)}" data-act="edit" ${S.canWrite !== false ? 'data-drag="task"' : ""} style="--pc:${projColor(t.projet)}" title="${esc(t.tache)} : à placer dans la journée">${esc(t.tache)}</div>`).join("")}${ts.length > 3 ? `<span class="ad-more">+${ts.length - 3}</span>` : ""}</div>`;
+    return `<div class="ag-ad${isWe(d) ? " we" : ""}" data-agday="${d}">${shown.map(t => `<div class="ad-chip" data-id="${esc(t.id)}" data-act="edit" ${S.canWrite !== false ? 'data-drag="task"' : ""} style="--pc:${projColor(t.projet)}">${esc(t.tache)}</div>`).join("")}${ts.length > 3 ? `<span class="ad-more">+${ts.length - 3}</span>` : ""}</div>`;
   }).join("");
   const times = Array.from({length:h1 - h0}, (_, i) => `<div class="ag-tm" style="top:${i * AG_H}px">${h0 + i}:00</div>`).join("");
   const cols = days.map(d => {
@@ -1316,7 +1335,7 @@ function ganttView(){
       let bar = "";
       if (sp && sp[1] >= start && sp[0] <= end) {
         const a = sp[0] < start ? start : sp[0], b = sp[1] > end ? end : sp[1], bx = x(a), bw = (diffDays(b, a) + 1) * W, narrow = bw < 90;
-        bar = `<div class="gb${isDone(t) ? " done" : ""}${late ? " late" : ""}${narrow ? " narrow" : ""}" data-drag="gmove" data-act="edit" style="left:${bx}px;width:${Math.max(W, bw)}px" title="${esc(`${t.tache} · ${fmt(sp[0])} → ${fmt(sp[1])}${t.heures ? " · " + t.heures + " h" : ""} · ${pr} %`)}">
+        bar = `<div class="gb${isDone(t) ? " done" : ""}${late ? " late" : ""}${narrow ? " narrow" : ""}" data-drag="gmove" data-act="edit" style="left:${bx}px;width:${Math.max(W, bw)}px">
           <i class="gb-p" style="width:${pr}%"></i><span class="gb-t">${narrow ? "" : esc(t.tache)}</span>${S.canWrite !== false ? '<span class="gb-l" data-drag="gl"></span><span class="gb-r" data-drag="gr"></span>' : ""}</div>${narrow ? `<span class="gb-out" style="left:${bx + Math.max(W, bw) + 6}px">${esc(t.tache)}</span>` : ""}`;
       } else if (sp) bar = `<span class="gb-off">${sp[1] < start ? "◂ " + fmt(sp[0]) + "→" + fmt(sp[1]) : fmt(sp[0]) + "→" + fmt(sp[1]) + " ▸"}</span>`;
       else bar = `<span class="gb-hint">${S.canWrite !== false ? (isMobile() ? "appui long puis glisse pour planifier" : "glisse ici pour planifier") : ""}</span>`;
@@ -1534,8 +1553,97 @@ async function endDrag(ev, ok){
 document.addEventListener("pointerup", ev => endDrag(ev, true));
 document.addEventListener("pointercancel", ev => endDrag(ev, false));
 
+/* ---------- Info-bulles au survol (souris) et au focus clavier ---------- */
+const TT = {el:null, timer:0, cur:null, x:0, y:0};
+function relDay(d){
+  const n = diffDays(d, today());
+  return n < 0 ? `en retard de ${-n} j` : n === 0 ? "aujourd'hui" : n === 1 ? "demain" : `dans ${n} j`;
+}
+function tipHtml(t, host){
+  const sp = planSpan(t), bl = blocsOf(t), est = Number(t.heures) || 0, sch = schedMin(t) / 60;
+  const q = quadrant(t), a = alerte(t), pr = isDone(t) ? 100 : Math.max(0, Math.min(100, Number(t.avancement) || 0));
+  const rows = [];
+  let slot = "";
+  const i = host && host.dataset && host.dataset.i != null ? Number(host.dataset.i) : NaN;
+  if (host && host.classList.contains("blk")) {
+    if (i >= 0 && bl[i]) { const b = bl[i]; slot = `${JOURS[parseYmd(b.d).getDay()]} ${fmt(b.d)} · ${hhmm(b.s)} – ${hhmm(b.s + b.m)} (${hfmt(b.m / 60)} h)`; }
+    else if (Array.isArray(t.jours) && t.jours.length) { const s0 = isFinite(t.recH) ? t.recH : 540; slot = `Réunion récurrente · ${hhmm(s0)} – ${hhmm(s0 + Math.max(15, Math.round((est || 1) * 60)))}`; }
+  }
+  if (validYmd(t.echeance)) rows.push(["Échéance", `<span class="${isDone(t) ? "" : a}">${fmt(t.echeance, true)}${isDone(t) ? "" : " · " + relDay(t.echeance)}</span>`]);
+  if (sp) rows.push(["Planning", `${fmt(sp[0])}${sp[1] !== sp[0] ? " → " + fmt(sp[1]) + ` <span class="mut">(${diffDays(sp[1], sp[0]) + 1} j)</span>` : ""}${planState(t) === "late" ? ' <span class="late">dépassé</span>' : ""}`]);
+  if (est || sch) {
+    const rem = est ? est - sch : 0;
+    rows.push(["Temps", `${est ? hfmt(est) + " h estimées" : "non estimé"}${sch ? " · " + hfmt(sch) + " h placées" : ""}${est && !isDone(t) ? (rem > 0 ? ` · <b>reste ${hfmt(rem)} h</b>` : rem < 0 ? ` · <span class="warn">+${hfmt(-rem)} h</span>` : ' · <span class="ok">tout placé</span>') : ""}`]);
+  }
+  if (pr || sp) rows.push(["Avancement", `<span class="tip-pr"><span class="tip-bar"><i style="width:${pr}%"></i></span><b>${pr} %</b></span>`]);
+  if (t.priorite) rows.push(["Priorité", `<span class="${t.priorite === "Haute" ? "late" : ""}">${esc(t.priorite)}</span>`]);
+  if (t.responsable) rows.push(["Responsable", esc(t.responsable)]);
+  if (t.theme) rows.push(["Thème", esc(t.theme)]);
+  if (Array.isArray(t.jours) && t.jours.length) rows.push(["Répétition", `chaque ${t.jours.slice().sort((x, y) => ((x + 6) % 7) - ((y + 6) % 7)).map(n => JOURS_COURTS[n]).join(", ")} à ${hhmm(isFinite(t.recH) ? t.recH : 540)}`]);
+  const nowM = nowMin(), td = today();
+  const next = bl.map((b, k) => ({...b, k})).filter(b => b.d > td || (b.d === td && b.s + b.m > nowM)).sort((x, y) => x.d.localeCompare(y.d) || x.s - y.s).filter(b => !(host && host.classList.contains("blk") && b.k === i)).slice(0, 3);
+  const inPlan = S.view === "planning";
+  return `<div class="tip-top"><span class="pill proj" style="--pc:${projColor(t.projet)}">${esc(t.projet || "Sans projet")}</span>
+      <span class="pill st" style="--sc:var(${ST_VAR[t.statut] || "--muted"})">${esc(t.statut || "À faire")}</span>
+      ${q ? `<span class="pill q" style="--qc:var(${QMAP[q].v})">${QMAP[q].label}</span>` : ""}</div>
+    <div class="tip-t">${isDone(t) ? "✓ " : ""}${esc(t.tache)}</div>
+    ${slot ? `<div class="tip-slot">${slot}</div>` : ""}
+    ${rows.length ? `<dl>${rows.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("")}</dl>` : ""}
+    ${next.length ? `<div class="tip-next"><span>Prochains créneaux</span>${next.map(b => `<em>${JOURS_COURTS[parseYmd(b.d).getDay()]} ${fmt(b.d)} · ${hhmm(b.s)}–${hhmm(b.s + b.m)}</em>`).join("")}</div>` : ""}
+    ${t.commentaires ? `<div class="tip-com">${esc(t.commentaires)}</div>` : ""}
+    <div class="tip-hint">${inPlan && S.canWrite !== false ? "Clic : modifier · Glisser : déplacer" : "Clic : modifier"}</div>`;
+}
+function tipTarget(el){
+  if (!el || !el.closest || el.closest(".sheet,.tip")) return null;
+  const host = el.closest("[data-id]"); if (!host) return null;
+  if (host.classList.contains("gt-row") && !el.closest(".gt-name,.gb,.gd")) return null;  // Gantt : seulement le nom et la barre
+  if (host.classList.contains("gt-tl")) return null;
+  return S.tasks.has(host.dataset.id) ? host : null;
+}
+function placeTip(){
+  const el = TT.el; if (!el) return;
+  const w = el.offsetWidth, h = el.offsetHeight, vw = window.innerWidth, vh = window.innerHeight;
+  let x = TT.x + 16, y = TT.y + 18;
+  if (x + w > vw - 8) x = Math.max(8, TT.x - w - 16);
+  if (y + h > vh - 8) y = Math.max(8, TT.y - h - 14);
+  el.style.left = x + "px"; el.style.top = y + "px";
+}
+function showTip(host){
+  const t = S.tasks.get(host.dataset.id); if (!t || !document.body.contains(host) || (PD && PD.active)) return;
+  if (!TT.el) { TT.el = document.createElement("div"); TT.el.className = "tip"; TT.el.setAttribute("role", "tooltip"); document.body.appendChild(TT.el); }
+  TT.el.style.setProperty("--pc", projColor(t.projet));
+  TT.el.innerHTML = tipHtml(t, host);
+  placeTip();
+  requestAnimationFrame(() => TT.el && TT.el.classList.add("on"));
+}
+function hideTip(){ clearTimeout(TT.timer); TT.cur = null; if (TT.el) TT.el.classList.remove("on"); }
+document.addEventListener("pointerover", ev => {
+  if (ev.pointerType && ev.pointerType !== "mouse") return;
+  if (PD && PD.active) return;
+  const host = tipTarget(ev.target);
+  if (host === TT.cur) return;
+  hideTip(); if (!host) return;
+  TT.cur = host; TT.x = ev.clientX; TT.y = ev.clientY;
+  TT.timer = setTimeout(() => showTip(host), 320);
+});
+document.addEventListener("pointermove", ev => {
+  if (!TT.cur || (ev.pointerType && ev.pointerType !== "mouse")) return;
+  TT.x = ev.clientX; TT.y = ev.clientY;
+  if (TT.el && TT.el.classList.contains("on")) placeTip();
+});
+document.addEventListener("pointerout", ev => { if (TT.cur && !(ev.relatedTarget && TT.cur.contains(ev.relatedTarget))) hideTip(); });
+document.addEventListener("pointerdown", hideTip, true);
+document.addEventListener("scroll", hideTip, true);
+document.addEventListener("keydown", ev => { if (ev.key === "Escape") hideTip(); });
+document.addEventListener("focusin", ev => {
+  const host = tipTarget(ev.target); if (!host || !ev.target.matches(":focus-visible")) return;
+  const r = host.getBoundingClientRect(); TT.cur = host; TT.x = r.left; TT.y = r.bottom; clearTimeout(TT.timer); showTip(host);
+});
+document.addEventListener("focusout", () => hideTip());
+
 /* ---------- Rendu principal ---------- */
 function render(force){
+  hideTip();
   renderChrome();
   if (renderStatus()) { S.built = null; return; }
   const v = $("#view");
