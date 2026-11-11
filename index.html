@@ -591,6 +591,93 @@ input[type=range]{accent-color:var(--accent);width:100%}
 .tip-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;padding:0 16px 16px}
 .tip-actions .btn{padding:12px 10px;font-size:15px;font-weight:600}
 
+.caps{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;margin-top:10px}
+.cap-d{display:grid;gap:4px;text-align:center}
+.cap-d span{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.cap-d input{width:100%;min-width:0;text-align:center;border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:9px 2px;font-family:var(--f-mono)}
+.cap-d input:focus{border-color:var(--accent);outline:none}
+.caps-tot{margin-top:8px!important}
+.ag-par{font-style:normal;margin-left:auto;color:var(--s-recurrent);font-weight:600}
+.kc-n{font-size:11px;color:var(--s-recurrent)}
+/* Décompte des heures */
+.dec-kpis{grid-template-columns:repeat(5,minmax(0,1fr));margin-bottom:12px}
+.kc-v.ok{color:var(--done)} .kc-v.over{color:var(--week)}
+.kc-n.mut{color:var(--muted)}
+.dec-tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px}
+.dec-hint{flex:1 1 260px;margin:0}
+.dec-warn{background:var(--today-soft);color:var(--today);border:1px solid color-mix(in srgb,var(--today) 35%,transparent);border-radius:var(--r);padding:9px 12px;font-size:13px;margin-bottom:12px}
+.dec-layout{display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:14px;align-items:start}
+.dec-side{display:grid;gap:12px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 70px)}
+.dec-main{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);min-width:0}
+.dec-row{display:grid;grid-template-columns:66px minmax(0,1.5fr) 58px minmax(0,.75fr) 52px minmax(0,2fr) 78px 26px;gap:6px;align-items:start;padding:6px 10px;border-top:1px solid var(--g-line)}
+.dec-head{position:sticky;top:calc(env(safe-area-inset-top,0px) + 58px);z-index:3;background:var(--surface-2);border-top:0;border-radius:var(--r) var(--r) 0 0;font-size:10.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);padding-top:8px;padding-bottom:8px}
+.dec-row textarea{width:100%;min-width:0;border:1px solid transparent;background:transparent;border-radius:6px;padding:5px 6px;font-size:13px;color:var(--ink);resize:none;line-height:1.35;display:block;overflow:hidden}
+.dec-row textarea:hover{border-color:var(--line)} .dec-row textarea:focus{border-color:var(--accent);background:var(--bg);outline:none;overflow:auto}
+.dec-row input,.dec-row select{width:100%;min-width:0;border:1px solid transparent;background:transparent;border-radius:6px;padding:5px 6px;font-size:13px;color:var(--ink)}
+.dec-row input:hover,.dec-row select:hover{border-color:var(--line)}
+.dec-row input:focus,.dec-row select:focus{border-color:var(--accent);background:var(--bg);outline:none}
+.dec-row select{appearance:none;-webkit-appearance:none;cursor:pointer;text-overflow:ellipsis}
+.c-ref{position:relative;min-height:30px}
+.ref-t{display:block;font-size:12.5px;line-height:1.3;padding:5px 6px;border:1px solid transparent;border-radius:6px;overflow-wrap:anywhere}
+.c-ref select{position:absolute;inset:0;opacity:0;height:100%}
+.c-ref:hover .ref-t{border-color:var(--line)} .c-ref:focus-within .ref-t{border-color:var(--accent)}
+.ref-t.need{color:var(--today);border-color:color-mix(in srgb,var(--today) 45%,transparent);background:var(--today-soft);font-weight:600}
+.dec-row select.need{color:var(--today);border-color:color-mix(in srgb,var(--today) 45%,transparent);background:var(--today-soft)}
+.dec-row .c-dur input{font-family:var(--f-mono);font-weight:600;font-size:14px}
+.dec-row .c-dur,.dec-row .c-desc{position:relative}
+.dec-reset{position:absolute;right:2px;top:4px;border:0;background:var(--accent-soft);color:var(--accent);border-radius:5px;font-size:12px;line-height:18px;padding:0 5px}
+.c-dur .dec-reset{right:-4px}
+.dec-info{display:flex;flex-wrap:wrap;gap:4px;align-items:center;padding:1px 6px 2px}
+.dec-info .pill{font-size:10.5px;line-height:15px}
+.dec-src{font-size:11px;color:var(--muted)} .dec-src.man{color:var(--s-recurrent)}
+.dec-x{border:0;background:transparent;color:var(--muted);padding:5px;border-radius:6px;display:grid;place-items:center}
+.dec-x svg{width:14px;height:14px} .dec-x:hover{color:var(--late);background:var(--late-soft)}
+.dec-row.off{opacity:.45} .dec-row.fut input,.dec-row.fut select{font-style:italic}
+.dec-day{border-top:1px solid var(--line)}
+.dec-day.is-today{box-shadow:inset 3px 0 0 var(--accent)}
+.dec-dh{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;padding:9px 10px 5px;background:color-mix(in srgb,var(--surface-2) 55%,transparent)}
+.dd-t{display:flex;align-items:center;gap:8px;min-width:96px}
+.dd-t b{font-family:var(--f-display);font-weight:700;font-size:15px}
+.dd-auj{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)} .dd-auj.fut{color:var(--muted)}
+.dd-tot{font-family:var(--f-mono);font-size:13px} .dd-tot small{color:var(--muted)}
+.dd-tot.dt-ok b{color:var(--done)} .dd-tot.dt-under b{color:var(--today)} .dd-tot.dt-over b{color:var(--week)} .dd-tot.dt-empty b{color:var(--late)}
+.dd-abs{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.dd-abs select{border:1px solid var(--line);background:var(--bg);border-radius:7px;padding:3px 6px;font-size:12.5px}
+.abs-chip{font-size:11.5px;font-weight:600;background:var(--week-soft);color:var(--week);border-radius:5px;padding:1px 7px}
+.dd-act{margin-left:auto;display:flex;gap:4px}
+.btn.sm{padding:4px 9px;font-size:12.5px} .btn.sm svg{width:13px;height:13px}
+.dec-none{padding:8px 12px 12px;font-size:13px;color:var(--muted)}
+.dec-wk{display:flex;gap:8px;align-items:baseline;justify-content:flex-end;padding:7px 12px;border-top:1px dashed var(--line-2);font-size:12.5px;color:var(--muted);background:var(--bg)}
+.dec-wk b{font-family:var(--f-mono);color:var(--ink)} .dec-wk em{font-style:normal;font-family:var(--f-mono);font-weight:600}
+.dec-wk em.over{color:var(--week)} .dec-wk em.under{color:var(--today)}
+.dec-bars{display:grid;gap:8px;margin-top:10px}
+.db-r{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:3px 8px;font-size:12.5px}
+.db-l{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:flex;align-items:center;gap:6px}
+.db-l i{width:8px;height:8px;border-radius:2px;flex:none}
+.db-v{font-family:var(--f-mono);font-size:12px;text-align:right} .db-v small{color:var(--muted)}
+.db-b{grid-column:1/-1;height:5px;background:var(--surface-2);border-radius:3px;overflow:hidden}
+.db-b i{display:block;height:100%;background:var(--accent);border-radius:3px}
+.refmap{display:grid;gap:6px;margin-top:6px}
+.rm-r{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px;align-items:center}
+.rm-r select,#set-arr{border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:7px 8px;width:100%;min-width:0;font-size:13px}
+.refs-ed summary{cursor:pointer;font-weight:600;font-size:13.5px}
+#set-refs{width:100%;border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:8px;font-family:var(--f-mono);font-size:12px;margin-top:6px}
+@media (max-width:1020px){ .dec-layout{grid-template-columns:minmax(0,1fr)} .dec-side{position:static;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))} }
+@media (max-width:820px){
+  .dec-kpis{grid-template-columns:repeat(6,minmax(0,1fr))}
+  .dec-kpis .kc:nth-child(-n+3){grid-column:span 2} .dec-kpis .kc:nth-child(n+4){grid-column:span 3}
+  .dec-kpis .kc-n{display:none} .dec-kpis .kc-v{font-size:20px}
+  .dd-t{min-width:0} .dec-dh{gap:6px 10px}
+  .dd-act .lbl-m,.dd-act [data-act="dec-copy-day"]{display:none}
+  .dec-head{display:none}
+  .dec-row{grid-template-columns:76px minmax(0,1fr) 70px 30px;grid-template-areas:"dur ref ref act" "desc desc desc desc" "dep lieu km km" "fact fact fact fact";padding:8px 10px}
+  .dec-row .c-dur{grid-area:dur} .dec-row .c-ref{grid-area:ref} .dec-row .c-act{grid-area:act} .dec-row .c-desc{grid-area:desc}
+  .dec-row .c-dep{grid-area:dep} .dec-row .c-lieu{grid-area:lieu} .dec-row .c-km{grid-area:km} .dec-row .c-fact{grid-area:fact}
+  .dec-row input,.dec-row select,.dec-row textarea{font-size:16px;border-color:var(--line);background:var(--bg)}
+  .ref-t{font-size:14px;border-color:var(--line);background:var(--bg)}
+  .dec-hint{display:none}
+  .dd-act{margin-left:0}
+}
 .mobile-tabs{display:none}
 .auth{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:24px max(16px,env(safe-area-inset-right,0px)) 24px max(16px,env(safe-area-inset-left,0px));overflow-y:auto}
 .auth-card{width:min(400px,100%);display:grid;gap:12px}
@@ -606,8 +693,8 @@ input[type=range]{accent-color:var(--accent);width:100%}
 @media (max-width:820px){
   nav.tabs{display:none}
   .cartouche{margin-left:auto}
-  .mobile-tabs{display:grid;grid-template-columns:repeat(6,1fr);position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--surface);border-top:1px solid var(--line);padding:6px max(8px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px))}
-  .mobile-tabs a{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:10.5px;font-weight:500;color:var(--muted);text-decoration:none;padding:4px 0;position:relative}
+  .mobile-tabs{display:grid;grid-template-columns:repeat(7,1fr);position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--surface);border-top:1px solid var(--line);padding:6px max(8px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px))}
+  .mobile-tabs a{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:10px;white-space:nowrap;font-weight:500;color:var(--muted);text-decoration:none;padding:4px 0;position:relative}
   .mobile-tabs a[aria-current="page"]{color:var(--accent)}
   .mobile-tabs svg{width:22px;height:22px}
   .mobile-tabs .badge{position:absolute;top:0;left:calc(50% + 6px);font-family:var(--f-mono);font-size:10px;background:var(--late);color:#fff;border-radius:8px;padding:0 5px;line-height:15px}
@@ -840,6 +927,7 @@ const VIEWS = [
   {k:"jour", label:"Ma journée", icon:'<path d="M12 3v2M12 19v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M3 12h2M19 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/><circle cx="12" cy="12" r="4"/>'},
   {k:"taches", label:"Tâches", icon:'<path d="M9 6h11M9 12h11M9 18h11"/><path d="M4 6l1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"/>'},
   {k:"planning", label:"Planning", icon:'<rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9.5h18M8 3v3M16 3v3M7 13.5h4M7 17h7"/>'},
+  {k:"heures", label:"Heures", icon:'<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>'},
   {k:"matrice", label:"Matrice", icon:'<rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/>'},
   {k:"bord", label:"Bord", icon:'<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>'},
   {k:"reglages", label:"Réglages", icon:'<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>'},
@@ -857,7 +945,7 @@ const S = {
   tasks:new Map(), lists:{projets:[], responsables:[], types:[]}, listsLoaded:false,
   view:"jour", built:null, pendingRender:false, edit:null, delArmed:false,
   f:{q:"", projets:[], statuts:[], quads:[], hideDone:true, showArch:false, sort:"projet"},
-  jourProjet:"", matProjet:"", lastProjet:"", backupAt:"",
+  jourProjet:"", matProjet:"", lastProjet:"", prefs:{}, backupAt:"",
   plan:{mode:"agenda", ref:"", weekend:false, proj:"", cap:7.5, h0:8, h1:19, zoom:"semaines", collapsed:[], showDone:false},
 };
 try { S.backupAt = localStorage.getItem("todobim.backupAt") || ""; } catch (e) {}
@@ -955,7 +1043,7 @@ function renderChrome(){
   const link = v => `<a href="#${v.k}" ${S.view === v.k ? 'aria-current="page"' : ""}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${v.icon}</svg><span>${v.label}</span>${v.k === "jour" && late ? `<span class="badge">${late}</span>` : ""}</a>`;
   $("#tabs").innerHTML = VIEWS.map(link).join("");
   $("#mtabs").innerHTML = VIEWS.map(link).join("");
-  $("#fab").hidden = !(S.status === "ready" && S.canWrite !== false && S.view !== "reglages");
+  $("#fab").hidden = !(S.status === "ready" && S.canWrite !== false && S.view !== "reglages" && S.view !== "heures");
 }
 
 /* ---------- Vues ---------- */
@@ -985,7 +1073,7 @@ function emptyState(){
 function todayAgenda(pf){
   const d = today(), its = dayBlocks(d, pf); if (!its.length) return "";
   const nm = nowMin();
-  return `<section class="today-ag"><h2>Agenda du jour <span class="count" style="font-family:var(--f-mono);font-size:12px;color:var(--muted)">${hfmt(its.reduce((s, it) => s + it.e - it.s, 0) / 60)} h</span><a class="btn ghost" href="#planning" style="margin-left:auto;padding:4px 8px">Ouvrir l'agenda</a></h2>
+  return `<section class="today-ag"><h2>Agenda du jour <span class="count" style="font-family:var(--f-mono);font-size:12px;color:var(--muted)">${hfmt(busyOn(d, pf).net / 60)} h</span><a class="btn ghost" href="#planning" style="margin-left:auto;padding:4px 8px">Ouvrir l'agenda</a></h2>
     <div class="ta-list">${its.map(it => `<button class="ta-row${nm >= it.s && nm < it.e ? " now" : nm >= it.e ? " past" : ""}" data-id="${esc(it.t.id)}" data-act="edit" style="--pc:${projColor(it.t.projet)}"><span class="tm">${hhmm(it.s)} – ${hhmm(it.e)}</span><span class="tt">${isDone(it.t) ? "✓ " : ""}${esc(it.t.tache)}</span><span class="tp">${esc(it.t.projet || "")}</span></button>`).join("")}</div></section>`;
 }
 function viewJour(){
@@ -1145,10 +1233,12 @@ function viewReglages(){
     ${listBlock("projets", "Projets", "Ordre d'affichage des projets dans les filtres et le tableau de bord.")}
     ${listBlock("responsables", "Responsables", "Proposés dans le champ Responsable.")}
     ${listBlock("types", "Types", "Exemples : Amélioration, Ajout, Correctif.")}
-    <div class="panel"><h2>Planning</h2><p>Heures de travail disponibles par jour : sert à la jauge de charge de chaque jour et au total de la semaine.</p>
-      <div class="row" style="margin-top:10px;align-items:center"><input type="text" id="set-cap" inputmode="decimal" value="${hfmt(capDay())}" style="max-width:90px" aria-label="Heures par jour"><span class="sub" style="margin:0">heures par jour</span></div>
+    <div class="panel"><h2>Planning</h2><p>Heures de travail disponibles <b style="color:var(--ink)">pour chaque jour</b> : elles servent à la jauge de charge de chaque jour et au total de la semaine. Mets 0 pour un jour non travaillé.</p>
+      <div class="caps">${JLETTRES.map(([n]) => `<label class="cap-d"><span>${JOURS_COURTS[n]}</span><input type="text" class="set-capd" data-d="${n}" inputmode="decimal" value="${hfmt(capsAll()[n])}" aria-label="Heures disponibles le ${JOURS[n]}" ${S.canWrite === false ? "readonly" : ""}></label>`).join("")}</div>
+      <p class="caps-tot">Total : <b style="color:var(--ink)">${hfmt(Object.values(capsAll()).reduce((a, b) => a + b, 0))} h</b> par semaine</p>
       <p style="margin-top:12px">Plage horaire affichée dans l'agenda :</p>
       <div class="row" style="align-items:center"><span class="sub" style="margin:0">de</span><input type="text" id="set-h0" inputmode="numeric" value="${dayRange()[0]}" style="max-width:60px" aria-label="Début de journée"><span class="sub" style="margin:0">h à</span><input type="text" id="set-h1" inputmode="numeric" value="${dayRange()[1]}" style="max-width:60px" aria-label="Fin de journée"><span class="sub" style="margin:0">h</span></div></div>
+    ${decSettingsPanel()}
     <div class="panel"><h2>Importer</h2><p>Fichier <b>mes_taches.json</b>, sauvegarde .json, classeur .xlsx (onglet « TO DO ») ou .csv. Pour Excel et CSV, les Les colonnes sont reconnues par leur en-tête : Projet, Tâche, Statut, Priorité, Urgent, Important, Échéance, Responsable, Thème, Type, Clôturé le, Commentaires.</p>
       ${S.canWrite === false ? `<p>Lecture seule.</p>` : `<div class="row" style="margin:10px 0"><label class="toggle"><input type="radio" name="imode" value="add" checked> Ajouter aux tâches existantes</label><label class="toggle"><input type="radio" name="imode" value="replace"> Remplacer toutes les tâches</label></div>
       <div class="row"><input type="file" id="imp-file" accept=".json,.xlsx,.xls,.csv,application/json" hidden><button class="btn primary" data-act="import">Choisir un fichier…</button></div>`}
@@ -1181,13 +1271,33 @@ const hhmm2 = m => `${z2(Math.floor(m / 60))}:${z2(Math.round(m % 60))}`;
 const toMin = s => { const p = String(s || "").split(":").map(Number); return isFinite(p[0]) ? p[0] * 60 + (p[1] || 0) : NaN; };
 const nowMin = () => { const n = new Date(); return n.getHours() * 60 + n.getMinutes(); };
 const AG_H = 52;  // hauteur d'une heure dans l'agenda (px)
-function dayRange(){ let h0 = Number(S.plan.h0), h1 = Number(S.plan.h1); if (!(h0 >= 0 && h0 < 24)) h0 = 8; if (!(h1 > h0 && h1 <= 24)) h1 = Math.max(h0 + 1, 19); return [h0, h1]; }
+/* capacité de travail par jour de semaine (0 = dimanche … 6 = samedi), synchronisée dans meta/prefs */
+function capsAll(){
+  const c = (S.prefs && S.prefs.caps) || {}, base = Number(S.plan.cap) > 0 ? Number(S.plan.cap) : 7.5, out = {};
+  for (const k of [0, 1, 2, 3, 4, 5, 6]) { const v = Number(c[k]); out[k] = c[k] !== undefined && c[k] !== "" && isFinite(v) && v >= 0 ? v : (k === 0 || k === 6 ? 0 : base); }
+  return out;
+}
+const capOn = d => capsAll()[parseYmd(d).getDay()];
+async function savePrefs(patch){
+  S.prefs = {...(S.prefs || {}), ...patch};
+  try { if (S.db) await S.db.doc("meta/prefs").set(S.prefs); } catch (e) { fail(e); }
+}
+/* durée réellement occupée : union des créneaux, sans compter deux fois le temps en parallèle */
+function unionMin(iv){
+  const a = iv.filter(x => x[1] > x[0]).map(x => [x[0], x[1]]).sort((x, y) => x[0] - y[0]);
+  let tot = 0, cs = null, ce = null;
+  for (const [st, en] of a) { if (cs === null || st > ce) { if (cs !== null) tot += ce - cs; cs = st; ce = en; } else if (en > ce) ce = en; }
+  if (cs !== null) tot += ce - cs;
+  return tot;
+}
+function busyOn(d, pf){ const its = dayBlocks(d, pf); return {net:unionMin(its.map(it => [it.s, it.e])), raw:its.reduce((s, it) => s + (it.e - it.s), 0)}; }
+function dayRange(){ let h0 = Number(S.prefs && S.prefs.h0 != null ? S.prefs.h0 : S.plan.h0), h1 = Number(S.prefs && S.prefs.h1 != null ? S.prefs.h1 : S.plan.h1); if (!(h0 >= 0 && h0 < 24)) h0 = 8; if (!(h1 > h0 && h1 <= 24)) h1 = Math.max(h0 + 1, 19); return [h0, h1]; }
 function planSpan(t){
   if (!t || !validYmd(t.debut)) return null;
   return [t.debut, validYmd(t.fin) && t.fin >= t.debut ? t.fin : t.debut];
 }
 function blocsOf(t){ return Array.isArray(t && t.blocs) ? t.blocs.filter(b => b && validYmd(b.d) && isFinite(b.s) && b.m > 0) : []; }
-const schedMin = t => blocsOf(t).reduce((s, b) => s + b.m, 0);
+function schedMin(t){ const byD = {}; for (const b of blocsOf(t)) (byD[b.d] = byD[b.d] || []).push([b.s, b.s + b.m]); return Object.values(byD).reduce((s, iv) => s + unionMin(iv), 0); }
 const firstBlockToday = t => blocsOf(t).filter(b => b.d === today()).sort((a, b) => a.s - b.s)[0];
 function planState(t){
   if (!t || isDone(t) || t.archived) return "";
@@ -1239,7 +1349,7 @@ function dayBlocks(d, pf){
   if (cl.length) flush();
   return res;
 }
-function busyMin(d){ return dayBlocks(d, "").reduce((s, it) => s + (it.e - it.s), 0); }
+function busyMin(d){ return busyOn(d, "").net; }
 function freeSlot(days, dur){
   const [h0, h1] = dayRange(), td = today(), nm = Math.ceil(nowMin() / 15) * 15;
   for (const d of days) {
@@ -1265,21 +1375,21 @@ function blockHtml(it, h0, h1){
   const hgt = Math.max(20, bot - top - 2), small = hgt < 40;
   return `<div class="blk${it.rec ? " rec" : ""}${isDone(t) ? " done" : ""}${small ? " small" : ""}" data-id="${esc(t.id)}" data-i="${it.i}" data-act="edit" ${!ro && !it.rec ? 'data-drag="blk"' : ""} role="button" tabindex="0"
     style="top:${top}px;height:${hgt}px;left:calc(${it.lane} / ${it.lanes} * 100% + 2px);width:calc(100% / ${it.lanes} - 4px);--pc:${projColor(t.projet)}">
-    <div class="blk-t">${stateIcons(t)}${isDone(t) ? "✓ " : ""}${esc(t.tache)}</div>
+    <div class="blk-t">${small ? "" : stateIcons(t)}${isDone(t) ? "✓ " : ""}${esc(t.tache)}</div>
     ${small ? "" : `<div class="blk-h">${hhmm(it.s)}–${hhmm(it.e)}${t.projet ? " · " + esc(t.projet) : ""}${it.rec ? " · récurrent" : ""}</div>`}
     ${!ro && !it.rec ? '<button class="blk-x" data-act="blk-del" aria-label="Retirer ce créneau">×</button><span class="blk-rz" data-drag="blkrz" aria-label="Changer la durée"></span>' : ""}
   </div>`;
 }
 function agendaView(){
-  const P = S.plan, pf = P.proj, td = today(), [h0, h1] = dayRange(), days = agDays(), cap = capDay();
+  const P = S.plan, pf = P.proj, td = today(), [h0, h1] = dayRange(), days = agDays();
   const heads = days.map(d => {
-    const dt = parseYmd(d), mins = dayBlocks(d, pf).reduce((s, it) => s + (it.e - it.s), 0), h = mins / 60;
-    const pct = Math.min(100, Math.round(h / cap * 100)), lvl = h > cap ? "over" : h > cap * 0.8 ? "warn" : "ok";
+    const dt = parseYmd(d), B = busyOn(d, pf), h = B.net / 60, par = (B.raw - B.net) / 60, cap = capOn(d);
+    const pct = cap ? Math.min(100, Math.round(h / cap * 100)) : (h ? 100 : 0), lvl = h > cap ? "over" : h > cap * 0.8 ? "warn" : "ok";
     const dls = live().filter(t => !isDone(t) && t.echeance === d && (!pf || t.projet === pf));
     return `<div class="ag-dh${d === td ? " is-today" : ""}${isWe(d) ? " we" : ""}" data-dayhead="${d}">
       <div class="ag-dn"><span>${JOURS_COURTS[dt.getDay()]}</span><b>${dt.getDate()}</b>${d === td ? '<em>auj.</em>' : ""}</div>
-      <div class="gauge ${lvl}" title="${hfmt(h)} h planifiées sur ${hfmt(cap)} h"><i style="width:${pct}%"></i></div>
-      <div class="ag-load">${h ? hfmt(h) + " h" : "libre"}<span>/ ${hfmt(cap)} h</span></div>
+      <div class="gauge ${lvl}" title="${hfmt(h)} h occupées sur ${hfmt(cap)} h disponibles${par ? ` (${hfmt(B.raw / 60)} h de tâches dont ${hfmt(par)} h en parallèle, comptées une seule fois)` : ""}"><i style="width:${pct}%"></i></div>
+      <div class="ag-load">${h ? hfmt(h) + " h" : cap ? "libre" : "repos"}<span>/ ${hfmt(cap)} h</span>${par ? `<em class="ag-par" title="${hfmt(par)} h de tâches en parallèle, non comptées deux fois">∥ ${hfmt(par)} h</em>` : ""}</div>
       ${dls.length ? `<button class="ag-dl" data-id="${esc(dls[0].id)}" data-act="edit">◆ ${dls.length > 1 ? dls.length + " échéances" : esc(dls[0].tache)}</button>` : ""}
     </div>`;
   }).join("");
@@ -1384,13 +1494,14 @@ function viewPlanning(){
     const m1 = parseYmd(mon), m2 = parseYmd(sun);
     title = mob ? `${JOURS[parseYmd(days[0]).getDay()]} ${parseYmd(days[0]).getDate()} ${MOIS_COURTS[parseYmd(days[0]).getMonth()]}` : `Semaine ${isoWeek(m1)} <span class="ttl-d">${m1.getDate()}${m1.getMonth() !== m2.getMonth() ? " " + MOIS_COURTS[m1.getMonth()] : ""} – ${m2.getDate()} ${MOIS_COURTS[m2.getMonth()]} ${m2.getFullYear()}</span>`;
     const wk = []; for (let i = 0; i < 7; i++) { const d = addDays(mon, i); if (P.weekend || !isWe(d)) wk.push(d); }
-    const placed = wk.reduce((s, d) => s + dayBlocks(d, pf).reduce((a, it) => a + (it.e - it.s), 0), 0) / 60;
-    const capW = capDay() * wk.filter(d => !isWe(d)).length;
+    const placed = wk.reduce((s, d) => s + busyOn(d, pf).net, 0) / 60;
+    const parW = wk.reduce((s, d) => { const B = busyOn(d, pf); return s + B.raw - B.net; }, 0) / 60;
+    const capW = wk.reduce((s, d) => s + capOn(d), 0);
     const list = toPlace(pf, mon, sun);
     const dueW = live().filter(t => !isDone(t) && validYmd(t.echeance) && t.echeance >= mon && t.echeance <= sun && (!pf || t.projet === pf)).length;
     const pct = capW ? Math.min(100, Math.round(placed / capW * 100)) : 0;
     side = `<aside class="pside"><div class="kpi-row">
-        <div class="kc"><span class="kc-l">Temps placé</span><span class="kc-v">${hfmt(placed)} h<small> / ${hfmt(capW)} h</small></span><span class="ps-bar"><i style="width:${pct}%;background:${placed > capW ? "var(--late)" : "var(--accent)"}"></i></span></div>
+        <div class="kc"><span class="kc-l">Temps placé</span><span class="kc-v">${hfmt(placed)} h<small> / ${hfmt(capW)} h</small></span><span class="ps-bar"><i style="width:${pct}%;background:${placed > capW ? "var(--late)" : "var(--accent)"}"></i></span>${parW ? `<span class="kc-n">dont ${hfmt(parW)} h en parallèle non comptées</span>` : ""}</div>
         <div class="kc"><span class="kc-l">Échéances</span><span class="kc-v${dueW ? " warn" : ""}">${dueW}</span></div></div>
       <details class="backlog" ${mob ? "" : "open"}><summary><h2>À caser</h2><span class="count">${list.length}</span></summary>
       <p class="sub">${mob ? "« Caser » place la tâche au premier créneau libre, ou appui long puis glisse." : "Glisse une tâche dans l'agenda, ou « Caser » pour la placer au premier créneau libre."}</p>
@@ -1597,6 +1708,7 @@ function tipHtml(t, host, opts = {}){
   }
   if (pr || sp) rows.push(["Avancement", `<span class="tip-pr"><span class="tip-bar"><i style="width:${pr}%"></i></span><b>${pr} %</b></span>`]);
   if (t.priorite) rows.push(["Priorité", `<span class="${t.priorite === "Haute" ? "late" : ""}">${esc(t.priorite)}</span>`]);
+  if (refOfTask(t)) rows.push(["Référence", esc(refOfTask(t))]);
   if (t.responsable) rows.push(["Responsable", esc(t.responsable)]);
   if (t.theme) rows.push(["Thème", esc(t.theme)]);
   if (Array.isArray(t.jours) && t.jours.length) rows.push(["Répétition", `chaque ${t.jours.slice().sort((x, y) => ((x + 6) % 7) - ((y + 6) % 7)).map(n => JOURS_COURTS[n]).join(", ")} à ${hhmm(isFinite(t.recH) ? t.recH : 540)}`]);
@@ -1702,6 +1814,349 @@ async function tipAction(act, a){
 /* au toucher, « ouvrir la fiche » montre d'abord la pop-up d'infos */
 const wantsSheet = () => TT.lastType !== "mouse";
 
+/* ---------- Décompte des heures (à partir des créneaux du planning) ---------- */
+S.dec = {mode:"mois", ref:"", upto:true}; S.decDocs = {};
+const DEC_HEAD = ["Collaborateur","Date","Durée","Référence","Déplacement","Lieu","Kilomètres","Description","Facture"];
+const DEC_REFS = ["AGENCE DESMOND TRICOT_CPAM EVREUX_BIM Management","ARCHIPELAGO_HELORA_BIM Management","ARCHIPELAGO_VIVALIA_BIM Management","AROBAT_NHMA LENS_Synthèse technique","ATOMBIM__AO_Concours","ATOMBIM__Devis","ATOMBIM__Gestion","ATOMBIM__R&D","BARRE_UCB-T1_Modélisation BIM","CEGELEC_FORMATION_BCF_CEG_Formation","CEGELEC_FORMATION_NWK_CEG_Formation","CEGELEC_GENESIS_BIM Management","CITE_PISCINE OLYMPIQUE_Modélisation BIM","CLAXCE2_GHDC_BIM Management","CLAXCE2_GHDC_Formation","CLAXCE2_GHDC_Location plateforme","CLAXCE2_GHDC_Synthèse technique","DECUBE_FORMATION DECUBE_Formation","DELANNOY-DEWAILLY_MODEL_DELANNOY_Modélisation BIM","EDHEC_EDHEC-ROUBAIX_BIM Management","EIFFAGE GENIE CIVIL_DATACENTER_Modélisation BIM","GHDC_FORMATION GHDC_Formation","GOTOBIM_BIM_BIM Management","GOTOBIM_ENVISION_Modélisation BIM","JUNIA_HEI_Formation","LV-CLIM_DUVAL_Synthèse technique","MANING_ENVISION_BIM Management","MANING_ENVISION_Modélisation BIM","MANING_ENVISION_Synthèse technique","OPALIA_ARTFX_Synthèse technique","OPCO__Gestion","PROBIM_PISCINE_Prestation diverse","RELIEF ARCHITECTURE_SEXTANT_Synthèse technique","RMR_MODEL_RMR_Modélisation BIM","SEQUOIA_THALES_BIM Management","SIA_SIA-SIEGE_Synthèse technique","SNC ILOT FOCH_FOCH_BIM Management","SOL-ELEC_UCB-T1_Modélisation plateforme","UCB_B4CD_Location plateforme","UCB_B4CD_Synthèse technique","UCB_GENESIS_AMO BIM","UCB_GENESIS_BIM Management","UCB_GENESIS_Location plateforme","UCB_UCB-B9_Synthèse technique","VINCI_VCF_Synthèse technique"];
+const ABS_TYPES = ["Congé","RTT","Maladie","Férié","Récupération","Formation","Autre"];
+const ABS_PART = {j:"Journée", am:"Matin", pm:"Après-midi"};
+const refList = () => (S.prefs && Array.isArray(S.prefs.refs) && S.prefs.refs.length ? S.prefs.refs : DEC_REFS);
+function refGuess(p){ if (!p) return ""; const n = norm(p); const m = refList().filter(r => norm(r).includes(n)); return m.length === 1 ? m[0] : ""; }
+function refOfProj(p){ const map = (S.prefs && S.prefs.refMap) || {}; return Object.prototype.hasOwnProperty.call(map, p) ? map[p] : refGuess(p); }
+const refOfTask = t => (t.reference || refOfProj(t.projet) || "");
+const decArr = () => { const n = Number(S.prefs && S.prefs.arr); return [1, 5, 15, 30].includes(n) ? n : 15; };
+function collabName(){ const p = S.prefs && S.prefs.collab; if (p) return p; const em = window.TODO_ACCOUNT && window.TODO_ACCOUNT.email; return em ? em.split("@")[0].split(/[._+-]/)[0].toUpperCase() : "JAWAD"; }
+const durTxt = m => `${Math.floor(m / 60)}:${z2(Math.round(m % 60))}`;
+const durXl = m => `${Math.floor(m / 60)}:${z2(Math.round(m % 60))}:00`;
+function parseDur(v){
+  const s = String(v ?? "").trim().toLowerCase().replace(/\s/g, ""); if (!s) return null; let m;
+  if ((m = s.match(/^(\d{1,2})[:h](\d{1,2})?(?::\d{1,2})?$/))) return Number(m[1]) * 60 + Number(m[2] || 0);
+  const n = parseFloat(s.replace(",", ".")); return isFinite(n) && n >= 0 && n <= 24 ? Math.round(n * 60) : NaN;
+}
+/* jours fériés (France métropolitaine) */
+const ferCache = {};
+function feries(y){
+  if (ferCache[y]) return ferCache[y];
+  const a = y % 19, b = Math.floor(y / 100), c = y % 100, d = Math.floor(b / 4), e = b % 4, f = Math.floor((b + 8) / 25), g = Math.floor((b - f + 1) / 3), h = (19 * a + b - d - g + 15) % 30, i = Math.floor(c / 4), k = c % 4, l = (32 + 2 * e + 2 * i - h - k) % 7, m = Math.floor((a + 11 * h + 22 * l) / 451), mo = Math.floor((h + l - 7 * m + 114) / 31), da = ((h + l - 7 * m + 114) % 31) + 1;
+  const P = ymd(new Date(y, mo - 1, da));
+  const out = {[`${y}-01-01`]:"Jour de l'an", [addDays(P, 1)]:"Lundi de Pâques", [`${y}-05-01`]:"Fête du travail", [`${y}-05-08`]:"8 mai 1945", [addDays(P, 39)]:"Ascension", [addDays(P, 50)]:"Lundi de Pentecôte", [`${y}-07-14`]:"Fête nationale", [`${y}-08-15`]:"Assomption", [`${y}-11-01`]:"Toussaint", [`${y}-11-11`]:"Armistice", [`${y}-12-25`]:"Noël"};
+  return (ferCache[y] = out);
+}
+const ferieOn = d => feries(Number(d.slice(0, 4)))[d] || "";
+const monthOf = d => d.slice(0, 7);
+const decDoc = d => (S.decDocs && S.decDocs[monthOf(d)]) || {};
+function absOn(d){ const a = (decDoc(d).abs || {})[d]; if (a && a.type) return a; const f = ferieOn(d); return f && capOn(d) > 0 ? {type:"Férié", part:"j", auto:true, label:f} : null; }
+function absHours(d){ const a = absOn(d); if (!a) return 0; const c = capOn(d); return a.part === "j" ? c : c / 2; }
+
+/* créneaux comptés un jour donné (créneaux placés + tâches récurrentes) */
+function decItems(d){
+  const out = [], dow = parseYmd(d).getDay(), ab = absOn(d);
+  for (const t of S.tasks.values()) {
+    for (const b of blocsOf(t)) if (b.d === d) out.push({s:b.s, e:b.s + b.m, t});
+    if (Array.isArray(t.jours) && t.jours.includes(dow) && !(ab && ab.part === "j")) {
+      const c = String(t.created || "").slice(0, 10);
+      if (validYmd(c) && d < c) continue;
+      if ((isDone(t) || t.archived) && !(validYmd(t.cloture) && d <= t.cloture)) continue;
+      const s = isFinite(t.recH) ? t.recH : 540, m = Math.max(15, Math.round((Number(t.heures) || 1) * 60));
+      out.push({s, e:s + m, t, rec:true});
+    }
+  }
+  return out;
+}
+/* répartit le temps de la journée par clé (référence ou projet) : le temps en parallèle est partagé, jamais compté deux fois */
+function decSplit(its, keyOf){
+  const acc = new Map();
+  for (const it of its) {
+    const k = keyOf(it.t); if (!acc.has(k)) acc.set(k, {k, min:0, s0:it.s, tasks:new Map()});
+    const A = acc.get(k); A.s0 = Math.min(A.s0, it.s);
+    const prev = A.tasks.get(it.t.id); if (!prev || it.s < prev.s) A.tasks.set(it.t.id, {t:it.t, s:it.s});
+  }
+  const pts = [...new Set(its.flatMap(i => [i.s, i.e]))].sort((a, b) => a - b);
+  for (let i = 0; i < pts.length - 1; i++) {
+    const a = pts[i], b = pts[i + 1];
+    const ks = [...new Set(its.filter(x => x.s <= a && x.e >= b).map(x => keyOf(x.t)))];
+    for (const k of ks) acc.get(k).min += (b - a) / ks.length;
+  }
+  return [...acc.values()].filter(x => x.min > 0).sort((x, y) => x.s0 - y.s0);
+}
+const roundArr = min => { const r = decArr(); return min > 0 ? Math.max(r, Math.round(min / r) * r) : 0; };
+/* lignes d'une journée : calculées + saisies à la main */
+function decRows(d){
+  const doc = decDoc(d), ov = doc.rows || {}, rows = [];
+  for (const g of decSplit(decItems(d), refOfTask)) {
+    const key = d + "|" + g.k, o = ov[key] || {};
+    const tasks = [...g.tasks.values()].sort((x, y) => x.s - y.s).map(x => x.t);
+    const autoDesc = [...new Set(tasks.map(t => String(t.tache || "").trim()).filter(Boolean))].join(" + ");
+    const auto = roundArr(g.min);
+    rows.push({key, d, ref:g.k, auto, m:o.m != null && isFinite(o.m) ? Number(o.m) : auto, mOv:o.m != null && isFinite(o.m),
+      desc:o.desc != null ? o.desc : autoDesc, autoDesc, descOv:o.desc != null, dep:!!o.dep, lieu:o.lieu || "", km:o.km || "", fact:o.fact || "",
+      tasks, projets:[...new Set(tasks.map(t => t.projet).filter(Boolean))], src:"planning"});
+  }
+  for (const r of (doc.manual || []).filter(x => x.d === d)) rows.push({key:"m:" + r.id, id:r.id, d, ref:r.ref || "", auto:0, m:Number(r.m) || 0, desc:r.desc || "", dep:!!r.dep, lieu:r.lieu || "", km:r.km || "", fact:r.fact || "", tasks:[], projets:[], src:"manuel"});
+  return rows;
+}
+function decPeriod(){
+  const D = S.dec; if (!validYmd(D.ref)) D.ref = today();
+  let a, b, label;
+  if (D.mode === "semaine") { a = mondayOf(D.ref); b = addDays(a, 6); const m1 = parseYmd(a), m2 = parseYmd(b); label = `Semaine ${isoWeek(m1)} <span class="ttl-d">${m1.getDate()}${m1.getMonth() !== m2.getMonth() ? " " + MOIS_COURTS[m1.getMonth()] : ""} – ${m2.getDate()} ${MOIS_COURTS[m2.getMonth()]} ${m2.getFullYear()}</span>`; }
+  else { const r = parseYmd(D.ref); a = ymd(new Date(r.getFullYear(), r.getMonth(), 1)); b = ymd(new Date(r.getFullYear(), r.getMonth() + 1, 0)); label = `${MOIS[r.getMonth()].charAt(0).toUpperCase() + MOIS[r.getMonth()].slice(1)} <span class="ttl-d">${r.getFullYear()}</span>`; }
+  const td = today(), lim = D.upto && td >= a && td <= b ? td : b;
+  return {a, b, lim, label, file: D.mode === "semaine" ? `S${z2(isoWeek(parseYmd(a)))}-${parseYmd(a).getFullYear()}` : a.slice(0, 7)};
+}
+function decData(){
+  const P = decPeriod(), days = [];
+  for (let d = P.a; d <= P.lim; d = addDays(d, 1)) {
+    const rows = decRows(d), cap = capOn(d), ab = absOn(d);
+    if (!rows.length && cap <= 0 && !ab) continue;
+    const tot = rows.reduce((s, r) => s + r.m, 0);
+    days.push({d, rows, cap, ab, absH:absHours(d), tot});
+  }
+  return {P, days};
+}
+
+/* ----- Vue ----- */
+const decIn = (f, r, v, attrs = "") => `<input type="text" data-dec="${f}" value="${esc(v)}" ${attrs} ${S.canWrite === false ? "readonly" : ""}>`;
+function refSelect(r){
+  const L = refList(), opts = (r.ref && !L.includes(r.ref) ? [r.ref, ...L] : L);
+  return `<select data-dec="ref" class="${r.ref ? "" : "need"}" ${S.canWrite === false ? "disabled" : ""} aria-label="Référence"><option value="">${r.src === "manuel" ? "— Référence —" : "⚠ Choisir la référence"}</option>${opts.map(x => `<option ${x === r.ref ? "selected" : ""}>${esc(x)}</option>`).join("")}</select>`;
+}
+function decRowHtml(r, future){
+  const ro = S.canWrite === false;
+  const info = r.src === "manuel" ? '<span class="dec-src man">saisie manuelle</span>'
+    : `${r.projets.map(p => `<span class="pill proj" style="--pc:${projColor(p)}">${esc(p)}</span>`).join("")}<span class="dec-src">${r.tasks.length} tâche${r.tasks.length > 1 ? "s" : ""} · planning ${durTxt(r.auto)}</span>`;
+  return `<div class="dec-row ${r.m === 0 ? "off" : ""} ${future ? "fut" : ""}" data-key="${esc(r.key)}" data-d="${r.d}" ${r.id ? `data-mid="${esc(r.id)}"` : ""}>
+    <div class="c-dur">${decIn("m", r, durTxt(r.m), 'inputmode="decimal" aria-label="Durée"')}${r.mOv ? `<button class="dec-reset" data-act="dec-reset" data-f="m" title="Revenir au temps du planning (${durTxt(r.auto)})">↺</button>` : ""}</div>
+    <div class="c-ref"><span class="ref-t ${r.ref ? "" : "need"}">${r.ref ? esc(r.ref) : (r.src === "manuel" ? "— Référence —" : "⚠ Choisir la référence")}</span>${refSelect(r)}</div>
+    <div class="c-dep"><select data-dec="dep" ${ro ? "disabled" : ""} aria-label="Déplacement"><option value="0">NON</option><option value="1" ${r.dep ? "selected" : ""}>OUI</option></select></div>
+    <div class="c-lieu">${decIn("lieu", r, r.lieu, 'placeholder="Lieu" aria-label="Lieu"')}</div>
+    <div class="c-km">${decIn("km", r, r.km, 'inputmode="decimal" placeholder="km" aria-label="Kilomètres"')}</div>
+    <div class="c-desc"><textarea data-dec="desc" rows="${Math.min(4, Math.max(1, Math.ceil(String(r.desc).length / 52)))}" placeholder="Description" aria-label="Description" ${S.canWrite === false ? "readonly" : ""}>${esc(r.desc)}</textarea>${r.descOv ? `<button class="dec-reset" data-act="dec-reset" data-f="desc" title="Revenir au texte automatique">↺</button>` : ""}<div class="dec-info">${info}</div></div>
+    <div class="c-fact">${decIn("fact", r, r.fact, 'placeholder="Facture" aria-label="Facture"')}</div>
+    <div class="c-act">${r.src === "manuel" && !ro ? `<button class="dec-x" data-act="dec-del" aria-label="Supprimer la ligne">${I.close}</button>` : ""}</div>
+  </div>`;
+}
+function bars(list, tot){
+  if (!list.length) return '<p class="sub">Aucune heure sur la période.</p>';
+  const mx = Math.max(...list.map(x => x.m));
+  return `<div class="dec-bars">${list.map(x => `<div class="db-r"><span class="db-l" title="${esc(x.k)}">${x.c ? `<i style="background:${x.c}"></i>` : ""}${esc(x.k || "Sans référence")}</span><span class="db-v">${hfmt(x.m / 60)} h <small>${tot ? Math.round(x.m / tot * 100) : 0} %</small></span><span class="db-b"><i style="width:${Math.max(2, x.m / mx * 100)}%;${x.c ? `background:${x.c}` : ""}"></i></span></div>`).join("")}</div>`;
+}
+function decRecap(days){
+  const byRef = new Map(), byProj = new Map();
+  let tot = 0, cap = 0, absJ = 0, km = 0, noRef = 0;
+  for (const D of days) {
+    cap += Math.max(0, D.cap - D.absH); if (D.ab) absJ += D.ab.part === "j" ? 1 : 0.5;
+    for (const r of D.rows) { if (!r.m) continue; tot += r.m; byRef.set(r.ref, (byRef.get(r.ref) || 0) + r.m); km += parseFloat(String(r.km).replace(",", ".")) || 0; if (!r.ref) noRef++; }
+    /* projets : même partage du temps en parallèle, calé sur les durées déclarées */
+    const sp = decSplit(decItems(D.d), t => t.projet || "Sans projet"), spTot = sp.reduce((s, x) => s + x.min, 0);
+    const decl = D.rows.filter(r => r.src !== "manuel").reduce((s, r) => s + r.m, 0), man = D.rows.filter(r => r.src === "manuel").reduce((s, r) => s + r.m, 0);
+    for (const x of sp) byProj.set(x.k, (byProj.get(x.k) || 0) + (spTot ? x.min / spTot * decl : 0));
+    if (man) byProj.set("Saisie manuelle", (byProj.get("Saisie manuelle") || 0) + man);
+  }
+  const refs = [...byRef].map(([k, m]) => ({k, m})).sort((a, b) => b.m - a.m);
+  const projs = [...byProj].map(([k, m]) => ({k, m, c: k === "Saisie manuelle" || k === "Sans projet" ? "" : projColor(k)})).filter(x => x.m > 0).sort((a, b) => b.m - a.m);
+  return {tot, cap:cap * 60, absJ, km, noRef, refs, projs};
+}
+function viewHeures(){
+  const {P, days} = decData(), R = decRecap(days), D = S.dec, td = today(), ro = S.canWrite === false;
+  const ecart = R.tot - R.cap;
+  let html = "", wk = null, wTot = 0, wCap = 0;
+  const flushWk = () => { if (wk !== null && D.mode === "mois") html += `<div class="dec-wk"><span>Semaine ${wk}</span><b>${hfmt(wTot / 60)} h</b><small>/ ${hfmt(wCap)} h</small>${Math.abs(wTot / 60 - wCap) >= 0.25 ? `<em class="${wTot / 60 > wCap ? "over" : "under"}">${wTot / 60 > wCap ? "+" : "−"}${hfmt(Math.abs(wTot / 60 - wCap))} h</em>` : ""}</div>`; wTot = 0; wCap = 0; };
+  for (const Dy of days) {
+    const w = isoWeek(parseYmd(Dy.d)); if (w !== wk) { flushWk(); wk = w; }
+    const capN = Math.max(0, Dy.cap - Dy.absH); wTot += Dy.tot; wCap += capN;
+    const dt = parseYmd(Dy.d), fut = Dy.d > td, diff = Dy.tot / 60 - capN;
+    const st = !Dy.rows.length && capN > 0 && !fut ? "dt-empty" : Math.abs(diff) < 0.25 ? "dt-ok" : diff > 0 ? "dt-over" : fut ? "" : "dt-under";
+    const ab = Dy.ab;
+    html += `<section class="dec-day ${Dy.d === td ? "is-today" : ""} ${fut ? "fut" : ""}" data-d="${Dy.d}">
+      <div class="dec-dh"><div class="dd-t"><b>${JOURS_COURTS[dt.getDay()]} ${z2(dt.getDate())}/${z2(dt.getMonth() + 1)}</b>${Dy.d === td ? '<span class="dd-auj">aujourd\'hui</span>' : ""}${fut ? '<span class="dd-auj fut">prévu</span>' : ""}</div>
+        <div class="dd-tot ${st}"><b>${hfmt(Dy.tot / 60)} h</b><small> / ${hfmt(capN)} h</small></div>
+        <div class="dd-abs">${ab && ab.auto ? `<span class="abs-chip">Férié · ${esc(ab.label)}</span>` : ""}
+          <select data-dec="abs" ${ro ? "disabled" : ""} aria-label="Absence"><option value="">${ab && ab.auto ? "Férié (auto)" : "Présent"}</option>${ABS_TYPES.map(x => `<option ${ab && !ab.auto && ab.type === x ? "selected" : ""}>${x}</option>`).join("")}</select>
+          ${ab && !ab.auto ? `<select data-dec="part" ${ro ? "disabled" : ""} aria-label="Durée de l'absence">${Object.entries(ABS_PART).map(([k, v]) => `<option value="${k}" ${ab.part === k ? "selected" : ""}>${v}</option>`).join("")}</select>` : ""}</div>
+        <div class="dd-act">${ro ? "" : `<button class="btn ghost sm" data-act="dec-add" title="Ajouter une ligne" aria-label="Ajouter une ligne">${I.plus}<span class="lbl-m">Ligne</span></button>`}<button class="btn ghost sm" data-act="dec-copy-day" title="Copier les lignes de ce jour">Copier</button></div></div>
+      ${Dy.rows.length ? Dy.rows.map(r => decRowHtml(r, fut)).join("") : `<div class="dec-none">${ab ? `Absence : ${esc(ab.type)}${ab.part !== "j" ? " (" + ABS_PART[ab.part].toLowerCase() + ")" : ""}` : "Aucun créneau placé ce jour-là."}</div>`}
+    </section>`;
+  }
+  flushWk();
+  const nav = `<div class="segbar big"><button data-act="dec-mode" data-m="semaine" aria-pressed="${D.mode === "semaine"}">Semaine</button><button data-act="dec-mode" data-m="mois" aria-pressed="${D.mode !== "semaine"}">Mois</button></div>
+    <div class="segbar"><button data-act="dec-prev" aria-label="Précédent">‹</button><button data-act="dec-today">Aujourd'hui</button><button data-act="dec-next" aria-label="Suivant">›</button></div>
+    <label class="toggle"><input type="checkbox" id="dec-upto" ${D.upto ? "checked" : ""}> Jusqu'à aujourd'hui</label>`;
+  return `<div class="view-head plan-head"><div><div class="eyebrow">Décompte des heures · ${esc(collabName())}</div><h1>${P.label}</h1></div><div class="pnav">${nav}</div></div>
+    <div class="kpi-row dec-kpis">
+      <div class="kc"><span class="kc-l">Heures déclarées</span><span class="kc-v">${hfmt(R.tot / 60)} h</span></div>
+      <div class="kc"><span class="kc-l">Heures dues</span><span class="kc-v">${hfmt(R.cap / 60)} h</span><span class="kc-n mut">capacité moins absences</span></div>
+      <div class="kc"><span class="kc-l">Écart</span><span class="kc-v ${Math.abs(ecart) < 15 ? "ok" : ecart > 0 ? "over" : "warn"}">${ecart >= 0 ? "+" : "−"}${hfmt(Math.abs(ecart) / 60)} h</span></div>
+      <div class="kc"><span class="kc-l">Absences</span><span class="kc-v">${hfmt(R.absJ)} j</span></div>
+      <div class="kc"><span class="kc-l">Sans référence</span><span class="kc-v ${R.noRef ? "warn" : ""}">${R.noRef}</span></div>
+    </div>
+    <div class="dec-tools">${ro ? "" : `<button class="btn primary" data-act="dec-copy">Copier pour Excel</button>`}<button class="btn" data-act="dec-xlsx">Exporter en .xlsx</button>${ro ? "" : `<button class="btn" data-act="dec-add" data-d="${P.lim >= td && P.a <= td ? td : P.a}">${I.plus} Ligne hors planning</button>`}
+      <span class="sub dec-hint">« Copier » met les colonnes A à I (Collaborateur → Facture) dans le presse-papiers, sans l'en-tête : colle-les directement sous ton tableau.</span><span class="progress-line" id="dec-progress"></span></div>
+    ${R.noRef ? `<div class="dec-warn">⚠ ${R.noRef} ligne${R.noRef > 1 ? "s" : ""} sans référence. Choisis-la sur la ligne (elle s'applique aux tâches concernées), ou associe une référence par défaut à chaque projet dans Réglages ▸ Décompte des heures.</div>` : ""}
+    <div class="dec-layout">
+      <div class="dec-main">
+        <div class="dec-row dec-head" aria-hidden="true"><div>Durée</div><div>Référence</div><div>Dépl.</div><div>Lieu</div><div>Km</div><div>Description</div><div>Facture</div><div></div></div>
+        ${html || '<div class="empty"><p>Aucun jour sur cette période.</p></div>'}
+      </div>
+      <aside class="dec-side">
+        <div class="panel"><h2>Par référence</h2>${bars(R.refs, R.tot)}</div>
+        <div class="panel"><h2>Par projet</h2>${bars(R.projs, R.tot)}</div>
+        ${R.km ? `<div class="panel"><h2>Déplacements</h2><p class="sub">${hfmt(R.km)} km sur la période.</p></div>` : ""}
+      </aside>
+    </div>`;
+}
+
+/* ----- Écritures ----- */
+async function decSave(month, mut){
+  const cur = JSON.parse(JSON.stringify((S.decDocs && S.decDocs[month]) || {}));
+  cur.rows = cur.rows || {}; cur.manual = cur.manual || []; cur.abs = cur.abs || {};
+  mut(cur); cur.updated = nowIso();
+  S.decDocs = {...S.decDocs, [month]:cur}; schedule();
+  try { await S.db.doc("decompte/" + month).set(cur); } catch (e) { fail(e); }
+}
+async function decChange(el){
+  const row = el.closest(".dec-row"), day = el.closest(".dec-day"), f = el.dataset.dec;
+  const d = (row || day).dataset.d, month = monthOf(d);
+  if (f === "abs" || f === "part") {
+    const v = el.value;
+    await decSave(month, c => { if (f === "abs") { if (v) c.abs[d] = {type:v, part:(c.abs[d] && c.abs[d].part) || "j"}; else delete c.abs[d]; } else if (c.abs[d]) c.abs[d].part = v; });
+    render(true); return;
+  }
+  const key = row.dataset.key, mid = row.dataset.mid;
+  let v = el.value;
+  if (f === "m") { const n = parseDur(v); if (n === null || isNaN(n)) { toast("Durée non reconnue : écris 2, 2,5, 2:30 ou 2h30"); render(true); return; } v = n; }
+  if (f === "dep") v = v === "1";
+  if (f === "ref" && !mid) {
+    /* ligne issue du planning : la référence s'applique aux tâches */
+    const rs = decRows(d).find(r => r.key === key); if (!rs) return;
+    const ids = rs.tasks.map(t => t.id);
+    try { await runPool(ids, id => S.db.doc("tasks/" + id).update({reference:v, updated:nowIso()})); toast(v ? `Référence appliquée à ${ids.length} tâche${ids.length > 1 ? "s" : ""}` : "Référence retirée"); } catch (e) { fail(e); }
+    for (const id of ids) { const t = S.tasks.get(id); if (t) t.reference = v; }
+    render(true); return;
+  }
+  await decSave(month, c => {
+    if (mid) { const r = c.manual.find(x => x.id === mid); if (r) r[f] = v; }
+    else {
+      const o = c.rows[key] = c.rows[key] || {}, base = decRows(d).find(r => r.key === key);
+      if (base && ((f === "m" && v === base.auto) || (f === "desc" && v === base.autoDesc))) delete o[f]; else o[f] = v;
+      if (!Object.keys(o).length) delete c.rows[key];
+    }
+  });
+  if (el.tagName === "SELECT") render(true);
+}
+async function decAction(act, a){
+  const D = S.dec;
+  if (act === "dec-mode") { D.mode = a.dataset.m; saveDecUi(); render(true); return; }
+  if (act === "dec-today") { D.ref = today(); render(true); return; }
+  if (act === "dec-prev" || act === "dec-next") {
+    const k = act === "dec-next" ? 1 : -1, r = parseYmd(validYmd(D.ref) ? D.ref : today());
+    D.ref = D.mode === "semaine" ? addDays(ymd(r), 7 * k) : ymd(new Date(r.getFullYear(), r.getMonth() + k, 1));
+    render(true); return;
+  }
+  if (act === "dec-add") {
+    const d = a.dataset.d || a.closest(".dec-day")?.dataset.d || today(), id = Date.now().toString(36) + Math.random().toString(36).slice(2, 5);
+    await decSave(monthOf(d), c => { c.manual.push({id, d, ref:"", m:60, desc:"", dep:false, lieu:"", km:"", fact:""}); });
+    render(true); setTimeout(() => { const el = document.querySelector(`.dec-row[data-mid="${id}"] [data-dec="desc"]`); if (el) { el.scrollIntoView({block:"center"}); el.focus(); } }, 30);
+    return;
+  }
+  if (act === "dec-del") { const row = a.closest(".dec-row"), d = row.dataset.d, mid = row.dataset.mid; await decSave(monthOf(d), c => { c.manual = c.manual.filter(x => x.id !== mid); }); toast("Ligne supprimée"); render(true); return; }
+  if (act === "dec-reset") { const row = a.closest(".dec-row"), d = row.dataset.d, key = row.dataset.key, f = a.dataset.f; await decSave(monthOf(d), c => { if (c.rows[key]) { delete c.rows[key][f]; if (!Object.keys(c.rows[key]).length) delete c.rows[key]; } }); render(true); return; }
+  if (act === "dec-copy" || act === "dec-copy-day") {
+    const {days} = decData(); const only = act === "dec-copy-day" ? a.closest(".dec-day").dataset.d : null;
+    const rows = days.filter(x => !only || x.d === only).flatMap(x => x.rows).filter(r => r.m > 0);
+    if (!rows.length) { toast("Aucune ligne à copier"); return; }
+    const txt = rows.map(r => decLine(r).map(v => String(v).replace(/[\t\r\n]+/g, " ")).join("\t")).join("\n");
+    const ok = await copyText(txt);
+    const nr = rows.filter(r => !r.ref).length;
+    if (ok) toast(`${rows.length} ligne${rows.length > 1 ? "s" : ""} copiée${rows.length > 1 ? "s" : ""}${nr ? ` (${nr} sans référence)` : ""} : colle dans Excel (Cmd+V)`);
+    else showCopyBox(txt);
+    return;
+  }
+  if (act === "dec-xlsx") { decExport(); return; }
+  if (act === "dec-copybox-close") { document.querySelector(".copybox")?.remove(); return; }
+}
+function decLine(r){ return [collabName(), fmt(r.d, true), durXl(r.m), r.ref, r.dep ? "OUI" : "NON", r.lieu, r.km, r.desc, r.fact]; }
+async function copyText(txt){
+  try { if (navigator.clipboard && navigator.clipboard.writeText) { await navigator.clipboard.writeText(txt); return true; } } catch (e) {}
+  try { const ta = document.createElement("textarea"); ta.value = txt; ta.setAttribute("readonly", ""); ta.style.cssText = "position:fixed;top:0;left:0;opacity:0"; document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, txt.length); const ok = document.execCommand("copy"); ta.remove(); return ok; } catch (e) { return false; }
+}
+function showCopyBox(txt){
+  document.querySelector(".copybox")?.remove();
+  const el = document.createElement("div"); el.className = "overlay copybox";
+  el.innerHTML = `<div class="sheet" role="dialog" aria-label="Copier pour Excel"><div class="sheet-h"><h2>Copier pour Excel</h2><button class="btn ghost" data-act="dec-copybox-close" aria-label="Fermer">${I.close}</button></div><div class="sheet-b"><p class="sub">Le texte est sélectionné : copie-le (Cmd+C), puis colle-le dans Excel.</p><textarea readonly rows="10" style="width:100%;font-family:var(--f-mono);font-size:12px;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px">${esc(txt)}</textarea></div></div>`;
+  document.body.appendChild(el); const ta = el.querySelector("textarea"); ta.focus(); ta.select();
+}
+const xlDate = d => { const [y, m, dd] = d.split("-").map(Number); return (Date.UTC(y, m - 1, dd) - Date.UTC(1899, 11, 30)) / 86400000; };
+async function decExport(){
+  const say = m => { const el = $("#dec-progress"); if (el) el.textContent = m; };
+  const dl = window.claude && window.claude.use ? await window.claude.use("downloads") : null;
+  if (!dl) { say("L'export n'est pas disponible sur cet appareil."); return; }
+  try {
+    say("Préparation du fichier…");
+    const X = await loadXLSX(), {P, days} = decData(), R = decRecap(days), rows = days.flatMap(x => x.rows).filter(r => r.m > 0);
+    const EXTRA = ["Jour", "Semaine", "Heures (décimal)", "Projet(s)", "Source", "Tâches du planning"];
+    const aoa = [[...DEC_HEAD, ...EXTRA], ...rows.map(r => [...decLine(r), JOURS[parseYmd(r.d).getDay()], isoWeek(parseYmd(r.d)), Math.round(r.m / 60 * 100) / 100, r.projets.join(", "), r.src === "manuel" ? "Saisie manuelle" : r.mOv || r.descOv ? "Planning (modifié)" : "Planning", r.tasks.map(t => t.tache).join(" | ")])];
+    const ws = X.utils.aoa_to_sheet(aoa);
+    rows.forEach((r, i) => {
+      ws[X.utils.encode_cell({r:i + 1, c:1})] = {t:"n", v:xlDate(r.d), z:"dd/mm/yyyy"};
+      ws[X.utils.encode_cell({r:i + 1, c:2})] = {t:"n", v:r.m / 1440, z:"[h]:mm:ss"};
+      const km = parseFloat(String(r.km).replace(",", ".")); if (isFinite(km)) ws[X.utils.encode_cell({r:i + 1, c:6})] = {t:"n", v:km};
+    });
+    ws["!cols"] = [14, 12, 10, 44, 12, 18, 12, 70, 12, 11, 9, 10, 16, 16, 50].map(w => ({wch:w}));
+    ws["!autofilter"] = {ref:X.utils.encode_range({s:{r:0, c:0}, e:{r:rows.length, c:aoa[0].length - 1}})};
+    /* récapitulatif */
+    const rc = [["Décompte des heures", collabName()], ["Période", P.a.split("-").reverse().join("/") + " → " + P.lim.split("-").reverse().join("/")], [],
+      ["Heures déclarées", R.tot / 60], ["Heures dues (capacité − absences)", R.cap / 60], ["Écart", (R.tot - R.cap) / 60], ["Absences (jours)", R.absJ], ["Kilomètres", R.km], [],
+      ["Par référence", "Heures", "Part"], ...R.refs.map(x => [x.k || "(sans référence)", Math.round(x.m / 60 * 100) / 100, R.tot ? Math.round(x.m / R.tot * 1000) / 10 + " %" : ""]), [],
+      ["Par projet", "Heures", "Part"], ...R.projs.map(x => [x.k, Math.round(x.m / 60 * 100) / 100, R.tot ? Math.round(x.m / R.tot * 1000) / 10 + " %" : ""]), []];
+    const weeks = new Map(); for (const Dy of days) { const w = isoWeek(parseYmd(Dy.d)), o = weeks.get(w) || {h:0, c:0}; o.h += Dy.tot / 60; o.c += Math.max(0, Dy.cap - Dy.absH); weeks.set(w, o); }
+    rc.push(["Par semaine", "Heures", "Dues", "Écart"], ...[...weeks].map(([w, o]) => ["Semaine " + w, Math.round(o.h * 100) / 100, Math.round(o.c * 100) / 100, Math.round((o.h - o.c) * 100) / 100]), []);
+    const abs = days.filter(x => x.ab);
+    rc.push(["Absences", "Type", "Durée", "Heures"], ...abs.map(x => [fmt(x.d, true), x.ab.type + (x.ab.auto ? " (" + x.ab.label + ")" : ""), ABS_PART[x.ab.part] || "", Math.round(x.absH * 100) / 100]));
+    const ws2 = X.utils.aoa_to_sheet(rc); ws2["!cols"] = [{wch:46}, {wch:14}, {wch:12}, {wch:10}];
+    const wb = X.utils.book_new(); X.utils.book_append_sheet(wb, ws, "Décompte"); X.utils.book_append_sheet(wb, ws2, "Récap");
+    const buf = X.write(wb, {bookType:"xlsx", type:"array"});
+    await dl.save({filename:`Decompte_heures_${collabName().replace(/[^\w-]+/g, "_")}_${P.file}.xlsx`, data:new Blob([buf])});
+    say("Fichier prêt.");
+  } catch (e) { say(e && e.code === "declined" ? "Téléchargement annulé." : e && e.message === "xlsx" ? "Le module Excel n'a pas pu se charger." : "Export impossible pour l'instant."); }
+}
+function saveDecUi(){ try { localStorage.setItem("todobim.dec", JSON.stringify({mode:S.dec.mode, upto:S.dec.upto})); } catch (e) {} }
+try { const sd = JSON.parse(localStorage.getItem("todobim.dec") || "null"); if (sd) { if (sd.mode === "semaine" || sd.mode === "mois") S.dec.mode = sd.mode; if (typeof sd.upto === "boolean") S.dec.upto = sd.upto; } } catch (e) {}
+
+/* ----- Réglages ----- */
+function decSettingsPanel(){
+  const ro = S.canWrite === false, map = (S.prefs && S.prefs.refMap) || {};
+  return `<div class="panel"><h2>Décompte des heures</h2>
+    <p>Les heures viennent des créneaux du planning. Chaque tâche prend la référence de son projet, sauf si tu en choisis une autre dans la tâche.</p>
+    <div class="cols2" style="margin-top:10px">
+      <label class="field"><span class="lbl">Collaborateur</span><input type="text" id="set-collab" value="${esc(collabName())}" ${ro ? "readonly" : ""}></label>
+      <label class="field"><span class="lbl">Arrondi des durées</span><select id="set-arr" ${ro ? "disabled" : ""}>${[[1, "Aucun"], [5, "5 min"], [15, "15 min"], [30, "30 min"]].map(([v, l]) => `<option value="${v}" ${decArr() === v ? "selected" : ""}>${l}</option>`).join("")}</select></label>
+    </div>
+    <p style="margin-top:12px"><b style="color:var(--ink)">Référence par défaut de chaque projet</b></p>
+    <div class="refmap">${allProjets().map(p => { const cur = Object.prototype.hasOwnProperty.call(map, p) ? map[p] : null, g = refGuess(p); return `<label class="rm-r"><span class="pill proj" style="--pc:${projColor(p)}">${esc(p)}</span><select class="set-refmap" data-p="${esc(p)}" ${ro ? "disabled" : ""}><option value="__auto" ${cur === null ? "selected" : ""}>${g ? "Auto : " + esc(g) : "— Aucune —"}</option>${refList().map(r => `<option ${cur === r ? "selected" : ""}>${esc(r)}</option>`).join("")}</select></label>`; }).join("") || '<span class="sub">Aucun projet.</span>'}</div>
+    <details class="refs-ed" style="margin-top:12px"><summary>Liste des références (${refList().length})</summary>
+      <p class="sub">Une référence par ligne, comme dans ton classeur.</p>
+      <textarea id="set-refs" rows="10" ${ro ? "readonly" : ""}>${esc(refList().join("\n"))}</textarea>
+      ${ro ? "" : `<div class="row" style="margin-top:8px"><button class="btn" data-act="dec-refs-save">Enregistrer la liste</button></div>`}</details>
+  </div>`;
+}
+function decSettingsChange(t){
+  if (t.id === "set-collab") { const v = t.value.trim().toUpperCase(); savePrefs({collab:v}); toast("Collaborateur : " + (v || collabName())); return true; }
+  if (t.id === "set-arr") { savePrefs({arr:Number(t.value)}); toast("Arrondi : " + t.options[t.selectedIndex].text); return true; }
+  if (t.classList && t.classList.contains("set-refmap")) { const map = {...((S.prefs && S.prefs.refMap) || {})}, p = t.dataset.p; if (t.value === "__auto") delete map[p]; else map[p] = t.value; savePrefs({refMap:map}); toast(`${p} → ${t.value === "__auto" ? "auto" : t.value}`); render(true); return true; }
+  return false;
+}
+async function decRefsSave(){
+  const ta = $("#set-refs"); if (!ta) return;
+  const list = [...new Set(ta.value.split(/\r?\n/).map(s => s.trim()).filter(Boolean))];
+  if (!list.length) { toast("La liste est vide"); return; }
+  await savePrefs({refs:list}); toast(`${list.length} références enregistrées`); render(true);
+}
+
+/* hauteur automatique des descriptions */
+function decFit(root){ (root || document).querySelectorAll(".dec-row textarea").forEach(ta => { ta.style.height = "auto"; ta.style.height = ta.scrollHeight + 2 + "px"; }); }
+document.addEventListener("input", ev => { if (ev.target.matches && ev.target.matches(".dec-row textarea")) decFit(ev.target.parentNode); });
+window.addEventListener("resize", () => { if (S.view === "heures") decFit(); });
+
 /* ---------- Rendu principal ---------- */
 function render(force){
   hideTip();
@@ -1717,9 +2172,10 @@ function render(force){
     return;
   }
   if (!force && PD && PD.active) { S.pendingRender = true; return; }
-  const html = {jour:viewJour, planning:viewPlanning, matrice:viewMatrice, bord:viewBord, reglages:viewReglages}[S.view]();
+  const html = {jour:viewJour, planning:viewPlanning, heures:viewHeures, matrice:viewMatrice, bord:viewBord, reglages:viewReglages}[S.view]();
   v.innerHTML = html; S.built = S.view;
   if (S.view === "planning") afterPlanning();
+  if (S.view === "heures") decFit();
 }
 let raf = 0;
 function schedule(){ if (raf) return; raf = requestAnimationFrame(() => { raf = 0; render(); }); }
@@ -1793,6 +2249,7 @@ function renderEditor(first){
     <div class="sheet-b">
       <div class="field"><label for="e-tache">Tâche</label><textarea id="e-tache" rows="2" ${ro ? "readonly" : ""}>${esc(e.tache)}</textarea></div>
       <div class="field"><span class="lbl">Projet</span><div class="segc">${allProjets().map(p => `<button type="button" data-ed="projet" data-v="${esc(p)}" aria-pressed="${e.projet === p}">${esc(p)}</button>`).join("")}</div></div>
+      <div class="field"><label for="e-ref">Référence (décompte des heures)</label><select id="e-ref" ${ro ? "disabled" : ""}><option value="">${refOfProj(e.projet) ? "Selon le projet : " + esc(refOfProj(e.projet)) : "Selon le projet (aucune définie)"}</option>${(e.reference && !refList().includes(e.reference) ? [e.reference, ...refList()] : refList()).map(r => `<option ${e.reference === r ? "selected" : ""}>${esc(r)}</option>`).join("")}</select></div>
       <div class="field"><span class="lbl">Statut</span><div class="segc status">${STATUTS.map(s => `<button type="button" data-ed="statut" data-v="${s}" aria-pressed="${e.statut === s}" style="--sc:var(${ST_VAR[s]})">${s}</button>`).join("")}</div></div>
       <div class="qprev">
         <div class="field"><span class="lbl">Urgent</span><div class="segc">${yn("urgent", true, "Oui")}${yn("urgent", false, "Non")}</div></div>
@@ -1853,6 +2310,7 @@ function readEditorInputs(){
   e.theme = (val("#e-theme") ?? e.theme).trim();
   e.type = (val("#e-type") ?? e.type).trim();
   e.commentaires = (val("#e-com") ?? e.commentaires).trim();
+  const rf = $("#e-ref"); if (rf && !rf.disabled) e.reference = rf.value;
   const clo = $("#e-clo"); if (clo && !clo.disabled) e.cloture = clo.value;
   e.debut = val("#e-deb") ?? e.debut ?? ""; e.fin = val("#e-fin") ?? e.fin ?? "";
   if (!validYmd(e.debut)) { e.debut = ""; e.fin = ""; } else if (!validYmd(e.fin) || e.fin < e.debut) e.fin = e.debut;
@@ -1917,6 +2375,8 @@ async function importJson(file, say){
   for (const k of ["projets", "responsables", "types"]) for (const v of (inc[k] || [])) if (v && !next[k].includes(v)) next[k].push(v);
   for (const t of tasks) { if (t.projet && !next.projets.includes(t.projet)) next.projets.push(t.projet); if (t.responsable && !next.responsables.includes(t.responsable)) next.responsables.push(t.responsable); if (t.type && !next.types.includes(t.type)) next.types.push(t.type); }
   await saveLists(next);
+  if (data.prefs && typeof data.prefs === "object") await S.db.doc("meta/prefs").set(replace ? data.prefs : {...data.prefs, ...(S.prefs || {})});
+  if (data.decompte && typeof data.decompte === "object") for (const [m, v] of Object.entries(data.decompte)) if (/^\d{4}-\d{2}$/.test(m) && v && (replace || !(S.decDocs || {})[m])) await S.db.doc("decompte/" + m).set(v);
   say(`${n} tâche${n > 1 ? "s" : ""} importée${n > 1 ? "s" : ""}.`); toast("Import terminé");
 }
 async function importFile(file){
@@ -1964,7 +2424,7 @@ const EXP_HEAD = ["N°","Projet","Tâche","Statut","Priorité","Urgent","Importa
 async function doBackup(){
   const prog = $("#bak-progress"); const say = m => { if (prog) prog.textContent = m; };
   const dl = await window.claude.use("downloads");
-  const payload = {app:"TO DO BIM", format:1, saved: nowIso(), lists:S.lists, tasks:[...S.tasks.values()]};
+  const payload = {app:"TO DO BIM", format:2, saved: nowIso(), lists:S.lists, prefs:S.prefs || {}, decompte:S.decDocs || {}, tasks:[...S.tasks.values()]};
   try { await dl.save({filename:`TODO_BIM_sauvegarde_${today()}.json`, data:JSON.stringify(payload, null, 1)});
     S.backupAt = today(); try { localStorage.setItem("todobim.backupAt", S.backupAt); } catch (e) {}
     say("Sauvegarde prête. Range-la dans Fichiers ▸ iCloud Drive."); render(true);
@@ -2045,6 +2505,7 @@ document.addEventListener("click", async ev => {
   if (!a) return;
   const act = a.dataset.act;
   const id = a.closest("[data-id]")?.dataset.id;
+  if (act.startsWith("dec-")) { if (act === "dec-refs-save") decRefsSave(); else decAction(act, a); return; }
   if (await planClick(act, a, id, ev)) return;
   if (act.startsWith("tip-")) { tipAction(act, a); return; }
   if (act === "edit" && id && wantsSheet() && !dragMoved && !S.edit && !a.closest(".tip-sheet")) { openTipSheet(a.closest("[data-id]")); return; }
@@ -2076,6 +2537,7 @@ document.addEventListener("click", async ev => {
 });
 $("#fab").addEventListener("click", () => openEditor(null, {projet: S.view === "jour" ? S.jourProjet : S.view === "matrice" ? S.matProjet : S.view === "planning" ? S.plan.proj : (S.f.projets.length === 1 ? S.f.projets[0] : "")}));
 document.addEventListener("keydown", ev => {
+  if (ev.key === "Enter" && ev.target.dataset && ev.target.dataset.dec && /INPUT|TEXTAREA/.test(ev.target.tagName)) { ev.preventDefault(); ev.target.blur(); return; }
   if (ev.key === "Escape" && S.edit) closeEditor();
   if (S.edit && ev.key === "Enter" && (ev.metaKey || ev.ctrlKey)) saveEditor();
   if (!S.edit && ev.key === "n" && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement?.tagName || "") && S.status === "ready" && S.canWrite !== false) { ev.preventDefault(); openEditor(null); }
@@ -2088,12 +2550,20 @@ document.addEventListener("input", ev => {
 });
 document.addEventListener("change", ev => {
   const t = ev.target;
+  if (t.dataset && t.dataset.dec) { decChange(t); return; }
+  if (t.id === "dec-upto") { S.dec.upto = t.checked; saveDecUi(); render(true); return; }
+  if (decSettingsChange(t)) return;
   if (t.id === "t-sort") { S.f.sort = t.value; saveUi(); updateTaches(); }
   if (t.id === "t-hide") { S.f.hideDone = t.checked; saveUi(); updateTaches(); }
   if (t.id === "t-arch") { S.f.showArch = t.checked; saveUi(); updateTaches(); }
   if (t.id === "p-we") { S.plan.weekend = t.checked; saveUi(); render(true); }
   if (t.id === "p-done") { S.plan.showDone = t.checked; saveUi(); render(true); }
-  if (t.id === "set-h0" || t.id === "set-h1") { const n = parseInt(t.value, 10); const k = t.id === "set-h0" ? "h0" : "h1"; if (n >= 0 && n <= 24) { S.plan[k] = n; saveUi(); toast(`Journée : ${dayRange()[0]} h – ${dayRange()[1]} h`); } else t.value = dayRange()[k === "h0" ? 0 : 1]; }
+  if (t.classList && t.classList.contains("set-capd")) {
+    const n = parseFloat(String(t.value).replace(",", ".")), k = t.dataset.d;
+    if (isFinite(n) && n >= 0 && n <= 24) { const caps = {...capsAll(), [k]:Math.round(n * 100) / 100}; savePrefs({caps}); toast(`${JOURS[k].charAt(0).toUpperCase() + JOURS[k].slice(1)} : ${hfmt(n)} h disponibles`); render(true); }
+    else t.value = hfmt(capsAll()[k]);
+  }
+  if (t.id === "set-h0" || t.id === "set-h1") { const n = parseInt(t.value, 10); const k = t.id === "set-h0" ? "h0" : "h1"; if (n >= 0 && n <= 24) { S.plan[k] = n; savePrefs({[k]:n}); saveUi(); toast(`Journée : ${dayRange()[0]} h – ${dayRange()[1]} h`); } else t.value = dayRange()[k === "h0" ? 0 : 1]; }
   if (t.id === "set-cap") { const n = parseFloat(String(t.value).replace(",", ".")); if (isFinite(n) && n > 0 && n <= 24) { S.plan.cap = n; saveUi(); toast(`Capacité : ${hfmt(n)} h par jour`); } else t.value = hfmt(capDay()); }
   if (t.id === "imp-file" && t.files && t.files[0]) { importFile(t.files[0]); t.value = ""; }
   if (t.id === "e-ech" && S.edit) S.edit.echeance = t.value;
@@ -2134,6 +2604,8 @@ async function init(){
     if (!snap.metadata.fromCache) { S.confirmed = true; S.slow = false; clearTimeout(timer); }
     schedule();
   }, err => { clearTimeout(timer); S.status = "error"; S.error = err && err.code; render(true); });
+  db.doc("meta/prefs").onSnapshot(s => { S.prefs = (s.exists && s.data()) || {}; schedule(); }, () => {});
+  db.collection("decompte").onSnapshot(snap => { S.decDocs = Object.fromEntries(snap.docs.map(d => [d.id, d.data()])); if (S.view === "heures") schedule(); }, () => {});
   db.doc("meta/lists").onSnapshot(s => {
     const d = (s.exists && s.data()) || {};
     S.lists = {projets: Array.isArray(d.projets) ? d.projets : [], responsables: Array.isArray(d.responsables) ? d.responsables : [], types: Array.isArray(d.types) ? d.types : []};
