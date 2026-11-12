@@ -683,6 +683,138 @@ input[type=range]{accent-color:var(--accent);width:100%}
 .dec-ytot td{font-weight:700;border-top:1px solid var(--line-2)}
 .dec-main .tbl-wrap{padding:6px 10px}
 .btn.armed{border-color:var(--late);color:var(--late)}
+/* Chiffrage AO */
+.lnk{border:0;background:none;padding:0;color:var(--accent);font:inherit;letter-spacing:inherit;text-transform:inherit;cursor:pointer}
+.btn.danger{color:var(--late)} .btn.armed,.ic-btn.armed{border-color:var(--late);color:var(--late);background:var(--late-soft)}
+.ao-kpis{grid-template-columns:repeat(4,minmax(0,1fr))}
+.ao-kpis6{grid-template-columns:repeat(6,minmax(0,1fr));margin-bottom:14px}
+.ao-kpis6 .kc-v{font-size:20px}
+.ao-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.ao-card{display:grid;gap:6px;text-align:left;background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--sc);border-radius:var(--r);padding:12px 14px;color:var(--ink);min-width:0}
+.ao-card:hover{border-color:var(--line-2);border-top-color:var(--sc);background:var(--surface-2)}
+.aoc-top{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+.pill.st{color:var(--sc);background:color-mix(in srgb,var(--sc) 14%,transparent)}
+.aoc-t{font-family:var(--f-display);font-weight:700;font-size:17px;line-height:1.2}
+.aoc-c{font-size:13px;color:var(--muted)}
+.aoc-n{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;font-size:12.5px;color:var(--muted);font-family:var(--f-mono)}
+.aoc-n b{font-size:16px;color:var(--ink)}
+.ao-head{align-items:center}
+.ao-title{width:100%;border:1px solid transparent;background:transparent;border-radius:8px;padding:2px 6px;margin-left:-6px;font-family:var(--f-display);font-weight:800;font-size:clamp(22px,3.4vw,30px);color:var(--ink)}
+.ao-title:hover{border-color:var(--line)} .ao-title:focus{border-color:var(--accent);outline:none;background:var(--bg)}
+.ao-st{color:var(--sc);font-weight:600}
+.ao-layout{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:14px;align-items:start}
+.ao-side{display:grid;gap:12px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 70px)}
+.ao-info{margin-bottom:12px} .ao-info summary{cursor:pointer;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;list-style:none} .ao-info summary::-webkit-details-marker{display:none}
+.ao-info summary h2::before{content:"▸ ";color:var(--muted)} .ao-info[open] summary h2::before{content:"▾ "}
+.ao-form{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:12px}
+.ao-form .wide{grid-column:span 2}
+.ao-form input,.ao-form select{border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:8px 9px;width:100%;min-width:0;font-size:14px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.ao-cols,.ao-line{display:grid;grid-template-columns:minmax(0,1fr) 128px 56px 88px 36px 62px 88px 54px;gap:6px;align-items:center}
+.ao-line{align-items:start} .ao-line>div:not(.al-more){padding-top:1px}
+.al-lib textarea{width:100%;min-width:0;border:1px solid transparent;background:transparent;border-radius:6px;padding:5px 6px;font-size:13px;font-weight:500;color:var(--ink);resize:none;line-height:1.35;display:block;overflow:hidden}
+.al-lib textarea:hover{border-color:var(--line)} .al-lib textarea:focus{border-color:var(--accent);background:var(--bg);outline:none}
+.al-j,.al-t{padding-top:6px!important} .al-dp{padding-top:6px!important;text-align:center}
+.m-only{display:none}
+.ao-cols{padding:0 10px 6px;font-size:10.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.ao-cols span:nth-child(n+6){text-align:right}
+.ao-ph{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);margin-bottom:12px;overflow:hidden}
+.ao-ph-h{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;padding:9px 10px;background:var(--surface-2);border-bottom:1px solid var(--line)}
+.ph-nom{flex:1 1 200px;min-width:0;border:1px solid transparent;background:transparent;border-radius:6px;padding:4px 6px;font-family:var(--f-display);font-weight:700;font-size:16px;color:var(--ink)}
+.ph-nom:hover,.ph-per input:hover{border-color:var(--line-2)} .ph-nom:focus,.ph-per input:focus{border-color:var(--accent);outline:none;background:var(--bg)}
+.ph-per{display:flex;align-items:center;gap:4px;font-size:12.5px;color:var(--muted)}
+.ph-per input{border:1px solid var(--line);background:var(--bg);border-radius:6px;padding:3px 5px;font-size:12.5px;width:128px;color:var(--ink)}
+.ph-per small{margin-left:4px}
+.ph-tot{margin-left:auto;display:flex;align-items:baseline;gap:8px;font-family:var(--f-mono)} .ph-tot b{font-size:15px} .ph-tot small{color:var(--muted)}
+.ph-act{display:flex;gap:2px}
+.ic-btn{border:1px solid transparent;background:transparent;color:var(--muted);border-radius:6px;min-width:26px;height:26px;display:inline-grid;place-items:center;padding:0 4px;font-weight:700}
+.ic-btn svg{width:13px;height:13px} .ic-btn:hover{background:var(--surface);border-color:var(--line);color:var(--ink)} .ic-btn.del:hover{color:var(--late);background:var(--late-soft)} .ic-btn:disabled{opacity:.3;pointer-events:none}
+.ao-line{padding:6px 10px;border-top:1px solid var(--g-line)}
+.ao-line:first-of-type{border-top:0}
+.ao-line.is-opt{background:repeating-linear-gradient(135deg,transparent 0 10px,rgba(255,255,255,.018) 10px 20px)}
+.ao-line.zero .al-j,.ao-line.zero .al-t{color:var(--today)}
+.ao-line input,.ao-line select{width:100%;min-width:0;border:1px solid transparent;background:transparent;border-radius:6px;padding:5px 6px;font-size:13px;color:var(--ink)}
+.ao-line input:hover,.ao-line select:hover{border-color:var(--line)} .ao-line input:focus,.ao-line select:focus{border-color:var(--accent);background:var(--bg);outline:none}
+.al-lib input{font-weight:500}
+.al-sub{display:flex;flex-wrap:wrap;gap:3px 10px;padding:0 6px;font-size:11px;color:var(--muted)}
+.al-dep{color:var(--s-attente)} .al-drift{color:var(--week)} .al-opt{color:var(--s-recurrent);font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+.al-tu input,.q-in{font-family:var(--f-mono);text-align:right}
+.q-btn{width:100%;border:1px dashed var(--line-2);background:transparent;border-radius:6px;padding:3px 6px;text-align:left;display:grid;color:var(--ink)}
+.q-btn b{font-family:var(--f-mono);font-size:13px} .q-btn small{font-size:10.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.q-btn:hover{border-color:var(--accent)}
+.chk{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--muted);cursor:pointer}
+.chk input{width:auto!important;accent-color:var(--accent)}
+.al-j,.al-t{text-align:right;font-family:var(--f-mono);font-size:13px} .al-j small{color:var(--muted)} .al-t{font-weight:600}
+.al-act{display:flex;justify-content:flex-end;gap:2px}
+.al-more{grid-column:1/-1;display:grid;gap:10px;margin:6px 0 4px;padding:10px 12px;background:var(--bg);border:1px solid var(--line);border-radius:8px}
+.am-g{display:grid;gap:6px} .am-g .lbl{font-size:10.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.am-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;font-size:13px;color:var(--muted)}
+.am-row label{display:inline-flex;align-items:center;gap:6px}
+.am-row input,.am-row select,.am-move select{border:1px solid var(--line)!important;background:var(--surface)!important;width:auto;max-width:150px}
+.am-row input[type=text]{width:80px}
+.am-hint{font-size:12px;color:var(--muted)}
+.am-calc{font-family:var(--f-mono);font-size:12.5px;color:var(--muted);padding:6px 8px;background:var(--surface);border-radius:6px}
+.am-calc b{color:var(--ink)}
+.am-act{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.am-move{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--muted);margin-left:auto}
+.segbar.sm button{padding:5px 10px;font-size:12.5px}
+.ao-none{padding:12px;font-size:13px;color:var(--muted)}
+.ao-ph-add{display:flex;gap:6px;padding:6px 8px;border-top:1px solid var(--g-line)}
+.ao-add-ph{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:20px}
+.anc{position:relative;height:10px;border-radius:5px;margin:12px 0 6px;background:linear-gradient(90deg,var(--today-soft),var(--done-soft) 20%,var(--done-soft) 80%,var(--week-soft))}
+.anc i{position:absolute;top:-4px;width:4px;height:18px;margin-left:-2px;border-radius:2px;background:var(--ink);box-shadow:0 0 0 2px var(--surface)}
+.anc-l{display:flex;justify-content:space-between;gap:6px;font-size:11.5px;color:var(--muted);font-family:var(--f-mono);white-space:nowrap}
+.anc-l b.ok{color:var(--done)} .anc-l b.warn{color:var(--today)}
+.ao-bars{display:flex;align-items:flex-end;gap:1px;height:90px;margin:10px 0 6px}
+.ao-bars i{flex:1;min-width:1px;background:var(--accent);border-radius:2px 2px 0 0;opacity:.85}
+.ao-bars i:hover{opacity:1;background:var(--ink)}
+.tbl.cmp td,.tbl.cmp th{padding:5px 4px;font-size:12px} .tbl.cmp td small{color:var(--muted);font-family:var(--f-body)} .tbl.cmp tr.me td{color:var(--accent)}
+.tpl-list{display:grid;gap:6px}
+.tpl{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:10px;padding:9px 11px;cursor:pointer}
+.tpl:has(input:checked){border-color:var(--accent);background:var(--accent-soft)}
+.tpl input{margin-top:4px;accent-color:var(--accent)} .tpl span{display:grid;gap:2px} .tpl small{color:var(--muted);font-size:12.5px}
+.tpl select{margin-top:4px;border:1px solid var(--line);background:var(--bg);border-radius:6px;padding:5px}
+.sheet.wide{width:min(820px,100%)}
+.pick-list{display:grid;gap:10px;margin-top:10px}
+.pk-g h4{margin:6px 0 4px;font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.pk-r{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center;padding:7px 8px;border-radius:8px;cursor:pointer}
+.pk-r:hover{background:var(--surface-2)} .pk-r:has(input:checked){background:var(--accent-soft)}
+.pk-r input{accent-color:var(--accent);width:16px;height:16px}
+.pk-l{font-size:13.5px} .pk-used{color:var(--week)} .pk-v{font-family:var(--f-mono);font-size:11.5px;color:var(--muted);white-space:nowrap}
+.ao-params .prof-r{display:grid;grid-template-columns:minmax(0,1fr) 80px auto;gap:6px;align-items:center;margin-top:8px}
+.ao-params input{border:1px solid var(--line);background:var(--bg);border-radius:7px;padding:6px 8px;width:100%;min-width:0;font-size:13px}
+.prm{display:grid;gap:8px;margin-top:8px} .prm label{display:grid;grid-template-columns:minmax(0,1fr) 90px;gap:8px;align-items:center;font-size:13px;color:var(--muted)}
+.tbl.bench td{padding:3px 2px;white-space:nowrap} .tbl.bench input{padding:4px 5px;font-size:12px;text-align:right} .tbl.bench td:first-child input{text-align:left}
+.bib-cols,.bib-r{display:grid;grid-template-columns:minmax(0,1fr) 96px 200px 64px 70px 140px 40px 30px;gap:6px;align-items:center}
+.bib-cols{padding:8px 10px 4px;font-size:10.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.bib-g{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);margin-bottom:10px;overflow:hidden}
+.bib-g h3{margin:0;padding:8px 12px;font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);background:var(--surface-2)}
+.bib-r{padding:5px 10px;border-top:1px solid var(--g-line)}
+.bib-r input,.bib-r select{width:100%;min-width:0;border:1px solid transparent;background:transparent;border-radius:6px;padding:5px 6px;font-size:13px;color:var(--ink)}
+.bib-r input:hover,.bib-r select:hover{border-color:var(--line)} .bib-r input:focus,.bib-r select:focus{border-color:var(--accent);background:var(--bg);outline:none}
+.bib-r [data-bib="it.tu"],.bib-r [data-bib="it.cu"]{font-family:var(--f-mono);text-align:right}
+.bib-q{display:flex;align-items:center;gap:4px;font-size:11.5px;color:var(--muted)} .bib-q input{width:52px;font-family:var(--f-mono)} .bib-q select{width:auto;font-size:12px;padding:3px}
+.bib-meta{grid-column:1/-1;display:none;gap:8px;align-items:center;padding:0 0 4px} .bib-r:focus-within .bib-meta{display:flex}
+.bib-meta select,.bib-meta input{max-width:220px;border-color:var(--line);font-size:12px} .bib-meta small{color:var(--muted)}
+@media (max-width:1240px){ nav.tabs a span:not(.badge){display:none} nav.tabs a[aria-current="page"] span{display:inline} }
+@media (max-width:1100px){ .ao-layout{grid-template-columns:minmax(0,1fr)} .ao-side{position:static;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))} .ao-kpis6{grid-template-columns:repeat(3,minmax(0,1fr))} .ao-form{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:820px){
+  .ao-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ao-kpis6 .kc-v{font-size:18px}
+  .ao-cols,.bib-cols{display:none}
+  .ao-line{grid-template-columns:minmax(0,1fr) 60px 56px 84px;grid-template-areas:"lib lib lib act" "q tu j tot" "pr pr dp dp";row-gap:4px;padding:9px 10px}
+  .al-act{flex-direction:column;align-items:flex-end}
+  .al-lib{grid-area:lib} .al-q{grid-area:q} .al-tu{grid-area:tu} .al-t{grid-area:tot} .al-pr{grid-area:pr} .al-dp{grid-area:dp} .al-j{grid-area:j} .al-act{grid-area:act}
+  .ao-line input,.ao-line select,.al-lib textarea{font-size:16px;border-color:var(--line);background:var(--bg)}
+  .m-only{display:inline} .al-dp{text-align:left}
+  .ph-per input{width:118px;font-size:14px}
+  .ph-tot{margin-left:0}
+  .ao-form{grid-template-columns:minmax(0,1fr)} .ao-form .wide{grid-column:auto}
+  .bib-r{grid-template-columns:minmax(0,1fr) 70px 30px;grid-template-areas:"lib lib del" "q q q" "un tu cu" "pr dp dp"}
+  .bib-r>input[data-bib="it.lib"]{grid-area:lib} .bib-r .bib-q{grid-area:q} .bib-r>select[data-bib="it.unite"]{grid-area:un} .bib-r>[data-bib="it.tu"]{grid-area:tu} .bib-r>[data-bib="it.cu"]{grid-area:cu} .bib-r>select[data-bib="it.profil"]{grid-area:pr} .bib-r>.chk{grid-area:dp} .bib-r>.ic-btn{grid-area:del}
+  .bib-r input,.bib-r select{font-size:16px}
+  .mobile-tabs a span[data-s]{font-size:0} .mobile-tabs a span[data-s]::after{content:attr(data-s);font-size:10px}
+}
 .mobile-tabs{display:none}
 .auth{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:24px max(16px,env(safe-area-inset-right,0px)) 24px max(16px,env(safe-area-inset-left,0px));overflow-y:auto}
 .auth-card{width:min(400px,100%);display:grid;gap:12px}
@@ -698,7 +830,7 @@ input[type=range]{accent-color:var(--accent);width:100%}
 @media (max-width:820px){
   nav.tabs{display:none}
   .cartouche{margin-left:auto}
-  .mobile-tabs{display:grid;grid-template-columns:repeat(7,1fr);position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--surface);border-top:1px solid var(--line);padding:6px max(8px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px))}
+  .mobile-tabs{display:grid;grid-template-columns:repeat(8,1fr);position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--surface);border-top:1px solid var(--line);padding:6px max(8px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px))}
   .mobile-tabs a{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:10px;white-space:nowrap;font-weight:500;color:var(--muted);text-decoration:none;padding:4px 0;position:relative}
   .mobile-tabs a[aria-current="page"]{color:var(--accent)}
   .mobile-tabs svg{width:22px;height:22px}
@@ -929,10 +1061,11 @@ const QUADS = [
 ];
 const QMAP = Object.fromEntries(QUADS.map(q => [q.k, q]));
 const VIEWS = [
-  {k:"jour", label:"Ma journée", icon:'<path d="M12 3v2M12 19v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M3 12h2M19 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/><circle cx="12" cy="12" r="4"/>'},
+  {k:"jour", label:"Ma journée", short:"Journée", icon:'<path d="M12 3v2M12 19v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M3 12h2M19 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/><circle cx="12" cy="12" r="4"/>'},
   {k:"taches", label:"Tâches", icon:'<path d="M9 6h11M9 12h11M9 18h11"/><path d="M4 6l1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"/>'},
   {k:"planning", label:"Planning", icon:'<rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9.5h18M8 3v3M16 3v3M7 13.5h4M7 17h7"/>'},
   {k:"heures", label:"Heures", icon:'<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>'},
+  {k:"chiffrage", label:"Chiffrage AO", short:"AO", icon:'<path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h4"/><path d="M4 7v14h11" opacity=".5"/>'},
   {k:"matrice", label:"Matrice", icon:'<rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/>'},
   {k:"bord", label:"Bord", icon:'<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>'},
   {k:"reglages", label:"Réglages", icon:'<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>'},
@@ -1045,10 +1178,10 @@ function renderChrome(){
   const open = live().filter(t => !isDone(t)).length;
   $("#c-open").textContent = S.status === "ready" ? open : "—";
   const late = live().filter(t => alerte(t) === "late").length;
-  const link = v => `<a href="#${v.k}" ${S.view === v.k ? 'aria-current="page"' : ""}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${v.icon}</svg><span>${v.label}</span>${v.k === "jour" && late ? `<span class="badge">${late}</span>` : ""}</a>`;
+  const link = v => `<a href="#${v.k}" ${S.view === v.k ? 'aria-current="page"' : ""}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${v.icon}</svg><span data-s="${v.short || v.label}">${v.label}</span>${v.k === "jour" && late ? `<span class="badge">${late}</span>` : ""}</a>`;
   $("#tabs").innerHTML = VIEWS.map(link).join("");
   $("#mtabs").innerHTML = VIEWS.map(link).join("");
-  $("#fab").hidden = !(S.status === "ready" && S.canWrite !== false && S.view !== "reglages" && S.view !== "heures");
+  $("#fab").hidden = !(S.status === "ready" && S.canWrite !== false && S.view !== "reglages" && S.view !== "heures" && S.view !== "chiffrage");
 }
 
 /* ---------- Vues ---------- */
@@ -2251,14 +2384,610 @@ async function decImport(file){
   } catch (e) { say(e && e.message === "xlsx" ? "Le lecteur Excel n'a pas pu se charger. Vérifie ta connexion." : "Import interrompu : " + (e && (e.code || e.message) || "erreur")); }
 }
 
+/* ---------- Chiffrage AO : bibliothèque de prestations (temps unitaires / coûts unitaires) + chiffrages ---------- */
+S.aos = new Map(); S.biblio = null;
+S.chif = {mode:"list", id:"", open:{}, pickPhase:"", pickQ:"", pickMis:"", pickSel:[], bq:"", bmis:"", filt:""};
+try { const sc = JSON.parse(localStorage.getItem("todobim.chif") || "null"); if (sc) { if (["list", "ao", "biblio"].includes(sc.mode)) S.chif.mode = sc.mode; S.chif.id = sc.id || ""; } } catch (e) {}
+function saveChifUi(){ try { localStorage.setItem("todobim.chif", JSON.stringify({mode:S.chif.mode, id:S.chif.id})); } catch (e) {} }
+const ceil2 = x => Math.ceil(Math.round(x * 1e6) / 1e6);
+const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+const num = v => { const n = parseFloat(String(v ?? "").replace(/\s/g, "").replace(",", ".")); return isFinite(n) ? n : 0; };
+const eur = n => Math.round(n).toLocaleString("fr-FR").replace(/ | /g, " ") + " €";
+const keur = n => Math.abs(n) >= 1e6 ? (Math.round(n / 1e5) / 10).toLocaleString("fr-FR") + " M€" : Math.abs(n) >= 10000 ? (Math.round(n / 100) / 10).toLocaleString("fr-FR") + " k€" : eur(n);
+const jfmt = n => (Math.round(n * 100) / 100).toLocaleString("fr-FR");
+const jf4 = n => (Math.round(n * 10000) / 10000).toLocaleString("fr-FR", {maximumFractionDigits:4});
+const pct = (n, d = 2) => (Math.round(n * 100 * 10 ** d) / 10 ** d).toLocaleString("fr-FR") + " %";
+/* mois « AAAA-MM » */
+const ymOk = s => typeof s === "string" && /^\d{4}-\d{2}$/.test(s);
+const ymOf = d => d.slice(0, 7);
+function ymParse(v){ const s = String(v || "").trim(); let m; if ((m = s.match(/^(\d{4})-(\d{1,2})/))) return `${m[1]}-${z2(m[2])}`; if ((m = s.match(/^(\d{1,2})[\/.-](\d{4})$/))) return `${m[2]}-${z2(m[1])}`; return ""; }
+const ymAdd = (ym, n) => { const [y, m] = ym.split("-").map(Number); const d = new Date(y, m - 1 + n, 1); return d.getFullYear() + "-" + z2(d.getMonth() + 1); };
+const ymCount = (a, b) => { if (!ymOk(a) || !ymOk(b)) return 0; const [y1, m1] = a.split("-").map(Number), [y2, m2] = b.split("-").map(Number); return Math.max(0, (y2 - y1) * 12 + m2 - m1 + 1); };
+const ymLab = ym => { if (!ymOk(ym)) return "—"; const [y, m] = ym.split("-").map(Number); return `${MOIS_COURTS[m - 1]} ${String(y).slice(2)}`; };
+
+/* ----- Bibliothèque par défaut (issue de tes fichiers HONOS / PRECALCUL) ----- */
+const UNITES = ["forfait", "réunion", "cycle", "audit", "revue", "mois", "maquette", "zone", "m²", "jour"];
+const VARS = {zones:"Nb de zones d'étude", cycles:"Nb de cycles par zone", zc:"Zones × cycles", maquettes:"Nb de maquettes", surface:"Surface (m²)"};
+const MISSIONS = ["BIM Management", "Synthèse", "Coordination spatiale", "Modélisation", "Plateforme CDE"];
+const BIB0 = (() => {
+  const L = [], add = (mission, cat, lib, unite, tu, o = {}) => L.push({id:o.id, mission, cat, lib, unite, tu, profil:o.p || (mission === "Synthèse" ? "syn" : mission === "Modélisation" ? "mod" : "bim"), dep:!!o.dep, cu:o.cu || 0, mode:o.mode || (o.freq ? "freq" : o.v ? "var" : "fixe"), freq:o.freq || 0, varKey:o.v || "", note:o.note || ""});
+  let M = "BIM Management";
+  add(M, "Préparation", "Audit de maturité BIM (questionnaire + rapport)", "forfait", 2, {id:"b-audit-mat"});
+  add(M, "Préparation", "Analyse et synthèse du BEP (rapport)", "forfait", 2, {id:"b-bep"});
+  add(M, "Préparation", "Rédaction de la convention BIM et des documents « cadre »", "forfait", 10.5, {id:"b-cadre"});
+  add(M, "Préparation", "Mise à jour de la convention BIM", "forfait", 1, {id:"b-maj-conv"});
+  add(M, "Préparation", "Canevas d'analyse des fichiers IFC", "forfait", 2, {id:"b-canevas-ifc"});
+  add(M, "Préparation", "Canevas d'analyse des fichiers REVIT", "forfait", 1, {id:"b-canevas-rvt"});
+  add(M, "Préparation", "Mise en place des autocontrôles des livrables IFC", "forfait", 2, {id:"b-autoctrl"});
+  add(M, "Préparation", "Production des éléments d'encadrement BIM des lots", "forfait", 3, {id:"b-encadr"});
+  add(M, "Fichiers de configuration", "Fichier de référence REVIT / IFC (point de référence, géoréf.)", "forfait", 1, {id:"b-f-ref"});
+  add(M, "Fichiers de configuration", "Famille de cartouche RFA", "forfait", 0.5, {id:"b-f-cart"});
+  add(M, "Fichiers de configuration", "Configuration REVIT pour l'export IFC", "forfait", 0.25, {id:"b-f-exp"});
+  add(M, "Fichiers de configuration", "Mappage catégories REVIT → IfcClasses", "forfait", 0.25, {id:"b-f-map1"});
+  add(M, "Fichiers de configuration", "Mappage familles / types REVIT → IfcClasses / PredefinedType", "forfait", 0.5, {id:"b-f-map2"});
+  add(M, "Fichiers de configuration", "Mappage des propriétés REVIT → IFC", "forfait", 0.5, {id:"b-f-map3"});
+  for (const [k, l, t] of [["3dc", "3D+ gestion des conflits / synthèse", 0.5], ["3dr", "3D+ validation des réservations", 0.5], ["4d", "4D base (phasage existant / futur)", 0.25], ["4dp", "4D+ (fusion maquettes et planning GANTT)", 2], ["5d", "5D base (extraction de données remarquables)", 0.25], ["5dp", "5D+ (échanges avec l'économiste)", 1], ["6d", "6D base (gestion des matériaux REVIT)", 0.5], ["6dp", "6D+ (échanges solutions métier)", 1], ["7dl", "7D DOE numérique local", 0.5], ["7di", "7D DOE numérique IFC", 0.5], ["7dg", "7D GEM : préparation au BIM GEM", 2]])
+    add(M, "Convention BIM : options", "Convention : ajout BIM " + l, "forfait", t, {id:"b-c-" + k});
+  add(M, "Réunions", "Réunion de lancement (présentiel)", "réunion", 1, {id:"b-r-lanc", dep:true});
+  add(M, "Réunions", "Réunion de précision des attentes BIM du MOA", "réunion", 1.5, {id:"b-r-attentes"});
+  add(M, "Réunions", "Réunion interne du groupement", "réunion", 1, {id:"b-r-interne"});
+  add(M, "Réunions", "Réunion BIM EXE (présentiel)", "réunion", 0.5, {id:"b-r-exe", dep:true, freq:0.5});
+  add(M, "Réunions", "Atelier d'échanges Teams", "réunion", 0.5, {id:"b-r-teams", freq:1});
+  add(M, "Réunions", "Visio de débriefing avec les modeleurs", "réunion", 0.5, {id:"b-r-debrief"});
+  add(M, "Réunions", "Échanges MOA / AMO BIM / exploitant", "forfait", 5, {id:"b-echanges"});
+  add(M, "Audits et revues", "Audit BIM mensuel avec réunion de débrief", "audit", 5, {id:"b-audit-m", freq:1});
+  add(M, "Audits et revues", "Audit BIM trimestriel avec réunion de débrief", "audit", 3, {id:"b-audit-t", freq:1 / 3});
+  add(M, "Audits et revues", "Audit BIM mensuel « DOE numérique »", "audit", 5, {id:"b-audit-doe", freq:1});
+  add(M, "Audits et revues", "Revue BIM de fin de phase", "revue", 3, {id:"b-revue"});
+  add(M, "Audits et revues", "Revue BIM trimestrielle", "revue", 2, {id:"b-revue-t", freq:1 / 3});
+  add(M, "Audits et revues", "Revue de maquette : préparation", "revue", 2, {id:"b-rm-prep"});
+  add(M, "Audits et revues", "Revue de maquette : animation sur site", "revue", 0.5, {id:"b-rm-anim", dep:true});
+  add(M, "Audits et revues", "Revue de maquette : livrables et compte rendu", "revue", 0.5, {id:"b-rm-cr"});
+  add(M, "Audits et revues", "Atelier réalité virtuelle", "forfait", 1, {id:"b-vr"});
+  add(M, "Analyse des maquettes", "Extraction des données d'une maquette IFC", "maquette", 0.01, {id:"b-a-ifc1", v:"maquettes"});
+  add(M, "Analyse des maquettes", "Rapports d'analyse d'une maquette IFC", "maquette", 0.04, {id:"b-a-ifc2", v:"maquettes"});
+  add(M, "Analyse des maquettes", "Extraction des données d'une maquette REVIT", "maquette", 0.1, {id:"b-a-rvt1", v:"maquettes"});
+  add(M, "Analyse des maquettes", "Rapports d'analyse d'une maquette REVIT", "maquette", 0.0625, {id:"b-a-rvt2", v:"maquettes"});
+  add(M, "Analyse des maquettes", "Cohérence graphique de la compilation des maquettes", "cycle", 1, {id:"b-a-coh"});
+  add(M, "Analyse des maquettes", "Préparation et diffusion des livrables du cycle d'analyse", "cycle", 0.5, {id:"b-a-liv"});
+  add(M, "Analyse des maquettes", "Analyse des maquettes avant rendu (jalon)", "cycle", 2, {id:"b-a-jalon"});
+  add(M, "Correction des maquettes", "IFC : simplification graphique / référencement des objets", "maquette", 0.0625, {id:"b-k-simp", v:"maquettes"});
+  add(M, "Correction des maquettes", "IFC : géoréférencement", "maquette", 0.125, {id:"b-k-geo", v:"maquettes"});
+  add(M, "Correction des maquettes", "IFC : suppression d'entités / découpage / fusion", "maquette", 0.125, {id:"b-k-supp", v:"maquettes"});
+  add(M, "Correction des maquettes", "IFC : redéfinition des classes / PredefinedType", "maquette", 0.25, {id:"b-k-cls", v:"maquettes"});
+  add(M, "Correction des maquettes", "IFC : ajout / suppression de propriétés", "maquette", 0.125, {id:"b-k-prop", v:"maquettes"});
+  add(M, "Correction des maquettes", "IFC : édition / injection de données", "forfait", 1, {id:"b-k-inj"});
+  add(M, "Correction des maquettes", "REVIT : conversion de version", "maquette", 0.25, {id:"b-k-rv1", v:"maquettes"});
+  add(M, "Correction des maquettes", "REVIT : répartition / nettoyage", "maquette", 0.25, {id:"b-k-rv2", v:"maquettes"});
+  add(M, "Correction des maquettes", "REVIT : catégorisation / nettoyage des familles", "maquette", 1, {id:"b-k-rv3", v:"maquettes"});
+  add(M, "DOE et exploitation", "Assistance pour les hyperliens vers le DOE numérique", "mois", 1, {id:"b-doe-liens", freq:1});
+  add(M, "DOE et exploitation", "Intégration des maquettes BIM-GEM dans l'outil d'exploitation", "mois", 1.5, {id:"b-gem", freq:1});
+  add(M, "DOE et exploitation", "Assistance des modeleurs pour l'as-built", "mois", 2, {id:"b-asb", freq:2});
+  add(M, "DOE et exploitation", "Retour d'expérience BIM du projet", "forfait", 2, {id:"b-rex"});
+  add(M, "Synthèse (participation)", "Participation à la présynthèse", "forfait", 6, {id:"b-p-presyn"});
+  add(M, "Synthèse (participation)", "Participation à la synthèse d'exécution", "forfait", 6, {id:"b-p-syn"});
+  M = "Synthèse";
+  add(M, "Préparation", "Préparation des outils de clash control", "forfait", 1, {id:"s-clash"});
+  add(M, "Préparation", "Rédaction de la convention de travail", "forfait", 1, {id:"s-conv"});
+  add(M, "Préparation", "Établissement du planning des études", "forfait", 1, {id:"s-plan"});
+  add(M, "Préparation", "Préparation des fichiers « support » (fonds de plans)", "forfait", 2, {id:"s-support"});
+  add(M, "Préparation", "Analyse technique du projet", "forfait", 1, {id:"s-analyse"});
+  add(M, "Préparation", "Préparation du cadre collaboratif", "forfait", 10, {id:"s-cadre"});
+  add(M, "Préparation", "Démarrage des études", "forfait", 5, {id:"s-demar"});
+  add(M, "Réunions", "Réunion de lancement sur site (avec CR)", "réunion", 1, {id:"s-r-lanc", dep:true});
+  add(M, "Réunions", "Réunion de synthèse sur site (avec CR)", "réunion", 1, {id:"s-r-site", dep:true});
+  add(M, "Réunions", "Visio Teams de débriefing avec les modeleurs", "réunion", 0.5, {id:"s-r-teams"});
+  add(M, "Cycle préalable (par zone)", "Liaisons extérieures (réseaux concessionnaires)", "zone", 1, {id:"s-p-ext", v:"zones"});
+  add(M, "Cycle préalable (par zone)", "Gaines techniques et liaisons principales", "zone", 0.5, {id:"s-p-gaines", v:"zones"});
+  add(M, "Cycle préalable (par zone)", "Coupes types 2D", "zone", 0.5, {id:"s-p-coupes", v:"zones"});
+  add(M, "Cycle préalable (par zone)", "Préparation des livrables 2D et 3D", "zone", 0.5, {id:"s-p-liv", v:"zones"});
+  add(M, "Cycle courant (par cycle)", "Réception des maquettes / conversion NWC", "cycle", 0.25, {id:"s-c-rec", v:"zc"});
+  add(M, "Cycle courant (par cycle)", "Vérification des prérequis (convention)", "cycle", 0.25, {id:"s-c-verif", v:"zc"});
+  add(M, "Cycle courant (par cycle)", "Compilation et tests de détection des conflits", "cycle", 0.25, {id:"s-c-tests", v:"zc"});
+  add(M, "Cycle courant (par cycle)", "Interprétation et regroupement des conflits", "cycle", 0.5, {id:"s-c-interp", v:"zc"});
+  add(M, "Cycle courant (par cycle)", "Propositions de résolution des conflits", "cycle", 0.5, {id:"s-c-sol", v:"zc"});
+  add(M, "Cycle courant (par cycle)", "Livrables 3D complets (vues, annotations)", "cycle", 0.75, {id:"s-c-liv", v:"zc"});
+  add(M, "Cycle courant (par cycle)", "Gestion des commentaires Navisworks / BCF", "cycle", 0.5, {id:"s-c-bcf", v:"zc"});
+  add(M, "Cycle courant (par cycle)", "Demandes de réservations pour l'ensemble des acteurs", "cycle", 1, {id:"s-c-resa", v:"zc"});
+  add(M, "Cycle courant (par cycle)", "Réunion sur site avec CR (par cycle)", "cycle", 1, {id:"s-c-reu", v:"zc", dep:true});
+  add(M, "Cycle final (par zone)", "Réception, vérification et tests finaux", "zone", 0.75, {id:"s-f-tests", v:"zones"});
+  add(M, "Cycle final (par zone)", "Statut final des conflits et solutions entérinées", "zone", 1, {id:"s-f-statut", v:"zones"});
+  add(M, "Cycle final (par zone)", "Statut final des commentaires / BCF", "zone", 0.5, {id:"s-f-bcf", v:"zones"});
+  add(M, "Cycle final (par zone)", "Livrables finaux complets", "zone", 2, {id:"s-f-liv", v:"zones"});
+  add(M, "Présynthèse / synthèse", "Identification visuelle des clashs et des liaisons", "cycle", 3, {id:"s-ps-ident"});
+  add(M, "Présynthèse / synthèse", "Réunion de présynthèse (présentation des analyses)", "réunion", 1, {id:"s-ps-reu"});
+  add(M, "Présynthèse / synthèse", "Cycle final de présynthèse et livrables", "forfait", 3, {id:"s-ps-final"});
+  add(M, "Présynthèse / synthèse", "Clash detection, regroupement et propositions", "cycle", 3, {id:"s-sy-clash"});
+  add(M, "Présynthèse / synthèse", "Réunion de synthèse (analyses, arbitrages)", "réunion", 1, {id:"s-sy-reu"});
+  add(M, "Présynthèse / synthèse", "Cycle final de synthèse et livrables", "forfait", 5, {id:"s-sy-final"});
+  add(M, "Présynthèse / synthèse", "Coordination (détection + réunion)", "cycle", 5, {id:"s-coord", freq:4});
+  add(M, "Présynthèse / synthèse", "Finalisation des études (livrables)", "forfait", 3, {id:"s-final"});
+  M = "Coordination spatiale";
+  add(M, "Démarrage", "Analyse technique du projet + questions préliminaires", "forfait", 4, {id:"c-analyse", p:"bim"});
+  add(M, "Démarrage", "Rédaction du cadre de coordination spatiale", "forfait", 4, {id:"c-cadre", p:"bim"});
+  add(M, "Démarrage", "Réunion présentielle de démarrage", "réunion", 1, {id:"c-r-dem", p:"bim", dep:true});
+  add(M, "Cycles", "Coupes « type » de coordination spatiale", "forfait", 10, {id:"c-coupes", p:"bim"});
+  add(M, "Cycles", "Cycle itératif (analyse, interprétation, proposition, diffusion)", "cycle", 4, {id:"c-cycle", p:"bim", freq:2.3});
+  add(M, "Cycles", "Réunion de chantier pour la coordination (présentiel)", "réunion", 1, {id:"c-r-chantier", p:"bim", dep:true, freq:2.3});
+  add(M, "Cycles", "Livrables finaux de coordination spatiale", "forfait", 7, {id:"c-liv", p:"bim"});
+  M = "Modélisation";
+  add(M, "Modélisation", "Modélisation BIM LOD 350 (par m²)", "m²", 0.0115, {id:"m-lod350", v:"surface", note:"≈ 140 j pour 12 290 m²"});
+  add(M, "Modélisation", "Mise à jour as-built de la maquette", "mois", 16, {id:"m-asb", freq:1});
+  M = "Plateforme CDE";
+  add(M, "Plateforme", "Plateforme CDE : mise en route", "forfait", 0, {id:"p-cde-init", cu:4000});
+  add(M, "Plateforme", "Plateforme CDE : administration", "mois", 0.5, {id:"p-cde-admin", freq:1});
+  add(M, "Plateforme", "Plateforme CDE : location", "mois", 0, {id:"p-cde-loc", freq:1, cu:620});
+  add(M, "Plateforme", "Plateforme BIM IMS (10 comptes) : location", "mois", 0, {id:"p-ims", freq:1, cu:130});
+  return L;
+})();
+const PROFILS0 = [{k:"bim", nom:"BIM Manager", court:"BIM", tjm:640}, {k:"syn", nom:"Coordinateur synthèse", court:"Synthèse", tjm:700}, {k:"mod", nom:"Modeleur BIM", court:"Modeleur", tjm:640}];
+const profCourt = p => p.court || (p.nom.length > 10 ? p.nom.split(" ")[0] : p.nom);
+const PARAMS0 = {nego:0.05, ckm:0.697, repas:0, tva:0.2, ancMin:0.0035, ancMax:0.007};
+const BENCH0 = [{nom:"FOCH", budget:55000000, surface:16000, honos:115000, duree:43}, {nom:"CPAM EURE", budget:18000000, surface:6000, honos:63000, duree:48}];
+function bib(){ const b = S.biblio || {}; return {items:Array.isArray(b.items) && b.items.length ? b.items : BIB0, profils:Array.isArray(b.profils) && b.profils.length ? b.profils : PROFILS0, params:{...PARAMS0, ...(b.params || {})}, bench:Array.isArray(b.bench) ? b.bench : BENCH0}; }
+const bibItem = id => bib().items.find(x => x.id === id);
+async function saveBib(patch){ const cur = bib(); S.biblio = {...cur, ...patch, updated:nowIso()}; schedule(); try { await S.db.doc("meta/biblio").set(S.biblio); } catch (e) { fail(e); } }
+
+/* ----- Modèles (repris de tes chiffrages) ----- */
+const TPL = [
+  {k:"bim-cr", nom:"BIM Management · conception-réalisation", desc:"APS → GPA, audits mensuels puis trimestriels, revues de fin de phase, plateforme CDE (base LBLF V3.1).", mission:"BIM Management",
+    phases:[["APS", 2], ["APD", 2], ["PRO", 4], ["EXE", 28], ["DOE", 6], ["GPA", 24], ["Plateforme CDE", 40, 0]],
+    lines:[[0, "b-r-attentes", {pos:"first"}], [0, "b-cadre", {freq:1, mode:"freq"}], [0, "b-r-interne", {pos:"first"}], [0, "b-r-lanc", {pos:"first", dep:false}],
+      [1, "b-audit-m"], [1, "b-revue", {pos:"last"}], [2, "b-maj-conv", {pos:"first"}], [2, "b-audit-m"], [2, "b-revue", {pos:"last"}],
+      [3, "b-maj-conv", {pos:"first", tu:2}], [3, "b-audit-m", {pos:"custom", off:0, len:4, tu:3}], [3, "b-audit-t", {pos:"custom", off:4, len:20}], [3, "b-revue-t", {pos:"custom", off:4, len:27}],
+      [4, "b-audit-doe", {pos:"last", len:4}], [4, "b-doe-liens", {pos:"last", len:3}], [4, "b-gem", {pos:"last", len:2}], [4, "b-revue", {pos:"last", tu:1.5, lib:"Revue BIM finale"}],
+      [5, "b-audit-t", {tu:3.8095}], [6, "p-cde-init"], [6, "p-cde-admin"], [6, "p-cde-loc"],
+      [5, null, {lib:"Audit BIM avec débrief à la demande après livraison", unite:"audit", tu:4, qte:1, option:true}]]},
+  {k:"syn-zones", nom:"Synthèse technique · zones × cycles", desc:"Préparation, cycle préalable et cycle final par zone, cycles courants par zone (base HONOS SYNTHESE).", mission:"Synthèse", vars:{zones:2, cycles:1},
+    phases:[["Préparation de la coordination", 1], ["Cycles d'analyse", 6]],
+    lines:[[0, "s-clash"], [0, "s-plan"], [0, "s-analyse"], [0, "s-r-lanc"], [1, "s-p-ext"], [1, "s-p-gaines"], [1, "s-p-coupes"], [1, "s-p-liv"],
+      [1, "s-c-rec"], [1, "s-c-verif"], [1, "s-c-tests"], [1, "s-c-interp"], [1, "s-c-sol"], [1, "s-c-liv"], [1, "s-c-bcf"], [1, "s-c-resa"], [1, "s-c-reu"],
+      [1, "s-f-tests"], [1, "s-f-statut"], [1, "s-f-bcf"], [1, "s-f-liv"]]},
+  {k:"syn-rapide", nom:"Synthèse · précalcul rapide", desc:"Cadre collaboratif, démarrage, coordination 4 cycles par mois, finalisation (base PRECALCUL SYNTHESE).", mission:"Synthèse",
+    phases:[["Préparation du cadre collaboratif", 1], ["Démarrage des études", 1], ["Coordination", 3], ["Finalisation des études", 1]],
+    lines:[[0, "s-cadre"], [1, "s-demar"], [2, "s-coord"], [3, "s-final"]]},
+  {k:"presyn", nom:"Présynthèse APD + synthèse EXE", desc:"Présynthèse en conception (3 cycles), synthèse d'exécution 2 cycles par mois (base EPSM).", mission:"Synthèse",
+    phases:[["APD : présynthèse", 4], ["PRO-DCE", 1], ["EXE : études d'exécution", 3]],
+    lines:[[0, "s-ps-ident", {mode:"fixe", qte:3}], [0, "s-ps-reu", {mode:"fixe", qte:3}], [1, "s-ps-final"], [2, "s-support", {pos:"first"}], [2, "s-sy-clash", {mode:"freq", freq:2}], [2, "s-sy-reu", {mode:"freq", freq:2}], [2, "s-sy-final", {pos:"last"}]]},
+  {k:"coord-ts", nom:"Coordination BIM et spatiale des TS", desc:"Démarrage, coordination spatiale par cycles itératifs, suivi EXE, as-built, plateforme IMS (base CARBON SHIFT).", mission:"Coordination spatiale",
+    phases:[["Démarrage", 1], ["Coordination spatiale", 10], ["Exécution", 25], ["As-built", 3], ["Plateforme", 37, 0]],
+    lines:[[0, "b-audit-mat"], [0, "b-bep"], [0, "b-autoctrl"], [0, "b-encadr"], [0, "b-r-lanc"], [0, "c-analyse"], [0, "c-cadre"],
+      [1, "c-coupes", {pos:"first"}], [1, "c-cycle", {pos:"custom", off:1, len:9}], [1, "c-r-chantier", {pos:"custom", off:1, len:9}], [1, "c-liv", {pos:"last"}],
+      [2, "b-r-exe"], [2, "b-r-teams"], [2, "b-a-jalon", {mode:"fixe", qte:2}], [3, "b-asb"], [4, "p-ims"],
+      [3, "m-lod350", {option:true}]]},
+  {k:"audit-maq", nom:"Audit et correction de maquettes", desc:"Préparation, analyse et correction par maquette, revue de maquette (base HONOS BIM).", mission:"BIM Management", vars:{maquettes:20},
+    phases:[["Préparation", 1], ["Analyses", 1], ["Corrections", 1]],
+    lines:[[0, "b-canevas-ifc"], [0, "b-c-7di"], [0, "b-f-exp"], [0, "b-f-map1"], [0, "b-f-map2"], [0, "b-f-map3"],
+      [1, "b-a-ifc1"], [1, "b-a-ifc2"], [1, "b-a-coh"], [1, "b-a-liv"], [1, "b-r-debrief"],
+      [2, "b-k-simp"], [2, "b-k-supp"], [2, "b-k-cls"], [2, "b-k-prop"], [2, "b-k-inj"]]},
+  {k:"vide", nom:"Chiffrage vierge", desc:"Une phase, à compléter depuis la bibliothèque.", mission:"", phases:[["Phase 1", 3]], lines:[]},
+];
+function lineFromItem(it, o = {}){
+  return {id:uid(), bib:it ? it.id : "", lib:o.lib || (it ? it.lib : "Nouvelle prestation"), unite:o.unite || (it ? it.unite : "forfait"), mode:o.mode || (it ? it.mode : "fixe"),
+    qte:o.qte != null ? o.qte : 1, freq:o.freq != null ? o.freq : (it ? it.freq || 1 : 1), varKey:o.varKey || (it ? it.varKey : "") || "maquettes", mult:1,
+    tu:o.tu != null ? o.tu : (it ? it.tu : 1), profil:o.profil || (it ? it.profil : "bim"), dep:o.dep != null ? o.dep : !!(it && it.dep), cu:o.cu != null ? o.cu : (it ? it.cu || 0 : 0),
+    pos:o.pos || "all", off:o.off || 0, len:o.len || 0, option:!!o.option, note:""};
+}
+function newAo(tk, start){
+  const T = TPL.find(x => x.k === tk) || TPL[TPL.length - 1], B = bib();
+  const tjm = Object.fromEntries(B.profils.map(p => [p.k, p.tjm]));
+  let cur = start; const phases = T.phases.map(([nom, n, off]) => { const a = off === 0 ? start : cur; const p = {id:uid(), nom, a, b:ymAdd(a, n - 1)}; if (off !== 0) cur = ymAdd(p.b, 1); return p; });
+  const lines = T.lines.map(([pi, bid, o]) => ({...lineFromItem(bid ? bibItem(bid) : null, o || {}), phase:phases[pi].id}));
+  return {id:uid(), nom:"", client:"", moa:"", op:"", type:"", mission:T.mission, lieu:"", budget:0, surface:0, kmAR:0, remise:"", statut:"En cours", reference:"", tpl:T.k,
+    params:{nego:B.params.nego, ckm:B.params.ckm, repas:B.params.repas, tjm, arrondi:0}, vars:{zones:2, cycles:1, maquettes:20, ...(T.vars || {})}, phases, lines, created:nowIso(), updated:nowIso()};
+}
+
+/* ----- Calculs ----- */
+const profTjm = (ao, k) => { const t = ao.params && ao.params.tjm && ao.params.tjm[k]; if (t != null && t !== "") return num(t); const p = bib().profils.find(x => x.k === k); return p ? p.tjm : 640; };
+const depCost = ao => Math.ceil(num(ao.kmAR) * num(ao.params.ckm) + num(ao.params.repas));
+function varVal(ao, k){ const v = ao.vars || {}; if (k === "zc") return num(v.zones) * num(v.cycles); if (k === "surface") return num(ao.surface); return num(v[k]); }
+function linePer(ao, l){
+  const ph = ao.phases.find(p => p.id === l.phase); if (!ph || !ymOk(ph.a) || !ymOk(ph.b)) return null;
+  const n = ymCount(ph.a, ph.b);
+  if (l.pos === "first") return {a:ph.a, b:ymAdd(ph.a, Math.max(1, l.len || 1) - 1)};
+  if (l.pos === "last") { const k = Math.max(1, Math.min(n, l.len || 1)); return {a:ymAdd(ph.b, 1 - k), b:ph.b}; }
+  if (l.pos === "custom") { const a = ymAdd(ph.a, l.off || 0); const len = l.len > 0 ? l.len : Math.max(1, n - (l.off || 0)); return {a, b:ymAdd(a, len - 1)}; }
+  return {a:ph.a, b:ph.b};
+}
+function calcLine(ao, l){
+  const per = linePer(ao, l), mois = per ? ymCount(per.a, per.b) : 0;
+  const q = l.mode === "freq" ? Math.round(mois * num(l.freq)) : l.mode === "var" ? varVal(ao, l.varKey) * (num(l.mult) || 1) : num(l.qte);
+  const tjm = profTjm(ao, l.profil), jours = q * num(l.tu), trav = jours * tjm, dep = l.dep ? Math.round(q) * depCost(ao) : 0, frais = q * num(l.cu);
+  const tot = ceil2((trav + dep + frais) * (1 + num(ao.params.nego)));
+  return {per, mois, q, tjm, jours, trav, dep, frais, tot};
+}
+function calcAo(ao){
+  const lines = ao.lines.map(l => ({l, c:calcLine(ao, l)}));
+  const base = lines.filter(x => !x.l.option), opts = lines.filter(x => x.l.option);
+  let tot = base.reduce((s, x) => s + x.c.tot, 0); const r = num(ao.params.arrondi); const totR = r > 0 ? ceil2(tot / r) * r : tot;
+  const jours = base.reduce((s, x) => s + x.c.jours, 0), trav = base.reduce((s, x) => s + x.c.trav, 0);
+  const ph = ao.phases.map(p => { const ls = base.filter(x => x.l.phase === p.id); return {p, tot:ls.reduce((s, x) => s + x.c.tot, 0), jours:ls.reduce((s, x) => s + x.c.jours, 0), n:ls.length}; });
+  const months = new Map();
+  for (const x of base) { if (!x.c.per || !x.c.mois) continue; for (let i = 0; i < x.c.mois; i++) { const m = ymAdd(x.c.per.a, i), o = months.get(m) || {e:0, j:0}; o.e += x.c.tot / x.c.mois; o.j += x.c.jours / x.c.mois; months.set(m, o); } }
+  const ms = [...months.keys()].sort(), a = ms[0], b = ms[ms.length - 1], duree = a ? ymCount(a, b) : 0;
+  const byProf = new Map(); for (const x of base) byProf.set(x.l.profil, (byProf.get(x.l.profil) || 0) + x.c.jours);
+  return {lines, base, opts, tot:totR, totBrut:tot, optTot:opts.reduce((s, x) => s + x.c.tot, 0), jours, trav, ph, months, a, b, duree, byProf,
+    tjmMoy:jours ? base.reduce((s, x) => s + (x.c.trav + x.c.dep) * (1 + num(ao.params.nego)), 0) / jours : 0, pBudget:num(ao.budget) ? totR / num(ao.budget) : 0, eurM2:num(ao.surface) ? totR / num(ao.surface) : 0, parMois:duree ? totR / duree : 0};
+}
+
+/* ----- Vues ----- */
+const AO_STATUTS = ["En cours", "Envoyé", "Gagné", "Perdu", "Abandonné"];
+const ST_COL = {"En cours":"--s-encours", "Envoyé":"--s-attente", "Gagné":"--done", "Perdu":"--late", "Abandonné":"--muted"};
+function viewChiffrage(){
+  const C = S.chif;
+  if (C.mode === "biblio") return viewBiblio();
+  if (C.mode === "ao" && S.aos.has(C.id)) return viewAo(S.aos.get(C.id));
+  return viewAoList();
+}
+function viewAoList(){
+  const ro = S.canWrite === false, f = S.chif.filt;
+  const aos = [...S.aos.values()].filter(a => !f || a.statut === f).sort((a, b) => String(b.updated || "").localeCompare(String(a.updated || "")));
+  const all = [...S.aos.values()], won = all.filter(a => a.statut === "Gagné"), sent = all.filter(a => ["Envoyé", "Gagné", "Perdu"].includes(a.statut));
+  const rate = sent.length ? won.length / sent.length : 0, wonTot = won.reduce((s, a) => s + calcAo(a).tot, 0);
+  const pipe = all.filter(a => ["En cours", "Envoyé"].includes(a.statut)).reduce((s, a) => s + calcAo(a).tot, 0);
+  const chips = ["", ...AO_STATUTS].map(s => `<button class="seg" data-act="ao-filt" data-v="${s}" aria-pressed="${f === s}">${s || "Tous"} <span class="c">${s ? all.filter(a => a.statut === s).length : all.length}</span></button>`).join("");
+  return `<div class="view-head"><div><div class="eyebrow">Chiffrage des appels d'offres</div><h1>Chiffrages AO</h1></div>
+      <div class="pnav">${ro ? "" : `<button class="btn primary" data-act="ao-new-open">${I.plus} Nouveau chiffrage</button>`}<button class="btn" data-act="ao-biblio">Bibliothèque des prestations</button></div></div>
+    <div class="kpi-row dec-kpis ao-kpis">
+      <div class="kc"><span class="kc-l">En cours / envoyés</span><span class="kc-v">${keur(pipe)}</span></div>
+      <div class="kc"><span class="kc-l">Gagnés</span><span class="kc-v ok">${keur(wonTot)}</span><span class="kc-n mut">${won.length} AO</span></div>
+      <div class="kc"><span class="kc-l">Taux de réussite</span><span class="kc-v">${sent.length ? Math.round(rate * 100) + " %" : "—"}</span><span class="kc-n mut">sur ${sent.length} AO remis</span></div>
+      <div class="kc"><span class="kc-l">Prestations en base</span><span class="kc-v">${bib().items.length}</span></div>
+    </div>
+    <div class="seg-block" style="margin-bottom:12px"><span class="seg-label">Statut</span>${chips}</div>
+    ${aos.length ? `<div class="ao-list">${aos.map(a => { const R = calcAo(a); return `<button class="ao-card" data-act="ao-open" data-id="${a.id}" style="--sc:var(${ST_COL[a.statut] || "--muted"})">
+        <div class="aoc-top"><span class="pill st" style="--sc:var(${ST_COL[a.statut] || "--muted"})">${esc(a.statut)}</span>${a.mission ? `<span class="aoc-mis">${esc(a.mission)}</span>` : ""}${validYmd(a.remise) ? `<span class="aoc-rem">Remise ${fmt(a.remise, true)}</span>` : ""}</div>
+        <div class="aoc-t">${esc(a.nom || "Sans titre")}</div><div class="aoc-c">${esc([a.client, a.lieu].filter(Boolean).join(" · ") || "Client à préciser")}</div>
+        <div class="aoc-n"><b>${eur(R.tot)}</b><span>${jfmt(R.jours)} j</span>${R.pBudget ? `<span>${pct(R.pBudget)} des travaux</span>` : ""}${R.duree ? `<span>${R.duree} mois</span>` : ""}</div></button>`; }).join("")}</div>`
+      : `<div class="empty"><h2>${S.aos.size ? "Aucun chiffrage avec ce statut" : "Aucun chiffrage pour l'instant"}</h2><p>Pars d'un modèle construit sur tes fichiers HONOS et PRECALCUL : les temps unitaires viennent de la bibliothèque, tu n'ajustes que les dates et les quantités.</p>${ro ? "" : `<div class="actions"><button class="btn primary" data-act="ao-new-open">${I.plus} Nouveau chiffrage</button></div>`}</div>`}`;
+}
+function newAoSheet(){
+  const start = ymAdd(ymOf(today()), 1);
+  const el = document.createElement("div"); el.className = "overlay ao-ov"; el.dataset.act = "ao-ov-close";
+  el.innerHTML = `<div class="sheet" role="dialog" aria-label="Nouveau chiffrage"><div class="sheet-h"><h2>Nouveau chiffrage</h2><button class="btn ghost" data-act="ao-ov-close" aria-label="Fermer">${I.close}</button></div>
+    <div class="sheet-b"><div class="cols2"><label class="field"><span class="lbl">Nom de l'AO</span><input type="text" id="na-nom" placeholder="ex. MEL – Le Blanc Four"></label><label class="field"><span class="lbl">Début de la mission</span><input type="month" id="na-start" value="${start}"></label></div>
+      <span class="lbl" style="display:block;margin:12px 0 6px">Partir d'un modèle</span>
+      <div class="tpl-list">${TPL.map((t, i) => `<label class="tpl"><input type="radio" name="na-tpl" value="${t.k}" ${i === 0 ? "checked" : ""}><span><b>${esc(t.nom)}</b><small>${esc(t.desc)}</small></span></label>`).join("")}
+        ${S.aos.size ? `<label class="tpl"><input type="radio" name="na-tpl" value="copy"><span><b>Copier un chiffrage existant</b><select id="na-copy">${[...S.aos.values()].map(a => `<option value="${a.id}">${esc(a.nom || "Sans titre")}</option>`).join("")}</select></span></label>` : ""}</div></div>
+    <div class="sheet-f"><span class="spacer"></span><button class="btn" data-act="ao-ov-close">Annuler</button><button class="btn primary" data-act="ao-create">Créer</button></div></div>`;
+  document.body.appendChild(el); setTimeout(() => $("#na-nom")?.focus(), 30);
+}
+const aoIn = (f, v, attrs = "") => `<input type="text" data-ao="${f}" value="${esc(v ?? "")}" ${attrs} ${S.canWrite === false ? "readonly" : ""}>`;
+const monthIn = (f, v, attrs = "") => `<input type="month" data-ao="${f}" value="${esc(v || "")}" ${attrs} ${S.canWrite === false ? "readonly" : ""}>`;
+function qtyCell(ao, l, c){
+  if (l.mode === "fixe") return `<input type="text" class="q-in" data-ao="l.qte" value="${jf4(num(l.qte))}" inputmode="decimal" aria-label="Quantité" ${S.canWrite === false ? "readonly" : ""}>`;
+  const txt = l.mode === "freq" ? `${jf4(num(l.freq))} / mois × ${c.mois} mois` : `${VARS[l.varKey] || l.varKey}${num(l.mult) !== 1 ? " × " + jfmt(num(l.mult)) : ""}`;
+  return `<button class="q-btn" data-act="ao-line-open" title="Modifier le calcul de la quantité"><b>${jfmt(c.q)}</b><small>${esc(txt)}</small></button>`;
+}
+function lineHtml(ao, l, c){
+  const ro = S.canWrite === false, open = S.chif.open[l.id], B = bib(), lib = l.bib ? bibItem(l.bib) : null;
+  const drift = lib && (num(lib.tu) !== num(l.tu) || num(lib.cu || 0) !== num(l.cu || 0));
+  return `<div class="ao-line ${open ? "open" : ""} ${l.option ? "is-opt" : ""} ${c.q === 0 ? "zero" : ""}" data-lid="${l.id}">
+    <div class="al-lib"><textarea class="fit" rows="1" data-ao="l.lib" aria-label="Prestation" ${ro ? "readonly" : ""}>${esc(l.lib)}</textarea><div class="al-sub"><span>${esc(l.unite)}</span>${l.dep ? `<span class="al-dep">déplacement ${eur(depCost(ao))}</span>` : ""}${num(l.cu) ? `<span>${eur(num(l.cu))} / ${esc(l.unite)}</span>` : ""}${c.per ? `<span>${ymLab(c.per.a)}${c.mois > 1 ? " → " + ymLab(c.per.b) : ""}</span>` : ""}${drift ? `<span class="al-drift" title="La bibliothèque indique ${jf4(num(lib.tu))} j">≠ bibliothèque</span>` : ""}${l.option ? '<span class="al-opt">option</span>' : ""}</div></div>
+    <div class="al-q">${qtyCell(ao, l, c)}</div>
+    <div class="al-tu"><input type="text" data-ao="l.tu" value="${jf4(num(l.tu))}" inputmode="decimal" aria-label="Temps unitaire (jours)" ${ro ? "readonly" : ""}></div>
+    <div class="al-pr"><select data-ao="l.profil" aria-label="Profil" title="TJM ${eur(c.tjm)}" ${ro ? "disabled" : ""}>${B.profils.map(p => `<option value="${p.k}" ${l.profil === p.k ? "selected" : ""}>${esc(profCourt(p))}</option>`).join("")}</select></div>
+    <div class="al-dp"><label class="chk" title="Déplacement à chaque occurrence (${eur(depCost(ao))})"><input type="checkbox" data-ao="l.dep" ${l.dep ? "checked" : ""} ${ro ? "disabled" : ""} aria-label="Déplacement"><span class="m-only">Déplacement</span></label></div>
+    <div class="al-j">${jfmt(c.jours)}<small> j</small></div>
+    <div class="al-t">${eur(c.tot)}</div>
+    <div class="al-act"><button class="ic-btn" data-act="ao-line-open" aria-label="Détails" aria-expanded="${!!open}">⋯</button>${ro ? "" : `<button class="ic-btn del" data-act="ao-line-del" aria-label="Supprimer">${I.close}</button>`}</div>
+    ${open ? `<div class="al-more">
+      <div class="am-g"><span class="lbl">Calcul de la quantité</span><div class="segbar sm">${[["fixe", "Fixe"], ["freq", "Par mois"], ["var", "Selon une variable"]].map(([k, t]) => `<button data-act="ao-line-mode" data-m="${k}" aria-pressed="${l.mode === k}">${t}</button>`).join("")}</div>
+        <div class="am-row">${l.mode === "fixe" ? `<label>Quantité ${aoIn("l.qte", jf4(num(l.qte)), 'inputmode="decimal"')}</label>`
+          : l.mode === "freq" ? `<label>Occurrences par mois ${aoIn("l.freq", jf4(num(l.freq)), 'inputmode="decimal"')}</label><span class="am-hint">ex. 0,33 = trimestriel · 0,5 = tous les 2 mois · 2 = 2 par mois → ${c.mois} mois → ${jfmt(c.q)} occurrence${c.q > 1 ? "s" : ""}</span>`
+          : `<label>Variable <select data-ao="l.varKey" ${ro ? "disabled" : ""}>${Object.entries(VARS).map(([k, t]) => `<option value="${k}" ${l.varKey === k ? "selected" : ""}>${t}</option>`).join("")}</select></label><label>× ${aoIn("l.mult", jf4(num(l.mult) || 1), 'inputmode="decimal"')}</label><span class="am-hint">= ${jfmt(c.q)} ${esc(l.unite)}</span>`}</div></div>
+      <div class="am-g"><span class="lbl">Période</span><div class="segbar sm">${[["all", "Toute la phase"], ["first", "Début"], ["last", "Fin"], ["custom", "Personnalisée"]].map(([k, t]) => `<button data-act="ao-line-pos" data-p="${k}" aria-pressed="${(l.pos || "all") === k}">${t}</button>`).join("")}</div>
+        <div class="am-row">${l.pos === "first" || l.pos === "last" ? `<label>Nb de mois ${aoIn("l.len", l.len || 1, 'inputmode="numeric"')}</label>` : ""}${l.pos === "custom" && c.per ? `<label>Du ${monthIn("l.pa", c.per.a)}</label><label>au ${monthIn("l.pb", c.per.b)}</label>` : ""}<span class="am-hint">${c.per ? `${ymLab(c.per.a)} → ${ymLab(c.per.b)} · ${c.mois} mois · ${eur(c.mois ? c.tot / c.mois : 0)} / mois` : "Dates de la phase à renseigner"}</span></div></div>
+      <div class="am-g am-row"><label>Unité <select data-ao="l.unite" ${ro ? "disabled" : ""}>${[...new Set([...UNITES, l.unite])].map(u => `<option ${l.unite === u ? "selected" : ""}>${esc(u)}</option>`).join("")}</select></label>
+        <label>Frais / ${esc(l.unite)} (€ HT) ${aoIn("l.cu", jfmt(num(l.cu)), 'inputmode="decimal"')}</label>
+        <label class="chk"><input type="checkbox" data-ao="l.option" ${l.option ? "checked" : ""} ${ro ? "disabled" : ""}><span>En option (hors total)</span></label></div>
+      <div class="am-calc">${jfmt(c.q)} × ${jf4(num(l.tu))} j = <b>${jfmt(c.jours)} j</b> × ${eur(c.tjm)} = ${eur(c.trav)}${c.dep ? ` + déplacements ${eur(c.dep)}` : ""}${c.frais ? ` + frais ${eur(c.frais)}` : ""}${num(ao.params.nego) ? ` · + ${pct(num(ao.params.nego), 1)} négo` : ""} → <b>${eur(c.tot)}</b></div>
+      ${ro ? "" : `<div class="am-act">${lib ? (drift ? `<button class="btn sm" data-act="ao-line-sync">Reprendre la valeur de la bibliothèque</button><button class="btn sm" data-act="ao-line-tobib">Mettre à jour la bibliothèque</button>` : `<span class="sub">Issue de la bibliothèque · ${esc(lib.mission)} ▸ ${esc(lib.cat)}</span>`) : `<button class="btn sm" data-act="ao-line-tobib">Enregistrer dans la bibliothèque</button>`}
+        <button class="btn sm" data-act="ao-line-dup">Dupliquer</button><button class="btn sm" data-act="ao-line-up" aria-label="Monter">↑</button><button class="btn sm" data-act="ao-line-down" aria-label="Descendre">↓</button>
+        <label class="am-move">Phase <select data-ao="l.phase">${ao.phases.map(p => `<option value="${p.id}" ${p.id === l.phase ? "selected" : ""}>${esc(p.nom)}</option>`).join("")}</select></label></div>`}
+    </div>` : ""}
+  </div>`;
+}
+function barList(list, tot, fmtV){
+  if (!list.length || !tot) return '<p class="sub">Rien à afficher.</p>';
+  const mx = Math.max(...list.map(x => x.v));
+  return `<div class="dec-bars">${list.map(x => `<div class="db-r"><span class="db-l" title="${esc(x.k)}">${esc(x.k)}</span><span class="db-v">${fmtV(x.v)} <small>${Math.round(x.v / tot * 100)} %</small></span><span class="db-b"><i style="width:${Math.max(2, x.v / mx * 100)}%"></i></span></div>`).join("")}</div>`;
+}
+function suiviAo(ao, R){
+  if (!ao.reference || !R.a) return null;
+  const start = R.a + "-01", end = today(); if (start > end) return {j:0};
+  let m = 0; for (let d = start; d <= end; d = addDays(d, 1)) for (const r of decRows(d)) if (r.ref === ao.reference) m += r.m;
+  return {j:m / 60 / 8};
+}
+function viewAo(ao){
+  const ro = S.canWrite === false, R = calcAo(ao), B = bib(), P = ao.params;
+  const anc = num(ao.budget) ? [B.params.ancMin * num(ao.budget), B.params.ancMax * num(ao.budget)] : null;
+  const ancPos = anc ? Math.max(0, Math.min(100, (R.tot - anc[0]) / (anc[1] - anc[0]) * 100)) : 0;
+  const comps = [...[...S.aos.values()].filter(a => a.id !== ao.id && num(a.budget) && ["Gagné", "Envoyé", "Perdu"].includes(a.statut)).map(a => { const r = calcAo(a); return {nom:a.nom || "Sans titre", st:a.statut, p:r.pBudget, m2:r.eurM2, tot:r.tot}; }),
+    ...B.bench.map(b => ({nom:b.nom, st:"Référence", p:num(b.honos) / num(b.budget), m2:num(b.surface) ? num(b.honos) / num(b.surface) : 0, tot:num(b.honos)}))];
+  const su = ao.statut === "Gagné" ? suiviAo(ao, R) : null;
+  const mList = [...R.months].sort((a, b) => a[0].localeCompare(b[0])), mMax = Math.max(1, ...mList.map(([, o]) => o.e));
+  const lineRows = (ph) => { const ls = R.lines.filter(x => x.l.phase === ph.id); return ls.map(x => lineHtml(ao, x.l, x.c)).join("") || '<div class="ao-none">Aucune prestation dans cette phase.</div>'; };
+  return `<div class="view-head ao-head"><div style="min-width:0;flex:1"><div class="eyebrow"><button class="lnk" data-act="ao-back">‹ Chiffrages</button> · ${esc(ao.mission || "Chiffrage AO")}</div>
+      <input class="ao-title" type="text" data-ao="nom" value="${esc(ao.nom)}" placeholder="Nom de l'appel d'offres" ${ro ? "readonly" : ""}></div>
+      <div class="pnav"><select class="ctl ao-st" data-ao="statut" style="--sc:var(${ST_COL[ao.statut] || "--muted"})" ${ro ? "disabled" : ""}>${AO_STATUTS.map(s => `<option ${ao.statut === s ? "selected" : ""}>${s}</option>`).join("")}</select>
+        <button class="btn primary" data-act="ao-xlsx">Exporter en .xlsx</button>${ro ? "" : `<button class="btn" data-act="ao-dup">Dupliquer</button><button class="btn ghost danger" data-act="ao-del">Supprimer</button>`}</div></div>
+    <div class="kpi-row dec-kpis ao-kpis6">
+      <div class="kc"><span class="kc-l">Total HT</span><span class="kc-v">${eur(R.tot)}</span>${R.optTot ? `<span class="kc-n mut">+ ${eur(R.optTot)} d'options</span>` : `<span class="kc-n mut">${eur(R.tot * (1 + B.params.tva))} TTC</span>`}</div>
+      <div class="kc"><span class="kc-l">Jours</span><span class="kc-v">${jfmt(R.jours)} j</span><span class="kc-n mut">TJM moyen ${eur(R.tjmMoy)}</span></div>
+      <div class="kc"><span class="kc-l">% des travaux</span><span class="kc-v ${anc && (R.tot < anc[0] || R.tot > anc[1]) ? "warn" : ""}">${R.pBudget ? pct(R.pBudget) : "—"}</span><span class="kc-n mut">${num(ao.budget) ? "sur " + keur(num(ao.budget)) : "budget à saisir"}</span></div>
+      <div class="kc"><span class="kc-l">€ / m²</span><span class="kc-v">${R.eurM2 ? (Math.round(R.eurM2 * 100) / 100).toLocaleString("fr-FR") + " €" : "—"}</span></div>
+      <div class="kc"><span class="kc-l">Durée</span><span class="kc-v">${R.duree ? R.duree + " mois" : "—"}</span><span class="kc-n mut">${R.a ? ymLab(R.a) + " → " + ymLab(R.b) : ""}</span></div>
+      <div class="kc"><span class="kc-l">Facturation</span><span class="kc-v">${eur(R.parMois)}</span><span class="kc-n mut">par mois en moyenne</span></div>
+    </div>
+    <div class="ao-layout"><div class="ao-main">
+      <details class="panel ao-info" ${(S.chif.infoOpen ?? !(ao.client || ao.budget)) ? "open" : ""}><summary><h2>Projet et paramètres</h2><span class="sub">${esc([ao.client, ao.lieu, num(ao.budget) ? keur(num(ao.budget)) + " de travaux" : "", num(ao.surface) ? num(ao.surface).toLocaleString("fr-FR") + " m²" : ""].filter(Boolean).join(" · ") || "Client, budget, surface, déplacement, TJM, négociation")}</span></summary>
+        <div class="ao-form">
+          <label class="field"><span class="lbl">Client</span>${aoIn("client", ao.client)}</label><label class="field"><span class="lbl">Maître d'ouvrage</span>${aoIn("moa", ao.moa)}</label>
+          <label class="field wide"><span class="lbl">Opération</span>${aoIn("op", ao.op)}</label>
+          <label class="field"><span class="lbl">Type</span>${aoIn("type", ao.type, 'placeholder="ex. Conception-réalisation, site occupé"')}</label><label class="field"><span class="lbl">Mission</span>${aoIn("mission", ao.mission, 'list="dl-mis"')}<datalist id="dl-mis">${MISSIONS.map(m => `<option value="${esc(m)}">`).join("")}</datalist></label>
+          <label class="field"><span class="lbl">Lieu</span>${aoIn("lieu", ao.lieu)}</label><label class="field"><span class="lbl">Date de remise</span><input type="date" data-ao="remise" value="${esc(ao.remise || "")}" ${ro ? "readonly" : ""}></label>
+          <label class="field"><span class="lbl">Budget travaux (€ HT)</span>${aoIn("budget", num(ao.budget) ? num(ao.budget).toLocaleString("fr-FR") : "", 'inputmode="decimal"')}</label><label class="field"><span class="lbl">Surface (m²)</span>${aoIn("surface", num(ao.surface) ? num(ao.surface).toLocaleString("fr-FR") : "", 'inputmode="decimal"')}</label>
+          <label class="field"><span class="lbl">Distance A/R (km)</span>${aoIn("kmAR", ao.kmAR || "", 'inputmode="decimal"')}</label><label class="field"><span class="lbl">Coût km / repas (€)</span><span class="row2">${aoIn("p.ckm", jf4(num(P.ckm)), 'inputmode="decimal"')}${aoIn("p.repas", jfmt(num(P.repas)), 'inputmode="decimal"')}</span><small class="sub">Déplacement : ${eur(depCost(ao))} par occurrence</small></label>
+          <label class="field"><span class="lbl">Anticipation négo (%)</span>${aoIn("p.nego", jfmt(num(P.nego) * 100), 'inputmode="decimal"')}</label><label class="field"><span class="lbl">Arrondir le total à</span><select data-ao="p.arrondi" ${ro ? "disabled" : ""}>${[[0, "Pas d'arrondi"], [10, "10 €"], [100, "100 €"], [1000, "1 000 €"]].map(([v, t]) => `<option value="${v}" ${num(P.arrondi) === v ? "selected" : ""}>${t}</option>`).join("")}</select></label>
+          ${B.profils.map(p => `<label class="field"><span class="lbl">TJM ${esc(p.nom)} (€ HT)</span>${aoIn("tjm." + p.k, profTjm(ao, p.k), 'inputmode="decimal"')}</label>`).join("")}
+          <label class="field"><span class="lbl">Nb de zones / cycles par zone</span><span class="row2">${aoIn("v.zones", ao.vars.zones ?? "", 'inputmode="numeric"')}${aoIn("v.cycles", ao.vars.cycles ?? "", 'inputmode="numeric"')}</span></label><label class="field"><span class="lbl">Nb de maquettes</span>${aoIn("v.maquettes", ao.vars.maquettes ?? "", 'inputmode="numeric"')}</label>
+          <label class="field wide"><span class="lbl">Référence du décompte (pour suivre le temps passé si l'AO est gagné)</span>${aoIn("reference", ao.reference, 'list="dl-refs" placeholder="ex. ATOMBIM__AO_Concours ou la référence du projet"')}<datalist id="dl-refs">${refList().map(r => `<option value="${esc(r)}">`).join("")}</datalist></label>
+        </div></details>
+      <div class="ao-cols" aria-hidden="true"><span>Prestation</span><span>Quantité</span><span>T.U. (j)</span><span>Profil</span><span title="Déplacement">Dépl.</span><span>Jours</span><span>Montant HT</span><span></span></div>
+      ${R.ph.map((x, i) => `<section class="ao-ph" data-pid="${x.p.id}">
+        <div class="ao-ph-h"><input class="ph-nom" type="text" data-ao="ph.nom" value="${esc(x.p.nom)}" aria-label="Nom de la phase" ${ro ? "readonly" : ""}>
+          <span class="ph-per">${monthIn("ph.a", x.p.a, 'aria-label="Début de la phase"')}<span>→</span>${monthIn("ph.b", x.p.b, 'aria-label="Fin de la phase"')}<small>${ymCount(x.p.a, x.p.b)} mois</small></span>
+          <span class="ph-tot"><b>${eur(x.tot)}</b><small>${jfmt(x.jours)} j</small></span>
+          ${ro ? "" : `<span class="ph-act"><button class="ic-btn" data-act="ao-ph-up" aria-label="Monter la phase" ${i === 0 ? "disabled" : ""}>↑</button><button class="ic-btn" data-act="ao-ph-down" aria-label="Descendre la phase" ${i === R.ph.length - 1 ? "disabled" : ""}>↓</button><button class="ic-btn del" data-act="ao-ph-del" aria-label="Supprimer la phase">${I.close}</button></span>`}</div>
+        ${lineRows(x.p)}
+        ${ro ? "" : `<div class="ao-ph-add"><button class="btn ghost sm" data-act="ao-pick">${I.plus} Prestations de la bibliothèque</button><button class="btn ghost sm" data-act="ao-line-new">${I.plus} Ligne libre</button></div>`}
+      </section>`).join("")}
+      ${ro ? "" : `<div class="ao-add-ph"><button class="btn" data-act="ao-ph-new">${I.plus} Ajouter une phase</button><button class="btn ghost" data-act="ao-shift" data-n="-1">Décaler tout d'1 mois plus tôt</button><button class="btn ghost" data-act="ao-shift" data-n="1">plus tard</button></div>`}
+    </div>
+    <aside class="ao-side">
+      ${anc ? `<div class="panel"><h2>Ancrage prix</h2><p class="sub">Fourchette ${pct(B.params.ancMin)} – ${pct(B.params.ancMax)} du budget travaux : ${keur(anc[0])} – ${keur(anc[1])}</p>
+        <div class="anc"><i style="left:${ancPos}%"></i></div><div class="anc-l"><span>${keur(anc[0])}</span><b class="${R.tot < anc[0] || R.tot > anc[1] ? "warn" : "ok"}">${R.tot < anc[0] ? "en dessous" : R.tot > anc[1] ? "au-dessus" : "dans la fourchette"}</b><span>${keur(anc[1])}</span></div></div>` : ""}
+      <div class="panel"><h2>Répartition par phase</h2>${barList(R.ph.filter(x => x.tot).map(x => ({k:x.p.nom, v:x.tot})), R.tot, eur)}</div>
+      ${mList.length ? `<div class="panel"><h2>Facturation mensuelle</h2><div class="ao-bars">${mList.map(([m, o]) => `<i style="height:${Math.max(3, o.e / mMax * 100)}%" title="${ymLab(m)} : ${eur(o.e)} · ${jfmt(o.j)} j"></i>`).join("")}</div><div class="anc-l"><span>${ymLab(mList[0][0])}</span><span>pic ${eur(mMax)} / mois</span><span>${ymLab(mList[mList.length - 1][0])}</span></div></div>` : ""}
+      ${R.byProf.size > 1 ? `<div class="panel"><h2>Jours par profil</h2>${barList([...R.byProf].map(([k, v]) => ({k:(B.profils.find(p => p.k === k) || {nom:k}).nom, v})), R.jours, v => jfmt(v) + " j")}</div>` : ""}
+      ${comps.length ? `<div class="panel"><h2>Comparables</h2><table class="tbl cmp"><thead><tr><th>AO</th><th>% trav.</th><th>€/m²</th></tr></thead><tbody>
+        ${R.pBudget ? `<tr class="me"><td>Ce chiffrage</td><td>${pct(R.pBudget)}</td><td>${R.eurM2 ? (Math.round(R.eurM2 * 10) / 10).toLocaleString("fr-FR") : "—"}</td></tr>` : ""}
+        ${comps.map(c => `<tr><td>${esc(c.nom)} <small>${esc(c.st)}</small></td><td>${pct(c.p)}</td><td>${c.m2 ? (Math.round(c.m2 * 10) / 10).toLocaleString("fr-FR") : "—"}</td></tr>`).join("")}</tbody></table></div>` : ""}
+      ${su ? `<div class="panel"><h2>Suivi du temps passé</h2><p class="sub">Décompte sur « ${esc(ao.reference)} » depuis ${ymLab(R.a)}</p><div class="kc-v">${jfmt(su.j)} j <small>/ ${jfmt(R.jours)} j chiffrés</small></div><span class="ps-bar"><i style="width:${Math.min(100, R.jours ? su.j / R.jours * 100 : 0)}%;background:${su.j > R.jours ? "var(--late)" : "var(--accent)"}"></i></span></div>` : ""}
+    </aside></div>`;
+}
+function viewBiblio(){
+  const ro = S.canWrite === false, B = bib(), q = norm(S.chif.bq), mf = S.chif.bmis;
+  const items = B.items.filter(x => (!mf || x.mission === mf) && (!q || norm(x.lib + " " + x.cat).includes(q)));
+  const groups = new Map(); for (const it of items) { const k = it.mission + " ▸ " + it.cat; if (!groups.has(k)) groups.set(k, []); groups.get(k).push(it); }
+  return `<div class="view-head"><div><div class="eyebrow"><button class="lnk" data-act="ao-back">‹ Chiffrages</button></div><h1>Bibliothèque des prestations</h1><div class="sub">Temps unitaires et coûts unitaires utilisés par tous les chiffrages. Modifier une valeur ici ne change pas les chiffrages existants.</div></div>
+      <div class="pnav">${ro ? "" : `<button class="btn primary" data-act="bib-new">${I.plus} Prestation</button>`}</div></div>
+    <div class="settings ao-params">
+      <div class="panel"><h2>Profils et TJM</h2>${B.profils.map(p => `<div class="prof-r"><input type="text" data-bib="prof.nom" data-k="${p.k}" value="${esc(p.nom)}" ${ro ? "readonly" : ""}><input type="text" data-bib="prof.tjm" data-k="${p.k}" value="${p.tjm}" inputmode="decimal" ${ro ? "readonly" : ""}><span class="sub">€ HT / j</span></div>`).join("")}</div>
+      <div class="panel"><h2>Paramètres par défaut</h2><div class="prm">
+        <label>Anticipation négo (%)<input type="text" data-bib="par.nego" value="${jfmt(B.params.nego * 100)}" inputmode="decimal"></label>
+        <label>Coût km (€)<input type="text" data-bib="par.ckm" value="${jf4(B.params.ckm)}" inputmode="decimal"></label>
+        <label>Repas (€)<input type="text" data-bib="par.repas" value="${jfmt(B.params.repas)}" inputmode="decimal"></label>
+        <label>Ancrage prix mini (% travaux)<input type="text" data-bib="par.ancMin" value="${jfmt(B.params.ancMin * 100)}" inputmode="decimal"></label>
+        <label>Ancrage prix maxi (% travaux)<input type="text" data-bib="par.ancMax" value="${jfmt(B.params.ancMax * 100)}" inputmode="decimal"></label></div></div>
+      <div class="panel"><h2>Références de prix</h2><table class="tbl bench"><thead><tr><th>Projet</th><th>Travaux</th><th>m²</th><th>Honos</th><th>%</th><th></th></tr></thead><tbody>${B.bench.map((b, i) => `<tr data-bi="${i}"><td><input type="text" data-bib="bench.nom" value="${esc(b.nom)}"></td><td><input type="text" data-bib="bench.budget" value="${num(b.budget)}" inputmode="decimal"></td><td><input type="text" data-bib="bench.surface" value="${num(b.surface)}" inputmode="decimal"></td><td><input type="text" data-bib="bench.honos" value="${num(b.honos)}" inputmode="decimal"></td><td>${num(b.budget) ? pct(num(b.honos) / num(b.budget)) : "—"}</td><td>${ro ? "" : `<button class="ic-btn del" data-act="bib-bench-del">${I.close}</button>`}</td></tr>`).join("")}</tbody></table>${ro ? "" : `<button class="btn ghost sm" data-act="bib-bench-add">${I.plus} Référence</button>`}</div>
+    </div>
+    <div class="filters" style="margin-top:14px"><div class="row"><div class="search"><span>${I.search}</span><input type="search" id="bib-q" value="${esc(S.chif.bq)}" placeholder="Chercher une prestation…" aria-label="Chercher"></div></div>
+      <div class="seg-block">${["", ...MISSIONS].map(m => `<button class="seg" data-act="bib-mis" data-v="${esc(m)}" aria-pressed="${mf === m}">${m || "Toutes"} <span class="c">${m ? B.items.filter(x => x.mission === m).length : B.items.length}</span></button>`).join("")}</div></div>
+    <div class="bib-cols" aria-hidden="true"><span>Prestation</span><span>Unité</span><span>Quantité par défaut</span><span>T.U. (j)</span><span>Frais €</span><span>Profil</span><span>Dépl.</span><span></span></div>
+    ${[...groups].map(([g, its]) => `<section class="bib-g"><h3>${esc(g)}</h3>${its.map(it => `<div class="bib-r" data-bid="${esc(it.id)}">
+      <input type="text" data-bib="it.lib" value="${esc(it.lib)}" ${ro ? "readonly" : ""} aria-label="Libellé">
+      <select data-bib="it.unite" ${ro ? "disabled" : ""}>${[...new Set([...UNITES, it.unite])].map(u => `<option ${u === it.unite ? "selected" : ""}>${esc(u)}</option>`).join("")}</select>
+      <span class="bib-q">${it.mode === "freq" ? `<input type="text" data-bib="it.freq" value="${jf4(num(it.freq))}" inputmode="decimal" title="Occurrences par mois"><small>/ mois</small>` : ""}<select data-bib="it.mode" aria-label="Mode">${[["fixe", "Fixe"], ["freq", "Par mois"], ["var", "Variable"]].map(([k, t]) => `<option value="${k}" ${it.mode === k ? "selected" : ""}>${t}</option>`).join("")}</select>${it.mode === "var" ? `<select data-bib="it.varKey">${Object.entries(VARS).map(([k, t]) => `<option value="${k}" ${it.varKey === k ? "selected" : ""}>${t}</option>`).join("")}</select>` : ""}</span>
+      <input type="text" data-bib="it.tu" value="${jf4(num(it.tu))}" inputmode="decimal" ${ro ? "readonly" : ""} aria-label="Temps unitaire">
+      <input type="text" data-bib="it.cu" value="${num(it.cu) ? jfmt(num(it.cu)) : ""}" placeholder="0" inputmode="decimal" ${ro ? "readonly" : ""} aria-label="Frais unitaire">
+      <select data-bib="it.profil" ${ro ? "disabled" : ""}>${B.profils.map(p => `<option value="${p.k}" ${p.k === it.profil ? "selected" : ""}>${esc(p.nom)}</option>`).join("")}</select>
+      <label class="chk"><input type="checkbox" data-bib="it.dep" ${it.dep ? "checked" : ""} ${ro ? "disabled" : ""}></label>
+      ${ro ? "<span></span>" : `<button class="ic-btn del" data-act="bib-del" aria-label="Supprimer">${I.close}</button>`}
+      <div class="bib-meta"><select data-bib="it.mission">${MISSIONS.map(m => `<option ${m === it.mission ? "selected" : ""}>${esc(m)}</option>`).join("")}</select><input type="text" data-bib="it.cat" value="${esc(it.cat)}" aria-label="Catégorie">${it.note ? `<small>${esc(it.note)}</small>` : ""}</div>
+    </div>`).join("")}</section>`).join("") || '<div class="empty"><p>Aucune prestation ne correspond.</p></div>'}`;
+}
+function pickSheet(phaseId){
+  S.chif.pickPhase = phaseId; S.chif.pickSel = [];
+  document.querySelector(".ao-pick")?.remove();
+  const el = document.createElement("div"); el.className = "overlay ao-pick"; el.dataset.act = "ao-ov-close";
+  el.innerHTML = `<div class="sheet wide" role="dialog" aria-label="Ajouter des prestations"><div class="sheet-h"><h2>Ajouter des prestations</h2><button class="btn ghost" data-act="ao-ov-close" aria-label="Fermer">${I.close}</button></div>
+    <div class="sheet-b"><div class="search" style="margin-bottom:8px"><span>${I.search}</span><input type="search" id="pick-q" placeholder="Chercher (ex. audit, revue, clash, maquette)…" aria-label="Chercher"></div>
+      <div class="seg-block" id="pick-mis">${["", ...MISSIONS].map(m => `<button class="seg" data-act="pick-mis" data-v="${esc(m)}" aria-pressed="${S.chif.pickMis === m}">${m || "Toutes"}</button>`).join("")}</div>
+      <div id="pick-list" class="pick-list"></div></div>
+    <div class="sheet-f"><span class="sub" id="pick-n">Aucune sélection</span><span class="spacer"></span><button class="btn" data-act="ao-ov-close">Annuler</button><button class="btn primary" data-act="pick-add">Ajouter</button></div></div>`;
+  document.body.appendChild(el); pickRender(); setTimeout(() => $("#pick-q")?.focus(), 40);
+}
+function pickRender(){
+  const box = $("#pick-list"); if (!box) return;
+  const q = norm($("#pick-q")?.value || ""), mf = S.chif.pickMis, ao = S.aos.get(S.chif.id);
+  const items = bib().items.filter(x => (!mf || x.mission === mf) && (!q || norm(x.lib + " " + x.cat + " " + x.mission).includes(q)));
+  const groups = new Map(); for (const it of items) { const k = it.mission + " ▸ " + it.cat; if (!groups.has(k)) groups.set(k, []); groups.get(k).push(it); }
+  box.innerHTML = [...groups].map(([g, its]) => `<div class="pk-g"><h4>${esc(g)}</h4>${its.map(it => { const used = ao && ao.lines.some(l => l.bib === it.id && l.phase === S.chif.pickPhase); return `<label class="pk-r"><input type="checkbox" data-pick="${esc(it.id)}" ${S.chif.pickSel.includes(it.id) ? "checked" : ""}><span class="pk-l">${esc(it.lib)}${used ? ' <small class="pk-used">déjà dans la phase</small>' : ""}</span><span class="pk-v">${jf4(num(it.tu))} j / ${esc(it.unite)}${it.mode === "freq" ? ` · ${jf4(num(it.freq))}/mois` : it.mode === "var" ? " · " + esc(VARS[it.varKey] || "") : ""}${num(it.cu) ? " · " + eur(num(it.cu)) : ""}</span></label>`; }).join("")}</div>`).join("") || '<p class="sub">Aucune prestation ne correspond.</p>';
+  const n = S.chif.pickSel.length; const pn = $("#pick-n"); if (pn) pn.textContent = n ? `${n} prestation${n > 1 ? "s" : ""} sélectionnée${n > 1 ? "s" : ""}` : "Aucune sélection";
+}
+
+/* ----- Écritures ----- */
+async function aoSave(ao){ ao.updated = nowIso(); S.aos.set(ao.id, ao); schedule(); try { await S.db.doc("ao/" + ao.id).set(JSON.parse(JSON.stringify(ao))); } catch (e) { fail(e); } }
+const curAo = () => S.aos.get(S.chif.id);
+async function aoAction(act, a, ev){
+  const C = S.chif, ao = curAo(), ov = a.closest(".overlay");
+  if (act === "ao-ov-close") { if (a === ov && ev && ev.target !== ov) return; ov && ov.remove(); return; }
+  if (act === "ao-biblio") { C.mode = "biblio"; saveChifUi(); render(true); window.scrollTo(0, 0); return; }
+  if (act === "ao-back") { C.mode = "list"; saveChifUi(); render(true); window.scrollTo(0, 0); return; }
+  if (act === "ao-filt") { C.filt = a.dataset.v; render(true); return; }
+  if (act === "ao-open") { C.mode = "ao"; C.id = a.dataset.id; C.open = {}; C.infoOpen = undefined; saveChifUi(); render(true); window.scrollTo(0, 0); return; }
+  if (act === "ao-new-open") { newAoSheet(); return; }
+  if (act === "ao-create") {
+    const tk = (document.querySelector('input[name="na-tpl"]:checked') || {}).value || "vide", start = ymParse($("#na-start")?.value) || ymAdd(ymOf(today()), 1), nom = ($("#na-nom")?.value || "").trim();
+    let n;
+    if (tk === "copy") { const src = S.aos.get($("#na-copy")?.value); if (!src) return; n = JSON.parse(JSON.stringify(src)); n.id = uid(); n.statut = "En cours"; n.created = nowIso(); const d = ymCount(n.phases.map(p => p.a).sort()[0] || start, start) - 1; if (d && n.phases.length) n.phases.forEach(p => { p.a = ymAdd(p.a, d); p.b = ymAdd(p.b, d); }); n.nom = nom || (src.nom + " (copie)"); }
+    else { n = newAo(tk, start); n.nom = nom; }
+    ov && ov.remove(); C.mode = "ao"; C.id = n.id; C.open = {}; C.infoOpen = true; saveChifUi(); await aoSave(n); render(true); window.scrollTo(0, 0); toast("Chiffrage créé"); return;
+  }
+  if (act === "bib-new" || act === "bib-del" || act === "bib-mis" || act === "bib-bench-add" || act === "bib-bench-del") return bibAction(act, a);
+  if (act === "pick-mis") { C.pickMis = a.dataset.v; document.querySelectorAll("#pick-mis .seg").forEach(b => b.setAttribute("aria-pressed", b.dataset.v === C.pickMis)); pickRender(); return; }
+  if (act === "pick-add") {
+    if (!ao || !C.pickSel.length) { toast("Coche au moins une prestation"); return; }
+    const ls = C.pickSel.map(id => ({...lineFromItem(bibItem(id)), phase:C.pickPhase}));
+    const last = ao.lines.map(l => l.phase).lastIndexOf(C.pickPhase); ao.lines.splice(last >= 0 ? last + 1 : ao.lines.length, 0, ...ls);
+    ov && ov.remove(); await aoSave(ao); render(true); toast(`${ls.length} prestation${ls.length > 1 ? "s" : ""} ajoutée${ls.length > 1 ? "s" : ""}`); return;
+  }
+  if (!ao) return;
+  const lid = a.closest("[data-lid]")?.dataset.lid, l = lid && ao.lines.find(x => x.id === lid), pid = a.closest("[data-pid]")?.dataset.pid;
+  if (act === "ao-xlsx") { aoExport(ao); return; }
+  if (act === "ao-dup") { const n = JSON.parse(JSON.stringify(ao)); n.id = uid(); n.nom = (ao.nom || "Sans titre") + " (copie)"; n.statut = "En cours"; n.created = nowIso(); C.id = n.id; saveChifUi(); await aoSave(n); render(true); toast("Chiffrage dupliqué"); return; }
+  if (act === "ao-del") {
+    if (!a.classList.contains("armed")) { a.classList.add("armed"); a.textContent = "Confirmer la suppression"; return; }
+    S.aos.delete(ao.id); C.mode = "list"; saveChifUi(); render(true); try { await S.db.doc("ao/" + ao.id).delete(); toast("Chiffrage supprimé"); } catch (e) { fail(e); } return;
+  }
+  if (act === "ao-pick") { pickSheet(pid); return; }
+  if (act === "ao-line-new") { const nl = {...lineFromItem(null), phase:pid}; const last = ao.lines.map(x => x.phase).lastIndexOf(pid); ao.lines.splice(last >= 0 ? last + 1 : ao.lines.length, 0, nl); C.open[nl.id] = true; await aoSave(ao); render(true); setTimeout(() => { const el = document.querySelector(`[data-lid="${nl.id}"] [data-ao="l.lib"]`); el && (el.focus(), el.select()); }, 30); return; }
+  if (act === "ao-ph-new") { const lastP = ao.phases[ao.phases.length - 1]; const s = lastP && ymOk(lastP.b) ? ymAdd(lastP.b, 1) : ymAdd(ymOf(today()), 1); ao.phases.push({id:uid(), nom:"Nouvelle phase", a:s, b:ymAdd(s, 2)}); await aoSave(ao); render(true); return; }
+  if (act === "ao-shift") { const n = Number(a.dataset.n); ao.phases.forEach(p => { if (ymOk(p.a)) p.a = ymAdd(p.a, n); if (ymOk(p.b)) p.b = ymAdd(p.b, n); }); await aoSave(ao); render(true); return; }
+  if (act === "ao-ph-up" || act === "ao-ph-down") { const i = ao.phases.findIndex(p => p.id === pid), j = i + (act === "ao-ph-up" ? -1 : 1); if (i < 0 || j < 0 || j >= ao.phases.length) return; [ao.phases[i], ao.phases[j]] = [ao.phases[j], ao.phases[i]]; await aoSave(ao); render(true); return; }
+  if (act === "ao-ph-del") {
+    const n = ao.lines.filter(x => x.phase === pid).length;
+    if (n && !a.classList.contains("armed")) { a.classList.add("armed"); a.title = `Cliquer encore pour supprimer la phase et ses ${n} lignes`; toast(`Clique encore pour supprimer la phase et ses ${n} ligne${n > 1 ? "s" : ""}`); return; }
+    ao.phases = ao.phases.filter(p => p.id !== pid); ao.lines = ao.lines.filter(x => x.phase !== pid); await aoSave(ao); render(true); return;
+  }
+  if (!l) return;
+  if (act === "ao-line-open") { C.open[lid] = !C.open[lid]; render(true); return; }
+  if (act === "ao-line-del") { ao.lines = ao.lines.filter(x => x.id !== lid); await aoSave(ao); render(true); return; }
+  if (act === "ao-line-dup") { const n = {...JSON.parse(JSON.stringify(l)), id:uid()}; ao.lines.splice(ao.lines.indexOf(l) + 1, 0, n); await aoSave(ao); render(true); return; }
+  if (act === "ao-line-up" || act === "ao-line-down") {
+    const same = ao.lines.filter(x => x.phase === l.phase), k = same.indexOf(l), o = same[k + (act === "ao-line-up" ? -1 : 1)]; if (!o) return;
+    const i = ao.lines.indexOf(l), j = ao.lines.indexOf(o); [ao.lines[i], ao.lines[j]] = [ao.lines[j], ao.lines[i]]; await aoSave(ao); render(true); return;
+  }
+  if (act === "ao-line-mode") { l.mode = a.dataset.m; if (l.mode === "freq" && !num(l.freq)) l.freq = 1; await aoSave(ao); render(true); return; }
+  if (act === "ao-line-pos") { const c = calcLine(ao, l); l.pos = a.dataset.p; if (l.pos === "custom") { const ph = ao.phases.find(p => p.id === l.phase); if (ph && c.per) { l.off = Math.max(0, ymCount(ph.a, c.per.a) - 1); l.len = c.mois; } } else if (l.pos !== "all") l.len = l.len || 1; await aoSave(ao); render(true); return; }
+  if (act === "ao-line-sync") { const it = bibItem(l.bib); if (it) { l.tu = it.tu; l.cu = it.cu || 0; } await aoSave(ao); render(true); toast("Valeurs de la bibliothèque reprises"); return; }
+  if (act === "ao-line-tobib") {
+    const B = bib(), items = B.items.slice(), it = l.bib && items.find(x => x.id === l.bib);
+    if (it) { Object.assign(it, {tu:num(l.tu), cu:num(l.cu)}); await saveBib({items}); toast("Bibliothèque mise à jour"); }
+    else { const nid = "u-" + uid(); items.push({id:nid, mission:ao.mission && MISSIONS.includes(ao.mission) ? ao.mission : "BIM Management", cat:"Mes prestations", lib:l.lib, unite:l.unite, tu:num(l.tu), profil:l.profil, dep:!!l.dep, cu:num(l.cu), mode:l.mode, freq:num(l.freq), varKey:l.varKey || "", note:""}); l.bib = nid; await saveBib({items}); await aoSave(ao); toast("Prestation ajoutée à la bibliothèque"); }
+    render(true); return;
+  }
+}
+async function aoChange(el){
+  const ao = curAo(); if (!ao) return;
+  const f = el.dataset.ao, v = el.type === "checkbox" ? el.checked : el.value;
+  const lid = el.closest("[data-lid]")?.dataset.lid, l = lid && ao.lines.find(x => x.id === lid), pid = el.closest("[data-pid]")?.dataset.pid, ph = pid && ao.phases.find(p => p.id === pid);
+  const numF = ["budget", "surface", "kmAR"];
+  if (f.startsWith("l.") && l) {
+    const k = f.slice(2);
+    if (["qte", "freq", "tu", "cu", "mult"].includes(k)) l[k] = num(v);
+    else if (k === "len") l.len = Math.max(1, Math.round(num(v)));
+    else if (k === "pa" || k === "pb") {
+      const p = ao.phases.find(x => x.id === l.phase), c = calcLine(ao, l), ym = ymParse(v); if (!p || !ym || !c.per) { render(true); return; }
+      let a = k === "pa" ? ym : c.per.a, b = k === "pb" ? ym : c.per.b; if (b < a) b = a;
+      if (a < p.a) p.a = a; if (b > p.b) p.b = b;
+      l.pos = "custom"; l.off = ymCount(p.a, a) - 1; l.len = ymCount(a, b);
+    }
+    else if (k === "dep" || k === "option") l[k] = !!v;
+    else l[k] = v;
+  }
+  else if (f.startsWith("ph.") && ph) { const k = f.slice(3); if (k === "nom") ph.nom = v.trim() || ph.nom; else { const ym = ymParse(v); if (ym) { ph[k] = ym; if (ph.b < ph.a) { if (k === "a") ph.b = ph.a; else ph.a = ph.b; } } } }
+  else if (f.startsWith("p.")) { const k = f.slice(2); ao.params[k] = k === "nego" ? num(v) / 100 : num(v); }
+  else if (f.startsWith("tjm.")) { ao.params.tjm = {...(ao.params.tjm || {}), [f.slice(4)]:num(v)}; }
+  else if (f.startsWith("v.")) { ao.vars = {...(ao.vars || {}), [f.slice(2)]:num(v)}; }
+  else if (numF.includes(f)) ao[f] = num(v);
+  else ao[f] = typeof v === "string" ? v.trim() : v;
+  if (f === "reference" && ao.reference && !refList().includes(ao.reference)) savePrefs({refs:[...refList(), ao.reference].sort((x, y) => x.localeCompare(y, "fr"))});
+  await aoSave(ao);
+  if (el.tagName === "SELECT" || el.type === "checkbox" || el.type === "month" || el.type === "date") render(true);
+}
+async function bibAction(act, a){
+  const B = bib(), C = S.chif;
+  if (act === "bib-mis") { C.bmis = a.dataset.v; render(true); return; }
+  if (act === "bib-new") { const items = B.items.slice(); const it = {id:"u-" + uid(), mission:C.bmis || "BIM Management", cat:"Mes prestations", lib:"Nouvelle prestation", unite:"forfait", tu:1, profil:"bim", dep:false, cu:0, mode:"fixe", freq:1, varKey:"", note:""}; items.unshift(it); C.bq = ""; await saveBib({items}); render(true); setTimeout(() => { const el = document.querySelector(`[data-bid="${it.id}"] [data-bib="it.lib"]`); el && (el.focus(), el.select(), el.scrollIntoView({block:"center"})); }, 30); return; }
+  if (act === "bib-del") { const id = a.closest("[data-bid]").dataset.bid; if (!a.classList.contains("armed")) { a.classList.add("armed"); toast("Clique encore pour supprimer cette prestation de la bibliothèque"); return; } await saveBib({items:B.items.filter(x => x.id !== id)}); render(true); return; }
+  if (act === "bib-bench-add") { await saveBib({bench:[...B.bench, {nom:"Projet", budget:0, surface:0, honos:0, duree:0}]}); render(true); return; }
+  if (act === "bib-bench-del") { const i = Number(a.closest("[data-bi]").dataset.bi); await saveBib({bench:B.bench.filter((_, k) => k !== i)}); render(true); return; }
+}
+async function bibChange(el){
+  const B = bib(), f = el.dataset.bib, v = el.type === "checkbox" ? el.checked : el.value;
+  if (f.startsWith("prof.")) { const profils = B.profils.map(p => p.k === el.dataset.k ? {...p, [f.slice(5)]:f === "prof.tjm" ? num(v) : v.trim()} : p); await saveBib({profils}); return; }
+  if (f.startsWith("par.")) { const k = f.slice(4); await saveBib({params:{...B.params, [k]:["nego", "ancMin", "ancMax"].includes(k) ? num(v) / 100 : num(v)}}); render(true); return; }
+  if (f.startsWith("bench.")) { const i = Number(el.closest("[data-bi]").dataset.bi), k = f.slice(6); const bench = B.bench.map((b, j) => j === i ? {...b, [k]:k === "nom" ? v.trim() : num(v)} : b); await saveBib({bench}); render(true); return; }
+  if (f.startsWith("it.")) {
+    const id = el.closest("[data-bid]").dataset.bid, k = f.slice(3);
+    const items = B.items.map(x => x.id !== id ? x : {...x, [k]:["tu", "cu", "freq"].includes(k) ? num(v) : k === "dep" ? !!v : typeof v === "string" ? v.trim() : v});
+    await saveBib({items}); if (el.tagName === "SELECT") render(true); return;
+  }
+}
+
+/* ----- Export Excel (avec formules) ----- */
+async function aoExport(ao){
+  const dl = window.claude && window.claude.use ? await window.claude.use("downloads") : null;
+  if (!dl) { toast("L'export n'est pas disponible sur cet appareil."); return; }
+  try {
+    toast("Préparation du fichier…");
+    const X = await loadXLSX(), R = calcAo(ao), B = bib(), P = ao.params;
+    const ws = {}, put = (r, c, v, z, f) => { const cell = typeof v === "number" ? {t:"n", v} : {t:"s", v:String(v ?? "")}; if (z) cell.z = z; if (f) cell.f = f; ws[X.utils.encode_cell({r, c})] = cell; };
+    const info = [["Appel d'offres", ao.nom], ["Client", ao.client], ["Maître d'ouvrage", ao.moa], ["Opération", ao.op], ["Type", ao.type], ["Mission", ao.mission], ["Lieu", ao.lieu], ["Budget travaux (€ HT)", num(ao.budget)], ["Surface (m²)", num(ao.surface)]];
+    info.forEach(([k, v], i) => { put(i, 0, k); put(i, 1, v ?? "", typeof v === "number" ? "#,##0" : null); });
+    const pr = [["Anticipation négo", num(P.nego), "0.0%"], ["Coût d'un déplacement (€)", depCost(ao), "#,##0"], ...B.profils.map(p => [`TJM ${p.nom} (€ HT)`, profTjm(ao, p.k), "#,##0"])];
+    pr.forEach(([k, v, z], i) => { put(i, 4, k); put(i, 5, v, z); });
+    const NEGO = "$F$1", DEP = "$F$2";
+    const H = ["Phase", "Prestation", "Unité", "Début", "Fin", "Mois", "Fréq. / mois", "Quantité", "Temps unit. (j)", "Jours", "Profil", "TJM (€)", "Travail (€)", "Déplacement", "Coût déplacements (€)", "Frais unit. (€)", "Total HT (€)", "Option"];
+    const r0 = 12; H.forEach((h, c) => put(r0, c, h));
+    let r = r0 + 1; const first = r;
+    for (const ph of ao.phases) for (const x of R.lines.filter(y => y.l.phase === ph.id)) {
+      const {l, c} = x, rr = r + 1, prof = (B.profils.find(p => p.k === l.profil) || {nom:l.profil}).nom;
+      put(r, 0, ph.nom); put(r, 1, l.lib); put(r, 2, l.unite); put(r, 3, c.per ? c.per.a : ""); put(r, 4, c.per ? c.per.b : ""); put(r, 5, c.mois);
+      if (l.mode === "freq") { put(r, 6, num(l.freq), "0.00"); put(r, 7, c.q, null, `ROUND(F${rr}*G${rr},0)`); } else put(r, 7, c.q);
+      put(r, 8, num(l.tu), "0.000"); put(r, 9, c.jours, "0.00", `H${rr}*I${rr}`); put(r, 10, prof); put(r, 11, c.tjm, "#,##0"); put(r, 12, c.trav, "#,##0", `J${rr}*L${rr}`);
+      put(r, 13, l.dep ? "OUI" : "NON"); put(r, 14, c.dep, "#,##0", `IF(N${rr}="OUI",ROUND(H${rr},0)*${DEP},0)`); put(r, 15, num(l.cu), "#,##0");
+      put(r, 16, c.tot, "#,##0", `ROUNDUP((M${rr}+O${rr}+H${rr}*P${rr})*(1+${NEGO}),0)`); put(r, 17, l.option ? "OUI" : "");
+      r++;
+    }
+    const last = r; r++;
+    put(r, 15, "Total HT (hors options)"); put(r, 16, R.totBrut, "#,##0", `SUMIF(R${first + 1}:R${last},"<>OUI",Q${first + 1}:Q${last})`); put(r, 9, R.jours, "0.00", `SUMIF(R${first + 1}:R${last},"<>OUI",J${first + 1}:J${last})`); const rt = r + 1; r++;
+    if (R.optTot) { put(r, 15, "Options"); put(r, 16, R.optTot, "#,##0", `SUMIF(R${first + 1}:R${last},"OUI",Q${first + 1}:Q${last})`); r++; }
+    put(r, 15, "TVA " + Math.round(B.params.tva * 100) + " %"); put(r, 16, R.totBrut * B.params.tva, "#,##0", `Q${rt}*${B.params.tva}`); r++;
+    put(r, 15, "Total TTC"); put(r, 16, R.totBrut * (1 + B.params.tva), "#,##0", `Q${rt}*${1 + B.params.tva}`); r++;
+    if (num(ao.budget)) { put(r, 15, "% du budget travaux"); put(r, 16, R.totBrut / num(ao.budget), "0.00%", `Q${rt}/B8`); r++; }
+    if (num(ao.surface)) { put(r, 15, "€ HT / m²"); put(r, 16, R.totBrut / num(ao.surface), "0.00", `Q${rt}/B9`); r++; }
+    ws["!ref"] = X.utils.encode_range({s:{r:0, c:0}, e:{r, c:H.length - 1}});
+    ws["!cols"] = [22, 58, 10, 9, 9, 6, 10, 9, 12, 8, 20, 9, 12, 11, 12, 11, 14, 8].map(w => ({wch:w}));
+    ws["!autofilter"] = {ref:X.utils.encode_range({s:{r:r0, c:0}, e:{r:last - 1, c:H.length - 1}})};
+    /* DPGF par phase */
+    const dp = [["Phase", "Début", "Fin", "Mois", "Jours", "Montant HT (€)", "Part"]];
+    R.ph.forEach(x => dp.push([x.p.nom, x.p.a, x.p.b, ymCount(x.p.a, x.p.b), Math.round(x.jours * 100) / 100, x.tot, R.tot ? x.tot / R.totBrut : 0]));
+    dp.push(["TOTAL", R.a || "", R.b || "", R.duree, Math.round(R.jours * 100) / 100, R.totBrut, 1]);
+    const ws2 = X.utils.aoa_to_sheet(dp); for (let i = 1; i < dp.length; i++) { const c5 = ws2[X.utils.encode_cell({r:i, c:5})], c6 = ws2[X.utils.encode_cell({r:i, c:6})]; if (c5) c5.z = "#,##0"; if (c6) c6.z = "0.0%"; }
+    ws2["!cols"] = [{wch:34}, {wch:9}, {wch:9}, {wch:6}, {wch:8}, {wch:14}, {wch:8}];
+    /* Facturation mensuelle */
+    const ms = [...R.months.keys()].sort();
+    const fa = [["Mois", "Montant HT (€)", "Jours", "Cumul (€)"]]; let cum = 0; for (const m of ms) { const o = R.months.get(m); cum += o.e; fa.push([m, Math.round(o.e), Math.round(o.j * 100) / 100, Math.round(cum)]); }
+    const ws3 = X.utils.aoa_to_sheet(fa); ws3["!cols"] = [{wch:10}, {wch:14}, {wch:8}, {wch:14}];
+    const wb = X.utils.book_new(); X.utils.book_append_sheet(wb, ws, "Chiffrage"); X.utils.book_append_sheet(wb, ws2, "DPGF par phase"); X.utils.book_append_sheet(wb, ws3, "Facturation mensuelle");
+    const buf = X.write(wb, {bookType:"xlsx", type:"array"});
+    await dl.save({filename:`Chiffrage_${(ao.nom || "AO").replace(/[^\w-]+/g, "_").slice(0, 40)}_${today()}.xlsx`, data:new Blob([buf])});
+    toast("Fichier prêt");
+  } catch (e) { toast(e && e.code === "declined" ? "Téléchargement annulé." : "Export impossible pour l'instant."); }
+}
+/* recherche en direct */
+document.addEventListener("input", ev => {
+  if (ev.target.id === "pick-q") pickRender();
+  if (ev.target.matches && ev.target.matches("textarea.fit")) { ev.target.style.height = "auto"; ev.target.style.height = ev.target.scrollHeight + 2 + "px"; }
+  if (ev.target.id === "bib-q") { clearTimeout(S.chif._bt); S.chif._bt = setTimeout(() => { S.chif.bq = ev.target.value; render(true); const el = $("#bib-q"); if (el) { el.focus(); el.setSelectionRange(el.value.length, el.value.length); } }, 200); }
+});
+document.addEventListener("change", ev => { const t = ev.target; if (t.dataset && t.dataset.pick) { const id = t.dataset.pick, s = S.chif.pickSel; t.checked ? s.includes(id) || s.push(id) : s.splice(s.indexOf(id), 1); const n = s.length, pn = $("#pick-n"); if (pn) pn.textContent = n ? `${n} prestation${n > 1 ? "s" : ""} sélectionnée${n > 1 ? "s" : ""}` : "Aucune sélection"; } });
+document.addEventListener("toggle", ev => { if (ev.target.classList && ev.target.classList.contains("ao-info")) S.chif.infoOpen = ev.target.open; }, true);
+
 /* ---------- Rendu principal ---------- */
 function render(force){
+  if (!force && S.ptrDown && Date.now() - S.ptrDown < 4000) { S.pendingRender = true; return; }
   hideTip();
   renderChrome();
   if (renderStatus()) { S.built = null; return; }
   const v = $("#view");
   const ae = document.activeElement;
-  if (!force && ae && v.contains(ae) && /INPUT|TEXTAREA|SELECT/.test(ae.tagName) && S.view !== "taches") { S.pendingRender = true; return; }
+  const keep = !force && ae && v.contains(ae) && /INPUT|TEXTAREA/.test(ae.tagName) && (S.view === "chiffrage" || S.view === "heures") && ae.value === ae.defaultValue && ae.type !== "search" ? focusKey(ae) : null;
+  if (!force && !keep && ae && v.contains(ae) && /INPUT|TEXTAREA|SELECT/.test(ae.tagName) && S.view !== "taches") { S.pendingRender = true; return; }
   S.pendingRender = false;
   if (S.view === "taches") {
     if (S.built !== "taches" || force === "shell") { v.innerHTML = viewTachesShell(); S.built = "taches"; }
@@ -2266,10 +2995,28 @@ function render(force){
     return;
   }
   if (!force && PD && PD.active) { S.pendingRender = true; return; }
-  const html = {jour:viewJour, planning:viewPlanning, heures:viewHeures, matrice:viewMatrice, bord:viewBord, reglages:viewReglages}[S.view]();
+  const html = {jour:viewJour, planning:viewPlanning, heures:viewHeures, chiffrage:viewChiffrage, matrice:viewMatrice, bord:viewBord, reglages:viewReglages}[S.view]();
   v.innerHTML = html; S.built = S.view;
+  if (S.view === "chiffrage") v.querySelectorAll("textarea.fit").forEach(ta => { ta.style.height = "auto"; ta.style.height = ta.scrollHeight + 2 + "px"; });
+  if (keep) focusRestore(keep);
   if (S.view === "planning") afterPlanning();
   if (S.view === "heures") decFit();
+}
+document.addEventListener("pointerdown", () => { S.ptrDown = Date.now(); }, true);
+const ptrUp = () => { if (!S.ptrDown) return; S.ptrDown = false; setTimeout(() => { if (S.pendingRender && !(document.activeElement && $("#view").contains(document.activeElement) && /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName))) render(); }, 0); };
+document.addEventListener("pointerup", ptrUp, true); document.addEventListener("pointercancel", ptrUp, true);
+function focusKey(el){
+  const attr = ["data-ao", "data-dec", "data-bib", "id"].find(a => el.hasAttribute(a)); if (!attr) return null;
+  const anc = {}; for (const a of ["data-lid", "data-pid", "data-key", "data-bid", "data-bi", "data-k", "data-d"]) { const h = el.closest("[" + a + "]"); if (h) anc[a] = h.getAttribute(a); }
+  let ss = null, se = null; try { ss = el.selectionStart; se = el.selectionEnd; } catch (e) {}
+  return {attr, val:el.getAttribute(attr), anc, ss, se};
+}
+function focusRestore(k){
+  if (!k) return;
+  const cands = [...$("#view").querySelectorAll(`[${k.attr}="${CSS.escape(k.val)}"]`)];
+  const el = cands.find(c => Object.entries(k.anc).every(([a, v]) => { const h = c.closest("[" + a + "]"); return h && h.getAttribute(a) === v; }));
+  if (!el) return;
+  el.focus({preventScroll:true}); try { if (k.ss != null) el.setSelectionRange(Math.min(k.ss, el.value.length), Math.min(k.se, el.value.length)); } catch (e) {}
 }
 let raf = 0;
 function schedule(){ if (raf) return; raf = requestAnimationFrame(() => { raf = 0; render(); }); }
@@ -2471,6 +3218,8 @@ async function importJson(file, say){
   await saveLists(next);
   if (data.prefs && typeof data.prefs === "object") await S.db.doc("meta/prefs").set(replace ? data.prefs : {...data.prefs, ...(S.prefs || {})});
   if (data.decompte && typeof data.decompte === "object") for (const [m, v] of Object.entries(data.decompte)) if (/^\d{4}-\d{2}$/.test(m) && v && (replace || !(S.decDocs || {})[m])) await S.db.doc("decompte/" + m).set(v);
+  if (Array.isArray(data.ao)) for (const a of data.ao) if (a && a.id && (replace || !S.aos.has(a.id))) await S.db.doc("ao/" + a.id).set(a);
+  if (data.biblio && (replace || !S.biblio)) await S.db.doc("meta/biblio").set(data.biblio);
   say(`${n} tâche${n > 1 ? "s" : ""} importée${n > 1 ? "s" : ""}.`); toast("Import terminé");
 }
 async function importFile(file){
@@ -2518,7 +3267,7 @@ const EXP_HEAD = ["N°","Projet","Tâche","Statut","Priorité","Urgent","Importa
 async function doBackup(){
   const prog = $("#bak-progress"); const say = m => { if (prog) prog.textContent = m; };
   const dl = await window.claude.use("downloads");
-  const payload = {app:"TO DO BIM", format:2, saved: nowIso(), lists:S.lists, prefs:S.prefs || {}, decompte:S.decDocs || {}, tasks:[...S.tasks.values()]};
+  const payload = {app:"TO DO BIM", format:2, saved: nowIso(), lists:S.lists, prefs:S.prefs || {}, decompte:S.decDocs || {}, ao:[...(S.aos || new Map()).values()], biblio:S.biblio || null, tasks:[...S.tasks.values()]};
   try { await dl.save({filename:`TODO_BIM_sauvegarde_${today()}.json`, data:JSON.stringify(payload, null, 1)});
     S.backupAt = today(); try { localStorage.setItem("todobim.backupAt", S.backupAt); } catch (e) {}
     say("Sauvegarde prête. Range-la dans Fichiers ▸ iCloud Drive."); render(true);
@@ -2599,6 +3348,7 @@ document.addEventListener("click", async ev => {
   if (!a) return;
   const act = a.dataset.act;
   const id = a.closest("[data-id]")?.dataset.id;
+  if (/^(ao|bib|pick)-/.test(act)) { aoAction(act, a, ev); return; }
   if (act.startsWith("dec-")) { if (act === "dec-refs-save") decRefsSave(); else decAction(act, a); return; }
   if (await planClick(act, a, id, ev)) return;
   if (act.startsWith("tip-")) { tipAction(act, a); return; }
@@ -2631,6 +3381,9 @@ document.addEventListener("click", async ev => {
 });
 $("#fab").addEventListener("click", () => openEditor(null, {projet: S.view === "jour" ? S.jourProjet : S.view === "matrice" ? S.matProjet : S.view === "planning" ? S.plan.proj : (S.f.projets.length === 1 ? S.f.projets[0] : "")}));
 document.addEventListener("keydown", ev => {
+  if (ev.key === "Escape") document.querySelectorAll(".ao-ov,.ao-pick,.copybox").forEach(x => x.remove());
+  if (ev.key === "Enter" && ev.target.dataset && (ev.target.dataset.ao || ev.target.dataset.bib) && /INPUT|TEXTAREA/.test(ev.target.tagName)) { ev.preventDefault(); ev.target.blur(); return; }
+  if (ev.key === "Enter" && ev.target.id === "na-nom") { ev.preventDefault(); document.querySelector('[data-act="ao-create"]')?.click(); return; }
   if (ev.key === "Enter" && ev.target.dataset && ev.target.dataset.dec && /INPUT|TEXTAREA/.test(ev.target.tagName)) { ev.preventDefault(); ev.target.blur(); return; }
   if (ev.key === "Escape" && S.edit) closeEditor();
   if (S.edit && ev.key === "Enter" && (ev.metaKey || ev.ctrlKey)) saveEditor();
@@ -2645,6 +3398,8 @@ document.addEventListener("input", ev => {
 document.addEventListener("change", ev => {
   const t = ev.target;
   if (t.dataset && t.dataset.dec) { decChange(t); return; }
+  if (t.dataset && t.dataset.ao) { aoChange(t); return; }
+  if (t.dataset && t.dataset.bib) { bibChange(t); return; }
   if (t.id === "dec-imp-file" && t.files && t.files[0]) { decImport(t.files[0]); t.value = ""; return; }
   if (t.id === "dec-upto") { S.dec.upto = t.checked; saveDecUi(); render(true); return; }
   if (decSettingsChange(t)) return;
@@ -2700,6 +3455,8 @@ async function init(){
     schedule();
   }, err => { clearTimeout(timer); S.status = "error"; S.error = err && err.code; render(true); });
   db.doc("meta/prefs").onSnapshot(s => { S.prefs = (s.exists && s.data()) || {}; schedule(); }, () => {});
+  db.collection("ao").onSnapshot(snap => { S.aos = new Map(snap.docs.map(d => [d.id, {...d.data(), id:d.id}])); if (S.view === "chiffrage") schedule(); }, () => {});
+  db.doc("meta/biblio").onSnapshot(s => { S.biblio = (s.exists && s.data()) || null; if (S.view === "chiffrage") schedule(); }, () => {});
   db.collection("decompte").onSnapshot(snap => { S.decDocs = Object.fromEntries(snap.docs.map(d => [d.id, d.data()])); if (S.view === "heures") schedule(); }, () => {});
   db.doc("meta/lists").onSnapshot(s => {
     const d = (s.exists && s.data()) || {};
