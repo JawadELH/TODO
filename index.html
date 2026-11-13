@@ -683,136 +683,228 @@ input[type=range]{accent-color:var(--accent);width:100%}
 .dec-ytot td{font-weight:700;border-top:1px solid var(--line-2)}
 .dec-main .tbl-wrap{padding:6px 10px}
 .btn.armed{border-color:var(--late);color:var(--late)}
-/* Chiffrage AO */
+/* Chiffrage AO : assistant */
 .lnk{border:0;background:none;padding:0;color:var(--accent);font:inherit;letter-spacing:inherit;text-transform:inherit;cursor:pointer}
 .btn.danger{color:var(--late)} .btn.armed,.ic-btn.armed{border-color:var(--late);color:var(--late);background:var(--late-soft)}
+.btn:disabled{opacity:.4;pointer-events:none}
 .ao-kpis{grid-template-columns:repeat(4,minmax(0,1fr))}
 .ao-kpis6{grid-template-columns:repeat(6,minmax(0,1fr));margin-bottom:14px}
 .ao-kpis6 .kc-v{font-size:20px}
-.ao-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.ao-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:12px}
 .ao-card{display:grid;gap:6px;text-align:left;background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--sc);border-radius:var(--r);padding:12px 14px;color:var(--ink);min-width:0}
 .ao-card:hover{border-color:var(--line-2);border-top-color:var(--sc);background:var(--surface-2)}
 .aoc-top{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+.aoc-step{margin-left:auto;font-family:var(--f-mono);font-size:11px}
 .pill.st{color:var(--sc);background:color-mix(in srgb,var(--sc) 14%,transparent)}
 .aoc-t{font-family:var(--f-display);font-weight:700;font-size:17px;line-height:1.2}
 .aoc-c{font-size:13px;color:var(--muted)}
 .aoc-n{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;font-size:12.5px;color:var(--muted);font-family:var(--f-mono)}
 .aoc-n b{font-size:16px;color:var(--ink)}
-.ao-head{align-items:center}
+.ao-empty p{max-width:620px;margin:8px auto 0;line-height:1.55}
+.ao-head{align-items:center;margin-bottom:10px}
 .ao-title{width:100%;border:1px solid transparent;background:transparent;border-radius:8px;padding:2px 6px;margin-left:-6px;font-family:var(--f-display);font-weight:800;font-size:clamp(22px,3.4vw,30px);color:var(--ink)}
 .ao-title:hover{border-color:var(--line)} .ao-title:focus{border-color:var(--accent);outline:none;background:var(--bg)}
+.ao-title::placeholder{color:var(--muted);opacity:.7}
 .ao-st{color:var(--sc);font-weight:600}
-.ao-layout{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:14px;align-items:start}
-.ao-side{display:grid;gap:12px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 70px)}
-.ao-info{margin-bottom:12px} .ao-info summary{cursor:pointer;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;list-style:none} .ao-info summary::-webkit-details-marker{display:none}
-.ao-info summary h2::before{content:"▸ ";color:var(--muted)} .ao-info[open] summary h2::before{content:"▾ "}
-.ao-form{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:12px}
-.ao-form .wide{grid-column:span 2}
-.ao-form input,.ao-form select{border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:8px 9px;width:100%;min-width:0;font-size:14px}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-.ao-cols,.ao-line{display:grid;grid-template-columns:minmax(0,1fr) 128px 56px 88px 36px 62px 88px 54px;gap:6px;align-items:center}
-.ao-line{align-items:start} .ao-line>div:not(.al-more){padding-top:1px}
-.al-lib textarea{width:100%;min-width:0;border:1px solid transparent;background:transparent;border-radius:6px;padding:5px 6px;font-size:13px;font-weight:500;color:var(--ink);resize:none;line-height:1.35;display:block;overflow:hidden}
-.al-lib textarea:hover{border-color:var(--line)} .al-lib textarea:focus{border-color:var(--accent);background:var(--bg);outline:none}
-.al-j,.al-t{padding-top:6px!important} .al-dp{padding-top:6px!important;text-align:center}
-.m-only{display:none}
-.ao-cols{padding:0 10px 6px;font-size:10.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
-.ao-cols span:nth-child(n+6){text-align:right}
-.ao-ph{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);margin-bottom:12px;overflow:hidden}
-.ao-ph-h{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;padding:9px 10px;background:var(--surface-2);border-bottom:1px solid var(--line)}
-.ph-nom{flex:1 1 200px;min-width:0;border:1px solid transparent;background:transparent;border-radius:6px;padding:4px 6px;font-family:var(--f-display);font-weight:700;font-size:16px;color:var(--ink)}
-.ph-nom:hover,.ph-per input:hover{border-color:var(--line-2)} .ph-nom:focus,.ph-per input:focus{border-color:var(--accent);outline:none;background:var(--bg)}
-.ph-per{display:flex;align-items:center;gap:4px;font-size:12.5px;color:var(--muted)}
-.ph-per input{border:1px solid var(--line);background:var(--bg);border-radius:6px;padding:3px 5px;font-size:12.5px;width:128px;color:var(--ink)}
-.ph-per small{margin-left:4px}
-.ph-tot{margin-left:auto;display:flex;align-items:baseline;gap:8px;font-family:var(--f-mono)} .ph-tot b{font-size:15px} .ph-tot small{color:var(--muted)}
+/* étapes */
+.wz-steps{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px;margin-bottom:16px;counter-reset:s}
+.wz-s{position:relative;display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:8px 10px;color:var(--muted);text-align:left;min-width:0}
+.wz-s:hover{border-color:var(--line-2);color:var(--ink)}
+.wz-n{flex:none;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-family:var(--f-mono);font-size:12px;font-weight:700;background:var(--surface-2);color:var(--muted)}
+.wz-t{font-weight:600;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wz-s.done .wz-n{background:var(--done-soft);color:var(--done)}
+.wz-s.cur{border-color:var(--accent);background:var(--accent-soft);color:var(--ink)} .wz-s.cur .wz-n{background:var(--accent);color:var(--accent-ink)}
+.wz-w{position:absolute;top:-5px;right:-5px;width:16px;height:16px;border-radius:50%;background:var(--today);color:#111;font-size:11px;font-weight:800;display:grid;place-items:center}
+.wz-intro{margin:0 0 12px} .wz-intro h2{font-size:20px} .wz-intro p{margin:2px 0 0;color:var(--muted);font-size:13.5px}
+.wz-body{min-height:200px}
+.wz-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:start}
+.wz-grid .wide{grid-column:1/-1}
+.wz-grid .panel h3,.wz-body>.panel h3{margin:0 0 8px;font-family:var(--f-display);font-size:16px;font-weight:700}
+.wz-bar{position:sticky;bottom:12px;z-index:15;display:flex;align-items:center;gap:10px;margin-top:16px;padding:8px;background:color-mix(in srgb,var(--surface) 92%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--line-2);border-radius:14px;box-shadow:var(--shadow)}
+.wz-tot{flex:1;min-width:0;display:grid;justify-items:center;border:0;background:none;color:var(--ink);padding:2px 6px}
+.wz-tot b{font-family:var(--f-display);font-size:18px;font-weight:800} .wz-tot small{font-size:11.5px;color:var(--muted);font-family:var(--f-mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.wz-tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px}
+.wz-help{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.wz-help>div{background:var(--surface);border:1px dashed var(--line-2);border-radius:var(--r);padding:10px 12px}
+.wz-help b{font-size:13.5px} .wz-help p{margin:4px 0 0;font-size:13px;color:var(--muted)}
+/* formulaires */
+.ao-form{display:grid;gap:10px}
+.ao-form.f1{grid-template-columns:minmax(0,1fr)} .ao-form.f2{grid-template-columns:repeat(2,minmax(0,1fr))} .ao-form.f3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.ao-form .wide{grid-column:1/-1}
+.ao-form input,.ao-form select,.pl-top input{border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:8px 9px;width:100%;min-width:0;font-size:14px}
+input.num{font-family:var(--f-mono);text-align:right}
+.ao-form input[type=checkbox],.pl-top input[type=checkbox],.ao-form input[type=radio]{width:auto}
+.pl-t{grid-column:span 2}
+.chipset{display:flex;flex-wrap:wrap;gap:6px}
+.chip-b{border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:6px 12px;font-size:13px;color:var(--muted)}
+.chip-b[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft);color:var(--ink)}
+.mis-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:10px}
+.mis{display:flex;gap:10px;align-items:flex-start;text-align:left;border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:10px 12px;color:var(--ink)}
+.mis span:last-child{display:grid;gap:2px} .mis small{color:var(--muted);font-size:12.5px;line-height:1.35}
+.mis-c{flex:none;width:20px;height:20px;border-radius:6px;border:1.5px solid var(--line-2);display:grid;place-items:center;font-size:12px;font-weight:800;margin-top:1px}
+.mis.on{border-color:var(--accent);background:var(--accent-soft)} .mis.on .mis-c{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+/* planning */
+.st-C{--stc:var(--p0)} .st-R{--stc:var(--p3)} .st-E{--stc:var(--p2)} .st-T{--stc:var(--p4)}
+.preset-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.preset{display:grid;gap:4px;text-align:left;border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:10px 12px;color:var(--ink)}
+.preset small{color:var(--muted);font-size:12.5px} .preset small.mut{font-family:var(--f-mono);font-size:11px}
+.preset.on{border-color:var(--accent);background:var(--accent-soft)}
+.pr-bars{display:flex;gap:2px;height:8px;margin-top:4px} .pr-bars i{border-radius:2px;background:var(--stc)}
+.pl-t{align-self:end;padding-bottom:8px}
+.pl-top{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:flex-end;margin-bottom:10px} .pl-top .field{max-width:200px}
+.ph-rows{display:grid;gap:6px}
+.ph-row{display:grid;grid-template-columns:130px minmax(0,1fr) auto auto;gap:6px 10px;align-items:center;background:var(--bg);border:1px solid var(--line);border-left:3px solid var(--stc,var(--line));border-radius:8px;padding:6px 8px}
+.ph-row:has(.st-C){--stc:var(--p0)} .ph-row:has(.st-R){--stc:var(--p3)} .ph-row:has(.st-E){--stc:var(--p2)} .ph-row:has(.st-T){--stc:var(--p4)}
+.ph-row select,.ph-row input{border:1px solid transparent;background:transparent;border-radius:6px;padding:5px 6px;font-size:13.5px;color:var(--ink);min-width:0}
+.ph-row select:hover,.ph-row input:hover{border-color:var(--line)} .ph-row select:focus,.ph-row input:focus{border-color:var(--accent);outline:none;background:var(--surface)}
+.ph-st{color:var(--stc)!important;font-weight:600} .ph-nm{font-weight:600;width:100%}
+.ph-d{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--muted);white-space:nowrap} .ph-a,.ph-b{font-family:var(--f-mono)}
+.ph-d input[type=month]{width:130px;border-color:var(--line)}
 .ph-act{display:flex;gap:2px}
-.ic-btn{border:1px solid transparent;background:transparent;color:var(--muted);border-radius:6px;min-width:26px;height:26px;display:inline-grid;place-items:center;padding:0 4px;font-weight:700}
-.ic-btn svg{width:13px;height:13px} .ic-btn:hover{background:var(--surface);border-color:var(--line);color:var(--ink)} .ic-btn.del:hover{color:var(--late);background:var(--late-soft)} .ic-btn:disabled{opacity:.3;pointer-events:none}
-.ao-line{padding:6px 10px;border-top:1px solid var(--g-line)}
-.ao-line:first-of-type{border-top:0}
-.ao-line.is-opt{background:repeating-linear-gradient(135deg,transparent 0 10px,rgba(255,255,255,.018) 10px 20px)}
-.ao-line.zero .al-j,.ao-line.zero .al-t{color:var(--today)}
-.ao-line input,.ao-line select{width:100%;min-width:0;border:1px solid transparent;background:transparent;border-radius:6px;padding:5px 6px;font-size:13px;color:var(--ink)}
-.ao-line input:hover,.ao-line select:hover{border-color:var(--line)} .ao-line input:focus,.ao-line select:focus{border-color:var(--accent);background:var(--bg);outline:none}
-.al-lib input{font-weight:500}
-.al-sub{display:flex;flex-wrap:wrap;gap:3px 10px;padding:0 6px;font-size:11px;color:var(--muted)}
-.al-dep{color:var(--s-attente)} .al-drift{color:var(--week)} .al-opt{color:var(--s-recurrent);font-weight:600;text-transform:uppercase;letter-spacing:.05em}
-.al-tu input,.q-in{font-family:var(--f-mono);text-align:right}
-.q-btn{width:100%;border:1px dashed var(--line-2);background:transparent;border-radius:6px;padding:3px 6px;text-align:left;display:grid;color:var(--ink)}
-.q-btn b{font-family:var(--f-mono);font-size:13px} .q-btn small{font-size:10.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.q-btn:hover{border-color:var(--accent)}
-.chk{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--muted);cursor:pointer}
+.ph-gantt{grid-column:1/-1;height:6px;background:var(--surface-2);border-radius:3px;overflow:hidden}
+.ph-gantt i{display:block;height:100%;background:var(--stc);border-radius:3px}
+.stepper{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--surface)}
+.stepper button{border:0;background:transparent;color:var(--ink);width:28px;height:30px;font-size:16px;font-weight:600}
+.stepper button:hover{background:var(--surface-2)}
+.stepper input{width:44px;border:0!important;text-align:center;font-family:var(--f-mono);font-size:14px;padding:4px 2px!important;background:transparent}
+.stepper.big button{width:36px;height:38px;font-size:18px} .stepper.big input{width:70px;font-size:16px}
+/* hypothèses */
+.hyp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px;margin-top:10px}
+.hyp{display:grid;gap:6px;align-content:start;border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:10px 12px}
+.hyp.used{border-color:color-mix(in srgb,var(--accent) 40%,var(--line))}
+.hyp-h{display:flex;align-items:center;gap:6px} .hyp-h b{font-size:13.5px} .hyp-h input{flex:1;min-width:0;border:1px solid var(--line);background:var(--surface);border-radius:6px;padding:4px 6px;font-weight:600}
+.hyp small{color:var(--muted);font-size:12px;line-height:1.35}
+.hyp-u{font-size:11.5px;color:var(--muted)} .hyp.used .hyp-u{color:var(--accent)}
+.hyp-v{font-family:var(--f-mono);font-size:18px;font-weight:700}
+.hyp.calc{border-style:dashed}
+.hyp.add{place-items:center;text-align:center;color:var(--muted);border-style:dashed;cursor:pointer;min-height:120px}
+.hyp.add svg{width:20px;height:20px} .hyp.add:hover{color:var(--ink);border-color:var(--accent)}
+.dep-res{margin-top:10px;font-size:14px} .dep-res b{font-family:var(--f-mono)}
+/* prestations */
+.ao-ph{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);margin-bottom:12px;overflow:hidden}
+.ao-ph-h{width:100%;display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;padding:10px 12px;background:var(--surface-2);border:0;border-bottom:1px solid var(--line);color:var(--ink);text-align:left}
+.ao-ph.coll .ao-ph-h{border-bottom:0}
+.ao-ph-h b{font-family:var(--f-display);font-size:16px} .ao-ph-h small{color:var(--muted);font-size:12px}
+.chev{color:var(--muted);width:12px}
+.ph-tag{font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--stc);background:color-mix(in srgb,var(--stc) 14%,transparent);border-radius:5px;padding:1px 6px}
+.ph-tot{margin-left:auto;display:flex;align-items:baseline;gap:8px;font-family:var(--f-mono)} .ph-tot b{font-size:15px!important;font-family:var(--f-mono)!important}
+.ln{padding:9px 12px;border-top:1px solid var(--g-line)}
+.ao-ph-h+.ln{border-top:0}
+.ln.is-opt{background:repeating-linear-gradient(135deg,transparent 0 10px,rgba(255,255,255,.018) 10px 20px)}
+.ln-top{display:flex;align-items:flex-start;gap:8px}
+.ln-type{flex:none;border:1px solid var(--line);border-radius:6px;padding:2px 7px;font-size:10.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;margin-top:5px;background:transparent}
+.ln-type.u{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 40%,transparent);background:var(--accent-soft)}
+.ln-type.t{color:var(--s-recurrent);border-color:color-mix(in srgb,var(--s-recurrent) 40%,transparent);background:color-mix(in srgb,var(--s-recurrent) 12%,transparent)}
+button.ln-type:hover{filter:brightness(1.3)}
+.ln-lib{flex:1;min-width:0;border:1px solid transparent;background:transparent;border-radius:6px;padding:4px 6px;font-size:14px;font-weight:600;color:var(--ink);resize:none;line-height:1.35;overflow:hidden}
+.ln-lib:hover{border-color:var(--line)} .ln-lib:focus{border-color:var(--accent);background:var(--bg);outline:none}
+.ln-prix{display:grid;justify-items:end;font-family:var(--f-mono);white-space:nowrap;padding-top:3px} .ln-prix b{font-size:15px} .ln-prix small{font-size:11.5px;color:var(--muted)}
+.ln.zero .ln-prix b{color:var(--today)}
+.ln-act{display:flex;gap:2px;padding-top:2px}
+.ln-f{display:flex;flex-wrap:wrap;align-items:center;gap:6px 6px;margin:6px 0 0 58px;font-size:13px}
+.fx-g{display:inline-flex;flex-wrap:wrap;align-items:center;gap:6px}
+.fx{color:var(--muted);white-space:nowrap} .fx.res{color:var(--ink);font-family:var(--f-mono);font-size:12.5px}
+.ln-f input,.ln-f select{border:1px solid var(--line);background:var(--bg);border-radius:7px;padding:5px 7px;font-size:13px;color:var(--ink);min-width:0}
+.ln-f input:focus,.ln-f select:focus{border-color:var(--accent);outline:none}
+input.num.s{width:64px}
+.ln-f select{max-width:260px}
+.ln-f select.drv{max-width:200px;font-size:12px;color:var(--muted);border-style:dashed}
+.ln-f select.drv.on{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 45%,transparent);border-style:solid;background:var(--accent-soft)}
+.ln-pr{max-width:120px}
+.ln-note{display:flex;flex-wrap:wrap;gap:4px 12px;margin:6px 0 0 58px;font-size:12px}
+.ln-note .warn{color:var(--today)} .al-drift{color:var(--week)}
+.chk{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;color:var(--muted);cursor:pointer}
 .chk input{width:auto!important;accent-color:var(--accent)}
-.al-j,.al-t{text-align:right;font-family:var(--f-mono);font-size:13px} .al-j small{color:var(--muted)} .al-t{font-weight:600}
-.al-act{display:flex;justify-content:flex-end;gap:2px}
-.al-more{grid-column:1/-1;display:grid;gap:10px;margin:6px 0 4px;padding:10px 12px;background:var(--bg);border:1px solid var(--line);border-radius:8px}
-.am-g{display:grid;gap:6px} .am-g .lbl{font-size:10.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.ic-btn{border:1px solid transparent;background:transparent;color:var(--muted);border-radius:6px;min-width:28px;height:28px;display:inline-grid;place-items:center;padding:0 4px;font-weight:700}
+.ic-btn svg{width:13px;height:13px} .ic-btn:hover{background:var(--surface);border-color:var(--line);color:var(--ink)} .ic-btn.del:hover{color:var(--late);background:var(--late-soft)} .ic-btn:disabled{opacity:.3;pointer-events:none}
+.al-more{display:grid;gap:10px;margin:10px 0 2px 58px;padding:10px 12px;background:var(--bg);border:1px solid var(--line);border-radius:8px}
 .am-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;font-size:13px;color:var(--muted)}
-.am-row label{display:inline-flex;align-items:center;gap:6px}
-.am-row input,.am-row select,.am-move select{border:1px solid var(--line)!important;background:var(--surface)!important;width:auto;max-width:150px}
-.am-row input[type=text]{width:80px}
+.am-row label{display:inline-flex;align-items:center;gap:6px} .am-row label.grow{flex:1 1 220px} .am-row label.grow input{flex:1}
+.am-row input,.am-row select{border:1px solid var(--line);background:var(--surface);border-radius:6px;padding:5px 7px;font-size:13px;color:var(--ink);min-width:0}
+.am-row input.num{width:90px}
+.am-row .lbl{font-size:10.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase}
 .am-hint{font-size:12px;color:var(--muted)}
-.am-calc{font-family:var(--f-mono);font-size:12.5px;color:var(--muted);padding:6px 8px;background:var(--surface);border-radius:6px}
+.am-calc{font-family:var(--f-mono);font-size:12.5px;color:var(--muted);padding:6px 8px;background:var(--surface);border-radius:6px;line-height:1.5}
 .am-calc b{color:var(--ink)}
-.am-act{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
-.am-move{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--muted);margin-left:auto}
-.segbar.sm button{padding:5px 10px;font-size:12.5px}
+.am-act{display:flex;flex-wrap:wrap;gap:6px;align-items:center} .am-act .spacer{flex:1}
 .ao-none{padding:12px;font-size:13px;color:var(--muted)}
-.ao-ph-add{display:flex;gap:6px;padding:6px 8px;border-top:1px solid var(--g-line)}
-.ao-add-ph{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:20px}
-.anc{position:relative;height:10px;border-radius:5px;margin:12px 0 6px;background:linear-gradient(90deg,var(--today-soft),var(--done-soft) 20%,var(--done-soft) 80%,var(--week-soft))}
-.anc i{position:absolute;top:-4px;width:4px;height:18px;margin-left:-2px;border-radius:2px;background:var(--ink);box-shadow:0 0 0 2px var(--surface)}
-.anc-l{display:flex;justify-content:space-between;gap:6px;font-size:11.5px;color:var(--muted);font-family:var(--f-mono);white-space:nowrap}
-.anc-l b.ok{color:var(--done)} .anc-l b.warn{color:var(--today)}
+.ao-ph-add{display:flex;flex-wrap:wrap;gap:6px;padding:6px 8px;border-top:1px solid var(--g-line)}
+/* prix et synthèse */
+.tbl.tjm td,.tbl.tjm th{padding:6px 6px} .tbl.tjm input{width:90px;border:1px solid var(--line);background:var(--bg);border-radius:6px;padding:5px 7px}
+.tbl.tjm tr.unused td{color:var(--muted)} .tbl.tjm tr.tot td{font-weight:700;border-top:1px solid var(--line-2)} .tbl.tjm small{color:var(--muted);font-weight:400}
+.px-sum{display:grid;grid-template-columns:1fr auto;gap:6px 12px;margin-top:14px;padding-top:12px;border-top:1px solid var(--line);font-size:13.5px;color:var(--muted)}
+.px-sum b{font-family:var(--f-mono);color:var(--ink);text-align:right} .px-sum b.big{font-size:18px}
+.cible{margin-top:10px;padding:10px 12px;border-radius:8px;font-size:13.5px} .cible.warn{background:var(--today-soft);color:var(--today)} .cible.ok{background:var(--done-soft);color:var(--done)}
+.cible .btn{margin-left:6px}
+.checks{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.checks li{display:flex;gap:8px;align-items:flex-start;font-size:13px;padding:7px 9px;border-radius:8px;background:var(--bg)}
+.checks li span:nth-child(2){flex:1}
+.ck-i{flex:none;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:800}
+.ck-ok .ck-i{background:var(--done-soft);color:var(--done)} .ck-warn .ck-i{background:var(--today);color:#111} .ck-info .ck-i{background:var(--accent-soft);color:var(--accent)}
+.checks .lnk{font-size:12.5px;white-space:nowrap}
+.ratios{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:12px;font-size:12.5px;color:var(--muted)} .ratios b{font-family:var(--f-mono);color:var(--ink)}
+.tbl.dpgf td:first-child{font-family:var(--f-body)} .tbl.dpgf tr.tot td{font-weight:700;border-top:1px solid var(--line-2)}
 .ao-bars{display:flex;align-items:flex-end;gap:1px;height:90px;margin:10px 0 6px}
-.ao-bars i{flex:1;min-width:1px;background:var(--accent);border-radius:2px 2px 0 0;opacity:.85}
-.ao-bars i:hover{opacity:1;background:var(--ink)}
-.tbl.cmp td,.tbl.cmp th{padding:5px 4px;font-size:12px} .tbl.cmp td small{color:var(--muted);font-family:var(--f-body)} .tbl.cmp tr.me td{color:var(--accent)}
-.tpl-list{display:grid;gap:6px}
-.tpl{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:10px;padding:9px 11px;cursor:pointer}
-.tpl:has(input:checked){border-color:var(--accent);background:var(--accent-soft)}
-.tpl input{margin-top:4px;accent-color:var(--accent)} .tpl span{display:grid;gap:2px} .tpl small{color:var(--muted);font-size:12.5px}
-.tpl select{margin-top:4px;border:1px solid var(--line);background:var(--bg);border-radius:6px;padding:5px}
+.ao-bars i{flex:1;min-width:1px;background:var(--accent);border-radius:2px 2px 0 0;opacity:.85} .ao-bars i:hover{opacity:1;background:var(--ink)}
+.anc-l{display:flex;justify-content:space-between;gap:6px;font-size:11.5px;color:var(--muted);font-family:var(--f-mono);white-space:nowrap}
+.opt-l{list-style:none;margin:0;padding:0;display:grid;gap:6px} .opt-l li{display:flex;justify-content:space-between;gap:10px;font-size:13px} .opt-l b{font-family:var(--f-mono)}
+.suivi{margin-top:12px;display:grid;gap:4px}
+/* fenêtre d'ajout */
 .sheet.wide{width:min(820px,100%)}
+.pk-top{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:8px} .pk-top .search{flex:1 1 260px}
+.pk-ph{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--muted)} .pk-ph select{border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:7px 8px;max-width:220px}
 .pick-list{display:grid;gap:10px;margin-top:10px}
 .pk-g h4{margin:6px 0 4px;font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
-.pk-r{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center;padding:7px 8px;border-radius:8px;cursor:pointer}
+.pk-r{display:grid;grid-template-columns:auto auto minmax(0,1fr) auto;gap:10px;align-items:center;padding:7px 8px;border-radius:8px;cursor:pointer}
+.pk-r .ln-type{margin-top:0}
 .pk-r:hover{background:var(--surface-2)} .pk-r:has(input:checked){background:var(--accent-soft)}
 .pk-r input{accent-color:var(--accent);width:16px;height:16px}
 .pk-l{font-size:13.5px} .pk-used{color:var(--week)} .pk-v{font-family:var(--f-mono);font-size:11.5px;color:var(--muted);white-space:nowrap}
+/* base des unités d'œuvre */
 .ao-params .prof-r{display:grid;grid-template-columns:minmax(0,1fr) 80px auto;gap:6px;align-items:center;margin-top:8px}
 .ao-params input{border:1px solid var(--line);background:var(--bg);border-radius:7px;padding:6px 8px;width:100%;min-width:0;font-size:13px}
 .prm{display:grid;gap:8px;margin-top:8px} .prm label{display:grid;grid-template-columns:minmax(0,1fr) 90px;gap:8px;align-items:center;font-size:13px;color:var(--muted)}
-.tbl.bench td{padding:3px 2px;white-space:nowrap} .tbl.bench input{padding:4px 5px;font-size:12px;text-align:right} .tbl.bench td:first-child input{text-align:left}
-.bib-cols,.bib-r{display:grid;grid-template-columns:minmax(0,1fr) 96px 200px 64px 70px 140px 40px 30px;gap:6px;align-items:center}
-.bib-cols{padding:8px 10px 4px;font-size:10.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
 .bib-g{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);margin-bottom:10px;overflow:hidden}
 .bib-g h3{margin:0;padding:8px 12px;font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);background:var(--surface-2)}
-.bib-r{padding:5px 10px;border-top:1px solid var(--g-line)}
-.bib-r input,.bib-r select{width:100%;min-width:0;border:1px solid transparent;background:transparent;border-radius:6px;padding:5px 6px;font-size:13px;color:var(--ink)}
-.bib-r input:hover,.bib-r select:hover{border-color:var(--line)} .bib-r input:focus,.bib-r select:focus{border-color:var(--accent);background:var(--bg);outline:none}
-.bib-r [data-bib="it.tu"],.bib-r [data-bib="it.cu"]{font-family:var(--f-mono);text-align:right}
-.bib-q{display:flex;align-items:center;gap:4px;font-size:11.5px;color:var(--muted)} .bib-q input{width:52px;font-family:var(--f-mono)} .bib-q select{width:auto;font-size:12px;padding:3px}
-.bib-meta{grid-column:1/-1;display:none;gap:8px;align-items:center;padding:0 0 4px} .bib-r:focus-within .bib-meta{display:flex}
-.bib-meta select,.bib-meta input{max-width:220px;border-color:var(--line);font-size:12px} .bib-meta small{color:var(--muted)}
+.uo-r{padding:8px 12px;border-top:1px solid var(--g-line);display:grid;gap:6px}
+.uo-a{display:flex;align-items:center;gap:8px} .uo-a .ln-type{margin-top:0}
+.uo-a input{flex:1;min-width:0;border:1px solid transparent;background:transparent;border-radius:6px;padding:5px 6px;font-size:14px;font-weight:600;color:var(--ink)}
+.uo-a input:hover{border-color:var(--line)} .uo-a input:focus{border-color:var(--accent);background:var(--bg);outline:none}
+.uo-b{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;font-size:12.5px;color:var(--muted);padding-left:52px}
+.uo-b label{display:inline-flex;align-items:center;gap:5px}
+.uo-b select{max-width:210px}
+.uo-b input,.uo-b select{border:1px solid var(--line);background:var(--bg);border-radius:6px;padding:4px 6px;font-size:12.5px;color:var(--ink);min-width:0}
+.uo-st{display:inline-flex;gap:3px}
+.stb{border:1px solid var(--line);background:var(--bg);color:var(--muted);border-radius:5px;width:24px;height:24px;font-size:11px;font-weight:700}
+.stb[aria-pressed="true"]{color:var(--stc);border-color:var(--stc);background:color-mix(in srgb,var(--stc) 14%,transparent)}
+.uo-note{padding-left:52px;color:var(--muted)}
 @media (max-width:1240px){ nav.tabs a span:not(.badge){display:none} nav.tabs a[aria-current="page"] span{display:inline} }
-@media (max-width:1100px){ .ao-layout{grid-template-columns:minmax(0,1fr)} .ao-side{position:static;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))} .ao-kpis6{grid-template-columns:repeat(3,minmax(0,1fr))} .ao-form{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:1020px){ .wz-steps .wz-t{font-size:12.5px} .mis-grid,.preset-grid{grid-template-columns:repeat(2,minmax(0,1fr))} .ao-kpis6{grid-template-columns:repeat(3,minmax(0,1fr))} }
 @media (max-width:820px){
   .ao-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
   .ao-kpis6 .kc-v{font-size:18px}
-  .ao-cols,.bib-cols{display:none}
-  .ao-line{grid-template-columns:minmax(0,1fr) 60px 56px 84px;grid-template-areas:"lib lib lib act" "q tu j tot" "pr pr dp dp";row-gap:4px;padding:9px 10px}
-  .al-act{flex-direction:column;align-items:flex-end}
-  .al-lib{grid-area:lib} .al-q{grid-area:q} .al-tu{grid-area:tu} .al-t{grid-area:tot} .al-pr{grid-area:pr} .al-dp{grid-area:dp} .al-j{grid-area:j} .al-act{grid-area:act}
-  .ao-line input,.ao-line select,.al-lib textarea{font-size:16px;border-color:var(--line);background:var(--bg)}
-  .m-only{display:inline} .al-dp{text-align:left}
-  .ph-per input{width:118px;font-size:14px}
-  .ph-tot{margin-left:0}
-  .ao-form{grid-template-columns:minmax(0,1fr)} .ao-form .wide{grid-column:auto}
-  .bib-r{grid-template-columns:minmax(0,1fr) 70px 30px;grid-template-areas:"lib lib del" "q q q" "un tu cu" "pr dp dp"}
-  .bib-r>input[data-bib="it.lib"]{grid-area:lib} .bib-r .bib-q{grid-area:q} .bib-r>select[data-bib="it.unite"]{grid-area:un} .bib-r>[data-bib="it.tu"]{grid-area:tu} .bib-r>[data-bib="it.cu"]{grid-area:cu} .bib-r>select[data-bib="it.profil"]{grid-area:pr} .bib-r>.chk{grid-area:dp} .bib-r>.ic-btn{grid-area:del}
-  .bib-r input,.bib-r select{font-size:16px}
+  .wz-steps{display:flex;overflow-x:auto;scrollbar-width:none;margin:0 -16px 12px;padding:2px 16px}
+  .wz-steps::-webkit-scrollbar{display:none}
+  .wz-s{flex:none;padding:6px 10px} .wz-s:not(.cur) .wz-t{display:none}
+  .wz-grid,.wz-help,.mis-grid,.preset-grid{grid-template-columns:minmax(0,1fr)}
+  .ao-form.f2,.ao-form.f3{grid-template-columns:minmax(0,1fr)}
+  .wz-bar{bottom:calc(70px + env(safe-area-inset-bottom,0px));gap:6px;padding:6px}
+  .wz-bar .lbl-d{display:none}
+  .ao-head .pnav{display:none} .ao-head .eyebrow{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .ln-top{display:grid;grid-template-columns:auto minmax(0,1fr) auto;grid-template-areas:"type prix act" "lib lib lib";gap:4px 8px;align-items:center}
+  .ln-top .ln-type{grid-area:type;margin-top:0;justify-self:start} .ln-top .ln-lib{grid-area:lib} .ln-top .ln-prix{grid-area:prix;justify-items:end;display:flex;gap:8px;align-items:baseline;padding:0} .ln-top .ln-act{grid-area:act}
+  .ao-title{font-size:22px}
+  .wz-intro p{display:none} .wz-intro h2{font-size:18px}
+  .pl-t{grid-column:auto}
+  .wz-tot b{font-size:16px}
+  .ph-row{grid-template-columns:minmax(0,1fr) auto}
+  .ph-row .ph-st{grid-column:1} .ph-row .ph-act{grid-column:2;grid-row:1} .ph-row .ph-nm{grid-column:1/-1} .ph-row .ph-d{grid-column:1/-1;flex-wrap:wrap}
+  .ln{padding:10px}
+  .ln-f,.ln-note,.al-more{margin-left:0}
+  .ln-f input,.ln-f select,.ln-lib,.am-row input,.am-row select,.ao-form input,.ao-form select,.ph-row input,.ph-row select{font-size:16px}
+  .ln-f select{max-width:100%}
+  .uo-b,.uo-note{padding-left:0}
+  .pk-r{grid-template-columns:auto auto minmax(0,1fr)} .pk-v{grid-column:3;white-space:normal}
   .mobile-tabs a span[data-s]{font-size:0} .mobile-tabs a span[data-s]::after{content:attr(data-s);font-size:10px}
 }
 .mobile-tabs{display:none}
@@ -2384,19 +2476,21 @@ async function decImport(file){
   } catch (e) { say(e && e.message === "xlsx" ? "Le lecteur Excel n'a pas pu se charger. Vérifie ta connexion." : "Import interrompu : " + (e && (e.code || e.message) || "erreur")); }
 }
 
-/* ---------- Chiffrage AO : bibliothèque de prestations (temps unitaires / coûts unitaires) + chiffrages ---------- */
-S.aos = new Map(); S.biblio = null;
-S.chif = {mode:"list", id:"", open:{}, pickPhase:"", pickQ:"", pickMis:"", pickSel:[], bq:"", bmis:"", filt:""};
+/* ---------- Chiffrage AO : assistant pas à pas, à l'unité d'œuvre et au temps passé ---------- */
+S.aos = new Map(); S.uo = null;
+S.chif = {mode:"list", id:"", open:{}, coll:{}, pickPhase:"", pickMis:"", pickSel:[], bq:"", bmis:"", filt:"", preset:"CR"};
 try { const sc = JSON.parse(localStorage.getItem("todobim.chif") || "null"); if (sc) { if (["list", "ao", "biblio"].includes(sc.mode)) S.chif.mode = sc.mode; S.chif.id = sc.id || ""; } } catch (e) {}
 function saveChifUi(){ try { localStorage.setItem("todobim.chif", JSON.stringify({mode:S.chif.mode, id:S.chif.id})); } catch (e) {} }
-const ceil2 = x => Math.ceil(Math.round(x * 1e6) / 1e6);
 const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
-const num = v => { const n = parseFloat(String(v ?? "").replace(/\s/g, "").replace(",", ".")); return isFinite(n) ? n : 0; };
+const num = v => { const n = parseFloat(String(v ?? "").replace(/[\s  €%]/g, "").replace(",", ".")); return isFinite(n) ? n : 0; };
+const ceil2 = x => Math.ceil(Math.round(x * 1e6) / 1e6);
 const eur = n => Math.round(n).toLocaleString("fr-FR").replace(/ | /g, " ") + " €";
 const keur = n => Math.abs(n) >= 1e6 ? (Math.round(n / 1e5) / 10).toLocaleString("fr-FR") + " M€" : Math.abs(n) >= 10000 ? (Math.round(n / 100) / 10).toLocaleString("fr-FR") + " k€" : eur(n);
 const jfmt = n => (Math.round(n * 100) / 100).toLocaleString("fr-FR");
 const jf4 = n => (Math.round(n * 10000) / 10000).toLocaleString("fr-FR", {maximumFractionDigits:4});
 const pct = (n, d = 2) => (Math.round(n * 100 * 10 ** d) / 10 ** d).toLocaleString("fr-FR") + " %";
+const plurU = (u, q) => q < 2 || /[sx²]$/.test(u) || u === "forfait" ? u : /au$/.test(u) ? u + "x" : u + "s";
+const plur = (n, s, p) => `${jfmt(n)} ${Math.abs(n) >= 2 ? (p || s + "s") : s}`;
 /* mois « AAAA-MM » */
 const ymOk = s => typeof s === "string" && /^\d{4}-\d{2}$/.test(s);
 const ymOf = d => d.slice(0, 7);
@@ -2404,469 +2498,565 @@ function ymParse(v){ const s = String(v || "").trim(); let m; if ((m = s.match(/
 const ymAdd = (ym, n) => { const [y, m] = ym.split("-").map(Number); const d = new Date(y, m - 1 + n, 1); return d.getFullYear() + "-" + z2(d.getMonth() + 1); };
 const ymCount = (a, b) => { if (!ymOk(a) || !ymOk(b)) return 0; const [y1, m1] = a.split("-").map(Number), [y2, m2] = b.split("-").map(Number); return Math.max(0, (y2 - y1) * 12 + m2 - m1 + 1); };
 const ymLab = ym => { if (!ymOk(ym)) return "—"; const [y, m] = ym.split("-").map(Number); return `${MOIS_COURTS[m - 1]} ${String(y).slice(2)}`; };
+const nextYm = () => ymAdd(ymOf(today()), 1);
 
-/* ----- Bibliothèque par défaut (issue de tes fichiers HONOS / PRECALCUL) ----- */
-const UNITES = ["forfait", "réunion", "cycle", "audit", "revue", "mois", "maquette", "zone", "m²", "jour"];
-const VARS = {zones:"Nb de zones d'étude", cycles:"Nb de cycles par zone", zc:"Zones × cycles", maquettes:"Nb de maquettes", surface:"Surface (m²)"};
-const MISSIONS = ["BIM Management", "Synthèse", "Coordination spatiale", "Modélisation", "Plateforme CDE"];
-const BIB0 = (() => {
-  const L = [], add = (mission, cat, lib, unite, tu, o = {}) => L.push({id:o.id, mission, cat, lib, unite, tu, profil:o.p || (mission === "Synthèse" ? "syn" : mission === "Modélisation" ? "mod" : "bim"), dep:!!o.dep, cu:o.cu || 0, mode:o.mode || (o.freq ? "freq" : o.v ? "var" : "fixe"), freq:o.freq || 0, varKey:o.v || "", note:o.note || ""});
-  let M = "BIM Management";
-  add(M, "Préparation", "Audit de maturité BIM (questionnaire + rapport)", "forfait", 2, {id:"b-audit-mat"});
-  add(M, "Préparation", "Analyse et synthèse du BEP (rapport)", "forfait", 2, {id:"b-bep"});
-  add(M, "Préparation", "Rédaction de la convention BIM et des documents « cadre »", "forfait", 10.5, {id:"b-cadre"});
-  add(M, "Préparation", "Mise à jour de la convention BIM", "forfait", 1, {id:"b-maj-conv"});
-  add(M, "Préparation", "Canevas d'analyse des fichiers IFC", "forfait", 2, {id:"b-canevas-ifc"});
-  add(M, "Préparation", "Canevas d'analyse des fichiers REVIT", "forfait", 1, {id:"b-canevas-rvt"});
-  add(M, "Préparation", "Mise en place des autocontrôles des livrables IFC", "forfait", 2, {id:"b-autoctrl"});
-  add(M, "Préparation", "Production des éléments d'encadrement BIM des lots", "forfait", 3, {id:"b-encadr"});
-  add(M, "Fichiers de configuration", "Fichier de référence REVIT / IFC (point de référence, géoréf.)", "forfait", 1, {id:"b-f-ref"});
-  add(M, "Fichiers de configuration", "Famille de cartouche RFA", "forfait", 0.5, {id:"b-f-cart"});
-  add(M, "Fichiers de configuration", "Configuration REVIT pour l'export IFC", "forfait", 0.25, {id:"b-f-exp"});
-  add(M, "Fichiers de configuration", "Mappage catégories REVIT → IfcClasses", "forfait", 0.25, {id:"b-f-map1"});
-  add(M, "Fichiers de configuration", "Mappage familles / types REVIT → IfcClasses / PredefinedType", "forfait", 0.5, {id:"b-f-map2"});
-  add(M, "Fichiers de configuration", "Mappage des propriétés REVIT → IFC", "forfait", 0.5, {id:"b-f-map3"});
-  for (const [k, l, t] of [["3dc", "3D+ gestion des conflits / synthèse", 0.5], ["3dr", "3D+ validation des réservations", 0.5], ["4d", "4D base (phasage existant / futur)", 0.25], ["4dp", "4D+ (fusion maquettes et planning GANTT)", 2], ["5d", "5D base (extraction de données remarquables)", 0.25], ["5dp", "5D+ (échanges avec l'économiste)", 1], ["6d", "6D base (gestion des matériaux REVIT)", 0.5], ["6dp", "6D+ (échanges solutions métier)", 1], ["7dl", "7D DOE numérique local", 0.5], ["7di", "7D DOE numérique IFC", 0.5], ["7dg", "7D GEM : préparation au BIM GEM", 2]])
-    add(M, "Convention BIM : options", "Convention : ajout BIM " + l, "forfait", t, {id:"b-c-" + k});
-  add(M, "Réunions", "Réunion de lancement (présentiel)", "réunion", 1, {id:"b-r-lanc", dep:true});
-  add(M, "Réunions", "Réunion de précision des attentes BIM du MOA", "réunion", 1.5, {id:"b-r-attentes"});
-  add(M, "Réunions", "Réunion interne du groupement", "réunion", 1, {id:"b-r-interne"});
-  add(M, "Réunions", "Réunion BIM EXE (présentiel)", "réunion", 0.5, {id:"b-r-exe", dep:true, freq:0.5});
-  add(M, "Réunions", "Atelier d'échanges Teams", "réunion", 0.5, {id:"b-r-teams", freq:1});
-  add(M, "Réunions", "Visio de débriefing avec les modeleurs", "réunion", 0.5, {id:"b-r-debrief"});
-  add(M, "Réunions", "Échanges MOA / AMO BIM / exploitant", "forfait", 5, {id:"b-echanges"});
-  add(M, "Audits et revues", "Audit BIM mensuel avec réunion de débrief", "audit", 5, {id:"b-audit-m", freq:1});
-  add(M, "Audits et revues", "Audit BIM trimestriel avec réunion de débrief", "audit", 3, {id:"b-audit-t", freq:1 / 3});
-  add(M, "Audits et revues", "Audit BIM mensuel « DOE numérique »", "audit", 5, {id:"b-audit-doe", freq:1});
-  add(M, "Audits et revues", "Revue BIM de fin de phase", "revue", 3, {id:"b-revue"});
-  add(M, "Audits et revues", "Revue BIM trimestrielle", "revue", 2, {id:"b-revue-t", freq:1 / 3});
-  add(M, "Audits et revues", "Revue de maquette : préparation", "revue", 2, {id:"b-rm-prep"});
-  add(M, "Audits et revues", "Revue de maquette : animation sur site", "revue", 0.5, {id:"b-rm-anim", dep:true});
-  add(M, "Audits et revues", "Revue de maquette : livrables et compte rendu", "revue", 0.5, {id:"b-rm-cr"});
-  add(M, "Audits et revues", "Atelier réalité virtuelle", "forfait", 1, {id:"b-vr"});
-  add(M, "Analyse des maquettes", "Extraction des données d'une maquette IFC", "maquette", 0.01, {id:"b-a-ifc1", v:"maquettes"});
-  add(M, "Analyse des maquettes", "Rapports d'analyse d'une maquette IFC", "maquette", 0.04, {id:"b-a-ifc2", v:"maquettes"});
-  add(M, "Analyse des maquettes", "Extraction des données d'une maquette REVIT", "maquette", 0.1, {id:"b-a-rvt1", v:"maquettes"});
-  add(M, "Analyse des maquettes", "Rapports d'analyse d'une maquette REVIT", "maquette", 0.0625, {id:"b-a-rvt2", v:"maquettes"});
-  add(M, "Analyse des maquettes", "Cohérence graphique de la compilation des maquettes", "cycle", 1, {id:"b-a-coh"});
-  add(M, "Analyse des maquettes", "Préparation et diffusion des livrables du cycle d'analyse", "cycle", 0.5, {id:"b-a-liv"});
-  add(M, "Analyse des maquettes", "Analyse des maquettes avant rendu (jalon)", "cycle", 2, {id:"b-a-jalon"});
-  add(M, "Correction des maquettes", "IFC : simplification graphique / référencement des objets", "maquette", 0.0625, {id:"b-k-simp", v:"maquettes"});
-  add(M, "Correction des maquettes", "IFC : géoréférencement", "maquette", 0.125, {id:"b-k-geo", v:"maquettes"});
-  add(M, "Correction des maquettes", "IFC : suppression d'entités / découpage / fusion", "maquette", 0.125, {id:"b-k-supp", v:"maquettes"});
-  add(M, "Correction des maquettes", "IFC : redéfinition des classes / PredefinedType", "maquette", 0.25, {id:"b-k-cls", v:"maquettes"});
-  add(M, "Correction des maquettes", "IFC : ajout / suppression de propriétés", "maquette", 0.125, {id:"b-k-prop", v:"maquettes"});
-  add(M, "Correction des maquettes", "IFC : édition / injection de données", "forfait", 1, {id:"b-k-inj"});
-  add(M, "Correction des maquettes", "REVIT : conversion de version", "maquette", 0.25, {id:"b-k-rv1", v:"maquettes"});
-  add(M, "Correction des maquettes", "REVIT : répartition / nettoyage", "maquette", 0.25, {id:"b-k-rv2", v:"maquettes"});
-  add(M, "Correction des maquettes", "REVIT : catégorisation / nettoyage des familles", "maquette", 1, {id:"b-k-rv3", v:"maquettes"});
-  add(M, "DOE et exploitation", "Assistance pour les hyperliens vers le DOE numérique", "mois", 1, {id:"b-doe-liens", freq:1});
-  add(M, "DOE et exploitation", "Intégration des maquettes BIM-GEM dans l'outil d'exploitation", "mois", 1.5, {id:"b-gem", freq:1});
-  add(M, "DOE et exploitation", "Assistance des modeleurs pour l'as-built", "mois", 2, {id:"b-asb", freq:2});
-  add(M, "DOE et exploitation", "Retour d'expérience BIM du projet", "forfait", 2, {id:"b-rex"});
-  add(M, "Synthèse (participation)", "Participation à la présynthèse", "forfait", 6, {id:"b-p-presyn"});
-  add(M, "Synthèse (participation)", "Participation à la synthèse d'exécution", "forfait", 6, {id:"b-p-syn"});
-  M = "Synthèse";
-  add(M, "Préparation", "Préparation des outils de clash control", "forfait", 1, {id:"s-clash"});
-  add(M, "Préparation", "Rédaction de la convention de travail", "forfait", 1, {id:"s-conv"});
-  add(M, "Préparation", "Établissement du planning des études", "forfait", 1, {id:"s-plan"});
-  add(M, "Préparation", "Préparation des fichiers « support » (fonds de plans)", "forfait", 2, {id:"s-support"});
-  add(M, "Préparation", "Analyse technique du projet", "forfait", 1, {id:"s-analyse"});
-  add(M, "Préparation", "Préparation du cadre collaboratif", "forfait", 10, {id:"s-cadre"});
-  add(M, "Préparation", "Démarrage des études", "forfait", 5, {id:"s-demar"});
-  add(M, "Réunions", "Réunion de lancement sur site (avec CR)", "réunion", 1, {id:"s-r-lanc", dep:true});
-  add(M, "Réunions", "Réunion de synthèse sur site (avec CR)", "réunion", 1, {id:"s-r-site", dep:true});
-  add(M, "Réunions", "Visio Teams de débriefing avec les modeleurs", "réunion", 0.5, {id:"s-r-teams"});
-  add(M, "Cycle préalable (par zone)", "Liaisons extérieures (réseaux concessionnaires)", "zone", 1, {id:"s-p-ext", v:"zones"});
-  add(M, "Cycle préalable (par zone)", "Gaines techniques et liaisons principales", "zone", 0.5, {id:"s-p-gaines", v:"zones"});
-  add(M, "Cycle préalable (par zone)", "Coupes types 2D", "zone", 0.5, {id:"s-p-coupes", v:"zones"});
-  add(M, "Cycle préalable (par zone)", "Préparation des livrables 2D et 3D", "zone", 0.5, {id:"s-p-liv", v:"zones"});
-  add(M, "Cycle courant (par cycle)", "Réception des maquettes / conversion NWC", "cycle", 0.25, {id:"s-c-rec", v:"zc"});
-  add(M, "Cycle courant (par cycle)", "Vérification des prérequis (convention)", "cycle", 0.25, {id:"s-c-verif", v:"zc"});
-  add(M, "Cycle courant (par cycle)", "Compilation et tests de détection des conflits", "cycle", 0.25, {id:"s-c-tests", v:"zc"});
-  add(M, "Cycle courant (par cycle)", "Interprétation et regroupement des conflits", "cycle", 0.5, {id:"s-c-interp", v:"zc"});
-  add(M, "Cycle courant (par cycle)", "Propositions de résolution des conflits", "cycle", 0.5, {id:"s-c-sol", v:"zc"});
-  add(M, "Cycle courant (par cycle)", "Livrables 3D complets (vues, annotations)", "cycle", 0.75, {id:"s-c-liv", v:"zc"});
-  add(M, "Cycle courant (par cycle)", "Gestion des commentaires Navisworks / BCF", "cycle", 0.5, {id:"s-c-bcf", v:"zc"});
-  add(M, "Cycle courant (par cycle)", "Demandes de réservations pour l'ensemble des acteurs", "cycle", 1, {id:"s-c-resa", v:"zc"});
-  add(M, "Cycle courant (par cycle)", "Réunion sur site avec CR (par cycle)", "cycle", 1, {id:"s-c-reu", v:"zc", dep:true});
-  add(M, "Cycle final (par zone)", "Réception, vérification et tests finaux", "zone", 0.75, {id:"s-f-tests", v:"zones"});
-  add(M, "Cycle final (par zone)", "Statut final des conflits et solutions entérinées", "zone", 1, {id:"s-f-statut", v:"zones"});
-  add(M, "Cycle final (par zone)", "Statut final des commentaires / BCF", "zone", 0.5, {id:"s-f-bcf", v:"zones"});
-  add(M, "Cycle final (par zone)", "Livrables finaux complets", "zone", 2, {id:"s-f-liv", v:"zones"});
-  add(M, "Présynthèse / synthèse", "Identification visuelle des clashs et des liaisons", "cycle", 3, {id:"s-ps-ident"});
-  add(M, "Présynthèse / synthèse", "Réunion de présynthèse (présentation des analyses)", "réunion", 1, {id:"s-ps-reu"});
-  add(M, "Présynthèse / synthèse", "Cycle final de présynthèse et livrables", "forfait", 3, {id:"s-ps-final"});
-  add(M, "Présynthèse / synthèse", "Clash detection, regroupement et propositions", "cycle", 3, {id:"s-sy-clash"});
-  add(M, "Présynthèse / synthèse", "Réunion de synthèse (analyses, arbitrages)", "réunion", 1, {id:"s-sy-reu"});
-  add(M, "Présynthèse / synthèse", "Cycle final de synthèse et livrables", "forfait", 5, {id:"s-sy-final"});
-  add(M, "Présynthèse / synthèse", "Coordination (détection + réunion)", "cycle", 5, {id:"s-coord", freq:4});
-  add(M, "Présynthèse / synthèse", "Finalisation des études (livrables)", "forfait", 3, {id:"s-final"});
-  M = "Coordination spatiale";
-  add(M, "Démarrage", "Analyse technique du projet + questions préliminaires", "forfait", 4, {id:"c-analyse", p:"bim"});
-  add(M, "Démarrage", "Rédaction du cadre de coordination spatiale", "forfait", 4, {id:"c-cadre", p:"bim"});
-  add(M, "Démarrage", "Réunion présentielle de démarrage", "réunion", 1, {id:"c-r-dem", p:"bim", dep:true});
-  add(M, "Cycles", "Coupes « type » de coordination spatiale", "forfait", 10, {id:"c-coupes", p:"bim"});
-  add(M, "Cycles", "Cycle itératif (analyse, interprétation, proposition, diffusion)", "cycle", 4, {id:"c-cycle", p:"bim", freq:2.3});
-  add(M, "Cycles", "Réunion de chantier pour la coordination (présentiel)", "réunion", 1, {id:"c-r-chantier", p:"bim", dep:true, freq:2.3});
-  add(M, "Cycles", "Livrables finaux de coordination spatiale", "forfait", 7, {id:"c-liv", p:"bim"});
-  M = "Modélisation";
-  add(M, "Modélisation", "Modélisation BIM LOD 350 (par m²)", "m²", 0.0115, {id:"m-lod350", v:"surface", note:"≈ 140 j pour 12 290 m²"});
-  add(M, "Modélisation", "Mise à jour as-built de la maquette", "mois", 16, {id:"m-asb", freq:1});
-  M = "Plateforme CDE";
-  add(M, "Plateforme", "Plateforme CDE : mise en route", "forfait", 0, {id:"p-cde-init", cu:4000});
-  add(M, "Plateforme", "Plateforme CDE : administration", "mois", 0.5, {id:"p-cde-admin", freq:1});
-  add(M, "Plateforme", "Plateforme CDE : location", "mois", 0, {id:"p-cde-loc", freq:1, cu:620});
-  add(M, "Plateforme", "Plateforme BIM IMS (10 comptes) : location", "mois", 0, {id:"p-ims", freq:1, cu:130});
+/* ----- Référentiels génériques ----- */
+const MISSIONS = [
+  {k:"bim", nom:"BIM Management", desc:"Convention BIM, audits et revues des maquettes, coordination des intervenants."},
+  {k:"syn", nom:"Synthèse et coordination", desc:"Détection des conflits, cycles et réunions de synthèse, réservations."},
+  {k:"mod", nom:"Modélisation", desc:"Production ou mise à jour des maquettes, plans, as-built."},
+  {k:"amo", nom:"AMO BIM", desc:"Côté maître d'ouvrage : cahier des charges, analyse des offres, contrôle des livrables."},
+  {k:"gem", nom:"Exploitation et DOE numérique", desc:"Données d'exploitation, DOE numérique, intégration à l'outil de gestion."},
+  {k:"pla", nom:"Plateforme et outils", desc:"Plateforme collaborative, administration, licences."},
+];
+const MIS = Object.fromEntries(MISSIONS.map(m => [m.k, m]));
+const STAGES = {C:"Conception", R:"Réalisation", E:"Exploitation", T:"Transverse"};
+const TYPES_OP = ["Construction neuve", "Réhabilitation", "Extension", "Rénovation en site occupé", "Conception-réalisation", "Marché global de performance"];
+const UNITES = ["forfait", "réunion", "audit", "revue", "cycle", "session", "maquette", "lot", "zone", "niveau", "m²", "plan", "offre", "utilisateur", "déplacement", "mois", "jour"];
+const DRIVERS = [
+  {k:"maquettes", nom:"Maquettes à suivre", hint:"Nombre de maquettes (fichiers) remises à chaque jalon, toutes disciplines.", u:"maquette"},
+  {k:"lots", nom:"Lots / disciplines", hint:"Architecture, structure, CVC, plomberie, électricité, VRD…", u:"lot"},
+  {k:"zones", nom:"Zones d'étude", hint:"Découpage du projet pour la synthèse : bâtiments, ailes, groupes de niveaux.", u:"zone"},
+  {k:"cycles", nom:"Cycles par zone", hint:"Nombre de cycles de synthèse prévus sur chaque zone.", u:"cycle"},
+  {k:"niveaux", nom:"Niveaux", hint:"Niveaux du bâtiment, sous-sols compris.", u:"niveau"},
+  {k:"users", nom:"Utilisateurs de la plateforme", hint:"Comptes à ouvrir sur la plateforme collaborative.", u:"utilisateur"},
+  {k:"candidats", nom:"Offres à analyser", hint:"Pour une mission d'AMO : nombre de candidats ou d'offres.", u:"offre"},
+];
+const CALC_DRV = {zc:{nom:"Cycles de synthèse (zones × cycles)", u:"cycle"}, surface:{nom:"Surface du projet (m²)", u:"m²"}};
+const PROFILS0 = [{k:"dir", nom:"Directeur de projet BIM", court:"Direction", tjm:850}, {k:"bim", nom:"BIM Manager", court:"BIM Mgr", tjm:700}, {k:"coord", nom:"Coordinateur BIM / synthèse", court:"Coord.", tjm:620}, {k:"mod", nom:"Modeleur / projeteur BIM", court:"Modeleur", tjm:520}];
+const PARAMS0 = {marge:0.05, ckm:0.6, repas:0, tva:0.2, arrondi:10, capMois:18, repMin:0, repMax:0};
+/* base d'unités d'œuvre : temps unitaire (j) et/ou prix unitaire (€), règle de proposition automatique */
+const UO0 = (() => {
+  const L = [], add = (mis, cat, lib, unite, type, tu, o = {}) => L.push({id:o.id, mission:mis, cat, lib, unite, type, tu, cu:o.cu || 0, qte:o.qte || 1, drv:o.drv || "", freq:o.freq || 1,
+    profil:o.p || ({bim:"bim", syn:"coord", mod:"mod", amo:"bim", gem:"bim", pla:"bim"}[mis]), dep:!!o.dep, st:o.st || "CR", sug:o.sug || "", pos:o.pos || "all", note:o.note || ""});
+  add("bim", "Cadrage", "Analyse des pièces du marché et des exigences BIM", "forfait", "uo", 1, {id:"bim-cdc", sug:"first", pos:"first"});
+  add("bim", "Cadrage", "Rédaction de la convention BIM", "forfait", "uo", 4, {id:"bim-conv", sug:"first", pos:"first"});
+  add("bim", "Cadrage", "Mise à jour de la convention BIM", "forfait", "uo", 1, {id:"bim-majconv", sug:"others", pos:"first"});
+  add("bim", "Cadrage", "Gabarits, fichiers de configuration et mappages IFC", "forfait", "uo", 2, {id:"bim-gab", sug:"first", pos:"first"});
+  add("bim", "Réunions", "Réunion de lancement BIM", "réunion", "uo", 1, {id:"bim-lanc", dep:true, sug:"first", pos:"first"});
+  add("bim", "Réunions", "Réunion de coordination BIM (visio)", "réunion", "temps", 0.25, {id:"bim-coord", freq:2, sug:"each"});
+  add("bim", "Réunions", "Réunion BIM sur site", "réunion", "temps", 0.5, {id:"bim-site", freq:0.5, dep:true, st:"R"});
+  add("bim", "Réunions", "Session de prise en main pour les intervenants", "session", "uo", 1, {id:"bim-form"});
+  add("bim", "Contrôle des maquettes", "Audit des maquettes avec rapport et débriefing", "audit", "temps", 1.5, {id:"bim-audit", freq:1, sug:"each"});
+  add("bim", "Contrôle des maquettes", "Contrôle d'une maquette (règles automatiques + rapport)", "maquette", "uo", 0.1, {id:"bim-ctrl", drv:"maquettes"});
+  add("bim", "Contrôle des maquettes", "Correction / mise en conformité d'une maquette", "maquette", "uo", 0.25, {id:"bim-corr", drv:"maquettes"});
+  add("bim", "Contrôle des maquettes", "Revue de maquette de fin de phase", "revue", "uo", 1.5, {id:"bim-revue", sug:"each", pos:"last"});
+  add("bim", "Pilotage", "Tableau de bord et reporting BIM", "mois", "temps", 0.25, {id:"bim-report", freq:1});
+  add("bim", "Pilotage", "Retour d'expérience de fin de mission", "forfait", "uo", 1, {id:"bim-rex", st:"CRE", sug:"last", pos:"last"});
+  add("syn", "Préparation", "Préparation de la synthèse (règles de détection, planning, outils)", "forfait", "uo", 2, {id:"syn-prep", sug:"first", pos:"first"});
+  add("syn", "Préparation", "Coupes de principe et zones à risque", "zone", "uo", 0.5, {id:"syn-coupes", drv:"zones", sug:"first", pos:"first"});
+  add("syn", "Cycles", "Cycle de synthèse : détection, analyse, propositions, diffusion", "cycle", "temps", 1.5, {id:"syn-cycle", freq:2, sug:"each"});
+  add("syn", "Cycles", "Cycle de synthèse par zone (à l'unité)", "cycle", "uo", 2, {id:"syn-cycle-uo", drv:"zc"});
+  add("syn", "Cycles", "Réunion de synthèse", "réunion", "temps", 0.5, {id:"syn-reu", freq:2, dep:true, st:"R", sug:"each"});
+  add("syn", "Livrables", "Plans de réservations (par niveau)", "niveau", "uo", 0.5, {id:"syn-resa", drv:"niveaux", st:"R", sug:"first"});
+  add("syn", "Livrables", "Livrables de synthèse validés (par zone)", "zone", "uo", 1, {id:"syn-liv", drv:"zones", sug:"last", pos:"last"});
+  add("mod", "Production", "Modélisation d'une maquette (ratio par m²)", "m²", "uo", 0.005, {id:"mod-m2", drv:"surface", note:"0,005 j/m² ≈ 50 j pour 10 000 m² : à ajuster selon le niveau de détail"});
+  add("mod", "Production", "Modélisation d'un lot (par niveau)", "niveau", "uo", 1.5, {id:"mod-niv", drv:"niveaux"});
+  add("mod", "Production", "Extraction et mise en page de plans", "plan", "uo", 0.25, {id:"mod-plans", qte:10});
+  add("mod", "Mises à jour", "Mise à jour des maquettes (nouveaux indices)", "mois", "temps", 1, {id:"mod-maj", freq:1});
+  add("mod", "Mises à jour", "Mise à jour as-built (par lot)", "lot", "uo", 2, {id:"mod-asb", drv:"lots", st:"R", sug:"last", pos:"last"});
+  add("amo", "Cadrage", "Rédaction du cahier des charges BIM", "forfait", "uo", 5, {id:"amo-cdc", st:"C", sug:"first", pos:"first"});
+  add("amo", "Cadrage", "Analyse des offres BIM des candidats", "offre", "uo", 0.5, {id:"amo-offres", drv:"candidats", st:"C", sug:"first", pos:"last"});
+  add("amo", "Suivi", "Réunion de suivi avec le maître d'ouvrage", "réunion", "temps", 0.5, {id:"amo-suivi", freq:1, dep:true, sug:"each"});
+  add("amo", "Suivi", "Contrôle des livrables BIM de fin de phase (avis)", "revue", "uo", 2, {id:"amo-ctrl", sug:"each", pos:"last"});
+  add("amo", "Suivi", "Réception des maquettes et du DOE numérique", "forfait", "uo", 3, {id:"amo-recep", st:"R", sug:"last", pos:"last"});
+  add("gem", "Données", "Définition des besoins d'exploitation (données, nomenclatures)", "forfait", "uo", 3, {id:"gem-besoins", st:"C", sug:"first"});
+  add("gem", "Données", "Vérification des données d'exploitation (par maquette)", "maquette", "uo", 0.2, {id:"gem-ctrl", drv:"maquettes", st:"R", sug:"last"});
+  add("gem", "DOE numérique", "Structuration du DOE numérique et liens documentaires", "forfait", "uo", 3, {id:"gem-doe", st:"R", sug:"last", pos:"last"});
+  add("gem", "DOE numérique", "Intégration dans l'outil de gestion patrimoniale", "forfait", "uo", 2, {id:"gem-integ", st:"RE", sug:"last", pos:"last"});
+  add("gem", "Exploitation", "Accompagnement pendant la garantie de parfait achèvement", "mois", "temps", 1, {id:"gem-gpa", freq:1 / 3, st:"E", sug:"each"});
+  add("pla", "Plateforme", "Mise en place de la plateforme collaborative", "forfait", "uo", 1, {id:"pla-init", st:"T", sug:"first", pos:"first"});
+  add("pla", "Plateforme", "Administration de la plateforme", "mois", "temps", 0.25, {id:"pla-admin", freq:1, st:"T", sug:"each"});
+  add("pla", "Plateforme", "Abonnement à la plateforme collaborative", "mois", "temps", 0, {id:"pla-abo", freq:1, st:"T", sug:"each", note:"Renseigne le prix mensuel de ton abonnement"});
+  add("pla", "Outils", "Licence logicielle (par utilisateur)", "utilisateur", "uo", 0, {id:"pla-lic", drv:"users", note:"Renseigne le prix unitaire"});
+  add("pla", "Outils", "Déplacement supplémentaire", "déplacement", "uo", 0, {id:"pla-dep", dep:true});
   return L;
 })();
-const PROFILS0 = [{k:"bim", nom:"BIM Manager", court:"BIM", tjm:640}, {k:"syn", nom:"Coordinateur synthèse", court:"Synthèse", tjm:700}, {k:"mod", nom:"Modeleur BIM", court:"Modeleur", tjm:640}];
-const profCourt = p => p.court || (p.nom.length > 10 ? p.nom.split(" ")[0] : p.nom);
-const PARAMS0 = {nego:0.05, ckm:0.697, repas:0, tva:0.2, ancMin:0.0035, ancMax:0.007};
-const BENCH0 = [{nom:"FOCH", budget:55000000, surface:16000, honos:115000, duree:43}, {nom:"CPAM EURE", budget:18000000, surface:6000, honos:63000, duree:48}];
-function bib(){ const b = S.biblio || {}; return {items:Array.isArray(b.items) && b.items.length ? b.items : BIB0, profils:Array.isArray(b.profils) && b.profils.length ? b.profils : PROFILS0, params:{...PARAMS0, ...(b.params || {})}, bench:Array.isArray(b.bench) ? b.bench : BENCH0}; }
-const bibItem = id => bib().items.find(x => x.id === id);
-async function saveBib(patch){ const cur = bib(); S.biblio = {...cur, ...patch, updated:nowIso()}; schedule(); try { await S.db.doc("meta/biblio").set(S.biblio); } catch (e) { fail(e); } }
-
-/* ----- Modèles (repris de tes chiffrages) ----- */
-const TPL = [
-  {k:"bim-cr", nom:"BIM Management · conception-réalisation", desc:"APS → GPA, audits mensuels puis trimestriels, revues de fin de phase, plateforme CDE (base LBLF V3.1).", mission:"BIM Management",
-    phases:[["APS", 2], ["APD", 2], ["PRO", 4], ["EXE", 28], ["DOE", 6], ["GPA", 24], ["Plateforme CDE", 40, 0]],
-    lines:[[0, "b-r-attentes", {pos:"first"}], [0, "b-cadre", {freq:1, mode:"freq"}], [0, "b-r-interne", {pos:"first"}], [0, "b-r-lanc", {pos:"first", dep:false}],
-      [1, "b-audit-m"], [1, "b-revue", {pos:"last"}], [2, "b-maj-conv", {pos:"first"}], [2, "b-audit-m"], [2, "b-revue", {pos:"last"}],
-      [3, "b-maj-conv", {pos:"first", tu:2}], [3, "b-audit-m", {pos:"custom", off:0, len:4, tu:3}], [3, "b-audit-t", {pos:"custom", off:4, len:20}], [3, "b-revue-t", {pos:"custom", off:4, len:27}],
-      [4, "b-audit-doe", {pos:"last", len:4}], [4, "b-doe-liens", {pos:"last", len:3}], [4, "b-gem", {pos:"last", len:2}], [4, "b-revue", {pos:"last", tu:1.5, lib:"Revue BIM finale"}],
-      [5, "b-audit-t", {tu:3.8095}], [6, "p-cde-init"], [6, "p-cde-admin"], [6, "p-cde-loc"],
-      [5, null, {lib:"Audit BIM avec débrief à la demande après livraison", unite:"audit", tu:4, qte:1, option:true}]]},
-  {k:"syn-zones", nom:"Synthèse technique · zones × cycles", desc:"Préparation, cycle préalable et cycle final par zone, cycles courants par zone (base HONOS SYNTHESE).", mission:"Synthèse", vars:{zones:2, cycles:1},
-    phases:[["Préparation de la coordination", 1], ["Cycles d'analyse", 6]],
-    lines:[[0, "s-clash"], [0, "s-plan"], [0, "s-analyse"], [0, "s-r-lanc"], [1, "s-p-ext"], [1, "s-p-gaines"], [1, "s-p-coupes"], [1, "s-p-liv"],
-      [1, "s-c-rec"], [1, "s-c-verif"], [1, "s-c-tests"], [1, "s-c-interp"], [1, "s-c-sol"], [1, "s-c-liv"], [1, "s-c-bcf"], [1, "s-c-resa"], [1, "s-c-reu"],
-      [1, "s-f-tests"], [1, "s-f-statut"], [1, "s-f-bcf"], [1, "s-f-liv"]]},
-  {k:"syn-rapide", nom:"Synthèse · précalcul rapide", desc:"Cadre collaboratif, démarrage, coordination 4 cycles par mois, finalisation (base PRECALCUL SYNTHESE).", mission:"Synthèse",
-    phases:[["Préparation du cadre collaboratif", 1], ["Démarrage des études", 1], ["Coordination", 3], ["Finalisation des études", 1]],
-    lines:[[0, "s-cadre"], [1, "s-demar"], [2, "s-coord"], [3, "s-final"]]},
-  {k:"presyn", nom:"Présynthèse APD + synthèse EXE", desc:"Présynthèse en conception (3 cycles), synthèse d'exécution 2 cycles par mois (base EPSM).", mission:"Synthèse",
-    phases:[["APD : présynthèse", 4], ["PRO-DCE", 1], ["EXE : études d'exécution", 3]],
-    lines:[[0, "s-ps-ident", {mode:"fixe", qte:3}], [0, "s-ps-reu", {mode:"fixe", qte:3}], [1, "s-ps-final"], [2, "s-support", {pos:"first"}], [2, "s-sy-clash", {mode:"freq", freq:2}], [2, "s-sy-reu", {mode:"freq", freq:2}], [2, "s-sy-final", {pos:"last"}]]},
-  {k:"coord-ts", nom:"Coordination BIM et spatiale des TS", desc:"Démarrage, coordination spatiale par cycles itératifs, suivi EXE, as-built, plateforme IMS (base CARBON SHIFT).", mission:"Coordination spatiale",
-    phases:[["Démarrage", 1], ["Coordination spatiale", 10], ["Exécution", 25], ["As-built", 3], ["Plateforme", 37, 0]],
-    lines:[[0, "b-audit-mat"], [0, "b-bep"], [0, "b-autoctrl"], [0, "b-encadr"], [0, "b-r-lanc"], [0, "c-analyse"], [0, "c-cadre"],
-      [1, "c-coupes", {pos:"first"}], [1, "c-cycle", {pos:"custom", off:1, len:9}], [1, "c-r-chantier", {pos:"custom", off:1, len:9}], [1, "c-liv", {pos:"last"}],
-      [2, "b-r-exe"], [2, "b-r-teams"], [2, "b-a-jalon", {mode:"fixe", qte:2}], [3, "b-asb"], [4, "p-ims"],
-      [3, "m-lod350", {option:true}]]},
-  {k:"audit-maq", nom:"Audit et correction de maquettes", desc:"Préparation, analyse et correction par maquette, revue de maquette (base HONOS BIM).", mission:"BIM Management", vars:{maquettes:20},
-    phases:[["Préparation", 1], ["Analyses", 1], ["Corrections", 1]],
-    lines:[[0, "b-canevas-ifc"], [0, "b-c-7di"], [0, "b-f-exp"], [0, "b-f-map1"], [0, "b-f-map2"], [0, "b-f-map3"],
-      [1, "b-a-ifc1"], [1, "b-a-ifc2"], [1, "b-a-coh"], [1, "b-a-liv"], [1, "b-r-debrief"],
-      [2, "b-k-simp"], [2, "b-k-supp"], [2, "b-k-cls"], [2, "b-k-prop"], [2, "b-k-inj"]]},
-  {k:"vide", nom:"Chiffrage vierge", desc:"Une phase, à compléter depuis la bibliothèque.", mission:"", phases:[["Phase 1", 3]], lines:[]},
+const PRESETS = [
+  {k:"C", nom:"Conception", desc:"ESQ / APS, APD, PRO, DCE", ph:[["ESQ / APS", "C", 2], ["APD", "C", 2], ["PRO", "C", 3], ["DCE / ACT", "C", 2]]},
+  {k:"R", nom:"Réalisation", desc:"Préparation, exécution, réception et DOE", ph:[["Préparation", "R", 2], ["Exécution", "R", 12], ["Réception / DOE", "R", 2]]},
+  {k:"CR", nom:"Conception + réalisation", desc:"De l'esquisse au DOE", ph:[["ESQ / APS", "C", 2], ["APD", "C", 2], ["PRO", "C", 3], ["DCE / ACT", "C", 2], ["Préparation", "R", 2], ["Exécution", "R", 12], ["Réception / DOE", "R", 2]]},
+  {k:"CRE", nom:"Conception, réalisation et exploitation", desc:"Jusqu'à la fin de la GPA", ph:[["APS", "C", 2], ["APD", "C", 2], ["PRO", "C", 3], ["Préparation", "R", 2], ["Exécution", "R", 12], ["Réception / DOE", "R", 2], ["GPA", "E", 12]]},
+  {k:"S", nom:"Mission courte", desc:"Démarrage, production, clôture", ph:[["Démarrage", "C", 1], ["Production", "R", 3], ["Clôture", "R", 1]]},
+  {k:"X", nom:"Vierge", desc:"Une phase à compléter", ph:[["Phase 1", "C", 3]]},
 ];
-function lineFromItem(it, o = {}){
-  return {id:uid(), bib:it ? it.id : "", lib:o.lib || (it ? it.lib : "Nouvelle prestation"), unite:o.unite || (it ? it.unite : "forfait"), mode:o.mode || (it ? it.mode : "fixe"),
-    qte:o.qte != null ? o.qte : 1, freq:o.freq != null ? o.freq : (it ? it.freq || 1 : 1), varKey:o.varKey || (it ? it.varKey : "") || "maquettes", mult:1,
-    tu:o.tu != null ? o.tu : (it ? it.tu : 1), profil:o.profil || (it ? it.profil : "bim"), dep:o.dep != null ? o.dep : !!(it && it.dep), cu:o.cu != null ? o.cu : (it ? it.cu || 0 : 0),
-    pos:o.pos || "all", off:o.off || 0, len:o.len || 0, option:!!o.option, note:""};
+function uoBase(){ const b = S.uo && S.uo.v === 2 ? S.uo : {}; return {items:Array.isArray(b.items) && b.items.length ? b.items : UO0, profils:Array.isArray(b.profils) && b.profils.length ? b.profils : PROFILS0, params:{...PARAMS0, ...(b.params || {})}}; }
+const uoItem = id => uoBase().items.find(x => x.id === id);
+async function saveUo(patch){ const cur = uoBase(); S.uo = {...cur, ...patch, v:2, updated:nowIso()}; schedule(); try { await S.db.doc("meta/uo").set(S.uo); } catch (e) { fail(e); } }
+const profCourt = p => p.court || (p.nom.length > 10 ? p.nom.split(" ")[0] : p.nom);
+
+/* ----- Modèle d'un chiffrage (et reprise des chiffrages de la version précédente) ----- */
+function blankAo(){
+  const B = uoBase();
+  return {id:uid(), v:2, nom:"", client:"", moa:"", lieu:"", remise:"", type:"", budget:0, surface:0, statut:"En cours", reference:"", missions:[], step:0, start:nextYm(), chain:true,
+    params:{marge:B.params.marge, remise:0, arrondi:B.params.arrondi, tva:B.params.tva, kmAR:0, ckm:B.params.ckm, repas:B.params.repas, tjm:Object.fromEntries(B.profils.map(p => [p.k, p.tjm]))},
+    drivers:{maquettes:6, lots:6, zones:1, cycles:3, niveaux:3, users:10, candidats:3}, cdrv:[], phases:[], lines:[], cible:0, created:nowIso(), updated:nowIso()};
 }
-function newAo(tk, start){
-  const T = TPL.find(x => x.k === tk) || TPL[TPL.length - 1], B = bib();
-  const tjm = Object.fromEntries(B.profils.map(p => [p.k, p.tjm]));
-  let cur = start; const phases = T.phases.map(([nom, n, off]) => { const a = off === 0 ? start : cur; const p = {id:uid(), nom, a, b:ymAdd(a, n - 1)}; if (off !== 0) cur = ymAdd(p.b, 1); return p; });
-  const lines = T.lines.map(([pi, bid, o]) => ({...lineFromItem(bid ? bibItem(bid) : null, o || {}), phase:phases[pi].id}));
-  return {id:uid(), nom:"", client:"", moa:"", op:"", type:"", mission:T.mission, lieu:"", budget:0, surface:0, kmAR:0, remise:"", statut:"En cours", reference:"", tpl:T.k,
-    params:{nego:B.params.nego, ckm:B.params.ckm, repas:B.params.repas, tjm, arrondi:0}, vars:{zones:2, cycles:1, maquettes:20, ...(T.vars || {})}, phases, lines, created:nowIso(), updated:nowIso()};
+function migrateAo(o){
+  if (!o || o.v === 2) return o;
+  const n = JSON.parse(JSON.stringify(o)), P = o.params || {};
+  n.v = 2; n.chain = false; n.step = 5; n.missions = n.missions || []; n.cdrv = [];
+  n.start = (o.phases || []).map(p => p.a).filter(ymOk).sort()[0] || nextYm();
+  n.phases = (o.phases || []).map(p => ({id:p.id, nom:p.nom, stage:/gpa|exploit/i.test(p.nom || "") ? "E" : /exe|det|doe|réalis|realis|chantier|travaux|as-built|asb/i.test(p.nom || "") ? "R" : "C", a:ymOk(p.a) ? p.a : n.start, n:Math.max(1, ymCount(p.a, p.b) || 1)}));
+  n.lines = (o.lines || []).map(l => ({...l, type:l.mode === "freq" ? "temps" : "uo", drv:l.mode === "var" ? (l.varKey || "") : "", qte:l.qte ?? 1}));
+  n.params = {marge:P.nego ?? 0.05, remise:0, arrondi:P.arrondi || 0, tva:0.2, kmAR:o.kmAR || 0, ckm:P.ckm ?? 0.6, repas:P.repas || 0, tjm:P.tjm || {}};
+  n.drivers = {...(o.vars || {})}; delete n.vars;
+  return n;
 }
+function profilsOf(ao){ const L = uoBase().profils.slice(); for (const k of Object.keys((ao.params && ao.params.tjm) || {})) if (!L.some(p => p.k === k)) L.push({k, nom:k === "syn" ? "Coordinateur synthèse" : k, court:k, tjm:ao.params.tjm[k]}); return L; }
+const profTjm = (ao, k) => { const t = ao.params && ao.params.tjm && ao.params.tjm[k]; if (t != null && t !== "") return num(t); const p = uoBase().profils.find(x => x.k === k); return p ? p.tjm : 650; };
+const depCost = ao => Math.ceil(num(ao.params.kmAR) * num(ao.params.ckm) + num(ao.params.repas));
+const drvList = ao => [...DRIVERS, ...(ao.cdrv || []).map(c => ({k:c.k, nom:c.nom, u:c.u || "unité", custom:true}))];
+function drvName(ao, k){ if (CALC_DRV[k]) return CALC_DRV[k].nom; const d = drvList(ao).find(x => x.k === k); return d ? d.nom : k; }
+function drvVal(ao, k){ const v = ao.drivers || {}; if (k === "zc") return num(v.zones) * num(v.cycles); if (k === "surface") return num(ao.surface); return num(v[k]); }
 
 /* ----- Calculs ----- */
-const profTjm = (ao, k) => { const t = ao.params && ao.params.tjm && ao.params.tjm[k]; if (t != null && t !== "") return num(t); const p = bib().profils.find(x => x.k === k); return p ? p.tjm : 640; };
-const depCost = ao => Math.ceil(num(ao.kmAR) * num(ao.params.ckm) + num(ao.params.repas));
-function varVal(ao, k){ const v = ao.vars || {}; if (k === "zc") return num(v.zones) * num(v.cycles); if (k === "surface") return num(ao.surface); return num(v[k]); }
-function linePer(ao, l){
-  const ph = ao.phases.find(p => p.id === l.phase); if (!ph || !ymOk(ph.a) || !ymOk(ph.b)) return null;
-  const n = ymCount(ph.a, ph.b);
-  if (l.pos === "first") return {a:ph.a, b:ymAdd(ph.a, Math.max(1, l.len || 1) - 1)};
+function effPhases(ao){
+  const ps = ao.phases || [], start = ymOk(ao.start) ? ao.start : nextYm();
+  let core;
+  if (ao.chain !== false) { let cur = start; core = ps.filter(p => p.stage !== "T").map(p => { const n = Math.max(1, Math.round(num(p.n)) || 1), o = {...p, n, a:cur, b:ymAdd(cur, n - 1)}; cur = ymAdd(cur, n); return o; }); }
+  else core = ps.filter(p => p.stage !== "T").map(p => { const a = ymOk(p.a) ? p.a : start, n = Math.max(1, Math.round(num(p.n)) || 1); return {...p, n, a, b:ymAdd(a, n - 1)}; });
+  const a0 = core.length ? core.map(p => p.a).sort()[0] : start, b0 = core.length ? core.map(p => p.b).sort().pop() : start;
+  return ps.map(p => p.stage === "T" ? {...p, a:a0, b:b0, n:ymCount(a0, b0)} : core.find(x => x.id === p.id));
+}
+function linePer(ph, l){
+  if (!ph) return null; const n = ph.n;
+  if (l.pos === "first") return {a:ph.a, b:ymAdd(ph.a, Math.max(1, Math.min(n, l.len || 1)) - 1)};
   if (l.pos === "last") { const k = Math.max(1, Math.min(n, l.len || 1)); return {a:ymAdd(ph.b, 1 - k), b:ph.b}; }
-  if (l.pos === "custom") { const a = ymAdd(ph.a, l.off || 0); const len = l.len > 0 ? l.len : Math.max(1, n - (l.off || 0)); return {a, b:ymAdd(a, len - 1)}; }
+  if (l.pos === "custom") { const off = Math.max(0, l.off || 0), a = ymAdd(ph.a, off), len = l.len > 0 ? l.len : Math.max(1, n - off); return {a, b:ymAdd(a, len - 1)}; }
   return {a:ph.a, b:ph.b};
 }
-function calcLine(ao, l){
-  const per = linePer(ao, l), mois = per ? ymCount(per.a, per.b) : 0;
-  const q = l.mode === "freq" ? Math.round(mois * num(l.freq)) : l.mode === "var" ? varVal(ao, l.varKey) * (num(l.mult) || 1) : num(l.qte);
-  const tjm = profTjm(ao, l.profil), jours = q * num(l.tu), trav = jours * tjm, dep = l.dep ? Math.round(q) * depCost(ao) : 0, frais = q * num(l.cu);
-  const tot = ceil2((trav + dep + frais) * (1 + num(ao.params.nego)));
-  return {per, mois, q, tjm, jours, trav, dep, frais, tot};
+function calcLine(ao, l, eph){
+  const ph = (eph || effPhases(ao)).find(p => p.id === l.phase), per = linePer(ph, l), mois = per ? ymCount(per.a, per.b) : 0;
+  const q = l.type === "temps" ? Math.round(mois * num(l.freq)) : l.drv ? drvVal(ao, l.drv) * (num(l.mult) || 1) : num(l.qte);
+  const tjm = profTjm(ao, l.profil), jours = q * num(l.tu), trav = jours * tjm, frais = q * num(l.cu), dep = l.dep ? Math.round(q) * depCost(ao) : 0;
+  const prix = ceil2((trav + frais + dep) * (1 + num(ao.params.marge)));
+  return {per, mois, q, tjm, jours, trav, frais, dep, prix};
 }
 function calcAo(ao){
-  const lines = ao.lines.map(l => ({l, c:calcLine(ao, l)}));
+  const eph = effPhases(ao), lines = ao.lines.map(l => ({l, c:calcLine(ao, l, eph)}));
   const base = lines.filter(x => !x.l.option), opts = lines.filter(x => x.l.option);
-  let tot = base.reduce((s, x) => s + x.c.tot, 0); const r = num(ao.params.arrondi); const totR = r > 0 ? ceil2(tot / r) * r : tot;
-  const jours = base.reduce((s, x) => s + x.c.jours, 0), trav = base.reduce((s, x) => s + x.c.trav, 0);
-  const ph = ao.phases.map(p => { const ls = base.filter(x => x.l.phase === p.id); return {p, tot:ls.reduce((s, x) => s + x.c.tot, 0), jours:ls.reduce((s, x) => s + x.c.jours, 0), n:ls.length}; });
-  const months = new Map();
-  for (const x of base) { if (!x.c.per || !x.c.mois) continue; for (let i = 0; i < x.c.mois; i++) { const m = ymAdd(x.c.per.a, i), o = months.get(m) || {e:0, j:0}; o.e += x.c.tot / x.c.mois; o.j += x.c.jours / x.c.mois; months.set(m, o); } }
-  const ms = [...months.keys()].sort(), a = ms[0], b = ms[ms.length - 1], duree = a ? ymCount(a, b) : 0;
-  const byProf = new Map(); for (const x of base) byProf.set(x.l.profil, (byProf.get(x.l.profil) || 0) + x.c.jours);
-  return {lines, base, opts, tot:totR, totBrut:tot, optTot:opts.reduce((s, x) => s + x.c.tot, 0), jours, trav, ph, months, a, b, duree, byProf,
-    tjmMoy:jours ? base.reduce((s, x) => s + (x.c.trav + x.c.dep) * (1 + num(ao.params.nego)), 0) / jours : 0, pBudget:num(ao.budget) ? totR / num(ao.budget) : 0, eurM2:num(ao.surface) ? totR / num(ao.surface) : 0, parMois:duree ? totR / duree : 0};
+  const brut = base.reduce((s, x) => s + x.c.prix, 0), rem = brut * Math.min(0.9, Math.max(0, num(ao.params.remise))), net = brut - rem, ar = num(ao.params.arrondi);
+  const tot = ar > 0 ? ceil2(net / ar) * ar : Math.round(net), k = brut ? tot / brut : 1;
+  const jours = base.reduce((s, x) => s + x.c.jours, 0);
+  const ph = eph.map(p => { const ls = base.filter(x => x.l.phase === p.id); return {p, prix:ls.reduce((s, x) => s + x.c.prix, 0) * k, jours:ls.reduce((s, x) => s + x.c.jours, 0), n:ls.length}; });
+  const byMis = new Map(), byProf = new Map(), months = new Map();
+  for (const x of base) {
+    const mk = x.l.mis || "autre"; byMis.set(mk, (byMis.get(mk) || 0) + x.c.prix * k);
+    const pk = x.l.profil; const o = byProf.get(pk) || {j:0, e:0}; o.j += x.c.jours; o.e += x.c.prix * k; byProf.set(pk, o);
+    if (x.c.per && x.c.mois) for (let i = 0; i < x.c.mois; i++) { const m = ymAdd(x.c.per.a, i), mo = months.get(m) || {e:0, j:0}; mo.e += x.c.prix * k / x.c.mois; mo.j += x.c.jours / x.c.mois; months.set(m, mo); }
+  }
+  const ms = [...months.keys()].sort(), a = eph.length ? eph.map(p => p.a).sort()[0] : ms[0], b = eph.length ? eph.map(p => p.b).sort().pop() : ms[ms.length - 1], duree = a && b ? ymCount(a, b) : 0;
+  const trav = base.reduce((s, x) => s + (x.c.trav + x.c.dep) * (1 + num(ao.params.marge)), 0) * k;
+  return {eph, lines, base, opts, brut, rem, tot, jours, ph, byMis, byProf, months, a, b, duree, optTot:opts.reduce((s, x) => s + x.c.prix, 0),
+    tjmMoy:jours ? trav / jours : 0, pBudget:num(ao.budget) ? tot / num(ao.budget) : 0, eurM2:num(ao.surface) ? tot / num(ao.surface) : 0, parMois:duree ? tot / duree : 0,
+    pic:ms.reduce((m, x) => months.get(x).j > m.j ? {m:x, j:months.get(x).j} : m, {m:"", j:0})};
 }
+function repere(ao){
+  const P = uoBase().params;
+  if (num(P.repMax) > 0) return {min:num(P.repMin), max:num(P.repMax), src:"ta fourchette de repère"};
+  const won = [...S.aos.values()].map(migrateAo).filter(a => a.id !== ao.id && a.statut === "Gagné" && num(a.budget)).map(a => calcAo(a).pBudget).filter(x => x > 0).sort((x, y) => x - y);
+  if (!won.length) return null;
+  const med = won[Math.floor(won.length / 2)];
+  return {min:med * 0.75, max:med * 1.25, med, n:won.length, src:`la médiane de tes ${won.length} AO gagné${won.length > 1 ? "s" : ""}`};
+}
+function checks(ao, R){
+  const out = [], add = (lvl, txt, step) => out.push({lvl, txt, step});
+  if (!ao.nom) add("warn", "Donne un nom à l'appel d'offres.", 0);
+  if (!(ao.missions || []).length) add("info", "Aucune mission cochée : les prestations ne pourront pas être proposées automatiquement.", 0);
+  if (!ao.phases.length) add("warn", "Le planning est vide : crée les phases.", 1);
+  if (!ao.lines.length) add("warn", "Aucune prestation chiffrée.", 3);
+  const zero = R.base.filter(x => x.c.prix === 0);
+  if (zero.length) add("warn", `${plur(zero.length, "prestation")} à 0 € : ${zero.slice(0, 3).map(x => "« " + x.l.lib + " »").join(", ")}${zero.length > 3 ? "…" : ""}. Renseigne une quantité, un temps ou un prix unitaire.`, 3);
+  const used = new Map(); for (const x of R.base) if (x.l.type !== "temps" && x.l.drv) used.set(x.l.drv, (used.get(x.l.drv) || 0) + 1);
+  for (const [k, n] of used) if (!drvVal(ao, k)) add("warn", `L'hypothèse « ${drvName(ao, k)} » vaut 0 alors que ${plur(n, "prestation")} en dépend${n > 1 ? "ent" : ""}.`, k === "surface" ? 0 : 2);
+  if (R.base.some(x => x.l.dep) && !num(ao.params.kmAR) && !num(ao.params.repas)) add("info", "Des prestations prévoient un déplacement, mais la distance aller-retour n'est pas renseignée.", 2);
+  if (!num(ao.budget)) add("info", "Sans budget travaux, le ratio honoraires / travaux n'est pas calculé.", 0);
+  const rp = repere(ao);
+  if (rp && R.pBudget) { if (R.pBudget < rp.min) add("info", `Tu es à ${pct(R.pBudget)} des travaux, sous ${rp.src} (${pct(rp.min)} – ${pct(rp.max)}).`, 4); else if (R.pBudget > rp.max) add("info", `Tu es à ${pct(R.pBudget)} des travaux, au-dessus de ${rp.src} (${pct(rp.min)} – ${pct(rp.max)}).`, 4); else add("ok", `Ratio honoraires / travaux (${pct(R.pBudget)}) cohérent avec ${rp.src}.`, 4); }
+  const cap = num(uoBase().params.capMois) || 18;
+  if (R.pic.j > cap) add("info", `Pic de charge de ${jfmt(R.pic.j)} j en ${ymLab(R.pic.m)} : plus d'une personne à temps plein ce mois-là.`, 3);
+  if (!num(ao.params.marge)) add("info", "Aucune marge ni anticipation de négociation n'est appliquée.", 4);
+  if (!out.some(x => x.lvl === "warn") && ao.lines.length) add("ok", "Aucun point bloquant.", 5);
+  return out;
+}
+/* proposition automatique des prestations selon les missions et les étapes du planning */
+function proposals(ao){
+  const eph = effPhases(ao), mis = new Set(ao.missions || []), out = [];
+  for (const it of uoBase().items) {
+    if (!it.sug || !mis.has(it.mission)) continue;
+    const ps = eph.filter(p => (it.st || "CR").includes(p.stage)); if (!ps.length) continue;
+    const tg = it.sug === "first" ? [ps[0]] : it.sug === "last" ? [ps[ps.length - 1]] : it.sug === "others" ? ps.slice(1) : ps;
+    for (const p of tg) if (!ao.lines.some(l => l.bib === it.id && l.phase === p.id)) out.push({it, p});
+  }
+  return out;
+}
+function lineFromItem(it, phaseId){
+  return {id:uid(), bib:it ? it.id : "", mis:it ? it.mission : "", lib:it ? it.lib : "Nouvelle prestation", unite:it ? it.unite : "forfait", type:it ? it.type : "uo",
+    qte:it ? it.qte || 1 : 1, drv:it ? it.drv || "" : "", mult:1, freq:it ? it.freq || 1 : 1, tu:it ? it.tu : 1, cu:it ? it.cu || 0 : 0, profil:it ? it.profil : "bim", dep:!!(it && it.dep),
+    pos:it ? it.pos || "all" : "all", off:0, len:1, option:false, note:"", phase:phaseId};
+}
+function insertLines(ao, ls){ for (const l of ls) { const last = ao.lines.map(x => x.phase).lastIndexOf(l.phase); ao.lines.splice(last >= 0 ? last + 1 : ao.lines.length, 0, l); } }
 
 /* ----- Vues ----- */
 const AO_STATUTS = ["En cours", "Envoyé", "Gagné", "Perdu", "Abandonné"];
 const ST_COL = {"En cours":"--s-encours", "Envoyé":"--s-attente", "Gagné":"--done", "Perdu":"--late", "Abandonné":"--muted"};
+const STEPS = [
+  {t:"Projet", d:"Le contexte de l'appel d'offres et les missions demandées."},
+  {t:"Planning", d:"Les phases de la mission et leur durée en mois."},
+  {t:"Hypothèses", d:"Les quantités de base des unités d'œuvre, et les déplacements."},
+  {t:"Prestations", d:"Le détail chiffré, à l'unité d'œuvre ou au temps passé."},
+  {t:"Prix", d:"Taux journaliers, marge, remise et contrôles de cohérence."},
+  {t:"Synthèse", d:"Le récapitulatif à remettre et l'export Excel."},
+];
+const curAo = () => { const a = S.aos.get(S.chif.id); return a ? migrateAo(a) : null; };
 function viewChiffrage(){
   const C = S.chif;
-  if (C.mode === "biblio") return viewBiblio();
-  if (C.mode === "ao" && S.aos.has(C.id)) return viewAo(S.aos.get(C.id));
+  if (C.mode === "biblio") return viewUo();
+  if (C.mode === "ao" && S.aos.has(C.id)) return viewWizard(curAo());
   return viewAoList();
 }
 function viewAoList(){
-  const ro = S.canWrite === false, f = S.chif.filt;
-  const aos = [...S.aos.values()].filter(a => !f || a.statut === f).sort((a, b) => String(b.updated || "").localeCompare(String(a.updated || "")));
-  const all = [...S.aos.values()], won = all.filter(a => a.statut === "Gagné"), sent = all.filter(a => ["Envoyé", "Gagné", "Perdu"].includes(a.statut));
-  const rate = sent.length ? won.length / sent.length : 0, wonTot = won.reduce((s, a) => s + calcAo(a).tot, 0);
-  const pipe = all.filter(a => ["En cours", "Envoyé"].includes(a.statut)).reduce((s, a) => s + calcAo(a).tot, 0);
-  const chips = ["", ...AO_STATUTS].map(s => `<button class="seg" data-act="ao-filt" data-v="${s}" aria-pressed="${f === s}">${s || "Tous"} <span class="c">${s ? all.filter(a => a.statut === s).length : all.length}</span></button>`).join("");
+  const ro = S.canWrite === false, f = S.chif.filt, all = [...S.aos.values()].map(migrateAo);
+  const aos = all.filter(a => !f || a.statut === f).sort((a, b) => String(b.updated || "").localeCompare(String(a.updated || "")));
+  const won = all.filter(a => a.statut === "Gagné"), sent = all.filter(a => ["Envoyé", "Gagné", "Perdu"].includes(a.statut));
+  const pipe = all.filter(a => ["En cours", "Envoyé"].includes(a.statut)).reduce((s, a) => s + calcAo(a).tot, 0), wonTot = won.reduce((s, a) => s + calcAo(a).tot, 0);
+  const soon = all.filter(a => a.statut === "En cours" && validYmd(a.remise) && a.remise >= today()).sort((x, y) => x.remise.localeCompare(y.remise))[0];
   return `<div class="view-head"><div><div class="eyebrow">Chiffrage des appels d'offres</div><h1>Chiffrages AO</h1></div>
-      <div class="pnav">${ro ? "" : `<button class="btn primary" data-act="ao-new-open">${I.plus} Nouveau chiffrage</button>`}<button class="btn" data-act="ao-biblio">Bibliothèque des prestations</button></div></div>
+      <div class="pnav">${ro ? "" : `<button class="btn primary" data-act="ao-new">${I.plus} Nouveau chiffrage</button>`}<button class="btn" data-act="ao-biblio">Base des unités d'œuvre</button></div></div>
     <div class="kpi-row dec-kpis ao-kpis">
-      <div class="kc"><span class="kc-l">En cours / envoyés</span><span class="kc-v">${keur(pipe)}</span></div>
-      <div class="kc"><span class="kc-l">Gagnés</span><span class="kc-v ok">${keur(wonTot)}</span><span class="kc-n mut">${won.length} AO</span></div>
-      <div class="kc"><span class="kc-l">Taux de réussite</span><span class="kc-v">${sent.length ? Math.round(rate * 100) + " %" : "—"}</span><span class="kc-n mut">sur ${sent.length} AO remis</span></div>
-      <div class="kc"><span class="kc-l">Prestations en base</span><span class="kc-v">${bib().items.length}</span></div>
+      <div class="kc"><span class="kc-l">En cours et envoyés</span><span class="kc-v">${keur(pipe)}</span></div>
+      <div class="kc"><span class="kc-l">Gagnés</span><span class="kc-v ok">${keur(wonTot)}</span><span class="kc-n mut">${plur(won.length, "AO", "AO")}</span></div>
+      <div class="kc"><span class="kc-l">Taux de réussite</span><span class="kc-v">${sent.length ? Math.round(won.length / sent.length * 100) + " %" : "—"}</span><span class="kc-n mut">sur ${plur(sent.length, "AO remis", "AO remis")}</span></div>
+      <div class="kc"><span class="kc-l">Prochaine remise</span><span class="kc-v">${soon ? fmt(soon.remise) : "—"}</span><span class="kc-n mut">${soon ? esc(soon.nom || "Sans titre") : ""}</span></div>
     </div>
-    <div class="seg-block" style="margin-bottom:12px"><span class="seg-label">Statut</span>${chips}</div>
+    ${all.length ? `<div class="seg-block" style="margin-bottom:12px"><span class="seg-label">Statut</span>${["", ...AO_STATUTS].map(s => `<button class="seg" data-act="ao-filt" data-v="${s}" aria-pressed="${f === s}">${s || "Tous"} <span class="c">${s ? all.filter(a => a.statut === s).length : all.length}</span></button>`).join("")}</div>` : ""}
     ${aos.length ? `<div class="ao-list">${aos.map(a => { const R = calcAo(a); return `<button class="ao-card" data-act="ao-open" data-id="${a.id}" style="--sc:var(${ST_COL[a.statut] || "--muted"})">
-        <div class="aoc-top"><span class="pill st" style="--sc:var(${ST_COL[a.statut] || "--muted"})">${esc(a.statut)}</span>${a.mission ? `<span class="aoc-mis">${esc(a.mission)}</span>` : ""}${validYmd(a.remise) ? `<span class="aoc-rem">Remise ${fmt(a.remise, true)}</span>` : ""}</div>
-        <div class="aoc-t">${esc(a.nom || "Sans titre")}</div><div class="aoc-c">${esc([a.client, a.lieu].filter(Boolean).join(" · ") || "Client à préciser")}</div>
+        <div class="aoc-top"><span class="pill st" style="--sc:var(${ST_COL[a.statut] || "--muted"})">${esc(a.statut)}</span>${validYmd(a.remise) ? `<span class="aoc-rem">Remise le ${fmt(a.remise, true)}</span>` : ""}${a.statut === "En cours" ? `<span class="aoc-step">Étape ${Math.min(6, (a.step || 0) + 1)} / 6</span>` : ""}</div>
+        <div class="aoc-t">${esc(a.nom || "Sans titre")}</div><div class="aoc-c">${esc([a.client, a.lieu].filter(Boolean).join(" · ") || (a.missions || []).map(m => MIS[m] ? MIS[m].nom : m).join(", ") || "À compléter")}</div>
         <div class="aoc-n"><b>${eur(R.tot)}</b><span>${jfmt(R.jours)} j</span>${R.pBudget ? `<span>${pct(R.pBudget)} des travaux</span>` : ""}${R.duree ? `<span>${R.duree} mois</span>` : ""}</div></button>`; }).join("")}</div>`
-      : `<div class="empty"><h2>${S.aos.size ? "Aucun chiffrage avec ce statut" : "Aucun chiffrage pour l'instant"}</h2><p>Pars d'un modèle construit sur tes fichiers HONOS et PRECALCUL : les temps unitaires viennent de la bibliothèque, tu n'ajustes que les dates et les quantités.</p>${ro ? "" : `<div class="actions"><button class="btn primary" data-act="ao-new-open">${I.plus} Nouveau chiffrage</button></div>`}</div>`}`;
-}
-function newAoSheet(){
-  const start = ymAdd(ymOf(today()), 1);
-  const el = document.createElement("div"); el.className = "overlay ao-ov"; el.dataset.act = "ao-ov-close";
-  el.innerHTML = `<div class="sheet" role="dialog" aria-label="Nouveau chiffrage"><div class="sheet-h"><h2>Nouveau chiffrage</h2><button class="btn ghost" data-act="ao-ov-close" aria-label="Fermer">${I.close}</button></div>
-    <div class="sheet-b"><div class="cols2"><label class="field"><span class="lbl">Nom de l'AO</span><input type="text" id="na-nom" placeholder="ex. MEL – Le Blanc Four"></label><label class="field"><span class="lbl">Début de la mission</span><input type="month" id="na-start" value="${start}"></label></div>
-      <span class="lbl" style="display:block;margin:12px 0 6px">Partir d'un modèle</span>
-      <div class="tpl-list">${TPL.map((t, i) => `<label class="tpl"><input type="radio" name="na-tpl" value="${t.k}" ${i === 0 ? "checked" : ""}><span><b>${esc(t.nom)}</b><small>${esc(t.desc)}</small></span></label>`).join("")}
-        ${S.aos.size ? `<label class="tpl"><input type="radio" name="na-tpl" value="copy"><span><b>Copier un chiffrage existant</b><select id="na-copy">${[...S.aos.values()].map(a => `<option value="${a.id}">${esc(a.nom || "Sans titre")}</option>`).join("")}</select></span></label>` : ""}</div></div>
-    <div class="sheet-f"><span class="spacer"></span><button class="btn" data-act="ao-ov-close">Annuler</button><button class="btn primary" data-act="ao-create">Créer</button></div></div>`;
-  document.body.appendChild(el); setTimeout(() => $("#na-nom")?.focus(), 30);
+      : `<div class="empty ao-empty"><h2>${all.length ? "Aucun chiffrage avec ce statut" : "Chiffre ton premier appel d'offres"}</h2>
+        <p>Un assistant en 6 étapes : le projet, le planning, les hypothèses, les prestations, le prix, puis la synthèse à remettre. Chaque prestation se chiffre <b>à l'unité d'œuvre</b> (une quantité × un temps ou un prix unitaire) ou <b>au temps</b> (une fréquence par mois × la durée d'une phase).</p>
+        ${ro ? "" : `<div class="actions"><button class="btn primary" data-act="ao-new">${I.plus} Nouveau chiffrage</button></div>`}</div>`}`;
 }
 const aoIn = (f, v, attrs = "") => `<input type="text" data-ao="${f}" value="${esc(v ?? "")}" ${attrs} ${S.canWrite === false ? "readonly" : ""}>`;
-const monthIn = (f, v, attrs = "") => `<input type="month" data-ao="${f}" value="${esc(v || "")}" ${attrs} ${S.canWrite === false ? "readonly" : ""}>`;
-function qtyCell(ao, l, c){
-  if (l.mode === "fixe") return `<input type="text" class="q-in" data-ao="l.qte" value="${jf4(num(l.qte))}" inputmode="decimal" aria-label="Quantité" ${S.canWrite === false ? "readonly" : ""}>`;
-  const txt = l.mode === "freq" ? `${jf4(num(l.freq))} / mois × ${c.mois} mois` : `${VARS[l.varKey] || l.varKey}${num(l.mult) !== 1 ? " × " + jfmt(num(l.mult)) : ""}`;
-  return `<button class="q-btn" data-act="ao-line-open" title="Modifier le calcul de la quantité"><b>${jfmt(c.q)}</b><small>${esc(txt)}</small></button>`;
+const nIn = (f, v, attrs = "") => `<input type="text" class="num" data-ao="${f}" value="${esc(v ?? "")}" inputmode="decimal" ${attrs} ${S.canWrite === false ? "readonly" : ""}>`;
+function viewWizard(ao){
+  const R = calcAo(ao), st = Math.max(0, Math.min(5, ao.step || 0)), ro = S.canWrite === false, ck = checks(ao, R);
+  const warnBy = i => ck.filter(c => c.lvl === "warn" && c.step === i).length;
+  const done = [!!ao.nom && (ao.missions || []).length > 0, ao.phases.length > 0, (ao.step || 0) > 2 || ao.maxStep > 2, ao.lines.length > 0, ao.maxStep > 4, ao.statut !== "En cours"];
+  const body = [stepProjet, stepPlanning, stepHyp, stepPresta, stepPrix, stepSynth][st](ao, R, ck);
+  return `<div class="view-head ao-head"><div style="min-width:0;flex:1"><div class="eyebrow"><button class="lnk" data-act="ao-back">‹ Chiffrages</button>${ao.missions && ao.missions.length ? " · " + esc(ao.missions.map(m => MIS[m] ? MIS[m].nom : m).join(", ")) : ""}</div>
+      <input class="ao-title" type="text" data-ao="nom" value="${esc(ao.nom)}" placeholder="Nom de l'appel d'offres" aria-label="Nom de l'appel d'offres" ${ro ? "readonly" : ""}></div>
+      <div class="pnav"><select class="ctl ao-st" data-ao="statut" style="--sc:var(${ST_COL[ao.statut] || "--muted"})" aria-label="Statut" ${ro ? "disabled" : ""}>${AO_STATUTS.map(s => `<option ${ao.statut === s ? "selected" : ""}>${s}</option>`).join("")}</select></div></div>
+    <nav class="wz-steps" aria-label="Étapes du chiffrage">${STEPS.map((s, i) => `<button class="wz-s ${i === st ? "cur" : ""} ${done[i] ? "done" : ""}" data-act="wz-step" data-i="${i}" ${i === st ? 'aria-current="step"' : ""}><span class="wz-n">${done[i] && i !== st ? "✓" : i + 1}</span><span class="wz-t">${s.t}</span>${warnBy(i) ? `<span class="wz-w" title="${warnBy(i)} point(s) à corriger">!</span>` : ""}</button>`).join("")}</nav>
+    <div class="wz-intro"><h2>${st + 1}. ${STEPS[st].t}</h2><p>${STEPS[st].d}</p></div>
+    <div class="wz-body">${body}</div>
+    <div class="wz-bar"><button class="btn" data-act="wz-prev" ${st === 0 ? "disabled" : ""}>‹ <span class="lbl-d">${st > 0 ? STEPS[st - 1].t : "Précédent"}</span></button>
+      <button class="wz-tot" data-act="wz-step" data-i="5" title="Voir la synthèse"><b>${eur(R.tot)} HT</b><small>${jfmt(R.jours)} j${R.pBudget ? " · " + pct(R.pBudget) + " des travaux" : ""}${R.duree ? " · " + R.duree + " mois" : ""}</small></button>
+      ${st < 5 ? `<button class="btn primary" data-act="wz-next"><span class="lbl-d">${STEPS[st + 1].t}</span> ›</button>` : `<button class="btn primary" data-act="ao-xlsx">Exporter</button>`}</div>`;
 }
-function lineHtml(ao, l, c){
-  const ro = S.canWrite === false, open = S.chif.open[l.id], B = bib(), lib = l.bib ? bibItem(l.bib) : null;
-  const drift = lib && (num(lib.tu) !== num(l.tu) || num(lib.cu || 0) !== num(l.cu || 0));
-  return `<div class="ao-line ${open ? "open" : ""} ${l.option ? "is-opt" : ""} ${c.q === 0 ? "zero" : ""}" data-lid="${l.id}">
-    <div class="al-lib"><textarea class="fit" rows="1" data-ao="l.lib" aria-label="Prestation" ${ro ? "readonly" : ""}>${esc(l.lib)}</textarea><div class="al-sub"><span>${esc(l.unite)}</span>${l.dep ? `<span class="al-dep">déplacement ${eur(depCost(ao))}</span>` : ""}${num(l.cu) ? `<span>${eur(num(l.cu))} / ${esc(l.unite)}</span>` : ""}${c.per ? `<span>${ymLab(c.per.a)}${c.mois > 1 ? " → " + ymLab(c.per.b) : ""}</span>` : ""}${drift ? `<span class="al-drift" title="La bibliothèque indique ${jf4(num(lib.tu))} j">≠ bibliothèque</span>` : ""}${l.option ? '<span class="al-opt">option</span>' : ""}</div></div>
-    <div class="al-q">${qtyCell(ao, l, c)}</div>
-    <div class="al-tu"><input type="text" data-ao="l.tu" value="${jf4(num(l.tu))}" inputmode="decimal" aria-label="Temps unitaire (jours)" ${ro ? "readonly" : ""}></div>
-    <div class="al-pr"><select data-ao="l.profil" aria-label="Profil" title="TJM ${eur(c.tjm)}" ${ro ? "disabled" : ""}>${B.profils.map(p => `<option value="${p.k}" ${l.profil === p.k ? "selected" : ""}>${esc(profCourt(p))}</option>`).join("")}</select></div>
-    <div class="al-dp"><label class="chk" title="Déplacement à chaque occurrence (${eur(depCost(ao))})"><input type="checkbox" data-ao="l.dep" ${l.dep ? "checked" : ""} ${ro ? "disabled" : ""} aria-label="Déplacement"><span class="m-only">Déplacement</span></label></div>
-    <div class="al-j">${jfmt(c.jours)}<small> j</small></div>
-    <div class="al-t">${eur(c.tot)}</div>
-    <div class="al-act"><button class="ic-btn" data-act="ao-line-open" aria-label="Détails" aria-expanded="${!!open}">⋯</button>${ro ? "" : `<button class="ic-btn del" data-act="ao-line-del" aria-label="Supprimer">${I.close}</button>`}</div>
-    ${open ? `<div class="al-more">
-      <div class="am-g"><span class="lbl">Calcul de la quantité</span><div class="segbar sm">${[["fixe", "Fixe"], ["freq", "Par mois"], ["var", "Selon une variable"]].map(([k, t]) => `<button data-act="ao-line-mode" data-m="${k}" aria-pressed="${l.mode === k}">${t}</button>`).join("")}</div>
-        <div class="am-row">${l.mode === "fixe" ? `<label>Quantité ${aoIn("l.qte", jf4(num(l.qte)), 'inputmode="decimal"')}</label>`
-          : l.mode === "freq" ? `<label>Occurrences par mois ${aoIn("l.freq", jf4(num(l.freq)), 'inputmode="decimal"')}</label><span class="am-hint">ex. 0,33 = trimestriel · 0,5 = tous les 2 mois · 2 = 2 par mois → ${c.mois} mois → ${jfmt(c.q)} occurrence${c.q > 1 ? "s" : ""}</span>`
-          : `<label>Variable <select data-ao="l.varKey" ${ro ? "disabled" : ""}>${Object.entries(VARS).map(([k, t]) => `<option value="${k}" ${l.varKey === k ? "selected" : ""}>${t}</option>`).join("")}</select></label><label>× ${aoIn("l.mult", jf4(num(l.mult) || 1), 'inputmode="decimal"')}</label><span class="am-hint">= ${jfmt(c.q)} ${esc(l.unite)}</span>`}</div></div>
-      <div class="am-g"><span class="lbl">Période</span><div class="segbar sm">${[["all", "Toute la phase"], ["first", "Début"], ["last", "Fin"], ["custom", "Personnalisée"]].map(([k, t]) => `<button data-act="ao-line-pos" data-p="${k}" aria-pressed="${(l.pos || "all") === k}">${t}</button>`).join("")}</div>
-        <div class="am-row">${l.pos === "first" || l.pos === "last" ? `<label>Nb de mois ${aoIn("l.len", l.len || 1, 'inputmode="numeric"')}</label>` : ""}${l.pos === "custom" && c.per ? `<label>Du ${monthIn("l.pa", c.per.a)}</label><label>au ${monthIn("l.pb", c.per.b)}</label>` : ""}<span class="am-hint">${c.per ? `${ymLab(c.per.a)} → ${ymLab(c.per.b)} · ${c.mois} mois · ${eur(c.mois ? c.tot / c.mois : 0)} / mois` : "Dates de la phase à renseigner"}</span></div></div>
-      <div class="am-g am-row"><label>Unité <select data-ao="l.unite" ${ro ? "disabled" : ""}>${[...new Set([...UNITES, l.unite])].map(u => `<option ${l.unite === u ? "selected" : ""}>${esc(u)}</option>`).join("")}</select></label>
-        <label>Frais / ${esc(l.unite)} (€ HT) ${aoIn("l.cu", jfmt(num(l.cu)), 'inputmode="decimal"')}</label>
-        <label class="chk"><input type="checkbox" data-ao="l.option" ${l.option ? "checked" : ""} ${ro ? "disabled" : ""}><span>En option (hors total)</span></label></div>
-      <div class="am-calc">${jfmt(c.q)} × ${jf4(num(l.tu))} j = <b>${jfmt(c.jours)} j</b> × ${eur(c.tjm)} = ${eur(c.trav)}${c.dep ? ` + déplacements ${eur(c.dep)}` : ""}${c.frais ? ` + frais ${eur(c.frais)}` : ""}${num(ao.params.nego) ? ` · + ${pct(num(ao.params.nego), 1)} négo` : ""} → <b>${eur(c.tot)}</b></div>
-      ${ro ? "" : `<div class="am-act">${lib ? (drift ? `<button class="btn sm" data-act="ao-line-sync">Reprendre la valeur de la bibliothèque</button><button class="btn sm" data-act="ao-line-tobib">Mettre à jour la bibliothèque</button>` : `<span class="sub">Issue de la bibliothèque · ${esc(lib.mission)} ▸ ${esc(lib.cat)}</span>`) : `<button class="btn sm" data-act="ao-line-tobib">Enregistrer dans la bibliothèque</button>`}
-        <button class="btn sm" data-act="ao-line-dup">Dupliquer</button><button class="btn sm" data-act="ao-line-up" aria-label="Monter">↑</button><button class="btn sm" data-act="ao-line-down" aria-label="Descendre">↓</button>
-        <label class="am-move">Phase <select data-ao="l.phase">${ao.phases.map(p => `<option value="${p.id}" ${p.id === l.phase ? "selected" : ""}>${esc(p.nom)}</option>`).join("")}</select></label></div>`}
-    </div>` : ""}
+/* Étape 1 : projet */
+function stepProjet(ao){
+  const ro = S.canWrite === false;
+  return `<div class="wz-grid">
+    <section class="panel"><h3>Identification</h3><div class="ao-form f2">
+      <label class="field wide"><span class="lbl">Nom de l'appel d'offres</span>${aoIn("nom", ao.nom, 'placeholder="ex. Réhabilitation du groupe scolaire – mission BIM"')}</label>
+      <label class="field"><span class="lbl">Client (à qui tu réponds)</span>${aoIn("client", ao.client)}</label><label class="field"><span class="lbl">Maître d'ouvrage</span>${aoIn("moa", ao.moa)}</label>
+      <label class="field"><span class="lbl">Localisation</span>${aoIn("lieu", ao.lieu)}</label><label class="field"><span class="lbl">Date de remise</span><input type="date" data-ao="remise" value="${esc(ao.remise || "")}" ${ro ? "readonly" : ""}></label>
+    </div></section>
+    <section class="panel"><h3>Opération</h3><div class="chipset">${TYPES_OP.map(t => `<button class="chip-b" data-act="ao-type" data-v="${esc(t)}" aria-pressed="${ao.type === t}">${esc(t)}</button>`).join("")}</div>
+      <div class="ao-form f2" style="margin-top:12px"><label class="field"><span class="lbl">Montant des travaux (€ HT)</span>${nIn("budget", num(ao.budget) ? num(ao.budget).toLocaleString("fr-FR") : "", 'placeholder="ex. 8 000 000"')}</label>
+      <label class="field"><span class="lbl">Surface (m²)</span>${nIn("surface", num(ao.surface) ? num(ao.surface).toLocaleString("fr-FR") : "", 'placeholder="ex. 5 000"')}</label></div>
+      <p class="sub">Ces deux valeurs donnent les ratios « % des travaux » et « € / m² ». La surface peut aussi servir d'unité d'œuvre.</p></section>
+    <section class="panel wide"><h3>Missions demandées</h3><p class="sub">Coche les missions de l'AO : elles servent à te proposer les prestations à l'étape 4.</p>
+      <div class="mis-grid">${MISSIONS.map(m => { const on = (ao.missions || []).includes(m.k); return `<button class="mis ${on ? "on" : ""}" data-act="ao-mis" data-k="${m.k}" aria-pressed="${on}"><span class="mis-c">${on ? "✓" : ""}</span><span><b>${esc(m.nom)}</b><small>${esc(m.desc)}</small></span></button>`; }).join("")}</div></section>
   </div>`;
 }
-function barList(list, tot, fmtV){
-  if (!list.length || !tot) return '<p class="sub">Rien à afficher.</p>';
-  const mx = Math.max(...list.map(x => x.v));
-  return `<div class="dec-bars">${list.map(x => `<div class="db-r"><span class="db-l" title="${esc(x.k)}">${esc(x.k)}</span><span class="db-v">${fmtV(x.v)} <small>${Math.round(x.v / tot * 100)} %</small></span><span class="db-b"><i style="width:${Math.max(2, x.v / mx * 100)}%"></i></span></div>`).join("")}</div>`;
+/* Étape 2 : planning */
+function stepPlanning(ao, R){
+  const ro = S.canWrite === false, eph = R.eph, C = S.chif;
+  if (!ao.phases.length) return `<section class="panel"><h3>Choisis une structure de départ</h3><p class="sub">Tu pourras renommer, ajouter, supprimer ou redimensionner chaque phase ensuite.</p>
+    <div class="preset-grid">${PRESETS.map(p => `<button class="preset ${C.preset === p.k ? "on" : ""}" data-act="ao-preset" data-k="${p.k}" aria-pressed="${C.preset === p.k}"><b>${esc(p.nom)}</b><small>${esc(p.desc)}</small><span class="pr-bars">${p.ph.map(x => `<i class="st-${x[1]}" style="flex:${x[2]}" title="${esc(x[0])} · ${x[2]} mois"></i>`).join("")}</span><small class="mut">${p.ph.reduce((s, x) => s + x[2], 0)} mois</small></button>`).join("")}</div>
+    <div class="ao-form f3" style="margin-top:14px"><label class="field"><span class="lbl">Début de la mission</span><input type="month" data-ao="start" value="${esc(ao.start)}"></label>
+      <label class="toggle pl-t"><input type="checkbox" id="pl-trans" ${(ao.missions || []).includes("pla") || (ao.missions || []).includes("bim") ? "checked" : ""}> Ajouter une phase transverse sur toute la durée (plateforme, pilotage)</label></div>
+    ${ro ? "" : `<div class="row" style="margin-top:12px"><button class="btn primary" data-act="ao-plan-create">Créer le planning</button></div>`}</section>`;
+  const a0 = R.a, tot = R.duree || 1;
+  return `<section class="panel"><div class="pl-top"><label class="field"><span class="lbl">Début de la mission</span><input type="month" data-ao="start" value="${esc(ao.start)}" ${ro ? "readonly" : ""}></label>
+      <label class="toggle"><input type="checkbox" data-ao="chain" ${ao.chain !== false ? "checked" : ""} ${ro ? "disabled" : ""}> Enchaîner les phases automatiquement</label>
+      <span class="sub">Durée totale : <b style="color:var(--ink)">${R.duree} mois</b> · ${ymLab(R.a)} → ${ymLab(R.b)}</span></div>
+    <div class="ph-rows">${eph.map((p, i) => `<div class="ph-row" data-pid="${p.id}">
+      <select class="ph-st st-${p.stage}" data-ao="ph.stage" aria-label="Étape" ${ro ? "disabled" : ""}>${Object.entries(STAGES).map(([k, t]) => `<option value="${k}" ${p.stage === k ? "selected" : ""}>${t}</option>`).join("")}</select>
+      <input class="ph-nm" type="text" data-ao="ph.nom" value="${esc(p.nom)}" aria-label="Nom de la phase" ${ro ? "readonly" : ""}>
+      <span class="ph-d">${ao.chain !== false || p.stage === "T" ? `<span class="ph-a">${ymLab(p.a)}</span>` : `<input type="month" data-ao="ph.a" value="${p.a}" aria-label="Début" ${ro ? "readonly" : ""}>`}
+        ${p.stage === "T" ? `<span class="ph-n mut">${p.n} mois</span>` : `<span class="stepper"><button data-act="ao-ph-n" data-d="-1" aria-label="Un mois de moins" ${ro ? "disabled" : ""}>−</button><input type="text" data-ao="ph.n" value="${p.n}" inputmode="numeric" aria-label="Durée en mois" ${ro ? "readonly" : ""}><button data-act="ao-ph-n" data-d="1" aria-label="Un mois de plus" ${ro ? "disabled" : ""}>+</button></span><span class="ph-n mut">mois</span>`}<span class="ph-b">→ ${ymLab(p.b)}</span></span>
+      ${ro ? "" : `<span class="ph-act"><button class="ic-btn" data-act="ao-ph-up" aria-label="Monter" ${i === 0 ? "disabled" : ""}>↑</button><button class="ic-btn" data-act="ao-ph-down" aria-label="Descendre" ${i === eph.length - 1 ? "disabled" : ""}>↓</button><button class="ic-btn del" data-act="ao-ph-del" aria-label="Supprimer la phase">${I.close}</button></span>`}
+      <div class="ph-gantt"><i class="st-${p.stage}" style="margin-left:${ymCount(a0, p.a) - 1 >= 0 ? (ymCount(a0, p.a) - 1) / tot * 100 : 0}%;width:${p.n / tot * 100}%"></i></div></div>`).join("")}</div>
+    ${ro ? "" : `<div class="row" style="margin-top:10px"><button class="btn" data-act="ao-ph-new" data-stage="C">${I.plus} Phase de conception</button><button class="btn" data-act="ao-ph-new" data-stage="R">${I.plus} Phase de réalisation</button><button class="btn" data-act="ao-ph-new" data-stage="E">${I.plus} Exploitation</button>${eph.some(p => p.stage === "T") ? "" : `<button class="btn" data-act="ao-ph-new" data-stage="T">${I.plus} Transverse</button>`}</div>`}
+    <p class="sub" style="margin-top:10px">Une phase <b>transverse</b> couvre toute la durée du projet : utile pour la plateforme collaborative ou le pilotage récurrent.</p></section>`;
 }
-function suiviAo(ao, R){
+/* Étape 3 : hypothèses */
+function stepHyp(ao, R){
+  const ro = S.canWrite === false, used = new Map();
+  for (const x of R.lines) if (x.l.type !== "temps" && x.l.drv) used.set(x.l.drv, (used.get(x.l.drv) || 0) + 1);
+  const card = d => `<div class="hyp ${used.get(d.k) ? "used" : ""}" data-k="${d.k}"><div class="hyp-h">${d.custom ? `<input type="text" data-ao="cd.nom" value="${esc(d.nom)}" aria-label="Nom de l'hypothèse" ${ro ? "readonly" : ""}>` : `<b>${esc(d.nom)}</b>`}${d.custom && !ro ? `<button class="ic-btn del" data-act="ao-cd-del" aria-label="Supprimer">${I.close}</button>` : ""}</div>
+    ${d.hint ? `<small>${esc(d.hint)}</small>` : ""}
+    <span class="stepper big"><button data-act="ao-d-step" data-d="-1" aria-label="Moins" ${ro ? "disabled" : ""}>−</button><input type="text" data-ao="d.${d.k}" value="${jf4(num((ao.drivers || {})[d.k]))}" inputmode="decimal" aria-label="${esc(d.nom)}" ${ro ? "readonly" : ""}><button data-act="ao-d-step" data-d="1" aria-label="Plus" ${ro ? "disabled" : ""}>+</button></span>
+    <span class="hyp-u">${used.get(d.k) ? `utilisée par ${plur(used.get(d.k), "prestation")}` : "pas encore utilisée"}</span></div>`;
+  return `<div class="wz-grid">
+    <section class="panel wide"><h3>Quantités du projet</h3><p class="sub">Une prestation à l'unité d'œuvre peut se calculer « selon » l'une de ces quantités : si tu changes le nombre de maquettes ici, toutes les prestations par maquette se mettent à jour.</p>
+      <div class="hyp-grid">${drvList(ao).map(card).join("")}
+        <div class="hyp calc"><div class="hyp-h"><b>${CALC_DRV.zc.nom}</b></div><small>Calculé : zones × cycles par zone.</small><span class="hyp-v">${jfmt(drvVal(ao, "zc"))}</span><span class="hyp-u">${used.get("zc") ? `utilisée par ${plur(used.get("zc"), "prestation")}` : "pas encore utilisée"}</span></div>
+        <div class="hyp calc"><div class="hyp-h"><b>${CALC_DRV.surface.nom}</b></div><small>Reprise de l'étape Projet.</small><span class="hyp-v">${num(ao.surface) ? num(ao.surface).toLocaleString("fr-FR") + " m²" : "—"}</span><span class="hyp-u">${used.get("surface") ? `utilisée par ${plur(used.get("surface"), "prestation")}` : "pas encore utilisée"}</span></div>
+        ${ro ? "" : `<button class="hyp add" data-act="ao-cd-new">${I.plus}<span>Ajouter une quantité</span><small>ex. bâtiments, logements, équipements…</small></button>`}</div></section>
+    <section class="panel"><h3>Déplacements</h3><p class="sub">Coût appliqué à chaque occurrence d'une prestation cochée « déplacement ».</p>
+      <div class="ao-form f3"><label class="field"><span class="lbl">Distance aller-retour (km)</span>${nIn("p.kmAR", num(ao.params.kmAR) || "")}</label><label class="field"><span class="lbl">Coût au km (€)</span>${nIn("p.ckm", jf4(num(ao.params.ckm)))}</label><label class="field"><span class="lbl">Repas, péage, parking (€)</span>${nIn("p.repas", jf4(num(ao.params.repas)))}</label></div>
+      <div class="dep-res">Un déplacement = <b>${eur(depCost(ao))}</b></div></section>
+  </div>`;
+}
+/* Étape 4 : prestations */
+function lineCard(ao, l, c, eph){
+  const ro = S.canWrite === false, open = S.chif.open[l.id], lib = l.bib ? uoItem(l.bib) : null, P = profilsOf(ao);
+  const drift = lib && (num(lib.tu) !== num(l.tu) || num(lib.cu || 0) !== num(l.cu || 0));
+  const isT = l.type === "temps", dis = ro ? "disabled" : "";
+  const qty = isT ? `<span class="fx-g"><input type="text" class="num s" data-ao="l.freq" value="${jf4(num(l.freq))}" inputmode="decimal" aria-label="Fois par mois" ${ro ? "readonly" : ""}><span class="fx">fois par mois</span>
+        <select data-ao="l.pos" aria-label="Période" ${dis}>${[["all", "sur toute la phase"], ["first", "en début de phase"], ["last", "en fin de phase"], ["custom", "sur une période"]].map(([k, t]) => `<option value="${k}" ${(l.pos || "all") === k ? "selected" : ""}>${t}</option>`).join("")}</select>
+        ${l.pos === "first" || l.pos === "last" ? `<span class="fx">pendant</span><input type="text" class="num s" data-ao="l.len" value="${l.len || 1}" inputmode="numeric" aria-label="Nombre de mois" ${ro ? "readonly" : ""}><span class="fx">mois</span>` : ""}
+        <span class="fx res">= ${plur(c.q, "fois", "fois")}${c.mois ? ` en ${c.mois} mois` : ""}</span></span>`
+    : `<span class="fx-g">${l.drv ? `<span class="fx res">${jf4(c.q)}</span>` : `<input type="text" class="num s" data-ao="l.qte" value="${jf4(num(l.qte))}" inputmode="decimal" aria-label="Quantité" ${ro ? "readonly" : ""}>`}<span class="fx">${esc(plurU(l.unite, c.q))}</span>
+        <select class="drv ${l.drv ? "on" : ""}" data-ao="l.drv" aria-label="Origine de la quantité" title="La quantité peut suivre une hypothèse de l'étape 3" ${dis}><option value="">quantité saisie</option>${[...drvList(ao), {k:"zc", nom:CALC_DRV.zc.nom}, {k:"surface", nom:CALC_DRV.surface.nom}].map(d => `<option value="${d.k}" ${l.drv === d.k ? "selected" : ""}>selon ${esc(d.nom.toLowerCase())}</option>`).join("")}</select>
+        ${l.drv && num(l.mult) !== 1 || (l.drv && S.chif.open[l.id]) ? `<span class="fx">×</span><input type="text" class="num s" data-ao="l.mult" value="${jf4(num(l.mult) || 1)}" inputmode="decimal" aria-label="Coefficient" title="Coefficient appliqué à l'hypothèse" ${ro ? "readonly" : ""}>` : ""}</span>`;
+  return `<div class="ln ${open ? "open" : ""} ${l.option ? "is-opt" : ""} ${c.prix === 0 ? "zero" : ""}" data-lid="${l.id}">
+    <div class="ln-top"><button class="ln-type ${isT ? "t" : "u"}" data-act="ao-line-type" title="${isT ? "Au temps : fréquence × durée. Cliquer pour passer à l'unité d'œuvre" : "À l'unité d'œuvre : quantité × temps ou prix unitaire. Cliquer pour passer au temps"}" ${dis}>${isT ? "Temps" : "UO"}</button>
+      <textarea class="fit ln-lib" rows="1" data-ao="l.lib" aria-label="Prestation" ${ro ? "readonly" : ""}>${esc(l.lib)}</textarea>
+      <span class="ln-prix"><b>${eur(c.prix)}</b><small>${jfmt(c.jours)} j${l.option ? " · option" : ""}</small></span>
+      <span class="ln-act"><button class="ic-btn" data-act="ao-line-open" aria-label="Plus de réglages" aria-expanded="${!!open}">⋯</button>${ro ? "" : `<button class="ic-btn del" data-act="ao-line-del" aria-label="Supprimer">${I.close}</button>`}</span></div>
+    <div class="ln-f">${qty}<span class="fx">×</span><span class="fx-g"><input type="text" class="num s" data-ao="l.tu" value="${jf4(num(l.tu))}" inputmode="decimal" aria-label="Temps unitaire en jours" ${ro ? "readonly" : ""}><span class="fx">j</span></span>
+      <select class="ln-pr" data-ao="l.profil" aria-label="Profil" title="TJM ${eur(c.tjm)}" ${dis}>${P.map(p => `<option value="${p.k}" ${l.profil === p.k ? "selected" : ""}>${esc(profCourt(p))}</option>`).join("")}</select>
+      ${num(l.cu) ? `<span class="fx">+ ${eur(num(l.cu))} / ${esc(l.unite)}</span>` : ""}
+      <label class="chk" title="Ajoute un déplacement (${eur(depCost(ao))}) à chaque occurrence"><input type="checkbox" data-ao="l.dep" ${l.dep ? "checked" : ""} ${dis}><span>Déplacement</span></label></div>
+    ${drift || (c.prix === 0 && lib && lib.note) ? `<div class="ln-note">${drift ? `<span class="al-drift">Différent de la base (${jf4(num(lib.tu))} j${num(lib.cu) ? ", " + eur(num(lib.cu)) : ""})</span>` : ""}${c.prix === 0 && lib && lib.note ? `<span class="warn">${esc(lib.note)}</span>` : ""}</div>` : ""}
+    ${open ? `<div class="al-more">
+      <div class="am-row"><label>Unité <select data-ao="l.unite" ${dis}>${[...new Set([...UNITES, l.unite])].map(u => `<option ${l.unite === u ? "selected" : ""}>${esc(u)}</option>`).join("")}</select></label>
+        <label>Prix unitaire (€ HT / ${esc(l.unite)}) ${nIn("l.cu", jf4(num(l.cu)))}</label>
+        <label class="chk"><input type="checkbox" data-ao="l.option" ${l.option ? "checked" : ""} ${dis}><span>En option (hors total)</span></label></div>
+      ${isT ? `<div class="am-row"><span class="lbl">Période</span>${c.per ? `<label>du <input type="month" data-ao="l.pa" value="${c.per.a}" ${ro ? "readonly" : ""}></label><label>au <input type="month" data-ao="l.pb" value="${c.per.b}" ${ro ? "readonly" : ""}></label>` : ""}<span class="am-hint">${c.per ? `${c.mois} mois · ${eur(c.mois ? c.prix / c.mois : 0)} par mois` : ""}</span></div>` : ""}
+      <div class="am-calc">${jf4(c.q)} × ${jf4(num(l.tu))} j = <b>${jfmt(c.jours)} j</b> × ${eur(c.tjm)} = ${eur(c.trav)}${c.frais ? ` + ${eur(c.frais)} de prix unitaire` : ""}${c.dep ? ` + ${eur(c.dep)} de déplacements` : ""}${num(ao.params.marge) ? ` · marge ${pct(num(ao.params.marge), 1)}` : ""} → <b>${eur(c.prix)}</b></div>
+      <div class="am-row"><label>Mission <select data-ao="l.mis" ${dis}><option value="">Autre</option>${MISSIONS.map(m => `<option value="${m.k}" ${l.mis === m.k ? "selected" : ""}>${esc(m.nom)}</option>`).join("")}</select></label>
+        <label>Phase <select data-ao="l.phase" ${dis}>${eph.map(p => `<option value="${p.id}" ${p.id === l.phase ? "selected" : ""}>${esc(p.nom)}</option>`).join("")}</select></label>
+        <label class="grow">Note ${aoIn("l.note", l.note || "", 'placeholder="Hypothèse, précision pour le mémoire…"')}</label></div>
+      ${ro ? "" : `<div class="am-act">${lib ? (drift ? `<button class="btn sm" data-act="ao-line-sync">Reprendre la valeur de la base</button><button class="btn sm" data-act="ao-line-tobib">Mettre la base à jour</button>` : `<span class="sub">Issue de la base · ${esc(MIS[lib.mission] ? MIS[lib.mission].nom : lib.mission)} ▸ ${esc(lib.cat)}</span>`) : `<button class="btn sm" data-act="ao-line-tobib">Enregistrer dans la base</button>`}
+        <span class="spacer"></span><button class="btn sm" data-act="ao-line-dup">Dupliquer</button><button class="btn sm" data-act="ao-line-up" aria-label="Monter">↑</button><button class="btn sm" data-act="ao-line-down" aria-label="Descendre">↓</button></div>`}
+    </div>` : ""}</div>`;
+}
+function stepPresta(ao, R){
+  const ro = S.canWrite === false;
+  if (!ao.phases.length) return `<section class="panel"><p>Crée d'abord le planning : les prestations se rangent par phase.</p><button class="btn primary" data-act="wz-step" data-i="1">Aller au planning</button></section>`;
+  const sug = proposals(ao), noMis = !(ao.missions || []).length;
+  return `${ro ? "" : `<div class="wz-tools">
+      ${sug.length ? `<button class="btn primary" data-act="ao-propose">✦ ${ao.lines.length ? "Ajouter" : "Proposer"} ${plur(sug.length, "prestation")}</button>` : ""}
+      <button class="btn" data-act="ao-pick" data-pid="">${I.plus} Depuis la base</button>
+      <span class="sub">${noMis ? 'Coche les missions à l\'étape 1 pour recevoir des propositions.' : sug.length ? `Selon tes missions et ton planning.` : "Toutes les prestations proposées sont en place."}</span></div>`}
+    ${ao.lines.length ? "" : `<div class="wz-help"><div><b>À l'unité d'œuvre (UO)</b><p>Une quantité × un temps unitaire et/ou un prix unitaire. La quantité peut suivre une hypothèse : 6 maquettes × 0,25 j.</p></div><div><b>Au temps</b><p>Une fréquence par mois × la durée de la phase × un temps par occurrence : 1 audit par mois pendant 12 mois × 1,5 j.</p></div></div>`}
+    ${R.eph.map(p => { const ls = R.lines.filter(x => x.l.phase === p.id), x = R.ph.find(y => y.p.id === p.id), coll = S.chif.coll[p.id]; return `<section class="ao-ph ${coll ? "coll" : ""}" data-pid="${p.id}">
+      <button class="ao-ph-h" data-act="ao-ph-toggle" aria-expanded="${!coll}"><span class="chev">${coll ? "▸" : "▾"}</span><span class="ph-tag st-${p.stage}">${STAGES[p.stage]}</span><b>${esc(p.nom)}</b><small>${ymLab(p.a)} → ${ymLab(p.b)} · ${p.n} mois</small><span class="ph-tot"><b>${eur(x ? x.prix : 0)}</b><small>${jfmt(x ? x.jours : 0)} j · ${plur(ls.length, "ligne")}</small></span></button>
+      ${coll ? "" : `${ls.map(y => lineCard(ao, y.l, y.c, R.eph)).join("") || '<div class="ao-none">Aucune prestation dans cette phase.</div>'}
+      ${ro ? "" : `<div class="ao-ph-add"><button class="btn ghost sm" data-act="ao-pick">${I.plus} Depuis la base</button><button class="btn ghost sm" data-act="ao-line-new" data-t="uo">${I.plus} Unité d'œuvre libre</button><button class="btn ghost sm" data-act="ao-line-new" data-t="temps">${I.plus} Prestation au temps libre</button></div>`}`}
+    </section>`; }).join("")}`;
+}
+/* Étape 5 : prix */
+function stepPrix(ao, R, ck){
+  const ro = S.canWrite === false, P = ao.params, Ps = profilsOf(ao);
+  const cib = num(ao.cible), need = cib && R.brut ? 1 - cib / R.brut : 0;
+  return `<div class="wz-grid">
+    <section class="panel"><h3>Taux journaliers</h3><table class="tbl tjm"><thead><tr><th>Profil</th><th>TJM (€ HT)</th><th>Jours</th><th>Montant</th></tr></thead><tbody>
+      ${Ps.map(p => { const o = R.byProf.get(p.k); return `<tr class="${o ? "" : "unused"}"><td>${esc(p.nom)}</td><td>${nIn("tjm." + p.k, profTjm(ao, p.k))}</td><td>${o ? jfmt(o.j) : "–"}</td><td>${o ? eur(o.e) : "–"}</td></tr>`; }).join("")}
+      <tr class="tot"><td>Total</td><td>${eur(R.tjmMoy)} <small>moy.</small></td><td>${jfmt(R.jours)}</td><td>${eur(R.tot)}</td></tr></tbody></table></section>
+    <section class="panel"><h3>Marge et remise</h3><div class="ao-form f2">
+      <label class="field"><span class="lbl">Marge / aléas (%)</span>${nIn("p.marge", jf4(num(P.marge) * 100))}<small class="sub">Ajoutée au prix de chaque prestation.</small></label>
+      <label class="field"><span class="lbl">Remise commerciale (%)</span>${nIn("p.remise", jf4(num(P.remise) * 100))}<small class="sub">Déduite du total.</small></label>
+      <label class="field"><span class="lbl">Arrondir le total à</span><select data-ao="p.arrondi" ${ro ? "disabled" : ""}>${[[0, "l'euro"], [10, "10 €"], [100, "100 €"], [1000, "1 000 €"]].map(([v, t]) => `<option value="${v}" ${num(P.arrondi) === v ? "selected" : ""}>${t}</option>`).join("")}</select></label>
+      <label class="field"><span class="lbl">TVA (%)</span>${nIn("p.tva", jf4(num(P.tva) * 100))}</label></div>
+      <div class="px-sum"><span>Prestations</span><b>${eur(R.brut)}</b>${R.rem ? `<span>Remise ${pct(num(P.remise), 1)}</span><b>− ${eur(R.rem)}</b>` : ""}<span>Total HT</span><b class="big">${eur(R.tot)}</b><span>TTC</span><b>${eur(R.tot * (1 + num(P.tva)))}</b></div></section>
+    <section class="panel"><h3>Prix cible</h3><p class="sub">Tu as un budget à viser ou un prix à ne pas dépasser ? Saisis-le : l'écart et la remise nécessaire s'affichent.</p>
+      <label class="field"><span class="lbl">Prix visé (€ HT)</span>${nIn("cible", cib ? cib.toLocaleString("fr-FR") : "", 'placeholder="ex. 120 000"')}</label>
+      ${cib ? `<div class="cible ${cib < R.tot ? "warn" : "ok"}">${cib < R.tot ? `Écart de <b>${eur(R.tot - cib)}</b> : il faudrait une remise de <b>${pct(need, 1)}</b>.${!ro && need > 0 && need < 0.9 ? ` <button class="btn sm" data-act="ao-cible-apply">Appliquer cette remise</button>` : ""}` : `Tu es <b>${eur(cib - R.tot)}</b> sous le prix visé.`}</div>` : ""}</section>
+    <section class="panel"><h3>Contrôles</h3><ul class="checks">${ck.map(c => `<li class="ck-${c.lvl}"><span class="ck-i">${c.lvl === "ok" ? "✓" : c.lvl === "warn" ? "!" : "i"}</span><span>${esc(c.txt)}</span>${c.step !== 4 && c.step !== 5 ? `<button class="lnk" data-act="wz-step" data-i="${c.step}">${STEPS[c.step].t} ›</button>` : ""}</li>`).join("")}</ul>
+      <div class="ratios"><span>TJM moyen <b>${eur(R.tjmMoy)}</b></span><span>Travaux <b>${R.pBudget ? pct(R.pBudget) : "—"}</b></span><span>€ / m² <b>${R.eurM2 ? (Math.round(R.eurM2 * 100) / 100).toLocaleString("fr-FR") : "—"}</b></span><span>Par mois <b>${eur(R.parMois)}</b></span></div></section>
+  </div>`;
+}
+/* Étape 6 : synthèse */
+function suivi(ao, R){
   if (!ao.reference || !R.a) return null;
   const start = R.a + "-01", end = today(); if (start > end) return {j:0};
   let m = 0; for (let d = start; d <= end; d = addDays(d, 1)) for (const r of decRows(d)) if (r.ref === ao.reference) m += r.m;
   return {j:m / 60 / 8};
 }
-function viewAo(ao){
-  const ro = S.canWrite === false, R = calcAo(ao), B = bib(), P = ao.params;
-  const anc = num(ao.budget) ? [B.params.ancMin * num(ao.budget), B.params.ancMax * num(ao.budget)] : null;
-  const ancPos = anc ? Math.max(0, Math.min(100, (R.tot - anc[0]) / (anc[1] - anc[0]) * 100)) : 0;
-  const comps = [...[...S.aos.values()].filter(a => a.id !== ao.id && num(a.budget) && ["Gagné", "Envoyé", "Perdu"].includes(a.statut)).map(a => { const r = calcAo(a); return {nom:a.nom || "Sans titre", st:a.statut, p:r.pBudget, m2:r.eurM2, tot:r.tot}; }),
-    ...B.bench.map(b => ({nom:b.nom, st:"Référence", p:num(b.honos) / num(b.budget), m2:num(b.surface) ? num(b.honos) / num(b.surface) : 0, tot:num(b.honos)}))];
-  const su = ao.statut === "Gagné" ? suiviAo(ao, R) : null;
-  const mList = [...R.months].sort((a, b) => a[0].localeCompare(b[0])), mMax = Math.max(1, ...mList.map(([, o]) => o.e));
-  const lineRows = (ph) => { const ls = R.lines.filter(x => x.l.phase === ph.id); return ls.map(x => lineHtml(ao, x.l, x.c)).join("") || '<div class="ao-none">Aucune prestation dans cette phase.</div>'; };
-  return `<div class="view-head ao-head"><div style="min-width:0;flex:1"><div class="eyebrow"><button class="lnk" data-act="ao-back">‹ Chiffrages</button> · ${esc(ao.mission || "Chiffrage AO")}</div>
-      <input class="ao-title" type="text" data-ao="nom" value="${esc(ao.nom)}" placeholder="Nom de l'appel d'offres" ${ro ? "readonly" : ""}></div>
-      <div class="pnav"><select class="ctl ao-st" data-ao="statut" style="--sc:var(${ST_COL[ao.statut] || "--muted"})" ${ro ? "disabled" : ""}>${AO_STATUTS.map(s => `<option ${ao.statut === s ? "selected" : ""}>${s}</option>`).join("")}</select>
-        <button class="btn primary" data-act="ao-xlsx">Exporter en .xlsx</button>${ro ? "" : `<button class="btn" data-act="ao-dup">Dupliquer</button><button class="btn ghost danger" data-act="ao-del">Supprimer</button>`}</div></div>
-    <div class="kpi-row dec-kpis ao-kpis6">
-      <div class="kc"><span class="kc-l">Total HT</span><span class="kc-v">${eur(R.tot)}</span>${R.optTot ? `<span class="kc-n mut">+ ${eur(R.optTot)} d'options</span>` : `<span class="kc-n mut">${eur(R.tot * (1 + B.params.tva))} TTC</span>`}</div>
+function stepSynth(ao, R){
+  const ro = S.canWrite === false, ms = [...R.months].sort((a, b) => a[0].localeCompare(b[0])), mx = Math.max(1, ...ms.map(([, o]) => o.e));
+  const mis = [...R.byMis].sort((a, b) => b[1] - a[1]), su = ao.statut === "Gagné" ? suivi(ao, R) : null;
+  return `<div class="kpi-row dec-kpis ao-kpis6">
+      <div class="kc"><span class="kc-l">Total HT</span><span class="kc-v">${eur(R.tot)}</span><span class="kc-n mut">${eur(R.tot * (1 + num(ao.params.tva)))} TTC</span></div>
       <div class="kc"><span class="kc-l">Jours</span><span class="kc-v">${jfmt(R.jours)} j</span><span class="kc-n mut">TJM moyen ${eur(R.tjmMoy)}</span></div>
-      <div class="kc"><span class="kc-l">% des travaux</span><span class="kc-v ${anc && (R.tot < anc[0] || R.tot > anc[1]) ? "warn" : ""}">${R.pBudget ? pct(R.pBudget) : "—"}</span><span class="kc-n mut">${num(ao.budget) ? "sur " + keur(num(ao.budget)) : "budget à saisir"}</span></div>
+      <div class="kc"><span class="kc-l">% des travaux</span><span class="kc-v">${R.pBudget ? pct(R.pBudget) : "—"}</span></div>
       <div class="kc"><span class="kc-l">€ / m²</span><span class="kc-v">${R.eurM2 ? (Math.round(R.eurM2 * 100) / 100).toLocaleString("fr-FR") + " €" : "—"}</span></div>
       <div class="kc"><span class="kc-l">Durée</span><span class="kc-v">${R.duree ? R.duree + " mois" : "—"}</span><span class="kc-n mut">${R.a ? ymLab(R.a) + " → " + ymLab(R.b) : ""}</span></div>
-      <div class="kc"><span class="kc-l">Facturation</span><span class="kc-v">${eur(R.parMois)}</span><span class="kc-n mut">par mois en moyenne</span></div>
-    </div>
-    <div class="ao-layout"><div class="ao-main">
-      <details class="panel ao-info" ${(S.chif.infoOpen ?? !(ao.client || ao.budget)) ? "open" : ""}><summary><h2>Projet et paramètres</h2><span class="sub">${esc([ao.client, ao.lieu, num(ao.budget) ? keur(num(ao.budget)) + " de travaux" : "", num(ao.surface) ? num(ao.surface).toLocaleString("fr-FR") + " m²" : ""].filter(Boolean).join(" · ") || "Client, budget, surface, déplacement, TJM, négociation")}</span></summary>
-        <div class="ao-form">
-          <label class="field"><span class="lbl">Client</span>${aoIn("client", ao.client)}</label><label class="field"><span class="lbl">Maître d'ouvrage</span>${aoIn("moa", ao.moa)}</label>
-          <label class="field wide"><span class="lbl">Opération</span>${aoIn("op", ao.op)}</label>
-          <label class="field"><span class="lbl">Type</span>${aoIn("type", ao.type, 'placeholder="ex. Conception-réalisation, site occupé"')}</label><label class="field"><span class="lbl">Mission</span>${aoIn("mission", ao.mission, 'list="dl-mis"')}<datalist id="dl-mis">${MISSIONS.map(m => `<option value="${esc(m)}">`).join("")}</datalist></label>
-          <label class="field"><span class="lbl">Lieu</span>${aoIn("lieu", ao.lieu)}</label><label class="field"><span class="lbl">Date de remise</span><input type="date" data-ao="remise" value="${esc(ao.remise || "")}" ${ro ? "readonly" : ""}></label>
-          <label class="field"><span class="lbl">Budget travaux (€ HT)</span>${aoIn("budget", num(ao.budget) ? num(ao.budget).toLocaleString("fr-FR") : "", 'inputmode="decimal"')}</label><label class="field"><span class="lbl">Surface (m²)</span>${aoIn("surface", num(ao.surface) ? num(ao.surface).toLocaleString("fr-FR") : "", 'inputmode="decimal"')}</label>
-          <label class="field"><span class="lbl">Distance A/R (km)</span>${aoIn("kmAR", ao.kmAR || "", 'inputmode="decimal"')}</label><label class="field"><span class="lbl">Coût km / repas (€)</span><span class="row2">${aoIn("p.ckm", jf4(num(P.ckm)), 'inputmode="decimal"')}${aoIn("p.repas", jfmt(num(P.repas)), 'inputmode="decimal"')}</span><small class="sub">Déplacement : ${eur(depCost(ao))} par occurrence</small></label>
-          <label class="field"><span class="lbl">Anticipation négo (%)</span>${aoIn("p.nego", jfmt(num(P.nego) * 100), 'inputmode="decimal"')}</label><label class="field"><span class="lbl">Arrondir le total à</span><select data-ao="p.arrondi" ${ro ? "disabled" : ""}>${[[0, "Pas d'arrondi"], [10, "10 €"], [100, "100 €"], [1000, "1 000 €"]].map(([v, t]) => `<option value="${v}" ${num(P.arrondi) === v ? "selected" : ""}>${t}</option>`).join("")}</select></label>
-          ${B.profils.map(p => `<label class="field"><span class="lbl">TJM ${esc(p.nom)} (€ HT)</span>${aoIn("tjm." + p.k, profTjm(ao, p.k), 'inputmode="decimal"')}</label>`).join("")}
-          <label class="field"><span class="lbl">Nb de zones / cycles par zone</span><span class="row2">${aoIn("v.zones", ao.vars.zones ?? "", 'inputmode="numeric"')}${aoIn("v.cycles", ao.vars.cycles ?? "", 'inputmode="numeric"')}</span></label><label class="field"><span class="lbl">Nb de maquettes</span>${aoIn("v.maquettes", ao.vars.maquettes ?? "", 'inputmode="numeric"')}</label>
-          <label class="field wide"><span class="lbl">Référence du décompte (pour suivre le temps passé si l'AO est gagné)</span>${aoIn("reference", ao.reference, 'list="dl-refs" placeholder="ex. ATOMBIM__AO_Concours ou la référence du projet"')}<datalist id="dl-refs">${refList().map(r => `<option value="${esc(r)}">`).join("")}</datalist></label>
-        </div></details>
-      <div class="ao-cols" aria-hidden="true"><span>Prestation</span><span>Quantité</span><span>T.U. (j)</span><span>Profil</span><span title="Déplacement">Dépl.</span><span>Jours</span><span>Montant HT</span><span></span></div>
-      ${R.ph.map((x, i) => `<section class="ao-ph" data-pid="${x.p.id}">
-        <div class="ao-ph-h"><input class="ph-nom" type="text" data-ao="ph.nom" value="${esc(x.p.nom)}" aria-label="Nom de la phase" ${ro ? "readonly" : ""}>
-          <span class="ph-per">${monthIn("ph.a", x.p.a, 'aria-label="Début de la phase"')}<span>→</span>${monthIn("ph.b", x.p.b, 'aria-label="Fin de la phase"')}<small>${ymCount(x.p.a, x.p.b)} mois</small></span>
-          <span class="ph-tot"><b>${eur(x.tot)}</b><small>${jfmt(x.jours)} j</small></span>
-          ${ro ? "" : `<span class="ph-act"><button class="ic-btn" data-act="ao-ph-up" aria-label="Monter la phase" ${i === 0 ? "disabled" : ""}>↑</button><button class="ic-btn" data-act="ao-ph-down" aria-label="Descendre la phase" ${i === R.ph.length - 1 ? "disabled" : ""}>↓</button><button class="ic-btn del" data-act="ao-ph-del" aria-label="Supprimer la phase">${I.close}</button></span>`}</div>
-        ${lineRows(x.p)}
-        ${ro ? "" : `<div class="ao-ph-add"><button class="btn ghost sm" data-act="ao-pick">${I.plus} Prestations de la bibliothèque</button><button class="btn ghost sm" data-act="ao-line-new">${I.plus} Ligne libre</button></div>`}
-      </section>`).join("")}
-      ${ro ? "" : `<div class="ao-add-ph"><button class="btn" data-act="ao-ph-new">${I.plus} Ajouter une phase</button><button class="btn ghost" data-act="ao-shift" data-n="-1">Décaler tout d'1 mois plus tôt</button><button class="btn ghost" data-act="ao-shift" data-n="1">plus tard</button></div>`}
-    </div>
-    <aside class="ao-side">
-      ${anc ? `<div class="panel"><h2>Ancrage prix</h2><p class="sub">Fourchette ${pct(B.params.ancMin)} – ${pct(B.params.ancMax)} du budget travaux : ${keur(anc[0])} – ${keur(anc[1])}</p>
-        <div class="anc"><i style="left:${ancPos}%"></i></div><div class="anc-l"><span>${keur(anc[0])}</span><b class="${R.tot < anc[0] || R.tot > anc[1] ? "warn" : "ok"}">${R.tot < anc[0] ? "en dessous" : R.tot > anc[1] ? "au-dessus" : "dans la fourchette"}</b><span>${keur(anc[1])}</span></div></div>` : ""}
-      <div class="panel"><h2>Répartition par phase</h2>${barList(R.ph.filter(x => x.tot).map(x => ({k:x.p.nom, v:x.tot})), R.tot, eur)}</div>
-      ${mList.length ? `<div class="panel"><h2>Facturation mensuelle</h2><div class="ao-bars">${mList.map(([m, o]) => `<i style="height:${Math.max(3, o.e / mMax * 100)}%" title="${ymLab(m)} : ${eur(o.e)} · ${jfmt(o.j)} j"></i>`).join("")}</div><div class="anc-l"><span>${ymLab(mList[0][0])}</span><span>pic ${eur(mMax)} / mois</span><span>${ymLab(mList[mList.length - 1][0])}</span></div></div>` : ""}
-      ${R.byProf.size > 1 ? `<div class="panel"><h2>Jours par profil</h2>${barList([...R.byProf].map(([k, v]) => ({k:(B.profils.find(p => p.k === k) || {nom:k}).nom, v})), R.jours, v => jfmt(v) + " j")}</div>` : ""}
-      ${comps.length ? `<div class="panel"><h2>Comparables</h2><table class="tbl cmp"><thead><tr><th>AO</th><th>% trav.</th><th>€/m²</th></tr></thead><tbody>
-        ${R.pBudget ? `<tr class="me"><td>Ce chiffrage</td><td>${pct(R.pBudget)}</td><td>${R.eurM2 ? (Math.round(R.eurM2 * 10) / 10).toLocaleString("fr-FR") : "—"}</td></tr>` : ""}
-        ${comps.map(c => `<tr><td>${esc(c.nom)} <small>${esc(c.st)}</small></td><td>${pct(c.p)}</td><td>${c.m2 ? (Math.round(c.m2 * 10) / 10).toLocaleString("fr-FR") : "—"}</td></tr>`).join("")}</tbody></table></div>` : ""}
-      ${su ? `<div class="panel"><h2>Suivi du temps passé</h2><p class="sub">Décompte sur « ${esc(ao.reference)} » depuis ${ymLab(R.a)}</p><div class="kc-v">${jfmt(su.j)} j <small>/ ${jfmt(R.jours)} j chiffrés</small></div><span class="ps-bar"><i style="width:${Math.min(100, R.jours ? su.j / R.jours * 100 : 0)}%;background:${su.j > R.jours ? "var(--late)" : "var(--accent)"}"></i></span></div>` : ""}
-    </aside></div>`;
+      <div class="kc"><span class="kc-l">Options</span><span class="kc-v">${R.optTot ? eur(R.optTot) : "—"}</span><span class="kc-n mut">${R.opts.length ? plur(R.opts.length, "option") : "aucune"}</span></div></div>
+    <div class="wz-grid">
+      <section class="panel wide"><div class="row" style="justify-content:space-between;align-items:center"><h3>Décomposition par phase</h3><button class="btn sm" data-act="ao-copy-recap">Copier le tableau</button></div>
+        <div class="tbl-wrap"><table class="tbl dpgf"><thead><tr><th>Phase</th><th>Période</th><th>Jours</th><th>Montant HT</th><th>Part</th></tr></thead><tbody>
+        ${R.ph.map(x => `<tr><td><span class="ph-tag st-${x.p.stage}">${STAGES[x.p.stage][0]}</span> ${esc(x.p.nom)}</td><td>${ymLab(x.p.a)} → ${ymLab(x.p.b)}</td><td>${jfmt(x.jours)}</td><td>${eur(x.prix)}</td><td>${R.tot ? Math.round(x.prix / R.tot * 100) : 0} %</td></tr>`).join("")}
+        <tr class="tot"><td>Total</td><td>${R.duree} mois</td><td>${jfmt(R.jours)}</td><td>${eur(R.tot)}</td><td>100 %</td></tr></tbody></table></div></section>
+      <section class="panel"><h3>Par mission</h3>${mis.length ? `<div class="dec-bars">${mis.map(([k, v]) => `<div class="db-r"><span class="db-l">${esc(MIS[k] ? MIS[k].nom : "Autres")}</span><span class="db-v">${eur(v)} <small>${R.tot ? Math.round(v / R.tot * 100) : 0} %</small></span><span class="db-b"><i style="width:${Math.max(2, v / mis[0][1] * 100)}%"></i></span></div>`).join("")}</div>` : '<p class="sub">Aucune prestation.</p>'}</section>
+      <section class="panel"><h3>Facturation mensuelle</h3>${ms.length ? `<div class="ao-bars">${ms.map(([m, o]) => `<i style="height:${Math.max(3, o.e / mx * 100)}%" title="${ymLab(m)} : ${eur(o.e)} · ${jfmt(o.j)} j"></i>`).join("")}</div><div class="anc-l"><span>${ymLab(ms[0][0])}</span><span>pic ${eur(mx)} / mois</span><span>${ymLab(ms[ms.length - 1][0])}</span></div>` : '<p class="sub">Aucune prestation datée.</p>'}</section>
+      ${R.opts.length ? `<section class="panel"><h3>Options</h3><ul class="opt-l">${R.opts.map(x => `<li><span>${esc(x.l.lib)}</span><b>${eur(x.c.prix)}</b></li>`).join("")}</ul></section>` : ""}
+      <section class="panel"><h3>Après la remise</h3><div class="ao-form f1">
+        <label class="field"><span class="lbl">Statut</span><select data-ao="statut" ${ro ? "disabled" : ""}>${AO_STATUTS.map(s => `<option ${ao.statut === s ? "selected" : ""}>${s}</option>`).join("")}</select></label>
+        <label class="field"><span class="lbl">Référence du décompte des heures</span>${aoIn("reference", ao.reference, 'list="dl-refs" placeholder="pour suivre le temps passé si l\'AO est gagné"')}<datalist id="dl-refs">${refList().map(r => `<option value="${esc(r)}">`).join("")}</datalist></label></div>
+        ${su ? `<div class="suivi"><span class="sub">Temps passé sur « ${esc(ao.reference)} »</span><div class="kc-v">${jfmt(su.j)} j <small>/ ${jfmt(R.jours)} j chiffrés</small></div><span class="ps-bar"><i style="width:${Math.min(100, R.jours ? su.j / R.jours * 100 : 0)}%;background:${su.j > R.jours ? "var(--late)" : "var(--accent)"}"></i></span></div>` : ""}
+        ${ro ? "" : `<div class="row" style="margin-top:12px"><button class="btn primary" data-act="ao-xlsx">Exporter en .xlsx</button><button class="btn" data-act="ao-dup">Dupliquer</button><button class="btn ghost danger" data-act="ao-del">Supprimer</button></div>`}</section>
+    </div>`;
 }
-function viewBiblio(){
-  const ro = S.canWrite === false, B = bib(), q = norm(S.chif.bq), mf = S.chif.bmis;
+/* Base des unités d'œuvre */
+function viewUo(){
+  const ro = S.canWrite === false, B = uoBase(), q = norm(S.chif.bq), mf = S.chif.bmis;
   const items = B.items.filter(x => (!mf || x.mission === mf) && (!q || norm(x.lib + " " + x.cat).includes(q)));
-  const groups = new Map(); for (const it of items) { const k = it.mission + " ▸ " + it.cat; if (!groups.has(k)) groups.set(k, []); groups.get(k).push(it); }
-  return `<div class="view-head"><div><div class="eyebrow"><button class="lnk" data-act="ao-back">‹ Chiffrages</button></div><h1>Bibliothèque des prestations</h1><div class="sub">Temps unitaires et coûts unitaires utilisés par tous les chiffrages. Modifier une valeur ici ne change pas les chiffrages existants.</div></div>
-      <div class="pnav">${ro ? "" : `<button class="btn primary" data-act="bib-new">${I.plus} Prestation</button>`}</div></div>
+  const groups = new Map(); for (const it of items) { const k = (MIS[it.mission] ? MIS[it.mission].nom : it.mission) + " ▸ " + it.cat; if (!groups.has(k)) groups.set(k, []); groups.get(k).push(it); }
+  const dis = ro ? "disabled" : "";
+  return `<div class="view-head"><div><div class="eyebrow"><button class="lnk" data-act="ao-back">‹ Chiffrages</button></div><h1>Base des unités d'œuvre</h1><div class="sub">Temps unitaires, prix unitaires et règles de proposition utilisés par tous tes chiffrages. Modifier la base ne change pas les chiffrages déjà faits.</div></div>
+      <div class="pnav">${ro ? "" : `<button class="btn primary" data-act="bib-new">${I.plus} Unité d'œuvre</button>`}</div></div>
     <div class="settings ao-params">
-      <div class="panel"><h2>Profils et TJM</h2>${B.profils.map(p => `<div class="prof-r"><input type="text" data-bib="prof.nom" data-k="${p.k}" value="${esc(p.nom)}" ${ro ? "readonly" : ""}><input type="text" data-bib="prof.tjm" data-k="${p.k}" value="${p.tjm}" inputmode="decimal" ${ro ? "readonly" : ""}><span class="sub">€ HT / j</span></div>`).join("")}</div>
+      <div class="panel"><h2>Profils et TJM par défaut</h2>${B.profils.map(p => `<div class="prof-r"><input type="text" data-bib="prof.nom" data-k="${p.k}" value="${esc(p.nom)}" aria-label="Profil" ${ro ? "readonly" : ""}><input type="text" class="num" data-bib="prof.tjm" data-k="${p.k}" value="${p.tjm}" inputmode="decimal" aria-label="TJM" ${ro ? "readonly" : ""}><span class="sub">€ / j</span></div>`).join("")}</div>
       <div class="panel"><h2>Paramètres par défaut</h2><div class="prm">
-        <label>Anticipation négo (%)<input type="text" data-bib="par.nego" value="${jfmt(B.params.nego * 100)}" inputmode="decimal"></label>
-        <label>Coût km (€)<input type="text" data-bib="par.ckm" value="${jf4(B.params.ckm)}" inputmode="decimal"></label>
-        <label>Repas (€)<input type="text" data-bib="par.repas" value="${jfmt(B.params.repas)}" inputmode="decimal"></label>
-        <label>Ancrage prix mini (% travaux)<input type="text" data-bib="par.ancMin" value="${jfmt(B.params.ancMin * 100)}" inputmode="decimal"></label>
-        <label>Ancrage prix maxi (% travaux)<input type="text" data-bib="par.ancMax" value="${jfmt(B.params.ancMax * 100)}" inputmode="decimal"></label></div></div>
-      <div class="panel"><h2>Références de prix</h2><table class="tbl bench"><thead><tr><th>Projet</th><th>Travaux</th><th>m²</th><th>Honos</th><th>%</th><th></th></tr></thead><tbody>${B.bench.map((b, i) => `<tr data-bi="${i}"><td><input type="text" data-bib="bench.nom" value="${esc(b.nom)}"></td><td><input type="text" data-bib="bench.budget" value="${num(b.budget)}" inputmode="decimal"></td><td><input type="text" data-bib="bench.surface" value="${num(b.surface)}" inputmode="decimal"></td><td><input type="text" data-bib="bench.honos" value="${num(b.honos)}" inputmode="decimal"></td><td>${num(b.budget) ? pct(num(b.honos) / num(b.budget)) : "—"}</td><td>${ro ? "" : `<button class="ic-btn del" data-act="bib-bench-del">${I.close}</button>`}</td></tr>`).join("")}</tbody></table>${ro ? "" : `<button class="btn ghost sm" data-act="bib-bench-add">${I.plus} Référence</button>`}</div>
+        <label>Marge / aléas (%)<input type="text" class="num" data-bib="par.marge" value="${jf4(B.params.marge * 100)}" inputmode="decimal"></label>
+        <label>Coût au km (€)<input type="text" class="num" data-bib="par.ckm" value="${jf4(B.params.ckm)}" inputmode="decimal"></label>
+        <label>Arrondi du total (€)<input type="text" class="num" data-bib="par.arrondi" value="${B.params.arrondi}" inputmode="decimal"></label>
+        <label>Charge maxi d'une personne (j / mois)<input type="text" class="num" data-bib="par.capMois" value="${B.params.capMois}" inputmode="decimal"></label>
+        <label>Repère honoraires mini (% travaux)<input type="text" class="num" data-bib="par.repMin" value="${B.params.repMin ? jf4(B.params.repMin * 100) : ""}" placeholder="auto" inputmode="decimal"></label>
+        <label>Repère honoraires maxi (% travaux)<input type="text" class="num" data-bib="par.repMax" value="${B.params.repMax ? jf4(B.params.repMax * 100) : ""}" placeholder="auto" inputmode="decimal"></label></div>
+        <p class="sub">Sans repère saisi, l'app compare au ratio médian de tes AO gagnés.</p></div>
     </div>
-    <div class="filters" style="margin-top:14px"><div class="row"><div class="search"><span>${I.search}</span><input type="search" id="bib-q" value="${esc(S.chif.bq)}" placeholder="Chercher une prestation…" aria-label="Chercher"></div></div>
-      <div class="seg-block">${["", ...MISSIONS].map(m => `<button class="seg" data-act="bib-mis" data-v="${esc(m)}" aria-pressed="${mf === m}">${m || "Toutes"} <span class="c">${m ? B.items.filter(x => x.mission === m).length : B.items.length}</span></button>`).join("")}</div></div>
-    <div class="bib-cols" aria-hidden="true"><span>Prestation</span><span>Unité</span><span>Quantité par défaut</span><span>T.U. (j)</span><span>Frais €</span><span>Profil</span><span>Dépl.</span><span></span></div>
-    ${[...groups].map(([g, its]) => `<section class="bib-g"><h3>${esc(g)}</h3>${its.map(it => `<div class="bib-r" data-bid="${esc(it.id)}">
-      <input type="text" data-bib="it.lib" value="${esc(it.lib)}" ${ro ? "readonly" : ""} aria-label="Libellé">
-      <select data-bib="it.unite" ${ro ? "disabled" : ""}>${[...new Set([...UNITES, it.unite])].map(u => `<option ${u === it.unite ? "selected" : ""}>${esc(u)}</option>`).join("")}</select>
-      <span class="bib-q">${it.mode === "freq" ? `<input type="text" data-bib="it.freq" value="${jf4(num(it.freq))}" inputmode="decimal" title="Occurrences par mois"><small>/ mois</small>` : ""}<select data-bib="it.mode" aria-label="Mode">${[["fixe", "Fixe"], ["freq", "Par mois"], ["var", "Variable"]].map(([k, t]) => `<option value="${k}" ${it.mode === k ? "selected" : ""}>${t}</option>`).join("")}</select>${it.mode === "var" ? `<select data-bib="it.varKey">${Object.entries(VARS).map(([k, t]) => `<option value="${k}" ${it.varKey === k ? "selected" : ""}>${t}</option>`).join("")}</select>` : ""}</span>
-      <input type="text" data-bib="it.tu" value="${jf4(num(it.tu))}" inputmode="decimal" ${ro ? "readonly" : ""} aria-label="Temps unitaire">
-      <input type="text" data-bib="it.cu" value="${num(it.cu) ? jfmt(num(it.cu)) : ""}" placeholder="0" inputmode="decimal" ${ro ? "readonly" : ""} aria-label="Frais unitaire">
-      <select data-bib="it.profil" ${ro ? "disabled" : ""}>${B.profils.map(p => `<option value="${p.k}" ${p.k === it.profil ? "selected" : ""}>${esc(p.nom)}</option>`).join("")}</select>
-      <label class="chk"><input type="checkbox" data-bib="it.dep" ${it.dep ? "checked" : ""} ${ro ? "disabled" : ""}></label>
-      ${ro ? "<span></span>" : `<button class="ic-btn del" data-act="bib-del" aria-label="Supprimer">${I.close}</button>`}
-      <div class="bib-meta"><select data-bib="it.mission">${MISSIONS.map(m => `<option ${m === it.mission ? "selected" : ""}>${esc(m)}</option>`).join("")}</select><input type="text" data-bib="it.cat" value="${esc(it.cat)}" aria-label="Catégorie">${it.note ? `<small>${esc(it.note)}</small>` : ""}</div>
-    </div>`).join("")}</section>`).join("") || '<div class="empty"><p>Aucune prestation ne correspond.</p></div>'}`;
+    <div class="filters" style="margin-top:14px"><div class="row"><div class="search"><span>${I.search}</span><input type="search" id="bib-q" value="${esc(S.chif.bq)}" placeholder="Chercher une unité d'œuvre…" aria-label="Chercher"></div></div>
+      <div class="seg-block">${["", ...MISSIONS.map(m => m.k)].map(m => `<button class="seg" data-act="bib-mis" data-v="${m}" aria-pressed="${mf === m}">${m ? esc(MIS[m].nom) : "Toutes"} <span class="c">${m ? B.items.filter(x => x.mission === m).length : B.items.length}</span></button>`).join("")}</div></div>
+    ${[...groups].map(([g, its]) => `<section class="bib-g"><h3>${esc(g)}</h3>${its.map(it => `<div class="uo-r" data-bid="${esc(it.id)}">
+      <div class="uo-a"><span class="ln-type ${it.type === "temps" ? "t" : "u"}">${it.type === "temps" ? "Temps" : "UO"}</span><input type="text" data-bib="it.lib" value="${esc(it.lib)}" aria-label="Libellé" ${ro ? "readonly" : ""}>${ro ? "" : `<button class="ic-btn del" data-act="bib-del" aria-label="Supprimer">${I.close}</button>`}</div>
+      <div class="uo-b">
+        <label>Mode <select data-bib="it.type" ${dis}><option value="uo" ${it.type !== "temps" ? "selected" : ""}>Unité d'œuvre</option><option value="temps" ${it.type === "temps" ? "selected" : ""}>Au temps</option></select></label>
+        ${it.type === "temps" ? `<label>Fois / mois <input type="text" class="num s" data-bib="it.freq" value="${jf4(num(it.freq))}" inputmode="decimal"></label>` : `<label>Quantité <select data-bib="it.drv" ${dis}><option value="">saisie</option>${[...DRIVERS, {k:"zc", nom:CALC_DRV.zc.nom}, {k:"surface", nom:CALC_DRV.surface.nom}].map(d => `<option value="${d.k}" ${it.drv === d.k ? "selected" : ""}>selon ${esc(d.nom.toLowerCase())}</option>`).join("")}</select></label>`}
+        <label>Unité <select data-bib="it.unite" ${dis}>${[...new Set([...UNITES, it.unite])].map(u => `<option ${u === it.unite ? "selected" : ""}>${esc(u)}</option>`).join("")}</select></label>
+        <label>Temps <input type="text" class="num s" data-bib="it.tu" value="${jf4(num(it.tu))}" inputmode="decimal"> j</label>
+        <label>Prix <input type="text" class="num s" data-bib="it.cu" value="${num(it.cu) ? jf4(num(it.cu)) : ""}" placeholder="0" inputmode="decimal"> €</label>
+        <label>Profil <select data-bib="it.profil" ${dis}>${B.profils.map(p => `<option value="${p.k}" ${p.k === it.profil ? "selected" : ""}>${esc(profCourt(p))}</option>`).join("")}</select></label>
+        <label class="chk"><input type="checkbox" data-bib="it.dep" ${it.dep ? "checked" : ""} ${dis}><span>Déplacement</span></label>
+        <label>Proposée <select data-bib="it.sug" ${dis}>${[["", "jamais"], ["first", "1re phase"], ["each", "chaque phase"], ["others", "phases suivantes"], ["last", "dernière phase"]].map(([k, t]) => `<option value="${k}" ${(it.sug || "") === k ? "selected" : ""}>${t}</option>`).join("")}</select></label>
+        ${it.sug ? `<span class="uo-st">${Object.entries(STAGES).map(([k, t]) => `<button class="stb st-${k}" data-act="bib-st" data-s="${k}" aria-pressed="${(it.st || "CR").includes(k)}" title="${t}" ${dis}>${t[0]}</button>`).join("")}</span>` : ""}
+        <label>Mission <select data-bib="it.mission" ${dis}>${MISSIONS.map(m => `<option value="${m.k}" ${m.k === it.mission ? "selected" : ""}>${esc(m.nom)}</option>`).join("")}</select></label>
+        <label>Catégorie <input type="text" data-bib="it.cat" value="${esc(it.cat)}" style="width:130px"></label></div>
+      ${it.note ? `<small class="uo-note">${esc(it.note)}</small>` : ""}</div>`).join("")}</section>`).join("") || '<div class="empty"><p>Aucune unité d\'œuvre ne correspond.</p></div>'}
+    ${ro ? "" : `<div class="row" style="margin:16px 0"><button class="btn ghost" data-act="bib-reset">Rétablir la base d'origine</button></div>`}`;
 }
 function pickSheet(phaseId){
-  S.chif.pickPhase = phaseId; S.chif.pickSel = [];
+  const ao = curAo(); if (!ao) return;
+  S.chif.pickPhase = phaseId || (ao.phases[0] && ao.phases[0].id) || ""; S.chif.pickSel = [];
+  if (!S.chif.pickMis && (ao.missions || []).length === 1) S.chif.pickMis = ao.missions[0];
   document.querySelector(".ao-pick")?.remove();
+  const eph = effPhases(ao);
   const el = document.createElement("div"); el.className = "overlay ao-pick"; el.dataset.act = "ao-ov-close";
-  el.innerHTML = `<div class="sheet wide" role="dialog" aria-label="Ajouter des prestations"><div class="sheet-h"><h2>Ajouter des prestations</h2><button class="btn ghost" data-act="ao-ov-close" aria-label="Fermer">${I.close}</button></div>
-    <div class="sheet-b"><div class="search" style="margin-bottom:8px"><span>${I.search}</span><input type="search" id="pick-q" placeholder="Chercher (ex. audit, revue, clash, maquette)…" aria-label="Chercher"></div>
-      <div class="seg-block" id="pick-mis">${["", ...MISSIONS].map(m => `<button class="seg" data-act="pick-mis" data-v="${esc(m)}" aria-pressed="${S.chif.pickMis === m}">${m || "Toutes"}</button>`).join("")}</div>
+  el.innerHTML = `<div class="sheet wide" role="dialog" aria-label="Ajouter depuis la base"><div class="sheet-h"><h2>Ajouter depuis la base</h2><button class="btn ghost" data-act="ao-ov-close" aria-label="Fermer">${I.close}</button></div>
+    <div class="sheet-b"><div class="pk-top"><div class="search"><span>${I.search}</span><input type="search" id="pick-q" placeholder="Chercher : audit, réunion, maquette, synthèse…" aria-label="Chercher"></div>
+      <label class="pk-ph">Dans la phase <select id="pick-ph">${eph.map(p => `<option value="${p.id}" ${p.id === S.chif.pickPhase ? "selected" : ""}>${esc(p.nom)}</option>`).join("")}</select></label></div>
+      <div class="seg-block" id="pick-mis">${["", ...MISSIONS.map(m => m.k)].map(m => `<button class="seg" data-act="pick-mis" data-v="${m}" aria-pressed="${S.chif.pickMis === m}">${m ? esc(MIS[m].nom) : "Toutes"}</button>`).join("")}</div>
       <div id="pick-list" class="pick-list"></div></div>
     <div class="sheet-f"><span class="sub" id="pick-n">Aucune sélection</span><span class="spacer"></span><button class="btn" data-act="ao-ov-close">Annuler</button><button class="btn primary" data-act="pick-add">Ajouter</button></div></div>`;
-  document.body.appendChild(el); pickRender(); setTimeout(() => $("#pick-q")?.focus(), 40);
+  document.body.appendChild(el); pickRender(); setTimeout(() => { if (!isMobile()) $("#pick-q")?.focus(); }, 40);
 }
 function pickRender(){
   const box = $("#pick-list"); if (!box) return;
-  const q = norm($("#pick-q")?.value || ""), mf = S.chif.pickMis, ao = S.aos.get(S.chif.id);
-  const items = bib().items.filter(x => (!mf || x.mission === mf) && (!q || norm(x.lib + " " + x.cat + " " + x.mission).includes(q)));
-  const groups = new Map(); for (const it of items) { const k = it.mission + " ▸ " + it.cat; if (!groups.has(k)) groups.set(k, []); groups.get(k).push(it); }
-  box.innerHTML = [...groups].map(([g, its]) => `<div class="pk-g"><h4>${esc(g)}</h4>${its.map(it => { const used = ao && ao.lines.some(l => l.bib === it.id && l.phase === S.chif.pickPhase); return `<label class="pk-r"><input type="checkbox" data-pick="${esc(it.id)}" ${S.chif.pickSel.includes(it.id) ? "checked" : ""}><span class="pk-l">${esc(it.lib)}${used ? ' <small class="pk-used">déjà dans la phase</small>' : ""}</span><span class="pk-v">${jf4(num(it.tu))} j / ${esc(it.unite)}${it.mode === "freq" ? ` · ${jf4(num(it.freq))}/mois` : it.mode === "var" ? " · " + esc(VARS[it.varKey] || "") : ""}${num(it.cu) ? " · " + eur(num(it.cu)) : ""}</span></label>`; }).join("")}</div>`).join("") || '<p class="sub">Aucune prestation ne correspond.</p>';
-  const n = S.chif.pickSel.length; const pn = $("#pick-n"); if (pn) pn.textContent = n ? `${n} prestation${n > 1 ? "s" : ""} sélectionnée${n > 1 ? "s" : ""}` : "Aucune sélection";
+  const q = norm($("#pick-q")?.value || ""), mf = S.chif.pickMis, ao = curAo();
+  const items = uoBase().items.filter(x => (!mf || x.mission === mf) && (!q || norm(x.lib + " " + x.cat + " " + (MIS[x.mission] ? MIS[x.mission].nom : "")).includes(q)));
+  const groups = new Map(); for (const it of items) { const k = (MIS[it.mission] ? MIS[it.mission].nom : it.mission) + " ▸ " + it.cat; if (!groups.has(k)) groups.set(k, []); groups.get(k).push(it); }
+  box.innerHTML = [...groups].map(([g, its]) => `<div class="pk-g"><h4>${esc(g)}</h4>${its.map(it => { const used = ao && ao.lines.some(l => l.bib === it.id && l.phase === S.chif.pickPhase); return `<label class="pk-r"><input type="checkbox" data-pick="${esc(it.id)}" ${S.chif.pickSel.includes(it.id) ? "checked" : ""}><span class="ln-type ${it.type === "temps" ? "t" : "u"}">${it.type === "temps" ? "Temps" : "UO"}</span><span class="pk-l">${esc(it.lib)}${used ? ' <small class="pk-used">déjà dans la phase</small>' : ""}</span><span class="pk-v">${it.type === "temps" ? `${jf4(num(it.freq))}/mois × ` : it.drv ? "selon " + esc((CALC_DRV[it.drv] || DRIVERS.find(d => d.k === it.drv) || {nom:it.drv}).nom.toLowerCase()) + " × " : ""}${jf4(num(it.tu))} j${num(it.cu) ? " + " + eur(num(it.cu)) : ""}</span></label>`; }).join("")}</div>`).join("") || '<p class="sub">Aucune unité d\'œuvre ne correspond.</p>';
+  pickCount();
 }
+function pickCount(){ const n = S.chif.pickSel.length, pn = $("#pick-n"); if (pn) pn.textContent = n ? `${plur(n, "unité")} sélectionnée${n > 1 ? "s" : ""}` : "Aucune sélection"; }
 
 /* ----- Écritures ----- */
 async function aoSave(ao){ ao.updated = nowIso(); S.aos.set(ao.id, ao); schedule(); try { await S.db.doc("ao/" + ao.id).set(JSON.parse(JSON.stringify(ao))); } catch (e) { fail(e); } }
-const curAo = () => S.aos.get(S.chif.id);
+function goStep(ao, i){ ao.step = Math.max(0, Math.min(5, i)); ao.maxStep = Math.max(ao.maxStep || 0, ao.step); S.chif.open = {}; aoSave(ao); render(true); window.scrollTo({top:0}); }
 async function aoAction(act, a, ev){
-  const C = S.chif, ao = curAo(), ov = a.closest(".overlay");
+  const C = S.chif, ov = a.closest(".overlay");
   if (act === "ao-ov-close") { if (a === ov && ev && ev.target !== ov) return; ov && ov.remove(); return; }
   if (act === "ao-biblio") { C.mode = "biblio"; saveChifUi(); render(true); window.scrollTo(0, 0); return; }
   if (act === "ao-back") { C.mode = "list"; saveChifUi(); render(true); window.scrollTo(0, 0); return; }
   if (act === "ao-filt") { C.filt = a.dataset.v; render(true); return; }
-  if (act === "ao-open") { C.mode = "ao"; C.id = a.dataset.id; C.open = {}; C.infoOpen = undefined; saveChifUi(); render(true); window.scrollTo(0, 0); return; }
-  if (act === "ao-new-open") { newAoSheet(); return; }
-  if (act === "ao-create") {
-    const tk = (document.querySelector('input[name="na-tpl"]:checked') || {}).value || "vide", start = ymParse($("#na-start")?.value) || ymAdd(ymOf(today()), 1), nom = ($("#na-nom")?.value || "").trim();
-    let n;
-    if (tk === "copy") { const src = S.aos.get($("#na-copy")?.value); if (!src) return; n = JSON.parse(JSON.stringify(src)); n.id = uid(); n.statut = "En cours"; n.created = nowIso(); const d = ymCount(n.phases.map(p => p.a).sort()[0] || start, start) - 1; if (d && n.phases.length) n.phases.forEach(p => { p.a = ymAdd(p.a, d); p.b = ymAdd(p.b, d); }); n.nom = nom || (src.nom + " (copie)"); }
-    else { n = newAo(tk, start); n.nom = nom; }
-    ov && ov.remove(); C.mode = "ao"; C.id = n.id; C.open = {}; C.infoOpen = true; saveChifUi(); await aoSave(n); render(true); window.scrollTo(0, 0); toast("Chiffrage créé"); return;
-  }
-  if (act === "bib-new" || act === "bib-del" || act === "bib-mis" || act === "bib-bench-add" || act === "bib-bench-del") return bibAction(act, a);
+  if (act === "ao-open") { C.mode = "ao"; C.id = a.dataset.id; C.open = {}; C.coll = {}; saveChifUi(); render(true); window.scrollTo(0, 0); return; }
+  if (act === "ao-new") { const n = blankAo(); C.mode = "ao"; C.id = n.id; C.open = {}; C.coll = {}; saveChifUi(); await aoSave(n); render(true); window.scrollTo(0, 0); setTimeout(() => { const el = document.querySelector('.wz-body [data-ao="nom"]'); if (el && !isMobile()) el.focus(); }, 40); return; }
+  if (/^bib-/.test(act)) return uoAction(act, a);
   if (act === "pick-mis") { C.pickMis = a.dataset.v; document.querySelectorAll("#pick-mis .seg").forEach(b => b.setAttribute("aria-pressed", b.dataset.v === C.pickMis)); pickRender(); return; }
+  const ao = curAo(); if (!ao) return;
   if (act === "pick-add") {
-    if (!ao || !C.pickSel.length) { toast("Coche au moins une prestation"); return; }
-    const ls = C.pickSel.map(id => ({...lineFromItem(bibItem(id)), phase:C.pickPhase}));
-    const last = ao.lines.map(l => l.phase).lastIndexOf(C.pickPhase); ao.lines.splice(last >= 0 ? last + 1 : ao.lines.length, 0, ...ls);
-    ov && ov.remove(); await aoSave(ao); render(true); toast(`${ls.length} prestation${ls.length > 1 ? "s" : ""} ajoutée${ls.length > 1 ? "s" : ""}`); return;
+    if (!C.pickSel.length) { toast("Coche au moins une unité d'œuvre"); return; }
+    const ph = $("#pick-ph")?.value || C.pickPhase; insertLines(ao, C.pickSel.map(id => lineFromItem(uoItem(id), ph)));
+    ov && ov.remove(); C.coll[ph] = false; await aoSave(ao); render(true); toast(`${plur(C.pickSel.length, "prestation")} ajoutée${C.pickSel.length > 1 ? "s" : ""}`); return;
   }
-  if (!ao) return;
-  const lid = a.closest("[data-lid]")?.dataset.lid, l = lid && ao.lines.find(x => x.id === lid), pid = a.closest("[data-pid]")?.dataset.pid;
-  if (act === "ao-xlsx") { aoExport(ao); return; }
-  if (act === "ao-dup") { const n = JSON.parse(JSON.stringify(ao)); n.id = uid(); n.nom = (ao.nom || "Sans titre") + " (copie)"; n.statut = "En cours"; n.created = nowIso(); C.id = n.id; saveChifUi(); await aoSave(n); render(true); toast("Chiffrage dupliqué"); return; }
-  if (act === "ao-del") {
-    if (!a.classList.contains("armed")) { a.classList.add("armed"); a.textContent = "Confirmer la suppression"; return; }
-    S.aos.delete(ao.id); C.mode = "list"; saveChifUi(); render(true); try { await S.db.doc("ao/" + ao.id).delete(); toast("Chiffrage supprimé"); } catch (e) { fail(e); } return;
+  const pid = a.closest("[data-pid]")?.dataset.pid || a.dataset.pid, lid = a.closest("[data-lid]")?.dataset.lid, l = lid && ao.lines.find(x => x.id === lid);
+  if (act === "wz-step") { goStep(ao, Number(a.dataset.i)); return; }
+  if (act === "wz-prev") { goStep(ao, (ao.step || 0) - 1); return; }
+  if (act === "wz-next") { goStep(ao, (ao.step || 0) + 1); return; }
+  if (act === "ao-mis") { const k = a.dataset.k, s = new Set(ao.missions || []); s.has(k) ? s.delete(k) : s.add(k); ao.missions = MISSIONS.map(m => m.k).filter(x => s.has(x)); await aoSave(ao); render(true); return; }
+  if (act === "ao-type") { ao.type = ao.type === a.dataset.v ? "" : a.dataset.v; await aoSave(ao); render(true); return; }
+  if (act === "ao-preset") { C.preset = a.dataset.k; render(true); return; }
+  if (act === "ao-plan-create") {
+    const P = PRESETS.find(p => p.k === C.preset) || PRESETS[2];
+    ao.phases = P.ph.map(([nom, stage, n]) => ({id:uid(), nom, stage, a:"", n}));
+    if ($("#pl-trans")?.checked) ao.phases.push({id:uid(), nom:"Pilotage et plateforme", stage:"T", a:"", n:1});
+    ao.chain = true; await aoSave(ao); render(true); toast("Planning créé"); return;
   }
-  if (act === "ao-pick") { pickSheet(pid); return; }
-  if (act === "ao-line-new") { const nl = {...lineFromItem(null), phase:pid}; const last = ao.lines.map(x => x.phase).lastIndexOf(pid); ao.lines.splice(last >= 0 ? last + 1 : ao.lines.length, 0, nl); C.open[nl.id] = true; await aoSave(ao); render(true); setTimeout(() => { const el = document.querySelector(`[data-lid="${nl.id}"] [data-ao="l.lib"]`); el && (el.focus(), el.select()); }, 30); return; }
-  if (act === "ao-ph-new") { const lastP = ao.phases[ao.phases.length - 1]; const s = lastP && ymOk(lastP.b) ? ymAdd(lastP.b, 1) : ymAdd(ymOf(today()), 1); ao.phases.push({id:uid(), nom:"Nouvelle phase", a:s, b:ymAdd(s, 2)}); await aoSave(ao); render(true); return; }
-  if (act === "ao-shift") { const n = Number(a.dataset.n); ao.phases.forEach(p => { if (ymOk(p.a)) p.a = ymAdd(p.a, n); if (ymOk(p.b)) p.b = ymAdd(p.b, n); }); await aoSave(ao); render(true); return; }
+  if (act === "ao-ph-new") {
+    const st = a.dataset.stage, eph = effPhases(ao), last = eph.filter(p => p.stage !== "T").pop();
+    const ph = {id:uid(), nom:st === "T" ? "Transverse" : st === "E" ? "Exploitation" : st === "R" ? "Nouvelle phase de réalisation" : "Nouvelle phase de conception", stage:st, a:last ? ymAdd(last.b, 1) : ao.start, n:st === "E" ? 12 : 2};
+    const idx = st === "T" ? ao.phases.length : (() => { let i = -1; ao.phases.forEach((p, k) => { if (p.stage !== "T" && "CRE".indexOf(p.stage) <= "CRE".indexOf(st)) i = k; }); return i + 1; })();
+    ao.phases.splice(idx, 0, ph); await aoSave(ao); render(true); setTimeout(() => { const el = document.querySelector(`[data-pid="${ph.id}"] [data-ao="ph.nom"]`); if (el) { el.focus(); el.select(); } }, 30); return;
+  }
+  if (act === "ao-ph-n") { const p = ao.phases.find(x => x.id === pid); if (!p) return; p.n = Math.max(1, Math.round(num(p.n) || 1) + Number(a.dataset.d)); await aoSave(ao); render(true); return; }
   if (act === "ao-ph-up" || act === "ao-ph-down") { const i = ao.phases.findIndex(p => p.id === pid), j = i + (act === "ao-ph-up" ? -1 : 1); if (i < 0 || j < 0 || j >= ao.phases.length) return; [ao.phases[i], ao.phases[j]] = [ao.phases[j], ao.phases[i]]; await aoSave(ao); render(true); return; }
   if (act === "ao-ph-del") {
     const n = ao.lines.filter(x => x.phase === pid).length;
-    if (n && !a.classList.contains("armed")) { a.classList.add("armed"); a.title = `Cliquer encore pour supprimer la phase et ses ${n} lignes`; toast(`Clique encore pour supprimer la phase et ses ${n} ligne${n > 1 ? "s" : ""}`); return; }
+    if (n && !a.classList.contains("armed")) { a.classList.add("armed"); toast(`Clique encore pour supprimer la phase et ses ${plur(n, "prestation")}`); return; }
     ao.phases = ao.phases.filter(p => p.id !== pid); ao.lines = ao.lines.filter(x => x.phase !== pid); await aoSave(ao); render(true); return;
   }
+  if (act === "ao-ph-toggle") { C.coll[pid] = !C.coll[pid]; render(true); return; }
+  if (act === "ao-d-step") { const k = a.closest("[data-k]").dataset.k; ao.drivers = {...(ao.drivers || {}), [k]:Math.max(0, num((ao.drivers || {})[k]) + Number(a.dataset.d))}; await aoSave(ao); render(true); return; }
+  if (act === "ao-cd-new") { const k = "c-" + uid(); ao.cdrv = [...(ao.cdrv || []), {k, nom:"Nouvelle quantité", u:"unité"}]; ao.drivers = {...(ao.drivers || {}), [k]:1}; await aoSave(ao); render(true); setTimeout(() => { const el = document.querySelector(`.hyp[data-k="${k}"] [data-ao="cd.nom"]`); if (el) { el.focus(); el.select(); } }, 30); return; }
+  if (act === "ao-cd-del") { const k = a.closest("[data-k]").dataset.k; ao.cdrv = (ao.cdrv || []).filter(c => c.k !== k); ao.lines.forEach(x => { if (x.drv === k) { x.qte = drvVal(ao, k); x.drv = ""; } }); await aoSave(ao); render(true); return; }
+  if (act === "ao-propose") {
+    if ((ao.missions || []).includes("pla") && !ao.phases.some(p => p.stage === "T")) ao.phases.push({id:uid(), nom:"Pilotage et plateforme", stage:"T", a:"", n:1});
+    const sg = proposals(ao); insertLines(ao, sg.map(x => lineFromItem(x.it, x.p.id)));
+    await aoSave(ao); render(true); toast(`${plur(sg.length, "prestation")} ajoutée${sg.length > 1 ? "s" : ""} : ajuste les quantités et les temps`); return;
+  }
+  if (act === "ao-pick") { pickSheet(pid); return; }
+  if (act === "ao-line-new") { const nl = {...lineFromItem(null, pid), type:a.dataset.t === "temps" ? "temps" : "uo", lib:a.dataset.t === "temps" ? "Nouvelle prestation au temps" : "Nouvelle unité d'œuvre", unite:a.dataset.t === "temps" ? "réunion" : "forfait"}; insertLines(ao, [nl]); await aoSave(ao); render(true); setTimeout(() => { const el = document.querySelector(`[data-lid="${nl.id}"] [data-ao="l.lib"]`); if (el) { el.focus(); el.select(); } }, 30); return; }
+  if (act === "ao-cible-apply") { const R = calcAo(ao), need = R.brut ? 1 - num(ao.cible) / R.brut : 0; ao.params.remise = Math.max(0, Math.round(need * 10000) / 10000); await aoSave(ao); render(true); toast(`Remise de ${pct(ao.params.remise, 1)} appliquée`); return; }
+  if (act === "ao-xlsx") { aoExport(ao); return; }
+  if (act === "ao-copy-recap") { const R = calcAo(ao); const t = [["Phase", "Début", "Fin", "Jours", "Montant HT"], ...R.ph.map(x => [x.p.nom, ymLab(x.p.a), ymLab(x.p.b), jfmt(x.jours), Math.round(x.prix)]), ["Total", ymLab(R.a), ymLab(R.b), jfmt(R.jours), Math.round(R.tot)]].map(r => r.join("\t")).join("\n"); (await copyText(t)) ? toast("Tableau copié : colle-le dans Excel ou Word") : showCopyBox(t); return; }
+  if (act === "ao-dup") { const n = JSON.parse(JSON.stringify(ao)); n.id = uid(); n.nom = (ao.nom || "Sans titre") + " (copie)"; n.statut = "En cours"; n.created = nowIso(); n.step = 0; C.id = n.id; saveChifUi(); await aoSave(n); render(true); window.scrollTo(0, 0); toast("Chiffrage dupliqué"); return; }
+  if (act === "ao-del") { if (!a.classList.contains("armed")) { a.classList.add("armed"); a.textContent = "Confirmer la suppression"; return; } S.aos.delete(ao.id); C.mode = "list"; saveChifUi(); render(true); try { await S.db.doc("ao/" + ao.id).delete(); toast("Chiffrage supprimé"); } catch (e) { fail(e); } return; }
   if (!l) return;
   if (act === "ao-line-open") { C.open[lid] = !C.open[lid]; render(true); return; }
-  if (act === "ao-line-del") { ao.lines = ao.lines.filter(x => x.id !== lid); await aoSave(ao); render(true); return; }
-  if (act === "ao-line-dup") { const n = {...JSON.parse(JSON.stringify(l)), id:uid()}; ao.lines.splice(ao.lines.indexOf(l) + 1, 0, n); await aoSave(ao); render(true); return; }
-  if (act === "ao-line-up" || act === "ao-line-down") {
-    const same = ao.lines.filter(x => x.phase === l.phase), k = same.indexOf(l), o = same[k + (act === "ao-line-up" ? -1 : 1)]; if (!o) return;
-    const i = ao.lines.indexOf(l), j = ao.lines.indexOf(o); [ao.lines[i], ao.lines[j]] = [ao.lines[j], ao.lines[i]]; await aoSave(ao); render(true); return;
+  if (act === "ao-line-del") { ao.lines = ao.lines.filter(x => x.id !== lid); await aoSave(ao); render(true); toast("Prestation supprimée"); return; }
+  if (act === "ao-line-dup") { ao.lines.splice(ao.lines.indexOf(l) + 1, 0, {...JSON.parse(JSON.stringify(l)), id:uid()}); await aoSave(ao); render(true); return; }
+  if (act === "ao-line-up" || act === "ao-line-down") { const same = ao.lines.filter(x => x.phase === l.phase), o = same[same.indexOf(l) + (act === "ao-line-up" ? -1 : 1)]; if (!o) return; const i = ao.lines.indexOf(l), j = ao.lines.indexOf(o); [ao.lines[i], ao.lines[j]] = [ao.lines[j], ao.lines[i]]; await aoSave(ao); render(true); return; }
+  if (act === "ao-line-type") {
+    const c = calcLine(ao, l);
+    if (l.type === "temps") { l.type = "uo"; l.drv = ""; l.qte = c.q || 1; }
+    else { l.type = "temps"; l.pos = "all"; const ph = effPhases(ao).find(p => p.id === l.phase); l.freq = ph && ph.n ? Math.round((c.q || 1) / ph.n * 100) / 100 || 1 : 1; }
+    await aoSave(ao); render(true); toast(l.type === "temps" ? "Passée au temps : fréquence × durée" : "Passée à l'unité d'œuvre : quantité × temps unitaire"); return;
   }
-  if (act === "ao-line-mode") { l.mode = a.dataset.m; if (l.mode === "freq" && !num(l.freq)) l.freq = 1; await aoSave(ao); render(true); return; }
-  if (act === "ao-line-pos") { const c = calcLine(ao, l); l.pos = a.dataset.p; if (l.pos === "custom") { const ph = ao.phases.find(p => p.id === l.phase); if (ph && c.per) { l.off = Math.max(0, ymCount(ph.a, c.per.a) - 1); l.len = c.mois; } } else if (l.pos !== "all") l.len = l.len || 1; await aoSave(ao); render(true); return; }
-  if (act === "ao-line-sync") { const it = bibItem(l.bib); if (it) { l.tu = it.tu; l.cu = it.cu || 0; } await aoSave(ao); render(true); toast("Valeurs de la bibliothèque reprises"); return; }
+  if (act === "ao-line-sync") { const it = uoItem(l.bib); if (it) { l.tu = it.tu; l.cu = it.cu || 0; } await aoSave(ao); render(true); toast("Valeurs de la base reprises"); return; }
   if (act === "ao-line-tobib") {
-    const B = bib(), items = B.items.slice(), it = l.bib && items.find(x => x.id === l.bib);
-    if (it) { Object.assign(it, {tu:num(l.tu), cu:num(l.cu)}); await saveBib({items}); toast("Bibliothèque mise à jour"); }
-    else { const nid = "u-" + uid(); items.push({id:nid, mission:ao.mission && MISSIONS.includes(ao.mission) ? ao.mission : "BIM Management", cat:"Mes prestations", lib:l.lib, unite:l.unite, tu:num(l.tu), profil:l.profil, dep:!!l.dep, cu:num(l.cu), mode:l.mode, freq:num(l.freq), varKey:l.varKey || "", note:""}); l.bib = nid; await saveBib({items}); await aoSave(ao); toast("Prestation ajoutée à la bibliothèque"); }
+    const B = uoBase(), items = B.items.map(x => ({...x})), it = l.bib && items.find(x => x.id === l.bib);
+    if (it) { it.tu = num(l.tu); it.cu = num(l.cu); await saveUo({items}); toast("Base mise à jour"); }
+    else { const nid = "u-" + uid(); items.push({id:nid, mission:l.mis || (ao.missions || [])[0] || "bim", cat:"Mes unités d'œuvre", lib:l.lib, unite:l.unite, type:l.type, tu:num(l.tu), cu:num(l.cu), qte:num(l.qte) || 1, drv:l.drv || "", freq:num(l.freq) || 1, profil:l.profil, dep:!!l.dep, st:"CR", sug:"", pos:l.pos || "all", note:""}); l.bib = nid; await saveUo({items}); await aoSave(ao); toast("Ajoutée à la base"); }
     render(true); return;
   }
 }
@@ -2874,48 +3064,46 @@ async function aoChange(el){
   const ao = curAo(); if (!ao) return;
   const f = el.dataset.ao, v = el.type === "checkbox" ? el.checked : el.value;
   const lid = el.closest("[data-lid]")?.dataset.lid, l = lid && ao.lines.find(x => x.id === lid), pid = el.closest("[data-pid]")?.dataset.pid, ph = pid && ao.phases.find(p => p.id === pid);
-  const numF = ["budget", "surface", "kmAR"];
   if (f.startsWith("l.") && l) {
     const k = f.slice(2);
-    if (["qte", "freq", "tu", "cu", "mult"].includes(k)) l[k] = num(v);
+    if (["qte", "freq", "tu", "cu", "mult"].includes(k)) l[k] = Math.max(0, num(v));
     else if (k === "len") l.len = Math.max(1, Math.round(num(v)));
     else if (k === "pa" || k === "pb") {
-      const p = ao.phases.find(x => x.id === l.phase), c = calcLine(ao, l), ym = ymParse(v); if (!p || !ym || !c.per) { render(true); return; }
-      let a = k === "pa" ? ym : c.per.a, b = k === "pb" ? ym : c.per.b; if (b < a) b = a;
-      if (a < p.a) p.a = a; if (b > p.b) p.b = b;
+      const eph = effPhases(ao), p = eph.find(x => x.id === l.phase), c = calcLine(ao, l, eph), ym = ymParse(v); if (!p || !ym || !c.per) { render(true); return; }
+      let a = k === "pa" ? ym : c.per.a, b = k === "pb" ? ym : c.per.b; if (b < a) b = a; if (a < p.a) a = p.a;
       l.pos = "custom"; l.off = ymCount(p.a, a) - 1; l.len = ymCount(a, b);
     }
     else if (k === "dep" || k === "option") l[k] = !!v;
-    else l[k] = v;
+    else if (k === "drv") { if (!v) l.qte = drvVal(ao, l.drv) * (num(l.mult) || 1) || 1; l.drv = v; l.mult = 1; }
+    else if (k === "pos") { l.pos = v; if (v === "custom") { const eph = effPhases(ao), p = eph.find(x => x.id === l.phase); l.off = 0; l.len = p ? p.n : 1; S.chif.open[l.id] = true; } else if (v !== "all") l.len = l.len || 1; }
+    else l[k] = typeof v === "string" ? v.trim() : v;
   }
-  else if (f.startsWith("ph.") && ph) { const k = f.slice(3); if (k === "nom") ph.nom = v.trim() || ph.nom; else { const ym = ymParse(v); if (ym) { ph[k] = ym; if (ph.b < ph.a) { if (k === "a") ph.b = ph.a; else ph.a = ph.b; } } } }
-  else if (f.startsWith("p.")) { const k = f.slice(2); ao.params[k] = k === "nego" ? num(v) / 100 : num(v); }
-  else if (f.startsWith("tjm.")) { ao.params.tjm = {...(ao.params.tjm || {}), [f.slice(4)]:num(v)}; }
-  else if (f.startsWith("v.")) { ao.vars = {...(ao.vars || {}), [f.slice(2)]:num(v)}; }
-  else if (numF.includes(f)) ao[f] = num(v);
+  else if (f.startsWith("ph.") && ph) { const k = f.slice(3); if (k === "nom") ph.nom = v.trim() || ph.nom; else if (k === "n") ph.n = Math.max(1, Math.round(num(v)) || 1); else if (k === "a") { const ym = ymParse(v); if (ym) ph.a = ym; } else if (k === "stage") ph.stage = v; }
+  else if (f.startsWith("p.")) { const k = f.slice(2); ao.params[k] = ["marge", "remise", "tva"].includes(k) ? Math.max(0, num(v)) / 100 : Math.max(0, num(v)); }
+  else if (f.startsWith("tjm.")) ao.params.tjm = {...(ao.params.tjm || {}), [f.slice(4)]:num(v)};
+  else if (f.startsWith("d.")) ao.drivers = {...(ao.drivers || {}), [f.slice(2)]:Math.max(0, num(v))};
+  else if (f === "cd.nom") { const k = el.closest("[data-k]").dataset.k; ao.cdrv = (ao.cdrv || []).map(c => c.k === k ? {...c, nom:v.trim() || c.nom} : c); }
+  else if (f === "start") { const ym = ymParse(v); if (ym) { if (ao.chain === false) { const d = ymCount(ao.start, ym) - 1 || -(ymCount(ym, ao.start) - 1); ao.phases.forEach(p => { if (ymOk(p.a)) p.a = ymAdd(p.a, d); }); } ao.start = ym; } }
+  else if (f === "chain") { if (!v) { const eph = effPhases(ao); ao.phases.forEach(p => { const e = eph.find(x => x.id === p.id); if (e) p.a = e.a; }); } ao.chain = !!v; }
+  else if (["budget", "surface", "cible"].includes(f)) ao[f] = Math.max(0, num(v));
   else ao[f] = typeof v === "string" ? v.trim() : v;
   if (f === "reference" && ao.reference && !refList().includes(ao.reference)) savePrefs({refs:[...refList(), ao.reference].sort((x, y) => x.localeCompare(y, "fr"))});
   await aoSave(ao);
   if (el.tagName === "SELECT" || el.type === "checkbox" || el.type === "month" || el.type === "date") render(true);
 }
-async function bibAction(act, a){
-  const B = bib(), C = S.chif;
+async function uoAction(act, a){
+  const B = uoBase(), C = S.chif;
   if (act === "bib-mis") { C.bmis = a.dataset.v; render(true); return; }
-  if (act === "bib-new") { const items = B.items.slice(); const it = {id:"u-" + uid(), mission:C.bmis || "BIM Management", cat:"Mes prestations", lib:"Nouvelle prestation", unite:"forfait", tu:1, profil:"bim", dep:false, cu:0, mode:"fixe", freq:1, varKey:"", note:""}; items.unshift(it); C.bq = ""; await saveBib({items}); render(true); setTimeout(() => { const el = document.querySelector(`[data-bid="${it.id}"] [data-bib="it.lib"]`); el && (el.focus(), el.select(), el.scrollIntoView({block:"center"})); }, 30); return; }
-  if (act === "bib-del") { const id = a.closest("[data-bid]").dataset.bid; if (!a.classList.contains("armed")) { a.classList.add("armed"); toast("Clique encore pour supprimer cette prestation de la bibliothèque"); return; } await saveBib({items:B.items.filter(x => x.id !== id)}); render(true); return; }
-  if (act === "bib-bench-add") { await saveBib({bench:[...B.bench, {nom:"Projet", budget:0, surface:0, honos:0, duree:0}]}); render(true); return; }
-  if (act === "bib-bench-del") { const i = Number(a.closest("[data-bi]").dataset.bi); await saveBib({bench:B.bench.filter((_, k) => k !== i)}); render(true); return; }
+  if (act === "bib-new") { const it = {id:"u-" + uid(), mission:C.bmis || "bim", cat:"Mes unités d'œuvre", lib:"Nouvelle unité d'œuvre", unite:"forfait", type:"uo", tu:1, cu:0, qte:1, drv:"", freq:1, profil:"bim", dep:false, st:"CR", sug:"", pos:"all", note:""}; C.bq = ""; await saveUo({items:[it, ...B.items]}); render(true); setTimeout(() => { const el = document.querySelector(`[data-bid="${it.id}"] [data-bib="it.lib"]`); if (el) { el.focus(); el.select(); el.scrollIntoView({block:"center"}); } }, 30); return; }
+  if (act === "bib-del") { const id = a.closest("[data-bid]").dataset.bid; if (!a.classList.contains("armed")) { a.classList.add("armed"); toast("Clique encore pour retirer cette unité d'œuvre de la base"); return; } await saveUo({items:B.items.filter(x => x.id !== id)}); render(true); return; }
+  if (act === "bib-st") { const id = a.closest("[data-bid]").dataset.bid, s = a.dataset.s; await saveUo({items:B.items.map(x => { if (x.id !== id) return x; const cur = x.st || "CR"; const nx = cur.includes(s) ? cur.replace(s, "") : cur + s; return {...x, st:nx || cur}; })}); render(true); return; }
+  if (act === "bib-reset") { if (!a.classList.contains("armed")) { a.classList.add("armed"); a.textContent = "Confirmer : rétablir la base d'origine"; return; } await saveUo({items:UO0, profils:PROFILS0, params:PARAMS0}); toast("Base d'origine rétablie"); render(true); return; }
 }
-async function bibChange(el){
-  const B = bib(), f = el.dataset.bib, v = el.type === "checkbox" ? el.checked : el.value;
-  if (f.startsWith("prof.")) { const profils = B.profils.map(p => p.k === el.dataset.k ? {...p, [f.slice(5)]:f === "prof.tjm" ? num(v) : v.trim()} : p); await saveBib({profils}); return; }
-  if (f.startsWith("par.")) { const k = f.slice(4); await saveBib({params:{...B.params, [k]:["nego", "ancMin", "ancMax"].includes(k) ? num(v) / 100 : num(v)}}); render(true); return; }
-  if (f.startsWith("bench.")) { const i = Number(el.closest("[data-bi]").dataset.bi), k = f.slice(6); const bench = B.bench.map((b, j) => j === i ? {...b, [k]:k === "nom" ? v.trim() : num(v)} : b); await saveBib({bench}); render(true); return; }
-  if (f.startsWith("it.")) {
-    const id = el.closest("[data-bid]").dataset.bid, k = f.slice(3);
-    const items = B.items.map(x => x.id !== id ? x : {...x, [k]:["tu", "cu", "freq"].includes(k) ? num(v) : k === "dep" ? !!v : typeof v === "string" ? v.trim() : v});
-    await saveBib({items}); if (el.tagName === "SELECT") render(true); return;
-  }
+async function uoChange(el){
+  const B = uoBase(), f = el.dataset.bib, v = el.type === "checkbox" ? el.checked : el.value;
+  if (f.startsWith("prof.")) { await saveUo({profils:B.profils.map(p => p.k === el.dataset.k ? {...p, [f.slice(5)]:f === "prof.tjm" ? num(v) : v.trim()} : p)}); return; }
+  if (f.startsWith("par.")) { const k = f.slice(4); await saveUo({params:{...B.params, [k]:["marge", "repMin", "repMax"].includes(k) ? num(v) / 100 : num(v)}}); return; }
+  if (f.startsWith("it.")) { const id = el.closest("[data-bid]").dataset.bid, k = f.slice(3); await saveUo({items:B.items.map(x => x.id !== id ? x : {...x, [k]:["tu", "cu", "freq"].includes(k) ? num(v) : k === "dep" ? !!v : typeof v === "string" ? v.trim() : v})}); if (el.tagName === "SELECT") render(true); }
 }
 
 /* ----- Export Excel (avec formules) ----- */
@@ -2924,59 +3112,54 @@ async function aoExport(ao){
   if (!dl) { toast("L'export n'est pas disponible sur cet appareil."); return; }
   try {
     toast("Préparation du fichier…");
-    const X = await loadXLSX(), R = calcAo(ao), B = bib(), P = ao.params;
+    const X = await loadXLSX(), R = calcAo(ao), P = ao.params, Ps = profilsOf(ao);
     const ws = {}, put = (r, c, v, z, f) => { const cell = typeof v === "number" ? {t:"n", v} : {t:"s", v:String(v ?? "")}; if (z) cell.z = z; if (f) cell.f = f; ws[X.utils.encode_cell({r, c})] = cell; };
-    const info = [["Appel d'offres", ao.nom], ["Client", ao.client], ["Maître d'ouvrage", ao.moa], ["Opération", ao.op], ["Type", ao.type], ["Mission", ao.mission], ["Lieu", ao.lieu], ["Budget travaux (€ HT)", num(ao.budget)], ["Surface (m²)", num(ao.surface)]];
-    info.forEach(([k, v], i) => { put(i, 0, k); put(i, 1, v ?? "", typeof v === "number" ? "#,##0" : null); });
-    const pr = [["Anticipation négo", num(P.nego), "0.0%"], ["Coût d'un déplacement (€)", depCost(ao), "#,##0"], ...B.profils.map(p => [`TJM ${p.nom} (€ HT)`, profTjm(ao, p.k), "#,##0"])];
-    pr.forEach(([k, v, z], i) => { put(i, 4, k); put(i, 5, v, z); });
-    const NEGO = "$F$1", DEP = "$F$2";
-    const H = ["Phase", "Prestation", "Unité", "Début", "Fin", "Mois", "Fréq. / mois", "Quantité", "Temps unit. (j)", "Jours", "Profil", "TJM (€)", "Travail (€)", "Déplacement", "Coût déplacements (€)", "Frais unit. (€)", "Total HT (€)", "Option"];
-    const r0 = 12; H.forEach((h, c) => put(r0, c, h));
-    let r = r0 + 1; const first = r;
-    for (const ph of ao.phases) for (const x of R.lines.filter(y => y.l.phase === ph.id)) {
-      const {l, c} = x, rr = r + 1, prof = (B.profils.find(p => p.k === l.profil) || {nom:l.profil}).nom;
-      put(r, 0, ph.nom); put(r, 1, l.lib); put(r, 2, l.unite); put(r, 3, c.per ? c.per.a : ""); put(r, 4, c.per ? c.per.b : ""); put(r, 5, c.mois);
-      if (l.mode === "freq") { put(r, 6, num(l.freq), "0.00"); put(r, 7, c.q, null, `ROUND(F${rr}*G${rr},0)`); } else put(r, 7, c.q);
-      put(r, 8, num(l.tu), "0.000"); put(r, 9, c.jours, "0.00", `H${rr}*I${rr}`); put(r, 10, prof); put(r, 11, c.tjm, "#,##0"); put(r, 12, c.trav, "#,##0", `J${rr}*L${rr}`);
-      put(r, 13, l.dep ? "OUI" : "NON"); put(r, 14, c.dep, "#,##0", `IF(N${rr}="OUI",ROUND(H${rr},0)*${DEP},0)`); put(r, 15, num(l.cu), "#,##0");
-      put(r, 16, c.tot, "#,##0", `ROUNDUP((M${rr}+O${rr}+H${rr}*P${rr})*(1+${NEGO}),0)`); put(r, 17, l.option ? "OUI" : "");
+    [["Appel d'offres", ao.nom], ["Client", ao.client], ["Maître d'ouvrage", ao.moa], ["Localisation", ao.lieu], ["Opération", ao.type], ["Missions", (ao.missions || []).map(m => MIS[m] ? MIS[m].nom : m).join(", ")], ["Date de remise", validYmd(ao.remise) ? fmt(ao.remise, true) : ""], ["Montant des travaux (€ HT)", num(ao.budget)], ["Surface (m²)", num(ao.surface)]]
+      .forEach(([k, v], i) => { put(i, 0, k); put(i, 1, v ?? "", typeof v === "number" ? "#,##0" : null); });
+    [["Marge / aléas", num(P.marge), "0.0%"], ["Coût d'un déplacement (€)", depCost(ao), "#,##0"], ["Remise commerciale", num(P.remise), "0.0%"], ["Arrondi du total (€)", num(P.arrondi), "#,##0"], ...Ps.map(p => [`TJM ${p.nom} (€ HT)`, profTjm(ao, p.k), "#,##0"])].forEach(([k, v, z], i) => { put(i, 4, k); put(i, 5, v, z); });
+    const H = ["Phase", "Mission", "Prestation", "Mode", "Unité", "Début", "Fin", "Mois", "Fois / mois", "Quantité", "Temps unit. (j)", "Jours", "Profil", "TJM (€)", "Travail (€)", "Prix unit. (€)", "Déplacement", "Coût déplacements (€)", "Prix HT (€)", "Option"];
+    const r0 = Math.max(10, 4 + Ps.length) + 2; H.forEach((h, c) => put(r0, c, h));
+    let r = r0 + 1; const first = r + 1;
+    for (const ph of R.eph) for (const {l, c} of R.lines.filter(y => y.l.phase === ph.id)) {
+      const rr = r + 1, pr = Ps.find(p => p.k === l.profil) || {nom:l.profil};
+      put(r, 0, ph.nom); put(r, 1, MIS[l.mis] ? MIS[l.mis].nom : ""); put(r, 2, l.lib); put(r, 3, l.type === "temps" ? "Temps" : "UO"); put(r, 4, l.unite); put(r, 5, c.per ? c.per.a : ""); put(r, 6, c.per ? c.per.b : ""); put(r, 7, c.mois);
+      if (l.type === "temps") { put(r, 8, num(l.freq), "0.00"); put(r, 9, c.q, null, `ROUND(H${rr}*I${rr},0)`); } else put(r, 9, c.q);
+      put(r, 10, num(l.tu), "0.000"); put(r, 11, c.jours, "0.00", `J${rr}*K${rr}`); put(r, 12, pr.nom); put(r, 13, c.tjm, "#,##0"); put(r, 14, c.trav, "#,##0", `L${rr}*N${rr}`); put(r, 15, num(l.cu), "#,##0.00");
+      put(r, 16, l.dep ? "OUI" : "NON"); put(r, 17, c.dep, "#,##0", `IF(Q${rr}="OUI",ROUND(J${rr},0)*$F$2,0)`); put(r, 18, c.prix, "#,##0", `ROUNDUP((O${rr}+J${rr}*P${rr}+R${rr})*(1+$F$1),0)`); put(r, 19, l.option ? "OUI" : "");
       r++;
     }
-    const last = r; r++;
-    put(r, 15, "Total HT (hors options)"); put(r, 16, R.totBrut, "#,##0", `SUMIF(R${first + 1}:R${last},"<>OUI",Q${first + 1}:Q${last})`); put(r, 9, R.jours, "0.00", `SUMIF(R${first + 1}:R${last},"<>OUI",J${first + 1}:J${last})`); const rt = r + 1; r++;
-    if (R.optTot) { put(r, 15, "Options"); put(r, 16, R.optTot, "#,##0", `SUMIF(R${first + 1}:R${last},"OUI",Q${first + 1}:Q${last})`); r++; }
-    put(r, 15, "TVA " + Math.round(B.params.tva * 100) + " %"); put(r, 16, R.totBrut * B.params.tva, "#,##0", `Q${rt}*${B.params.tva}`); r++;
-    put(r, 15, "Total TTC"); put(r, 16, R.totBrut * (1 + B.params.tva), "#,##0", `Q${rt}*${1 + B.params.tva}`); r++;
-    if (num(ao.budget)) { put(r, 15, "% du budget travaux"); put(r, 16, R.totBrut / num(ao.budget), "0.00%", `Q${rt}/B8`); r++; }
-    if (num(ao.surface)) { put(r, 15, "€ HT / m²"); put(r, 16, R.totBrut / num(ao.surface), "0.00", `Q${rt}/B9`); r++; }
+    const last = r, rg = c => `${c}${first}:${c}${last}`; r++;
+    put(r, 17, "Sous-total prestations"); put(r, 18, R.brut, "#,##0", `SUMIF(${rg("T")},"<>OUI",${rg("S")})`); put(r, 11, R.jours, "0.00", `SUMIF(${rg("T")},"<>OUI",${rg("L")})`); const rs = r + 1; r++;
+    put(r, 17, "Remise commerciale"); put(r, 18, -R.rem, "#,##0", `-S${rs}*$F$3`); const rrm = r + 1; r++;
+    put(r, 17, "Total HT"); put(r, 18, R.tot, "#,##0", num(P.arrondi) > 0 ? `CEILING(S${rs}+S${rrm},$F$4)` : `ROUND(S${rs}+S${rrm},0)`); const rt = r + 1; r++;
+    put(r, 17, `TVA ${jfmt(num(P.tva) * 100)} %`); put(r, 18, R.tot * num(P.tva), "#,##0", `S${rt}*${num(P.tva)}`); r++;
+    put(r, 17, "Total TTC"); put(r, 18, R.tot * (1 + num(P.tva)), "#,##0", `S${rt}*${1 + num(P.tva)}`); r++;
+    if (R.optTot) { put(r, 17, "Options (hors total)"); put(r, 18, R.optTot, "#,##0", `SUMIF(${rg("T")},"OUI",${rg("S")})`); r++; }
+    if (num(ao.budget)) { put(r, 17, "% des travaux"); put(r, 18, R.pBudget, "0.00%", `S${rt}/B8`); r++; }
+    if (num(ao.surface)) { put(r, 17, "€ HT / m²"); put(r, 18, R.eurM2, "0.00", `S${rt}/B9`); r++; }
     ws["!ref"] = X.utils.encode_range({s:{r:0, c:0}, e:{r, c:H.length - 1}});
-    ws["!cols"] = [22, 58, 10, 9, 9, 6, 10, 9, 12, 8, 20, 9, 12, 11, 12, 11, 14, 8].map(w => ({wch:w}));
+    ws["!cols"] = [22, 22, 56, 7, 11, 9, 9, 6, 9, 9, 12, 8, 22, 9, 12, 11, 11, 14, 13, 8].map(w => ({wch:w}));
     ws["!autofilter"] = {ref:X.utils.encode_range({s:{r:r0, c:0}, e:{r:last - 1, c:H.length - 1}})};
-    /* DPGF par phase */
-    const dp = [["Phase", "Début", "Fin", "Mois", "Jours", "Montant HT (€)", "Part"]];
-    R.ph.forEach(x => dp.push([x.p.nom, x.p.a, x.p.b, ymCount(x.p.a, x.p.b), Math.round(x.jours * 100) / 100, x.tot, R.tot ? x.tot / R.totBrut : 0]));
-    dp.push(["TOTAL", R.a || "", R.b || "", R.duree, Math.round(R.jours * 100) / 100, R.totBrut, 1]);
-    const ws2 = X.utils.aoa_to_sheet(dp); for (let i = 1; i < dp.length; i++) { const c5 = ws2[X.utils.encode_cell({r:i, c:5})], c6 = ws2[X.utils.encode_cell({r:i, c:6})]; if (c5) c5.z = "#,##0"; if (c6) c6.z = "0.0%"; }
-    ws2["!cols"] = [{wch:34}, {wch:9}, {wch:9}, {wch:6}, {wch:8}, {wch:14}, {wch:8}];
-    /* Facturation mensuelle */
-    const ms = [...R.months.keys()].sort();
-    const fa = [["Mois", "Montant HT (€)", "Jours", "Cumul (€)"]]; let cum = 0; for (const m of ms) { const o = R.months.get(m); cum += o.e; fa.push([m, Math.round(o.e), Math.round(o.j * 100) / 100, Math.round(cum)]); }
-    const ws3 = X.utils.aoa_to_sheet(fa); ws3["!cols"] = [{wch:10}, {wch:14}, {wch:8}, {wch:14}];
-    const wb = X.utils.book_new(); X.utils.book_append_sheet(wb, ws, "Chiffrage"); X.utils.book_append_sheet(wb, ws2, "DPGF par phase"); X.utils.book_append_sheet(wb, ws3, "Facturation mensuelle");
+    const sheet = (aoa, cols, fmts) => { const s = X.utils.aoa_to_sheet(aoa); s["!cols"] = cols.map(w => ({wch:w})); for (let i = 1; i < aoa.length; i++) for (const [c, z] of fmts) { const cell = s[X.utils.encode_cell({r:i, c})]; if (cell && cell.t === "n") cell.z = z; } return s; };
+    const ws2 = sheet([["Phase", "Étape", "Début", "Fin", "Mois", "Jours", "Montant HT (€)", "Part"], ...R.ph.map(x => [x.p.nom, STAGES[x.p.stage], x.p.a, x.p.b, x.p.n, Math.round(x.jours * 100) / 100, Math.round(x.prix), R.tot ? x.prix / R.tot : 0]), ["TOTAL", "", R.a || "", R.b || "", R.duree, Math.round(R.jours * 100) / 100, R.tot, 1]], [30, 13, 9, 9, 6, 8, 14, 8], [[6, "#,##0"], [7, "0.0%"]]);
+    const ws3 = sheet([["Mission", "Montant HT (€)", "Part"], ...[...R.byMis].sort((a, b) => b[1] - a[1]).map(([k, v]) => [MIS[k] ? MIS[k].nom : "Autres", Math.round(v), R.tot ? v / R.tot : 0])], [32, 14, 8], [[1, "#,##0"], [2, "0.0%"]]);
+    let cum = 0; const ws4 = sheet([["Mois", "Montant HT (€)", "Jours", "Cumul (€)"], ...[...R.months.keys()].sort().map(m => { const o = R.months.get(m); cum += o.e; return [m, Math.round(o.e), Math.round(o.j * 100) / 100, Math.round(cum)]; })], [10, 14, 8, 14], [[1, "#,##0"], [3, "#,##0"]]);
+    const wb = X.utils.book_new(); X.utils.book_append_sheet(wb, ws, "Chiffrage"); X.utils.book_append_sheet(wb, ws2, "Par phase"); X.utils.book_append_sheet(wb, ws3, "Par mission"); X.utils.book_append_sheet(wb, ws4, "Facturation mensuelle");
     const buf = X.write(wb, {bookType:"xlsx", type:"array"});
     await dl.save({filename:`Chiffrage_${(ao.nom || "AO").replace(/[^\w-]+/g, "_").slice(0, 40)}_${today()}.xlsx`, data:new Blob([buf])});
     toast("Fichier prêt");
   } catch (e) { toast(e && e.code === "declined" ? "Téléchargement annulé." : "Export impossible pour l'instant."); }
 }
-/* recherche en direct */
 document.addEventListener("input", ev => {
   if (ev.target.id === "pick-q") pickRender();
   if (ev.target.matches && ev.target.matches("textarea.fit")) { ev.target.style.height = "auto"; ev.target.style.height = ev.target.scrollHeight + 2 + "px"; }
   if (ev.target.id === "bib-q") { clearTimeout(S.chif._bt); S.chif._bt = setTimeout(() => { S.chif.bq = ev.target.value; render(true); const el = $("#bib-q"); if (el) { el.focus(); el.setSelectionRange(el.value.length, el.value.length); } }, 200); }
 });
-document.addEventListener("change", ev => { const t = ev.target; if (t.dataset && t.dataset.pick) { const id = t.dataset.pick, s = S.chif.pickSel; t.checked ? s.includes(id) || s.push(id) : s.splice(s.indexOf(id), 1); const n = s.length, pn = $("#pick-n"); if (pn) pn.textContent = n ? `${n} prestation${n > 1 ? "s" : ""} sélectionnée${n > 1 ? "s" : ""}` : "Aucune sélection"; } });
-document.addEventListener("toggle", ev => { if (ev.target.classList && ev.target.classList.contains("ao-info")) S.chif.infoOpen = ev.target.open; }, true);
+document.addEventListener("change", ev => {
+  const t = ev.target;
+  if (t.dataset && t.dataset.pick) { const id = t.dataset.pick, s = S.chif.pickSel; t.checked ? s.includes(id) || s.push(id) : s.splice(s.indexOf(id), 1); pickCount(); }
+  if (t.id === "pick-ph") { S.chif.pickPhase = t.value; pickRender(); }
+});
 
 /* ---------- Rendu principal ---------- */
 function render(force){
@@ -3219,7 +3402,7 @@ async function importJson(file, say){
   if (data.prefs && typeof data.prefs === "object") await S.db.doc("meta/prefs").set(replace ? data.prefs : {...data.prefs, ...(S.prefs || {})});
   if (data.decompte && typeof data.decompte === "object") for (const [m, v] of Object.entries(data.decompte)) if (/^\d{4}-\d{2}$/.test(m) && v && (replace || !(S.decDocs || {})[m])) await S.db.doc("decompte/" + m).set(v);
   if (Array.isArray(data.ao)) for (const a of data.ao) if (a && a.id && (replace || !S.aos.has(a.id))) await S.db.doc("ao/" + a.id).set(a);
-  if (data.biblio && (replace || !S.biblio)) await S.db.doc("meta/biblio").set(data.biblio);
+  if (data.uo && (replace || !S.uo)) await S.db.doc("meta/uo").set(data.uo);
   say(`${n} tâche${n > 1 ? "s" : ""} importée${n > 1 ? "s" : ""}.`); toast("Import terminé");
 }
 async function importFile(file){
@@ -3267,7 +3450,7 @@ const EXP_HEAD = ["N°","Projet","Tâche","Statut","Priorité","Urgent","Importa
 async function doBackup(){
   const prog = $("#bak-progress"); const say = m => { if (prog) prog.textContent = m; };
   const dl = await window.claude.use("downloads");
-  const payload = {app:"TO DO BIM", format:2, saved: nowIso(), lists:S.lists, prefs:S.prefs || {}, decompte:S.decDocs || {}, ao:[...(S.aos || new Map()).values()], biblio:S.biblio || null, tasks:[...S.tasks.values()]};
+  const payload = {app:"TO DO BIM", format:2, saved: nowIso(), lists:S.lists, prefs:S.prefs || {}, decompte:S.decDocs || {}, ao:[...(S.aos || new Map()).values()], uo:S.uo || null, tasks:[...S.tasks.values()]};
   try { await dl.save({filename:`TODO_BIM_sauvegarde_${today()}.json`, data:JSON.stringify(payload, null, 1)});
     S.backupAt = today(); try { localStorage.setItem("todobim.backupAt", S.backupAt); } catch (e) {}
     say("Sauvegarde prête. Range-la dans Fichiers ▸ iCloud Drive."); render(true);
@@ -3348,7 +3531,7 @@ document.addEventListener("click", async ev => {
   if (!a) return;
   const act = a.dataset.act;
   const id = a.closest("[data-id]")?.dataset.id;
-  if (/^(ao|bib|pick)-/.test(act)) { aoAction(act, a, ev); return; }
+  if (/^(ao|bib|pick|wz)-/.test(act)) { aoAction(act, a, ev); return; }
   if (act.startsWith("dec-")) { if (act === "dec-refs-save") decRefsSave(); else decAction(act, a); return; }
   if (await planClick(act, a, id, ev)) return;
   if (act.startsWith("tip-")) { tipAction(act, a); return; }
@@ -3381,9 +3564,8 @@ document.addEventListener("click", async ev => {
 });
 $("#fab").addEventListener("click", () => openEditor(null, {projet: S.view === "jour" ? S.jourProjet : S.view === "matrice" ? S.matProjet : S.view === "planning" ? S.plan.proj : (S.f.projets.length === 1 ? S.f.projets[0] : "")}));
 document.addEventListener("keydown", ev => {
-  if (ev.key === "Escape") document.querySelectorAll(".ao-ov,.ao-pick,.copybox").forEach(x => x.remove());
+  if (ev.key === "Escape") document.querySelectorAll(".ao-pick,.copybox").forEach(x => x.remove());
   if (ev.key === "Enter" && ev.target.dataset && (ev.target.dataset.ao || ev.target.dataset.bib) && /INPUT|TEXTAREA/.test(ev.target.tagName)) { ev.preventDefault(); ev.target.blur(); return; }
-  if (ev.key === "Enter" && ev.target.id === "na-nom") { ev.preventDefault(); document.querySelector('[data-act="ao-create"]')?.click(); return; }
   if (ev.key === "Enter" && ev.target.dataset && ev.target.dataset.dec && /INPUT|TEXTAREA/.test(ev.target.tagName)) { ev.preventDefault(); ev.target.blur(); return; }
   if (ev.key === "Escape" && S.edit) closeEditor();
   if (S.edit && ev.key === "Enter" && (ev.metaKey || ev.ctrlKey)) saveEditor();
@@ -3399,7 +3581,7 @@ document.addEventListener("change", ev => {
   const t = ev.target;
   if (t.dataset && t.dataset.dec) { decChange(t); return; }
   if (t.dataset && t.dataset.ao) { aoChange(t); return; }
-  if (t.dataset && t.dataset.bib) { bibChange(t); return; }
+  if (t.dataset && t.dataset.bib) { uoChange(t); return; }
   if (t.id === "dec-imp-file" && t.files && t.files[0]) { decImport(t.files[0]); t.value = ""; return; }
   if (t.id === "dec-upto") { S.dec.upto = t.checked; saveDecUi(); render(true); return; }
   if (decSettingsChange(t)) return;
@@ -3456,7 +3638,7 @@ async function init(){
   }, err => { clearTimeout(timer); S.status = "error"; S.error = err && err.code; render(true); });
   db.doc("meta/prefs").onSnapshot(s => { S.prefs = (s.exists && s.data()) || {}; schedule(); }, () => {});
   db.collection("ao").onSnapshot(snap => { S.aos = new Map(snap.docs.map(d => [d.id, {...d.data(), id:d.id}])); if (S.view === "chiffrage") schedule(); }, () => {});
-  db.doc("meta/biblio").onSnapshot(s => { S.biblio = (s.exists && s.data()) || null; if (S.view === "chiffrage") schedule(); }, () => {});
+  db.doc("meta/uo").onSnapshot(s => { S.uo = (s.exists && s.data()) || null; if (S.view === "chiffrage") schedule(); }, () => {});
   db.collection("decompte").onSnapshot(snap => { S.decDocs = Object.fromEntries(snap.docs.map(d => [d.id, d.data()])); if (S.view === "heures") schedule(); }, () => {});
   db.doc("meta/lists").onSnapshot(s => {
     const d = (s.exists && s.data()) || {};
