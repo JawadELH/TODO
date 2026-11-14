@@ -3365,6 +3365,8 @@ async function aoPdf(ao){
 }
 
 /* ----- Excel mis en forme, avec formules ----- */
+const xlS = v => typeof v === "string" ? v.replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\uFFFE\uFFFF]/g, "").replace(/[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF]/g, "").slice(0, 32000) : v;
+const xlFoot = t => `&L&8 ${xlS(String(t || "")).replace(/&/g, "&&").replace(/[\r\n]+/g, " ").slice(0, 80)}&R&8 Page &P / &N`;
 async function aoExport(ao){
   const dl = await getDl(); if (!dl) return;
   try {
@@ -3374,27 +3376,27 @@ async function aoExport(ao){
     const accHex = (soc && soc.couleur || "#1F6FEB").replace("#", "").toUpperCase(), A = h => ({argb:"FF" + h});
     const wb = new X.Workbook(); wb.creator = soc ? soc.nom : "TO DO BIM"; wb.created = new Date(); wb.calcProperties = {fullCalcOnLoad:true};
     const wsO = wb.addWorksheet("Offre", {views:[{showGridLines:false}], pageSetup:{paperSize:9, orientation:"portrait", fitToPage:true, fitToWidth:1, fitToHeight:0}});
-    const wsD = wb.addWorksheet("Détail", {views:[{showGridLines:false}], pageSetup:{paperSize:9, orientation:"landscape", fitToPage:true, fitToWidth:1, fitToHeight:0}, properties:{outlineProperties:{summaryBelow:false}}});
+    const wsD = wb.addWorksheet("Détail", {views:[{showGridLines:false}], pageSetup:{paperSize:9, orientation:"landscape", fitToPage:true, fitToWidth:1, fitToHeight:0}, properties:{outlineLevelRow:1}});
     const wsH = wb.addWorksheet("Hypothèses", {views:[{showGridLines:false}]});
     const wsF = wb.addWorksheet("Facturation", {views:[{showGridLines:false}]});
     const FILL = c => ({type:"pattern", pattern:"solid", fgColor:A(c)}), IN = FILL("FFF4CC"), HEAD = FILL(accHex), GROUP = FILL("E8EEF6"), TOT = FILL("F1F3F6");
     const th = {style:"thin", color:A("D5DAE1")}, BOX = {top:th, left:th, bottom:th, right:th};
     const fE = '#,##0 "€"', fE2 = '#,##0.00 "€"', fJ = '0.00', fP = '0.0%', fQ = '0.####';
-    const cell = (ws, ref, v, st = {}) => { const c = ws.getCell(ref); c.value = v; if (st.f) c.numFmt = st.f; c.font = {name:"Calibri", size:st.s || 10, bold:!!st.b, color:A(st.c || "1F2430"), italic:!!st.i}; if (st.fill) c.fill = st.fill; if (st.al) c.alignment = st.al; if (st.box) c.border = BOX; return c; };
+    const cell = (ws, ref, v, st = {}) => { const c = ws.getCell(ref); c.value = xlS(v); if (st.f) c.numFmt = st.f; c.font = {name:"Calibri", size:st.s || 10, bold:!!st.b, color:A(st.c || "1F2430"), italic:!!st.i}; if (st.fill) c.fill = st.fill; if (st.al) c.alignment = st.al; if (st.box) c.border = BOX; return c; };
     const F = (formula, result) => ({formula, result});
-    const foot = `&L&8${(soc ? soc.nom : "").replace(/&/g, "&&")}&C&8${(ao.nom || "").replace(/&/g, "&&")}&R&8Page &P / &N`;
+    const foot = xlFoot(soc ? soc.nom : ao.nom);
     [wsO, wsD, wsH, wsF].forEach(ws => { ws.headerFooter = {oddFooter:foot}; });
     /* Hypothèses */
     wsH.columns = [{width:42}, {width:14}, {width:14}];
     cell(wsH, "A1", "Hypothèses du chiffrage", {b:1, s:14}); cell(wsH, "A2", "Les cellules jaunes sont modifiables : le détail et l'offre se recalculent.", {i:1, c:"6B7280"});
     ["Quantité", "Valeur", "Unité"].forEach((t, i) => cell(wsH, `${"ABC"[i]}4`, t, {b:1, c:"FFFFFF", fill:HEAD, box:1}));
     const dref = {}; let hr = 5;
-    for (const d of drvList(ao)) { cell(wsH, `A${hr}`, d.nom, {box:1}); cell(wsH, `B${hr}`, num((ao.drivers || {})[d.k]), {fill:IN, box:1, f:fQ}); cell(wsH, `C${hr}`, d.u || "", {box:1, c:"6B7280"}); dref[d.k] = `Hypothèses!$B$${hr}`; hr++; }
-    cell(wsH, `A${hr}`, CALC_DRV.zc.nom, {box:1}); cell(wsH, `B${hr}`, F(`${dref.zones.split("!")[1]}*${dref.cycles.split("!")[1]}`, drvVal(ao, "zc")), {box:1, f:fQ}); cell(wsH, `C${hr}`, "cycle", {box:1, c:"6B7280"}); dref.zc = `Hypothèses!$B$${hr}`; hr++;
-    cell(wsH, `A${hr}`, CALC_DRV.surface.nom, {box:1}); cell(wsH, `B${hr}`, num(ao.surface), {fill:IN, box:1, f:"#,##0"}); cell(wsH, `C${hr}`, "m²", {box:1, c:"6B7280"}); dref.surface = `Hypothèses!$B$${hr}`; const surfRef = dref.surface; hr += 2;
+    for (const d of drvList(ao)) { cell(wsH, `A${hr}`, d.nom, {box:1}); cell(wsH, `B${hr}`, num((ao.drivers || {})[d.k]), {fill:IN, box:1, f:fQ}); cell(wsH, `C${hr}`, d.u || "", {box:1, c:"6B7280"}); dref[d.k] = `'Hypothèses'!$B$${hr}`; hr++; }
+    cell(wsH, `A${hr}`, CALC_DRV.zc.nom, {box:1}); cell(wsH, `B${hr}`, F(`${dref.zones.split("!")[1]}*${dref.cycles.split("!")[1]}`, drvVal(ao, "zc")), {box:1, f:fQ}); cell(wsH, `C${hr}`, "cycle", {box:1, c:"6B7280"}); dref.zc = `'Hypothèses'!$B$${hr}`; hr++;
+    cell(wsH, `A${hr}`, CALC_DRV.surface.nom, {box:1}); cell(wsH, `B${hr}`, num(ao.surface), {fill:IN, box:1, f:"#,##0"}); cell(wsH, `C${hr}`, "m²", {box:1, c:"6B7280"}); dref.surface = `'Hypothèses'!$B$${hr}`; const surfRef = dref.surface; hr += 2;
     cell(wsH, `A${hr}`, "Déplacements", {b:1, c:"FFFFFF", fill:HEAD, box:1}); cell(wsH, `B${hr}`, "", {fill:HEAD, box:1}); cell(wsH, `C${hr}`, "", {fill:HEAD, box:1}); hr++;
     const hk = hr; [["Distance aller-retour (km)", num(P.kmAR), "km"], ["Coût au km", num(P.ckm), "€"], ["Repas, péage, parking", num(P.repas), "€"]].forEach(([k, v, u], i) => { cell(wsH, `A${hr}`, k, {box:1}); cell(wsH, `B${hr}`, v, {fill:IN, box:1, f:i ? fE2 : "#,##0"}); cell(wsH, `C${hr}`, u, {box:1, c:"6B7280"}); hr++; });
-    cell(wsH, `A${hr}`, "Coût d'un déplacement", {b:1, box:1}); cell(wsH, `B${hr}`, F(`ROUNDUP(B${hk}*B${hk + 1}+B${hk + 2},0)`, depCost(ao)), {b:1, box:1, f:fE}); const depRef = `Hypothèses!$B$${hr}`;
+    cell(wsH, `A${hr}`, "Coût d'un déplacement", {b:1, box:1}); cell(wsH, `B${hr}`, F(`ROUNDUP(B${hk}*B${hk + 1}+B${hk + 2},0)`, depCost(ao)), {b:1, box:1, f:fE}); const depRef = `'Hypothèses'!$B$${hr}`;
     /* Détail */
     wsD.columns = [46, 20, 8, 11, 9, 9, 8, 9, 10, 10, 9, 24, 10, 12, 11, 12, 12, 13, 8, 36].map(w => ({width:w}));
     cell(wsD, "A1", "Détail du chiffrage", {b:1, s:14}); cell(wsD, "A2", ao.nom || "", {s:11, c:"6B7280"});
@@ -3509,17 +3511,17 @@ const XA = h => ({argb:"FF" + h}), XTH = {style:"thin", color:{argb:"FFD5DAE1"}}
 async function xlBook(){ await loadLib("exceljs", () => window.ExcelJS); const wb = new window.ExcelJS.Workbook(); wb.creator = (socList()[0] || {}).nom || "TO DO BIM"; wb.created = new Date(); return wb; }
 function xlSheet(wb, name, title, sub, widths, portrait){
   const ws = wb.addWorksheet(name, {views:[{showGridLines:false}], pageSetup:{paperSize:9, orientation:portrait ? "portrait" : "landscape", fitToPage:true, fitToWidth:1, fitToHeight:0, margins:{left:0.4, right:0.4, top:0.5, bottom:0.5, header:0.3, footer:0.3}}});
-  ws.headerFooter = {oddFooter:`&L&8${String(title).replace(/&/g, "&&")}&R&8Page &P / &N`};
+  ws.headerFooter = {oddFooter:xlFoot(title)};
   ws.columns = widths.map(w => ({width:w}));
-  const t = ws.getCell("A1"); t.value = title; t.font = {name:"Calibri", bold:true, size:14, color:XA("1F2430")};
-  if (sub) { const s = ws.getCell("A2"); s.value = sub; s.font = {name:"Calibri", italic:true, size:10, color:XA("6B7280")}; }
+  const t = ws.getCell("A1"); t.value = xlS(title); t.font = {name:"Calibri", bold:true, size:14, color:XA("1F2430")};
+  if (sub) { const s = ws.getCell("A2"); s.value = xlS(sub); s.font = {name:"Calibri", italic:true, size:10, color:XA("6B7280")}; }
   return ws;
 }
 function xlHead(ws, r, labels, aligns, alt){
-  const row = ws.getRow(r); labels.forEach((v, i) => { const c = row.getCell(i + 1); c.value = v; c.font = {name:"Calibri", bold:true, size:10, color:XA("FFFFFF")}; c.fill = {type:"pattern", pattern:"solid", fgColor:XA(alt && alt[i] ? "6B7280" : xlAcc())}; c.alignment = {vertical:"middle", horizontal:(aligns && aligns[i]) || "left", wrapText:true}; c.border = XBOX; }); row.height = 28;
+  const row = ws.getRow(r); labels.forEach((v, i) => { const c = row.getCell(i + 1); c.value = xlS(v); c.font = {name:"Calibri", bold:true, size:10, color:XA("FFFFFF")}; c.fill = {type:"pattern", pattern:"solid", fgColor:XA(alt && alt[i] ? "6B7280" : xlAcc())}; c.alignment = {vertical:"middle", horizontal:(aligns && aligns[i]) || "left", wrapText:true}; c.border = XBOX; }); row.height = 28;
 }
 function xlRow(ws, r, vals, fmts, aligns, o = {}){
-  const row = ws.getRow(r); vals.forEach((v, i) => { const c = row.getCell(i + 1); c.value = v === undefined || v === null ? "" : v; if (fmts && fmts[i]) c.numFmt = fmts[i]; c.font = {name:"Calibri", size:10, bold:!!o.b, color:XA(o.c || "1F2430")}; c.alignment = {vertical:"top", horizontal:(aligns && aligns[i]) || "left", wrapText:!!(o.wrap && o.wrap[i])}; c.border = XBOX; if (o.fill) c.fill = {type:"pattern", pattern:"solid", fgColor:XA(o.fill)}; else if (o.zebra) c.fill = {type:"pattern", pattern:"solid", fgColor:XA("F6F8FB")}; });
+  const row = ws.getRow(r); vals.forEach((v, i) => { const c = row.getCell(i + 1); c.value = v === undefined || v === null || (typeof v === "number" && !isFinite(v)) ? "" : xlS(v); if (fmts && fmts[i]) c.numFmt = fmts[i]; c.font = {name:"Calibri", size:10, bold:!!o.b, color:XA(o.c || "1F2430")}; c.alignment = {vertical:"top", horizontal:(aligns && aligns[i]) || "left", wrapText:!!(o.wrap && o.wrap[i])}; c.border = XBOX; if (o.fill) c.fill = {type:"pattern", pattern:"solid", fgColor:XA(o.fill)}; else if (o.zebra) c.fill = {type:"pattern", pattern:"solid", fgColor:XA("F6F8FB")}; });
 }
 function xlTable(wb, name, o){
   const ws = xlSheet(wb, name, o.title, o.sub, o.cols.map(c => c.w || 14), o.portrait);
