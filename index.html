@@ -707,7 +707,7 @@ input[type=range]{accent-color:var(--accent);width:100%}
 .ao-title::placeholder{color:var(--muted);opacity:.7}
 .ao-st{color:var(--sc);font-weight:600}
 /* étapes */
-.wz-steps{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px;margin-bottom:16px;counter-reset:s}
+.wz-steps{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;margin-bottom:16px;counter-reset:s}
 .wz-s{position:relative;display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:8px 10px;color:var(--muted);text-align:left;min-width:0}
 .wz-s:hover{border-color:var(--line-2);color:var(--ink)}
 .wz-n{flex:none;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-family:var(--f-mono);font-size:12px;font-weight:700;background:var(--surface-2);color:var(--muted)}
@@ -941,6 +941,114 @@ input.num.s{width:64px}
   .opt-l li{grid-template-columns:auto minmax(0,1fr) auto} .opt-l li .btn{grid-column:2/-1;justify-self:start}
   .of-grid textarea,.of-soc select{font-size:16px}
 }
+/* Pièces du marché */
+.dce-note{font-size:12.5px;color:var(--muted);margin:-4px 0 12px;display:flex;gap:8px;align-items:center}
+.dce-empty .row{margin-top:12px}
+.dce-kpis{grid-template-columns:repeat(5,minmax(0,1fr));margin-bottom:12px}
+.dce-rev{margin-bottom:14px;border-color:color-mix(in srgb,var(--accent) 40%,var(--line))}
+.dce-pr{display:grid;grid-template-columns:auto minmax(0,1fr) auto 210px;gap:10px;align-items:center;padding:6px 8px;border-radius:8px;cursor:pointer}
+.dce-pr:hover{background:var(--surface-2)} .dce-pr:has(input:checked){background:var(--accent-soft)} .dce-pr.dup{opacity:.6}
+.dce-pr input{accent-color:var(--accent);width:16px;height:16px}
+.dce-pr select{border:1px solid var(--line);background:var(--bg);border-radius:6px;padding:5px 6px;font-size:12.5px;min-width:0}
+.dce-nm{display:grid;min-width:0} .dce-nm b{font-size:13.5px;font-weight:600;overflow-wrap:anywhere} .dce-nm small{font-size:11.5px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dce-g{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);margin-bottom:10px;overflow:hidden}
+.dce-g>h3{margin:0;padding:8px 12px;font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);background:var(--surface-2)}
+.dce-doc{border-top:1px solid var(--g-line);border-left:3px solid var(--dc)}
+.dce-g>h3+.dce-doc{border-top:0}
+.dce-h{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;padding:8px 10px}
+.dce-tg{flex:1 1 260px;min-width:0;display:flex;gap:8px;align-items:flex-start;border:0;background:none;text-align:left;color:var(--ink);padding:0}
+.dce-st{display:inline-flex;flex-wrap:wrap;gap:3px}
+.st-b{border:1px solid var(--line);background:var(--bg);color:var(--muted);border-radius:999px;padding:3px 9px;font-size:11.5px;font-weight:600;white-space:nowrap}
+.st-b:hover{border-color:var(--c);color:var(--ink)}
+.st-b.on{border-color:var(--c);background:color-mix(in srgb,var(--c) 22%,transparent);color:var(--ink)}
+.dce-meta{display:inline-flex;gap:4px} .dce-np{font-size:11px;color:var(--accent);background:var(--accent-soft);border-radius:5px;padding:1px 6px} .dce-np.an{color:var(--done);background:var(--done-soft)}
+.dce-ex{margin:-4px 12px 9px 30px;font-size:12.5px;color:var(--muted)}
+.dce-b{display:grid;gap:10px;padding:4px 12px 12px 30px}
+.dce-b textarea{width:100%;border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:8px 9px;font-size:13.5px;resize:none;line-height:1.45;overflow:hidden;min-height:60px}
+.dce-b .am-row select{border:1px solid var(--line);background:var(--surface);border-radius:6px;padding:5px 7px}
+.dce-pts{display:grid;gap:6px} .dce-pts .lbl,.dce-b .lbl{font-size:10.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.dce-pt{display:grid;grid-template-columns:150px minmax(0,1fr) auto;gap:6px;align-items:center}
+.dce-pt select,.dce-pt input{border:1px solid var(--line);background:var(--bg);border-radius:7px;padding:6px 8px;font-size:13px;color:var(--ink);min-width:0}
+.dce-add{display:flex;flex-wrap:wrap;gap:6px}
+.pt-exi{--pc2:var(--accent)} .pt-vig{--pc2:var(--today)} .pt-que{--pc2:var(--s-recurrent)} .pt-chi{--pc2:var(--done)} .pt-dat{--pc2:var(--week)}
+select.pt-t,.dce-add .chip-b{color:var(--pc2)!important;border-color:color-mix(in srgb,var(--pc2) 40%,var(--line))!important}
+span.pt-t{font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--pc2);background:color-mix(in srgb,var(--pc2) 14%,transparent);border-radius:5px;padding:1px 7px}
+.dce-syn{width:100%;border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:8px 9px;font-size:13.5px;resize:none;line-height:1.45;overflow:hidden;min-height:80px}
+.dce-pg h4{margin:10px 0 4px;font-size:12px} .dce-pg ul{margin:0;padding-left:18px;display:grid;gap:4px;font-size:13px} .dce-pg li small{display:block;color:var(--muted);font-size:11px}
+/* projet gagné */
+.win-l{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:4px} .win-l li{display:flex;justify-content:space-between;gap:10px;font-size:13px;background:var(--bg);border:1px solid var(--line);border-radius:7px;padding:6px 9px} .win-l li span{color:var(--muted);font-family:var(--f-mono);font-size:12px}
+.tbl.sv-ph{margin-top:10px} .tbl.sv-ph td,.tbl.sv-ph th{padding:5px 6px;font-size:12px} .tbl.sv-ph td.warn{color:var(--late)}
+/* tableau de bord */
+.bd-b{margin-bottom:14px}
+.bd-h{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;margin-bottom:10px} .bd-h h2{margin:0} .bd-h .sub{margin:0}
+.bd-k{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.bd-k>div{background:var(--surface);padding:10px 12px;display:grid;gap:2px}
+.bd-k b{font-family:var(--f-display);font-weight:800;font-size:22px;font-variant-numeric:tabular-nums} .bd-k b.ok{color:var(--done)} .bd-k b.late{color:var(--late)} .bd-k small{font-size:11.5px;color:var(--muted)}
+.bd-next{display:grid;gap:6px;margin-top:12px} .bd-next .lbl{font-size:10.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.bd-ao{display:grid;grid-template-columns:auto minmax(0,1fr);gap:2px 10px;align-items:center;text-align:left;border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:8px 10px;color:var(--ink)}
+.bd-ao:hover{border-color:var(--accent)} .bd-ao small{grid-column:2;color:var(--muted);font-size:12px}
+.bd-j{grid-row:span 2;font-family:var(--f-mono);font-weight:700;font-size:13px;border-radius:7px;padding:4px 8px;background:var(--surface-2)} .bd-j.today{background:var(--today-soft);color:var(--today)} .bd-j.late{background:var(--late-soft);color:var(--late)}
+.tbl.bd-p td:first-child{text-align:left} .tbl.bd-p td:first-child .lnk{display:block;text-align:left;font-weight:600} .tbl.bd-p td:first-child small{font-size:11px;font-family:var(--f-body)} .tbl.bd-p td.warn{color:var(--late)}
+.bd-bar{position:relative;height:18px;min-width:120px;background:var(--surface-2);border-radius:5px;overflow:hidden}
+.bd-bar i{position:absolute;inset:0 auto 0 0;background:var(--accent)} .bd-bar.hi i{background:var(--today)} .bd-bar.over i{background:var(--late)}
+.bd-bar span{position:relative;font-size:11.5px;font-weight:700;padding:0 6px;line-height:18px}
+.bd-load{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:6px;align-items:end;height:170px;margin:6px 0 4px}
+.bl-c{display:grid;grid-template-rows:1fr auto;height:100%;gap:4px;text-align:center}
+.bl-s{position:relative;border-bottom:1px solid var(--line)}
+.bl-s i{position:absolute;left:12%;right:12%;bottom:0;border-radius:3px 3px 0 0}
+.bl-w{background:var(--accent)} .bl-p{background:repeating-linear-gradient(135deg,color-mix(in srgb,var(--accent) 45%,transparent) 0 4px,transparent 4px 8px);border:1px dashed color-mix(in srgb,var(--accent) 60%,transparent);border-bottom:0}
+.bl-cap{left:0!important;right:0!important;height:2px;background:var(--ink);border-radius:0!important;opacity:.8}
+.bl-c.sat .bl-w{background:var(--late)} .bl-c span{font-size:11px;color:var(--muted);font-family:var(--f-mono);white-space:nowrap}
+.legend .hatch{background:repeating-linear-gradient(135deg,var(--accent) 0 3px,transparent 3px 6px)}
+.bd-warn{margin:8px 0 0;color:var(--late);font-size:13px}
+.bd-more{margin-top:12px} .bd-more summary{cursor:pointer;font-weight:600;font-size:13.5px;margin-bottom:10px}
+@media (max-width:820px){
+  .dce-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .dce-pr{grid-template-columns:auto minmax(0,1fr);} .dce-pr .pk-v{display:none} .dce-pr select{grid-column:2;font-size:16px}
+  .dce-b{padding-left:12px} .dce-ex{margin-left:12px}
+  .dce-pt{grid-template-columns:minmax(0,1fr) auto} .dce-pt input{grid-column:1/-1;grid-row:2;font-size:16px} .dce-pt select{font-size:16px}
+  .dce-b textarea,.dce-syn{font-size:16px}
+  .bd-load{grid-template-columns:repeat(12,minmax(22px,1fr));overflow-x:auto;height:150px} .bl-c span{font-size:9.5px;writing-mode:vertical-rl;transform:rotate(180deg);height:34px}
+}
+
+.view-head a.btn{text-decoration:none}
+/* Aide */
+.hp-search{max-width:560px;margin-bottom:14px}
+.hp-lay{display:grid;grid-template-columns:210px minmax(0,1fr);gap:18px;align-items:start}
+.hp-toc{position:sticky;top:76px;display:grid;gap:2px}
+.hp-toc button{border:0;background:none;text-align:left;color:var(--muted);font-size:13.5px;padding:6px 10px;border-radius:7px;border-left:2px solid transparent}
+.hp-toc button:hover{color:var(--ink);background:var(--surface-2);border-left-color:var(--accent)}
+.hp-main{display:grid;gap:12px;min-width:0}
+.hp-s{scroll-margin-top:76px;font-size:14px;line-height:1.55}
+.hp-s h2{margin:0 0 8px} .hp-s h4{margin:14px 0 4px;font-size:13.5px}
+.hp-s p{margin:6px 0} .hp-s ul,.hp-s ol{margin:6px 0;padding-left:20px;display:grid;gap:4px} .hp-s li ul{margin-top:4px}
+.hp-steps>li::marker{color:var(--accent);font-weight:700}
+.hp-s kbd{font-family:var(--f-mono);font-size:11.5px;border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;padding:0 5px;background:var(--bg)}
+.hp-t{width:100%;border-collapse:collapse;font-size:13px;margin:6px 0}
+.hp-t td,.hp-t th{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+.hp-t th{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.hp-t td:first-child{white-space:nowrap}
+.hp-y{background:#FFF2CC;color:#5a4500;border-radius:4px;padding:0 5px}
+.hp-go{display:inline-block;margin-top:8px;font-weight:600;font-size:13px;color:var(--accent);text-decoration:none}
+.hp-s details{border:1px solid var(--line);border-radius:8px;padding:8px 12px;margin:6px 0;background:var(--bg)}
+.hp-s summary{cursor:pointer;font-weight:600} .hp-s details p{margin:6px 0 2px;color:var(--muted)}
+.hp-dl{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:6px 14px;margin:4px 0}
+.hp-dl dt{font-weight:700;font-family:var(--f-mono);font-size:12.5px} .hp-dl dd{margin:0}
+.hp-none{color:var(--muted)}
+.help-btn{display:none}
+@media (max-width:820px){
+  .hp-lay{grid-template-columns:minmax(0,1fr)}
+  .hp-toc{position:static;display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+  .hp-toc button{flex:0 0 auto;border:1px solid var(--line);border-radius:999px;padding:5px 11px;font-size:12.5px;white-space:nowrap}
+  .hp-search input{font-size:16px}
+  .hp-t td:first-child{white-space:normal}
+  .hp-dl{grid-template-columns:minmax(0,1fr)} .hp-dl dd{margin-bottom:6px}
+  #mtabs a[href="#aide"]{display:none}
+  .help-btn{display:grid;place-items:center;width:30px;height:30px;flex-shrink:0;border:1.5px solid var(--line);border-radius:50%;color:var(--muted);font-weight:700;text-decoration:none;font-size:15px}
+  .help-btn[aria-current="page"]{color:var(--accent);border-color:var(--accent)}
+}
+nav.tabs a[href="#aide"] span{display:none!important} nav.tabs a[href="#aide"]{padding-inline:9px}
+@media (min-width:1241px){ nav.tabs{gap:2px} nav.tabs a{padding:8px 9px} nav.tabs a span[data-s]{font-size:0} nav.tabs a span[data-s]::after{content:attr(data-s);font-size:14px} }
 .mobile-tabs{display:none}
 .auth{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:24px max(16px,env(safe-area-inset-right,0px)) 24px max(16px,env(safe-area-inset-left,0px));overflow-y:auto}
 .auth-card{width:min(400px,100%);display:grid;gap:12px}
@@ -1162,6 +1270,7 @@ input.num.s{width:64px}
       <div><small>Sem.</small><span id="c-week">—</span></div>
       <div><small>Ouvertes</small><span id="c-open">—</span></div>
     </div>
+    <a class="help-btn" id="help-btn" href="#aide" aria-label="Aide et explications" title="Aide">?</a>
     <nav class="tabs" id="tabs" aria-label="Vues"></nav>
   </div>
 </header>
@@ -1195,6 +1304,7 @@ const VIEWS = [
   {k:"matrice", label:"Matrice", icon:'<rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/>'},
   {k:"bord", label:"Bord", icon:'<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>'},
   {k:"reglages", label:"Réglages", icon:'<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>'},
+  {k:"aide", label:"Aide", icon:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 4.9.8c0 1.7-2.4 2.2-2.4 3.7M12 17h.01"/>'},
 ];
 const I = {
   check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg>',
@@ -1307,7 +1417,8 @@ function renderChrome(){
   const link = v => `<a href="#${v.k}" ${S.view === v.k ? 'aria-current="page"' : ""}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${v.icon}</svg><span data-s="${v.short || v.label}">${v.label}</span>${v.k === "jour" && late ? `<span class="badge">${late}</span>` : ""}</a>`;
   $("#tabs").innerHTML = VIEWS.map(link).join("");
   $("#mtabs").innerHTML = VIEWS.map(link).join("");
-  $("#fab").hidden = !(S.status === "ready" && S.canWrite !== false && S.view !== "reglages" && S.view !== "heures" && S.view !== "chiffrage");
+  $("#fab").hidden = !(S.status === "ready" && S.canWrite !== false && S.view !== "reglages" && S.view !== "heures" && S.view !== "chiffrage" && S.view !== "aide");
+  { const hb = $("#help-btn"); if (hb) { if (S.view === "aide") hb.setAttribute("aria-current", "page"); else hb.removeAttribute("aria-current"); } }
 }
 
 /* ---------- Vues ---------- */
@@ -2558,7 +2669,7 @@ const DRIVERS = [
 ];
 const CALC_DRV = {zc:{nom:"Cycles de synthèse (zones × cycles)", u:"cycle"}, surface:{nom:"Surface du projet (m²)", u:"m²"}};
 const PROFILS0 = [{k:"dir", nom:"Directeur de projet BIM", court:"Direction", tjm:850}, {k:"bim", nom:"BIM Manager", court:"BIM Mgr", tjm:700}, {k:"coord", nom:"Coordinateur BIM / synthèse", court:"Coord.", tjm:620}, {k:"mod", nom:"Modeleur / projeteur BIM", court:"Modeleur", tjm:520}];
-const PARAMS0 = {marge:0.05, ckm:0.6, repas:0, tva:0.2, arrondi:10, capMois:18, repMin:0, repMax:0};
+const PARAMS0 = {hj:8, marge:0.05, ckm:0.6, repas:0, tva:0.2, arrondi:10, capMois:18, repMin:0, repMax:0};
 /* base d'unités d'œuvre : temps unitaire (j) et/ou prix unitaire (€), règle de proposition automatique */
 const UO0 = (() => {
   const L = [], add = (mis, cat, lib, unite, type, tu, o = {}) => L.push({id:o.id, mission:mis, cat, lib, unite, type, tu, cu:o.cu || 0, qte:o.qte || 1, drv:o.drv || "", freq:o.freq || 1,
@@ -2622,14 +2733,15 @@ const profCourt = p => p.court || (p.nom.length > 10 ? p.nom.split(" ")[0] : p.n
 /* ----- Modèle d'un chiffrage (et reprise des chiffrages de la version précédente) ----- */
 function blankAo(){
   const B = uoBase();
-  return {id:uid(), v:2, nom:"", client:"", moa:"", lieu:"", remise:"", type:"", budget:0, surface:0, statut:"En cours", reference:"", missions:[], step:0, start:nextYm(), chain:true,
+  return {id:uid(), v:2, sv:2, dce:{docs:[], synthese:""}, nom:"", client:"", moa:"", lieu:"", remise:"", type:"", budget:0, surface:0, statut:"En cours", reference:"", missions:[], step:0, start:nextYm(), chain:true,
     params:{marge:B.params.marge, remise:0, arrondi:B.params.arrondi, tva:B.params.tva, kmAR:0, ckm:B.params.ckm, repas:B.params.repas, tjm:Object.fromEntries(B.profils.map(p => [p.k, p.tjm]))},
     drivers:{maquettes:6, lots:6, zones:1, cycles:3, niveaux:3, users:10, candidats:3}, cdrv:[], phases:[], lines:[], cible:0, created:nowIso(), updated:nowIso()};
 }
 function migrateAo(o){
-  if (!o || o.v === 2) return o;
+  if (o && o.v === 2) { if (!o.sv) { o.sv = 2; o.step = Math.min(6, (o.step || 0) + 1); o.maxStep = (o.maxStep || 0) + 1; } return o; }
+  if (!o) return o;
   const n = JSON.parse(JSON.stringify(o)), P = o.params || {};
-  n.v = 2; n.chain = false; n.step = 5; n.missions = n.missions || []; n.cdrv = [];
+  n.v = 2; n.sv = 2; n.chain = false; n.step = 6; n.missions = n.missions || []; n.cdrv = [];
   n.start = (o.phases || []).map(p => p.a).filter(ymOk).sort()[0] || nextYm();
   n.phases = (o.phases || []).map(p => ({id:p.id, nom:p.nom, stage:/gpa|exploit/i.test(p.nom || "") ? "E" : /exe|det|doe|réalis|realis|chantier|travaux|as-built|asb/i.test(p.nom || "") ? "R" : "C", a:ymOk(p.a) ? p.a : n.start, n:Math.max(1, ymCount(p.a, p.b) || 1)}));
   n.lines = (o.lines || []).map(l => ({...l, type:l.mode === "freq" ? "temps" : "uo", drv:l.mode === "var" ? (l.varKey || "") : "", qte:l.qte ?? 1}));
@@ -2696,22 +2808,22 @@ function repere(ao){
 }
 function checks(ao, R){
   const out = [], add = (lvl, txt, step) => out.push({lvl, txt, step});
-  if (!ao.nom) add("warn", "Donne un nom à l'appel d'offres.", 0);
-  if (!(ao.missions || []).length) add("info", "Aucune mission cochée : les prestations ne pourront pas être proposées automatiquement.", 0);
-  if (!ao.phases.length) add("warn", "Le planning est vide : crée les phases.", 1);
-  if (!ao.lines.length) add("warn", "Aucune prestation chiffrée.", 3);
+  if (!ao.nom) add("warn", "Donne un nom à l'appel d'offres.", 1);
+  if (!(ao.missions || []).length) add("info", "Aucune mission cochée : les prestations ne pourront pas être proposées automatiquement.", 1);
+  if (!ao.phases.length) add("warn", "Le planning est vide : crée les phases.", 2);
+  if (!ao.lines.length) add("warn", "Aucune prestation chiffrée.", 4);
   const zero = R.base.filter(x => x.c.prix === 0);
-  if (zero.length) add("warn", `${plur(zero.length, "prestation")} à 0 € : ${zero.slice(0, 3).map(x => "« " + x.l.lib + " »").join(", ")}${zero.length > 3 ? "…" : ""}. Renseigne une quantité, un temps ou un prix unitaire.`, 3);
+  if (zero.length) add("warn", `${plur(zero.length, "prestation")} à 0 € : ${zero.slice(0, 3).map(x => "« " + x.l.lib + " »").join(", ")}${zero.length > 3 ? "…" : ""}. Renseigne une quantité, un temps ou un prix unitaire.`, 4);
   const used = new Map(); for (const x of R.base) if (x.l.type !== "temps" && x.l.drv) used.set(x.l.drv, (used.get(x.l.drv) || 0) + 1);
-  for (const [k, n] of used) if (!drvVal(ao, k)) add("warn", `L'hypothèse « ${drvName(ao, k)} » vaut 0 alors que ${plur(n, "prestation")} en dépend${n > 1 ? "ent" : ""}.`, k === "surface" ? 0 : 2);
-  if (R.base.some(x => x.l.dep) && !num(ao.params.kmAR) && !num(ao.params.repas)) add("info", "Des prestations prévoient un déplacement, mais la distance aller-retour n'est pas renseignée.", 2);
-  if (!num(ao.budget)) add("info", "Sans budget travaux, le ratio honoraires / travaux n'est pas calculé.", 0);
+  for (const [k, n] of used) if (!drvVal(ao, k)) add("warn", `L'hypothèse « ${drvName(ao, k)} » vaut 0 alors que ${plur(n, "prestation")} en dépend${n > 1 ? "ent" : ""}.`, k === "surface" ? 1 : 3);
+  if (R.base.some(x => x.l.dep) && !num(ao.params.kmAR) && !num(ao.params.repas)) add("info", "Des prestations prévoient un déplacement, mais la distance aller-retour n'est pas renseignée.", 3);
+  if (!num(ao.budget)) add("info", "Sans budget travaux, le ratio honoraires / travaux n'est pas calculé.", 1);
   const rp = repere(ao);
-  if (rp && R.pBudget) { if (R.pBudget < rp.min) add("info", `Tu es à ${pct(R.pBudget)} des travaux, sous ${rp.src} (${pct(rp.min)} – ${pct(rp.max)}).`, 4); else if (R.pBudget > rp.max) add("info", `Tu es à ${pct(R.pBudget)} des travaux, au-dessus de ${rp.src} (${pct(rp.min)} – ${pct(rp.max)}).`, 4); else add("ok", `Ratio honoraires / travaux (${pct(R.pBudget)}) cohérent avec ${rp.src}.`, 4); }
+  if (rp && R.pBudget) { if (R.pBudget < rp.min) add("info", `Tu es à ${pct(R.pBudget)} des travaux, sous ${rp.src} (${pct(rp.min)} – ${pct(rp.max)}).`, 5); else if (R.pBudget > rp.max) add("info", `Tu es à ${pct(R.pBudget)} des travaux, au-dessus de ${rp.src} (${pct(rp.min)} – ${pct(rp.max)}).`, 5); else add("ok", `Ratio honoraires / travaux (${pct(R.pBudget)}) cohérent avec ${rp.src}.`, 5); }
   const cap = num(uoBase().params.capMois) || 18;
-  if (R.pic.j > cap) add("info", `Pic de charge de ${jfmt(R.pic.j)} j en ${ymLab(R.pic.m)} : plus d'une personne à temps plein ce mois-là.`, 3);
-  if (!num(ao.params.marge)) add("info", "Aucune marge ni anticipation de négociation n'est appliquée.", 4);
-  if (!out.some(x => x.lvl === "warn") && ao.lines.length) add("ok", "Aucun point bloquant.", 5);
+  if (R.pic.j > cap) add("info", `Pic de charge de ${jfmt(R.pic.j)} j en ${ymLab(R.pic.m)} : plus d'une personne à temps plein ce mois-là.`, 4);
+  if (!num(ao.params.marge)) add("info", "Aucune marge ni anticipation de négociation n'est appliquée.", 5);
+  if (!out.some(x => x.lvl === "warn") && ao.lines.length) add("ok", "Aucun point bloquant.", 6);
   return out;
 }
 /* proposition automatique des prestations selon les missions et les étapes du planning */
@@ -2736,6 +2848,7 @@ function insertLines(ao, ls){ for (const l of ls) { const last = ao.lines.map(x 
 const AO_STATUTS = ["En cours", "Envoyé", "Gagné", "Perdu", "Abandonné"];
 const ST_COL = {"En cours":"--s-encours", "Envoyé":"--s-attente", "Gagné":"--done", "Perdu":"--late", "Abandonné":"--muted"};
 const STEPS = [
+  {t:"Pièces", d:"Les pièces du marché : ce que tu as lu de chaque document et ton analyse."},
   {t:"Projet", d:"Le contexte de l'appel d'offres et les missions demandées."},
   {t:"Planning", d:"Les phases de la mission et leur durée en mois."},
   {t:"Hypothèses", d:"Les quantités de base des unités d'œuvre, et les déplacements."},
@@ -2767,7 +2880,7 @@ function viewAoList(){
     </div>
     ${all.length ? `<div class="seg-block" style="margin-bottom:12px"><span class="seg-label">Statut</span>${["", ...AO_STATUTS].map(s => `<button class="seg" data-act="ao-filt" data-v="${s}" aria-pressed="${f === s}">${s || "Tous"} <span class="c">${s ? all.filter(a => a.statut === s).length : all.length}</span></button>`).join("")}</div>` : ""}
     ${aos.length ? `<div class="ao-list">${aos.map(a => { const R = calcAo(a); return `<button class="ao-card" data-act="ao-open" data-id="${a.id}" style="--sc:var(${ST_COL[a.statut] || "--muted"})">
-        <div class="aoc-top"><span class="pill st" style="--sc:var(${ST_COL[a.statut] || "--muted"})">${esc(a.statut)}</span>${validYmd(a.remise) ? `<span class="aoc-rem">Remise le ${fmt(a.remise, true)}</span>` : ""}${a.statut === "En cours" ? `<span class="aoc-step">Étape ${Math.min(6, (a.step || 0) + 1)} / 6</span>` : ""}</div>
+        <div class="aoc-top"><span class="pill st" style="--sc:var(${ST_COL[a.statut] || "--muted"})">${esc(a.statut)}</span>${validYmd(a.remise) ? `<span class="aoc-rem">Remise le ${fmt(a.remise, true)}</span>` : ""}${a.statut === "En cours" ? `<span class="aoc-step">Étape ${Math.min(7, (a.step || 0) + 1)} / 7</span>` : ""}</div>
         <div class="aoc-t">${esc(a.nom || "Sans titre")}</div><div class="aoc-c">${esc([a.client, a.lieu].filter(Boolean).join(" · ") || (a.missions || []).map(m => MIS[m] ? MIS[m].nom : m).join(", ") || "À compléter")}</div>
         <div class="aoc-n"><b>${eur(R.tot)}</b><span>${jfmt(R.jours)} j</span>${R.pBudget ? `<span>${pct(R.pBudget)} des travaux</span>` : ""}${R.duree ? `<span>${R.duree} mois</span>` : ""}</div></button>`; }).join("")}</div>`
       : `<div class="empty ao-empty"><h2>${all.length ? "Aucun chiffrage avec ce statut" : "Chiffre ton premier appel d'offres"}</h2>
@@ -2777,10 +2890,10 @@ function viewAoList(){
 const aoIn = (f, v, attrs = "") => `<input type="text" data-ao="${f}" value="${esc(v ?? "")}" ${attrs} ${S.canWrite === false ? "readonly" : ""}>`;
 const nIn = (f, v, attrs = "") => `<input type="text" class="num" data-ao="${f}" value="${esc(v ?? "")}" inputmode="decimal" ${attrs} ${S.canWrite === false ? "readonly" : ""}>`;
 function viewWizard(ao){
-  const R = calcAo(ao), st = Math.max(0, Math.min(5, ao.step || 0)), ro = S.canWrite === false, ck = checks(ao, R);
+  const R = calcAo(ao), st = Math.max(0, Math.min(6, ao.step || 0)), ro = S.canWrite === false, ck = checks(ao, R);
   const warnBy = i => ck.filter(c => c.lvl === "warn" && c.step === i).length;
-  const done = [!!ao.nom && (ao.missions || []).length > 0, ao.phases.length > 0, (ao.step || 0) > 2 || ao.maxStep > 2, ao.lines.length > 0, ao.maxStep > 4, ao.statut !== "En cours"];
-  const body = [stepProjet, stepPlanning, stepHyp, stepPresta, stepPrix, stepSynth][st](ao, R, ck);
+  const done = [dceDone(ao), !!ao.nom && (ao.missions || []).length > 0, ao.phases.length > 0, (ao.step || 0) > 3 || ao.maxStep > 3, ao.lines.length > 0, ao.maxStep > 5, ao.statut !== "En cours"];
+  const body = [stepPieces, stepProjet, stepPlanning, stepHyp, stepPresta, stepPrix, stepSynth][st](ao, R, ck);
   return `<div class="view-head ao-head"><div style="min-width:0;flex:1"><div class="eyebrow"><button class="lnk" data-act="ao-back">‹ Chiffrages</button>${ao.missions && ao.missions.length ? " · " + esc(ao.missions.map(m => MIS[m] ? MIS[m].nom : m).join(", ")) : ""}</div>
       <input class="ao-title" type="text" data-ao="nom" value="${esc(ao.nom)}" placeholder="Nom de l'appel d'offres" aria-label="Nom de l'appel d'offres" ${ro ? "readonly" : ""}></div>
       <div class="pnav"><select class="ctl ao-st" data-ao="statut" style="--sc:var(${ST_COL[ao.statut] || "--muted"})" aria-label="Statut" ${ro ? "disabled" : ""}>${AO_STATUTS.map(s => `<option ${ao.statut === s ? "selected" : ""}>${s}</option>`).join("")}</select></div></div>
@@ -2788,8 +2901,8 @@ function viewWizard(ao){
     <div class="wz-intro"><h2>${st + 1}. ${STEPS[st].t}</h2><p>${STEPS[st].d}</p></div>
     <div class="wz-body">${body}</div>
     <div class="wz-bar"><button class="btn" data-act="wz-prev" ${st === 0 ? "disabled" : ""}>‹ <span class="lbl-d">${st > 0 ? STEPS[st - 1].t : "Précédent"}</span></button>
-      <button class="wz-tot" data-act="wz-step" data-i="5" title="Voir la synthèse"><b>${eur(R.tot)} HT</b><small>${jfmt(R.jours)} j${R.pBudget ? " · " + pct(R.pBudget) + " des travaux" : ""}${R.duree ? " · " + R.duree + " mois" : ""}</small></button>
-      ${st < 5 ? `<button class="btn primary" data-act="wz-next"><span class="lbl-d">${STEPS[st + 1].t}</span> ›</button>` : `<button class="btn primary" data-act="ao-xlsx">Exporter</button>`}</div>`;
+      <button class="wz-tot" data-act="wz-step" data-i="6" title="Voir la synthèse"><b>${eur(R.tot)} HT</b><small>${jfmt(R.jours)} j${R.pBudget ? " · " + pct(R.pBudget) + " des travaux" : ""}${R.duree ? " · " + R.duree + " mois" : ""}</small></button>
+      ${st < 6 ? `<button class="btn primary" data-act="wz-next"><span class="lbl-d">${STEPS[st + 1].t}</span> ›</button>` : `<button class="btn primary" data-act="ao-xlsx">Exporter</button>`}</div>`;
 }
 /* Étape 1 : projet */
 function stepProjet(ao){
@@ -2886,7 +2999,7 @@ function lineCard(ao, l, c, eph){
 }
 function stepPresta(ao, R){
   const ro = S.canWrite === false;
-  if (!ao.phases.length) return `<section class="panel"><p>Crée d'abord le planning : les prestations se rangent par phase.</p><button class="btn primary" data-act="wz-step" data-i="1">Aller au planning</button></section>`;
+  if (!ao.phases.length) return `<section class="panel"><p>Crée d'abord le planning : les prestations se rangent par phase.</p><button class="btn primary" data-act="wz-step" data-i="2">Aller au planning</button></section>`;
   const sug = proposals(ao), noMis = !(ao.missions || []).length;
   return `${ro ? "" : `<div class="wz-tools">
       ${sug.length ? `<button class="btn primary" data-act="ao-propose">✦ ${ao.lines.length ? "Ajouter" : "Proposer"} ${plur(sug.length, "prestation")}</button>` : ""}
@@ -2916,7 +3029,7 @@ function stepPrix(ao, R, ck){
     <section class="panel"><h3>Prix cible</h3><p class="sub">Tu as un budget à viser ou un prix à ne pas dépasser ? Saisis-le : l'écart et la remise nécessaire s'affichent.</p>
       <label class="field"><span class="lbl">Prix visé (€ HT)</span>${nIn("cible", cib ? cib.toLocaleString("fr-FR") : "", 'placeholder="ex. 120 000"')}</label>
       ${cib ? `<div class="cible ${cib < R.tot ? "warn" : "ok"}">${cib < R.tot ? `Écart de <b>${eur(R.tot - cib)}</b> : il faudrait une remise de <b>${pct(need, 1)}</b>.${!ro && need > 0 && need < 0.9 ? ` <button class="btn sm" data-act="ao-cible-apply">Appliquer cette remise</button>` : ""}` : `Tu es <b>${eur(cib - R.tot)}</b> sous le prix visé.`}</div>` : ""}</section>
-    <section class="panel"><h3>Contrôles</h3><ul class="checks">${ck.map(c => `<li class="ck-${c.lvl}"><span class="ck-i">${c.lvl === "ok" ? "✓" : c.lvl === "warn" ? "!" : "i"}</span><span>${esc(c.txt)}</span>${c.step !== 4 && c.step !== 5 ? `<button class="lnk" data-act="wz-step" data-i="${c.step}">${STEPS[c.step].t} ›</button>` : ""}</li>`).join("")}</ul>
+    <section class="panel"><h3>Contrôles</h3><ul class="checks">${ck.map(c => `<li class="ck-${c.lvl}"><span class="ck-i">${c.lvl === "ok" ? "✓" : c.lvl === "warn" ? "!" : "i"}</span><span>${esc(c.txt)}</span>${c.step !== 5 && c.step !== 6 ? `<button class="lnk" data-act="wz-step" data-i="${c.step}">${STEPS[c.step].t} ›</button>` : ""}</li>`).join("")}</ul>
       <div class="ratios"><span>TJM moyen <b>${eur(R.tjmMoy)}</b></span><span>Travaux <b>${R.pBudget ? pct(R.pBudget) : "—"}</b></span><span>€ / m² <b>${R.eurM2 ? (Math.round(R.eurM2 * 100) / 100).toLocaleString("fr-FR") : "—"}</b></span><span>Par mois <b>${eur(R.parMois)}</b></span></div></section>
   </div>`;
 }
@@ -2934,6 +3047,7 @@ function viewUo(){
         <label>Marge / aléas (%)<input type="text" class="num" data-bib="par.marge" value="${jf4(B.params.marge * 100)}" inputmode="decimal"></label>
         <label>Coût au km (€)<input type="text" class="num" data-bib="par.ckm" value="${jf4(B.params.ckm)}" inputmode="decimal"></label>
         <label>Arrondi du total (€)<input type="text" class="num" data-bib="par.arrondi" value="${B.params.arrondi}" inputmode="decimal"></label>
+        <label>Heures par jour (jours ↔ heures)<input type="text" class="num" data-bib="par.hj" value="${B.params.hj}" inputmode="decimal"></label>
         <label>Charge maxi d'une personne (j / mois)<input type="text" class="num" data-bib="par.capMois" value="${B.params.capMois}" inputmode="decimal"></label>
         <label>Repère honoraires mini (% travaux)<input type="text" class="num" data-bib="par.repMin" value="${B.params.repMin ? jf4(B.params.repMin * 100) : ""}" placeholder="auto" inputmode="decimal"></label>
         <label>Repère honoraires maxi (% travaux)<input type="text" class="num" data-bib="par.repMax" value="${B.params.repMax ? jf4(B.params.repMax * 100) : ""}" placeholder="auto" inputmode="decimal"></label></div>
@@ -2985,7 +3099,7 @@ function pickCount(){ const n = S.chif.pickSel.length, pn = $("#pick-n"); if (pn
 
 /* ----- Écritures ----- */
 async function aoSave(ao){ ao.updated = nowIso(); S.aos.set(ao.id, ao); schedule(); try { await S.db.doc("ao/" + ao.id).set(JSON.parse(JSON.stringify(ao))); } catch (e) { fail(e); } }
-function goStep(ao, i){ ao.step = Math.max(0, Math.min(5, i)); ao.maxStep = Math.max(ao.maxStep || 0, ao.step); S.chif.open = {}; aoSave(ao); render(true); window.scrollTo({top:0}); }
+function goStep(ao, i){ ao.step = Math.max(0, Math.min(6, i)); ao.maxStep = Math.max(ao.maxStep || 0, ao.step); S.chif.open = {}; aoSave(ao); render(true); window.scrollTo({top:0}); }
 async function aoAction(act, a, ev){
   const C = S.chif, ov = a.closest(".overlay");
   if (act === "ao-ov-close") { if (a === ov && ev && ev.target !== ov) return; ov && ov.remove(); return; }
@@ -2997,7 +3111,11 @@ async function aoAction(act, a, ev){
   if (act === "ao-new") { const n = blankAo(); C.mode = "ao"; C.id = n.id; C.open = {}; C.coll = {}; saveChifUi(); await aoSave(n); render(true); window.scrollTo(0, 0); setTimeout(() => { const el = document.querySelector('.wz-body [data-ao="nom"]'); if (el && !isMobile()) el.focus(); }, 40); return; }
   if (/^bib-/.test(act)) return uoAction(act, a);
   if (act === "pick-mis") { C.pickMis = a.dataset.v; document.querySelectorAll("#pick-mis .seg").forEach(b => b.setAttribute("aria-pressed", b.dataset.v === C.pickMis)); pickRender(); return; }
+  if (/^bd-/.test(act)) return bordAction(act, a);
   const ao = curAo(); if (!ao) return;
+  if (/^ao-dce-/.test(act)) return dceAction(act, a, ao);
+  if (act === "ao-win-open") { winSheet(ao); return; }
+  if (act === "ao-win-create") { winCreate(ao); return; }
   if (act === "pick-add") {
     if (!C.pickSel.length) { toast("Coche au moins une unité d'œuvre"); return; }
     const ph = $("#pick-ph")?.value || C.pickPhase; insertLines(ao, C.pickSel.map(id => lineFromItem(uoItem(id), ph)));
@@ -3044,7 +3162,7 @@ async function aoAction(act, a, ev){
   if (act === "ao-xlsx") { aoExport(ao); return; }
   if (act === "ao-pdf") { aoPdf(ao); return; }
   if (act === "ao-odetail") { ao.offre = {...(ao.offre || {}), detail:a.dataset.v}; await aoSave(ao); render(true); return; }
-  if (act === "ao-opt-new") { const eph = effPhases(ao), ph = eph.filter(p => p.stage !== "T").pop() || eph[0]; if (!ph) { toast("Crée d'abord le planning"); goStep(ao, 1); return; } const nl = {...lineFromItem(null, ph.id), lib:"Nouvelle option", option:true}; insertLines(ao, [nl]); C.open[nl.id] = true; ao.step = 3; await aoSave(ao); render(true); setTimeout(() => { const el = document.querySelector(`[data-lid="${nl.id}"] [data-ao="l.lib"]`); if (el) { el.scrollIntoView({block:"center"}); el.focus(); el.select(); } }, 40); return; }
+  if (act === "ao-opt-new") { const eph = effPhases(ao), ph = eph.filter(p => p.stage !== "T").pop() || eph[0]; if (!ph) { toast("Crée d'abord le planning"); goStep(ao, 2); return; } const nl = {...lineFromItem(null, ph.id), lib:"Nouvelle option", option:true}; insertLines(ao, [nl]); C.open[nl.id] = true; ao.step = 4; await aoSave(ao); render(true); setTimeout(() => { const el = document.querySelector(`[data-lid="${nl.id}"] [data-ao="l.lib"]`); if (el) { el.scrollIntoView({block:"center"}); el.focus(); el.select(); } }, 40); return; }
   if (act === "ao-copy-recap") { const R = calcAo(ao); const t = [["Phase", "Début", "Fin", "Jours", "Montant HT"], ...R.ph.map(x => [x.p.nom, ymLab(x.p.a), ymLab(x.p.b), jfmt(x.jours), Math.round(x.prix)]), ["Total", ymLab(R.a), ymLab(R.b), jfmt(R.jours), Math.round(R.tot)]].map(r => r.join("\t")).join("\n"); (await copyText(t)) ? toast("Tableau copié : colle-le dans Excel ou Word") : showCopyBox(t); return; }
   if (act === "ao-dup") { const n = JSON.parse(JSON.stringify(ao)); n.id = uid(); n.nom = (ao.nom || "Sans titre") + " (copie)"; n.statut = "En cours"; n.created = nowIso(); n.step = 0; C.id = n.id; saveChifUi(); await aoSave(n); render(true); window.scrollTo(0, 0); toast("Chiffrage dupliqué"); return; }
   if (act === "ao-del") { if (!a.classList.contains("armed")) { a.classList.add("armed"); a.textContent = "Confirmer la suppression"; return; } S.aos.delete(ao.id); C.mode = "list"; saveChifUi(); render(true); try { await S.db.doc("ao/" + ao.id).delete(); toast("Chiffrage supprimé"); } catch (e) { fail(e); } return; }
@@ -3071,6 +3189,7 @@ async function aoAction(act, a, ev){
 async function aoChange(el){
   const ao = curAo(); if (!ao) return;
   const f = el.dataset.ao, v = el.type === "checkbox" ? el.checked : el.value;
+  if (f.startsWith("dce.")) { dceChange(ao, el, f.slice(4), v); await aoSave(ao); if (el.tagName === "SELECT") render(true); return; }
   const lid = el.closest("[data-lid]")?.dataset.lid, l = lid && ao.lines.find(x => x.id === lid), pid = el.closest("[data-pid]")?.dataset.pid, ph = pid && ao.phases.find(p => p.id === pid);
   if (f.startsWith("l.") && l) {
     const k = f.slice(2);
@@ -3099,6 +3218,7 @@ async function aoChange(el){
   if (f === "reference" && ao.reference && !refList().includes(ao.reference)) savePrefs({refs:[...refList(), ao.reference].sort((x, y) => x.localeCompare(y, "fr"))});
   await aoSave(ao);
   if (el.tagName === "SELECT" || el.type === "checkbox" || el.type === "month" || el.type === "date") render(true);
+  if (f === "statut" && v === "Gagné" && !ao.won) winSheet(ao);
 }
 async function uoAction(act, a){
   const B = uoBase(), C = S.chif;
@@ -3192,15 +3312,9 @@ document.addEventListener("change", async ev => {
 });
 
 /* ----- Étape 6 : synthèse, options et offre ----- */
-function suivi(ao, R){
-  if (!ao.reference || !R.a) return null;
-  const start = R.a + "-01", end = today(); if (start > end) return {j:0};
-  let m = 0; for (let d = start; d <= end; d = addDays(d, 1)) for (const r of decRows(d)) if (r.ref === ao.reference) m += r.m;
-  return {j:m / 60 / 8};
-}
 function stepSynth(ao, R){
   const ro = S.canWrite === false, O = offreOf(ao), L = socList(), soc = socOf(ao), dis = ro ? "disabled" : "";
-  const ms = [...R.months].sort((a, b) => a[0].localeCompare(b[0])), mx = Math.max(1, ...ms.map(([, o]) => o.e)), mis = [...R.byMis].sort((a, b) => b[1] - a[1]), su = ao.statut === "Gagné" ? suivi(ao, R) : null;
+  const ms = [...R.months].sort((a, b) => a[0].localeCompare(b[0])), mx = Math.max(1, ...ms.map(([, o]) => o.e)), mis = [...R.byMis].sort((a, b) => b[1] - a[1]);
   const ck = (k, t) => `<label class="chk"><input type="checkbox" data-ao="o.${k}" ${O[k] ? "checked" : ""} ${dis}><span>${t}</span></label>`;
   return `<div class="kpi-row dec-kpis ao-kpis6">
       <div class="kc"><span class="kc-l">Total HT</span><span class="kc-v">${eur(R.tot)}</span><span class="kc-n mut">${eur(R.tot * (1 + num(ao.params.tva)))} TTC</span></div>
@@ -3224,7 +3338,7 @@ function stepSynth(ao, R){
       <section class="panel"><h3>Options</h3><p class="sub">Chiffrées à part et présentées comme options dans l'offre, non comprises dans le total.</p>
         ${R.opts.length ? `<ul class="opt-l">${R.opts.map((x, i) => `<li data-lid="${x.l.id}"><span class="opt-n">${i + 1}</span><span class="opt-t">${esc(x.l.lib)}<small>${esc(qtyTxt(x.l, x.c))} · ${jfmt(x.c.jours)} j</small></span><b>${eur(x.c.prix)}</b>${ro ? "" : `<button class="btn ghost sm" data-act="ao-opt-in" title="Intégrer cette option au total">Intégrer</button>`}</li>`).join("")}</ul>
           <div class="opt-tot"><span>Total des options</span><b>${eur(R.optTot)}</b><span>Total avec toutes les options</span><b>${eur(R.tot + R.optTot)}</b></div>` : '<p class="sub">Aucune option pour l\'instant.</p>'}
-        ${ro ? "" : `<div class="row" style="margin-top:10px"><button class="btn sm" data-act="ao-opt-new">${I.plus} Option libre</button><button class="btn ghost sm" data-act="wz-step" data-i="3">Passer une prestation en option ›</button></div>`}</section>
+        ${ro ? "" : `<div class="row" style="margin-top:10px"><button class="btn sm" data-act="ao-opt-new">${I.plus} Option libre</button><button class="btn ghost sm" data-act="wz-step" data-i="4">Passer une prestation en option ›</button></div>`}</section>
       <section class="panel"><div class="row" style="justify-content:space-between;align-items:center"><h3>Décomposition par phase</h3><button class="btn sm" data-act="ao-copy-recap">Copier</button></div>
         <div class="tbl-wrap"><table class="tbl dpgf"><thead><tr><th>Phase</th><th>Jours</th><th>Montant HT</th><th>Part</th></tr></thead><tbody>
         ${R.ph.map(x => `<tr><td><span class="ph-tag st-${x.p.stage}">${STAGES[x.p.stage][0]}</span> ${esc(x.p.nom)}<small class="mut"> ${ymLab(x.p.a)} – ${ymLab(x.p.b)}</small></td><td>${jfmt(x.jours)}</td><td>${eur(x.prix)}</td><td>${R.tot ? Math.round(x.prix / R.tot * 100) : 0} %</td></tr>`).join("")}
@@ -3234,7 +3348,7 @@ function stepSynth(ao, R){
       <section class="panel"><h3>Après la remise</h3><div class="ao-form f1">
         <label class="field"><span class="lbl">Statut</span><select data-ao="statut" ${dis}>${AO_STATUTS.map(s => `<option ${ao.statut === s ? "selected" : ""}>${s}</option>`).join("")}</select></label>
         <label class="field"><span class="lbl">Référence du décompte des heures</span>${aoIn("reference", ao.reference, 'list="dl-refs" placeholder="pour suivre le temps passé si l\'AO est gagné"')}<datalist id="dl-refs">${refList().map(r => `<option value="${esc(r)}">`).join("")}</datalist></label></div>
-        ${su ? `<div class="suivi"><span class="sub">Temps passé sur « ${esc(ao.reference)} »</span><div class="kc-v">${jfmt(su.j)} j <small>/ ${jfmt(R.jours)} j chiffrés</small></div><span class="ps-bar"><i style="width:${Math.min(100, R.jours ? su.j / R.jours * 100 : 0)}%;background:${su.j > R.jours ? "var(--late)" : "var(--accent)"}"></i></span></div>` : ""}
+        ${ao.statut === "Gagné" ? (ao.won ? `<p class="sub" style="margin:10px 0 0">Projet <b style="color:var(--ink)">${esc(ao.won.projet)}</b> créé le ${fmt(ao.won.date, true)}${ao.won.tasks ? ` avec ${plur(ao.won.tasks, "tâche")}` : ""}.</p>` : ro ? "" : `<button class="btn primary" data-act="ao-win-open" style="margin-top:10px">Créer le projet et son suivi</button>`) + suiviHtml(ao, R) : ""}
         ${ro ? "" : `<div class="row" style="margin-top:12px"><button class="btn" data-act="ao-dup">Dupliquer</button><button class="btn ghost danger" data-act="ao-del">Supprimer</button></div>`}</section>
     </div>`;
 }
@@ -3574,6 +3688,456 @@ async function tasksXlsx(stamp){
   return xlSave(wb, `TODO_BIM_${stamp}.xlsx`);
 }
 
+/* ---------- Pièces du marché : registre de lecture et analyse personnelle ---------- */
+const DCE_TYPES = [
+  ["RC", "Règlement de consultation", /(^|[^a-z])(rc|reglement[ _-]*(de[ _-]*(la[ _-]*)?)?consultation)([^a-z]|$)/],
+  ["AE", "Acte d'engagement", /(^|[^a-z])(ae|atri|acte[ _-]*d[ _'-]*engagement)([^a-z]|$)/],
+  ["CCAP", "CCAP", /ccap|clauses?[ _-]*administratives?/],
+  ["CCTP", "CCTP", /cctp|clauses?[ _-]*techniques?/],
+  ["PRIX", "DPGF / BPU / DQE", /dpgf|bpu|dqe|decomposition[ _-]*(du[ _-]*)?prix|bordereau/],
+  ["PROG", "Programme", /programme/],
+  ["PLAN", "Planning", /planning|calendrier/],
+  ["MEM", "Cadre de mémoire technique", /memoire|cadre[ _-]*de[ _-]*reponse|questionnaire/],
+  ["BIM", "Cahier des charges / convention BIM", /bim|convention|charte|protocole|(^|[^a-z])bep([^a-z]|$)/],
+  ["CCAG", "CCAG", /ccag/],
+  ["ADM", "Pièces administratives", /(^|[^a-z])dc ?[124]([^0-9]|$)|dume|attestation|kbis|lettre[ _-]*de[ _-]*candidature/],
+  ["ANN", "Annexe / rapport", /annexe|rapport|diagnostic|etude|sondage|amiante|plomb|geotech/],
+  ["PLANS", "Plans / maquettes", /(^|[^a-z])plans?([^a-z]|$)|coupe|facade|elevation|niveau|masse/],
+  ["AUTRE", "Autre", null],
+];
+const DCE_T = Object.fromEntries(DCE_TYPES.map(([k, n]) => [k, n]));
+const DCE_ST = [["nl", "Non lu", "--muted"], ["ec", "En cours", "--s-encours"], ["lp", "Lu partiellement", "--week"], ["lu", "Lu", "--done"], ["so", "Sans objet", "--line-2"]];
+const DCE_STM = Object.fromEntries(DCE_ST.map(x => [x[0], x]));
+const DCE_PT = [["exi", "Exigence"], ["vig", "Vigilance"], ["que", "Question à poser"], ["chi", "À chiffrer"], ["dat", "Date / délai"]];
+const DCE_PTM = Object.fromEntries(DCE_PT);
+const DOC_EXT = /^(pdf|docx?|odt|rtf|txt|xlsx?|xlsm|ods|csv|pptx?)$/, MODEL_EXT = /^(dwg|dxf|ifc|rvt|rfa|nwd|nwc|pln|skp|3dm|dwf|dgn)$/;
+S.chif.pend = null; S.chif.dopen = {}; S.chif.dfilt = "";
+const dceOf = ao => { if (!ao.dce || !Array.isArray(ao.dce.docs)) ao.dce = {docs:[], synthese:"", ...(ao.dce || {}), docs:(ao.dce && Array.isArray(ao.dce.docs)) ? ao.dce.docs : []}; return ao.dce; };
+const dceDone = ao => { const d = (ao.dce && ao.dce.docs) || []; return d.length > 0 && d.every(x => x.statut === "lu" || x.statut === "so"); };
+function dceGuess(name, ext){
+  if (MODEL_EXT.test(ext)) return "PLANS";
+  const n = norm(name.replace(/\.[^.]+$/, "")).replace(/[_.]+/g, " ");
+  for (const [k, , re] of DCE_TYPES) if (re && re.test(n)) return k;
+  return "AUTRE";
+}
+const fsize = b => b >= 1048576 ? (Math.round(b / 104857.6) / 10).toLocaleString("fr-FR") + " Mo" : Math.max(1, Math.round(b / 1024)) + " ko";
+function dceStats(D){
+  const docs = D.docs, useful = docs.filter(x => x.statut !== "so"), w = {nl:0, ec:0.25, lp:0.5, lu:1};
+  const by = Object.fromEntries(DCE_ST.map(([k]) => [k, docs.filter(x => (x.statut || "nl") === k).length]));
+  const pts = docs.flatMap(x => (x.points || []).filter(p => String(p.txt || "").trim()).map(p => ({...p, doc:x})));
+  return {n:docs.length, by, pct:useful.length ? useful.reduce((s, x) => s + (w[x.statut || "nl"] || 0), 0) / useful.length : 0, pts};
+}
+function stepPieces(ao){
+  const ro = S.canWrite === false, D = dceOf(ao), P = S.chif.pend && S.chif.pend.ao === ao.id ? S.chif.pend : null, st = dceStats(D), f = S.chif.dfilt;
+  const pick = ro ? "" : `<div class="row"><button class="btn${D.docs.length ? "" : " primary"}" data-act="ao-dce-pick" data-m="dir">${I.plus} Ajouter un dossier</button><button class="btn" data-act="ao-dce-pick" data-m="files">${I.plus} Ajouter des fichiers</button>
+      <input type="file" id="dce-dir" webkitdirectory directory multiple hidden><input type="file" id="dce-files" multiple hidden></div>`;
+  let review = "";
+  if (P) {
+    const have = new Set(D.docs.map(x => x.path)), groups = DCE_TYPES.map(([k, n]) => [k, n, P.files.map((x, i) => ({...x, i})).filter(x => x.type === k)]).filter(g => g[2].length);
+    const nChk = P.files.filter(x => x.chk).length;
+    review = `<section class="panel dce-rev"><div class="of-h"><h3>${plur(P.files.length, "fichier")} trouvé${P.files.length > 1 ? "s" : ""} : coche les pièces du marché</h3><div class="row"><button class="btn ghost sm" data-act="ao-dce-all" data-v="1">Tout cocher</button><button class="btn ghost sm" data-act="ao-dce-all" data-v="0">Tout décocher</button></div></div>
+      <p class="sub">Le type est deviné d'après le nom du fichier : corrige-le si besoin. Les plans, maquettes et fichiers déjà dans la liste sont décochés.</p>
+      ${groups.map(([k, n, fs]) => `<div class="pk-g"><h4>${esc(n)} <span class="mut">(${fs.length})</span></h4>${fs.map(x => `<label class="dce-pr ${have.has(x.path) ? "dup" : ""}"><input type="checkbox" data-pend="chk" data-k="${x.i}" ${x.chk ? "checked" : ""}><span class="dce-nm"><b>${esc(x.name)}</b><small>${esc(x.path.includes("/") ? x.path.slice(0, x.path.lastIndexOf("/")) : "")}${have.has(x.path) ? " · déjà dans la liste" : ""}</small></span><span class="pk-v">${fsize(x.size)}</span>
+        <select data-pend="type" data-k="${x.i}" aria-label="Type de pièce">${DCE_TYPES.map(([tk, tn]) => `<option value="${tk}" ${tk === x.type ? "selected" : ""}>${esc(tn)}</option>`).join("")}</select></label>`).join("")}</div>`).join("")}
+      <div class="row" style="margin-top:12px"><button class="btn primary" data-act="ao-dce-add" ${nChk ? "" : "disabled"}>Ajouter ${plur(nChk, "pièce")}</button><button class="btn" data-act="ao-dce-cancel">Annuler</button></div></section>`;
+  }
+  const docs = D.docs.filter(x => !f || (x.statut || "nl") === f);
+  const groups = DCE_TYPES.map(([k, n]) => [k, n, docs.filter(x => x.type === k)]).filter(g => g[2].length);
+  const ptsBy = DCE_PT.map(([k, n]) => [k, n, st.pts.filter(p => p.t === k)]).filter(g => g[2].length);
+  return `<div class="dce-note">Les fichiers restent sur ton ordinateur : l'app enregistre seulement leur nom, leur emplacement, ton état de lecture et ton analyse.</div>
+    ${!D.docs.length && !P ? `<section class="panel dce-empty"><h3>Commence par le dossier de consultation</h3><p class="sub">Sélectionne le dossier du DCE tel que tu l'as téléchargé : l'app liste les fichiers et reconnaît les pièces (RC, CCAP, CCTP, AE, DPGF, cahier des charges BIM…). Tu coches celles qui font partie des pièces du marché, puis tu notes au fil de ta lecture ce que tu as lu et ce que tu en retiens.</p>${pick}<p class="sub" style="margin-top:10px">Pas de DCE pour cet AO ? Passe directement à l'étape Projet.</p></section>` : ""}
+    ${review}
+    ${D.docs.length ? `<div class="kpi-row dec-kpis dce-kpis">
+      <div class="kc"><span class="kc-l">Pièces</span><span class="kc-v">${st.n}</span><span class="kc-n mut">${st.by.so ? st.by.so + " sans objet" : "&nbsp;"}</span></div>
+      <div class="kc"><span class="kc-l">Lues</span><span class="kc-v ok">${st.by.lu}</span><span class="kc-n mut">${st.by.lp} partiellement</span></div>
+      <div class="kc"><span class="kc-l">À lire</span><span class="kc-v ${st.by.nl ? "warn" : ""}">${st.by.nl + st.by.ec}</span><span class="kc-n mut">${st.by.ec} en cours</span></div>
+      <div class="kc"><span class="kc-l">Avancement</span><span class="kc-v">${Math.round(st.pct * 100)} %</span><span class="ps-bar"><i style="width:${Math.round(st.pct * 100)}%;background:var(--done)"></i></span></div>
+      <div class="kc"><span class="kc-l">Points relevés</span><span class="kc-v">${st.pts.length}</span><span class="kc-n mut">${st.pts.filter(p => p.t === "que").length} question${st.pts.filter(p => p.t === "que").length > 1 ? "s" : ""}</span></div></div>
+    <div class="wz-tools">${pick}<span class="spacer"></span><button class="btn" data-act="ao-dce-pdf">Fiche d'analyse PDF</button><button class="btn" data-act="ao-dce-xlsx">Registre Excel</button></div>
+    <div class="seg-block" style="margin-bottom:10px"><span class="seg-label">État</span>${[["", "Toutes"], ...DCE_ST.map(([k, n]) => [k, n])].map(([k, n]) => `<button class="seg" data-act="ao-dce-filt" data-v="${k}" aria-pressed="${f === k}">${n} <span class="c">${k ? st.by[k] : st.n}</span></button>`).join("")}</div>
+    ${groups.map(([k, n, ds]) => `<section class="dce-g"><h3>${esc(n)}</h3>${ds.map(x => dceCard(x, ro)).join("")}</section>`).join("") || '<div class="ao-none">Aucune pièce avec cet état.</div>'}
+    <div class="wz-grid" style="margin-top:12px">
+      <section class="panel"><h3>Synthèse générale</h3><p class="sub">Ton avis d'ensemble sur le DCE : intérêt, risques, décision de répondre ou non.</p>
+        <textarea class="fit dce-syn" rows="4" data-ao="dce.synthese" placeholder="ex. Mission BIM bien cadrée, convention imposée par le MOA, planning tendu en phase EXE…" ${ro ? "readonly" : ""}>${esc(D.synthese || "")}</textarea></section>
+      <section class="panel"><h3>Points relevés</h3>${ptsBy.length ? ptsBy.map(([k, n, ps]) => `<div class="dce-pg"><h4><span class="pt-t pt-${k}">${esc(n)}</span> <span class="mut">${ps.length}</span></h4><ul>${ps.map(p => `<li>${esc(p.txt)}<small>${esc(p.doc.name)}</small></li>`).join("")}</ul></div>`).join("") : '<p class="sub">Les exigences, points de vigilance, questions à poser, éléments à chiffrer et dates que tu notes sur chaque pièce se regroupent ici.</p>'}</section>
+    </div>` : ""}`;
+}
+function dceCard(x, ro){
+  const open = S.chif.dopen[x.id], s = DCE_STM[x.statut || "nl"], pts = (x.points || []);
+  return `<div class="dce-doc ${open ? "open" : ""}" data-did="${x.id}" style="--dc:var(${s[2]})">
+    <div class="dce-h"><button class="dce-tg" data-act="ao-dce-open" aria-expanded="${!!open}"><span class="chev">${open ? "▾" : "▸"}</span><span class="dce-nm"><b>${esc(x.name)}</b><small>${esc(x.path.includes("/") ? x.path.slice(0, x.path.lastIndexOf("/")) : "")}${x.size ? " · " + fsize(x.size) : ""}</small></span></button>
+      <span class="dce-st">${DCE_ST.map(([k, n]) => `<button class="st-b ${k === (x.statut || "nl") ? "on" : ""}" data-act="ao-dce-st" data-v="${k}" style="--c:var(${DCE_STM[k][2]})" title="${n}" ${ro ? "disabled" : ""}>${n}</button>`).join("")}</span>
+      <span class="dce-meta">${pts.length ? `<span class="dce-np">${pts.length} point${pts.length > 1 ? "s" : ""}</span>` : ""}${x.analyse ? '<span class="dce-np an">analyse</span>' : ""}</span></div>
+    ${!open && x.analyse ? `<p class="dce-ex">${esc(String(x.analyse).split("\n")[0].slice(0, 180))}${String(x.analyse).length > 180 ? "…" : ""}</p>` : ""}
+    ${open ? `<div class="dce-b">
+      <div class="am-row"><label>Type <select data-ao="dce.type" ${ro ? "disabled" : ""}>${DCE_TYPES.map(([k, n]) => `<option value="${k}" ${k === x.type ? "selected" : ""}>${esc(n)}</option>`).join("")}</select></label>${x.lu ? `<span class="am-hint">État mis à jour le ${fmt(x.lu, true)}</span>` : ""}</div>
+      <label class="field"><span class="lbl">Mon analyse</span><textarea class="fit" rows="3" data-ao="dce.analyse" placeholder="Ce que dit cette pièce, ce que j'en retiens, les articles à relire…" ${ro ? "readonly" : ""}>${esc(x.analyse || "")}</textarea></label>
+      <div class="dce-pts"><span class="lbl">Points à retenir</span>${pts.map(p => `<div class="dce-pt" data-ptid="${p.id}"><select class="pt-t pt-${p.t}" data-ao="dce.pt.t" aria-label="Type de point" ${ro ? "disabled" : ""}>${DCE_PT.map(([k, n]) => `<option value="${k}" ${k === p.t ? "selected" : ""}>${n}</option>`).join("")}</select><input type="text" data-ao="dce.pt.txt" value="${esc(p.txt || "")}" placeholder="ex. Article 4.2 : maquette IFC à chaque phase" ${ro ? "readonly" : ""}>${ro ? "" : `<button class="ic-btn del" data-act="ao-dce-pt-del" aria-label="Retirer">${I.close}</button>`}</div>`).join("")}
+        ${ro ? "" : `<div class="dce-add">${DCE_PT.map(([k, n]) => `<button class="chip-b pt-${k}" data-act="ao-dce-pt-add" data-t="${k}">+ ${n}</button>`).join("")}</div>`}</div>
+      ${ro ? "" : `<div class="row" style="justify-content:flex-end"><button class="btn ghost sm danger" data-act="ao-dce-del">Retirer de la liste</button></div>`}
+    </div>` : ""}</div>`;
+}
+/* sélection de fichiers */
+document.addEventListener("change", ev => {
+  const t = ev.target;
+  if ((t.id === "dce-dir" || t.id === "dce-files") && t.files && t.files.length) {
+    const ao = curAo(); if (!ao) return;
+    const have = new Set(dceOf(ao).docs.map(x => x.path)), files = [];
+    for (const f of t.files) {
+      const path = (f.webkitRelativePath || f.name).replace(/\\/g, "/"), name = f.name;
+      if (/^\.|^~\$|^thumbs\.db$|^desktop\.ini$/i.test(name) || path.split("/").some(p => p.startsWith("."))) continue;
+      const ext = (name.split(".").pop() || "").toLowerCase(), type = dceGuess(name, ext);
+      files.push({path, name, ext, size:f.size, mtime:f.lastModified || 0, type, chk:!have.has(path) && DOC_EXT.test(ext) && type !== "PLANS" && type !== "AUTRE"});
+    }
+    files.sort((a, b) => a.path.localeCompare(b.path, "fr"));
+    S.chif.pend = files.length ? {ao:ao.id, files} : null; t.value = "";
+    if (!files.length) toast("Aucun fichier exploitable dans cette sélection"); render(true); return;
+  }
+  if (t.dataset && t.dataset.pend && S.chif.pend) { const x = S.chif.pend.files[Number(t.dataset.k)]; if (!x) return; if (t.dataset.pend === "chk") x.chk = t.checked; else x.type = t.value; const b = document.querySelector('[data-act="ao-dce-add"]'); if (b) { const n = S.chif.pend.files.filter(y => y.chk).length; b.disabled = !n; b.textContent = `Ajouter ${plur(n, "pièce")}`; } }
+});
+async function dceAction(act, a, ao){
+  const C = S.chif, D = dceOf(ao), did = a.closest("[data-did]")?.dataset.did, x = did && D.docs.find(y => y.id === did);
+  if (act === "ao-dce-pick") { const el = $(a.dataset.m === "dir" ? "#dce-dir" : "#dce-files"); if (el) el.click(); return; }
+  if (act === "ao-dce-all") { if (C.pend) C.pend.files.forEach(y => y.chk = a.dataset.v === "1"); render(true); return; }
+  if (act === "ao-dce-cancel") { C.pend = null; render(true); return; }
+  if (act === "ao-dce-add") {
+    if (!C.pend) return; const have = new Map(D.docs.map(y => [y.path, y])); let n = 0;
+    for (const f of C.pend.files.filter(y => y.chk)) { const ex = have.get(f.path); if (ex) { ex.size = f.size; ex.mtime = f.mtime; continue; } D.docs.push({id:uid(), path:f.path, name:f.name, ext:f.ext, size:f.size, mtime:f.mtime, type:f.type, statut:"nl", analyse:"", points:[]}); n++; }
+    C.pend = null; await aoSave(ao); render(true); toast(`${plur(n, "pièce")} ajoutée${n > 1 ? "s" : ""}`); return;
+  }
+  if (act === "ao-dce-filt") { C.dfilt = a.dataset.v; render(true); return; }
+  if (act === "ao-dce-pdf") { dcePdf(ao); return; }
+  if (act === "ao-dce-xlsx") { dceXlsx(ao); return; }
+  if (!x) return;
+  if (act === "ao-dce-open") { C.dopen[did] = !C.dopen[did]; render(true); return; }
+  if (act === "ao-dce-st") { x.statut = a.dataset.v; x.lu = today(); await aoSave(ao); render(true); return; }
+  if (act === "ao-dce-pt-add") { const p = {id:uid(), t:a.dataset.t, txt:""}; x.points = [...(x.points || []), p]; C.dopen[did] = true; await aoSave(ao); render(true); setTimeout(() => { const el = document.querySelector(`[data-ptid="${p.id}"] input`); if (el) el.focus(); }, 30); return; }
+  if (act === "ao-dce-pt-del") { const pid = a.closest("[data-ptid]").dataset.ptid; x.points = (x.points || []).filter(p => p.id !== pid); await aoSave(ao); render(true); return; }
+  if (act === "ao-dce-del") { if (!a.classList.contains("armed")) { a.classList.add("armed"); a.textContent = "Confirmer : retirer cette pièce"; return; } D.docs = D.docs.filter(y => y.id !== did); await aoSave(ao); render(true); return; }
+}
+function dceChange(ao, el, k, v){
+  const D = dceOf(ao);
+  if (k === "synthese") { D.synthese = v; return; }
+  const x = D.docs.find(y => y.id === el.closest("[data-did]")?.dataset.did); if (!x) return;
+  if (k === "analyse") x.analyse = v;
+  else if (k === "type") x.type = v;
+  else if (k.startsWith("pt.")) { const p = (x.points || []).find(y => y.id === el.closest("[data-ptid]")?.dataset.ptid); if (p) p[k.slice(3)] = typeof v === "string" ? v.trim() : v; }
+}
+/* fiche d'analyse PDF */
+async function dcePdf(ao){
+  const dl = await getDl(); if (!dl) return;
+  try {
+    toast("Préparation de la fiche…");
+    await loadLib("jspdf", () => window.jspdf && window.jspdf.jsPDF);
+    const doc = new window.jspdf.jsPDF({unit:"mm", format:"a4"}), D = dceOf(ao), st = dceStats(D), soc = socOf(ao), acc = hexRgb(soc && soc.couleur);
+    const W = 210, H = 297, M = 16, CW = W - 2 * M, INK = [22, 27, 36], MUT = [100, 108, 122], LINE = [218, 223, 230], SOFT = [244, 246, 250], accSoft = acc.map(v => Math.round(v + (255 - v) * 0.9));
+    let y = 16;
+    const font = (b, s, c) => { doc.setFont("helvetica", b ? "bold" : "normal"); doc.setFontSize(s); doc.setTextColor(...(c || INK)); };
+    const T = (s, x, yy, o = {}) => { font(o.b, o.s || 9.5, o.c); doc.text(pdfTxt(s), x, yy, {align:o.a || "left", charSpace:o.cs || 0}); };
+    const wrap = (s, w, size, b) => { font(b, size); return doc.splitTextToSize(pdfTxt(s), w); };
+    const ensure = h => { if (y + h > H - 20) { doc.addPage(); y = 18; T(`Analyse du DCE · ${ao.nom || ""}`, W - M, 12, {s:7.8, c:MUT, a:"right"}); doc.setDrawColor(...LINE); doc.line(M, 14, W - M, 14); } };
+    const para = (s, size = 9.2, c) => String(s || "").split("\n").forEach(p => { wrap(p || " ", CW, size).forEach(l => { ensure(5); T(l, M, y, {s:size, c}); y += size * 0.47; }); y += 1; });
+    const section = t => { ensure(16); y += 4; T(t.toUpperCase(), M, y, {b:1, s:9, c:acc, cs:0.4}); doc.setDrawColor(...acc); doc.setLineWidth(0.5); doc.line(M, y + 1.8, M + 14, y + 1.8); y += 7; };
+    if (soc && soc.logo && soc.logoW) { let w = 40, h = w * soc.logoH / soc.logoW; if (h > 18) { h = 18; w = h * soc.logoW / soc.logoH; } doc.addImage(soc.logo, /^data:image\/jpe?g/i.test(soc.logo) ? "JPEG" : "PNG", M, y - 4, w, h); y += h; } else if (soc) { T(soc.nom, M, y + 2, {b:1, s:13, c:acc}); y += 6; }
+    y += 6; doc.setDrawColor(...acc); doc.setLineWidth(0.9); doc.line(M, y, W - M, y); y += 9;
+    T("ANALYSE DES PIÈCES DU MARCHÉ", M, y, {b:1, s:9, c:acc, cs:0.6}); y += 7;
+    wrap(ao.nom || "Appel d'offres", CW, 16, true).forEach(l => { T(l, M, y, {b:1, s:16}); y += 6.8; });
+    T([ao.client && "Client : " + ao.client, ao.moa && "MOA : " + ao.moa, validYmd(ao.remise) && "Remise le " + fmt(ao.remise, true)].filter(Boolean).join("  ·  "), M, y, {s:9, c:MUT}); y += 8;
+    doc.setFillColor(...accSoft); doc.roundedRect(M, y, CW, 15, 2, 2, "F");
+    [["Pièces", st.n], ["Lues", st.by.lu], ["Partiellement", st.by.lp], ["À lire", st.by.nl + st.by.ec], ["Avancement", Math.round(st.pct * 100) + " %"], ["Points relevés", st.pts.length]].forEach(([k, v], i) => { const x = M + 4 + i * (CW - 8) / 6; T(k, x, y + 5.5, {s:7.4, c:MUT}); T(String(v), x, y + 11.5, {b:1, s:11}); });
+    y += 22; T(`Établie le ${fmt(today(), true)}`, M, y - 2, {s:7.6, c:MUT});
+    if (D.synthese) { section("Synthèse générale"); para(D.synthese); }
+    for (const [k, n] of DCE_PT) { const ps = st.pts.filter(p => p.t === k); if (!ps.length) continue; section(n + (ps.length > 1 ? "s" : "")); ps.forEach(p => { const ls = wrap(p.txt, CW - 6, 9.2); ensure(ls.length * 4.4 + 4); doc.setFillColor(...acc); doc.circle(M + 1, y - 1.2, 0.7, "F"); ls.forEach((l, i) => { T(l, M + 4, y, {s:9.2}); y += 4.4; }); T(p.doc.name, M + 4, y - 0.6, {s:7.4, c:MUT}); y += 3.6; }); }
+    section("Registre des pièces");
+    const cw = [CW - 84, 54, 30], xs = [M, M + cw[0], M + cw[0] + cw[1]];
+    const head = () => { doc.setFillColor(...acc); doc.rect(M, y, CW, 7, "F"); ["Pièce", "Type", "État"].forEach((t, i) => T(t, xs[i] + 2, y + 4.7, {b:1, s:7.8, c:[255, 255, 255]})); y += 7; };
+    ensure(16); head();
+    D.docs.forEach((x, i) => { const ls = wrap(x.name, cw[0] - 4, 8.4), lt = wrap(DCE_T[x.type] || x.type, cw[1] - 4, 8), h = Math.max(ls.length, lt.length) * 3.8 + 3.4; if (y + h > H - 20) { ensure(h + 20); head(); } if (i % 2) { doc.setFillColor(...SOFT); doc.rect(M, y, CW, h, "F"); } ls.forEach((l, k) => T(l, xs[0] + 2, y + 4.2 + k * 3.8, {s:8.4})); lt.forEach((l, k) => T(l, xs[1] + 2, y + 4.2 + k * 3.8, {s:8})); T(DCE_STM[x.statut || "nl"][1], xs[2] + 2, y + 4.2, {s:8, b:1}); doc.setDrawColor(...LINE); doc.setLineWidth(0.2); doc.line(M, y + h, W - M, y + h); y += h; });
+    const withNotes = D.docs.filter(x => x.analyse || (x.points || []).some(p => p.txt));
+    if (withNotes.length) { section("Analyse par pièce"); withNotes.forEach(x => { ensure(18); T(x.name, M, y, {b:1, s:10}); y += 4.4; T(`${DCE_T[x.type] || x.type}  ·  ${DCE_STM[x.statut || "nl"][1]}`, M, y, {s:7.8, c:MUT}); y += 5; if (x.analyse) para(x.analyse, 9); (x.points || []).filter(p => p.txt).forEach(p => { const ls = wrap(`${DCE_PTM[p.t] || ""} : ${p.txt}`, CW - 6, 8.8); ensure(ls.length * 4.2 + 2); ls.forEach(l => { T(l, M + 4, y, {s:8.8}); y += 4.2; }); }); y += 3; doc.setDrawColor(...LINE); doc.line(M, y - 1, W - M, y - 1); y += 3; }); }
+    const n = doc.getNumberOfPages(); for (let i = 1; i <= n; i++) { doc.setPage(i); doc.setDrawColor(...LINE); doc.setLineWidth(0.3); doc.line(M, H - 13, W - M, H - 13); T(soc ? soc.nom : "Analyse du DCE", M, H - 8.5, {s:7.4, c:MUT}); T(`Page ${i} / ${n}`, W - M, H - 8.5, {s:7.4, c:MUT, a:"right"}); }
+    await dl.save({filename:`Analyse_DCE_${fileBase(ao)}_${today()}.pdf`, data:new Blob([doc.output("arraybuffer")], {type:"application/pdf"})});
+    toast("Fiche prête");
+  } catch (e) { console.error(e); toast(e && e.code === "declined" ? "Téléchargement annulé." : "Fiche impossible pour l'instant."); }
+}
+async function dceXlsx(ao){
+  try {
+    toast("Préparation du registre…");
+    const D = dceOf(ao), wb = await xlBook(), pt = (x, k) => (x.points || []).filter(p => p.t === k && p.txt).map(p => "• " + p.txt).join("\n");
+    xlTable(wb, "Pièces", {title:`Registre des pièces du marché – ${ao.nom || "AO"}`, sub:`État au ${fmt(today(), true)} · ${D.docs.length} pièce${D.docs.length > 1 ? "s" : ""}`,
+      cols:[{h:"Type", w:24, wrap:true}, {h:"Pièce", w:42, wrap:true}, {h:"Dossier", w:28, wrap:true}, {h:"État", w:16}, {h:"Mon analyse", w:60, wrap:true}, ...DCE_PT.map(([, n]) => ({h:n, w:34, wrap:true}))],
+      rows:D.docs.map(x => [DCE_T[x.type] || x.type, x.name, x.path.includes("/") ? x.path.slice(0, x.path.lastIndexOf("/")) : "", DCE_STM[x.statut || "nl"][1], x.analyse || "", ...DCE_PT.map(([k]) => pt(x, k))])});
+    const pts = dceStats(D).pts;
+    xlTable(wb, "Points relevés", {title:"Points relevés", sub:D.synthese ? "Synthèse : " + D.synthese.replace(/\s+/g, " ").slice(0, 400) : "", cols:[{h:"Type", w:18}, {h:"Point", w:80, wrap:true}, {h:"Pièce", w:42, wrap:true}], rows:DCE_PT.flatMap(([k, n]) => pts.filter(p => p.t === k).map(p => [n, p.txt, p.doc.name]))});
+    await xlSave(wb, `Registre_DCE_${fileBase(ao)}_${today()}.xlsx`);
+  } catch (e) { console.error(e); toast(e && e.code === "declined" ? "Téléchargement annulé." : "Export impossible pour l'instant."); }
+}
+
+/* ---------- Pilotage : AO gagné → projet, suivi vendu / passé, tableau de bord ---------- */
+const hjOf = () => num(uoBase().params.hj) || 8;
+function shortRef(s){ return String(s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toUpperCase().replace(/[^A-Z0-9 &-]+/g, " ").replace(/\s+/g, " ").trim(); }
+function winDefaults(ao){
+  const proj = (ao.won && ao.won.projet) || shortRef(ao.nom).split(" ").slice(0, 3).join(" ").slice(0, 24) || "NOUVEAU PROJET";
+  const mis = (ao.missions || []).map(m => MIS[m] ? MIS[m].nom : m)[0] || "BIM Management";
+  return {proj, ref:ao.reference || `${shortRef(ao.client || ao.moa || "CLIENT")}_${proj}_${mis}`};
+}
+function winSheet(ao){
+  document.querySelector(".win-ov")?.remove();
+  const R = calcAo(ao), d = winDefaults(ao), ph = R.eph.filter(p => R.base.some(x => x.l.phase === p.id));
+  const el = document.createElement("div"); el.className = "overlay ao-pick win-ov"; el.dataset.act = "ao-ov-close";
+  el.innerHTML = `<div class="sheet" role="dialog" aria-label="Créer le projet"><div class="sheet-h"><h2>AO gagné : créer le projet</h2><button class="btn ghost" data-act="ao-ov-close" aria-label="Fermer">${I.close}</button></div>
+    <div class="sheet-b"><p class="sub" style="margin-top:0">L'app prépare le suivi : le projet dans tes listes, sa référence pour le décompte des heures et une tâche par phase avec les jours vendus. Tout reste modifiable ensuite.</p>
+      <div class="ao-form f1"><label class="field"><span class="lbl">Nom du projet (court, comme CPAM ou FOCH)</span><input type="text" id="win-proj" value="${esc(d.proj)}"></label>
+      <label class="field"><span class="lbl">Référence du décompte des heures</span><input type="text" id="win-ref" value="${esc(d.ref)}" list="dl-refs2"><datalist id="dl-refs2">${refList().map(r => `<option value="${esc(r)}">`).join("")}</datalist></label></div>
+      <label class="toggle" style="margin-top:12px"><input type="checkbox" id="win-tasks" checked> Créer une tâche par phase (${ph.length} phase${ph.length > 1 ? "s" : ""}, ${jfmt(R.jours)} j vendus, ${hjOf()} h par jour)</label>
+      <ul class="win-l">${ph.map(p => { const j = R.base.filter(x => x.l.phase === p.id).reduce((s, x) => s + x.c.jours, 0); return `<li><b>${esc(p.nom)}</b><span>${ymLab(p.a)} – ${ymLab(p.b)} · ${jfmt(j)} j</span></li>`; }).join("")}</ul></div>
+    <div class="sheet-f"><span class="spacer"></span><button class="btn" data-act="ao-ov-close">Plus tard</button><button class="btn primary" data-act="ao-win-create">Créer le projet</button></div></div>`;
+  document.body.appendChild(el);
+}
+async function winCreate(ao){
+  const proj = ($("#win-proj")?.value || "").trim(), ref = ($("#win-ref")?.value || "").trim(), mk = $("#win-tasks")?.checked;
+  if (!proj || !ref) { toast("Renseigne le nom du projet et la référence"); return; }
+  document.querySelector(".win-ov")?.remove();
+  const R = calcAo(ao), hj = hjOf(); let n = 0;
+  try {
+    if (!S.lists.projets.includes(proj)) await saveLists({...S.lists, projets:[...S.lists.projets, proj]});
+    if (!refList().includes(ref)) await savePrefs({refs:[...refList(), ref].sort((x, y) => x.localeCompare(y, "fr"))});
+    if (mk) for (const p of R.eph) {
+      const ls = R.base.filter(x => x.l.phase === p.id); if (!ls.length) continue;
+      const j = ls.reduce((s, x) => s + x.c.jours, 0), [y, m] = p.b.split("-").map(Number), fin = ymd(new Date(y, m, 0));
+      await S.db.collection("tasks").doc().set({projet:proj, tache:p.nom, statut:"À faire", priorite:"", urgent:null, important:null, echeance:fin, responsable:S.lists.responsables[0] || "", theme:STAGES[p.stage] || "", type:"", cloture:"",
+        commentaires:ls.map(x => `• ${x.l.lib} : ${qtyTxt(x.l, x.c)}, ${jfmt(x.c.jours)} j`).join("\n"), debut:p.a + "-01", fin, heures:Math.round(j * hj * 4) / 4, jours:[], blocs:[], avancement:0,
+        reference:ref, ao:ao.id, aoPhase:p.id, created:nowIso(), updated:nowIso()});
+      n++;
+    }
+    ao.reference = ref; ao.statut = "Gagné"; ao.won = {projet:proj, ref, date:today(), tasks:n};
+    await aoSave(ao); render(true); toast(`Projet ${proj} créé${n ? ` avec ${plur(n, "tâche")}` : ""}`);
+  } catch (e) { fail(e); }
+}
+/* temps passé par référence (une seule lecture du décompte pour toutes les références) */
+function spentByRef(refs, from){
+  const out = new Map(); if (!refs.length) return out;
+  const want = new Set(refs), end = today();
+  for (let d = from; d <= end; d = addDays(d, 1)) for (const r of decRows(d)) if (want.has(r.ref)) out.set(r.ref, (out.get(r.ref) || 0) + r.m);
+  return out;
+}
+function spentByPhase(aoId){
+  const out = new Map(), td = today();
+  for (const t of S.tasks.values()) { if (t.ao !== aoId || !t.aoPhase) continue; const m = blocsOf(t).filter(b => b.d <= td).reduce((s, b) => s + b.m, 0); out.set(t.aoPhase, (out.get(t.aoPhase) || 0) + m); }
+  return out;
+}
+function suiviAo(ao, R, spent){
+  if (!ao.reference) return null;
+  const hj = hjOf(), vendu = R.jours, passe = (spent ? spent.get(ao.reference) || 0 : (spentByRef([ao.reference], aoFrom(ao, R)).get(ao.reference) || 0)) / 60 / hj;
+  const sp = spentByPhase(ao.id);
+  return {vendu, passe, reste:vendu - passe, pct:vendu ? passe / vendu : 0, eur:R.tot, phases:R.ph.filter(x => x.jours).map(x => ({p:x.p, vendu:x.jours, passe:(sp.get(x.p.id) || 0) / 60 / hj}))};
+}
+const aoFrom = (ao, R) => [R.a ? R.a + "-01" : today(), ao.won && ao.won.date].filter(validYmd).sort()[0] || today();
+function suiviHtml(ao, R){
+  const s = suiviAo(ao, R); if (!s) return "";
+  const lvl = s.pct > 1 ? "late" : s.pct >= 0.8 ? "today" : "accent";
+  return `<div class="suivi"><span class="sub">Temps passé sur « ${esc(ao.reference)} »</span><div class="kc-v">${jfmt(s.passe)} j <small>/ ${jfmt(s.vendu)} j vendus · reste ${jfmt(s.reste)} j</small></div>
+    <span class="ps-bar"><i style="width:${Math.min(100, s.pct * 100)}%;background:var(--${lvl})"></i></span>
+    ${s.phases.length ? `<table class="tbl sv-ph"><thead><tr><th>Phase</th><th>Vendu</th><th>Passé</th></tr></thead><tbody>${s.phases.map(x => `<tr><td>${esc(x.p.nom)}</td><td>${jfmt(x.vendu)} j</td><td class="${x.passe > x.vendu ? "warn" : ""}">${jfmt(x.passe)} j</td></tr>`).join("")}</tbody></table><p class="sub">Le passé par phase vient des créneaux des tâches du projet ; le total vient du décompte des heures.</p>` : ""}</div>`;
+}
+/* ----- Tableau de bord ----- */
+function bordMonths(n){ const m0 = ymOf(today()); return Array.from({length:n}, (_, i) => ymAdd(m0, i)); }
+function capMonth(ym){ const [y, m] = ym.split("-").map(Number), last = new Date(y, m, 0).getDate(); let h = 0; for (let d = 1; d <= last; d++) { const s = `${ym}-${z2(d)}`; h += Math.max(0, capOn(s) - absHours(s)); } return h / hjOf(); }
+function viewBord2(){
+  const aos = [...S.aos.values()].map(migrateAo), td = today(), y1 = addDays(td, -365), hj = hjOf();
+  const calc = new Map(aos.map(a => [a.id, calcAo(a)]));
+  const cur = aos.filter(a => a.statut === "En cours"), sent = aos.filter(a => a.statut === "Envoyé"), won = aos.filter(a => a.statut === "Gagné");
+  const dec12 = aos.filter(a => ["Gagné", "Perdu"].includes(a.statut) && String(a.updated || "").slice(0, 10) >= y1), won12 = dec12.filter(a => a.statut === "Gagné");
+  const sum = L => L.reduce((s, a) => s + calc.get(a.id).tot, 0);
+  const rateN = dec12.length ? won12.length / dec12.length : null, rateE = sum(dec12) ? sum(won12) / sum(dec12) : null;
+  const ratios = won.map(a => calc.get(a.id).pBudget).filter(x => x > 0), ratio = ratios.length ? ratios.reduce((s, x) => s + x, 0) / ratios.length : 0;
+  const next = cur.filter(a => validYmd(a.remise) && a.remise >= td).sort((a, b) => a.remise.localeCompare(b.remise)).slice(0, 3);
+  /* projets gagnés */
+  const wonRef = won.filter(a => a.reference), from = wonRef.map(a => aoFrom(a, calc.get(a.id))).sort()[0] || td, spent = spentByRef(wonRef.map(a => a.reference), from);
+  const rows = won.map(a => ({a, R:calc.get(a.id), s:suiviAo(a, calc.get(a.id), spent)})).sort((x, y) => (y.s ? y.s.pct : -1) - (x.s ? x.s.pct : -1));
+  /* plan de charge */
+  const months = bordMonths(12), load = months.map(m => { const w = won.reduce((s, a) => s + ((calc.get(a.id).months.get(m) || {}).j || 0), 0), p = [...cur, ...sent].reduce((s, a) => s + ((calc.get(a.id).months.get(m) || {}).j || 0), 0); return {m, cap:capMonth(m), w, p}; });
+  const lmax = Math.max(1, ...load.map(x => Math.max(x.cap, x.w + x.p)));
+  /* organisation et temps */
+  const all = live(), m0 = ymOf(td); let hM = 0, cM = 0;
+  for (let d = m0 + "-01"; d <= td; d = addDays(d, 1)) { hM += decRows(d).reduce((s, r) => s + r.m, 0); cM += Math.max(0, capOn(d) - absHours(d)) * 60; }
+  const kT = [["late", all.filter(t => alerte(t) === "late").length, "En retard"], ["week", all.filter(t => ["today", "week"].includes(alerte(t))).length, "Échéance ≤ 7 j"], ["", all.filter(t => !isDone(t)).length, "Ouvertes"], ["done", [...S.tasks.values()].filter(t => isDone(t) && validYmd(t.cloture) && diffDays(td, t.cloture) <= 7).length, "Terminées (7 j)"]];
+  const oldH = viewBord(), oi = oldH.indexOf('<div class="panel" style="margin-bottom:14px">'), old = oi >= 0 ? oldH.slice(oi) : '<p class="sub">Aucune tâche.</p>';
+  const sg = v => v === null ? "—" : Math.round(v * 100) + " %";
+  return `<div class="view-head"><div><h1>Tableau de bord</h1><div class="sub">Appels d'offres, projets, charge et organisation, calculés en direct.</div></div><div class="pnav"><a class="btn" href="#chiffrage">Chiffrages AO</a></div></div>
+    <section class="panel bd-b"><div class="bd-h"><h2>Appels d'offres</h2><span class="sub">12 derniers mois pour les gagnés et le taux de réussite</span></div>
+      <div class="bd-k">
+        <div><span class="kc-l">En cours</span><b>${cur.length}</b><small>${keur(sum(cur))}</small></div>
+        <div><span class="kc-l">Envoyés</span><b>${sent.length}</b><small>${keur(sum(sent))}</small></div>
+        <div><span class="kc-l">Gagnés</span><b class="ok">${won12.length}</b><small>${keur(sum(won12))}</small></div>
+        <div><span class="kc-l">Taux de réussite</span><b>${sg(rateN)}</b><small>${rateE === null ? "sur les AO décidés" : sg(rateE) + " en montant"}</small></div>
+        <div><span class="kc-l">Ratio honoraires / travaux</span><b>${ratio ? pct(ratio) : "—"}</b><small>moyenne des AO gagnés</small></div></div>
+      ${next.length ? `<div class="bd-next"><span class="lbl">Prochaines remises</span>${next.map(a => { const n = diffDays(a.remise, td); return `<button class="bd-ao" data-act="bd-ao" data-id="${a.id}"><span class="bd-j ${n <= 3 ? "late" : n <= 7 ? "today" : ""}">${n ? "J−" + n : "Aujourd'hui"}</span><b>${esc(a.nom || "Sans titre")}</b><small>${fmt(a.remise, true)} · ${eur(calc.get(a.id).tot)} · étape ${Math.min(7, (a.step || 0) + 1)}/7</small></button>`; }).join("")}</div>` : '<p class="sub">Aucune remise à venir.</p>'}</section>
+    <section class="panel bd-b"><div class="bd-h"><h2>Projets gagnés</h2><span class="sub">Jours vendus comparés au temps passé (décompte des heures, ${hj} h par jour)</span></div>
+      ${rows.length ? `<div class="tbl-wrap"><table class="tbl bd-p"><thead><tr><th>Projet</th><th>Vendu</th><th>Passé</th><th>Reste</th><th>Consommation</th><th>Fin prévue</th></tr></thead><tbody>
+        ${rows.map(({a, R, s}) => `<tr><td><button class="lnk" data-act="bd-ao" data-id="${a.id}">${esc((a.won && a.won.projet) || a.nom || "Sans titre")}</button><small class="mut">${esc(eur(R.tot))}${a.reference ? "" : " · pas de référence"}</small></td>
+          <td>${jfmt(R.jours)} j</td><td>${s ? jfmt(s.passe) + " j" : "—"}</td><td class="${s && s.reste < 0 ? "warn" : ""}">${s ? jfmt(s.reste) + " j" : "—"}</td>
+          <td>${s ? `<div class="bd-bar ${s.pct > 1 ? "over" : s.pct >= 0.8 ? "hi" : ""}"><i style="width:${Math.min(100, s.pct * 100)}%"></i><span>${Math.round(s.pct * 100)} %</span></div>` : `<button class="btn ghost sm" data-act="bd-ao" data-id="${a.id}">Relier au décompte</button>`}</td><td>${R.b ? ymLab(R.b) : "—"}</td></tr>`).join("")}</tbody></table></div>`
+        : '<p class="sub">Aucun AO gagné pour l\'instant. Quand tu passes un chiffrage en « Gagné », l\'app crée le projet et son suivi apparaît ici.</p>'}</section>
+    <section class="panel bd-b"><div class="bd-h"><h2>Plan de charge</h2><span class="sub">Jours prévus par mois sur 12 mois, comparés à ta capacité</span></div>
+      <div class="bd-load">${load.map(x => `<div class="bl-c ${x.w > x.cap + 0.01 ? "sat" : ""}" title="${ymLab(x.m)} : ${jfmt(x.w)} j vendus${x.p ? `, + ${jfmt(x.p)} j si les AO en cours sont gagnés` : ""} · capacité ${jfmt(x.cap)} j"><div class="bl-s"><i class="bl-cap" style="bottom:${x.cap / lmax * 100}%"></i><i class="bl-p" style="height:${(x.w + x.p) / lmax * 100}%"></i><i class="bl-w" style="height:${x.w / lmax * 100}%"></i></div><span>${ymLab(x.m)}</span></div>`).join("")}</div>
+      <div class="legend"><span><i style="background:var(--accent)"></i>AO gagnés</span><span><i class="hatch"></i>Si les AO en cours et envoyés sont gagnés</span><span><i style="background:var(--ink);height:2px"></i>Capacité (heures disponibles − absences)</span></div>
+      ${load.some(x => x.w > x.cap + 0.01) ? `<p class="bd-warn">Mois saturés : ${load.filter(x => x.w > x.cap + 0.01).map(x => ymLab(x.m)).join(", ")}.</p>` : ""}</section>
+    <section class="panel bd-b"><div class="bd-h"><h2>Organisation et temps</h2></div>
+      <div class="bd-k">${kT.map(([c, n, l]) => `<div><span class="kc-l">${l}</span><b class="${c === "late" && n ? "late" : c === "done" ? "ok" : ""}">${n}</b></div>`).join("")}
+        <div><span class="kc-l">Heures du mois</span><b>${hfmt(hM / 60)} h</b><small>sur ${hfmt(cM / 60)} h dues à ce jour</small></div></div>
+      <details class="bd-more"><summary>Détail des tâches par projet</summary>${old}</details></section>`;
+}
+async function bordAction(act, a){
+  if (act === "bd-ao") { const x = S.aos.get(a.dataset.id); if (x && x.statut === "Gagné") { migrateAo(x); x.step = 6; } S.chif.mode = "ao"; S.chif.id = a.dataset.id; saveChifUi(); if (location.hash !== "#chiffrage") location.hash = "#chiffrage"; else render(true); return; }
+}
+
+/* ---------- Aide et explications ---------- */
+const go = (h, t) => `<a class="hp-go" href="#${h}">${t} ›</a>`;
+const kbd = k => `<kbd>${k}</kbd>`;
+const HELP = [
+  {k:"demarrer", t:"Démarrer", html:`
+    <p>TO DO BIM réunit au même endroit tes <b>tâches</b>, ton <b>planning</b>, ton <b>décompte des heures</b> et le <b>chiffrage de tes appels d'offres</b>. Tout est lié : une tâche placée dans l'agenda alimente le décompte des heures, et un AO gagné devient un projet dont tu suis le temps passé.</p>
+    <table class="hp-t"><tbody>
+      <tr><td><b>Ma journée</b></td><td>Ce qui demande ton attention aujourd'hui.</td></tr>
+      <tr><td><b>Tâches</b></td><td>La liste complète, avec filtres et recherche.</td></tr>
+      <tr><td><b>Planning</b></td><td>L'agenda de la semaine et le Gantt.</td></tr>
+      <tr><td><b>Heures</b></td><td>Le décompte des heures, prêt à coller dans ton tableau.</td></tr>
+      <tr><td><b>Chiffrage AO</b></td><td>Les appels d'offres : pièces du marché, chiffrage, offre PDF.</td></tr>
+      <tr><td><b>Matrice</b></td><td>La matrice d'Eisenhower (urgent / important).</td></tr>
+      <tr><td><b>Bord</b></td><td>Le tableau de bord : AO, projets, plan de charge, organisation.</td></tr>
+      <tr><td><b>Réglages</b></td><td>Listes, heures de travail, références, import, export.</td></tr>
+    </tbody></table>
+    <h4>Synchronisation</h4><p>Tes données sont enregistrées dans ton compte et se synchronisent entre ton Mac et ton iPhone. L'app fonctionne aussi sans réseau : les modifications partent dès que la connexion revient.</p>
+    <h4>Raccourcis clavier</h4><ul><li>${kbd("N")} : nouvelle tâche.</li><li>${kbd("/")} : chercher dans les tâches.</li><li>${kbd("Cmd")} + ${kbd("Entrée")} : enregistrer la tâche ouverte.</li><li>${kbd("Échap")} : fermer une fenêtre.</li><li>${kbd("Entrée")} dans un champ du chiffrage ou du décompte : valider la saisie.</li></ul>`},
+  {k:"jour", t:"Ma journée", html:`
+    <p>La page d'accueil regroupe, triées par urgence, priorité puis échéance, les tâches <b>en retard</b>, <b>planifiées aujourd'hui</b>, <b>dues bientôt</b>, en <b>quadrant « Faire »</b> (urgent et important) et <b>en cours</b>.</p>
+    <ul><li>Le champ d'ajout rapide crée une tâche dans le projet choisi.</li><li>Les créneaux du jour et leur total d'heures apparaissent en haut, sans compter deux fois les tâches qui se chevauchent.</li><li>Le cercle à gauche d'une tâche la marque comme terminée.</li></ul>${go("jour", "Ouvrir Ma journée")}`},
+  {k:"taches", t:"Tâches", html:`
+    <p>Crée une tâche avec le bouton ${kbd("+")} ou la touche ${kbd("N")}. Dans la fiche :</p>
+    <ul><li><b>Projet, statut, priorité, échéance, responsable, thème, type, commentaires.</b></li>
+      <li><b>Urgent / Important</b> : place la tâche dans un quadrant de la matrice.</li>
+      <li><b>Référence (décompte des heures)</b> : par défaut, celle du projet. Change-la si cette tâche doit être décomptée ailleurs.</li>
+      <li><b>Planning</b> : dates de début et de fin, temps estimé, avancement, répétition chaque semaine (réunion du mardi, par exemple) et créneaux dans l'agenda.</li></ul>
+    <h4>Filtrer et chercher</h4><p>Les boutons de projet, de statut et de quadrant filtrent la liste ; ${kbd("Cmd")}-clic en sélectionne plusieurs. La recherche porte sur tout le texte des tâches.</p>
+    <h4>Terminer et archiver</h4><p>Une tâche terminée reste visible (case « Masquer les terminées »). Les tâches terminées depuis plus de 30 jours s'archivent depuis les Réglages : elles quittent les vues mais restent dans les exports.</p>${go("taches", "Ouvrir les tâches")}`},
+  {k:"matrice", t:"Matrice", html:`<p>La matrice d'Eisenhower classe les tâches ouvertes : <b>Faire</b> (urgent et important), <b>Planifier</b> (important), <b>Déléguer</b> (urgent), <b>Plus tard</b>. Glisse une carte d'un quadrant à l'autre pour changer son urgence et son importance.</p>${go("matrice", "Ouvrir la matrice")}`},
+  {k:"planning", t:"Planning", html:`
+    <h4>Agenda</h4><ul>
+      <li>Glisse une tâche de la colonne <b>À caser</b> vers un jour et une heure, ou touche <b>Caser</b> : elle se place au premier créneau libre.</li>
+      <li>Déplace un créneau en le glissant ; tire son bord bas pour changer sa durée. Sur iPhone, fais un appui long avant de glisser.</li>
+      <li>La jauge de chaque jour compare le temps placé à tes heures disponibles ce jour-là (réglables jour par jour dans les Réglages).</li>
+      <li><b>∥ x h</b> indique le temps en double quand des créneaux se chevauchent : il n'est compté qu'une fois dans les totaux.</li>
+      <li>Survole un créneau (ou touche-le sur iPhone) pour voir sa fiche et ses actions.</li></ul>
+    <h4>Gantt</h4><p>Les tâches planifiées sous forme de barres, par semaines, mois ou année. Glisse une barre pour la déplacer, tire ses bords pour changer ses dates, ou trace une barre sur une ligne vide.</p>${go("planning", "Ouvrir le planning")}`},
+  {k:"heures", t:"Heures (décompte)", html:`
+    <p>Le décompte reprend les <b>créneaux de l'agenda</b> et les présente comme ton tableau : Collaborateur, Date, Durée, Référence, Déplacement, Lieu, Kilomètres, Description, Facture.</p>
+    <ul><li><b>Une ligne par jour et par référence.</b> La description reprend le nom des tâches du jour.</li>
+      <li><b>Tâches en parallèle</b> : le temps commun est partagé entre les références actives à ce moment, jamais compté deux fois. Deux tâches de la même référence ne comptent qu'une fois.</li>
+      <li><b>Référence</b> : celle de la tâche, sinon celle de son projet (Réglages ▸ Décompte des heures). Une ligne sans référence est signalée en orange : choisis-la sur la ligne, elle s'appliquera aux tâches concernées.</li>
+      <li><b>Corriger</b> : modifie la durée ou la description d'une ligne ; le bouton ↺ revient à la valeur du planning. « Ligne hors planning » ajoute un temps qui n'est pas dans l'agenda.</li>
+      <li><b>Absences</b> : choisis Congé, RTT, Maladie… pour la journée ou une demi-journée. Les jours fériés sont reconnus automatiquement.</li></ul>
+    <h4>Récupérer les lignes</h4><ul><li><b>Copier pour Excel</b> : copie les colonnes A à I, sans en-tête, prêtes à coller sous ton tableau (${kbd("Cmd")} + ${kbd("V")}). Chaque jour a aussi son bouton « Copier ».</li>
+      <li><b>Exporter en .xlsx</b> : le décompte mis en forme et un onglet récapitulatif (par référence, par projet, par semaine, absences).</li>
+      <li><b>Importer un décompte</b> : reprend ton historique depuis ton fichier Excel, sans doublon si tu réimportes. Un jour importé remplace le planning de ce jour-là.</li></ul>
+    <p>Les vues Semaine, Mois et Année et l'option « Jusqu'à aujourd'hui » règlent la période affichée et copiée.</p>${go("heures", "Ouvrir le décompte")}`},
+  {k:"chiffrage", t:"Chiffrage AO", html:`
+    <p>La liste des chiffrages affiche leur statut (en cours, envoyé, gagné, perdu, abandonné), leur montant et la prochaine remise. Un chiffrage se fait en <b>7 étapes</b> ; la barre du bas montre le total en permanence et passe à l'étape suivante.</p>
+    <ol class="hp-steps">
+      <li><b>Pièces</b> : le registre des pièces du marché et ton analyse (voir la rubrique suivante). Facultatif.</li>
+      <li><b>Projet</b> : nom, client, maître d'ouvrage, type d'opération, montant des travaux, surface et <b>missions demandées</b>. Les missions servent à te proposer les prestations.</li>
+      <li><b>Planning</b> : une structure de départ (conception, réalisation…), puis la durée de chaque phase en mois. Une phase <b>transverse</b> couvre toute la durée (plateforme, pilotage).</li>
+      <li><b>Hypothèses</b> : les quantités du projet (maquettes, lots, zones, cycles, niveaux…) et le coût d'un déplacement.</li>
+      <li><b>Prestations</b> : « ✦ Proposer » remplit les phases selon tes missions. Chaque ligne se chiffre de deux façons :
+        <ul><li><b>UO (unité d'œuvre)</b> : une quantité × un temps unitaire et/ou un prix unitaire. La quantité peut suivre une hypothèse : « selon les maquettes à suivre ».</li>
+          <li><b>Temps</b> : une fréquence par mois × la durée de la phase × un temps par occurrence. Exemple : 1 audit par mois pendant 12 mois × 1,5 j.</li></ul>
+        Le badge UO / Temps change le mode ; le bouton ⋯ montre le calcul complet, le prix unitaire, la période et l'option.</li>
+      <li><b>Prix</b> : TJM par profil, marge, remise commerciale, arrondi, TVA. Saisis un <b>prix cible</b> pour connaître la remise nécessaire. Les <b>contrôles</b> signalent les lignes à 0 €, les hypothèses vides, les pics de charge et l'écart avec ton ratio habituel.</li>
+      <li><b>Synthèse</b> : décomposition par phase et par mission, facturation mensuelle, options, <b>offre PDF</b>, <b>export Excel</b> et statut.</li></ol>
+    <h4>Les options</h4><p>Une prestation passe en option avec ⋯ ▸ « En option » ou avec « Option libre » à l'étape Synthèse. Les options sont numérotées, hors total, et présentées à part dans l'offre. « Intégrer » les fait entrer dans le total.</p>
+    <h4>L'offre PDF</h4><p>À l'étape Synthèse : choisis l'entreprise émettrice, le numéro, la date, la validité et le niveau de détail (montant seul, par phase ou détail des prestations). Tu peux afficher ou non les jours, les taux, les options, les hypothèses et le bloc « bon pour accord ».</p>
+    <h4>L'export Excel</h4><p>Quatre onglets : Offre, Détail, Hypothèses, Facturation. Tout est en formules : les <span class="hp-y">cellules jaunes</span> sont modifiables et le reste se recalcule.</p>${go("chiffrage", "Ouvrir les chiffrages")}`},
+  {k:"pieces", t:"Pièces du marché", html:`
+    <ol class="hp-steps"><li>À l'étape <b>Pièces</b>, touche <b>Ajouter un dossier</b> et choisis le dossier du DCE (sur iPhone : <b>Ajouter des fichiers</b>).</li>
+      <li>L'app reconnaît le type de chaque fichier d'après son nom (RC, AE, CCAP, CCTP, DPGF, planning, cahier des charges BIM…) et pré-coche les pièces écrites. Corrige les cases et les types, puis ajoute.</li>
+      <li>Au fil de ta lecture, donne un <b>état</b> à chaque pièce : non lu, en cours, lu partiellement, lu, sans objet.</li>
+      <li>Ouvre une pièce pour écrire <b>ton analyse</b> et ajouter des <b>points à retenir</b> : exigence, vigilance, question à poser, à chiffrer, date ou délai.</li>
+      <li>Rédige la <b>synthèse générale</b> en bas de page : tous tes points y sont regroupés par type, avec la pièce d'origine.</li></ol>
+    <p>La <b>fiche d'analyse PDF</b> et le <b>registre Excel</b> gardent une trace de ton travail. Les fichiers ne quittent pas ton ordinateur : l'app enregistre seulement leur nom, leur emplacement, l'état de lecture et tes notes. Aucune analyse n'est faite automatiquement.</p>`},
+  {k:"base", t:"Base des unités d'œuvre et entreprises", html:`
+    <h4>Base des unités d'œuvre</h4><p>Depuis Chiffrage AO ▸ <b>Base des unités d'œuvre</b> :</p>
+    <ul><li>Chaque prestation a un mode (UO ou temps), une unité, un temps unitaire, un prix unitaire, un profil, un déplacement éventuel et une quantité par défaut.</li>
+      <li><b>Proposée</b> : quand l'app la propose (jamais, 1re phase, chaque phase, phases suivantes, dernière phase) et pour quelles étapes : C conception, R réalisation, E exploitation, T transverse.</li>
+      <li><b>Profils et TJM</b>, et paramètres par défaut : marge, coût au km, arrondi, heures par jour, charge maxi d'une personne, repère honoraires / travaux.</li></ul>
+    <p>Modifier la base ne change pas les chiffrages déjà faits. Dans un chiffrage, une ligne différente de la base l'indique ; tu peux reprendre la valeur de la base ou mettre la base à jour.</p>
+    <h4>Mes entreprises</h4><p>Raison sociale, adresse, SIRET, TVA, contact, signataire, <b>logo</b> (PNG, JPEG ou SVG), couleur et conditions par défaut. Ces informations apparaissent en en-tête des offres PDF et des exports Excel. Dans les conditions, {validite} est remplacé par la durée de validité de l'offre.</p>`},
+  {k:"gagne", t:"AO gagné et suivi", html:`
+    <p>Quand tu passes un chiffrage en <b>Gagné</b>, une fenêtre propose de créer :</p>
+    <ul><li>le <b>projet</b> dans tes listes ;</li><li>sa <b>référence</b> pour le décompte des heures ;</li><li><b>une tâche par phase</b>, avec ses dates, ses heures estimées (jours vendus × heures par jour) et le détail des prestations en commentaire.</li></ul>
+    <p>Ensuite, à l'étape Synthèse et dans le Bord : <b>jours vendus</b>, <b>jours passés</b> et <b>reste</b>. Le total vient du décompte des heures sur la référence du projet ; le détail par phase vient des créneaux posés sur les tâches du projet.</p>`},
+  {k:"bord", t:"Tableau de bord", html:`
+    <ul><li><b>Appels d'offres</b> : en cours, envoyés, gagnés sur 12 mois, taux de réussite (en nombre et en montant), ratio honoraires / travaux moyen et les 3 prochaines remises.</li>
+      <li><b>Projets gagnés</b> : vendu, passé, reste. La barre passe à l'orange à 80 % de consommation, au rouge en cas de dépassement.</li>
+      <li><b>Plan de charge</b> : sur 12 mois, les jours vendus comparés à ta capacité (heures disponibles moins absences). En hachuré, ce qui s'ajouterait si les AO en cours étaient gagnés. Les mois saturés sont signalés.</li>
+      <li><b>Organisation et temps</b> : tâches en retard et à échéance, heures du mois. Le détail des tâches par projet se déplie en bas.</li></ul>${go("bord", "Ouvrir le tableau de bord")}`},
+  {k:"reglages", t:"Réglages", html:`
+    <ul><li><b>Projets, responsables, types</b> : les listes proposées dans les fiches.</li>
+      <li><b>Planning</b> : tes heures disponibles pour chaque jour de la semaine (0 pour un jour non travaillé) et la plage horaire de l'agenda.</li>
+      <li><b>Décompte des heures</b> : nom du collaborateur, arrondi des durées, référence par défaut de chaque projet et liste des références.</li>
+      <li><b>Importer / Exporter</b> : tes tâches depuis ou vers Excel.</li>
+      <li><b>Sauvegarde</b> (app iPhone/Mac) : un fichier JSON avec toutes tes données, à garder dans iCloud Drive. Il se réimporte au même endroit.</li>
+      <li><b>Archives</b> : range les tâches terminées depuis plus de 30 jours.</li></ul>${go("reglages", "Ouvrir les réglages")}`},
+  {k:"exports", t:"Exports et fichiers", html:`
+    <table class="hp-t"><thead><tr><th>Fichier</th><th>Où</th><th>Contenu</th></tr></thead><tbody>
+      <tr><td>Tâches (.xlsx, .csv)</td><td>Réglages</td><td>Toutes les tâches, archives comprises.</td></tr>
+      <tr><td>Décompte (.xlsx)</td><td>Heures</td><td>Tes colonnes A à I, les infos en plus à côté, un récapitulatif.</td></tr>
+      <tr><td>Chiffrage (.xlsx)</td><td>Chiffrage ▸ Synthèse</td><td>Offre, détail en formules, hypothèses, facturation.</td></tr>
+      <tr><td>Offre (.pdf)</td><td>Chiffrage ▸ Synthèse</td><td>La proposition d'honoraires avec ton logo.</td></tr>
+      <tr><td>Fiche d'analyse (.pdf)</td><td>Chiffrage ▸ Pièces</td><td>Synthèse, points relevés, registre, analyse par pièce.</td></tr>
+      <tr><td>Registre DCE (.xlsx)</td><td>Chiffrage ▸ Pièces</td><td>Les pièces, leur état, ton analyse et tes points.</td></tr>
+      <tr><td>Sauvegarde (.json)</td><td>Réglages (app)</td><td>Toutes tes données, pour les restaurer.</td></tr></tbody></table>
+    <p>Dans les Excel du chiffrage, les <span class="hp-y">cellules jaunes</span> sont modifiables ; les autres sont calculées.</p>`},
+  {k:"faq", t:"Questions fréquentes", html:`
+    <details><summary>Où sont mes données ?</summary><p>Dans ton compte, synchronisé entre tes appareils. Les fichiers du DCE, eux, restent sur ton ordinateur : seuls leurs noms et tes notes sont enregistrés.</p></details>
+    <details><summary>Le total du décompte ne correspond pas à l'agenda.</summary><p>Le temps en parallèle est partagé entre références, et chaque ligne est arrondie selon le réglage « Arrondi des durées ». Un écart d'une ou deux minutes peut venir de l'arrondi. Vérifie aussi les lignes modifiées à la main (bouton ↺).</p></details>
+    <details><summary>Une ligne du décompte est orange.</summary><p>Elle n'a pas de référence. Choisis-la sur la ligne, ou associe une référence par défaut au projet dans les Réglages.</p></details>
+    <details><summary>Comment mettre à jour l'app sur iPhone et Mac ?</summary><p>Redépose sur GitHub tous les fichiers du dossier todo-bim reçu, <b>sauf config.js</b>, puis ferme et rouvre l'app. Tes données ne bougent pas.</p></details>
+    <details><summary>Je ne peux pas choisir un dossier sur iPhone.</summary><p>Safari ne le permet pas : utilise « Ajouter des fichiers » et sélectionne plusieurs fichiers dans l'app Fichiers.</p></details>
+    <details><summary>Ma prestation est à 0 €.</summary><p>Il manque une quantité, un temps unitaire ou un prix unitaire (abonnement, licence). Les contrôles de l'étape Prix la signalent.</p></details>
+    <details><summary>Pourquoi mon chiffrage a changé d'étape ?</summary><p>L'étape Pièces a été ajoutée au début : les chiffrages existants ont été décalés d'un cran, sans autre changement.</p></details>`},
+  {k:"glossaire", t:"Glossaire", html:`
+    <dl class="hp-dl">
+      <dt>UO</dt><dd>Unité d'œuvre : une prestation chiffrée à la quantité (par maquette, par réunion, par zone…).</dd>
+      <dt>TJM</dt><dd>Taux journalier moyen, en € HT par jour, propre à chaque profil.</dd>
+      <dt>DCE</dt><dd>Dossier de consultation des entreprises : l'ensemble des pièces du marché.</dd>
+      <dt>RC</dt><dd>Règlement de la consultation : règles de remise, critères de jugement, date limite.</dd>
+      <dt>AE</dt><dd>Acte d'engagement : la pièce contractuelle que tu signes.</dd>
+      <dt>CCAP / CCTP</dt><dd>Cahier des clauses administratives / techniques particulières.</dd>
+      <dt>DPGF / BPU / DQE</dt><dd>Décomposition du prix global et forfaitaire / bordereau des prix unitaires / détail quantitatif estimatif.</dd>
+      <dt>CDE</dt><dd>Environnement commun de données : la plateforme collaborative du projet.</dd>
+      <dt>DOE / GPA</dt><dd>Dossier des ouvrages exécutés / garantie de parfait achèvement.</dd>
+      <dt>Phase transverse</dt><dd>Phase qui couvre toute la durée du projet (plateforme, pilotage).</dd>
+      <dt>Référence</dt><dd>Le code du décompte des heures auquel le temps d'une tâche est rattaché.</dd>
+      <dt>Capacité</dt><dd>Tes heures disponibles, jour par jour, moins les absences et les jours fériés.</dd></dl>`},
+];
+function viewAide(){
+  return `<div class="view-head"><div><div class="eyebrow">Aide</div><h1>Aide et explications</h1><div class="sub">Comment fonctionne chaque partie de l'app, avec les questions fréquentes et un glossaire.</div></div></div>
+    <div class="hp-search search"><span>${I.search}</span><input type="search" id="hp-q" placeholder="Chercher dans l'aide : décompte, option, logo, fériés…" aria-label="Chercher dans l'aide"></div>
+    <div class="hp-lay"><nav class="hp-toc" aria-label="Sommaire">${HELP.map(s => `<button data-help="${s.k}">${s.t}</button>`).join("")}</nav>
+      <div class="hp-main">${HELP.map(s => `<section class="panel hp-s" id="hp-${s.k}"><h2>${s.t}</h2>${s.html}</section>`).join("")}<p class="hp-none" hidden>Aucune rubrique ne correspond à ta recherche.</p></div></div>`;
+}
+document.addEventListener("click", ev => {
+  const b = ev.target.closest && ev.target.closest("[data-help]"); if (!b) return;
+  const el = document.getElementById("hp-" + b.dataset.help); if (el) { const q = $("#hp-q"); if (q && q.value) { q.value = ""; helpFilter(""); } el.scrollIntoView({behavior:"smooth", block:"start"}); }
+});
+function helpFilter(v){
+  const q = norm(v); let n = 0;
+  document.querySelectorAll(".hp-s").forEach(s => { const ok = !q || norm(s.textContent).includes(q); s.hidden = !ok; if (ok) n++; if (q && ok) s.querySelectorAll("details").forEach(d => { d.open = norm(d.textContent).includes(q); }); });
+  document.querySelectorAll(".hp-toc button").forEach(b => { const s = document.getElementById("hp-" + b.dataset.help); b.hidden = !!(s && s.hidden); });
+  const none = $(".hp-none"); if (none) none.hidden = n > 0;
+}
+document.addEventListener("input", ev => { if (ev.target.id === "hp-q") helpFilter(ev.target.value); });
+
 /* ---------- Rendu principal ---------- */
 function render(force){
   if (!force && S.ptrDown && Date.now() - S.ptrDown < 4000) { S.pendingRender = true; return; }
@@ -3591,7 +4155,7 @@ function render(force){
     return;
   }
   if (!force && PD && PD.active) { S.pendingRender = true; return; }
-  const html = {jour:viewJour, planning:viewPlanning, heures:viewHeures, chiffrage:viewChiffrage, matrice:viewMatrice, bord:viewBord, reglages:viewReglages}[S.view]();
+  const html = {jour:viewJour, planning:viewPlanning, heures:viewHeures, chiffrage:viewChiffrage, matrice:viewMatrice, bord:viewBord2, aide:viewAide, reglages:viewReglages}[S.view]();
   v.innerHTML = html; S.built = S.view;
   if (S.view === "chiffrage") v.querySelectorAll("textarea.fit").forEach(ta => { ta.style.height = "auto"; ta.style.height = ta.scrollHeight + 2 + "px"; });
   if (keep) focusRestore(keep);
@@ -3936,7 +4500,7 @@ document.addEventListener("click", async ev => {
   if (!a) return;
   const act = a.dataset.act;
   const id = a.closest("[data-id]")?.dataset.id;
-  if (/^(ao|bib|pick|wz)-/.test(act)) { aoAction(act, a, ev); return; }
+  if (/^(ao|bib|pick|wz|bd)-/.test(act)) { aoAction(act, a, ev); return; }
   if (act.startsWith("dec-")) { if (act === "dec-refs-save") decRefsSave(); else decAction(act, a); return; }
   if (await planClick(act, a, id, ev)) return;
   if (act.startsWith("tip-")) { tipAction(act, a); return; }
