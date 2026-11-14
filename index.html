@@ -629,7 +629,7 @@ input[type=range]{accent-color:var(--accent);width:100%}
 .c-dur .dec-reset{right:-4px}
 .dec-info{display:flex;flex-wrap:wrap;gap:4px;align-items:center;padding:1px 6px 2px}
 .dec-info .pill{font-size:10.5px;line-height:15px}
-.dec-src{font-size:11px;color:var(--muted)} .dec-src.man{color:var(--s-recurrent)}
+.dec-src{font-size:11px;color:var(--muted)} .dec-src.man{color:var(--s-recurrent)} .dec-src.masq{color:var(--today);margin-left:6px}
 .dec-x{border:0;background:transparent;color:var(--muted);padding:5px;border-radius:6px;display:grid;place-items:center}
 .dec-x svg{width:14px;height:14px} .dec-x:hover{color:var(--late);background:var(--late-soft)}
 .dec-row.off{opacity:.45} .dec-row.fut input,.dec-row.fut select{font-style:italic}
@@ -683,6 +683,8 @@ input[type=range]{accent-color:var(--accent);width:100%}
 .dec-ytot td{font-weight:700;border-top:1px solid var(--line-2)}
 .dec-main .tbl-wrap{padding:6px 10px}
 .btn.armed{border-color:var(--late);color:var(--late)}
+
+.dec-hid{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 10px;padding:6px 12px;font-size:12.5px;color:var(--muted);border-top:1px dashed var(--line);background:var(--surface-2)} .dec-hid b{color:var(--ink);font-weight:600}
 /* Chiffrage AO : assistant */
 .lnk{border:0;background:none;padding:0;color:var(--accent);font:inherit;letter-spacing:inherit;text-transform:inherit;cursor:pointer}
 .btn.danger{color:var(--late)} .btn.armed,.ic-btn.armed{border-color:var(--late);color:var(--late);background:var(--late-soft)}
@@ -1100,6 +1102,58 @@ nav.tabs a[href="#aide"] span{display:none!important} nav.tabs a[href="#aide"]{p
   .tm-m{grid-template-columns:minmax(0,1fr) auto} .tm-ms{grid-column:1/-1} .tm-ma{grid-column:1/-1;justify-content:flex-start}
   .tm-grid input,.tm-invf input,.tm-invf select,.tm-sv input,.tm-mr select,.tm-new input,.ctl-l select,.tm-vis-r select{font-size:16px}
 }
+
+/* boutons Profil et Panneau admin */
+.hb{display:flex;gap:6px;align-items:center;flex-shrink:0}
+.hb-btn{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);color:var(--muted);text-decoration:none;flex-shrink:0}
+.hb-btn svg{width:18px;height:18px}
+.hb-btn:hover,.hb-btn[aria-current="page"]{border-color:var(--accent);color:var(--accent)}
+.hb-prof{background:var(--accent-soft);color:var(--accent);font:700 12px/1 var(--f-mono);letter-spacing:.02em}
+.pf-head{display:flex;align-items:center;gap:14px;min-width:0} .pf-head>div{min-width:0}
+.pf-av{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent);font:800 18px/1 var(--f-mono);flex-shrink:0;border:1.5px solid color-mix(in srgb,var(--accent) 45%,transparent)}
+.view-head .pnav a.btn svg{width:16px;height:16px;vertical-align:-3px}
+.tm-m.ro{grid-template-columns:minmax(0,1.3fr) 170px minmax(0,1.5fr)} .tm-m.ro .tm-ma{display:none}
+.tm-danger{border-color:color-mix(in srgb,var(--late) 45%,var(--line))} .tm-danger h2{color:var(--late)}
+.tm-danger input{border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:8px 10px;color:var(--ink);width:100%;max-width:420px}
+@media (min-width:1241px) and (max-width:1560px){ .has-acct nav.tabs a span:not(.badge){display:none} .has-acct nav.tabs a[aria-current="page"] span{display:inline} }
+@media (max-width:820px){
+  .hb-admin{display:none!important}
+  .hb-btn{width:30px;height:30px}
+  .has-acct .cartouche div{display:none}
+  .tm-m.ro{grid-template-columns:minmax(0,1fr) auto}
+  .tm-danger input{font-size:16px}
+}
+@media (min-width:821px) and (max-width:1000px){ .has-acct nav.tabs a[aria-current="page"] span:not(.badge){display:none} .has-acct nav.tabs{gap:0} .has-acct nav.tabs a{padding:8px 7px} .has-acct .top .wrap{gap:10px} }
+/* Thème clair (Réglages ▸ Affichage) */
+html[data-theme="light"]{--bg:#F3F5F8; --surface:#FFFFFF; --surface-2:#ECEFF4; --ink:#151B24; --muted:#5A6577; --line:#DCE1E8; --line-2:#C8D0DB;
+  --accent:#0A6BC9; --accent-ink:#FFFFFF; --accent-soft:#E2EFFB;
+  --late:#D23B3B; --late-soft:#FBE7E7; --today:#C25E0C; --today-soft:#FCEBDC; --week:#9A7300; --week-soft:#F8EECF;
+  --done:#14845A; --done-soft:#DCF2E7;
+  --q1:#D23B3B; --q2:#0A6BC9; --q3:#C25E0C; --q4:#5A6577;
+  --s-afaire:#A97C00; --s-encours:#0A6BC9; --s-attente:#C25E0C; --s-recurrent:#6D45C9; --s-termine:#14845A;
+  --p0:#0A6BC9; --p1:#C8336D; --p2:#14845A; --p3:#C25E0C; --p4:#6D45C9; --p5:#0E8C9C; --p6:#9A7300; --p7:#D23B3B;
+  --g-line:rgba(15,25,40,.08); --g-half:rgba(15,25,40,.035); --g-we:rgba(15,25,40,.04);
+  --shadow:0 1px 0 rgba(255,255,255,.6) inset,0 12px 32px rgba(20,30,50,.14);
+  color-scheme:light;}
+@media (prefers-color-scheme: light){ html[data-theme="auto"]{--bg:#F3F5F8; --surface:#FFFFFF; --surface-2:#ECEFF4; --ink:#151B24; --muted:#5A6577; --line:#DCE1E8; --line-2:#C8D0DB;
+  --accent:#0A6BC9; --accent-ink:#FFFFFF; --accent-soft:#E2EFFB;
+  --late:#D23B3B; --late-soft:#FBE7E7; --today:#C25E0C; --today-soft:#FCEBDC; --week:#9A7300; --week-soft:#F8EECF;
+  --done:#14845A; --done-soft:#DCF2E7;
+  --q1:#D23B3B; --q2:#0A6BC9; --q3:#C25E0C; --q4:#5A6577;
+  --s-afaire:#A97C00; --s-encours:#0A6BC9; --s-attente:#C25E0C; --s-recurrent:#6D45C9; --s-termine:#14845A;
+  --p0:#0A6BC9; --p1:#C8336D; --p2:#14845A; --p3:#C25E0C; --p4:#6D45C9; --p5:#0E8C9C; --p6:#9A7300; --p7:#D23B3B;
+  --g-line:rgba(15,25,40,.08); --g-half:rgba(15,25,40,.035); --g-we:rgba(15,25,40,.04);
+  --shadow:0 1px 0 rgba(255,255,255,.6) inset,0 12px 32px rgba(20,30,50,.14);
+  color-scheme:light;} }
+html.is-light body{background-image:radial-gradient(rgba(15,25,40,.07) 1px,transparent 1px)}
+html.is-light header.top{background:color-mix(in srgb,var(--surface) 94%,transparent)}
+html.is-light .blk-x{background:rgba(255,255,255,.7)}
+html.is-light .gb-t{text-shadow:none}
+/* Réglages en sections */
+.st-sec{scroll-margin-top:76px;margin-bottom:22px}
+.st-h{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 10px;font-weight:600}
+.st-lay .hp-main{gap:0}
+.st-lay .settings{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
 .mobile-tabs{display:none}
 .auth{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:24px max(16px,env(safe-area-inset-right,0px)) 24px max(16px,env(safe-area-inset-left,0px));overflow-y:auto}
 .auth-card{width:min(400px,100%);display:grid;gap:12px}
@@ -1369,7 +1423,7 @@ nav.tabs a[href="#aide"] span{display:none!important} nav.tabs a[href="#aide"]{p
   var curUser = null;
   function saveOrgList(){ return F.setDoc(D("users", TEAM.uid, "meta", "orgs"), {list:TEAM.orgs}); }
   function addOrgToList(id, nom){ TEAM.orgs = TEAM.orgs.filter(function(x){ return x.id !== id; }).concat([{id:id, nom:nom}]); return saveOrgList(); }
-  TEAM.switchTo = function(ctx, hash){ lsSet("todobim.ctx." + TEAM.uid, ctx); location.hash = hash || (ctx === "perso" ? "#equipe" : "#jour"); location.reload(); };
+  TEAM.switchTo = function(ctx, hash){ lsSet("todobim.ctx." + TEAM.uid, ctx); location.hash = hash || (ctx === "perso" ? "#profil" : "#jour"); location.reload(); };
   TEAM.createOrg = function(nom){
     nom = String(nom || "").trim(); if (!nom) return Promise.reject(new Error("nom"));
     var id = F.doc(C("orgs")).id;
@@ -1404,7 +1458,36 @@ nav.tabs a[href="#aide"] span{display:none!important} nav.tabs a[href="#aide"]{p
   };
   TEAM.cancelInvite = function(email){ var b = F.writeBatch(fs); b.delete(D("invites", email + "__" + o())); b.delete(D("orgs", o(), "invites", email)); return b.commit(); };
   TEAM.setMember = function(uid, patch){ return F.updateDoc(D("orgs", o(), "members", uid), patch); };
-  TEAM.removeMember = function(uid){ return F.deleteDoc(D("orgs", o(), "members", uid)); };
+  /* données personnelles d'un collaborateur dans l'entreprise (réglages, projets perso, décompte, décompte publié) */
+  function purgePeople(id, uid){
+    return Promise.all([F.deleteDoc(D("orgs", id, "people", uid, "meta", "prefs")), F.deleteDoc(D("orgs", id, "people", uid, "meta", "lists")), delColl(C("orgs", id, "people", uid, "decompte")), delColl(C("orgs", id, "people", uid, "pub"))]).catch(function(e){ console.warn("purge", e); });
+  }
+  function delColl(col){
+    return F.getDocs(col).then(function(qs){
+      var refs = qs.docs.map(function(d){ return d.ref; }), chunks = [];
+      for (var i = 0; i < refs.length; i += 400) chunks.push(refs.slice(i, i + 400));
+      return chunks.reduce(function(p, ch){ return p.then(function(){ var b = F.writeBatch(fs); ch.forEach(function(r){ b.delete(r); }); return b.commit(); }); }, Promise.resolve()).then(function(){ return refs.length; });
+    });
+  }
+  TEAM.removeMember = function(uid){ var id = o(); return F.deleteDoc(D("orgs", id, "members", uid)).then(function(){ return purgePeople(id, uid); }); };
+  /* suppression définitive de l'entreprise et de toutes ses données */
+  TEAM.deleteOrg = function(say){
+    var id = o(), n = {tasks:0, ao:0};
+    say = say || function(){};
+    TEAM._deleting = true;
+    return F.updateDoc(D("orgs", id), {closing:true, closingBy:TEAM.uid, closingAt:nowIso()})
+      .then(function(){ say("Suppression des tâches…"); return delColl(C("orgs", id, "tasks")); }).then(function(k){ n.tasks = k; say("Suppression des chiffrages…"); return delColl(C("orgs", id, "ao")); })
+      .then(function(k){ n.ao = k; say("Suppression des listes, de la base des unités d'œuvre et des entreprises émettrices…"); return Promise.all(["lists", "uo", "societes"].map(function(d){ return F.deleteDoc(D("orgs", id, "meta", d)); })); })
+      .then(function(){ say("Suppression des heures et réglages des collaborateurs…"); var u = []; TEAM.members.forEach(function(v, k){ u.push(k); }); return u.reduce(function(p, k){ return p.then(function(){ return purgePeople(id, k); }); }, Promise.resolve()); })
+      .then(function(){ say("Suppression des invitations…"); return F.getDocs(C("orgs", id, "invites")).then(function(qs){ return Promise.all(qs.docs.map(function(d){ return Promise.all([F.deleteDoc(D("invites", d.id + "__" + id)).catch(function(){}), F.deleteDoc(d.ref)]); })); }); })
+      .then(function(){ say("Retrait des collaborateurs…"); return F.getDocs(C("orgs", id, "members")).then(function(qs){ return Promise.all(qs.docs.filter(function(d){ return d.id !== TEAM.uid; }).map(function(d){ return F.deleteDoc(d.ref); })); }); })
+      .then(function(){ return F.deleteDoc(D("orgs", id)); })
+      .then(function(){ return F.deleteDoc(D("orgs", id, "members", TEAM.uid)); })
+      .then(function(){ TEAM.orgs = TEAM.orgs.filter(function(x){ return x.id !== id; }); return saveOrgList(); })
+      .then(function(){ lsSet("todobim.notice." + TEAM.uid, "L'entreprise « " + TEAM.org.nom + " » a été supprimée (" + n.tasks + " tâche" + (n.tasks > 1 ? "s" : "") + ", " + n.ao + " chiffrage" + (n.ao > 1 ? "s" : "") + "). Tu es dans ton espace perso."); TEAM.switchTo("perso", "#profil"); return n; })
+      .catch(function(e){ TEAM._deleting = false; throw e; });
+  };
+  TEAM.resetPassword = function(){ return F.sendPasswordResetEmail(auth, TEAM.email); };
   TEAM.saveOrg = function(patch){ return F.updateDoc(D("orgs", o()), patch); };
   TEAM.leave = function(){
     var id = o();
@@ -1432,7 +1515,7 @@ nav.tabs a[href="#aide"] span{display:none!important} nav.tabs a[href="#aide"]{p
     return Promise.all([pOrgs, pInv]).then(function(){
       if (ctx === "perso" || !TEAM.orgs.some(function(x){ return x.id === ctx; })) return makeDb(user.uid);
       return F.getDoc(D("orgs", ctx, "members", user.uid)).then(function(m){
-        return m.exists() ? F.getDoc(D("orgs", ctx)).then(function(og){ return [m, og]; }) : [m, null];
+        return m.exists() ? F.getDoc(D("orgs", ctx)).then(function(og){ return og.exists() && !og.data().closing ? [m, og] : [{exists:function(){ return false; }}, null]; }) : [m, null];
       }).then(function(r){
         if (!r[0].exists()) {
           var nm = (TEAM.orgs.filter(function(x){ return x.id === ctx; })[0] || {}).nom || "l'entreprise";
@@ -1461,13 +1544,16 @@ nav.tabs a[href="#aide"] span{display:none!important} nav.tabs a[href="#aide"]{p
       }, function(){});
       /* ma fiche : retrait de l'entreprise, changement de rôle ou de services */
       F.onSnapshot(D("orgs", id, "members", uid), function(s){
-        if (!s.exists()) { if (s.metadata && s.metadata.fromCache) return;
+        if (!s.exists()) { if ((s.metadata && s.metadata.fromCache) || TEAM._deleting) return;
           lsSet(key, "perso"); lsSet("todobim.notice." + uid, "Tu ne fais plus partie de « " + ((TEAM.org && TEAM.org.nom) || "l'entreprise") + " ». Tu es dans ton espace perso.");
           TEAM.orgs = TEAM.orgs.filter(function(x){ return x.id !== id; }); saveOrgList().catch(function(){}).then(function(){ location.reload(); }); return; }
         var nme = s.data();
         if (nme.role !== TEAM.me.role || JSON.stringify(nme.services || []) !== JSON.stringify(TEAM.me.services || [])) { TEAM.me = nme; save(); location.reload(); return; }
       }, function(){});
-      F.onSnapshot(D("orgs", id), function(s){ if (s.exists()) { TEAM.org = Object.assign({id:id}, s.data()); save(); emit(); } }, function(){});
+      F.onSnapshot(D("orgs", id), function(s){
+        if (s.exists() && s.data().closing && !TEAM._deleting) { lsSet(key, "perso"); lsSet("todobim.notice." + uid, "L'entreprise « " + (s.data().nom || "") + " » a été supprimée par un administrateur. Tu es dans ton espace perso."); TEAM.orgs = TEAM.orgs.filter(function(x){ return x.id !== id; }); saveOrgList().catch(function(){}).then(function(){ location.reload(); }); return; }
+        if (s.exists()) { TEAM.org = Object.assign({id:id}, s.data()); save(); emit(); }
+      }, function(){});
       save();
       return orgDb(id, uid);
     }
@@ -1570,13 +1656,14 @@ nav.tabs a[href="#aide"] span{display:none!important} nav.tabs a[href="#aide"]{p
   <div class="wrap">
     <div class="brand">TO DO <b>BIM</b></div>
     <div class="cartouche" aria-label="Date du jour">
-      <a class="ctx-cell" id="ctx-chip" href="#equipe" hidden></a>
+      <a class="ctx-cell" id="ctx-chip" href="#profil" hidden></a>
       <div><small>Date</small><span id="c-date">—</span></div>
       <div><small>Sem.</small><span id="c-week">—</span></div>
       <div><small>Ouvertes</small><span id="c-open">—</span></div>
     </div>
     <a class="help-btn" id="help-btn" href="#aide" aria-label="Aide et explications" title="Aide">?</a>
     <nav class="tabs" id="tabs" aria-label="Vues"></nav>
+    <div class="hb"><a class="hb-btn hb-admin" id="hb-admin" href="#admin" hidden title="Panneau admin" aria-label="Panneau admin"></a><a class="hb-btn hb-prof" id="hb-prof" href="#profil" hidden></a></div>
   </div>
 </header>
 
@@ -1611,6 +1698,8 @@ const VIEWS = [
   {k:"reglages", label:"Réglages", icon:'<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>'},
   {k:"aide", label:"Aide", icon:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 4.9.8c0 1.7-2.4 2.2-2.4 3.7M12 17h.01"/>'},
   {k:"equipe", label:"Équipe", hidden:true, icon:""},
+  {k:"profil", label:"Profil", hidden:true, icon:""},
+  {k:"admin", label:"Panneau admin", hidden:true, icon:""},
 ];
 const I = {
   check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg>',
@@ -1722,9 +1811,10 @@ function renderChrome(){
   $("#c-open").textContent = S.status === "ready" ? open : "—";
   const late = live().filter(t => alerte(t) === "late").length;
   const link = v => `<a href="#${v.k}" ${S.view === v.k ? 'aria-current="page"' : ""}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${v.icon}</svg><span data-s="${v.short || v.label}">${v.label}</span>${v.k === "jour" && late ? `<span class="badge">${late}</span>` : ""}</a>`;
-  $("#tabs").innerHTML = VIEWS.filter(v => !v.hidden).map(link).join("");
-  $("#mtabs").innerHTML = VIEWS.filter(v => !v.hidden).map(link).join("");
-  $("#fab").hidden = !(S.status === "ready" && S.canWrite !== false && S.view !== "reglages" && S.view !== "heures" && S.view !== "chiffrage" && S.view !== "aide" && S.view !== "equipe");
+  const vis = VIEWS.filter(v => !v.hidden && !dispHiddenTab(v.k));
+  $("#tabs").innerHTML = vis.map(link).join("");
+  $("#mtabs").innerHTML = vis.map(link).join(""); $("#mtabs").style.gridTemplateColumns = `repeat(${vis.filter(v => v.k !== "aide").length},1fr)`;
+  $("#fab").hidden = !(S.status === "ready" && S.canWrite !== false && S.view !== "reglages" && S.view !== "heures" && S.view !== "chiffrage" && S.view !== "aide" && S.view !== "equipe" && S.view !== "profil" && S.view !== "admin");
   teamChrome();
   { const hb = $("#help-btn"); if (hb) { if (S.view === "aide") hb.setAttribute("aria-current", "page"); else hb.removeAttribute("aria-current"); } }
 }
@@ -1923,7 +2013,7 @@ function viewReglages(){
       <p style="margin-top:12px">Plage horaire affichée dans l'agenda :</p>
       <div class="row" style="align-items:center"><span class="sub" style="margin:0">de</span><input type="text" id="set-h0" inputmode="numeric" value="${dayRange()[0]}" style="max-width:60px" aria-label="Début de journée"><span class="sub" style="margin:0">h à</span><input type="text" id="set-h1" inputmode="numeric" value="${dayRange()[1]}" style="max-width:60px" aria-label="Fin de journée"><span class="sub" style="margin:0">h</span></div></div>
     ${decSettingsPanel()}
-    <div class="panel"><h2>Importer</h2><p>Fichier <b>mes_taches.json</b>, sauvegarde .json, classeur .xlsx (onglet « TO DO ») ou .csv. Pour Excel et CSV, les Les colonnes sont reconnues par leur en-tête : Projet, Tâche, Statut, Priorité, Urgent, Important, Échéance, Responsable, Thème, Type, Clôturé le, Commentaires.</p>
+    <div class="panel"><h2>Importer</h2><p>Fichier <b>mes_taches.json</b>, sauvegarde .json, classeur .xlsx (onglet « TO DO ») ou .csv. Les colonnes sont reconnues par leur en-tête : Projet, Tâche, Statut, Priorité, Urgent, Important, Échéance, Responsable, Thème, Type, Clôturé le, Commentaires.</p>
       ${S.canWrite === false ? `<p>Lecture seule.</p>` : `<div class="row" style="margin:10px 0"><label class="toggle"><input type="radio" name="imode" value="add" checked> Ajouter aux tâches existantes</label><label class="toggle"><input type="radio" name="imode" value="replace"> Remplacer toutes les tâches</label></div>
       <div class="row"><input type="file" id="imp-file" accept=".json,.xlsx,.xls,.csv,application/json" hidden><button class="btn primary" data-act="import">Choisir un fichier…</button></div>`}
       <div class="progress-line" id="imp-progress">${esc(S.impMsg || "")}</div></div>
@@ -2551,7 +2641,10 @@ function decItems(d){
   }
   return out;
 }
-/* répartit le temps de la journée par clé (référence ou projet) : le temps en parallèle est partagé, jamais compté deux fois */
+/* répartit le temps de la journée par clé (référence ou projet), sans jamais compter deux fois le temps en parallèle :
+   « major » (défaut) : le temps commun va à la référence qui couvre le plus à ce moment (son bloc continu le plus long) ;
+   « partage » : le temps commun est partagé à parts égales entre les références actives */
+const parMode = () => (S.prefs && S.prefs.par) === "partage" ? "partage" : "major";
 function decSplit(its, keyOf){
   const acc = new Map();
   for (const it of its) {
@@ -2559,28 +2652,50 @@ function decSplit(its, keyOf){
     const A = acc.get(k); A.s0 = Math.min(A.s0, it.s);
     const prev = A.tasks.get(it.t.id); if (!prev || it.s < prev.s) A.tasks.set(it.t.id, {t:it.t, s:it.s});
   }
+  const mode = parMode(), runs = new Map();
+  for (const k of acc.keys()) {
+    const m = [];
+    for (const [s, e] of its.filter(x => keyOf(x.t) === k).map(x => [x.s, x.e]).sort((x, y) => x[0] - y[0])) { if (m.length && s <= m[m.length - 1][1]) m[m.length - 1][1] = Math.max(m[m.length - 1][1], e); else m.push([s, e]); }
+    runs.set(k, m);
+  }
+  const runLen = (k, a) => { const r = runs.get(k).find(([s, e]) => s <= a && e > a); return r ? r[1] - r[0] : 0; };
+  const totK = k => runs.get(k).reduce((s, [x, y]) => s + y - x, 0);
   const pts = [...new Set(its.flatMap(i => [i.s, i.e]))].sort((a, b) => a - b);
   for (let i = 0; i < pts.length - 1; i++) {
     const a = pts[i], b = pts[i + 1];
     const ks = [...new Set(its.filter(x => x.s <= a && x.e >= b).map(x => keyOf(x.t)))];
-    for (const k of ks) acc.get(k).min += (b - a) / ks.length;
+    if (!ks.length) continue;
+    if (mode === "partage" || ks.length === 1) { for (const k of ks) acc.get(k).min += (b - a) / ks.length; continue; }
+    const w = ks.slice().sort((x, y) => runLen(y, a) - runLen(x, a) || totK(y) - totK(x) || acc.get(x).s0 - acc.get(y).s0 || String(x).localeCompare(String(y)))[0];
+    acc.get(w).min += b - a;
   }
-  return [...acc.values()].filter(x => x.min > 0).sort((x, y) => x.s0 - y.s0);
+  /* temps masqué : temps d'une référence couvert par une autre qui l'emporte (gardé pour le suivi, à 0 h) */
+  for (const A of acc.values()) A.masq = mode === "major" ? Math.max(0, totK(A.k) - A.min) : 0;
+  return [...acc.values()].filter(x => x.min > 0 || x.masq > 0).sort((x, y) => x.s0 - y.s0);
 }
 const roundArr = min => { const r = decArr(); return min > 0 ? Math.max(r, Math.round(min / r) * r) : 0; };
 /* lignes d'une journée : calculées + saisies à la main */
 function decRows(d){
-  const doc = decDoc(d), ov = doc.rows || {}, rows = [];
+  const doc = decDoc(d), ov = doc.rows || {}, rows = [], hidden = [];
   const hasImp = (doc.manual || []).some(x => x.d === d && x.imp);
-  for (const g of hasImp ? [] : decSplit(decItems(d), refOfTask)) {
+  /* lignes retirées du décompte : leur temps est rendu aux autres références (le planning ne change pas) */
+  const items = hasImp ? [] : decItems(d), hid = new Set(Object.keys(ov).filter(k => k.startsWith(d + "|") && ov[k] && ov[k].hide).map(k => k.slice(d.length + 1)));
+  for (const k of hid) {
+    const its = items.filter(it => refOfTask(it.t) === k); if (!its.length) continue;
+    const iv = its.map(it => [it.s, it.e]).sort((x, y) => x[0] - y[0]), mg = [];
+    for (const [a, b] of iv) { if (mg.length && a <= mg[mg.length - 1][1]) mg[mg.length - 1][1] = Math.max(mg[mg.length - 1][1], b); else mg.push([a, b]); }
+    hidden.push({key:d + "|" + k, ref:k, tasks:[...new Set(its.map(it => it.t))], min:roundArr(mg.reduce((s2, [a, b]) => s2 + b - a, 0))});
+  }
+  for (const g of decSplit(items.filter(it => !hid.has(refOfTask(it.t))), refOfTask)) {
     const key = d + "|" + g.k, o = ov[key] || {};
     const tasks = [...g.tasks.values()].sort((x, y) => x.s - y.s).map(x => x.t);
-    const autoDesc = [...new Set(tasks.map(t => String(t.tache || "").trim()).filter(Boolean))].join(" + ");
-    const auto = roundArr(g.min);
+    const auto = roundArr(g.min), masq = g.masq >= 1 ? Math.max(1, Math.round(g.masq)) : 0;
+    const autoDesc = [...new Set(tasks.map(t => String(t.tache || "").trim()).filter(Boolean))].join(" + ") + (auto === 0 && masq ? ` (temps masqué ${hfmt(masq / 60)}\u00a0h)` : "");
     rows.push({key, d, ref:g.k, auto, m:o.m != null && isFinite(o.m) ? Number(o.m) : auto, mOv:o.m != null && isFinite(o.m),
       desc:o.desc != null ? o.desc : autoDesc, autoDesc, descOv:o.desc != null, dep:!!o.dep, lieu:o.lieu || "", km:o.km || "", fact:o.fact || "",
-      tasks, projets:[...new Set(tasks.map(t => t.projet).filter(Boolean))], src:"planning"});
+      tasks, projets:[...new Set(tasks.map(t => t.projet).filter(Boolean))], src:"planning", masq});
   }
+  rows.hidden = hidden;
   for (const r of (doc.manual || []).filter(x => x.d === d)) rows.push({key:"m:" + r.id, id:r.id, d, ref:r.ref || "", auto:0, m:Number(r.m) || 0, desc:r.desc || "", dep:!!r.dep, lieu:r.lieu || "", km:r.km || "", fact:r.fact || "", tasks:[], projets:projOfRef(r.ref), src:"manuel", imp:!!r.imp});
   return rows;
 }
@@ -2597,9 +2712,9 @@ function decData(){
   const P = decPeriod(), days = [];
   for (let d = P.a; d <= P.lim; d = addDays(d, 1)) {
     const rows = decRows(d), cap = capOn(d), ab = absOn(d);
-    if (!rows.length && cap <= 0 && !ab) continue;
+    if (!rows.length && !rows.hidden.length && cap <= 0 && !ab) continue;
     const tot = rows.reduce((s, r) => s + r.m, 0);
-    days.push({d, rows, cap, ab, absH:absHours(d), tot});
+    days.push({d, rows, hidden:rows.hidden, cap, ab, absH:absHours(d), tot});
   }
   if (S.dec.mode === "annee") { const act = new Set(days.filter(x => x.rows.some(r => r.m)).map(x => monthOf(x.d))); return {P, days:days.filter(x => act.has(monthOf(x.d)))}; }
   return {P, days};
@@ -2614,7 +2729,7 @@ function refSelect(r){
 function decRowHtml(r, future){
   const ro = S.canWrite === false;
   const info = r.src === "manuel" ? `${r.projets.map(p => `<span class="pill proj" style="--pc:${projColor(p)}">${esc(p)}</span>`).join("")}<span class="dec-src man">${r.imp ? "importée" : "saisie manuelle"}</span>`
-    : `${r.projets.map(p => `<span class="pill proj" style="--pc:${projColor(p)}">${esc(p)}</span>`).join("")}<span class="dec-src">${r.tasks.length} tâche${r.tasks.length > 1 ? "s" : ""} · planning ${durTxt(r.auto)}</span>`;
+    : `${r.projets.map(p => `<span class="pill proj" style="--pc:${projColor(p)}">${esc(p)}</span>`).join("")}<span class="dec-src">${r.tasks.length} tâche${r.tasks.length > 1 ? "s" : ""} · planning ${durTxt(r.auto)}</span>${r.masq ? `<span class="dec-src masq" title="Temps passé en parallèle d'une autre référence : non compté">temps masqué ${hfmt(r.masq / 60)} h</span>` : ""}`;
   return `<div class="dec-row ${r.m === 0 ? "off" : ""} ${future ? "fut" : ""}" data-key="${esc(r.key)}" data-d="${r.d}" ${r.id ? `data-mid="${esc(r.id)}"` : ""}>
     <div class="c-dur">${decIn("m", r, durTxt(r.m), 'inputmode="decimal" aria-label="Durée"')}${r.mOv ? `<button class="dec-reset" data-act="dec-reset" data-f="m" title="Revenir au temps du planning (${durTxt(r.auto)})">↺</button>` : ""}</div>
     <div class="c-ref"><span class="ref-t ${r.ref ? "" : "need"}">${r.ref ? esc(r.ref) : (r.src === "manuel" ? "— Référence —" : "⚠ Choisir la référence")}</span>${refSelect(r)}</div>
@@ -2623,7 +2738,7 @@ function decRowHtml(r, future){
     <div class="c-km">${decIn("km", r, r.km, 'inputmode="decimal" placeholder="km" aria-label="Kilomètres"')}</div>
     <div class="c-desc"><textarea data-dec="desc" rows="${Math.min(4, Math.max(1, Math.ceil(String(r.desc).length / 52)))}" placeholder="Description" aria-label="Description" ${S.canWrite === false ? "readonly" : ""}>${esc(r.desc)}</textarea>${r.descOv ? `<button class="dec-reset" data-act="dec-reset" data-f="desc" title="Revenir au texte automatique">↺</button>` : ""}<div class="dec-info">${info}</div></div>
     <div class="c-fact">${decIn("fact", r, r.fact, 'placeholder="Facture" aria-label="Facture"')}</div>
-    <div class="c-act">${r.src === "manuel" && !ro ? `<button class="dec-x" data-act="dec-del" aria-label="Supprimer la ligne">${I.close}</button>` : ""}</div>
+    <div class="c-act">${ro ? "" : r.src === "manuel" ? `<button class="dec-x" data-act="dec-del" aria-label="Supprimer la ligne" title="Supprimer la ligne">${I.close}</button>` : `<button class="dec-x" data-act="dec-hide" aria-label="Retirer du décompte" title="Retirer du décompte (le planning n'est pas modifié)">${I.close}</button>`}</div>
   </div>`;
 }
 function bars(list, tot){
@@ -2665,7 +2780,8 @@ function viewHeures(){
           <select data-dec="abs" ${ro ? "disabled" : ""} aria-label="Absence"><option value="">${ab && ab.auto ? "Férié (auto)" : "Présent"}</option>${ABS_TYPES.map(x => `<option ${ab && !ab.auto && ab.type === x ? "selected" : ""}>${x}</option>`).join("")}</select>
           ${ab && !ab.auto ? `<select data-dec="part" ${ro ? "disabled" : ""} aria-label="Durée de l'absence">${Object.entries(ABS_PART).map(([k, v]) => `<option value="${k}" ${ab.part === k ? "selected" : ""}>${v}</option>`).join("")}</select>` : ""}</div>
         <div class="dd-act">${ro ? "" : `<button class="btn ghost sm" data-act="dec-add" title="Ajouter une ligne" aria-label="Ajouter une ligne">${I.plus}<span class="lbl-m">Ligne</span></button>`}<button class="btn ghost sm" data-act="dec-copy-day" title="Copier les lignes de ce jour">Copier</button></div></div>
-      ${Dy.rows.length ? Dy.rows.map(r => decRowHtml(r, fut)).join("") : `<div class="dec-none">${ab ? `Absence : ${esc(ab.type)}${ab.part !== "j" ? " (" + ABS_PART[ab.part].toLowerCase() + ")" : ""}` : "Aucun créneau placé ce jour-là."}</div>`}
+      ${(Dy.hidden || []).map(h => `<div class="dec-hid" data-key="${esc(h.key)}" data-d="${Dy.d}"><span>Retiré du décompte : <b>${esc(h.ref || "sans référence")}</b> · ${esc(h.tasks.map(t => t.tache).filter(Boolean).join(" + "))}${h.min ? ` (${durTxt(h.min)})` : ""}</span>${ro ? "" : `<button class="btn ghost sm" data-act="dec-unhide">Rétablir</button>`}</div>`).join("")}
+      ${Dy.rows.length ? Dy.rows.map(r => decRowHtml(r, fut)).join("") : (Dy.hidden || []).length ? "" : `<div class="dec-none">${ab ? `Absence : ${esc(ab.type)}${ab.part !== "j" ? " (" + ABS_PART[ab.part].toLowerCase() + ")" : ""}` : "Aucun créneau placé ce jour-là."}</div>`}
     </section>`;
   }
   flushWk();
@@ -2760,11 +2876,13 @@ async function decAction(act, a){
     render(true); setTimeout(() => { const el = document.querySelector(`.dec-row[data-mid="${id}"] [data-dec="desc"]`); if (el) { el.scrollIntoView({block:"center"}); el.focus(); } }, 30);
     return;
   }
+  if (act === "dec-hide") { const row = a.closest(".dec-row"), d = row.dataset.d, key = row.dataset.key; await decSave(monthOf(d), c => { c.rows[key] = {...(c.rows[key] || {}), hide:true}; }); toast("Ligne retirée du décompte (le planning ne change pas)"); render(true); return; }
+  if (act === "dec-unhide") { const row = a.closest(".dec-hid"), d = row.dataset.d, key = row.dataset.key; await decSave(monthOf(d), c => { if (c.rows[key]) { delete c.rows[key].hide; if (!Object.keys(c.rows[key]).length) delete c.rows[key]; } }); toast("Ligne rétablie"); render(true); return; }
   if (act === "dec-del") { const row = a.closest(".dec-row"), d = row.dataset.d, mid = row.dataset.mid; await decSave(monthOf(d), c => { c.manual = c.manual.filter(x => x.id !== mid); }); toast("Ligne supprimée"); render(true); return; }
   if (act === "dec-reset") { const row = a.closest(".dec-row"), d = row.dataset.d, key = row.dataset.key, f = a.dataset.f; await decSave(monthOf(d), c => { if (c.rows[key]) { delete c.rows[key][f]; if (!Object.keys(c.rows[key]).length) delete c.rows[key]; } }); render(true); return; }
   if (act === "dec-copy" || act === "dec-copy-day") {
     const {days} = decData(); const only = act === "dec-copy-day" ? a.closest(".dec-day").dataset.d : null;
-    const rows = days.filter(x => !only || x.d === only).flatMap(x => x.rows).filter(r => r.m > 0);
+    const rows = days.filter(x => !only || x.d === only).flatMap(x => x.rows).filter(r => r.m > 0 || r.masq > 0);
     if (!rows.length) { toast("Aucune ligne à copier"); return; }
     const txt = rows.map(r => decLine(r).map(v => String(v).replace(/[\t\r\n]+/g, " ")).join("\t")).join("\n");
     const ok = await copyText(txt);
@@ -2794,7 +2912,7 @@ async function decExport(){
   if (!dl) { say("L'export n'est pas disponible sur cet appareil."); return; }
   try {
     say("Préparation du fichier…");
-    const X = await loadXLSX(), {P, days} = decData(), R = decRecap(days), rows = days.flatMap(x => x.rows).filter(r => r.m > 0);
+    const X = await loadXLSX(), {P, days} = decData(), R = decRecap(days), rows = days.flatMap(x => x.rows).filter(r => r.m > 0 || r.masq > 0);
     const EXTRA = ["Jour", "Semaine", "Heures (décimal)", "Projet(s)", "Source", "Tâches du planning"];
     const aoa = [[...DEC_HEAD, ...EXTRA], ...rows.map(r => [...decLine(r), JOURS[parseYmd(r.d).getDay()], isoWeek(parseYmd(r.d)), Math.round(r.m / 60 * 100) / 100, r.projets.join(", "), r.src === "manuel" ? (r.imp ? "Import" : "Saisie manuelle") : r.mOv || r.descOv ? "Planning (modifié)" : "Planning", r.tasks.map(t => t.tache).join(" | ")])];
     const ws = X.utils.aoa_to_sheet(aoa);
@@ -2833,6 +2951,8 @@ function decSettingsPanel(){
       <label class="field"><span class="lbl">Collaborateur</span><input type="text" id="set-collab" value="${esc(collabName())}" ${ro ? "readonly" : ""}></label>
       <label class="field"><span class="lbl">Arrondi des durées</span><select id="set-arr" ${ro ? "disabled" : ""}>${[[1, "Aucun"], [5, "5 min"], [15, "15 min"], [30, "30 min"]].map(([v, l]) => `<option value="${v}" ${decArr() === v ? "selected" : ""}>${l}</option>`).join("")}</select></label>
     </div>
+    <label class="field" style="margin-top:10px"><span class="lbl">Tâches en parallèle (références différentes)</span><select id="set-par" ${ro ? "disabled" : ""}>${[["major", "À la référence qui couvre le plus"], ["partage", "Partagé à parts égales"]].map(([v, l]) => `<option value="${v}" ${parMode() === v ? "selected" : ""}>${l}</option>`).join("")}</select></label>
+    <p class="sub" style="margin:6px 0 0">Exemple : tâche A de 9 h à 12 h, tâche B de 10 h à 11 h. Référence qui couvre le plus : A 3 h, B 0 h. Parts égales : A 2,5 h, B 0,5 h. Dans les deux cas, le temps n'est jamais compté deux fois.</p>
     <p style="margin-top:12px"><b style="color:var(--ink)">Référence par défaut de chaque projet</b></p>
     <div class="refmap">${allProjets().map(p => { const cur = Object.prototype.hasOwnProperty.call(map, p) ? map[p] : null, g = refGuess(p); return `<label class="rm-r"><span class="pill proj" style="--pc:${projColor(p)}">${esc(p)}</span><select class="set-refmap" data-p="${esc(p)}" ${ro ? "disabled" : ""}><option value="__auto" ${cur === null ? "selected" : ""}>${g ? "Auto : " + esc(g) : "— Aucune —"}</option>${refList().map(r => `<option ${cur === r ? "selected" : ""}>${esc(r)}</option>`).join("")}</select></label>`; }).join("") || '<span class="sub">Aucun projet.</span>'}</div>
     <details class="refs-ed" style="margin-top:12px"><summary>Liste des références (${refList().length})</summary>
@@ -2843,6 +2963,7 @@ function decSettingsPanel(){
 }
 function decSettingsChange(t){
   if (t.id === "set-collab") { const v = t.value.trim().toUpperCase(); savePrefs({collab:v}); toast("Collaborateur : " + (v || collabName())); return true; }
+  if (t.id === "set-par") { savePrefs({par:t.value}); toast(t.value === "partage" ? "Temps en parallèle : parts égales" : "Temps en parallèle : à la référence qui couvre le plus"); render(true); return true; }
   if (t.id === "set-arr") { savePrefs({arr:Number(t.value)}); toast("Arrondi : " + t.options[t.selectedIndex].text); return true; }
   if (t.classList && t.classList.contains("set-refmap")) { const map = {...((S.prefs && S.prefs.refMap) || {})}, p = t.dataset.p; if (t.value === "__auto") delete map[p]; else map[p] = t.value; savePrefs({refMap:map}); toast(`${p} → ${t.value === "__auto" ? "auto" : t.value}`); render(true); return true; }
   return false;
@@ -3977,7 +4098,7 @@ async function decExport(){
   const say = m => { const el = $("#dec-progress"); if (el) el.textContent = m; };
   try {
     say("Préparation du fichier…");
-    const {P, days} = decData(), R = decRecap(days), rows = days.flatMap(x => x.rows).filter(r => r.m > 0), wb = await xlBook();
+    const {P, days} = decData(), R = decRecap(days), rows = days.flatMap(x => x.rows).filter(r => r.m > 0 || r.masq > 0), wb = await xlBook();
     xlTable(wb, "Décompte", {title:`Décompte des heures – ${collabName()}`, sub:`Du ${fmt(P.a, true)} au ${fmt(P.lim, true)} · colonnes A à I au format de ton tableau, informations complémentaires en gris`, sum:[2, 6, 11],
       cols:[{h:"Collaborateur", w:14}, {h:"Date", w:12, f:"dd/mm/yyyy", a:"center"}, {h:"Durée", w:10, f:"[h]:mm:ss", a:"right"}, {h:"Référence", w:42, wrap:true}, {h:"Déplacement", w:12, a:"center"}, {h:"Lieu", w:16, wrap:true}, {h:"Kilomètres", w:11, f:"0", a:"right"}, {h:"Description", w:60, wrap:true}, {h:"Facture", w:12},
         {h:"Jour", w:11, alt:1}, {h:"Semaine", w:9, a:"center", alt:1}, {h:"Heures (décimal)", w:11, f:"0.00", a:"right", alt:1}, {h:"Projet(s)", w:16, alt:1}, {h:"Source", w:16, alt:1}, {h:"Tâches du planning", w:50, wrap:true, alt:1}],
@@ -4347,8 +4468,9 @@ const HELP = [
   {k:"heures", t:"Heures (décompte)", html:`
     <p>Le décompte reprend les <b>créneaux de l'agenda</b> et les présente comme ton tableau : Collaborateur, Date, Durée, Référence, Déplacement, Lieu, Kilomètres, Description, Facture.</p>
     <ul><li><b>Une ligne par jour et par référence.</b> La description reprend le nom des tâches du jour.</li>
-      <li><b>Tâches en parallèle</b> : le temps commun est partagé entre les références actives à ce moment, jamais compté deux fois. Deux tâches de la même référence ne comptent qu'une fois.</li>
+      <li><b>Tâches en parallèle</b> : le temps commun n'est jamais compté deux fois. Par défaut, il va à la <b>référence qui couvre le plus</b> à ce moment (celle dont le bloc continu est le plus long) : tâche A de 9 h à 12 h et tâche B de 10 h à 11 h donnent A 3 h, B 0 h. Tu peux choisir le partage à parts égales (A 2,5 h, B 0,5 h) dans Réglages ▸ Décompte des heures. Deux tâches de la même référence ne comptent qu'une fois. Le temps non compté (<b>temps masqué</b>) reste visible : la référence garde sa ligne à 0 h, avec la mention « temps masqué », dans le décompte, la copie pour Excel et l'export.</li>
       <li><b>Référence</b> : celle de la tâche, sinon celle de son projet (Réglages ▸ Décompte des heures). Une ligne sans référence est signalée en orange : choisis-la sur la ligne, elle s'appliquera aux tâches concernées.</li>
+      <li><b>Retirer une ligne</b> : la croix ✕ au bout d'une ligne issue du planning la retire du décompte, sans toucher au planning ; son temps revient aux autres références du jour. « Rétablir » la remet.</li>
       <li><b>Corriger</b> : modifie la durée ou la description d'une ligne ; le bouton ↺ revient à la valeur du planning. « Ligne hors planning » ajoute un temps qui n'est pas dans l'agenda.</li>
       <li><b>Absences</b> : choisis Congé, RTT, Maladie… pour la journée ou une demi-journée. Les jours fériés sont reconnus automatiquement.</li></ul>
     <h4>Récupérer les lignes</h4><ul><li><b>Copier pour Excel</b> : copie les colonnes A à I, sans en-tête, prêtes à coller sous ton tableau (${kbd("Cmd")} + ${kbd("V")}). Chaque jour a aussi son bouton « Copier ».</li>
@@ -4395,20 +4517,24 @@ const HELP = [
       <li><b>Plan de charge</b> : sur 12 mois, les jours vendus comparés à ta capacité (heures disponibles moins absences). En hachuré, ce qui s'ajouterait si les AO en cours étaient gagnés. Les mois saturés sont signalés.</li>
       <li><b>Organisation et temps</b> : tâches en retard et à échéance, heures du mois. Le détail des tâches par projet se déplie en bas.</li></ul>${go("bord", "Ouvrir le tableau de bord")}`},
   {k:"reglages", t:"Réglages", html:`
-    <ul><li><b>Projets, responsables, types</b> : les listes proposées dans les fiches.</li>
+    <p>Les réglages sont rangés par thème, avec un sommaire : Affichage, Compte et équipe, Listes, Planning, Décompte des heures, Import / export.</p>
+    <ul><li><b>Affichage</b> (propre à chaque appareil) : thème sombre, clair ou automatique, page d'ouverture de l'app, onglets affichés (masque ceux que tu n'utilises pas).</li>
+      <li><b>Projets, responsables, types</b> : les listes proposées dans les fiches.</li>
       <li><b>Planning</b> : tes heures disponibles pour chaque jour de la semaine (0 pour un jour non travaillé) et la plage horaire de l'agenda.</li>
       <li><b>Décompte des heures</b> : nom du collaborateur, arrondi des durées, référence par défaut de chaque projet et liste des références.</li>
       <li><b>Importer / Exporter</b> : tes tâches depuis ou vers Excel.</li>
       <li><b>Sauvegarde</b> (app iPhone/Mac) : un fichier JSON avec toutes tes données, à garder dans iCloud Drive. Il se réimporte au même endroit.</li>
       <li><b>Archives</b> : range les tâches terminées depuis plus de 30 jours.</li></ul>${go("reglages", "Ouvrir les réglages")}`},
   {k:"equipe", t:"Équipe et partage", html:`
-    <p>Dans l'app installée, tu peux travailler à plusieurs dans une <b>entreprise</b>. La case <b>Espace</b> du cartouche, en haut, indique où tu es et ouvre la page <b>Équipe</b>.</p>
+    <p>Dans l'app installée, tu peux travailler à plusieurs dans une <b>entreprise</b>. La case <b>Espace</b> du cartouche indique où tu es. En haut à droite, le rond avec tes initiales ouvre ton <b>Profil</b> (compte, espaces, invitations, équipe) et le bouclier ouvre le <b>Panneau admin</b> (administrateurs seulement).</p>
     <h4>Espaces</h4><ul><li><b>Mon espace perso</b> : tes données, visibles par toi seul.</li><li><b>Une entreprise</b> : ses tâches, chiffrages, projets, base des unités d'œuvre et entreprises émettrices sont communs à ses membres. Tu peux appartenir à plusieurs entreprises et passer de l'une à l'autre.</li></ul>
-    <h4>Mettre en place</h4><ol class="hp-steps"><li>Équipe ▸ <b>Créer une entreprise</b> : tu en deviens l'administrateur.</li>
-      <li><b>Services</b> (facultatif) : BIM, Synthèse, Études…</li>
+    <h4>Mettre en place</h4><ol class="hp-steps"><li>Profil ▸ <b>Créer une entreprise</b> : tu en deviens l'administrateur, et le Panneau admin s'ouvre.</li>
+      <li>Panneau admin ▸ <b>Services</b> (facultatif) : BIM, Synthèse, Études…</li>
       <li><b>Inviter un collaborateur</b> : son e-mail, son rôle, ses services. « Copier le message » prépare l'e-mail à lui envoyer.</li>
-      <li>Ton collègue crée son compte avec cette adresse, <b>vérifie son e-mail</b> (lien reçu par mail), puis touche <b>Rejoindre</b>.</li>
-      <li>« Reprendre mes données perso » copie tes tâches et chiffrages existants dans l'entreprise.</li></ol>
+      <li>Ton collègue crée son compte avec cette adresse, <b>vérifie son e-mail</b> (lien reçu par mail), puis touche <b>Rejoindre</b> dans son Profil.</li>
+      <li>Profil ▸ « Reprendre mes données perso » copie tes tâches et chiffrages existants dans l'entreprise.</li></ol>
+    <h4>Quitter ou supprimer</h4><ul><li><b>Quitter</b> (Profil) : tu n'as plus accès aux éléments partagés. Le dernier administrateur ne peut pas partir sans nommer un autre administrateur.</li>
+      <li><b>Supprimer l'entreprise</b> (Panneau admin, en bas) : efface définitivement toutes ses données (tâches, chiffrages, listes, base, entreprises émettrices, heures, invitations) et retire tous les collaborateurs. Il faut taper le nom de l'entreprise pour confirmer. Les espaces perso ne sont pas touchés. Fais une sauvegarde avant.</li></ul>
     <h4>Rôles</h4><table class="hp-t"><tbody><tr><td><b>Administrateur</b></td><td>Gère l'entreprise, les services, les collaborateurs, la base des unités d'œuvre et les entreprises émettrices. Voit la charge et le décompte de tous.</td></tr>
       <tr><td><b>Chef de service</b></td><td>Modifie la base des unités d'œuvre et les entreprises émettrices. Voit la charge et le décompte des membres de ses services.</td></tr>
       <tr><td><b>Membre</b></td><td>Utilise l'app ; la base et les entreprises émettrices sont en lecture seule.</td></tr></tbody></table>
@@ -4430,7 +4556,7 @@ const HELP = [
     <p>Dans les Excel du chiffrage, les <span class="hp-y">cellules jaunes</span> sont modifiables ; les autres sont calculées.</p>`},
   {k:"faq", t:"Questions fréquentes", html:`
     <details><summary>Où sont mes données ?</summary><p>Dans ton compte (espace perso) ou dans l'entreprise, synchronisés entre tes appareils. Les fichiers du DCE, eux, restent sur ton ordinateur : seuls leurs noms et tes notes sont enregistrés.</p></details>
-    <details><summary>Le total du décompte ne correspond pas à l'agenda.</summary><p>Le temps en parallèle est partagé entre références, et chaque ligne est arrondie selon le réglage « Arrondi des durées ». Un écart d'une ou deux minutes peut venir de l'arrondi. Vérifie aussi les lignes modifiées à la main (bouton ↺).</p></details>
+    <details><summary>Le total du décompte ne correspond pas à l'agenda.</summary><p>Le temps en parallèle n'est compté qu'une fois (attribué à la référence qui couvre le plus, ou partagé selon ton réglage), et chaque ligne est arrondie selon le réglage « Arrondi des durées ». Un écart d'une ou deux minutes peut venir de l'arrondi. Vérifie aussi les lignes modifiées à la main (bouton ↺).</p></details>
     <details><summary>Un collègue ne voit pas ma tâche.</summary><p>Vérifie sa visibilité dans la fiche : 🔒 Personnel n'est visible que par toi. Passe-la en Service ou Entreprise, ou assigne-la-lui. Côté collègue, choisis « Toute l'entreprise » dans Afficher.</p></details>
     <details><summary>Une ligne du décompte est orange.</summary><p>Elle n'a pas de référence. Choisis-la sur la ligne, ou associe une référence par défaut au projet dans les Réglages.</p></details>
     <details><summary>Comment mettre à jour l'app sur iPhone et Mac ?</summary><p>Redépose sur GitHub tous les fichiers du dossier todo-bim reçu, <b>sauf config.js</b>, puis ferme et rouvre l'app. Tes données ne bougent pas.</p></details>
@@ -4501,7 +4627,7 @@ function defaultTaskVis(p){
   const pv = (L.projVis || {})[p]; return pv && pv.vis ? pv.vis : "org";
 }
 if (TMX()) TMX().defVis = (name, d) => name === "ao" ? "org" : defaultTaskVis(d && d.projet);
-if (TMX()) TMX().on(() => { if (S.status === "ready" || S.view === "equipe") schedule(); });
+if (TMX()) TMX().on(() => { if (S.status === "ready" || ["equipe", "profil", "admin"].includes(S.view)) schedule(); });
 
 /* avant enregistrement d'une tâche (éditeur, ajout rapide, import) */
 function teamBeforeSave(t){
@@ -4570,29 +4696,40 @@ const baseRoNote = () => canBase() ? "" : `<p class="tm-ro">Lecture seule : seul
 
 /* ---------- Bandeau d'en-tête : espace de travail ---------- */
 function teamChrome(){
-  const T = TMX(), el = $("#ctx-chip"); if (!el) return;
-  if (!T) { el.hidden = true; return; }
+  const T = TMX(), el = $("#ctx-chip"); document.documentElement.classList.toggle("has-acct", !!T); if (!el) return;
+  if (!T) { el.hidden = true; const pb = $("#hb-prof"), ab = $("#hb-admin"); if (pb) pb.hidden = true; if (ab) ab.hidden = true; return; }
   el.hidden = false;
   const n = (T.invites || []).length;
   el.innerHTML = `<small>Espace${n ? ` <i class="badge">${n}</i>` : ""}</small><span>${esc(T.active ? T.org.nom : "Perso")}</span>`;
   el.title = T.active ? `Entreprise : ${T.org.nom} (${ROLES[T.me.role] || ""})` : "Espace perso";
-  if (S.view === "equipe") el.setAttribute("aria-current", "page"); else el.removeAttribute("aria-current");
+  if (S.view === "equipe" || S.view === "profil") el.setAttribute("aria-current", "page"); else el.removeAttribute("aria-current");
+  const pb = $("#hb-prof"), ab = $("#hb-admin");
+  if (pb) { pb.hidden = false; pb.innerHTML = `<span>${esc(initialsOf(myName()))}</span>`; pb.title = `Profil : ${myName()}`; pb.setAttribute("aria-label", "Profil"); if (S.view === "profil" || S.view === "equipe") pb.setAttribute("aria-current", "page"); else pb.removeAttribute("aria-current"); }
+  if (ab) { ab.hidden = !(T.active && T.isAdmin()); ab.innerHTML = svgShield; if (S.view === "admin") ab.setAttribute("aria-current", "page"); else ab.removeAttribute("aria-current"); }
 }
 function teamBanner(){
-  const T = TMX(); if (!T || S.view === "equipe") return "";
+  const T = TMX(); if (!T || ["equipe", "profil", "admin"].includes(S.view)) return "";
   if (T.notice) return `<div class="tm-banner"><span>${esc(T.notice)}</span><button class="btn sm" data-act="tm-notice-ok">OK</button></div>`;
   const inv = (T.invites || [])[0];
-  if (inv) return `<div class="tm-banner"><span><b>${esc(inv.byName || "Un collègue")}</b> t'invite à rejoindre <b>${esc(inv.orgName)}</b>.</span><a class="btn sm primary" href="#equipe">Voir l'invitation</a></div>`;
+  if (inv) return `<div class="tm-banner"><span><b>${esc(inv.byName || "Un collègue")}</b> t'invite à rejoindre <b>${esc(inv.orgName)}</b>.</span><a class="btn sm primary" href="#profil">Voir l'invitation</a></div>`;
   return "";
 }
 
-/* ---------- Vue Équipe ---------- */
-function viewEquipe(){
+/* ---------- Vues Profil et Panneau admin ---------- */
+const svgShield = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>';
+function initialsOf(n){ const p = String(n || "").trim().split(/\s+/).filter(Boolean); return ((p[0] || "?")[0] + (p.length > 1 ? p[p.length - 1][0] : "")).toUpperCase(); }
+function myName(){ const T = TMX(); if (!T) return ""; if (T.active) return T.nameOf(T.uid); const p = String(T.email || "").split("@")[0].split(/[._+-]/).filter(Boolean); return p.map(x => x.charAt(0).toUpperCase() + x.slice(1)).join(" "); }
+function notAdminView(){
+  return `<div class="view-head"><div><div class="eyebrow">Panneau admin</div><h1>Réservé aux administrateurs</h1><div class="sub">${TM() ? `Ton rôle dans « ${esc(TM().org.nom)} » : ${esc(ROLES[TM().me.role] || "")}. Demande à un administrateur de modifier l'entreprise.` : "Ouvre ou crée une entreprise depuis ton profil : tu en deviendras l'administrateur."}</div></div></div>
+    <div class="panel"><div class="row"><a class="btn" href="#profil">Ouvrir mon profil</a></div></div>`;
+}
+function viewProfil(){
   const T = TMX();
-  if (!T) return `<div class="view-head"><div><div class="eyebrow">Équipe</div><h1>Entreprise et collaborateurs</h1></div></div>
-    <div class="panel"><p>La gestion des entreprises, des services et des collaborateurs se fait dans l'app installée sur ton iPhone ou ton Mac (version en ligne avec compte).</p></div>`;
-  const A = T.active, me = T.me || {}, adm = A && T.isAdmin(), sv = A ? T.services() : [];
-  let h = `<div class="view-head"><div><div class="eyebrow">Équipe</div><h1>${A ? esc(T.org.nom) : "Mon espace perso"}</h1><div class="sub">${A ? `Tu es <b>${ROLES[me.role] || me.role}</b>${(me.services || []).length ? " · " + me.services.map(svcName).map(esc).join(", ") : ""}.` : "Tes données personnelles, visibles par toi seul. Crée une entreprise ou rejoins-en une pour travailler à plusieurs."}</div></div></div>`;
+  if (!T) return `<div class="view-head"><div><div class="eyebrow">Profil</div><h1>Profil et équipe</h1></div></div>
+    <div class="panel"><p>Le profil, les entreprises et les collaborateurs se gèrent dans l'app installée sur ton iPhone ou ton Mac (version en ligne avec compte).</p></div>`;
+  const A = T.active, me = T.me || {}, adm = A && T.isAdmin();
+  let h = `<div class="view-head"><div class="pf-head"><span class="pf-av">${esc(initialsOf(myName()))}</span><div><div class="eyebrow">Profil</div><h1>${esc(myName())}</h1><div class="sub">${esc(T.email)}${A ? ` · ${esc(ROLES[me.role] || me.role)} dans « ${esc(T.org.nom)} »${(me.services || []).length ? " · " + me.services.map(svcName).map(esc).join(", ") : ""}` : " · espace perso"}</div></div></div>
+    ${adm ? `<div class="pnav"><a class="btn primary" href="#admin">${svgShield} Panneau admin</a></div>` : ""}</div>`;
   if (T.notice) h += `<div class="tm-banner"><span>${esc(T.notice)}</span><button class="btn sm" data-act="tm-notice-ok">OK</button></div>`;
   /* invitations reçues */
   if ((T.invites || []).length) {
@@ -4601,56 +4738,68 @@ function viewEquipe(){
       <div class="tm-inv">${T.invites.map(i => `<div class="tm-inv-i"><div><b>${esc(i.orgName)}</b><small>${esc(ROLES[i.role] || i.role)} · invité par ${esc(i.byName || "un administrateur")}</small></div>
         <div class="row"><button class="btn primary" data-act="tm-inv-ok" data-id="${esc(i.id)}" ${T.verified ? "" : "disabled"}>Rejoindre</button><button class="btn ghost" data-act="tm-inv-no" data-id="${esc(i.id)}">Refuser</button></div></div>`).join("")}</div></section>`;
   }
+  /* mon compte */
+  h += `<section class="panel tm-p"><h2>Mon compte</h2><div class="tm-grid">
+      <label class="field"><span class="lbl">Nom affiché${A ? "" : " (dans les entreprises)"}</span><input type="text" data-tm="myname" value="${esc(A ? me.nom || "" : "")}" placeholder="Prénom Nom" ${A ? "" : "disabled"}></label>
+      <label class="field"><span class="lbl">E-mail</span><input type="email" value="${esc(T.email)}" readonly></label></div>
+    <div class="row" style="margin-top:12px"><button class="btn" data-act="tm-pwd">Changer de mot de passe</button><button class="btn ghost" data-act="logout-tm">Se déconnecter</button></div>
+    <p class="sub" id="tm-pwd-msg">${A ? "" : "Le nom affiché se règle dans chaque entreprise."}</p></section>`;
   /* espaces */
   h += `<section class="panel tm-p"><h2>Espaces de travail</h2><p class="sub">Chaque espace a ses propres tâches, chiffrages et heures. Change d'espace à tout moment.</p>
     <div class="tm-spaces">${[{id:"perso", nom:"Mon espace perso", sub:"Visible par toi seul"}, ...T.orgs.map(o => ({id:o.id, nom:o.nom, sub:"Entreprise"}))].map(o => { const cur = (A ? T.org.id : "perso") === o.id;
       return `<div class="tm-sp ${cur ? "cur" : ""}"><div><b>${esc(o.nom)}</b><small>${esc(o.sub)}</small></div>${cur ? '<span class="pill">Ouvert</span>' : `<button class="btn sm" data-act="tm-switch" data-id="${esc(o.id)}">Ouvrir</button>`}</div>`; }).join("")}</div>
     <form class="row tm-new" data-tm-form="org" autocomplete="off"><input type="text" name="nom" placeholder="Nom de la nouvelle entreprise" aria-label="Nom de la nouvelle entreprise"><button class="btn" type="submit">Créer une entreprise</button></form></section>`;
-  if (!A) return h + `<section class="panel tm-p"><h2>Comment ça marche ?</h2><ol class="tm-ol"><li>Crée l'entreprise : tu en deviens l'administrateur.</li><li>Crée des services si tu veux (facultatif) : BIM, Synthèse, Études…</li><li>Invite tes collègues avec leur adresse e-mail.</li><li>Chaque tâche ou chiffrage est <b>Personnel</b>, partagé avec un <b>Service</b> ou avec toute l'<b>Entreprise</b>.</li></ol></section>`;
-  /* entreprise */
-  const mem = [...T.members.entries()].map(([k, m]) => ({k, ...m})).sort((a, b) => (T.nameOf(a.k)).localeCompare(T.nameOf(b.k), "fr"));
-  h += `<section class="panel tm-p"><h2>Entreprise</h2><div class="tm-grid">
-      <label class="field"><span class="lbl">Nom de l'entreprise</span><input type="text" data-tm="orgnom" value="${esc(T.org.nom)}" ${adm ? "" : "readonly"}></label>
-      <label class="field"><span class="lbl">Ton nom affiché</span><input type="text" data-tm="myname" value="${esc(me.nom || "")}" placeholder="Prénom Nom"></label></div>
-      <p class="sub">${esc(ROLE_HELP[me.role] || "")}</p></section>`;
-  /* services */
-  h += `<section class="panel tm-p"><h2>Services <span class="tm-opt">facultatif</span></h2><p class="sub">Regroupe les collaborateurs (BIM, Synthèse, Études…). Un élément peut alors être partagé avec un seul service, et le chef de service voit la charge et le décompte de son service.</p>
-    ${sv.length ? `<div class="tm-svcs">${sv.map(s => { const n = mem.filter(m => (m.services || []).includes(s.id)).length; return `<div class="tm-sv" style="--sv:${esc(s.couleur || "#8B949E")}"><i></i>${adm ? `<input type="text" data-tm="svnom" data-id="${esc(s.id)}" value="${esc(s.nom)}" aria-label="Nom du service">` : `<b>${esc(s.nom)}</b>`}<small>${n} membre${n > 1 ? "s" : ""}</small>${adm ? `<button class="ic-btn del" data-act="tm-sv-del" data-id="${esc(s.id)}" aria-label="Supprimer le service ${esc(s.nom)}">${I.close}</button>` : ""}</div>`; }).join("")}</div>` : `<p class="sub" style="margin:0">Aucun service.</p>`}
-    ${adm ? `<form class="row tm-new" data-tm-form="svc" autocomplete="off"><input type="text" name="nom" placeholder="ex. BIM, Synthèse, Études" aria-label="Nouveau service"><button class="btn" type="submit">Ajouter un service</button></form>` : ""}</section>`;
-  /* collaborateurs */
-  h += `<section class="panel tm-p"><h2>Collaborateurs <span class="tm-opt">${mem.length}</span></h2><div class="tm-mem">${mem.map(m => {
-      const self = m.k === T.uid;
-      return `<div class="tm-m" data-uid="${esc(m.k)}"><div class="tm-mn"><b>${esc(T.nameOf(m.k))}${self ? " (toi)" : ""}</b><small>${esc(m.email || "")}</small></div>
-        <div class="tm-mr">${adm ? `<select data-tm="role" data-uid="${esc(m.k)}" aria-label="Rôle de ${esc(T.nameOf(m.k))}">${Object.entries(ROLES).map(([k, l]) => `<option value="${k}" ${m.role === k ? "selected" : ""}>${l}</option>`).join("")}</select>` : `<span class="pill">${esc(ROLES[m.role] || m.role)}</span>`}</div>
-        <div class="tm-ms">${sv.map(s => { const on = (m.services || []).includes(s.id); return adm ? `<button class="chip-b sm" data-act="tm-m-svc" data-uid="${esc(m.k)}" data-id="${esc(s.id)}" aria-pressed="${on}">${esc(s.nom)}</button>` : on ? `<span class="pill">${esc(s.nom)}</span>` : ""; }).join("")}</div>
-        <div class="tm-ma">${adm && !self ? `<button class="btn ghost sm" data-act="tm-m-del" data-uid="${esc(m.k)}">Retirer</button>` : ""}</div></div>`; }).join("")}</div>
-    ${adm ? `<details class="tm-roles"><summary>Que peut faire chaque rôle ?</summary><dl>${Object.entries(ROLES).map(([k, l]) => `<dt>${l}</dt><dd>${ROLE_HELP[k]}</dd>`).join("")}</dl></details>` : ""}</section>`;
-  /* invitations */
-  if (adm) {
-    if (!S.tmInv) { S.tmInv = []; S.tmInvUn = T.watchInvites(list => { S.tmInv = list; if (S.view === "equipe") schedule(); }); }
-    const url = location.origin + location.pathname;
-    h += `<section class="panel tm-p"><h2>Inviter un collaborateur</h2>
-      <form class="tm-invf" data-tm-form="invite" autocomplete="off">
-        <label class="field"><span class="lbl">E-mail</span><input type="email" name="email" placeholder="prenom.nom@entreprise.fr" autocapitalize="off" required></label>
-        <label class="field"><span class="lbl">Nom affiché</span><input type="text" name="nom" placeholder="Prénom Nom (facultatif)"></label>
-        <label class="field"><span class="lbl">Rôle</span><select name="role">${Object.entries(ROLES).map(([k, l]) => `<option value="${k}" ${k === "membre" ? "selected" : ""}>${l}</option>`).join("")}</select></label>
-        ${sv.length ? `<div class="field wide"><span class="lbl">Services</span><div class="chipset">${sv.map(s => `<label class="chip-b sm tm-ck"><input type="checkbox" name="svc" value="${esc(s.id)}">${esc(s.nom)}</label>`).join("")}</div></div>` : ""}
-        <div class="wide"><button class="btn primary" type="submit">Inviter</button></div></form>
-      <p class="sub">Ton collègue crée son compte dans l'app avec cette adresse e-mail, vérifie son adresse, puis accepte l'invitation dans <b>Équipe</b>.</p>
-      ${(S.tmInv || []).length ? `<h4 class="tm-h4">En attente</h4><div class="tm-mem">${S.tmInv.map(i => `<div class="tm-m"><div class="tm-mn"><b>${esc(i.nom || i.email)}</b><small>${esc(i.email)}</small></div><div class="tm-mr"><span class="pill">${esc(ROLES[i.role] || i.role)}</span></div>
-        <div class="tm-ms">${(i.services || []).map(s => `<span class="pill">${esc(svcName(s))}</span>`).join("")}</div>
-        <div class="tm-ma"><button class="btn ghost sm" data-act="tm-inv-copy" data-email="${esc(i.email)}" data-url="${esc(url)}">Copier le message</button><button class="btn ghost sm" data-act="tm-inv-cancel" data-email="${esc(i.email)}">Annuler</button></div></div>`).join("")}</div>` : ""}</section>`;
-  }
-  /* reprise des données perso */
+  if (!A) return h + `<section class="panel tm-p"><h2>Comment ça marche ?</h2><ol class="tm-ol"><li>Crée l'entreprise : tu en deviens l'administrateur.</li><li>Dans le <b>panneau admin</b>, crée des services si tu veux (facultatif) : BIM, Synthèse, Études…</li><li>Invite tes collègues avec leur adresse e-mail.</li><li>Chaque tâche ou chiffrage est <b>Personnel</b>, partagé avec un <b>Service</b> ou avec toute l'<b>Entreprise</b>.</li></ol></section>`;
+  /* mon équipe (lecture) */
+  const mem = [...T.members.entries()].map(([k, m]) => ({k, ...m})).sort((a, b) => T.nameOf(a.k).localeCompare(T.nameOf(b.k), "fr"));
+  h += `<section class="panel tm-p"><h2>Mon équipe <span class="tm-opt">${mem.length}</span></h2><div class="tm-mem">${mem.map(m => `<div class="tm-m ro"><div class="tm-mn"><b>${esc(T.nameOf(m.k))}${m.k === T.uid ? " (toi)" : ""}</b><small>${esc(m.email || "")}</small></div><div class="tm-mr"><span class="pill">${esc(ROLES[m.role] || m.role)}</span></div><div class="tm-ms">${(m.services || []).map(s => `<span class="pill">${esc(svcName(s))}</span>`).join("")}</div><div class="tm-ma"></div></div>`).join("")}</div>
+    <p class="sub">${esc(ROLE_HELP[me.role] || "")}</p></section>`;
   h += `<section class="panel tm-p"><h2>Reprendre mes données perso</h2><p class="sub">Copie tes tâches${T.canBase() ? ", tes chiffrages, ta base des unités d'œuvre et tes entreprises émettrices" : " et tes chiffrages"} de ton espace perso vers cette entreprise. Ton espace perso n'est pas modifié. Les éléments déjà copiés ne sont pas dupliqués.</p>
     <div class="row tm-copy"><label class="ctl-l">Tâches copiées en <select id="tm-copy-vis"><option value="perso">🔒 Personnel</option><option value="org">Entreprise</option></select></label>
       <label class="ctl-l">Chiffrages copiés en <select id="tm-copy-ao"><option value="perso">🔒 Personnel</option><option value="org" selected>Entreprise</option></select></label>
       <button class="btn" data-act="tm-copy" ${S.tmBusy ? "disabled" : ""}>Copier mes données</button></div><p class="sub" id="tm-copy-msg">${esc(S.tmBusy || S.tmMsg || "")}</p></section>`;
-  const admins = mem.filter(m => m.role === "admin").length;
+  const admins = mem.filter(m => m.role === "admin").length, sole = adm && admins < 2;
   h += `<section class="panel tm-p"><h2>Quitter l'entreprise</h2><p class="sub">Tu n'auras plus accès à ses éléments partagés. Tes éléments personnels restent dans l'entreprise, invisibles pour les autres.</p>
-    <div class="row"><button class="btn danger" data-act="tm-leave" ${adm && admins < 2 ? "disabled" : ""}>Quitter « ${esc(T.org.nom)} »</button></div>${adm && admins < 2 ? `<p class="sub">Tu es le seul administrateur : nomme d'abord un autre administrateur.</p>` : ""}</section>`;
+    <div class="row"><button class="btn danger" data-act="tm-leave" ${sole ? "disabled" : ""}>Quitter « ${esc(T.org.nom)} »</button></div>${sole ? `<p class="sub">Tu es le seul administrateur : nomme d'abord un autre administrateur, ou supprime l'entreprise depuis le <a href="#admin">panneau admin</a>.</p>` : ""}</section>`;
   return h;
 }
+function viewAdmin(){
+  const T = TM(); if (!T || !T.isAdmin()) return notAdminView();
+  const sv = T.services();
+  const mem = [...T.members.entries()].map(([k, m]) => ({k, ...m})).sort((a, b) => T.nameOf(a.k).localeCompare(T.nameOf(b.k), "fr"));
+  let h = `<div class="view-head"><div><div class="eyebrow">Panneau admin</div><h1>${esc(T.org.nom)}</h1><div class="sub">${mem.length} collaborateur${mem.length > 1 ? "s" : ""} · ${sv.length} service${sv.length > 1 ? "s" : ""}</div></div><div class="pnav"><a class="btn" href="#profil">Mon profil</a></div></div>`;
+  h += `<section class="panel tm-p"><h2>Entreprise</h2><label class="field"><span class="lbl">Nom de l'entreprise</span><input type="text" data-tm="orgnom" value="${esc(T.org.nom)}"></label></section>`;
+  h += `<section class="panel tm-p"><h2>Services <span class="tm-opt">facultatif</span></h2><p class="sub">Regroupe les collaborateurs (BIM, Synthèse, Études…). Un élément peut alors être partagé avec un seul service, et le chef de service voit la charge et le décompte de son service.</p>
+    ${sv.length ? `<div class="tm-svcs">${sv.map(s => { const n = mem.filter(m => (m.services || []).includes(s.id)).length; return `<div class="tm-sv" style="--sv:${esc(s.couleur || "#8B949E")}"><i></i><input type="text" data-tm="svnom" data-id="${esc(s.id)}" value="${esc(s.nom)}" aria-label="Nom du service"><small>${n} membre${n > 1 ? "s" : ""}</small><button class="ic-btn del" data-act="tm-sv-del" data-id="${esc(s.id)}" aria-label="Supprimer le service ${esc(s.nom)}">${I.close}</button></div>`; }).join("")}</div>` : `<p class="sub" style="margin:0">Aucun service.</p>`}
+    <form class="row tm-new" data-tm-form="svc" autocomplete="off"><input type="text" name="nom" placeholder="ex. BIM, Synthèse, Études" aria-label="Nouveau service"><button class="btn" type="submit">Ajouter un service</button></form></section>`;
+  h += `<section class="panel tm-p"><h2>Collaborateurs <span class="tm-opt">${mem.length}</span></h2><div class="tm-mem">${mem.map(m => {
+      const self = m.k === T.uid;
+      return `<div class="tm-m" data-uid="${esc(m.k)}"><div class="tm-mn"><b>${esc(T.nameOf(m.k))}${self ? " (toi)" : ""}</b><small>${esc(m.email || "")}</small></div>
+        <div class="tm-mr"><select data-tm="role" data-uid="${esc(m.k)}" aria-label="Rôle de ${esc(T.nameOf(m.k))}">${Object.entries(ROLES).map(([k, l]) => `<option value="${k}" ${m.role === k ? "selected" : ""}>${l}</option>`).join("")}</select></div>
+        <div class="tm-ms">${sv.map(s => `<button class="chip-b sm" data-act="tm-m-svc" data-uid="${esc(m.k)}" data-id="${esc(s.id)}" aria-pressed="${(m.services || []).includes(s.id)}">${esc(s.nom)}</button>`).join("")}</div>
+        <div class="tm-ma">${self ? "" : `<button class="btn ghost sm" data-act="tm-m-del" data-uid="${esc(m.k)}">Retirer</button>`}</div></div>`; }).join("")}</div>
+    <details class="tm-roles"><summary>Que peut faire chaque rôle ?</summary><dl>${Object.entries(ROLES).map(([k, l]) => `<dt>${l}</dt><dd>${ROLE_HELP[k]}</dd>`).join("")}</dl></details></section>`;
+  if (!S.tmInv) { S.tmInv = []; S.tmInvUn = T.watchInvites(list => { S.tmInv = list; if (S.view === "admin") schedule(); }); }
+  const url = location.origin + location.pathname;
+  h += `<section class="panel tm-p"><h2>Inviter un collaborateur</h2>
+    <form class="tm-invf" data-tm-form="invite" autocomplete="off">
+      <label class="field"><span class="lbl">E-mail</span><input type="email" name="email" placeholder="prenom.nom@entreprise.fr" autocapitalize="off" required></label>
+      <label class="field"><span class="lbl">Nom affiché</span><input type="text" name="nom" placeholder="Prénom Nom (facultatif)"></label>
+      <label class="field"><span class="lbl">Rôle</span><select name="role">${Object.entries(ROLES).map(([k, l]) => `<option value="${k}" ${k === "membre" ? "selected" : ""}>${l}</option>`).join("")}</select></label>
+      ${sv.length ? `<div class="field wide"><span class="lbl">Services</span><div class="chipset">${sv.map(s => `<label class="chip-b sm tm-ck"><input type="checkbox" name="svc" value="${esc(s.id)}">${esc(s.nom)}</label>`).join("")}</div></div>` : ""}
+      <div class="wide"><button class="btn primary" type="submit">Inviter</button></div></form>
+    <p class="sub">Ton collègue crée son compte dans l'app avec cette adresse e-mail, vérifie son adresse, puis accepte l'invitation dans son <b>Profil</b>.</p>
+    ${(S.tmInv || []).length ? `<h4 class="tm-h4">En attente</h4><div class="tm-mem">${S.tmInv.map(i => `<div class="tm-m"><div class="tm-mn"><b>${esc(i.nom || i.email)}</b><small>${esc(i.email)}</small></div><div class="tm-mr"><span class="pill">${esc(ROLES[i.role] || i.role)}</span></div>
+      <div class="tm-ms">${(i.services || []).map(s => `<span class="pill">${esc(svcName(s))}</span>`).join("")}</div>
+      <div class="tm-ma"><button class="btn ghost sm" data-act="tm-inv-copy" data-email="${esc(i.email)}" data-url="${esc(url)}">Copier le message</button><button class="btn ghost sm" data-act="tm-inv-cancel" data-email="${esc(i.email)}">Annuler</button></div></div>`).join("")}</div>` : ""}</section>`;
+  h += `<section class="panel tm-p tm-danger"><h2>Supprimer l'entreprise</h2>
+    <p>Supprime <b>définitivement</b> « ${esc(T.org.nom)} » et toutes ses données : tâches, chiffrages, projets, base des unités d'œuvre, entreprises émettrices, heures, réglages des collaborateurs et invitations. Les collaborateurs sont retirés ; leurs <b>espaces perso ne sont pas touchés</b>.</p>
+    <p class="sub">Action irréversible. Pense à garder une copie avant : Réglages ▸ Sauvegarde (.json) et exports Excel.</p>
+    <label class="field"><span class="lbl">Pour confirmer, tape le nom de l'entreprise</span><input type="text" id="tm-del-name" autocomplete="off" placeholder="${esc(T.org.nom)}"></label>
+    <div class="row" style="margin-top:10px"><button class="btn danger" data-act="tm-org-del" ${S.tmBusy ? "disabled" : ""}>Supprimer définitivement l'entreprise</button></div><p class="sub" id="tm-del-msg">${esc(S.tmDel || "")}</p></section>`;
+  return h;
+}
+const viewEquipe = viewProfil;
 
 /* ---------- Actions ---------- */
 async function teamAction(act, a){
@@ -4663,6 +4812,8 @@ async function teamAction(act, a){
   if (act === "tm-verif-check") { let ok = false; try { ok = await T.checkVerified(); } catch (e) {} const m = $("#tm-verif-msg"); if (ok) { toast("Adresse vérifiée"); render(true); } else if (m) m.textContent = "Adresse pas encore vérifiée. Clique sur le lien reçu par e-mail, puis réessaie."; return; }
   if (act === "tm-inv-ok") { const inv = T.invites.find(x => x.id === a.dataset.id); if (!inv) return; a.disabled = true;
     try { const id = await T.acceptInvite(inv); toast("Bienvenue dans " + inv.orgName); setTimeout(() => T.switchTo(id), 600); } catch (e) { a.disabled = false; toast(e && e.code === "unverified" ? "Vérifie d'abord ton adresse e-mail." : "Impossible de rejoindre : l'invitation a peut-être été annulée."); } return; }
+  if (act === "tm-pwd") { const m = $("#tm-pwd-msg"); try { await T.resetPassword(); if (m) m.textContent = `E-mail envoyé à ${T.email} : clique sur le lien pour choisir un nouveau mot de passe (regarde aussi les spams).`; } catch (e) { if (m) m.textContent = "Envoi impossible pour l'instant. Réessaie."; } return; }
+  if (act === "logout-tm") { if (window.TODO_ACCOUNT) window.TODO_ACCOUNT.signOut(); return; }
   if (act === "tm-inv-no") { const inv = T.invites.find(x => x.id === a.dataset.id); if (inv) await run(T.declineInvite(inv), "Invitation refusée"); render(true); return; }
   if (!T.active) return;
   const adm = T.isAdmin();
@@ -4682,9 +4833,18 @@ async function teamAction(act, a){
   if (act === "tm-m-svc" && adm) { const m = T.members.get(a.dataset.uid); if (!m) return; const s = a.dataset.id, cur = m.services || []; await run(T.setMember(a.dataset.uid, {services:cur.includes(s) ? cur.filter(x => x !== s) : [...cur, s]})); return; }
   if (act === "tm-m-del" && adm) { if (!a.classList.contains("armed")) { a.classList.add("armed"); a.textContent = "Confirmer"; return; } await run(T.removeMember(a.dataset.uid), "Collaborateur retiré"); return; }
   if (act === "tm-inv-cancel" && adm) { await run(T.cancelInvite(a.dataset.email), "Invitation annulée"); return; }
-  if (act === "tm-inv-copy") { const txt = `Bonjour,\n\nJe t'invite à rejoindre « ${T.org.nom} » sur TO DO BIM.\n1. Ouvre ${a.dataset.url}\n2. Crée ton compte avec l'adresse ${a.dataset.email}\n3. Va dans Équipe (en haut de l'écran), vérifie ton adresse e-mail et accepte l'invitation.\n\nÀ bientôt !`; if (await copyText(txt)) toast("Message copié : colle-le dans un e-mail"); else showCopyBox(txt); return; }
+  if (act === "tm-inv-copy") { const txt = `Bonjour,\n\nJe t'invite à rejoindre « ${T.org.nom} » sur TO DO BIM.\n1. Ouvre ${a.dataset.url}\n2. Crée ton compte avec l'adresse ${a.dataset.email}\n3. Touche ton profil (le rond avec tes initiales, en haut à droite), vérifie ton adresse e-mail et accepte l'invitation.\n\nÀ bientôt !`; if (await copyText(txt)) toast("Message copié : colle-le dans un e-mail"); else showCopyBox(txt); return; }
   if (act === "tm-leave") { if (!a.classList.contains("armed")) { a.classList.add("armed"); a.textContent = "Confirmer : quitter l'entreprise"; return; } await run(T.leave()); return; }
   if (act === "tm-copy") { await copyPerso(); return; }
+  if (act === "tm-org-del" && adm) {
+    const v = (($("#tm-del-name") || {}).value || "").trim();
+    if (v !== T.org.nom.trim()) { toast("Tape exactement le nom de l'entreprise pour confirmer."); $("#tm-del-name")?.focus(); return; }
+    if (!a.classList.contains("armed")) { a.classList.add("armed"); a.textContent = "Dernière confirmation : supprimer tout"; return; }
+    a.disabled = true; S.tmBusy = "del";
+    const say = m => { S.tmDel = m; const el = $("#tm-del-msg"); if (el) el.textContent = m; };
+    try { await T.deleteOrg(say); } catch (e) { console.warn(e); S.tmBusy = ""; a.disabled = false; say("Suppression interrompue : vérifie ta connexion et relance. Ce qui a déjà été supprimé l'est définitivement ; l'entreprise reste bloquée en suppression."); }
+    return;
+  }
   if (act === "tm-pub-nav" || act === "tm-pub-copy") { await pubAction(act, a); return; }
   if (act === "tm-who") { S.decWho = a.dataset.uid === T.uid ? "" : a.dataset.uid; render(true); return; }
 }
@@ -4697,7 +4857,7 @@ document.addEventListener("submit", async ev => {
   ev.preventDefault(); ev.stopPropagation();
   const T = TMX(), k = f.dataset.tmForm, fd = new FormData(f);
   try {
-    if (k === "org") { const nom = String(fd.get("nom") || "").trim(); if (!nom) { toast("Donne un nom à l'entreprise."); return; } const id = await T.createOrg(nom); toast("Entreprise créée"); setTimeout(() => T.switchTo(id, "#equipe"), 500); return; }
+    if (k === "org") { const nom = String(fd.get("nom") || "").trim(); if (!nom) { toast("Donne un nom à l'entreprise."); return; } const id = await T.createOrg(nom); toast("Entreprise créée"); setTimeout(() => T.switchTo(id, "#admin"), 500); return; }
     if (!T.active || !T.isAdmin()) return;
     if (k === "svc") { const nom = String(fd.get("nom") || "").trim(); if (!nom) return; const svs = {...(T.org.services || {})}; const id = "s" + Date.now().toString(36); svs[id] = {nom, couleur:SV_COLORS[Object.keys(svs).length % SV_COLORS.length]}; await T.saveOrg({services:svs}); toast("Service ajouté"); return; }
     if (k === "invite") { const email = String(fd.get("email") || "").trim().toLowerCase();
@@ -4740,11 +4900,11 @@ function teamProjectsPanel(){
 }
 function teamRespPanel(){
   const T = TM();
-  return `<div class="panel"><h2>Responsables</h2><p>Ce sont les collaborateurs de l'entreprise : ${[...T.members.keys()].map(k => esc(T.nameOf(k))).join(", ")}. Pour en ajouter, invite-les dans <a href="#equipe">Équipe</a>.</p></div>`;
+  return `<div class="panel"><h2>Responsables</h2><p>Ce sont les collaborateurs de l'entreprise : ${[...T.members.keys()].map(k => esc(T.nameOf(k))).join(", ")}. Pour en ajouter, invite-les depuis le <a href="#admin">panneau admin</a>.</p></div>`;
 }
 function teamSpacePanel(){
   const T = TMX(); if (!T) return "";
-  return `<div class="panel tm-p"><h2>Espace de travail</h2><p>${T.active ? `Entreprise <b style="color:var(--ink)">${esc(T.org.nom)}</b> · ${esc(ROLES[T.me.role] || "")}` : "Espace perso (visible par toi seul)."}</p><div class="row"><a class="btn" href="#equipe">${T.active ? "Équipe et partage" : "Créer ou rejoindre une entreprise"}</a></div></div>`;
+  return `<div class="panel tm-p"><h2>Espace de travail</h2><p>${T.active ? `Entreprise <b style="color:var(--ink)">${esc(T.org.nom)}</b> · ${esc(ROLES[T.me.role] || "")}` : "Espace perso (visible par toi seul)."}</p><div class="row"><a class="btn" href="#profil">${T.active ? "Profil et équipe" : "Créer ou rejoindre une entreprise"}</a>${T.active && T.isAdmin() ? `<a class="btn" href="#admin">Panneau admin</a>` : ""}</div></div>`;
 }
 
 /* ---------- Copie de l'espace perso vers l'entreprise ---------- */
@@ -4787,7 +4947,7 @@ function pubMonth(m){
   const [y, mo] = m.split("-").map(Number), last = ymd(new Date(y, mo, 0)), lim = last < today() ? last : today();
   const lines = [], abs = {}; let tot = 0, cap = 0;
   for (let d = m + "-01"; d <= lim; d = addDays(d, 1)) {
-    for (const r of decRows(d)) if (r.m > 0) { lines.push({d, m:r.m, ref:r.ref || "", desc:r.desc || "", lieu:r.lieu || "", km:r.km || "", dep:!!r.dep, fact:r.fact || ""}); tot += r.m; }
+    for (const r of decRows(d)) if (r.m > 0 || r.masq > 0) { lines.push({d, m:r.m, masq:r.masq || 0, ref:r.ref || "", desc:r.desc || "", lieu:r.lieu || "", km:r.km || "", dep:!!r.dep, fact:r.fact || ""}); tot += r.m; }
     const ab = absOn(d); if (ab && !ab.auto) abs[d] = ab.type + (ab.part !== "j" ? " (½)" : "");
     cap += Math.max(0, capOn(d) - absHours(d)) * 60;
   }
@@ -4869,6 +5029,68 @@ function teamBordBlock(){
     <p class="sub" style="margin:8px 0 0">Les tâches personnelles des collaborateurs ne sont pas comptées dans « Planifié ». Le détail des heures est dans <a href="#heures">Heures</a> ▸ Collaborateur.</p></section>`;
 }
 
+/* ---------- Réglages : sections, affichage (propre à chaque appareil) ---------- */
+const DISP_KEY = "todobim.disp";
+function dispGet(){ try { return JSON.parse(localStorage.getItem(DISP_KEY) || "{}") || {}; } catch (e) { return {}; } }
+function dispSet(patch){ const d = {...dispGet(), ...patch}; try { localStorage.setItem(DISP_KEY, JSON.stringify(d)); } catch (e) {} applyDisp(); return d; }
+const TAB_OPT = [["taches", "Tâches"], ["planning", "Planning"], ["heures", "Heures"], ["chiffrage", "Chiffrage AO"], ["matrice", "Matrice"], ["bord", "Bord"], ["aide", "Aide"]];
+const dispHiddenTab = k => (dispGet().hideTabs || []).includes(k);
+function dispHome(){ const h = dispGet().home; return h && VIEWS.some(v => v.k === h && !v.hidden) ? h : "jour"; }
+function applyDisp(){
+  const d = dispGet(), th = ["light", "auto"].includes(d.theme) ? d.theme : "dark", R = document.documentElement;
+  if (th === "dark") R.removeAttribute("data-theme"); else R.setAttribute("data-theme", th);
+  const light = th === "light" || (th === "auto" && window.matchMedia && matchMedia("(prefers-color-scheme: light)").matches);
+  const m = document.querySelector('meta[name="theme-color"]'); if (m) m.setAttribute("content", light ? "#FFFFFF" : "#12161D");
+  R.classList.toggle("is-light", light);
+}
+applyDisp();
+try { matchMedia("(prefers-color-scheme: light)").addEventListener("change", () => { applyDisp(); }); } catch (e) {}
+
+function dispPanel(){
+  const d = dispGet(), th = ["light", "auto"].includes(d.theme) ? d.theme : "dark", hid = d.hideTabs || [];
+  const seg = (v, l) => `<button type="button" data-act="disp-theme" data-v="${v}" aria-pressed="${th === v}">${l}</button>`;
+  return `<div class="panel"><h2>Affichage</h2><p>Ces réglages ne concernent que <b style="color:var(--ink)">cet appareil</b> : tu peux avoir un affichage différent sur ton Mac et sur ton iPhone.</p>
+    <div class="field"><span class="lbl">Thème</span><div class="segc">${seg("dark", "Sombre")}${seg("light", "Clair")}${seg("auto", "Automatique")}</div><small class="tm-hint">Automatique suit le réglage clair / sombre de l'appareil.</small></div>
+    <label class="field" style="margin-top:12px"><span class="lbl">Page d'ouverture</span><select id="disp-home" class="ctl">${[["jour", "Ma journée"], ...TAB_OPT.filter(([k]) => k !== "aide")].map(([k, l]) => `<option value="${k}" ${dispHome() === k ? "selected" : ""}>${l}</option>`).join("")}</select></label>
+    <div class="field" style="margin-top:12px"><span class="lbl">Onglets affichés</span><div class="chipset">${TAB_OPT.map(([k, l]) => `<button type="button" class="chip-b sm" data-act="disp-tab" data-k="${k}" aria-pressed="${!hid.includes(k)}">${l}</button>`).join("")}</div>
+      <small class="tm-hint">Masque les onglets que tu n'utilises pas. Ma journée et Réglages restent toujours affichés ; une page masquée reste accessible par ses liens.</small></div></div>`;
+}
+
+/* regroupe les panneaux de réglages par thème, avec un sommaire */
+const ST_GROUPS = [
+  ["affichage", "Affichage", h => h === "Affichage"],
+  ["compte", "Compte et équipe", h => /^(Compte|Espace de travail)/.test(h)],
+  ["listes", "Listes", h => /^(Projets|Responsables|Types)/.test(h)],
+  ["planning", "Planning", h => /^Planning/.test(h)],
+  ["heures", "Décompte des heures", h => /^Décompte/.test(h)],
+  ["donnees", "Import, export et sauvegarde", h => /^(Import|Export|Sauvegarde|Archives)/.test(h)],
+];
+function viewReglages2(){
+  const tpl = document.createElement("template"); tpl.innerHTML = viewReglages();
+  const head = tpl.content.querySelector(".view-head"), st = tpl.content.querySelector(".settings");
+  if (!st) return tpl.innerHTML;
+  const panels = [...st.children], groups = new Map(ST_GROUPS.map(g => [g[0], []])), other = [];
+  const aff = document.createElement("template"); aff.innerHTML = dispPanel(); panels.unshift(aff.content.firstElementChild);
+  for (const p of panels) { const h = ((p.querySelector("h2") || {}).textContent || "").trim(); const g = ST_GROUPS.find(x => x[2](h)); (g ? groups.get(g[0]) : other).push(p); }
+  const secs = ST_GROUPS.filter(g => groups.get(g[0]).length).map(g => [g[0], g[1], groups.get(g[0])]);
+  if (other.length) secs.push(["app", "Application", other]);
+  const sub = head && head.querySelector(".sub"); if (sub) sub.textContent = "Affichage, compte, listes, planning, décompte des heures, import et sauvegarde.";
+  const html = p => p.outerHTML;
+  return `${head ? head.outerHTML : ""}<div class="hp-lay st-lay"><nav class="hp-toc" aria-label="Sections des réglages">${secs.map(([k, l]) => `<button data-help="st-${k}">${l}</button>`).join("")}</nav>
+    <div class="hp-main">${secs.map(([k, l, ps]) => `<section class="st-sec" id="hp-st-${k}"><h2 class="st-h">${l}</h2><div class="settings">${ps.map(html).join("")}</div></section>`).join("")}</div></div>`;
+}
+
+document.addEventListener("click", ev => {
+  const a = ev.target.closest && ev.target.closest('[data-act^="disp-"]'); if (!a) return;
+  ev.preventDefault(); ev.stopPropagation();
+  if (a.dataset.act === "disp-theme") { dispSet({theme:a.dataset.v}); toast(a.dataset.v === "light" ? "Thème clair" : a.dataset.v === "auto" ? "Thème automatique" : "Thème sombre"); render(true); return; }
+  if (a.dataset.act === "disp-tab") { const k = a.dataset.k, hid = dispGet().hideTabs || []; dispSet({hideTabs:hid.includes(k) ? hid.filter(x => x !== k) : [...hid, k]}); render(true); return; }
+}, true);
+document.addEventListener("change", ev => {
+  const t = ev.target; if (!t || t.id !== "disp-home") return;
+  ev.stopPropagation(); dispSet({home:t.value}); toast("Page d'ouverture enregistrée");
+}, true);
+
 /* ---------- Rendu principal ---------- */
 function render(force){
   if (!force && S.ptrDown && Date.now() - S.ptrDown < 4000) { S.pendingRender = true; return; }
@@ -4881,12 +5103,12 @@ function render(force){
   if (!force && !keep && ae && v.contains(ae) && /INPUT|TEXTAREA|SELECT/.test(ae.tagName) && S.view !== "taches") { S.pendingRender = true; return; }
   S.pendingRender = false;
   if (S.view === "taches") {
-    if (S.built !== "taches" || force === "shell") { v.innerHTML = viewTachesShell(); S.built = "taches"; }
+    if (S.built !== "taches" || force === "shell") { v.innerHTML = teamBanner() + viewTachesShell(); S.built = "taches"; }
     updateTaches();
     return;
   }
   if (!force && PD && PD.active) { S.pendingRender = true; return; }
-  const html = {jour:viewJour, planning:viewPlanning, heures:viewHeuresTeam, chiffrage:viewChiffrage, equipe:viewEquipe, matrice:viewMatrice, bord:viewBord2, aide:viewAide, reglages:viewReglages}[S.view]();
+  const html = {jour:viewJour, planning:viewPlanning, heures:viewHeuresTeam, chiffrage:viewChiffrage, equipe:viewProfil, profil:viewProfil, admin:viewAdmin, matrice:viewMatrice, bord:viewBord2, aide:viewAide, reglages:viewReglages2}[S.view]();
   v.innerHTML = teamBanner() + html; S.built = S.view;
   if (S.view === "chiffrage") v.querySelectorAll("textarea.fit").forEach(ta => { ta.style.height = "auto"; ta.style.height = ta.scrollHeight + 2 + "px"; });
   if (keep) focusRestore(keep);
@@ -4915,7 +5137,7 @@ document.addEventListener("focusout", () => setTimeout(() => { if (S.pendingRend
 
 function route(){
   const h = (location.hash || "").replace("#", "");
-  S.view = VIEWS.some(v => v.k === h) ? h : "jour";
+  S.view = VIEWS.some(v => v.k === h) ? h : h ? "jour" : dispHome();
   S.built = null; render(true); window.scrollTo(0, 0);
 }
 window.addEventListener("hashchange", route);
