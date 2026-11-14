@@ -1200,6 +1200,36 @@ html.is-light .gb-t{text-shadow:none}
 .pc .tbl-wrap{overflow-x:auto} .bd-two>.panel{min-width:0}
 
 a.btn{color:var(--ink);text-decoration:none} a.btn.primary{color:var(--accent-ink)} a.lnk{color:var(--accent);text-decoration:none} a.lnk:hover{text-decoration:underline}
+
+/* synchronisation heures / agenda, import */
+.dec-hid.conf{background:color-mix(in srgb,var(--today) 10%,var(--surface));color:var(--ink)}
+.sy-choice{display:grid;gap:8px} .sy-choice .btn{display:grid;justify-items:start;text-align:left;gap:2px;padding:10px 12px;height:auto} .sy-choice small{font-weight:400;color:var(--muted);font-size:12px}
+.sy-new[hidden]{display:none}
+.imp-k{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 10px} .imp-k span{border:1px solid var(--line);border-radius:999px;padding:3px 10px;font-size:12.5px} .imp-k b{font-family:var(--f-mono)}
+.imp-k .st-add{border-color:color-mix(in srgb,var(--done) 50%,var(--line))} .imp-k .st-repl{border-color:color-mix(in srgb,var(--accent) 50%,var(--line))} .imp-k .st-conf{border-color:color-mix(in srgb,var(--today) 60%,var(--line))}
+.imp-wrap{max-height:46vh;overflow:auto;border:1px solid var(--line);border-radius:8px}
+.imp-t td,.imp-t th{padding:5px 8px;font-size:12.5px} .imp-t th{position:sticky;top:0;background:var(--surface);z-index:1} .imp-t .num{text-align:right;font-family:var(--f-mono);white-space:nowrap}
+.imp-t tr.st-same td{color:var(--muted)} .imp-t tr.st-conf td:first-child{box-shadow:inset 3px 0 0 var(--today)} .imp-t tr.st-repl td:first-child{box-shadow:inset 3px 0 0 var(--accent)} .imp-t tr.st-add td:first-child{box-shadow:inset 3px 0 0 var(--done)}
+.imp-t select{border:1px solid var(--line);background:var(--bg);border-radius:6px;padding:3px 6px;color:var(--ink)}
+.imp-st{font-size:12px;color:var(--muted)} .imp-all{margin:0 0 8px;align-items:center}
+.imp-ag{margin-top:12px;align-items:flex-start} .imp-ag span{font-size:13px}
+.imp-ov .sheet{max-width:min(760px,calc(100vw - 20px));width:100%}
+.imp-x{font:inherit;color:var(--ink);white-space:nowrap} .imp-det td{background:var(--bg)}
+.imp-cmp{display:grid;grid-template-columns:1fr 1fr;gap:10px} .imp-cmp h5{margin:2px 0 4px;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.imp-cmp ul{list-style:none;margin:0;padding:0;display:grid;gap:3px} .imp-cmp li{display:grid;grid-template-columns:auto auto 1fr;gap:6px;font-size:12px;align-items:baseline} .imp-cmp li b{font-weight:600;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap} .imp-cmp .mono{font-family:var(--f-mono)} .imp-cmp li span:last-child{color:var(--muted)}
+@media (max-width:820px){ .imp-cmp{grid-template-columns:1fr} }
+.imp-wrap{flex:0 0 auto;min-height:120px} .sy-ov .sheet-b>*{flex-shrink:0}
+@media (max-width:820px){
+  .imp-wrap{min-height:240px}
+  .imp-t thead{display:none} .imp-t,.imp-t tbody{display:block}
+  .imp-t tr:not(.imp-det){display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 8px;padding:7px 8px;border-bottom:1px solid var(--line)}
+  .imp-t tr:not(.imp-det) td{border:0;padding:0;box-shadow:none!important} .imp-t tr:not(.imp-det) td:nth-child(3){grid-column:1/-1;text-align:left} .imp-t tr:not(.imp-det) td:nth-child(4){grid-column:1/-1}
+  .imp-t tr.st-conf{box-shadow:inset 3px 0 0 var(--today)} .imp-t tr.st-repl{box-shadow:inset 3px 0 0 var(--accent)} .imp-t tr.st-add{box-shadow:inset 3px 0 0 var(--done)}
+  .imp-t tr.imp-det{display:block} .imp-t tr.imp-det[hidden]{display:none} .imp-t tr.imp-det td{display:block}
+  .imp-t select{font-size:16px;width:100%}
+  .imp-cmp li{grid-template-columns:auto minmax(0,1fr)} .imp-cmp li span:last-child{grid-column:1/-1}
+}
+@media (max-width:820px){ .sy-ov .sheet-f{flex-wrap:wrap;gap:8px} .sy-ov .sheet-f .spacer{display:none} .sy-ov .sheet-f .btn{flex:1 1 40%} .sy-ov .sheet-f .btn.ghost{flex-basis:100%;order:3} }
 .mobile-tabs{display:none}
 .auth{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:24px max(16px,env(safe-area-inset-right,0px)) 24px max(16px,env(safe-area-inset-left,0px));overflow-y:auto}
 .auth-card{width:min(400px,100%);display:grid;gap:12px}
@@ -2743,6 +2773,8 @@ function decRows(d){
       tasks, projets:[...new Set(tasks.map(t => t.projet).filter(Boolean))], src:"planning", masq});
   }
   rows.hidden = hidden;
+  /* jour importé : temps de l'agenda non compté (affiché pour arbitrer) */
+  rows.agIgn = hasImp ? decSplit(decItems(d), refOfTask).reduce((s2, g) => s2 + g.min, 0) : 0;
   for (const r of (doc.manual || []).filter(x => x.d === d)) rows.push({key:"m:" + r.id, id:r.id, d, ref:r.ref || "", auto:0, m:Number(r.m) || 0, desc:r.desc || "", dep:!!r.dep, lieu:r.lieu || "", km:r.km || "", fact:r.fact || "", tasks:[], projets:projOfRef(r.ref), src:"manuel", imp:!!r.imp});
   return rows;
 }
@@ -2761,7 +2793,7 @@ function decData(){
     const rows = decRows(d), cap = capOn(d), ab = absOn(d);
     if (!rows.length && !rows.hidden.length && cap <= 0 && !ab) continue;
     const tot = rows.reduce((s, r) => s + r.m, 0);
-    days.push({d, rows, hidden:rows.hidden, cap, ab, absH:absHours(d), tot});
+    days.push({d, rows, hidden:rows.hidden, agIgn:rows.agIgn, cap, ab, absH:absHours(d), tot});
   }
   if (S.dec.mode === "annee") { const act = new Set(days.filter(x => x.rows.some(r => r.m)).map(x => monthOf(x.d))); return {P, days:days.filter(x => act.has(monthOf(x.d)))}; }
   return {P, days};
@@ -2827,6 +2859,7 @@ function viewHeures(){
           <select data-dec="abs" ${ro ? "disabled" : ""} aria-label="Absence"><option value="">${ab && ab.auto ? "Férié (auto)" : "Présent"}</option>${ABS_TYPES.map(x => `<option ${ab && !ab.auto && ab.type === x ? "selected" : ""}>${x}</option>`).join("")}</select>
           ${ab && !ab.auto ? `<select data-dec="part" ${ro ? "disabled" : ""} aria-label="Durée de l'absence">${Object.entries(ABS_PART).map(([k, v]) => `<option value="${k}" ${ab.part === k ? "selected" : ""}>${v}</option>`).join("")}</select>` : ""}</div>
         <div class="dd-act">${ro ? "" : `<button class="btn ghost sm" data-act="dec-add" title="Ajouter une ligne" aria-label="Ajouter une ligne">${I.plus}<span class="lbl-m">Ligne</span></button>`}<button class="btn ghost sm" data-act="dec-copy-day" title="Copier les lignes de ce jour">Copier</button></div></div>
+      ${Dy.agIgn ? `<div class="dec-hid conf" data-d="${Dy.d}"><span>Jour importé : le temps de l'agenda (<b>${durTxt(roundArr(Dy.agIgn))}</b>) n'est pas compté ce jour-là.</span>${ro ? "" : `<button class="btn ghost sm" data-act="sy-agday" data-d="${Dy.d}">Revenir à l'agenda</button>`}</div>` : ""}
       ${(Dy.hidden || []).map(h => `<div class="dec-hid" data-key="${esc(h.key)}" data-d="${Dy.d}"><span>Retiré du décompte : <b>${esc(h.ref || "sans référence")}</b> · ${esc(h.tasks.map(t => t.tache).filter(Boolean).join(" + "))}${h.min ? ` (${durTxt(h.min)})` : ""}</span>${ro ? "" : `<button class="btn ghost sm" data-act="dec-unhide">Rétablir</button>`}</div>`).join("")}
       ${Dy.rows.length ? Dy.rows.map(r => decRowHtml(r, fut)).join("") : (Dy.hidden || []).length ? "" : `<div class="dec-none">${ab ? `Absence : ${esc(ab.type)}${ab.part !== "j" ? " (" + ABS_PART[ab.part].toLowerCase() + ")" : ""}` : "Aucun créneau placé ce jour-là."}</div>`}
     </section>`;
@@ -2845,7 +2878,7 @@ function viewHeures(){
       <div class="kc"><span class="kc-l">Absences</span><span class="kc-v">${hfmt(R.absJ)} j</span></div>
       <div class="kc"><span class="kc-l">Sans référence</span><span class="kc-v ${R.noRef ? "warn" : ""}">${R.noRef}</span></div>
     </div>
-    <div class="dec-tools">${ro ? "" : `<button class="btn primary" data-act="dec-copy">Copier pour Excel</button>`}<button class="btn" data-act="dec-xlsx">Exporter en .xlsx</button>${ro ? "" : `<button class="btn" data-act="dec-add" data-d="${P.lim >= td && P.a <= td ? td : P.a}">${I.plus} Ligne hors planning</button><button class="btn" data-act="dec-import">Importer un décompte…</button><input type="file" id="dec-imp-file" accept=".xlsx,.xls,.xlsm,.csv" hidden>${nImp ? `<button class="btn ghost" data-act="dec-unimport" title="Supprime les ${nImp} lignes importées de cette période">Retirer l'import (${nImp})</button>` : ""}`}
+    <div class="dec-tools">${ro ? "" : `<button class="btn primary" data-act="dec-copy">Copier pour Excel</button>`}<button class="btn" data-act="dec-xlsx">Exporter en .xlsx</button>${ro ? "" : `<button class="btn" data-act="dec-add" data-d="${P.lim >= td && P.a <= td ? td : P.a}">${I.plus} Ajouter du temps</button><button class="btn" data-act="dec-import">Importer un décompte…</button><input type="file" id="dec-imp-file" accept=".xlsx,.xls,.xlsm,.csv" hidden>${nImp ? `<button class="btn ghost" data-act="dec-unimport" title="Supprime les ${nImp} lignes importées de cette période">Retirer l'import (${nImp})</button>` : ""}`}
       <span class="sub dec-hint">« Copier » met les colonnes A à I (Collaborateur → Facture) dans le presse-papiers, sans l'en-tête : colle-les directement sous ton tableau.</span><span class="progress-line" id="dec-progress">${esc(S.decMsg || "")}</span></div>
     ${R.noRef ? `<div class="dec-warn">⚠ ${R.noRef} ligne${R.noRef > 1 ? "s" : ""} sans référence. Choisis-la sur la ligne (elle s'applique aux tâches concernées), ou associe une référence par défaut à chaque projet dans Réglages ▸ Décompte des heures.</div>` : ""}
     <div class="dec-layout">
@@ -2889,6 +2922,8 @@ async function decChange(el){
     for (const id of ids) { const t = S.tasks.get(id); if (t) t.reference = v; }
     render(true); return;
   }
+  /* durée d'une ligne issue de l'agenda : les créneaux sont ajustés */
+  if (f === "m" && !mid && await syncDur(d, key, v)) { render(true); return; }
   await decSave(month, c => {
     if (mid) { const r = c.manual.find(x => x.id === mid); if (r) r[f] = v; }
     else {
@@ -2917,13 +2952,15 @@ async function decAction(act, a){
     D.ref = D.mode === "semaine" ? addDays(ymd(r), 7 * k) : D.mode === "annee" ? ymd(new Date(r.getFullYear() + k, 0, 1)) : ymd(new Date(r.getFullYear(), r.getMonth() + k, 1));
     render(true); return;
   }
-  if (act === "dec-add") {
+  if (act === "dec-add") { addLineSheet(a.dataset.d || a.closest(".dec-day")?.dataset.d || today()); return; }
+  if (act === "dec-add-free") {
     const d = a.dataset.d || a.closest(".dec-day")?.dataset.d || today(), id = Date.now().toString(36) + Math.random().toString(36).slice(2, 5);
     await decSave(monthOf(d), c => { c.manual.push({id, d, ref:"", m:60, desc:"", dep:false, lieu:"", km:"", fact:""}); });
     render(true); setTimeout(() => { const el = document.querySelector(`.dec-row[data-mid="${id}"] [data-dec="desc"]`); if (el) { el.scrollIntoView({block:"center"}); el.focus(); } }, 30);
     return;
   }
-  if (act === "dec-hide") { const row = a.closest(".dec-row"), d = row.dataset.d, key = row.dataset.key; await decSave(monthOf(d), c => { c.rows[key] = {...(c.rows[key] || {}), hide:true}; }); toast("Ligne retirée du décompte (le planning ne change pas)"); render(true); return; }
+  if (act === "dec-hide") { const row = a.closest(".dec-row"); xRowSheet(row.dataset.d, row.dataset.key); return; }
+  if (act === "dec-hide-now") { const row = a.closest(".dec-row"), d = row.dataset.d, key = row.dataset.key; await decSave(monthOf(d), c => { c.rows[key] = {...(c.rows[key] || {}), hide:true}; }); toast("Ligne retirée du décompte (le planning ne change pas)"); render(true); return; }
   if (act === "dec-unhide") { const row = a.closest(".dec-hid"), d = row.dataset.d, key = row.dataset.key; await decSave(monthOf(d), c => { if (c.rows[key]) { delete c.rows[key].hide; if (!Object.keys(c.rows[key]).length) delete c.rows[key]; } }); toast("Ligne rétablie"); render(true); return; }
   if (act === "dec-del") { const row = a.closest(".dec-row"), d = row.dataset.d, mid = row.dataset.mid; await decSave(monthOf(d), c => { c.manual = c.manual.filter(x => x.id !== mid); }); toast("Ligne supprimée"); render(true); return; }
   if (act === "dec-reset") { const row = a.closest(".dec-row"), d = row.dataset.d, key = row.dataset.key, f = a.dataset.f; await decSave(monthOf(d), c => { if (c.rows[key]) { delete c.rows[key][f]; if (!Object.keys(c.rows[key]).length) delete c.rows[key]; } }); render(true); return; }
@@ -4513,17 +4550,25 @@ const HELP = [
       <li>Survole un créneau (ou touche-le sur iPhone) pour voir sa fiche et ses actions.</li></ul>
     <h4>Gantt</h4><p>Les tâches planifiées sous forme de barres, par semaines, mois ou année. Glisse une barre pour la déplacer, tire ses bords pour changer ses dates, ou trace une barre sur une ligne vide.</p>${go("planning", "Ouvrir le planning")}`},
   {k:"heures", t:"Heures (décompte)", html:`
-    <p>Le décompte reprend les <b>créneaux de l'agenda</b> et les présente comme ton tableau : Collaborateur, Date, Durée, Référence, Déplacement, Lieu, Kilomètres, Description, Facture.</p>
-    <ul><li><b>Une ligne par jour et par référence.</b> La description reprend le nom des tâches du jour.</li>
-      <li><b>Tâches en parallèle</b> : le temps commun n'est jamais compté deux fois. Par défaut, il va à la <b>référence qui couvre le plus</b> à ce moment (celle dont le bloc continu est le plus long) : tâche A de 9 h à 12 h et tâche B de 10 h à 11 h donnent A 3 h, B 0 h. Tu peux choisir le partage à parts égales (A 2,5 h, B 0,5 h) dans Réglages ▸ Décompte des heures. Deux tâches de la même référence ne comptent qu'une fois. Le temps non compté (<b>temps masqué</b>) reste visible : la référence garde sa ligne à 0 h, avec la mention « temps masqué », dans le décompte, la copie pour Excel et l'export.</li>
-      <li><b>Référence</b> : celle de la tâche, sinon celle de son projet (Réglages ▸ Décompte des heures). Une ligne sans référence est signalée en orange : choisis-la sur la ligne, elle s'appliquera aux tâches concernées.</li>
-      <li><b>Retirer une ligne</b> : la croix ✕ au bout d'une ligne issue du planning la retire du décompte, sans toucher au planning ; son temps revient aux autres références du jour. « Rétablir » la remet.</li>
-      <li><b>Corriger</b> : modifie la durée ou la description d'une ligne ; le bouton ↺ revient à la valeur du planning. « Ligne hors planning » ajoute un temps qui n'est pas dans l'agenda.</li>
-      <li><b>Absences</b> : choisis Congé, RTT, Maladie… pour la journée ou une demi-journée. Les jours fériés sont reconnus automatiquement.</li></ul>
-    <h4>Récupérer les lignes</h4><ul><li><b>Copier pour Excel</b> : copie les colonnes A à I, sans en-tête, prêtes à coller sous ton tableau (${kbd("Cmd")} + ${kbd("V")}). Chaque jour a aussi son bouton « Copier ».</li>
-      <li><b>Exporter en .xlsx</b> : le décompte mis en forme et un onglet récapitulatif (par référence, par projet, par semaine, absences).</li>
-      <li><b>Importer un décompte</b> : reprend ton historique depuis ton fichier Excel, sans doublon si tu réimportes. Un jour importé remplace le planning de ce jour-là.</li></ul>
-    <p>Les vues Semaine, Mois et Année et l'option « Jusqu'à aujourd'hui » règlent la période affichée et copiée.</p>${go("heures", "Ouvrir le décompte")}`},
+    <p>Le décompte présente ton temps comme ton tableau : Collaborateur, Date, Durée, Référence, Déplacement, Lieu, Kilomètres, Description, Facture. <b>Heures, agenda et tâches sont synchronisés dans les deux sens.</b></p>
+    <table class="hp-t"><thead><tr><th>Tu fais…</th><th>Résultat</th></tr></thead><tbody>
+      <tr><td>Un créneau dans l'agenda ou dans une tâche</td><td>La ligne du décompte se calcule toute seule.</td></tr>
+      <tr><td>Tu changes la <b>durée</b> d'une ligne dans Heures</td><td>L'agenda suit : un créneau est ajouté au premier moment libre du jour, ou le dernier créneau est raccourci.</td></tr>
+      <tr><td><b>+ Ajouter du temps</b> dans Heures</td><td>Tu choisis la tâche (ou tu en crées une) : un créneau est placé dans l'agenda. « Ligne libre » garde une ligne sans agenda (déplacement…).</td></tr>
+      <tr><td>La croix ✕ d'une ligne</td><td>Au choix : retirer la ligne du décompte seulement (rétablissable), ou supprimer ses créneaux de l'agenda.</td></tr>
+      <tr><td>La description ou le déplacement d'une ligne</td><td>Reste propre au décompte (bouton ↺ pour revenir au texte automatique).</td></tr></tbody></table>
+    <ul><li><b>Une ligne par jour et par référence</b>, la description reprend le nom des tâches du jour.</li>
+      <li><b>Tâches en parallèle</b> : le temps commun n'est jamais compté deux fois ; par défaut il va à la <b>référence qui couvre le plus</b> (Réglages ▸ Décompte des heures). Le temps non compté (<b>temps masqué</b>) reste visible : la ligne garde 0 h avec la mention « temps masqué ».</li>
+      <li><b>Référence</b> : celle de la tâche, sinon celle de son projet. Une ligne sans référence est signalée en orange.</li>
+      <li><b>Absences</b> : Congé, RTT, Maladie… à la journée ou à la demi-journée. Les jours fériés sont reconnus automatiquement.</li></ul>
+    <h4>Importer un décompte</h4><ol class="hp-steps"><li><b>Importer un décompte…</b> ▸ ton fichier Excel (colonnes Date et Durée au minimum). Seules tes lignes sont gardées.</li>
+      <li>Une <b>fenêtre d'aperçu</b> s'ouvre, rien n'est encore enregistré : jours <b>ajoutés</b>, <b>remplacés</b> (import précédent différent), <b>identiques</b> (déjà à jour) et <b>en conflit</b> avec l'agenda. Touche un jour pour comparer le fichier et l'existant.</li>
+      <li>Pour chaque conflit : <b>le fichier fait foi</b> ou <b>garder l'agenda</b> (ou les boutons pour tous les conflits).</li>
+      <li><b>Ajouter aussi à l'agenda</b> (au choix) : les lignes deviennent des créneaux sur des tâches retrouvées ou créées (terminées si passées) ; le décompte est alors calculé depuis l'agenda et reste synchronisé.</li>
+      <li><b>Valider l'import</b>. Réimporter le même fichier ne crée aucun doublon ; un fichier modifié remplace les jours concernés.</li></ol>
+    <p>Un jour importé sans passer par l'agenda affiche « le temps de l'agenda n'est pas compté » s'il a aussi des créneaux, avec un bouton <b>Revenir à l'agenda</b>.</p>
+    <h4>Récupérer les lignes</h4><ul><li><b>Copier pour Excel</b> : colonnes A à I, prêtes à coller sous ton tableau. Chaque jour a aussi son bouton « Copier ».</li><li><b>Exporter en .xlsx</b> : le décompte mis en forme et un récapitulatif.</li></ul>${go("heures", "Ouvrir le décompte")}`},
+
   {k:"chiffrage", t:"Chiffrage AO", html:`
     <p>Sur ordinateur, survole un chiffrage (liste des chiffrages ou tableau de bord) pour voir sa fiche : remise, montant, ratios, missions, planning, pièces du marché lues, suivi s'il est gagné.</p>
     <p>La liste des chiffrages affiche leur statut (en cours, envoyé, gagné, perdu, abandonné), leur montant et la prochaine remise. Un chiffrage se fait en <b>7 étapes</b> ; la barre du bas montre le total en permanence et passe à l'étape suivante.</p>
@@ -5478,6 +5523,233 @@ document.addEventListener("click", ev => {
   ev.preventDefault(); ev.stopPropagation(); S.pcUnit = a.dataset.v; try { localStorage.setItem("todobim.pcUnit", S.pcUnit); } catch (e) {} render(true);
 }, true);
 
+/* ---------- Synchronisation Heures ↔ Planning ↔ Tâches, import avec aperçu ---------- */
+/* premier créneau libre d'un jour (passé compris), sans chevaucher les créneaux existants */
+function daySlot(d, dur, after){
+  const [h0, h1] = dayRange(), busy = dayBlocks(d, "").map(it => [it.s, it.e]).concat(after || []);
+  const free = (lo, hi) => { for (let s = lo; s + dur <= hi; s += 15) if (!busy.some(([a, b]) => s < b && s + dur > a)) return s; return null; };
+  let s = free(h0 * 60, h1 * 60); if (s === null) s = free(h0 * 60, 24 * 60); if (s === null) s = free(0, 24 * 60);
+  return s;
+}
+/* créneaux d'une ligne du décompte (tâches de la ligne, ce jour-là) */
+function rowBlocs(d, rs){ const out = []; for (const t of rs.tasks) blocsOf(t).forEach((b, i) => { if (b.d === d) out.push({t, i, b}); }); return out; }
+/* durée modifiée dans Heures : l'agenda suit */
+async function syncDur(d, key, v){
+  const rs = decRows(d).find(r => r.key === key); if (!rs || rs.src !== "planning") return false;
+  const bl = rowBlocs(d, rs); if (!bl.length) return false;   // tâches récurrentes seules : correction dans le décompte
+  const delta = v - rs.auto;
+  await decSave(monthOf(d), c => { if (c.rows[key]) { delete c.rows[key].m; if (!Object.keys(c.rows[key]).length) delete c.rows[key]; } });
+  if (Math.abs(delta) < 1) return true;
+  if (delta > 0) {
+    const last = bl.slice().sort((x, y) => (y.b.s + y.b.m) - (x.b.s + x.b.m))[0], s = daySlot(d, delta);
+    if (s === null) { toast("Plus de place dans l'agenda ce jour-là : durée corrigée dans le décompte seulement."); return false; }
+    await writeBlocs(last.t, [...blocsOf(last.t), {d, s, m:delta}], `+${durTxt(delta)} placées dans l'agenda le ${fmt(d)} à ${hhmm(s)} (${last.t.tache})`);
+    return true;
+  }
+  let rem = -delta; const per = new Map();
+  for (const x of bl.slice().sort((p, q) => (q.b.s + q.b.m) - (p.b.s + p.b.m))) {
+    if (rem <= 0) break;
+    if (!per.has(x.t.id)) per.set(x.t.id, {t:x.t, bl:blocsOf(x.t).map(b => ({...b}))});
+    const P = per.get(x.t.id), b = P.bl[x.i], cut = Math.min(rem, b.m); b.m -= cut; rem -= cut;
+  }
+  for (const P of per.values()) await writeBlocs(P.t, P.bl.filter(b => b.m >= 5));
+  toast(`−${durTxt(-delta)} retirées des créneaux de l'agenda le ${fmt(d)}`);
+  return true;
+}
+/* ---------- fenêtres ---------- */
+function syncSheet(title, body, foot, cls){
+  document.querySelector(".sy-ov")?.remove();
+  const el = document.createElement("div"); el.className = "overlay ao-pick sy-ov " + (cls || ""); el.dataset.act = "ao-ov-close";
+  el.innerHTML = `<div class="sheet" role="dialog" aria-label="${esc(title)}"><div class="sheet-h"><h2>${esc(title)}</h2><button class="btn ghost" data-act="ao-ov-close" aria-label="Fermer">${I.close}</button></div><div class="sheet-b">${body}</div>${foot ? `<div class="sheet-f">${foot}</div>` : ""}</div>`;
+  document.body.appendChild(el); return el;
+}
+const taskOpts = sel => { const ts = [...S.tasks.values()].filter(t => !t.archived && (!isDone(t) || t.id === sel)).sort((a, b) => (a.projet || "").localeCompare(b.projet || "", "fr") || a.tache.localeCompare(b.tache, "fr"));
+  const by = new Map(); for (const t of ts) { const k = t.projet || "Sans projet"; if (!by.has(k)) by.set(k, []); by.get(k).push(t); }
+  return [...by].map(([p, l]) => `<optgroup label="${esc(p)}">${l.map(t => `<option value="${esc(t.id)}" ${t.id === sel ? "selected" : ""}>${esc(t.tache)}${refOfTask(t) ? " · " + esc(refOfTask(t)) : ""}</option>`).join("")}</optgroup>`).join(""); };
+/* « + Ligne » : un créneau sur une tâche */
+function addLineSheet(d){
+  syncSheet("Ajouter du temps", `<p class="sub" style="margin-top:0">Le temps est placé dans l'agenda sur la tâche choisie ; le décompte se met à jour tout seul.</p>
+    <div class="ao-form f2">
+      <label class="field"><span class="lbl">Jour</span><input type="date" id="sy-d" value="${esc(d)}"></label>
+      <label class="field"><span class="lbl">Durée</span><input type="text" id="sy-m" value="1" inputmode="decimal" placeholder="ex. 1,5 ou 1:30"></label>
+      <label class="field wide"><span class="lbl">Tâche</span><select id="sy-t"><option value="__new">＋ Nouvelle tâche…</option>${taskOpts("")}</select></label>
+      <div class="wide sy-new"><div class="ao-form f2">
+        <label class="field wide"><span class="lbl">Nom de la nouvelle tâche</span><input type="text" id="sy-n" placeholder="ex. Réunion de synthèse"></label>
+        <label class="field"><span class="lbl">Projet</span><select id="sy-p"><option value="">Sans projet</option>${allProjets().map(p => `<option>${esc(p)}</option>`).join("")}</select></label>
+        <label class="field"><span class="lbl">Référence</span><select id="sy-r"><option value="">Selon le projet</option>${refList().map(r => `<option>${esc(r)}</option>`).join("")}</select></label></div></div>
+      <label class="field"><span class="lbl">Début</span><input type="time" id="sy-s" step="900"><small class="sub">Vide : premier moment libre de la journée.</small></label>
+    </div>`, `<button class="btn ghost" data-act="sy-free" data-d="${esc(d)}">Ligne libre (sans agenda)</button><span class="spacer"></span><button class="btn" data-act="ao-ov-close">Annuler</button><button class="btn primary" data-act="sy-add">Ajouter</button>`);
+  const sel = $("#sy-t"), box = document.querySelector(".sy-new");
+  const upd = () => { box.hidden = sel.value !== "__new"; }; sel.addEventListener("change", upd); upd();
+  if (S.tasks.size) { const rec = [...S.tasks.values()].filter(t => !t.archived && !isDone(t) && blocsOf(t).length).sort((a, b) => String(b.updated || "").localeCompare(String(a.updated || "")))[0]; if (rec) { sel.value = rec.id; upd(); } }
+}
+async function addLineApply(){
+  const d = $("#sy-d").value, m = parseDur($("#sy-m").value), tid = $("#sy-t").value, st = $("#sy-s").value;
+  if (!validYmd(d)) { toast("Choisis le jour."); return; }
+  if (!m || m <= 0) { toast("Durée non reconnue : écris 1, 1,5, 1:30 ou 1h30"); return; }
+  let s = st ? toMin(st) : daySlot(d, m); if (s === null || !isFinite(s)) { toast("Plus de place dans l'agenda ce jour-là."); return; }
+  const bloc = {d, s, m}, n = (document.getElementById("sy-n") || {}).value, np = (document.getElementById("sy-p") || {}).value || "", nr = (document.getElementById("sy-r") || {}).value || "";
+  document.querySelector(".sy-ov")?.remove();
+  if (tid === "__new") {
+    const t = {id:null, projet:np, tache:String(n || "").trim() || "Temps passé", statut:d < today() ? "Terminé" : "En cours", cloture:d < today() ? d : "", priorite:"", urgent:null, important:null, echeance:"", responsable:"", theme:"", type:"", commentaires:"", reference:nr, debut:d, fin:d, heures:"", jours:[], blocs:[bloc], avancement:d < today() ? 100 : 0};
+    try { await saveTask(t); toast(`Tâche « ${t.tache} » créée avec ${durTxt(m)} le ${fmt(d)}`); } catch (e) { fail(e); }
+  } else {
+    const t = S.tasks.get(tid); if (!t) return;
+    await writeBlocs(t, [...blocsOf(t), bloc], `${durTxt(m)} ajoutées le ${fmt(d)} à ${hhmm(s)} sur « ${t.tache} »`);
+  }
+  render(true);
+}
+/* ✕ sur une ligne issue de l'agenda */
+function xRowSheet(d, key){
+  const rs = decRows(d).find(r => r.key === key); if (!rs) return;
+  const bl = rowBlocs(d, rs);
+  syncSheet("Retirer cette ligne", `<p style="margin-top:0"><b>${esc(rs.ref || "Sans référence")}</b> · ${fmt(d, true)} · ${durTxt(rs.m)}<br><span class="sub">${esc(rs.tasks.map(t => t.tache).join(" + "))}</span></p>
+    <div class="sy-choice"><button class="btn" data-act="sy-xhide" data-d="${d}" data-key="${esc(key)}"><b>Retirer du décompte seulement</b><small>Les créneaux restent dans l'agenda ; tu peux rétablir la ligne.</small></button>
+    ${bl.length ? `<button class="btn danger" data-act="sy-xdel" data-d="${d}" data-key="${esc(key)}"><b>Supprimer ${bl.length > 1 ? `les ${bl.length} créneaux` : "le créneau"} de ce jour</b><small>Retire aussi le temps de l'agenda et des tâches.</small></button>` : `<p class="sub">Cette ligne vient d'une tâche récurrente : modifie sa répétition dans la tâche.</p>`}</div>`, "");
+}
+/* ---------- import avec aperçu ---------- */
+async function parseDecFile(file){
+  const X = await loadXLSX(), wb = X.read(await file.arrayBuffer(), {type:"array", cellDates:false});
+  let rows = null, hi = -1; const refsFound = [];
+  for (const n of wb.SheetNames) {
+    const r = X.utils.sheet_to_json(wb.Sheets[n], {header:1, raw:true, defval:""});
+    const k = r.findIndex(row => row.some(c => norm(c) === "date") && row.some(c => norm(c) === "duree"));
+    if (k >= 0 && !rows) { rows = r; hi = k; }
+    const kr = r.findIndex(row => row.length && norm(row[0]) === "reference" && !row.some(c => norm(c) === "date"));
+    if (kr >= 0) refsFound.push(...r.slice(kr + 1).map(x => String(x[0] ?? "").trim()).filter(Boolean));
+  }
+  if (!rows) return {err:"Aucune colonne « Date » et « Durée » trouvée dans ce fichier."};
+  const head = rows[hi].map(c => DEC_IMP_HEAD[norm(c)] || null);
+  let list = [];
+  for (const row of rows.slice(hi + 1)) {
+    const o = {}; head.forEach((h, j) => { if (h && o[h] === undefined) o[h] = row[j]; });
+    const d = toYmd(o.d, X), m = impDur(o.m); if (!validYmd(d) || !m) continue;
+    list.push({collab:String(o.collab ?? "").trim(), d, m, ref:String(o.ref ?? "").trim(), dep:norm(o.dep) === "oui", lieu:String(o.lieu ?? "").trim(), km:o.km === "" || o.km == null ? "" : String(o.km).replace(".", ","), desc:String(o.desc ?? "").replace(/\s+/g, " ").trim(), fact:String(o.fact ?? "").trim()});
+  }
+  if (!list.length) return {err:"Aucune ligne datée avec une durée sous l'en-tête."};
+  const names = [...new Set(list.map(x => x.collab).filter(Boolean))], me = norm(collabName()); let skipped = 0;
+  if (names.length > 1) { if (!names.some(n => norm(n) === me)) return {err:`Ce fichier contient plusieurs collaborateurs (${names.slice(0, 5).join(", ")}…) et aucun ne s'appelle « ${collabName()} ». Corrige le nom dans Réglages ▸ Décompte des heures.`}; const b = list.length; list = list.filter(x => norm(x.collab) === me); skipped = b - list.length; }
+  return {list, refsFound, skipped};
+}
+const impSig = x => [x.d, x.ref, x.m, norm(x.desc)].join("|");
+function agendaMin(d){ return decSplit(decItems(d), refOfTask).reduce((s, g) => s + g.min, 0); }
+async function decImportPreview(file){
+  const say = m => { const el = $("#dec-progress"); if (el) el.textContent = m; S.decMsg = m; };
+  say("Lecture du fichier…");
+  let P; try { P = await parseDecFile(file); } catch (e) { console.warn(e); say("Ce fichier n'a pas pu être lu."); return; }
+  if (P.err) { say(P.err); return; }
+  say("");
+  const byD = new Map(); for (const x of P.list) { if (!byD.has(x.d)) byD.set(x.d, []); byD.get(x.d).push(x); }
+  const days = [...byD.keys()].sort().map(d => {
+    const file = byD.get(d), doc = decDoc(d), old = (doc.manual || []).filter(x => x.d === d && x.imp), ag = agendaMin(d);
+    const fs = new Set(file.map(impSig)), os = new Set(old.map(impSig));
+    /* identique : même import, ou agenda qui donne déjà les mêmes durées par référence */
+    const byRef = new Map(); file.forEach(l => byRef.set(l.ref, (byRef.get(l.ref) || 0) + l.m));
+    const agRef = new Map(); if (!old.length && ag) decSplit(decItems(d), refOfTask).forEach(g => agRef.set(g.k, roundArr(g.min)));
+    const same = (old.length && fs.size === os.size && [...fs].every(s => os.has(s))) || (!old.length && ag && agRef.size === byRef.size && [...byRef].every(([k, v]) => agRef.get(k) === v));
+    const st = same ? "same" : ag > 0 ? "conf" : old.length ? "repl" : "add";
+    return {d, file, old, ag, st, tot:file.reduce((s, x) => s + x.m, 0), pick:"file"};
+  });
+  S.imp = {days, refsFound:P.refsFound, skipped:P.skipped, agenda:false};
+  impSheet();
+}
+function impSheet(){
+  const I2 = S.imp, n = k => I2.days.filter(x => x.st === k).length, conf = I2.days.filter(x => x.st === "conf");
+  const lab = {add:"Ajout", repl:"Remplace l'import précédent", same:"Identique : déjà à jour", conf:"Conflit avec l'agenda"};
+  const li = (r, m, desc) => `<li><span class="mono">${durTxt(m)}</span><b>${esc(r || "sans référence")}</b><span>${esc(desc || "")}</span></li>`;
+  const cur = x => x.old.length ? x.old.map(o => li(o.ref, o.m, o.desc)).join("") : x.ag ? decSplit(decItems(x.d), refOfTask).map(g => li(g.k, roundArr(g.min), [...g.tasks.values()].map(v => v.t.tache).join(" + "))).join("") : "<li class=\"mut\">rien</li>";
+  const det = x => `<tr class="imp-det" hidden><td colspan="4"><div class="imp-cmp"><div><h5>Dans le fichier</h5><ul>${x.file.map(l => li(l.ref, l.m, l.desc)).join("")}</ul></div><div><h5>${x.old.length ? "Import actuel" : "Agenda actuel"}</h5><ul>${cur(x)}</ul></div></div></td></tr>`;
+  const rows = I2.days.map((x, i) => `<tr class="st-${x.st}"><td><button class="lnk imp-x" data-act="sy-impx" aria-expanded="false">▸ ${JOURS_COURTS[parseYmd(x.d).getDay()]} ${fmt(x.d, true)}</button></td><td class="num">${x.file.length} · ${durTxt(x.tot)}</td>
+    <td class="num">${x.old.length ? `import ${durTxt(x.old.reduce((s, o) => s + o.m, 0))}` : ""}${x.old.length && x.ag ? " · " : ""}${x.ag ? `agenda ${durTxt(roundArr(x.ag))}` : x.old.length ? "" : "—"}</td>
+    <td>${x.st === "conf" ? `<select data-imp="${i}"><option value="file" ${x.pick === "file" ? "selected" : ""}>Le fichier fait foi</option><option value="agenda" ${x.pick === "agenda" ? "selected" : ""}>Garder l'agenda</option></select>` : `<span class="imp-st">${lab[x.st]}</span>`}</td></tr>${det(x)}`).join("");
+  const first = I2.days[0].d, last = I2.days[I2.days.length - 1].d;
+  syncSheet("Aperçu de l'import", `<p class="sub" style="margin-top:0">Touche un jour pour comparer le fichier et l'existant. ${I2.days.reduce((s, x) => s + x.file.length, 0)} lignes sur ${I2.days.length} jours, du ${fmt(first, true)} au ${fmt(last, true)}${I2.skipped ? ` · ${I2.skipped} lignes d'autres collaborateurs ignorées` : ""}. Rien n'est enregistré avant « Valider ».</p>
+    <div class="imp-k"><span class="st-add"><b>${n("add")}</b> jours ajoutés</span><span class="st-repl"><b>${n("repl")}</b> remplacés</span><span class="st-same"><b>${n("same")}</b> identiques</span><span class="st-conf"><b>${conf.length}</b> en conflit avec l'agenda</span></div>
+    ${conf.length ? `<div class="row imp-all"><span class="sub">Pour tous les conflits :</span><button class="btn sm" data-act="sy-impall" data-v="file">Le fichier fait foi</button><button class="btn sm" data-act="sy-impall" data-v="agenda">Garder l'agenda</button></div>` : ""}
+    <div class="tbl-wrap imp-wrap"><table class="tbl imp-t"><thead><tr><th>Jour</th><th class="num">Fichier</th><th class="num">Déjà là</th><th>Action</th></tr></thead><tbody>${rows}</tbody></table></div>
+    <label class="toggle imp-ag"><input type="checkbox" id="imp-ag" ${I2.agenda ? "checked" : ""}> <span><b>Ajouter aussi à l'agenda</b> : les jours du fichier deviennent des créneaux sur des tâches (retrouvées par référence et description, sinon créées ; terminées si la date est passée). Le décompte est alors calculé depuis l'agenda et reste synchronisé. Pour un jour en conflit où le fichier fait foi, les créneaux de ce jour sont remplacés par ceux du fichier.</span></label>
+    <p class="sub">« Le fichier fait foi » : ce jour-là, seules les lignes du fichier comptent (l'agenda n'est pas modifié, sauf si « Ajouter aussi à l'agenda » est coché). « Garder l'agenda » : les lignes du fichier pour ce jour sont ignorées.</p>`,
+    `<span class="spacer"></span><button class="btn" data-act="ao-ov-close">Annuler</button><button class="btn primary" data-act="sy-impok">Valider l'import</button>`, "imp-ov");
+}
+async function impApply(){
+  const I2 = S.imp; if (!I2) return;
+  const agenda = !!($("#imp-ag") || {}).checked; document.querySelector(".sy-ov")?.remove();
+  const say = m => { const el = $("#dec-progress"); if (el) el.textContent = m; S.decMsg = m; };
+  const toAg = new Set(agenda ? I2.days.filter(x => x.st !== "same" && (!x.ag || (x.st === "conf" && x.pick === "file"))).map(x => x.d) : []);
+  const redo = new Set(I2.days.filter(x => toAg.has(x.d) && x.ag).map(x => x.d));   // jours dont l'agenda est remplacé par le fichier
+  const byM = new Map(); for (const x of I2.days) { const k = monthOf(x.d); if (!byM.has(k)) byM.set(k, []); byM.get(k).push(x); }
+  let added = 0, replaced = 0, kept = 0, i = 0;
+  for (const [mo, arr] of byM) {
+    i++; say(`Import : mois ${i} / ${byM.size}…`);
+    await decSave(mo, c => {
+      for (const x of arr) {
+        if (x.st === "same") continue;
+        c.manual = c.manual.filter(o => !(o.imp && o.d === x.d));
+        if (x.st === "conf" && x.pick === "agenda") { kept++; continue; }
+        if (x.old.length) replaced++;
+        if (toAg.has(x.d)) {
+          /* l'agenda devient la source : on garde déplacement, lieu, km, facture et le texte exact dans le décompte */
+          const byRef = new Map(); for (const l of x.file) { if (!byRef.has(l.ref)) byRef.set(l.ref, []); byRef.get(l.ref).push(l); }
+          for (const [ref, ls] of byRef) { const key = x.d + "|" + ref, km = ls.reduce((s, l) => s + (parseFloat(String(l.km).replace(",", ".")) || 0), 0);
+            c.rows[key] = {...(c.rows[key] || {}), desc:ls.map(l => l.desc).filter(Boolean).join(" + "), dep:ls.some(l => l.dep), lieu:[...new Set(ls.map(l => l.lieu).filter(Boolean))].join(", "), km:km ? String(km).replace(".", ",") : "", fact:[...new Set(ls.map(l => l.fact).filter(Boolean))].join(", ")};
+            for (const k of ["lieu", "km", "fact"]) if (!c.rows[key][k]) delete c.rows[key][k]; if (!c.rows[key].dep) delete c.rows[key].dep; }
+        } else for (const l of x.file) { c.manual.push({id:Date.now().toString(36) + Math.random().toString(36).slice(2, 7), d:l.d, ref:l.ref, m:l.m, desc:l.desc, dep:l.dep, lieu:l.lieu, km:l.km, fact:l.fact, imp:true}); }
+        added += x.file.length;
+      }
+    });
+  }
+  /* créneaux dans l'agenda */
+  let nT = 0, nB = 0;
+  if (toAg.size) {
+    say("Création des créneaux dans l'agenda…");
+    const td = today(), groups = new Map();
+    const pend = new Map(), curBl = t => pend.has(t.id) ? pend.get(t.id) : blocsOf(t);
+    for (const t of [...S.tasks.values()]) { const bl = blocsOf(t); if (bl.some(b => redo.has(b.d))) { const nb = bl.filter(b => !redo.has(b.d)); pend.set(t.id, nb); await writeBlocs(t, nb); } }
+    const find = (ref, desc) => [...S.tasks.values()].find(t => refOfTask(t) === ref && norm(t.tache) === norm(desc || ""));
+    for (const x of I2.days.filter(x => toAg.has(x.d))) {
+      const [h0] = dayRange(); let s = h0 * 60; const placed = [];
+      for (const l of x.file) {
+        const st = redo.has(x.d) ? s : (daySlot(x.d, l.m, placed) ?? s); placed.push([st, st + l.m]); s = st + l.m;
+        const k = l.ref + "|" + norm(l.desc); if (!groups.has(k)) groups.set(k, {ref:l.ref, desc:l.desc, blocs:[]}); groups.get(k).blocs.push({d:x.d, s:st, m:l.m}); nB++;
+      }
+    }
+    for (const g of groups.values()) {
+      const t = find(g.ref, g.desc);
+      if (t) { const nb = [...curBl(t), ...g.blocs]; pend.set(t.id, nb); await writeBlocs({...t, blocs:t.blocs}, nb); continue; }
+      const ds = g.blocs.map(b => b.d).sort(), past = ds[ds.length - 1] < td;
+      const nt = {id:null, projet:(projOfRef(g.ref)[0]) || "", tache:g.desc || ("Temps " + (g.ref || "sans référence")), statut:past ? "Terminé" : "En cours", cloture:past ? ds[ds.length - 1] : "", priorite:"", urgent:null, important:null, echeance:"", responsable:"", theme:"", type:"", commentaires:"Créée par l'import du décompte", reference:g.ref, debut:ds[0], fin:ds[ds.length - 1], heures:"", jours:[], blocs:g.blocs, avancement:past ? 100 : 0};
+      try { await saveTask(nt); nT++; } catch (e) { fail(e); }
+    }
+  }
+  const known = new Set(refList()), extra = [...new Set([...I2.refsFound, ...I2.days.flatMap(x => x.file.map(l => l.ref))].filter(r => r && !known.has(r)))];
+  if (extra.length) await savePrefs({refs:[...refList(), ...extra].sort((a, b) => a.localeCompare(b, "fr"))});
+  const ms = [...byM.keys()].sort();
+  if (!added && !kept && !nB) say("Rien à importer : tout est déjà à jour."); else say(`${added} ligne${added > 1 ? "s" : ""} importée${added > 1 ? "s" : ""}${replaced ? ` · ${replaced} jour${replaced > 1 ? "s" : ""} remplacé${replaced > 1 ? "s" : ""}` : ""}${kept ? ` · ${kept} jour${kept > 1 ? "s" : ""} où l'agenda est gardé` : ""}${nB ? ` · ${nB} créneau${nB > 1 ? "x" : ""} ajouté${nB > 1 ? "s" : ""} à l'agenda${nT ? `, ${nT} tâche${nT > 1 ? "s" : ""} créée${nT > 1 ? "s" : ""}` : ""}` : ""}.`);
+  toast("Import du décompte terminé"); S.imp = null;
+  S.dec.mode = "annee"; S.dec.ref = ms[ms.length - 1] + "-01"; saveDecUi(); render(true);
+}
+/* ---------- actions ---------- */
+document.addEventListener("click", async ev => {
+  const a = ev.target.closest && ev.target.closest('[data-act^="sy-"]'); if (!a) return;
+  ev.preventDefault(); ev.stopPropagation();
+  const act = a.dataset.act;
+  if (act === "sy-add") { await addLineApply(); return; }
+  if (act === "sy-free") { const d = $("#sy-d") ? $("#sy-d").value || a.dataset.d : a.dataset.d, id = Date.now().toString(36) + Math.random().toString(36).slice(2, 5); document.querySelector(".sy-ov")?.remove();
+    await decSave(monthOf(d), c => { c.manual.push({id, d, ref:"", m:60, desc:"", dep:false, lieu:"", km:"", fact:""}); }); render(true);
+    setTimeout(() => { const el = document.querySelector(`.dec-row[data-mid="${id}"] [data-dec="desc"]`); if (el) { el.scrollIntoView({block:"center"}); el.focus(); } }, 30); return; }
+  if (act === "sy-xhide") { const d = a.dataset.d, key = a.dataset.key; document.querySelector(".sy-ov")?.remove(); await decSave(monthOf(d), c => { c.rows[key] = {...(c.rows[key] || {}), hide:true}; }); toast("Ligne retirée du décompte (l'agenda ne change pas)"); render(true); return; }
+  if (act === "sy-xdel") {
+    const d = a.dataset.d, key = a.dataset.key, rs = decRows(d).find(r => r.key === key); document.querySelector(".sy-ov")?.remove(); if (!rs) return;
+    for (const t of rs.tasks) { const bl = blocsOf(t); if (bl.some(b => b.d === d)) await writeBlocs(t, bl.filter(b => b.d !== d)); }
+    toast(`Créneaux du ${fmt(d)} supprimés de l'agenda`); render(true); return;
+  }
+  if (act === "sy-impall") { for (const x of S.imp.days) if (x.st === "conf") x.pick = a.dataset.v; const ag = ($("#imp-ag") || {}).checked; S.imp.agenda = !!ag; impSheet(); return; }
+  if (act === "sy-impok") { await impApply(); return; }
+  if (act === "sy-impx") { const tr = a.closest("tr").nextElementSibling; if (tr && tr.classList.contains("imp-det")) { tr.hidden = !tr.hidden; a.setAttribute("aria-expanded", String(!tr.hidden)); a.textContent = (tr.hidden ? "▸ " : "▾ ") + a.textContent.slice(2); } return; }
+  if (act === "sy-agday") { const d = a.dataset.d; await decSave(monthOf(d), c => { c.manual = c.manual.filter(o => !(o.imp && o.d === d)); }); toast(`${fmt(d)} : le décompte suit de nouveau l'agenda`); render(true); return; }
+}, true);
+document.addEventListener("change", ev => { const t = ev.target; if (t && t.dataset && t.dataset.imp != null && S.imp) { S.imp.days[Number(t.dataset.imp)].pick = t.value; ev.stopPropagation(); } }, true);
+
 /* ---------- Rendu principal ---------- */
 function render(force){
   if (!force && S.ptrDown && Date.now() - S.ptrDown < 4000) { S.pendingRender = true; return; }
@@ -5896,7 +6168,7 @@ document.addEventListener("change", ev => {
   if (t.dataset && t.dataset.dec) { decChange(t); return; }
   if (t.dataset && t.dataset.ao) { aoChange(t); return; }
   if (t.dataset && t.dataset.bib) { uoChange(t); return; }
-  if (t.id === "dec-imp-file" && t.files && t.files[0]) { decImport(t.files[0]); t.value = ""; return; }
+  if (t.id === "dec-imp-file" && t.files && t.files[0]) { decImportPreview(t.files[0]); t.value = ""; return; }
   if (t.id === "dec-upto") { S.dec.upto = t.checked; saveDecUi(); render(true); return; }
   if (decSettingsChange(t)) return;
   if (t.id === "t-sort") { S.f.sort = t.value; saveUi(); updateTaches(); }
