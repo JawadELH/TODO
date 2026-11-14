@@ -907,6 +907,40 @@ input.num.s{width:64px}
   .pk-r{grid-template-columns:auto auto minmax(0,1fr)} .pk-v{grid-column:3;white-space:normal}
   .mobile-tabs a span[data-s]{font-size:0} .mobile-tabs a span[data-s]::after{content:attr(data-s);font-size:10px}
 }
+/* Offre, options, entreprises */
+.offre{border-color:color-mix(in srgb,var(--accent) 35%,var(--line))}
+.of-h{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between;margin-bottom:10px} .of-h h3{margin:0!important}
+.of-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:12px 18px;align-items:start}
+.of-grid .wide{grid-column:1/-1}
+.of-grid textarea{border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:8px 9px;width:100%;min-width:0;font-size:13.5px;resize:vertical}
+.of-soc{display:grid;gap:8px;align-content:start}
+.of-soc select{border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:8px 9px;width:100%}
+.of-soc .lnk{justify-self:start;font-size:13px}
+.of-logo{height:54px;display:flex;align-items:center;justify-content:flex-start;background:#fff;border-radius:8px;padding:6px 10px;max-width:220px}
+.of-logo img{max-height:42px;max-width:200px;object-fit:contain} .of-logo span{color:#1f2430;font-weight:700}
+.of-opts{grid-column:1/-1;display:grid;gap:8px} .of-opts .lbl{font-size:10.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.of-opts .row{gap:6px 16px}
+.opt-l{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.opt-l li{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;gap:10px;align-items:center;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:7px 9px}
+.opt-n{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:color-mix(in srgb,var(--s-recurrent) 18%,transparent);color:var(--s-recurrent);font-size:11.5px;font-weight:800}
+.opt-t{display:grid;font-size:13.5px} .opt-t small{color:var(--muted);font-size:11.5px}
+.opt-l b{font-family:var(--f-mono);font-size:13.5px}
+.opt-tot{display:grid;grid-template-columns:1fr auto;gap:4px 12px;margin-top:10px;font-size:13px;color:var(--muted)} .opt-tot b{font-family:var(--f-mono);color:var(--ink);text-align:right}
+.soc-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(420px,1fr));gap:12px}
+.soc{border-top:3px solid var(--sa)}
+.soc-top{display:flex;gap:12px;align-items:center;margin-bottom:12px}
+.soc-logo{width:180px;height:72px;flex:none;border-radius:10px;background:#fff;display:grid;place-items:center;overflow:hidden;border:1px solid var(--line)}
+.soc-logo img{max-width:164px;max-height:60px;object-fit:contain} .soc-logo span{color:#8a93a3;font-size:12px}
+.soc-lb{display:flex;flex-wrap:wrap;gap:6px;align-items:center;flex:1}
+.soc-col{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--muted)} .soc-col input{width:34px;height:26px;border:1px solid var(--line);border-radius:6px;background:none;padding:0}
+.soc textarea{border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:8px 9px;width:100%;min-width:0;font-size:13.5px;resize:vertical}
+@media (max-width:820px){
+  .of-grid{grid-template-columns:minmax(0,1fr)}
+  .soc-list{grid-template-columns:minmax(0,1fr)}
+  .soc-top{flex-wrap:wrap} .soc-logo{width:140px;height:60px}
+  .opt-l li{grid-template-columns:auto minmax(0,1fr) auto} .opt-l li .btn{grid-column:2/-1;justify-self:start}
+  .of-grid textarea,.of-soc select{font-size:16px}
+}
 .mobile-tabs{display:none}
 .auth{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:24px max(16px,env(safe-area-inset-right,0px)) 24px max(16px,env(safe-area-inset-left,0px));overflow-y:auto}
 .auth-card{width:min(400px,100%);display:grid;gap:12px}
@@ -1030,7 +1064,7 @@ input.num.s{width:64px}
   }
 
   /* ---- Export de fichiers (feuille de partage iOS / téléchargement Mac) ---- */
-  var MIME = {json:"application/json", csv:"text/csv", xlsx:"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"};
+  var MIME = {json:"application/json", csv:"text/csv", xlsx:"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", pdf:"application/pdf"};
   var downloads = {
     save:function(req){
       var ext = (req.filename.split(".").pop() || "").toLowerCase();
@@ -2479,7 +2513,7 @@ async function decImport(file){
 /* ---------- Chiffrage AO : assistant pas à pas, à l'unité d'œuvre et au temps passé ---------- */
 S.aos = new Map(); S.uo = null;
 S.chif = {mode:"list", id:"", open:{}, coll:{}, pickPhase:"", pickMis:"", pickSel:[], bq:"", bmis:"", filt:"", preset:"CR"};
-try { const sc = JSON.parse(localStorage.getItem("todobim.chif") || "null"); if (sc) { if (["list", "ao", "biblio"].includes(sc.mode)) S.chif.mode = sc.mode; S.chif.id = sc.id || ""; } } catch (e) {}
+try { const sc = JSON.parse(localStorage.getItem("todobim.chif") || "null"); if (sc) { if (["list", "ao", "biblio", "socs"].includes(sc.mode)) S.chif.mode = sc.mode; S.chif.id = sc.id || ""; } } catch (e) {}
 function saveChifUi(){ try { localStorage.setItem("todobim.chif", JSON.stringify({mode:S.chif.mode, id:S.chif.id})); } catch (e) {} }
 const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
 const num = v => { const n = parseFloat(String(v ?? "").replace(/[\s  €%]/g, "").replace(",", ".")); return isFinite(n) ? n : 0; };
@@ -2605,7 +2639,7 @@ function migrateAo(o){
 }
 function profilsOf(ao){ const L = uoBase().profils.slice(); for (const k of Object.keys((ao.params && ao.params.tjm) || {})) if (!L.some(p => p.k === k)) L.push({k, nom:k === "syn" ? "Coordinateur synthèse" : k, court:k, tjm:ao.params.tjm[k]}); return L; }
 const profTjm = (ao, k) => { const t = ao.params && ao.params.tjm && ao.params.tjm[k]; if (t != null && t !== "") return num(t); const p = uoBase().profils.find(x => x.k === k); return p ? p.tjm : 650; };
-const depCost = ao => Math.ceil(num(ao.params.kmAR) * num(ao.params.ckm) + num(ao.params.repas));
+const depCost = ao => ceil2(num(ao.params.kmAR) * num(ao.params.ckm) + num(ao.params.repas));
 const drvList = ao => [...DRIVERS, ...(ao.cdrv || []).map(c => ({k:c.k, nom:c.nom, u:c.u || "unité", custom:true}))];
 function drvName(ao, k){ if (CALC_DRV[k]) return CALC_DRV[k].nom; const d = drvList(ao).find(x => x.k === k); return d ? d.nom : k; }
 function drvVal(ao, k){ const v = ao.drivers || {}; if (k === "zc") return num(v.zones) * num(v.cycles); if (k === "surface") return num(ao.surface); return num(v[k]); }
@@ -2713,6 +2747,7 @@ const curAo = () => { const a = S.aos.get(S.chif.id); return a ? migrateAo(a) : 
 function viewChiffrage(){
   const C = S.chif;
   if (C.mode === "biblio") return viewUo();
+  if (C.mode === "socs") return viewSocs();
   if (C.mode === "ao" && S.aos.has(C.id)) return viewWizard(curAo());
   return viewAoList();
 }
@@ -2723,7 +2758,7 @@ function viewAoList(){
   const pipe = all.filter(a => ["En cours", "Envoyé"].includes(a.statut)).reduce((s, a) => s + calcAo(a).tot, 0), wonTot = won.reduce((s, a) => s + calcAo(a).tot, 0);
   const soon = all.filter(a => a.statut === "En cours" && validYmd(a.remise) && a.remise >= today()).sort((x, y) => x.remise.localeCompare(y.remise))[0];
   return `<div class="view-head"><div><div class="eyebrow">Chiffrage des appels d'offres</div><h1>Chiffrages AO</h1></div>
-      <div class="pnav">${ro ? "" : `<button class="btn primary" data-act="ao-new">${I.plus} Nouveau chiffrage</button>`}<button class="btn" data-act="ao-biblio">Base des unités d'œuvre</button></div></div>
+      <div class="pnav">${ro ? "" : `<button class="btn primary" data-act="ao-new">${I.plus} Nouveau chiffrage</button>`}<button class="btn" data-act="ao-biblio">Base des unités d'œuvre</button><button class="btn" data-act="ao-socs">Mes entreprises</button></div></div>
     <div class="kpi-row dec-kpis ao-kpis">
       <div class="kc"><span class="kc-l">En cours et envoyés</span><span class="kc-v">${keur(pipe)}</span></div>
       <div class="kc"><span class="kc-l">Gagnés</span><span class="kc-v ok">${keur(wonTot)}</span><span class="kc-n mut">${plur(won.length, "AO", "AO")}</span></div>
@@ -2885,38 +2920,6 @@ function stepPrix(ao, R, ck){
       <div class="ratios"><span>TJM moyen <b>${eur(R.tjmMoy)}</b></span><span>Travaux <b>${R.pBudget ? pct(R.pBudget) : "—"}</b></span><span>€ / m² <b>${R.eurM2 ? (Math.round(R.eurM2 * 100) / 100).toLocaleString("fr-FR") : "—"}</b></span><span>Par mois <b>${eur(R.parMois)}</b></span></div></section>
   </div>`;
 }
-/* Étape 6 : synthèse */
-function suivi(ao, R){
-  if (!ao.reference || !R.a) return null;
-  const start = R.a + "-01", end = today(); if (start > end) return {j:0};
-  let m = 0; for (let d = start; d <= end; d = addDays(d, 1)) for (const r of decRows(d)) if (r.ref === ao.reference) m += r.m;
-  return {j:m / 60 / 8};
-}
-function stepSynth(ao, R){
-  const ro = S.canWrite === false, ms = [...R.months].sort((a, b) => a[0].localeCompare(b[0])), mx = Math.max(1, ...ms.map(([, o]) => o.e));
-  const mis = [...R.byMis].sort((a, b) => b[1] - a[1]), su = ao.statut === "Gagné" ? suivi(ao, R) : null;
-  return `<div class="kpi-row dec-kpis ao-kpis6">
-      <div class="kc"><span class="kc-l">Total HT</span><span class="kc-v">${eur(R.tot)}</span><span class="kc-n mut">${eur(R.tot * (1 + num(ao.params.tva)))} TTC</span></div>
-      <div class="kc"><span class="kc-l">Jours</span><span class="kc-v">${jfmt(R.jours)} j</span><span class="kc-n mut">TJM moyen ${eur(R.tjmMoy)}</span></div>
-      <div class="kc"><span class="kc-l">% des travaux</span><span class="kc-v">${R.pBudget ? pct(R.pBudget) : "—"}</span></div>
-      <div class="kc"><span class="kc-l">€ / m²</span><span class="kc-v">${R.eurM2 ? (Math.round(R.eurM2 * 100) / 100).toLocaleString("fr-FR") + " €" : "—"}</span></div>
-      <div class="kc"><span class="kc-l">Durée</span><span class="kc-v">${R.duree ? R.duree + " mois" : "—"}</span><span class="kc-n mut">${R.a ? ymLab(R.a) + " → " + ymLab(R.b) : ""}</span></div>
-      <div class="kc"><span class="kc-l">Options</span><span class="kc-v">${R.optTot ? eur(R.optTot) : "—"}</span><span class="kc-n mut">${R.opts.length ? plur(R.opts.length, "option") : "aucune"}</span></div></div>
-    <div class="wz-grid">
-      <section class="panel wide"><div class="row" style="justify-content:space-between;align-items:center"><h3>Décomposition par phase</h3><button class="btn sm" data-act="ao-copy-recap">Copier le tableau</button></div>
-        <div class="tbl-wrap"><table class="tbl dpgf"><thead><tr><th>Phase</th><th>Période</th><th>Jours</th><th>Montant HT</th><th>Part</th></tr></thead><tbody>
-        ${R.ph.map(x => `<tr><td><span class="ph-tag st-${x.p.stage}">${STAGES[x.p.stage][0]}</span> ${esc(x.p.nom)}</td><td>${ymLab(x.p.a)} → ${ymLab(x.p.b)}</td><td>${jfmt(x.jours)}</td><td>${eur(x.prix)}</td><td>${R.tot ? Math.round(x.prix / R.tot * 100) : 0} %</td></tr>`).join("")}
-        <tr class="tot"><td>Total</td><td>${R.duree} mois</td><td>${jfmt(R.jours)}</td><td>${eur(R.tot)}</td><td>100 %</td></tr></tbody></table></div></section>
-      <section class="panel"><h3>Par mission</h3>${mis.length ? `<div class="dec-bars">${mis.map(([k, v]) => `<div class="db-r"><span class="db-l">${esc(MIS[k] ? MIS[k].nom : "Autres")}</span><span class="db-v">${eur(v)} <small>${R.tot ? Math.round(v / R.tot * 100) : 0} %</small></span><span class="db-b"><i style="width:${Math.max(2, v / mis[0][1] * 100)}%"></i></span></div>`).join("")}</div>` : '<p class="sub">Aucune prestation.</p>'}</section>
-      <section class="panel"><h3>Facturation mensuelle</h3>${ms.length ? `<div class="ao-bars">${ms.map(([m, o]) => `<i style="height:${Math.max(3, o.e / mx * 100)}%" title="${ymLab(m)} : ${eur(o.e)} · ${jfmt(o.j)} j"></i>`).join("")}</div><div class="anc-l"><span>${ymLab(ms[0][0])}</span><span>pic ${eur(mx)} / mois</span><span>${ymLab(ms[ms.length - 1][0])}</span></div>` : '<p class="sub">Aucune prestation datée.</p>'}</section>
-      ${R.opts.length ? `<section class="panel"><h3>Options</h3><ul class="opt-l">${R.opts.map(x => `<li><span>${esc(x.l.lib)}</span><b>${eur(x.c.prix)}</b></li>`).join("")}</ul></section>` : ""}
-      <section class="panel"><h3>Après la remise</h3><div class="ao-form f1">
-        <label class="field"><span class="lbl">Statut</span><select data-ao="statut" ${ro ? "disabled" : ""}>${AO_STATUTS.map(s => `<option ${ao.statut === s ? "selected" : ""}>${s}</option>`).join("")}</select></label>
-        <label class="field"><span class="lbl">Référence du décompte des heures</span>${aoIn("reference", ao.reference, 'list="dl-refs" placeholder="pour suivre le temps passé si l\'AO est gagné"')}<datalist id="dl-refs">${refList().map(r => `<option value="${esc(r)}">`).join("")}</datalist></label></div>
-        ${su ? `<div class="suivi"><span class="sub">Temps passé sur « ${esc(ao.reference)} »</span><div class="kc-v">${jfmt(su.j)} j <small>/ ${jfmt(R.jours)} j chiffrés</small></div><span class="ps-bar"><i style="width:${Math.min(100, R.jours ? su.j / R.jours * 100 : 0)}%;background:${su.j > R.jours ? "var(--late)" : "var(--accent)"}"></i></span></div>` : ""}
-        ${ro ? "" : `<div class="row" style="margin-top:12px"><button class="btn primary" data-act="ao-xlsx">Exporter en .xlsx</button><button class="btn" data-act="ao-dup">Dupliquer</button><button class="btn ghost danger" data-act="ao-del">Supprimer</button></div>`}</section>
-    </div>`;
-}
 /* Base des unités d'œuvre */
 function viewUo(){
   const ro = S.canWrite === false, B = uoBase(), q = norm(S.chif.bq), mf = S.chif.bmis;
@@ -2987,7 +2990,8 @@ async function aoAction(act, a, ev){
   const C = S.chif, ov = a.closest(".overlay");
   if (act === "ao-ov-close") { if (a === ov && ev && ev.target !== ov) return; ov && ov.remove(); return; }
   if (act === "ao-biblio") { C.mode = "biblio"; saveChifUi(); render(true); window.scrollTo(0, 0); return; }
-  if (act === "ao-back") { C.mode = "list"; saveChifUi(); render(true); window.scrollTo(0, 0); return; }
+  if (act === "ao-back") { if (C.mode === "socs" && C.backTo && S.aos.has(C.backTo)) { C.mode = "ao"; C.id = C.backTo; C.backTo = ""; } else C.mode = "list"; saveChifUi(); render(true); window.scrollTo(0, 0); return; }
+  if (/^ao-soc/.test(act)) return socAction(act, a);
   if (act === "ao-filt") { C.filt = a.dataset.v; render(true); return; }
   if (act === "ao-open") { C.mode = "ao"; C.id = a.dataset.id; C.open = {}; C.coll = {}; saveChifUi(); render(true); window.scrollTo(0, 0); return; }
   if (act === "ao-new") { const n = blankAo(); C.mode = "ao"; C.id = n.id; C.open = {}; C.coll = {}; saveChifUi(); await aoSave(n); render(true); window.scrollTo(0, 0); setTimeout(() => { const el = document.querySelector('.wz-body [data-ao="nom"]'); if (el && !isMobile()) el.focus(); }, 40); return; }
@@ -3038,11 +3042,15 @@ async function aoAction(act, a, ev){
   if (act === "ao-line-new") { const nl = {...lineFromItem(null, pid), type:a.dataset.t === "temps" ? "temps" : "uo", lib:a.dataset.t === "temps" ? "Nouvelle prestation au temps" : "Nouvelle unité d'œuvre", unite:a.dataset.t === "temps" ? "réunion" : "forfait"}; insertLines(ao, [nl]); await aoSave(ao); render(true); setTimeout(() => { const el = document.querySelector(`[data-lid="${nl.id}"] [data-ao="l.lib"]`); if (el) { el.focus(); el.select(); } }, 30); return; }
   if (act === "ao-cible-apply") { const R = calcAo(ao), need = R.brut ? 1 - num(ao.cible) / R.brut : 0; ao.params.remise = Math.max(0, Math.round(need * 10000) / 10000); await aoSave(ao); render(true); toast(`Remise de ${pct(ao.params.remise, 1)} appliquée`); return; }
   if (act === "ao-xlsx") { aoExport(ao); return; }
+  if (act === "ao-pdf") { aoPdf(ao); return; }
+  if (act === "ao-odetail") { ao.offre = {...(ao.offre || {}), detail:a.dataset.v}; await aoSave(ao); render(true); return; }
+  if (act === "ao-opt-new") { const eph = effPhases(ao), ph = eph.filter(p => p.stage !== "T").pop() || eph[0]; if (!ph) { toast("Crée d'abord le planning"); goStep(ao, 1); return; } const nl = {...lineFromItem(null, ph.id), lib:"Nouvelle option", option:true}; insertLines(ao, [nl]); C.open[nl.id] = true; ao.step = 3; await aoSave(ao); render(true); setTimeout(() => { const el = document.querySelector(`[data-lid="${nl.id}"] [data-ao="l.lib"]`); if (el) { el.scrollIntoView({block:"center"}); el.focus(); el.select(); } }, 40); return; }
   if (act === "ao-copy-recap") { const R = calcAo(ao); const t = [["Phase", "Début", "Fin", "Jours", "Montant HT"], ...R.ph.map(x => [x.p.nom, ymLab(x.p.a), ymLab(x.p.b), jfmt(x.jours), Math.round(x.prix)]), ["Total", ymLab(R.a), ymLab(R.b), jfmt(R.jours), Math.round(R.tot)]].map(r => r.join("\t")).join("\n"); (await copyText(t)) ? toast("Tableau copié : colle-le dans Excel ou Word") : showCopyBox(t); return; }
   if (act === "ao-dup") { const n = JSON.parse(JSON.stringify(ao)); n.id = uid(); n.nom = (ao.nom || "Sans titre") + " (copie)"; n.statut = "En cours"; n.created = nowIso(); n.step = 0; C.id = n.id; saveChifUi(); await aoSave(n); render(true); window.scrollTo(0, 0); toast("Chiffrage dupliqué"); return; }
   if (act === "ao-del") { if (!a.classList.contains("armed")) { a.classList.add("armed"); a.textContent = "Confirmer la suppression"; return; } S.aos.delete(ao.id); C.mode = "list"; saveChifUi(); render(true); try { await S.db.doc("ao/" + ao.id).delete(); toast("Chiffrage supprimé"); } catch (e) { fail(e); } return; }
   if (!l) return;
   if (act === "ao-line-open") { C.open[lid] = !C.open[lid]; render(true); return; }
+  if (act === "ao-opt-in") { l.option = false; await aoSave(ao); render(true); toast("Option intégrée au total"); return; }
   if (act === "ao-line-del") { ao.lines = ao.lines.filter(x => x.id !== lid); await aoSave(ao); render(true); toast("Prestation supprimée"); return; }
   if (act === "ao-line-dup") { ao.lines.splice(ao.lines.indexOf(l) + 1, 0, {...JSON.parse(JSON.stringify(l)), id:uid()}); await aoSave(ao); render(true); return; }
   if (act === "ao-line-up" || act === "ao-line-down") { const same = ao.lines.filter(x => x.phase === l.phase), o = same[same.indexOf(l) + (act === "ao-line-up" ? -1 : 1)]; if (!o) return; const i = ao.lines.indexOf(l), j = ao.lines.indexOf(o); [ao.lines[i], ao.lines[j]] = [ao.lines[j], ao.lines[i]]; await aoSave(ao); render(true); return; }
@@ -3080,6 +3088,7 @@ async function aoChange(el){
   }
   else if (f.startsWith("ph.") && ph) { const k = f.slice(3); if (k === "nom") ph.nom = v.trim() || ph.nom; else if (k === "n") ph.n = Math.max(1, Math.round(num(v)) || 1); else if (k === "a") { const ym = ymParse(v); if (ym) ph.a = ym; } else if (k === "stage") ph.stage = v; }
   else if (f.startsWith("p.")) { const k = f.slice(2); ao.params[k] = ["marge", "remise", "tva"].includes(k) ? Math.max(0, num(v)) / 100 : Math.max(0, num(v)); }
+  else if (f.startsWith("o.")) { const k = f.slice(2); ao.offre = {...offreOf(ao), ...(ao.offre || {}), [k]:el.type === "checkbox" ? !!v : k === "validite" ? Math.max(1, Math.round(num(v))) || 90 : typeof v === "string" ? v.trim() : v}; }
   else if (f.startsWith("tjm.")) ao.params.tjm = {...(ao.params.tjm || {}), [f.slice(4)]:num(v)};
   else if (f.startsWith("d.")) ao.drivers = {...(ao.drivers || {}), [f.slice(2)]:Math.max(0, num(v))};
   else if (f === "cd.nom") { const k = el.closest("[data-k]").dataset.k; ao.cdrv = (ao.cdrv || []).map(c => c.k === k ? {...c, nom:v.trim() || c.nom} : c); }
@@ -3106,50 +3115,6 @@ async function uoChange(el){
   if (f.startsWith("it.")) { const id = el.closest("[data-bid]").dataset.bid, k = f.slice(3); await saveUo({items:B.items.map(x => x.id !== id ? x : {...x, [k]:["tu", "cu", "freq"].includes(k) ? num(v) : k === "dep" ? !!v : typeof v === "string" ? v.trim() : v})}); if (el.tagName === "SELECT") render(true); }
 }
 
-/* ----- Export Excel (avec formules) ----- */
-async function aoExport(ao){
-  const dl = window.claude && window.claude.use ? await window.claude.use("downloads") : null;
-  if (!dl) { toast("L'export n'est pas disponible sur cet appareil."); return; }
-  try {
-    toast("Préparation du fichier…");
-    const X = await loadXLSX(), R = calcAo(ao), P = ao.params, Ps = profilsOf(ao);
-    const ws = {}, put = (r, c, v, z, f) => { const cell = typeof v === "number" ? {t:"n", v} : {t:"s", v:String(v ?? "")}; if (z) cell.z = z; if (f) cell.f = f; ws[X.utils.encode_cell({r, c})] = cell; };
-    [["Appel d'offres", ao.nom], ["Client", ao.client], ["Maître d'ouvrage", ao.moa], ["Localisation", ao.lieu], ["Opération", ao.type], ["Missions", (ao.missions || []).map(m => MIS[m] ? MIS[m].nom : m).join(", ")], ["Date de remise", validYmd(ao.remise) ? fmt(ao.remise, true) : ""], ["Montant des travaux (€ HT)", num(ao.budget)], ["Surface (m²)", num(ao.surface)]]
-      .forEach(([k, v], i) => { put(i, 0, k); put(i, 1, v ?? "", typeof v === "number" ? "#,##0" : null); });
-    [["Marge / aléas", num(P.marge), "0.0%"], ["Coût d'un déplacement (€)", depCost(ao), "#,##0"], ["Remise commerciale", num(P.remise), "0.0%"], ["Arrondi du total (€)", num(P.arrondi), "#,##0"], ...Ps.map(p => [`TJM ${p.nom} (€ HT)`, profTjm(ao, p.k), "#,##0"])].forEach(([k, v, z], i) => { put(i, 4, k); put(i, 5, v, z); });
-    const H = ["Phase", "Mission", "Prestation", "Mode", "Unité", "Début", "Fin", "Mois", "Fois / mois", "Quantité", "Temps unit. (j)", "Jours", "Profil", "TJM (€)", "Travail (€)", "Prix unit. (€)", "Déplacement", "Coût déplacements (€)", "Prix HT (€)", "Option"];
-    const r0 = Math.max(10, 4 + Ps.length) + 2; H.forEach((h, c) => put(r0, c, h));
-    let r = r0 + 1; const first = r + 1;
-    for (const ph of R.eph) for (const {l, c} of R.lines.filter(y => y.l.phase === ph.id)) {
-      const rr = r + 1, pr = Ps.find(p => p.k === l.profil) || {nom:l.profil};
-      put(r, 0, ph.nom); put(r, 1, MIS[l.mis] ? MIS[l.mis].nom : ""); put(r, 2, l.lib); put(r, 3, l.type === "temps" ? "Temps" : "UO"); put(r, 4, l.unite); put(r, 5, c.per ? c.per.a : ""); put(r, 6, c.per ? c.per.b : ""); put(r, 7, c.mois);
-      if (l.type === "temps") { put(r, 8, num(l.freq), "0.00"); put(r, 9, c.q, null, `ROUND(H${rr}*I${rr},0)`); } else put(r, 9, c.q);
-      put(r, 10, num(l.tu), "0.000"); put(r, 11, c.jours, "0.00", `J${rr}*K${rr}`); put(r, 12, pr.nom); put(r, 13, c.tjm, "#,##0"); put(r, 14, c.trav, "#,##0", `L${rr}*N${rr}`); put(r, 15, num(l.cu), "#,##0.00");
-      put(r, 16, l.dep ? "OUI" : "NON"); put(r, 17, c.dep, "#,##0", `IF(Q${rr}="OUI",ROUND(J${rr},0)*$F$2,0)`); put(r, 18, c.prix, "#,##0", `ROUNDUP((O${rr}+J${rr}*P${rr}+R${rr})*(1+$F$1),0)`); put(r, 19, l.option ? "OUI" : "");
-      r++;
-    }
-    const last = r, rg = c => `${c}${first}:${c}${last}`; r++;
-    put(r, 17, "Sous-total prestations"); put(r, 18, R.brut, "#,##0", `SUMIF(${rg("T")},"<>OUI",${rg("S")})`); put(r, 11, R.jours, "0.00", `SUMIF(${rg("T")},"<>OUI",${rg("L")})`); const rs = r + 1; r++;
-    put(r, 17, "Remise commerciale"); put(r, 18, -R.rem, "#,##0", `-S${rs}*$F$3`); const rrm = r + 1; r++;
-    put(r, 17, "Total HT"); put(r, 18, R.tot, "#,##0", num(P.arrondi) > 0 ? `CEILING(S${rs}+S${rrm},$F$4)` : `ROUND(S${rs}+S${rrm},0)`); const rt = r + 1; r++;
-    put(r, 17, `TVA ${jfmt(num(P.tva) * 100)} %`); put(r, 18, R.tot * num(P.tva), "#,##0", `S${rt}*${num(P.tva)}`); r++;
-    put(r, 17, "Total TTC"); put(r, 18, R.tot * (1 + num(P.tva)), "#,##0", `S${rt}*${1 + num(P.tva)}`); r++;
-    if (R.optTot) { put(r, 17, "Options (hors total)"); put(r, 18, R.optTot, "#,##0", `SUMIF(${rg("T")},"OUI",${rg("S")})`); r++; }
-    if (num(ao.budget)) { put(r, 17, "% des travaux"); put(r, 18, R.pBudget, "0.00%", `S${rt}/B8`); r++; }
-    if (num(ao.surface)) { put(r, 17, "€ HT / m²"); put(r, 18, R.eurM2, "0.00", `S${rt}/B9`); r++; }
-    ws["!ref"] = X.utils.encode_range({s:{r:0, c:0}, e:{r, c:H.length - 1}});
-    ws["!cols"] = [22, 22, 56, 7, 11, 9, 9, 6, 9, 9, 12, 8, 22, 9, 12, 11, 11, 14, 13, 8].map(w => ({wch:w}));
-    ws["!autofilter"] = {ref:X.utils.encode_range({s:{r:r0, c:0}, e:{r:last - 1, c:H.length - 1}})};
-    const sheet = (aoa, cols, fmts) => { const s = X.utils.aoa_to_sheet(aoa); s["!cols"] = cols.map(w => ({wch:w})); for (let i = 1; i < aoa.length; i++) for (const [c, z] of fmts) { const cell = s[X.utils.encode_cell({r:i, c})]; if (cell && cell.t === "n") cell.z = z; } return s; };
-    const ws2 = sheet([["Phase", "Étape", "Début", "Fin", "Mois", "Jours", "Montant HT (€)", "Part"], ...R.ph.map(x => [x.p.nom, STAGES[x.p.stage], x.p.a, x.p.b, x.p.n, Math.round(x.jours * 100) / 100, Math.round(x.prix), R.tot ? x.prix / R.tot : 0]), ["TOTAL", "", R.a || "", R.b || "", R.duree, Math.round(R.jours * 100) / 100, R.tot, 1]], [30, 13, 9, 9, 6, 8, 14, 8], [[6, "#,##0"], [7, "0.0%"]]);
-    const ws3 = sheet([["Mission", "Montant HT (€)", "Part"], ...[...R.byMis].sort((a, b) => b[1] - a[1]).map(([k, v]) => [MIS[k] ? MIS[k].nom : "Autres", Math.round(v), R.tot ? v / R.tot : 0])], [32, 14, 8], [[1, "#,##0"], [2, "0.0%"]]);
-    let cum = 0; const ws4 = sheet([["Mois", "Montant HT (€)", "Jours", "Cumul (€)"], ...[...R.months.keys()].sort().map(m => { const o = R.months.get(m); cum += o.e; return [m, Math.round(o.e), Math.round(o.j * 100) / 100, Math.round(cum)]; })], [10, 14, 8, 14], [[1, "#,##0"], [3, "#,##0"]]);
-    const wb = X.utils.book_new(); X.utils.book_append_sheet(wb, ws, "Chiffrage"); X.utils.book_append_sheet(wb, ws2, "Par phase"); X.utils.book_append_sheet(wb, ws3, "Par mission"); X.utils.book_append_sheet(wb, ws4, "Facturation mensuelle");
-    const buf = X.write(wb, {bookType:"xlsx", type:"array"});
-    await dl.save({filename:`Chiffrage_${(ao.nom || "AO").replace(/[^\w-]+/g, "_").slice(0, 40)}_${today()}.xlsx`, data:new Blob([buf])});
-    toast("Fichier prêt");
-  } catch (e) { toast(e && e.code === "declined" ? "Téléchargement annulé." : "Export impossible pour l'instant."); }
-}
 document.addEventListener("input", ev => {
   if (ev.target.id === "pick-q") pickRender();
   if (ev.target.matches && ev.target.matches("textarea.fit")) { ev.target.style.height = "auto"; ev.target.style.height = ev.target.scrollHeight + 2 + "px"; }
@@ -3160,6 +3125,452 @@ document.addEventListener("change", ev => {
   if (t.dataset && t.dataset.pick) { const id = t.dataset.pick, s = S.chif.pickSel; t.checked ? s.includes(id) || s.push(id) : s.splice(s.indexOf(id), 1); pickCount(); }
   if (t.id === "pick-ph") { S.chif.pickPhase = t.value; pickRender(); }
 });
+
+/* ---------- Offre : entreprises émettrices, options, PDF et Excel mis en forme ---------- */
+S.socs = null;
+const LIBS = {exceljs:"./exceljs.min.js", jspdf:"./jspdf.umd.min.js"};
+const libP = {};
+function loadLib(k, ok){
+  if (ok()) return Promise.resolve();
+  if (!libP[k]) libP[k] = new Promise((res, rej) => { const s = document.createElement("script"); s.src = LIBS[k]; s.onload = () => ok() ? res() : rej(new Error(k)); s.onerror = () => { libP[k] = null; rej(new Error(k)); }; document.head.appendChild(s); });
+  return libP[k];
+}
+const socList = () => (S.socs && Array.isArray(S.socs.list) ? S.socs.list : []);
+const COND0 = "Offre valable {validite} jours à compter de sa date d'émission.\nPrix exprimés en euros hors taxes, TVA au taux en vigueur en sus.\nFacturation mensuelle à l'avancement des prestations, règlement à 30 jours.\nToute prestation non décrite dans la présente offre fera l'objet d'un avenant.";
+async function saveSocs(list){ S.socs = {list, updated:nowIso()}; schedule(); try { await S.db.doc("meta/societes").set(S.socs); } catch (e) { fail(e); } }
+function offreOf(ao){ const o = ao.offre || {}; return {soc:o.soc || (socList()[0] || {}).id || "", num:o.num || `OF-${(validYmd(o.date) ? o.date : today()).replace(/-/g, "").slice(2)}-${ao.id.slice(-3).toUpperCase()}`, date:validYmd(o.date) ? o.date : today(), validite:o.validite || 90, detail:o.detail || "phase", jours:o.jours !== false, taux:!!o.taux, opts:o.opts !== false, hyp:o.hyp !== false, accord:o.accord !== false, intro:o.intro || "", conditions:o.conditions || ""}; }
+const socOf = ao => socList().find(s => s.id === offreOf(ao).soc) || null;
+const qtyTxt = (l, c) => `${jf4(c.q)} ${plurU(l.unite, c.q)}${l.type === "temps" ? ` (${jf4(num(l.freq))} / mois)` : ""}`;
+const condTxt = (ao, soc) => (offreOf(ao).conditions || (soc && soc.conditions) || COND0).replace(/\{validite\}/g, offreOf(ao).validite);
+
+/* ----- Page « Mes entreprises » ----- */
+function viewSocs(){
+  const ro = S.canWrite === false, L = socList();
+  return `<div class="view-head"><div><div class="eyebrow"><button class="lnk" data-act="ao-back">‹ Chiffrages</button></div><h1>Mes entreprises</h1><div class="sub">Coordonnées, logo et conditions qui apparaissent en en-tête des offres PDF et des exports Excel. Tu choisis l'entreprise émettrice dans chaque chiffrage.</div></div>
+      <div class="pnav">${ro ? "" : `<button class="btn primary" data-act="ao-soc-new">${I.plus} Entreprise</button>`}</div></div>
+    ${L.length ? `<div class="soc-list">${L.map(s => `<section class="panel soc" data-sid="${s.id}" style="--sa:${esc(s.couleur || "#1F6FEB")}">
+      <div class="soc-top"><div class="soc-logo">${s.logo ? `<img src="${s.logo}" alt="Logo ${esc(s.nom)}">` : '<span>Pas de logo</span>'}</div>
+        <div class="soc-lb">${ro ? "" : `<button class="btn sm" data-act="ao-soc-logo">${s.logo ? "Changer le logo" : "Ajouter un logo"}</button>${s.logo ? `<button class="btn ghost sm" data-act="ao-soc-logo-del">Retirer</button>` : ""}<input type="file" class="soc-file" accept="image/png,image/jpeg,image/svg+xml,image/webp" hidden>`}
+          <label class="soc-col">Couleur <input type="color" data-soc="couleur" value="${esc(s.couleur || "#1F6FEB")}" ${ro ? "disabled" : ""}></label></div>
+        ${ro ? "" : `<button class="ic-btn del" data-act="ao-soc-del" aria-label="Supprimer l'entreprise">${I.close}</button>`}</div>
+      <div class="ao-form f2">
+        <label class="field wide"><span class="lbl">Raison sociale</span><input type="text" data-soc="nom" value="${esc(s.nom || "")}" ${ro ? "readonly" : ""}></label>
+        <label class="field wide"><span class="lbl">Adresse</span><textarea data-soc="adresse" rows="2" ${ro ? "readonly" : ""}>${esc(s.adresse || "")}</textarea></label>
+        <label class="field"><span class="lbl">SIRET</span><input type="text" data-soc="siret" value="${esc(s.siret || "")}" ${ro ? "readonly" : ""}></label><label class="field"><span class="lbl">N° de TVA</span><input type="text" data-soc="tva" value="${esc(s.tva || "")}" ${ro ? "readonly" : ""}></label>
+        <label class="field"><span class="lbl">Téléphone</span><input type="text" data-soc="tel" value="${esc(s.tel || "")}" inputmode="tel" ${ro ? "readonly" : ""}></label><label class="field"><span class="lbl">E-mail</span><input type="text" data-soc="email" value="${esc(s.email || "")}" inputmode="email" ${ro ? "readonly" : ""}></label>
+        <label class="field"><span class="lbl">Site web</span><input type="text" data-soc="web" value="${esc(s.web || "")}" ${ro ? "readonly" : ""}></label><label class="field"><span class="lbl">Signataire (nom, fonction)</span><input type="text" data-soc="signataire" value="${esc(s.signataire || "")}" placeholder="ex. Prénom Nom, gérant" ${ro ? "readonly" : ""}></label>
+        <label class="field wide"><span class="lbl">Conditions par défaut</span><textarea data-soc="conditions" rows="4" placeholder="${esc(COND0)}" ${ro ? "readonly" : ""}>${esc(s.conditions || "")}</textarea><small class="sub">{validite} est remplacé par la durée de validité de l'offre.</small></label>
+      </div></section>`).join("")}</div>`
+    : `<div class="empty"><h2>Aucune entreprise</h2><p>Ajoute l'entreprise qui émet tes offres (ou plusieurs, si tu réponds sous différentes structures) : son logo et ses coordonnées seront repris dans le PDF et l'Excel.</p>${ro ? "" : `<div class="actions"><button class="btn primary" data-act="ao-soc-new">${I.plus} Ajouter une entreprise</button></div>`}</div>`}`;
+}
+async function socAction(act, a){
+  const L = socList().map(s => ({...s})), sid = a.closest("[data-sid]")?.dataset.sid, s = L.find(x => x.id === sid);
+  if (act === "ao-socs") { S.chif.backTo = S.chif.mode === "ao" ? S.chif.id : ""; S.chif.mode = "socs"; saveChifUi(); render(true); window.scrollTo(0, 0); return; }
+  if (act === "ao-soc-new") { const n = {id:uid(), nom:"Mon entreprise", adresse:"", siret:"", tva:"", tel:"", email:"", web:"", signataire:"", couleur:"#1F6FEB", conditions:"", logo:""}; await saveSocs([...L, n]); render(true); setTimeout(() => { const el = document.querySelector(`[data-sid="${n.id}"] [data-soc="nom"]`); if (el) { el.focus(); el.select(); } }, 30); return; }
+  if (!s) return;
+  if (act === "ao-soc-del") { if (!a.classList.contains("armed")) { a.classList.add("armed"); toast("Clique encore pour supprimer cette entreprise"); return; } await saveSocs(L.filter(x => x.id !== sid)); render(true); return; }
+  if (act === "ao-soc-logo") { a.closest(".soc").querySelector(".soc-file").click(); return; }
+  if (act === "ao-soc-logo-del") { s.logo = ""; s.logoW = 0; s.logoH = 0; await saveSocs(L); render(true); return; }
+}
+function readLogo(file){
+  return new Promise((res, rej) => {
+    const fr = new FileReader();
+    fr.onload = () => { const img = new Image(); img.onload = () => {
+      const k = Math.min(1, 640 / img.width, 260 / img.height), w = Math.max(1, Math.round(img.width * k)), h = Math.max(1, Math.round(img.height * k));
+      const cv = document.createElement("canvas"); cv.width = w; cv.height = h; const cx = cv.getContext("2d"); cx.drawImage(img, 0, 0, w, h);
+      let url = cv.toDataURL("image/png");
+      if (url.length > 350000) { const c2 = document.createElement("canvas"); c2.width = w; c2.height = h; const x2 = c2.getContext("2d"); x2.fillStyle = "#fff"; x2.fillRect(0, 0, w, h); x2.drawImage(img, 0, 0, w, h); url = c2.toDataURL("image/jpeg", 0.88); }
+      res({url, w, h}); }; img.onerror = () => rej(new Error("image")); img.src = fr.result; };
+    fr.onerror = () => rej(new Error("lecture")); fr.readAsDataURL(file);
+  });
+}
+document.addEventListener("change", async ev => {
+  const t = ev.target, card = t.closest && t.closest("[data-sid]"); if (!card) return;
+  const L = socList().map(s => ({...s})), s = L.find(x => x.id === card.dataset.sid); if (!s) return;
+  if (t.classList.contains("soc-file") && t.files && t.files[0]) { try { const r = await readLogo(t.files[0]); s.logo = r.url; s.logoW = r.w; s.logoH = r.h; await saveSocs(L); render(true); toast("Logo enregistré"); } catch (e) { toast("Image illisible : essaie un PNG ou un JPEG"); } t.value = ""; return; }
+  if (t.dataset.soc) { s[t.dataset.soc] = t.type === "color" ? t.value : t.value.trim(); await saveSocs(L); if (t.type === "color") render(true); }
+});
+
+/* ----- Étape 6 : synthèse, options et offre ----- */
+function suivi(ao, R){
+  if (!ao.reference || !R.a) return null;
+  const start = R.a + "-01", end = today(); if (start > end) return {j:0};
+  let m = 0; for (let d = start; d <= end; d = addDays(d, 1)) for (const r of decRows(d)) if (r.ref === ao.reference) m += r.m;
+  return {j:m / 60 / 8};
+}
+function stepSynth(ao, R){
+  const ro = S.canWrite === false, O = offreOf(ao), L = socList(), soc = socOf(ao), dis = ro ? "disabled" : "";
+  const ms = [...R.months].sort((a, b) => a[0].localeCompare(b[0])), mx = Math.max(1, ...ms.map(([, o]) => o.e)), mis = [...R.byMis].sort((a, b) => b[1] - a[1]), su = ao.statut === "Gagné" ? suivi(ao, R) : null;
+  const ck = (k, t) => `<label class="chk"><input type="checkbox" data-ao="o.${k}" ${O[k] ? "checked" : ""} ${dis}><span>${t}</span></label>`;
+  return `<div class="kpi-row dec-kpis ao-kpis6">
+      <div class="kc"><span class="kc-l">Total HT</span><span class="kc-v">${eur(R.tot)}</span><span class="kc-n mut">${eur(R.tot * (1 + num(ao.params.tva)))} TTC</span></div>
+      <div class="kc"><span class="kc-l">Jours</span><span class="kc-v">${jfmt(R.jours)} j</span><span class="kc-n mut">TJM moyen ${eur(R.tjmMoy)}</span></div>
+      <div class="kc"><span class="kc-l">% des travaux</span><span class="kc-v">${R.pBudget ? pct(R.pBudget) : "—"}</span></div>
+      <div class="kc"><span class="kc-l">€ / m²</span><span class="kc-v">${R.eurM2 ? (Math.round(R.eurM2 * 100) / 100).toLocaleString("fr-FR") + " €" : "—"}</span></div>
+      <div class="kc"><span class="kc-l">Durée</span><span class="kc-v">${R.duree ? R.duree + " mois" : "—"}</span><span class="kc-n mut">${R.a ? ymLab(R.a) + " – " + ymLab(R.b) : ""}</span></div>
+      <div class="kc"><span class="kc-l">Options</span><span class="kc-v">${R.optTot ? eur(R.optTot) : "—"}</span><span class="kc-n mut">${R.opts.length ? plur(R.opts.length, "option") + " hors total" : "aucune"}</span></div></div>
+    <div class="wz-grid">
+      <section class="panel wide offre"><div class="of-h"><h3>Offre à remettre</h3><div class="row">${ro ? "" : `<button class="btn primary" data-act="ao-pdf">Générer le PDF</button>`}<button class="btn" data-act="ao-xlsx">Exporter l'Excel</button></div></div>
+        <div class="of-grid">
+          <div class="of-soc">${soc ? `<div class="of-logo">${soc.logo ? `<img src="${soc.logo}" alt="">` : `<span>${esc(soc.nom)}</span>`}</div>` : ""}
+            <label class="field"><span class="lbl">Entreprise émettrice</span><select data-ao="o.soc" ${dis}>${L.length ? L.map(s => `<option value="${s.id}" ${s.id === O.soc ? "selected" : ""}>${esc(s.nom)}</option>`).join("") : '<option value="">Aucune entreprise enregistrée</option>'}</select></label>
+            <button class="lnk" data-act="ao-socs">${L.length ? "Gérer mes entreprises et logos ›" : "Ajouter mon entreprise et son logo ›"}</button></div>
+          <div class="ao-form f3"><label class="field"><span class="lbl">N° d'offre</span>${aoIn("o.num", O.num)}</label><label class="field"><span class="lbl">Date</span><input type="date" data-ao="o.date" value="${O.date}" ${ro ? "readonly" : ""}></label><label class="field"><span class="lbl">Validité (jours)</span>${nIn("o.validite", O.validite)}</label></div>
+          <div class="of-opts"><span class="lbl">Contenu</span><div class="segbar sm">${[["synthese", "Montant seul"], ["phase", "Par phase"], ["detail", "Détail des prestations"]].map(([k, t]) => `<button data-act="ao-odetail" data-v="${k}" aria-pressed="${O.detail === k}" ${dis}>${t}</button>`).join("")}</div>
+            <div class="row">${ck("jours", "Afficher les jours")}${ck("taux", "Afficher les taux journaliers")}${ck("opts", "Inclure les options")}${ck("hyp", "Inclure les hypothèses")}${ck("accord", "Bloc « bon pour accord »")}</div></div>
+          <label class="field wide"><span class="lbl">Texte d'introduction (facultatif)</span><textarea data-ao="o.intro" rows="2" placeholder="ex. Suite à votre consultation, nous avons le plaisir de vous adresser notre proposition pour la mission décrite ci-dessous." ${ro ? "readonly" : ""}>${esc(O.intro)}</textarea></label>
+          <label class="field wide"><span class="lbl">Conditions de l'offre</span><textarea data-ao="o.conditions" rows="3" placeholder="${esc(condTxt({...ao, offre:{...O, conditions:""}}, soc))}" ${ro ? "readonly" : ""}>${esc(O.conditions)}</textarea><small class="sub">Laisse vide pour reprendre les conditions de l'entreprise.</small></label>
+        </div></section>
+      <section class="panel"><h3>Options</h3><p class="sub">Chiffrées à part et présentées comme options dans l'offre, non comprises dans le total.</p>
+        ${R.opts.length ? `<ul class="opt-l">${R.opts.map((x, i) => `<li data-lid="${x.l.id}"><span class="opt-n">${i + 1}</span><span class="opt-t">${esc(x.l.lib)}<small>${esc(qtyTxt(x.l, x.c))} · ${jfmt(x.c.jours)} j</small></span><b>${eur(x.c.prix)}</b>${ro ? "" : `<button class="btn ghost sm" data-act="ao-opt-in" title="Intégrer cette option au total">Intégrer</button>`}</li>`).join("")}</ul>
+          <div class="opt-tot"><span>Total des options</span><b>${eur(R.optTot)}</b><span>Total avec toutes les options</span><b>${eur(R.tot + R.optTot)}</b></div>` : '<p class="sub">Aucune option pour l\'instant.</p>'}
+        ${ro ? "" : `<div class="row" style="margin-top:10px"><button class="btn sm" data-act="ao-opt-new">${I.plus} Option libre</button><button class="btn ghost sm" data-act="wz-step" data-i="3">Passer une prestation en option ›</button></div>`}</section>
+      <section class="panel"><div class="row" style="justify-content:space-between;align-items:center"><h3>Décomposition par phase</h3><button class="btn sm" data-act="ao-copy-recap">Copier</button></div>
+        <div class="tbl-wrap"><table class="tbl dpgf"><thead><tr><th>Phase</th><th>Jours</th><th>Montant HT</th><th>Part</th></tr></thead><tbody>
+        ${R.ph.map(x => `<tr><td><span class="ph-tag st-${x.p.stage}">${STAGES[x.p.stage][0]}</span> ${esc(x.p.nom)}<small class="mut"> ${ymLab(x.p.a)} – ${ymLab(x.p.b)}</small></td><td>${jfmt(x.jours)}</td><td>${eur(x.prix)}</td><td>${R.tot ? Math.round(x.prix / R.tot * 100) : 0} %</td></tr>`).join("")}
+        <tr class="tot"><td>Total · ${R.duree} mois</td><td>${jfmt(R.jours)}</td><td>${eur(R.tot)}</td><td>100 %</td></tr></tbody></table></div></section>
+      <section class="panel"><h3>Par mission</h3>${mis.length ? `<div class="dec-bars">${mis.map(([k, v]) => `<div class="db-r"><span class="db-l">${esc(MIS[k] ? MIS[k].nom : "Autres")}</span><span class="db-v">${eur(v)} <small>${R.tot ? Math.round(v / R.tot * 100) : 0} %</small></span><span class="db-b"><i style="width:${Math.max(2, v / mis[0][1] * 100)}%"></i></span></div>`).join("")}</div>` : '<p class="sub">Aucune prestation.</p>'}</section>
+      <section class="panel"><h3>Facturation mensuelle</h3>${ms.length ? `<div class="ao-bars">${ms.map(([m, o]) => `<i style="height:${Math.max(3, o.e / mx * 100)}%" title="${ymLab(m)} : ${eur(o.e)} · ${jfmt(o.j)} j"></i>`).join("")}</div><div class="anc-l"><span>${ymLab(ms[0][0])}</span><span>pic ${eur(mx)} / mois</span><span>${ymLab(ms[ms.length - 1][0])}</span></div>` : '<p class="sub">Aucune prestation datée.</p>'}</section>
+      <section class="panel"><h3>Après la remise</h3><div class="ao-form f1">
+        <label class="field"><span class="lbl">Statut</span><select data-ao="statut" ${dis}>${AO_STATUTS.map(s => `<option ${ao.statut === s ? "selected" : ""}>${s}</option>`).join("")}</select></label>
+        <label class="field"><span class="lbl">Référence du décompte des heures</span>${aoIn("reference", ao.reference, 'list="dl-refs" placeholder="pour suivre le temps passé si l\'AO est gagné"')}<datalist id="dl-refs">${refList().map(r => `<option value="${esc(r)}">`).join("")}</datalist></label></div>
+        ${su ? `<div class="suivi"><span class="sub">Temps passé sur « ${esc(ao.reference)} »</span><div class="kc-v">${jfmt(su.j)} j <small>/ ${jfmt(R.jours)} j chiffrés</small></div><span class="ps-bar"><i style="width:${Math.min(100, R.jours ? su.j / R.jours * 100 : 0)}%;background:${su.j > R.jours ? "var(--late)" : "var(--accent)"}"></i></span></div>` : ""}
+        ${ro ? "" : `<div class="row" style="margin-top:12px"><button class="btn" data-act="ao-dup">Dupliquer</button><button class="btn ghost danger" data-act="ao-del">Supprimer</button></div>`}</section>
+    </div>`;
+}
+
+/* ----- PDF de l'offre ----- */
+const pdfTxt = s => String(s ?? "").replace(/[   ]/g, " ").replace(/→/g, "–").replace(/≈/g, "~").replace(/[✓✦▸▾]/g, "").replace(/[^\x09\x0a\x20-\x7e -ÿŒœŠšŸŽž–—‘’‚“”„†‡•…‰€™]/g, "");
+const hexRgb = h => { const m = String(h || "").replace("#", "").match(/^([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i); return m ? [parseInt(m[1], 16), parseInt(m[2], 16), parseInt(m[3], 16)] : [31, 111, 235]; };
+async function getDl(){ const dl = window.claude && window.claude.use ? await window.claude.use("downloads") : null; if (!dl) toast("L'export n'est pas disponible sur cet appareil."); return dl; }
+const fileBase = ao => (ao.nom || "AO").normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^\w-]+/g, "_").replace(/_+/g, "_").slice(0, 40);
+async function aoPdf(ao){
+  const dl = await getDl(); if (!dl) return;
+  try {
+    toast("Préparation du PDF…");
+    await loadLib("jspdf", () => window.jspdf && window.jspdf.jsPDF);
+    const doc = new window.jspdf.jsPDF({unit:"mm", format:"a4"}), R = calcAo(ao), O = offreOf(ao), soc = socOf(ao), acc = hexRgb(soc && soc.couleur);
+    const W = 210, H = 297, M = 16, CW = W - 2 * M, INK = [22, 27, 36], MUT = [100, 108, 122], LINE = [218, 223, 230], SOFT = [244, 246, 250];
+    const accSoft = acc.map(v => Math.round(v + (255 - v) * 0.9));
+    let y = 0;
+    const font = (b, s, c) => { doc.setFont("helvetica", b ? "bold" : "normal"); doc.setFontSize(s); doc.setTextColor(...(c || INK)); };
+    const T = (s, x, yy, o = {}) => { font(o.b, o.s || 9.5, o.c); doc.text(pdfTxt(s), x, yy, {align:o.a || "left", charSpace:o.cs || 0}); };
+    const wrap = (s, w, size, b) => { font(b, size); return doc.splitTextToSize(pdfTxt(s), w); };
+    const pe = n => pdfTxt(eur(n));
+    const imgFmt = u => /^data:image\/jpe?g/i.test(u) ? "JPEG" : "PNG";
+    const head2 = () => { y = 14; if (soc && soc.logo && soc.logoW) { const h = 8, w = Math.min(36, h * soc.logoW / soc.logoH); doc.addImage(soc.logo, imgFmt(soc.logo), M, y - 4, w, w * soc.logoH / soc.logoW); } else if (soc) T(soc.nom, M, y + 1, {b:1, s:9}); T(`Offre ${O.num} · ${ao.nom || ""}`, W - M, y + 1, {s:8, c:MUT, a:"right"}); doc.setDrawColor(...LINE); doc.setLineWidth(0.3); doc.line(M, y + 5, W - M, y + 5); y += 13; };
+    const ensure = h => { if (y + h > H - 20) { doc.addPage(); head2(); return true; } return false; };
+    const section = t => { ensure(16); y += 4; T(t.toUpperCase(), M, y, {b:1, s:9, c:acc, cs:0.4}); doc.setDrawColor(...acc); doc.setLineWidth(0.5); doc.line(M, y + 1.8, M + 14, y + 1.8); y += 7; };
+    /* tableau avec sauts de page */
+    function table(cols, rows){
+      const fixed = cols.reduce((s, c) => s + (c.w || 0), 0), flex = cols.filter(c => !c.w).length, cw = cols.map(c => c.w || (CW - fixed) / flex);
+      const xs = cw.reduce((a, w, i) => (a.push(i ? a[i - 1] + cw[i - 1] : M), a), []);
+      const drawHead = () => { doc.setFillColor(...acc); doc.rect(M, y, CW, 7, "F"); cols.forEach((c, i) => T(c.t, c.a === "right" ? xs[i] + cw[i] - 2 : xs[i] + 2, y + 4.7, {b:1, s:7.8, c:[255, 255, 255], a:c.a === "right" ? "right" : "left"})); y += 7; };
+      ensure(16); drawHead();
+      rows.forEach((r, ri) => {
+        const kind = r.kind || "row", size = kind === "group" ? 8.6 : 8.6, bold = kind !== "row" || r.b;
+        const lines = r.cells.map((v, i) => i === 0 || cols[i].wrap ? wrap(v, cw[i] - 4, size, bold) : [pdfTxt(v)]);
+        const subs = r.sub ? wrap(r.sub, cw[0] - 4, 7.4) : [];
+        const h = Math.max(...lines.map(l => l.length)) * 3.9 + subs.length * 3.3 + 3.4;
+        if (ensure(h)) drawHead();
+        if (kind === "group") { doc.setFillColor(...accSoft); doc.rect(M, y, CW, h, "F"); }
+        else if (kind === "total") { doc.setFillColor(...SOFT); doc.rect(M, y, CW, h, "F"); doc.setDrawColor(...INK); doc.setLineWidth(0.3); doc.line(M, y, W - M, y); }
+        else if (ri % 2 === 1) { doc.setFillColor(250, 251, 253); doc.rect(M, y, CW, h, "F"); }
+        lines.forEach((ls, i) => { font(bold, size, r.c || (kind === "group" ? acc.map(v => Math.round(v * 0.7)) : INK)); ls.forEach((ln, k) => doc.text(ln, cols[i].a === "right" ? xs[i] + cw[i] - 2 : xs[i] + 2, y + 4.3 + k * 3.9, {align:cols[i].a === "right" ? "right" : "left"})); });
+        if (subs.length) { font(false, 7.4, MUT); subs.forEach((ln, k) => doc.text(ln, xs[0] + 2, y + 4.3 + lines[0].length * 3.9 + k * 3.3 - 0.6)); }
+        doc.setDrawColor(...LINE); doc.setLineWidth(0.2); doc.line(M, y + h, W - M, y + h); y += h;
+      });
+      y += 3;
+    }
+    /* en-tête de la première page */
+    y = 14; let logoBottom = y;
+    if (soc && soc.logo && soc.logoW) { let w = 48, h = w * soc.logoH / soc.logoW; if (h > 22) { h = 22; w = h * soc.logoW / soc.logoH; } doc.addImage(soc.logo, imgFmt(soc.logo), M, y - 2, w, h); logoBottom = y - 2 + h; }
+    else if (soc) { T(soc.nom, M, y + 4, {b:1, s:15, c:acc}); logoBottom = y + 6; }
+    if (soc) { const info = [soc.nom, ...String(soc.adresse || "").split(/\n/), [soc.tel, soc.email].filter(Boolean).join(" · "), soc.web].filter(Boolean); info.forEach((t, i) => T(t, W - M, y + i * 4, {b:i === 0, s:i === 0 ? 9.5 : 8.2, c:i === 0 ? INK : MUT, a:"right"})); logoBottom = Math.max(logoBottom, y + (info.length - 1) * 4 + 2); }
+    y = Math.max(logoBottom + 8, 34); doc.setDrawColor(...acc); doc.setLineWidth(0.9); doc.line(M, y, W - M, y); y += 10;
+    T("PROPOSITION D'HONORAIRES", M, y, {b:1, s:9, c:acc, cs:0.6}); y += 7;
+    wrap(ao.nom || "Appel d'offres", CW, 17, true).forEach(l => { T(l, M, y, {b:1, s:17}); y += 7.2; });
+    if ((ao.missions || []).length) { T((ao.missions || []).map(m => MIS[m] ? MIS[m].nom : m).join(" · "), M, y, {s:9.5, c:MUT}); y += 6; }
+    y += 2;
+    /* destinataire / références */
+    const bw = (CW - 6) / 2, left = [["Client", ao.client], ["Maître d'ouvrage", ao.moa], ["Localisation", ao.lieu], ["Opération", ao.type]].filter(x => x[1]);
+    const right = [["N° d'offre", O.num], ["Date", fmt(O.date, true)], ["Validité", O.validite + " jours"], ...(validYmd(ao.remise) ? [["Remise de l'offre", fmt(ao.remise, true)]] : [])];
+    const bh = Math.max(left.length, right.length, 1) * 5.4 + 10;
+    [[M, "DESTINATAIRE", left.length ? left : [["", "À préciser"]]], [M + bw + 6, "RÉFÉRENCES", right]].forEach(([x, t, rows]) => {
+      doc.setFillColor(...SOFT); doc.roundedRect(x, y, bw, bh, 2, 2, "F"); T(t, x + 4, y + 6, {b:1, s:7.4, c:acc, cs:0.4});
+      rows.forEach(([k, v], i) => { T(k, x + 4, y + 11.5 + i * 5.4, {s:8, c:MUT}); const ls = wrap(v, bw - 34, 9, true); T(ls.length > 1 ? ls[0].replace(/\s*\S*$/, "") + "…" : ls[0] || "", x + 30, y + 11.5 + i * 5.4, {b:1, s:9}); });
+    });
+    y += bh + 6;
+    const facts = [num(ao.budget) ? ["Montant des travaux", keur(num(ao.budget)) + " HT"] : null, num(ao.surface) ? ["Surface", num(ao.surface).toLocaleString("fr-FR") + " m²"] : null, R.duree ? ["Durée de la mission", `${R.duree} mois, de ${ymLab(R.a)} à ${ymLab(R.b)}`] : null].filter(Boolean);
+    if (facts.length) { const fw = CW / facts.length; facts.forEach(([k, v], i) => { T(k, M + i * fw, y, {s:7.8, c:MUT}); T(v, M + i * fw, y + 4.6, {b:1, s:9.5}); }); y += 11; }
+    if (O.intro) { wrap(O.intro, CW, 9.5).forEach(l => { ensure(5); T(l, M, y, {s:9.5}); y += 4.6; }); y += 3; }
+    /* montant */
+    ensure(26); doc.setFillColor(...accSoft); doc.roundedRect(M, y, CW, 22, 2, 2, "F"); doc.setFillColor(...acc); doc.rect(M, y, 1.6, 22, "F");
+    T("Montant de la proposition", M + 7, y + 8, {b:1, s:10.5}); T(`${R.opts.length && O.opts ? `Hors options (${R.opts.length}) · ` : ""}TVA ${jfmt(num(ao.params.tva) * 100)} % : ${pe(R.tot * num(ao.params.tva))}`, M + 7, y + 14.5, {s:8.5, c:MUT});
+    T(pe(R.tot) + " HT", W - M - 6, y + 10, {b:1, s:17, a:"right"}); T(pe(R.tot * (1 + num(ao.params.tva))) + " TTC", W - M - 6, y + 16.5, {s:9, c:MUT, a:"right"});
+    y += 30;
+    /* décomposition */
+    const byPh = R.eph.map(p => ({p, ls:R.base.filter(x => x.l.phase === p.id)})).filter(x => x.ls.length);
+    const totRows = [{kind:"total", cells:["Sous-total des prestations", ...(O.jours ? [jfmt(R.jours)] : []), pe(R.brut)]}];
+    if (R.rem) totRows.push({kind:"total", cells:[`Remise commerciale (${pct(num(ao.params.remise), 1)})`, ...(O.jours ? [""] : []), "– " + pe(R.rem)]});
+    if (R.rem || R.tot !== R.brut) totRows.push({kind:"total", cells:["Total HT", ...(O.jours ? [""] : []), pe(R.tot)]});
+    if (O.detail === "phase" && byPh.length) {
+      section("Décomposition par phase");
+      table([{t:"Phase"}, {t:"Période", w:38}, ...(O.jours ? [{t:"Jours", w:18, a:"right"}] : []), {t:"Montant HT", w:32, a:"right"}],
+        [...byPh.map(({p, ls}) => ({cells:[p.nom, `${ymLab(p.a)} – ${ymLab(p.b)}`, ...(O.jours ? [jfmt(ls.reduce((s, x) => s + x.c.jours, 0))] : []), pe(ls.reduce((s, x) => s + x.c.prix, 0))], sub:STAGES[p.stage]})), ...totRows.map(r => ({...r, cells:[r.cells[0], "", ...r.cells.slice(1)]}))]);
+    }
+    if (O.detail === "detail" && byPh.length) {
+      section("Détail des prestations");
+      const rows = [];
+      for (const {p, ls} of byPh) {
+        rows.push({kind:"group", cells:[`${p.nom}  ·  ${ymLab(p.a)} – ${ymLab(p.b)}`, "", ...(O.jours ? [jfmt(ls.reduce((s, x) => s + x.c.jours, 0))] : []), pe(ls.reduce((s, x) => s + x.c.prix, 0))]});
+        for (const {l, c} of ls) rows.push({cells:[l.lib, qtyTxt(l, c), ...(O.jours ? [jfmt(c.jours)] : []), pe(c.prix)], sub:l.note || ""});
+      }
+      table([{t:"Prestation"}, {t:"Quantité", w:40, wrap:true}, ...(O.jours ? [{t:"Jours", w:16, a:"right"}] : []), {t:"Montant HT", w:28, a:"right"}], [...rows, ...totRows.map(r => ({...r, cells:[r.cells[0], "", ...r.cells.slice(1)]}))]);
+    }
+    if (O.taux) {
+      const used = profilsOf(ao).filter(p => R.byProf.has(p.k));
+      if (used.length) { section("Taux journaliers"); table([{t:"Profil"}, ...(O.jours ? [{t:"Jours prévus", w:30, a:"right"}] : []), {t:"Taux journalier HT", w:40, a:"right"}], used.map(p => ({cells:[p.nom, ...(O.jours ? [jfmt(R.byProf.get(p.k).j)] : []), pe(profTjm(ao, p.k))]}))); }
+    }
+    if (O.opts && R.opts.length) {
+      section("Options (non comprises dans le montant)");
+      table([{t:"N°", w:12}, {t:"Option"}, {t:"Montant HT", w:30, a:"right"}, {t:"Montant TTC", w:30, a:"right"}],
+        [...R.opts.map((x, i) => ({cells:[String(i + 1), x.l.lib, pe(x.c.prix), pe(x.c.prix * (1 + num(ao.params.tva)))], sub:""})).map(r => ({...r, cells:r.cells})), {kind:"total", cells:["", "Total des options", pe(R.optTot), pe(R.optTot * (1 + num(ao.params.tva)))]}]);
+    }
+    if (O.hyp) {
+      const used = new Map(); for (const x of R.base.concat(R.opts)) if (x.l.type !== "temps" && x.l.drv) used.set(x.l.drv, 1);
+      const items = [...used.keys()].map(k => `${drvName(ao, k)} : ${jf4(drvVal(ao, k))}`);
+      const nDep = R.base.reduce((s, x) => s + (x.l.dep ? Math.round(x.c.q) : 0), 0);
+      if (nDep) items.push(`Déplacements sur site prévus : ${nDep}${num(ao.params.kmAR) ? ` (${num(ao.params.kmAR)} km aller-retour)` : ""}`);
+      items.push(`Planning de référence : ${R.eph.filter(p => p.stage !== "T").map(p => `${p.nom} ${p.n} mois`).join(", ")}`);
+      section("Hypothèses de chiffrage");
+      items.forEach(t => wrap(t, CW - 5, 9).forEach((l, k) => { ensure(5); if (!k) { doc.setFillColor(...acc); doc.circle(M + 1, y - 1.2, 0.7, "F"); } T(l, M + 4, y, {s:9}); y += 4.6; }));
+      y += 2;
+    }
+    section("Conditions");
+    condTxt(ao, soc).split(/\n/).forEach(par => { wrap(par, CW, 9).forEach(l => { ensure(5); T(l, M, y, {s:9, c:[60, 66, 78]}); y += 4.4; }); y += 1; });
+    if (O.accord) {
+      ensure(40); y += 4; const sw = (CW - 8) / 2;
+      [[M, soc ? "Pour " + soc.nom : "Le prestataire", soc && soc.signataire ? soc.signataire : ""], [M + sw + 8, "Bon pour accord du client", "Date, nom, signature et cachet"]].forEach(([x, t, s]) => {
+        doc.setDrawColor(...LINE); doc.setLineWidth(0.3); doc.roundedRect(x, y, sw, 32, 2, 2, "S"); T(t, x + 4, y + 6, {b:1, s:9}); if (s) T(s, x + 4, y + 11, {s:8.2, c:MUT}); });
+      y += 36;
+    }
+    /* pieds de page */
+    const n = doc.getNumberOfPages(), legal = soc ? [soc.nom, soc.siret ? "SIRET " + soc.siret : "", soc.tva ? "TVA " + soc.tva : ""].filter(Boolean).join(" · ") : "";
+    for (let i = 1; i <= n; i++) { doc.setPage(i); doc.setDrawColor(...LINE); doc.setLineWidth(0.3); doc.line(M, H - 13, W - M, H - 13); T(legal || `Offre ${O.num}`, M, H - 8.5, {s:7.4, c:MUT}); T(`Page ${i} / ${n}`, W - M, H - 8.5, {s:7.4, c:MUT, a:"right"}); }
+    const buf = doc.output("arraybuffer");
+    await dl.save({filename:`Offre_${fileBase(ao)}_${O.num}.pdf`, data:new Blob([buf], {type:"application/pdf"})});
+    toast("PDF prêt");
+  } catch (e) { console.error(e); toast(e && e.code === "declined" ? "Téléchargement annulé." : e && e.message === "jspdf" ? "Le module PDF n'a pas pu se charger. Vérifie ta connexion." : "PDF impossible pour l'instant."); }
+}
+
+/* ----- Excel mis en forme, avec formules ----- */
+async function aoExport(ao){
+  const dl = await getDl(); if (!dl) return;
+  try {
+    toast("Préparation de l'Excel…");
+    await loadLib("exceljs", () => window.ExcelJS);
+    const X = window.ExcelJS, R = calcAo(ao), P = ao.params, Ps = profilsOf(ao), O = offreOf(ao), soc = socOf(ao);
+    const accHex = (soc && soc.couleur || "#1F6FEB").replace("#", "").toUpperCase(), A = h => ({argb:"FF" + h});
+    const wb = new X.Workbook(); wb.creator = soc ? soc.nom : "TO DO BIM"; wb.created = new Date(); wb.calcProperties = {fullCalcOnLoad:true};
+    const wsO = wb.addWorksheet("Offre", {views:[{showGridLines:false}], pageSetup:{paperSize:9, orientation:"portrait", fitToPage:true, fitToWidth:1, fitToHeight:0}});
+    const wsD = wb.addWorksheet("Détail", {views:[{showGridLines:false}], pageSetup:{paperSize:9, orientation:"landscape", fitToPage:true, fitToWidth:1, fitToHeight:0}, properties:{outlineProperties:{summaryBelow:false}}});
+    const wsH = wb.addWorksheet("Hypothèses", {views:[{showGridLines:false}]});
+    const wsF = wb.addWorksheet("Facturation", {views:[{showGridLines:false}]});
+    const FILL = c => ({type:"pattern", pattern:"solid", fgColor:A(c)}), IN = FILL("FFF4CC"), HEAD = FILL(accHex), GROUP = FILL("E8EEF6"), TOT = FILL("F1F3F6");
+    const th = {style:"thin", color:A("D5DAE1")}, BOX = {top:th, left:th, bottom:th, right:th};
+    const fE = '#,##0 "€"', fE2 = '#,##0.00 "€"', fJ = '0.00', fP = '0.0%', fQ = '0.####';
+    const cell = (ws, ref, v, st = {}) => { const c = ws.getCell(ref); c.value = v; if (st.f) c.numFmt = st.f; c.font = {name:"Calibri", size:st.s || 10, bold:!!st.b, color:A(st.c || "1F2430"), italic:!!st.i}; if (st.fill) c.fill = st.fill; if (st.al) c.alignment = st.al; if (st.box) c.border = BOX; return c; };
+    const F = (formula, result) => ({formula, result});
+    const foot = `&L&8${(soc ? soc.nom : "").replace(/&/g, "&&")}&C&8${(ao.nom || "").replace(/&/g, "&&")}&R&8Page &P / &N`;
+    [wsO, wsD, wsH, wsF].forEach(ws => { ws.headerFooter = {oddFooter:foot}; });
+    /* Hypothèses */
+    wsH.columns = [{width:42}, {width:14}, {width:14}];
+    cell(wsH, "A1", "Hypothèses du chiffrage", {b:1, s:14}); cell(wsH, "A2", "Les cellules jaunes sont modifiables : le détail et l'offre se recalculent.", {i:1, c:"6B7280"});
+    ["Quantité", "Valeur", "Unité"].forEach((t, i) => cell(wsH, `${"ABC"[i]}4`, t, {b:1, c:"FFFFFF", fill:HEAD, box:1}));
+    const dref = {}; let hr = 5;
+    for (const d of drvList(ao)) { cell(wsH, `A${hr}`, d.nom, {box:1}); cell(wsH, `B${hr}`, num((ao.drivers || {})[d.k]), {fill:IN, box:1, f:fQ}); cell(wsH, `C${hr}`, d.u || "", {box:1, c:"6B7280"}); dref[d.k] = `Hypothèses!$B$${hr}`; hr++; }
+    cell(wsH, `A${hr}`, CALC_DRV.zc.nom, {box:1}); cell(wsH, `B${hr}`, F(`${dref.zones.split("!")[1]}*${dref.cycles.split("!")[1]}`, drvVal(ao, "zc")), {box:1, f:fQ}); cell(wsH, `C${hr}`, "cycle", {box:1, c:"6B7280"}); dref.zc = `Hypothèses!$B$${hr}`; hr++;
+    cell(wsH, `A${hr}`, CALC_DRV.surface.nom, {box:1}); cell(wsH, `B${hr}`, num(ao.surface), {fill:IN, box:1, f:"#,##0"}); cell(wsH, `C${hr}`, "m²", {box:1, c:"6B7280"}); dref.surface = `Hypothèses!$B$${hr}`; const surfRef = dref.surface; hr += 2;
+    cell(wsH, `A${hr}`, "Déplacements", {b:1, c:"FFFFFF", fill:HEAD, box:1}); cell(wsH, `B${hr}`, "", {fill:HEAD, box:1}); cell(wsH, `C${hr}`, "", {fill:HEAD, box:1}); hr++;
+    const hk = hr; [["Distance aller-retour (km)", num(P.kmAR), "km"], ["Coût au km", num(P.ckm), "€"], ["Repas, péage, parking", num(P.repas), "€"]].forEach(([k, v, u], i) => { cell(wsH, `A${hr}`, k, {box:1}); cell(wsH, `B${hr}`, v, {fill:IN, box:1, f:i ? fE2 : "#,##0"}); cell(wsH, `C${hr}`, u, {box:1, c:"6B7280"}); hr++; });
+    cell(wsH, `A${hr}`, "Coût d'un déplacement", {b:1, box:1}); cell(wsH, `B${hr}`, F(`ROUNDUP(B${hk}*B${hk + 1}+B${hk + 2},0)`, depCost(ao)), {b:1, box:1, f:fE}); const depRef = `Hypothèses!$B$${hr}`;
+    /* Détail */
+    wsD.columns = [46, 20, 8, 11, 9, 9, 8, 9, 10, 10, 9, 24, 10, 12, 11, 12, 12, 13, 8, 36].map(w => ({width:w}));
+    cell(wsD, "A1", "Détail du chiffrage", {b:1, s:14}); cell(wsD, "A2", ao.nom || "", {s:11, c:"6B7280"});
+    cell(wsD, "C2", "Modifiable", {fill:IN, box:1, al:{horizontal:"center"}}); cell(wsD, "D2", "Calculé", {box:1, al:{horizontal:"center"}});
+    cell(wsD, "A4", "Paramètres", {b:1, c:"FFFFFF", fill:HEAD}); cell(wsD, "B4", "", {fill:HEAD});
+    [["Marge / aléas", num(P.marge), fP], ["Remise commerciale", num(P.remise), fP], ["Arrondi du total (€)", num(P.arrondi), "#,##0"], ["TVA", num(P.tva), fP]].forEach(([k, v, f], i) => { cell(wsD, `A${5 + i}`, k, {box:1}); cell(wsD, `B${5 + i}`, v, {fill:IN, box:1, f}); });
+    cell(wsD, "A9", "Coût d'un déplacement", {box:1}); cell(wsD, "B9", F(depRef, depCost(ao)), {box:1, f:fE});
+    cell(wsD, "D4", "Profil", {b:1, c:"FFFFFF", fill:HEAD}); ["E", "F", "G", "H", "I", "J", "K"].forEach(c => cell(wsD, `${c}4`, c === "L" ? "" : "", {fill:HEAD})); cell(wsD, "L4", "TJM (€ HT)", {b:1, c:"FFFFFF", fill:HEAD, al:{horizontal:"right"}});
+    Ps.forEach((p, i) => { const r = 5 + i; wsD.mergeCells(`D${r}:K${r}`); cell(wsD, `D${r}`, p.nom, {box:1}); cell(wsD, `L${r}`, profTjm(ao, p.k), {fill:IN, box:1, f:fE}); });
+    const pr0 = 5, pr1 = 4 + Ps.length, PROF = `$D$${pr0}:$L$${pr1}`;
+    const h0 = Math.max(10, pr1) + 2;
+    const HD = ["Prestation", "Mission", "Mode", "Unité", "Début", "Fin", "Mois", "Fois / mois", "Quantité", "Temps unit. (j)", "Jours", "Profil", "TJM (€)", "Travail (€)", "Prix unit. (€)", "Déplacement", "Coût dépl. (€)", "Prix HT (€)", "Option", "Note"];
+    HD.forEach((t, i) => cell(wsD, `${String.fromCharCode(65 + i)}${h0}`, t, {b:1, c:"FFFFFF", fill:HEAD, box:1, al:{horizontal:i >= 6 && i <= 18 && i !== 11 && i !== 15 && i !== 18 ? "right" : "left", vertical:"middle", wrapText:true}}));
+    wsD.getRow(h0).height = 30;
+    wsD.views = [{state:"frozen", ySplit:h0, xSplit:1, showGridLines:false}];
+    let r = h0 + 1; const hdrRows = [], lineRow = new Map(), first = r;
+    for (const ph of R.eph) {
+      const ls = R.lines.filter(x => x.l.phase === ph.id), hrw = r; r++;
+      const a = r;
+      for (const {l, c} of ls) {
+        const pn = (Ps.find(p => p.k === l.profil) || {nom:l.profil}).nom;
+        cell(wsD, `A${r}`, l.lib, {box:1, i:l.option, c:l.option ? "7C3AED" : undefined, al:{wrapText:true, vertical:"top"}}); cell(wsD, `B${r}`, MIS[l.mis] ? MIS[l.mis].nom : "", {box:1, c:"6B7280"}); cell(wsD, `C${r}`, l.type === "temps" ? "Temps" : "UO", {box:1, c:l.type === "temps" ? "7C3AED" : accHex});
+        cell(wsD, `D${r}`, l.unite, {box:1}); cell(wsD, `E${r}`, c.per ? xlM(c.per.a) : "", {box:1, f:"mmm yy"}); cell(wsD, `F${r}`, c.per ? xlM(c.per.b) : "", {box:1, f:"mmm yy"}); cell(wsD, `G${r}`, c.mois, {box:1});
+        if (l.type === "temps") { cell(wsD, `H${r}`, num(l.freq), {fill:IN, box:1, f:fQ}); cell(wsD, `I${r}`, F(`ROUND(G${r}*H${r},0)`, c.q), {box:1, f:fQ}); }
+        else { cell(wsD, `H${r}`, "", {box:1}); if (l.drv && dref[l.drv]) cell(wsD, `I${r}`, F(`${dref[l.drv]}*${num(l.mult) || 1}`, c.q), {box:1, f:fQ}); else cell(wsD, `I${r}`, c.q, {fill:IN, box:1, f:fQ}); }
+        cell(wsD, `J${r}`, num(l.tu), {fill:IN, box:1, f:"0.000#"}); cell(wsD, `K${r}`, F(`I${r}*J${r}`, c.jours), {box:1, f:fJ});
+        const cp = cell(wsD, `L${r}`, pn, {fill:IN, box:1}); cp.dataValidation = {type:"list", allowBlank:false, formulae:[`$D$${pr0}:$D$${pr1}`]};
+        cell(wsD, `M${r}`, F(`IFERROR(VLOOKUP(L${r},${PROF},9,FALSE),0)`, c.tjm), {box:1, f:fE}); cell(wsD, `N${r}`, F(`K${r}*M${r}`, c.trav), {box:1, f:fE});
+        cell(wsD, `O${r}`, num(l.cu), {fill:IN, box:1, f:fE2});
+        const cd = cell(wsD, `P${r}`, l.dep ? "OUI" : "NON", {fill:IN, box:1, al:{horizontal:"center"}}); cd.dataValidation = {type:"list", allowBlank:false, formulae:['"OUI,NON"']};
+        cell(wsD, `Q${r}`, F(`IF(P${r}="OUI",ROUND(I${r},0)*$B$9,0)`, c.dep), {box:1, f:fE});
+        cell(wsD, `R${r}`, F(`ROUNDUP((N${r}+I${r}*O${r}+Q${r})*(1+$B$5),0)`, c.prix), {b:1, box:1, f:fE});
+        const co = cell(wsD, `S${r}`, l.option ? "OUI" : "", {fill:IN, box:1, al:{horizontal:"center"}}); co.dataValidation = {type:"list", allowBlank:true, formulae:['"OUI"']};
+        cell(wsD, `T${r}`, l.note || "", {box:1, c:"6B7280", al:{wrapText:true, vertical:"top"}});
+        wsD.getRow(r).outlineLevel = 1; lineRow.set(l.id, r); r++;
+      }
+      const b = r - 1, base = ls.filter(x => !x.l.option);
+      wsD.mergeCells(`A${hrw}:F${hrw}`);
+      cell(wsD, `A${hrw}`, `${ph.nom}  ·  ${STAGES[ph.stage]}  ·  ${ymLab(ph.a)} – ${ymLab(ph.b)}`, {b:1, s:11, c:"1F2430", fill:GROUP});
+      for (let k = 6; k < 20; k++) cell(wsD, `${String.fromCharCode(65 + k)}${hrw}`, "", {fill:GROUP});
+      cell(wsD, `G${hrw}`, ph.n, {b:1, fill:GROUP});
+      cell(wsD, `K${hrw}`, ls.length ? F(`SUMIFS(K${a}:K${b},S${a}:S${b},"<>OUI")`, base.reduce((s, x) => s + x.c.jours, 0)) : 0, {b:1, fill:GROUP, f:fJ});
+      cell(wsD, `R${hrw}`, ls.length ? F(`SUMIFS(R${a}:R${b},S${a}:S${b},"<>OUI")`, base.reduce((s, x) => s + x.c.prix, 0)) : 0, {b:1, fill:GROUP, f:fE});
+      hdrRows.push({row:hrw, ph});
+    }
+    const last = r - 1; r++;
+    const sumOf = col => hdrRows.length ? hdrRows.map(h => `${col}${h.row}`).join("+") : "0";
+    const totLine = (label, formula, result, st = {}) => { wsD.mergeCells(`N${r}:Q${r}`); cell(wsD, `N${r}`, label, {b:1, fill:TOT, al:{horizontal:"right"}, box:1, ...st}); cell(wsD, `R${r}`, F(formula, result), {b:1, fill:TOT, box:1, f:st.f || fE, s:st.s}); return r++; };
+    cell(wsD, `J${r}`, "Jours", {b:1, al:{horizontal:"right"}}); cell(wsD, `K${r}`, F(sumOf("K"), R.jours), {b:1, f:fJ});
+    const rST = totLine("Sous-total des prestations", sumOf("R"), R.brut);
+    const rRM = totLine("Remise commerciale", `-R${rST}*$B$6`, -R.rem);
+    const rTT = totLine("Total HT", `IF($B$7>0,CEILING(R${rST}+R${rRM},$B$7),ROUND(R${rST}+R${rRM},0))`, R.tot, {s:12});
+    const rTV = totLine("TVA", `R${rTT}*$B$8`, R.tot * num(P.tva));
+    const rTC = totLine("Total TTC", `R${rTT}+R${rTV}`, R.tot * (1 + num(P.tva)));
+    const rOP = totLine("Options (non comprises)", `SUMIF(S${first}:S${Math.max(first, last)},"OUI",R${first}:R${Math.max(first, last)})`, R.optTot);
+    const rTO = totLine("Total HT avec toutes les options", `R${rTT}+R${rOP}`, R.tot + R.optTot);
+    const DT = c => `'Détail'!${c}`;
+    /* Offre (page de synthèse) */
+    wsO.columns = [{width:30}, {width:16}, {width:14}, {width:14}, {width:10}, {width:12}, {width:16}];
+    let yo = 1;
+    if (soc && soc.logo && soc.logoW) { const id = wb.addImage({base64:soc.logo, extension:/^data:image\/jpe?g/i.test(soc.logo) ? "jpeg" : "png"}); const hpx = 64, wpx = Math.min(240, Math.round(hpx * soc.logoW / soc.logoH)); wsO.addImage(id, {tl:{col:0, row:0}, ext:{width:wpx, height:Math.round(wpx * soc.logoH / soc.logoW)}}); }
+    if (soc) { const info = [soc.nom, ...String(soc.adresse || "").split(/\n/), [soc.tel, soc.email].filter(Boolean).join(" · "), soc.web].filter(Boolean); info.forEach((t, i) => { wsO.mergeCells(`D${1 + i}:G${1 + i}`); cell(wsO, `D${1 + i}`, t, {b:i === 0, s:i === 0 ? 11 : 9, c:i === 0 ? "1F2430" : "6B7280", al:{horizontal:"right"}}); }); yo = Math.max(6, info.length + 2); } else yo = 5;
+    for (let k = 0; k < 7; k++) wsO.getCell(`${"ABCDEFG"[k]}${yo}`).border = {bottom:{style:"medium", color:A(accHex)}};
+    yo += 2; cell(wsO, `A${yo}`, "PROPOSITION D'HONORAIRES", {b:1, s:9, c:accHex}); yo++;
+    wsO.mergeCells(`A${yo}:G${yo}`); cell(wsO, `A${yo}`, ao.nom || "Appel d'offres", {b:1, s:16, al:{wrapText:true, vertical:"middle"}}); wsO.getRow(yo).height = 26; yo++;
+    if ((ao.missions || []).length) { wsO.mergeCells(`A${yo}:G${yo}`); cell(wsO, `A${yo}`, ao.missions.map(m => MIS[m] ? MIS[m].nom : m).join(" · "), {c:"6B7280"}); yo++; }
+    yo++;
+    const infoL = [["Client", ao.client], ["Maître d'ouvrage", ao.moa], ["Localisation", ao.lieu], ["Opération", ao.type], ["Montant des travaux (€ HT)", num(ao.budget) || ""], ["Surface (m²)", num(ao.surface) || ""]];
+    const infoR = [["N° d'offre", O.num], ["Date", fmt(O.date, true)], ["Validité", O.validite + " jours"], ["Date de remise", validYmd(ao.remise) ? fmt(ao.remise, true) : ""], ["Durée", R.duree ? `${R.duree} mois` : ""], ["Période", R.a ? `${ymLab(R.a)} – ${ymLab(R.b)}` : ""]];
+    const yb = yo; let budRow = 0;
+    infoL.forEach(([k, v], i) => { const rr = yb + i; cell(wsO, `A${rr}`, k, {c:"6B7280"}); wsO.mergeCells(`B${rr}:C${rr}`); cell(wsO, `B${rr}`, v, {b:1, f:typeof v === "number" ? "#,##0" : undefined, al:{horizontal:"left"}}); if (k.startsWith("Montant")) budRow = rr; });
+    infoR.forEach(([k, v], i) => { const rr = yb + i; wsO.mergeCells(`D${rr}:E${rr}`); cell(wsO, `D${rr}`, k, {c:"6B7280"}); wsO.mergeCells(`F${rr}:G${rr}`); cell(wsO, `F${rr}`, v, {b:1}); });
+    yo = yb + 7;
+    wsO.mergeCells(`A${yo}:G${yo}`); cell(wsO, `A${yo}`, "Montant de la proposition", {b:1, s:11, c:"FFFFFF", fill:HEAD}); yo++;
+    const big = [["Total HT", F(`${DT("R" + rTT)}`, R.tot), fE, 1], ["TVA", F(`${DT("R" + rTV)}`, R.tot * num(P.tva)), fE], ["Total TTC", F(`${DT("R" + rTC)}`, R.tot * (1 + num(P.tva))), fE, 1], ["Jours", F(`${DT("K" + rST)}`, R.jours), fJ]];
+    if (num(ao.budget)) big.push(["% des travaux", F(`IFERROR(${DT("R" + rTT)}/B${budRow},0)`, R.pBudget), "0.00%"]);
+    if (num(ao.surface)) big.push(["€ HT / m²", F(`IFERROR(${DT("R" + rTT)}/${surfRef},0)`, R.eurM2), fE2]);
+    if (R.opts.length) big.push(["Options (hors total)", F(`${DT("R" + rOP)}`, R.optTot), fE]);
+    big.forEach(([k, v, f, b]) => { cell(wsO, `A${yo}`, k, {b, fill:TOT, box:1}); wsO.mergeCells(`B${yo}:C${yo}`); cell(wsO, `B${yo}`, v, {b, s:b ? 12 : 10, f, fill:TOT, box:1, al:{horizontal:"right"}}); yo++; });
+    yo++;
+    wsO.mergeCells(`A${yo}:G${yo}`); cell(wsO, `A${yo}`, "Décomposition par phase", {b:1, s:11, c:"FFFFFF", fill:HEAD}); yo++;
+    ["Phase", "Étape", "Début", "Fin", "Mois", "Jours", "Montant HT"].forEach((t, i) => cell(wsO, `${"ABCDEFG"[i]}${yo}`, t, {b:1, fill:GROUP, box:1, al:{horizontal:i >= 4 ? "right" : "left"}})); yo++;
+    for (const h of hdrRows) { const b0 = R.base.filter(y => y.l.phase === h.ph.id); if (!b0.length) continue;
+      [h.ph.nom, STAGES[h.ph.stage], ymLab(h.ph.a), ymLab(h.ph.b), h.ph.n].forEach((v, i) => cell(wsO, `${"ABCDE"[i]}${yo}`, v, {box:1}));
+      cell(wsO, `F${yo}`, F(DT("K" + h.row), b0.reduce((s, y) => s + y.c.jours, 0)), {box:1, f:fJ}); cell(wsO, `G${yo}`, F(DT("R" + h.row), b0.reduce((s, y) => s + y.c.prix, 0)), {box:1, f:fE}); yo++; }
+    [["Sous-total", rST, R.brut], ...(R.rem ? [["Remise commerciale", rRM, -R.rem]] : []), ["Total HT", rTT, R.tot]].forEach(([k, row, v]) => { wsO.mergeCells(`A${yo}:F${yo}`); cell(wsO, `A${yo}`, k, {b:1, fill:TOT, box:1, al:{horizontal:"right"}}); cell(wsO, `G${yo}`, F(DT("R" + row), v), {b:1, fill:TOT, box:1, f:fE}); yo++; });
+    if (R.opts.length) {
+      yo++; wsO.mergeCells(`A${yo}:G${yo}`); cell(wsO, `A${yo}`, "Options (non comprises dans le total)", {b:1, s:11, c:"FFFFFF", fill:HEAD}); yo++;
+      R.opts.forEach((x, i) => { cell(wsO, `A${yo}`, `Option ${i + 1}`, {box:1, b:1}); wsO.mergeCells(`B${yo}:F${yo}`); cell(wsO, `B${yo}`, x.l.lib, {box:1, al:{wrapText:true}}); cell(wsO, `G${yo}`, F(DT("R" + lineRow.get(x.l.id)), x.c.prix), {box:1, f:fE}); yo++; });
+    }
+    yo++; wsO.mergeCells(`A${yo}:G${yo}`); cell(wsO, `A${yo}`, "Conditions", {b:1, s:11, c:"FFFFFF", fill:HEAD}); yo++;
+    condTxt(ao, soc).split(/\n/).filter(Boolean).forEach(t => { wsO.mergeCells(`A${yo}:G${yo}`); cell(wsO, `A${yo}`, t, {al:{wrapText:true, vertical:"top"}, c:"3C424E"}); wsO.getRow(yo).height = Math.max(15, Math.ceil(t.length / 95) * 14); yo++; });
+    if (soc && (soc.siret || soc.tva)) { yo++; wsO.mergeCells(`A${yo}:G${yo}`); cell(wsO, `A${yo}`, [soc.nom, soc.siret ? "SIRET " + soc.siret : "", soc.tva ? "TVA " + soc.tva : ""].filter(Boolean).join(" · "), {s:8, c:"6B7280", al:{horizontal:"center"}}); }
+    /* Facturation */
+    wsF.columns = [{width:14}, {width:16}, {width:10}, {width:16}];
+    cell(wsF, "A1", "Facturation mensuelle prévisionnelle", {b:1, s:14}); cell(wsF, "A2", "Valeurs au moment de l'export, réparties uniformément sur la durée de chaque prestation.", {i:1, c:"6B7280"});
+    ["Mois", "Montant HT", "Jours", "Cumul HT"].forEach((t, i) => cell(wsF, `${"ABCD"[i]}4`, t, {b:1, c:"FFFFFF", fill:HEAD, box:1, al:{horizontal:i ? "right" : "left"}}));
+    let fr = 5, cum = 0, sE = 0, sJ = 0; for (const m of [...R.months.keys()].sort()) { const o = R.months.get(m); cum += Math.round(o.e); sE += Math.round(o.e); sJ += Math.round(o.j * 100) / 100; cell(wsF, `A${fr}`, ymLab(m), {box:1}); cell(wsF, `B${fr}`, Math.round(o.e), {box:1, f:fE}); cell(wsF, `C${fr}`, Math.round(o.j * 100) / 100, {box:1, f:fJ}); cell(wsF, `D${fr}`, F(fr === 5 ? `B${fr}` : `D${fr - 1}+B${fr}`, cum), {box:1, f:fE}); fr++; }
+    if (fr > 5) { cell(wsF, `A${fr}`, "Total", {b:1, fill:TOT, box:1}); cell(wsF, `B${fr}`, F(`SUM(B5:B${fr - 1})`, sE), {b:1, fill:TOT, box:1, f:fE}); cell(wsF, `C${fr}`, F(`SUM(C5:C${fr - 1})`, sJ), {b:1, fill:TOT, box:1, f:fJ}); cell(wsF, `D${fr}`, "", {fill:TOT, box:1}); }
+    wsF.views = [{state:"frozen", ySplit:4, showGridLines:false}];
+    const buf = await wb.xlsx.writeBuffer();
+    await dl.save({filename:`Chiffrage_${fileBase(ao)}_${today()}.xlsx`, data:new Blob([buf], {type:"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"})});
+    toast("Excel prêt");
+  } catch (e) { console.error(e); toast(e && e.code === "declined" ? "Téléchargement annulé." : e && e.message === "exceljs" ? "Le module Excel n'a pas pu se charger. Vérifie ta connexion." : "Export impossible pour l'instant."); }
+}
+
+/* ----- Exports Excel mis en forme (décompte, tâches) ----- */
+const xlAcc = () => ((socList()[0] || {}).couleur || "#1F6FEB").replace("#", "").toUpperCase();
+const xlD = s => { if (!validYmd(s)) return s || ""; const [y, m, d] = s.split("-").map(Number); return new Date(Date.UTC(y, m - 1, d)); };
+const xlM = ym => { if (!ymOk(ym)) return ""; const [y, m] = ym.split("-").map(Number); return new Date(Date.UTC(y, m - 1, 1)); };
+const XA = h => ({argb:"FF" + h}), XTH = {style:"thin", color:{argb:"FFD5DAE1"}}, XBOX = {top:XTH, left:XTH, bottom:XTH, right:XTH};
+async function xlBook(){ await loadLib("exceljs", () => window.ExcelJS); const wb = new window.ExcelJS.Workbook(); wb.creator = (socList()[0] || {}).nom || "TO DO BIM"; wb.created = new Date(); return wb; }
+function xlSheet(wb, name, title, sub, widths, portrait){
+  const ws = wb.addWorksheet(name, {views:[{showGridLines:false}], pageSetup:{paperSize:9, orientation:portrait ? "portrait" : "landscape", fitToPage:true, fitToWidth:1, fitToHeight:0, margins:{left:0.4, right:0.4, top:0.5, bottom:0.5, header:0.3, footer:0.3}}});
+  ws.headerFooter = {oddFooter:`&L&8${String(title).replace(/&/g, "&&")}&R&8Page &P / &N`};
+  ws.columns = widths.map(w => ({width:w}));
+  const t = ws.getCell("A1"); t.value = title; t.font = {name:"Calibri", bold:true, size:14, color:XA("1F2430")};
+  if (sub) { const s = ws.getCell("A2"); s.value = sub; s.font = {name:"Calibri", italic:true, size:10, color:XA("6B7280")}; }
+  return ws;
+}
+function xlHead(ws, r, labels, aligns, alt){
+  const row = ws.getRow(r); labels.forEach((v, i) => { const c = row.getCell(i + 1); c.value = v; c.font = {name:"Calibri", bold:true, size:10, color:XA("FFFFFF")}; c.fill = {type:"pattern", pattern:"solid", fgColor:XA(alt && alt[i] ? "6B7280" : xlAcc())}; c.alignment = {vertical:"middle", horizontal:(aligns && aligns[i]) || "left", wrapText:true}; c.border = XBOX; }); row.height = 28;
+}
+function xlRow(ws, r, vals, fmts, aligns, o = {}){
+  const row = ws.getRow(r); vals.forEach((v, i) => { const c = row.getCell(i + 1); c.value = v === undefined || v === null ? "" : v; if (fmts && fmts[i]) c.numFmt = fmts[i]; c.font = {name:"Calibri", size:10, bold:!!o.b, color:XA(o.c || "1F2430")}; c.alignment = {vertical:"top", horizontal:(aligns && aligns[i]) || "left", wrapText:!!(o.wrap && o.wrap[i])}; c.border = XBOX; if (o.fill) c.fill = {type:"pattern", pattern:"solid", fgColor:XA(o.fill)}; else if (o.zebra) c.fill = {type:"pattern", pattern:"solid", fgColor:XA("F6F8FB")}; });
+}
+function xlTable(wb, name, o){
+  const ws = xlSheet(wb, name, o.title, o.sub, o.cols.map(c => c.w || 14), o.portrait);
+  const al = o.cols.map(c => c.a || "left"), fm = o.cols.map(c => c.f || null), wr = o.cols.map(c => !!c.wrap);
+  xlHead(ws, 4, o.cols.map(c => c.h), al, o.cols.map(c => !!c.alt));
+  o.rows.forEach((r, k) => xlRow(ws, 5 + k, r, fm, al, {zebra:k % 2 === 1, wrap:wr}));
+  const last = 4 + o.rows.length;
+  if (o.sum && o.rows.length) { const vals = o.cols.map((c, i) => i === 0 ? "Total" : o.sum.includes(i) ? {formula:`SUM(${String.fromCharCode(65 + i)}5:${String.fromCharCode(65 + i)}${last})`, result:o.rows.reduce((s, r) => s + (typeof r[i] === "number" ? r[i] : 0), 0)} : ""); xlRow(ws, last + 1, vals, fm, al, {b:1, fill:"EEF1F5"}); }
+  ws.views = [{state:"frozen", ySplit:4, showGridLines:false}];
+  if (o.rows.length) ws.autoFilter = {from:{row:4, column:1}, to:{row:last, column:o.cols.length}};
+  return ws;
+}
+function xlBlocks(wb, name, title, sub, widths, blocks){
+  const ws = xlSheet(wb, name, title, sub, widths, true); let r = 4;
+  for (const b of blocks) {
+    if (!b.rows.length) continue;
+    const al = [b.a0 || "left", ...(b.head || []).map(() => "right")];
+    xlHead(ws, r, [b.t, ...(b.head || [])], al); r++;
+    b.rows.forEach((row, k) => { xlRow(ws, r, row, b.f || [], b.al || al, {zebra:k % 2 === 1, b:b.boldLast && k === b.rows.length - 1}); r++; });
+    r++;
+  }
+  return ws;
+}
+async function xlSave(wb, filename){ const dl = await getDl(); if (!dl) return false; const buf = await wb.xlsx.writeBuffer(); await dl.save({filename, data:new Blob([buf], {type:"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"})}); return true; }
+async function decExport(){
+  const say = m => { const el = $("#dec-progress"); if (el) el.textContent = m; };
+  try {
+    say("Préparation du fichier…");
+    const {P, days} = decData(), R = decRecap(days), rows = days.flatMap(x => x.rows).filter(r => r.m > 0), wb = await xlBook();
+    xlTable(wb, "Décompte", {title:`Décompte des heures – ${collabName()}`, sub:`Du ${fmt(P.a, true)} au ${fmt(P.lim, true)} · colonnes A à I au format de ton tableau, informations complémentaires en gris`, sum:[2, 6, 11],
+      cols:[{h:"Collaborateur", w:14}, {h:"Date", w:12, f:"dd/mm/yyyy", a:"center"}, {h:"Durée", w:10, f:"[h]:mm:ss", a:"right"}, {h:"Référence", w:42, wrap:true}, {h:"Déplacement", w:12, a:"center"}, {h:"Lieu", w:16, wrap:true}, {h:"Kilomètres", w:11, f:"0", a:"right"}, {h:"Description", w:60, wrap:true}, {h:"Facture", w:12},
+        {h:"Jour", w:11, alt:1}, {h:"Semaine", w:9, a:"center", alt:1}, {h:"Heures (décimal)", w:11, f:"0.00", a:"right", alt:1}, {h:"Projet(s)", w:16, alt:1}, {h:"Source", w:16, alt:1}, {h:"Tâches du planning", w:50, wrap:true, alt:1}],
+      rows:rows.map(r => { const km = parseFloat(String(r.km).replace(",", ".")); return [collabName(), xlD(r.d), r.m / 1440, r.ref, r.dep ? "OUI" : "NON", r.lieu, isFinite(km) ? km : "", r.desc, r.fact, JOURS[parseYmd(r.d).getDay()], isoWeek(parseYmd(r.d)), Math.round(r.m / 60 * 100) / 100, r.projets.join(", "), r.src === "manuel" ? (r.imp ? "Import" : "Saisie manuelle") : r.mOv || r.descOv ? "Planning (modifié)" : "Planning", r.tasks.map(t => t.tache).join(" | ")]; })});
+    const weeks = new Map(); for (const Dy of days) { const w = isoWeek(parseYmd(Dy.d)), o = weeks.get(w) || {h:0, c:0}; o.h += Dy.tot / 60; o.c += Math.max(0, Dy.cap - Dy.absH); weeks.set(w, o); }
+    xlBlocks(wb, "Récap", `Récapitulatif – ${collabName()}`, `Du ${fmt(P.a, true)} au ${fmt(P.lim, true)}`, [46, 14, 12, 12], [
+      {t:"Synthèse", head:["Valeur"], f:[null, "0.00"], rows:[["Heures déclarées", R.tot / 60], ["Heures dues (capacité − absences)", R.cap / 60], ["Écart", (R.tot - R.cap) / 60], ["Absences (jours)", R.absJ], ["Kilomètres", R.km]]},
+      {t:"Par référence", head:["Heures", "Part"], f:[null, "0.00", "0.0%"], rows:R.refs.map(x => [x.k || "(sans référence)", x.m / 60, R.tot ? x.m / R.tot : 0])},
+      {t:"Par projet", head:["Heures", "Part"], f:[null, "0.00", "0.0%"], rows:R.projs.map(x => [x.k, x.m / 60, R.tot ? x.m / R.tot : 0])},
+      {t:"Par semaine", head:["Heures", "Dues", "Écart"], f:[null, "0.00", "0.00", "+0.00;-0.00;0"], rows:[...weeks].map(([w, o]) => ["Semaine " + w, o.h, o.c, o.h - o.c])},
+      {t:"Absences", head:["Type", "Durée", "Heures"], f:["dd/mm/yyyy", null, null, "0.00"], al:["left", "left", "left", "right"], rows:days.filter(x => x.ab).map(x => [xlD(x.d), x.ab.type + (x.ab.auto ? " (" + x.ab.label + ")" : ""), ABS_PART[x.ab.part] || "", x.absH])},
+    ]);
+    if (await xlSave(wb, `Decompte_heures_${collabName().replace(/[^\w-]+/g, "_")}_${P.file}.xlsx`)) say("Fichier prêt.");
+  } catch (e) { console.error(e); say(e && e.code === "declined" ? "Téléchargement annulé." : e && e.message === "exceljs" ? "Le module Excel n'a pas pu se charger." : "Export impossible pour l'instant."); }
+}
+async function tasksXlsx(stamp){
+  const wb = await xlBook(), rows = exportRows(), W = [6, 12, 54, 12, 10, 8, 10, 12, 12, 14, 22, 14, 12, 40, 9, 12, 12, 11, 12], D = [7, 12, 15, 16];
+  xlTable(wb, "TO DO", {title:"TO DO BIM – tâches", sub:`Export du ${fmt(today(), true)} · ${rows.length} tâche${rows.length > 1 ? "s" : ""}, archives comprises`,
+    cols:EXP_HEAD.map((h, i) => ({h, w:W[i] || 12, f:D.includes(i) ? "dd/mm/yyyy" : i === 17 ? "0.0#" : null, a:D.includes(i) || i === 0 || i === 5 || i === 6 || i === 14 ? "center" : i === 17 ? "right" : "left", wrap:i === 2 || i === 13})),
+    rows:rows.map(r => r.map((v, i) => D.includes(i) && validYmd(v) ? xlD(v) : v))});
+  return xlSave(wb, `TODO_BIM_${stamp}.xlsx`);
+}
 
 /* ---------- Rendu principal ---------- */
 function render(force){
@@ -3468,15 +3879,7 @@ async function doExport(kind){
       await dl.save({filename:`TODO_BIM_${stamp}.csv`, data:"﻿" + lines.join("\r\n")});
     } else {
       say("Préparation du fichier…");
-      const X = await loadXLSX();
-      const ws = X.utils.aoa_to_sheet([EXP_HEAD, ...exportRows()]);
-      const rows = exportRows().length;
-      for (let r = 1; r <= rows; r++) for (const c of [7, 12, 15, 16]) { const ref = X.utils.encode_cell({r, c}); const cell = ws[ref]; if (cell && validYmd(cell.v)) { const [y, m, d] = cell.v.split("-").map(Number); ws[ref] = {t:"n", v:(Date.UTC(y, m - 1, d) - Date.UTC(1899, 11, 30)) / 86400000, z:"dd/mm/yyyy"}; } }
-      ws["!cols"] = [6,10,58,12,10,8,10,12,11,14,26,14,12,40,9,12,12,10,12].map(w => ({wch:w}));
-      ws["!autofilter"] = {ref: X.utils.encode_range({s:{r:0, c:0}, e:{r:rows, c:EXP_HEAD.length - 1}})};
-      const wb = X.utils.book_new(); X.utils.book_append_sheet(wb, ws, "TO DO");
-      const buf = X.write(wb, {bookType:"xlsx", type:"array"});
-      await dl.save({filename:`TODO_BIM_${stamp}.xlsx`, data:new Blob([buf])});
+      await tasksXlsx(stamp);
     }
     say("Fichier prêt.");
   } catch (e) { say(e && e.code === "declined" ? "Téléchargement annulé." : e && e.message === "xlsx" ? "Le module Excel n'a pas pu se charger." : "Export impossible pour l'instant."); }
@@ -3638,6 +4041,7 @@ async function init(){
   }, err => { clearTimeout(timer); S.status = "error"; S.error = err && err.code; render(true); });
   db.doc("meta/prefs").onSnapshot(s => { S.prefs = (s.exists && s.data()) || {}; schedule(); }, () => {});
   db.collection("ao").onSnapshot(snap => { S.aos = new Map(snap.docs.map(d => [d.id, {...d.data(), id:d.id}])); if (S.view === "chiffrage") schedule(); }, () => {});
+  db.doc("meta/societes").onSnapshot(s => { S.socs = (s.exists && s.data()) || null; if (S.view === "chiffrage") schedule(); }, () => {});
   db.doc("meta/uo").onSnapshot(s => { S.uo = (s.exists && s.data()) || null; if (S.view === "chiffrage") schedule(); }, () => {});
   db.collection("decompte").onSnapshot(snap => { S.decDocs = Object.fromEntries(snap.docs.map(d => [d.id, d.data()])); if (S.view === "heures") schedule(); }, () => {});
   db.doc("meta/lists").onSnapshot(s => {
