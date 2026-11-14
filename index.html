@@ -1156,6 +1156,48 @@ html.is-light .gb-t{text-shadow:none}
 .st-lay .settings{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
 
 .tip-sub{margin-top:4px;font-size:13px;color:var(--muted)}
+
+/* versions d'offre */
+.ao-ver{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin:0 0 12px;padding:10px 14px;border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
+.ao-ver>div:nth-child(2){flex:1 1 320px;min-width:0;font-size:13.5px} .ao-ver small{display:block;color:var(--muted);font-size:12.5px;margin-top:2px}
+.ao-ver-i{font-size:18px;line-height:1} .ao-ver-b{display:flex;flex-wrap:wrap;gap:6px}
+.ao-ver.lock{border-color:color-mix(in srgb,var(--s-attente) 50%,var(--line));background:color-mix(in srgb,var(--s-attente) 7%,var(--surface))}
+.ao-ver.rev{border-color:color-mix(in srgb,var(--accent) 55%,var(--line));background:var(--accent-soft)}
+.ao-ver b.up,.vh-tot .up,.vd .up{color:var(--done)} .ao-ver b.down,.vh-tot .down,.vd .down{color:var(--today)}
+.ao-locked input[readonly].lk,.ao-locked textarea[readonly].lk{opacity:.75;cursor:not-allowed}
+.ao-locked button.lk,.ao-locked select.lk{opacity:.45;cursor:not-allowed}
+.pill.ver{font-family:var(--f-mono);font-size:11px} .pill.ver.rev{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 45%,var(--line))}
+.vh-i{border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-bottom:8px;background:var(--bg)} .vh-i.cur{border-color:var(--accent)}
+.vh-h{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px} .vh-h b{font-family:var(--f-mono);font-size:15px}
+.vh-d{color:var(--muted);font-size:12.5px} .vh-m{font-size:13px;font-weight:600} .vh-tot{margin-left:auto;font-family:var(--f-mono);font-size:13px} .vh-tot small{font-size:11.5px}
+.vh-c{margin:6px 0 0;font-size:13px;color:var(--muted);font-style:italic} .vh-a{margin-top:8px}
+.vh-i details{margin-top:8px} .vh-i summary{cursor:pointer;font-size:12.5px;font-weight:600;color:var(--accent)}
+.vd{font-size:13px;margin-top:6px} .vd h5{margin:10px 0 4px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)} .vd-t{margin:0}
+.vd ul{list-style:none;margin:0;padding:0;display:grid;gap:3px} .vd li{display:flex;justify-content:space-between;gap:10px;border-bottom:1px dashed var(--line);padding:3px 0} .vd li small{display:block;color:var(--muted);font-size:11px} .vd li b{white-space:nowrap;font-family:var(--f-mono);font-size:12px}
+.vd ul.vd-p li{display:list-item;border:0;padding:0}
+
+/* tableau de bord */
+.bd-top{margin-bottom:14px}
+.bd-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px} .bd-two .bd-b{margin-bottom:14px} .bd-two .bd-h{justify-content:space-between}
+.bt-l{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.bt-i .lnk{display:flex;align-items:center;gap:10px;width:100%;text-align:left;padding:6px 8px;border-radius:8px;color:var(--ink);text-decoration:none}
+.bt-i .lnk:hover{background:var(--surface-2)} .bt-i.past{opacity:.55} .bt-i.now .bt-h{color:var(--accent)}
+.bt-h{font-family:var(--f-mono);font-size:12px;color:var(--muted);min-width:86px} .bt-h.late{color:var(--late)} .bt-h.today,.bt-h.week{color:var(--today)}
+.bt-t{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13.5px}
+.pc .bd-h{align-items:center} .pc-u{margin-left:auto} .pc-u button{padding:4px 10px;font-size:12px}
+.pc-k{margin-bottom:12px}
+.pc-wrap{overflow-x:auto} .pc-svg{width:100%;min-width:640px;height:250px;display:block}
+.pc-hit{fill:transparent} .pc-m:hover .pc-hit{fill:var(--g-half)} .pc-m.cur .pc-hit{fill:var(--g-line)}
+.pc-cap{stroke:var(--ink);stroke-width:2;opacity:.85} .pc-base{stroke:var(--line-2);stroke-width:1}
+.pc-l{font-size:11px;fill:var(--muted);text-anchor:middle;font-family:var(--f-mono)} .pc-m.cur .pc-l{fill:var(--accent);font-weight:700}
+.pc-v{font-size:10.5px;fill:var(--muted);text-anchor:middle;font-family:var(--f-mono)} .pc-m.sat .pc-v{fill:var(--late);font-weight:700}
+.pc-leg{margin-top:6px} .pc-leg2{margin-top:4px;font-size:11.5px}
+.pc-sw{display:inline-block;width:12px;height:10px;border-radius:2px;background:var(--accent)} .pc-sw.half{opacity:.5} .pc-sw.light{opacity:.26} .pc-sw.cap{height:2px;background:var(--ink)}
+.pc-note{margin:8px 0 0;font-size:12.5px}
+.pc-t td,.pc-t th{text-align:right} .pc-t td:first-child,.pc-t th:first-child{text-align:left} .pc-dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px}
+@media (max-width:820px){ .bd-two{grid-template-columns:minmax(0,1fr)} .bd-top{grid-template-columns:repeat(2,minmax(0,1fr))} .pc-svg{height:220px} }
+.bt-l{grid-template-columns:minmax(0,1fr)} .bt-i{min-width:0} .bt-i .lnk{min-width:0} .bt-i .pill{flex-shrink:0;max-width:40%;overflow:hidden;text-overflow:ellipsis}
+.pc .tbl-wrap{overflow-x:auto} .bd-two>.panel{min-width:0}
 .mobile-tabs{display:none}
 .auth{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:24px max(16px,env(safe-area-inset-right,0px)) 24px max(16px,env(safe-area-inset-left,0px));overflow-y:auto}
 .auth-card{width:min(400px,100%);display:grid;gap:12px}
@@ -1690,13 +1732,13 @@ const QUADS = [
 ];
 const QMAP = Object.fromEntries(QUADS.map(q => [q.k, q]));
 const VIEWS = [
+  {k:"bord", label:"Bord", icon:'<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>'},
   {k:"jour", label:"Ma journée", short:"Journée", icon:'<path d="M12 3v2M12 19v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M3 12h2M19 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/><circle cx="12" cy="12" r="4"/>'},
   {k:"taches", label:"Tâches", icon:'<path d="M9 6h11M9 12h11M9 18h11"/><path d="M4 6l1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"/>'},
   {k:"planning", label:"Planning", icon:'<rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9.5h18M8 3v3M16 3v3M7 13.5h4M7 17h7"/>'},
   {k:"heures", label:"Heures", icon:'<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>'},
   {k:"chiffrage", label:"Chiffrage AO", short:"AO", icon:'<path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h4"/><path d="M4 7v14h11" opacity=".5"/>'},
   {k:"matrice", label:"Matrice", icon:'<rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/>'},
-  {k:"bord", label:"Bord", icon:'<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>'},
   {k:"reglages", label:"Réglages", icon:'<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>'},
   {k:"aide", label:"Aide", icon:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 4.9.8c0 1.7-2.4 2.2-2.4 3.7M12 17h.01"/>'},
   {k:"equipe", label:"Équipe", hidden:true, icon:""},
@@ -3316,7 +3358,7 @@ function viewAoList(){
     </div>
     ${all.length ? `<div class="seg-block" style="margin-bottom:12px"><span class="seg-label">Statut</span>${["", ...AO_STATUTS].map(s => `<button class="seg" data-act="ao-filt" data-v="${s}" aria-pressed="${f === s}">${s || "Tous"} <span class="c">${s ? all.filter(a => a.statut === s).length : all.length}</span></button>`).join("")}</div>` : ""}
     ${aos.length ? `<div class="ao-list">${aos.map(a => { const R = calcAo(a); return `<button class="ao-card" data-act="ao-open" data-id="${a.id}" style="--sc:var(${ST_COL[a.statut] || "--muted"})">
-        <div class="aoc-top"><span class="pill st" style="--sc:var(${ST_COL[a.statut] || "--muted"})">${esc(a.statut)}</span>${aoVisBadge(a)}${validYmd(a.remise) ? `<span class="aoc-rem">Remise le ${fmt(a.remise, true)}</span>` : ""}${a.statut === "En cours" ? `<span class="aoc-step">Étape ${Math.min(7, (a.step || 0) + 1)} / 7</span>` : ""}</div>
+        <div class="aoc-top"><span class="pill st" style="--sc:var(${ST_COL[a.statut] || "--muted"})">${esc(a.statut)}</span>${aoVerBadge(a)}${aoVisBadge(a)}${validYmd(a.remise) ? `<span class="aoc-rem">Remise le ${fmt(a.remise, true)}</span>` : ""}${a.statut === "En cours" ? `<span class="aoc-step">Étape ${Math.min(7, (a.step || 0) + 1)} / 7</span>` : ""}</div>
         <div class="aoc-t">${esc(a.nom || "Sans titre")}</div><div class="aoc-c">${esc([a.client, a.lieu].filter(Boolean).join(" · ") || (a.missions || []).map(m => MIS[m] ? MIS[m].nom : m).join(", ") || "À compléter")}</div>
         <div class="aoc-n"><b>${eur(R.tot)}</b><span>${jfmt(R.jours)} j</span>${R.pBudget ? `<span>${pct(R.pBudget)} des travaux</span>` : ""}${R.duree ? `<span>${R.duree} mois</span>` : ""}</div></button>`; }).join("")}</div>`
       : `<div class="empty ao-empty"><h2>${all.length ? "Aucun chiffrage avec ce statut" : "Chiffre ton premier appel d'offres"}</h2>
@@ -3333,7 +3375,7 @@ function viewWizard(ao){
   return `<div class="view-head ao-head"><div style="min-width:0;flex:1"><div class="eyebrow"><button class="lnk" data-act="ao-back">‹ Chiffrages</button>${ao.missions && ao.missions.length ? " · " + esc(ao.missions.map(m => MIS[m] ? MIS[m].nom : m).join(", ")) : ""}</div>
       <input class="ao-title" type="text" data-ao="nom" value="${esc(ao.nom)}" placeholder="Nom de l'appel d'offres" aria-label="Nom de l'appel d'offres" ${ro ? "readonly" : ""}></div>
       <div class="pnav"><select class="ctl ao-st" data-ao="statut" style="--sc:var(${ST_COL[ao.statut] || "--muted"})" aria-label="Statut" ${ro ? "disabled" : ""}>${AO_STATUTS.map(s => `<option ${ao.statut === s ? "selected" : ""}>${s}</option>`).join("")}</select></div></div>
-    <nav class="wz-steps" aria-label="Étapes du chiffrage">${STEPS.map((s, i) => `<button class="wz-s ${i === st ? "cur" : ""} ${done[i] ? "done" : ""}" data-act="wz-step" data-i="${i}" ${i === st ? 'aria-current="step"' : ""}><span class="wz-n">${done[i] && i !== st ? "✓" : i + 1}</span><span class="wz-t">${s.t}</span>${warnBy(i) ? `<span class="wz-w" title="${warnBy(i)} point(s) à corriger">!</span>` : ""}</button>`).join("")}</nav>
+    ${aoVerBanner(ao)}<nav class="wz-steps" aria-label="Étapes du chiffrage">${STEPS.map((s, i) => `<button class="wz-s ${i === st ? "cur" : ""} ${done[i] ? "done" : ""}" data-act="wz-step" data-i="${i}" ${i === st ? 'aria-current="step"' : ""}><span class="wz-n">${done[i] && i !== st ? "✓" : i + 1}</span><span class="wz-t">${s.t}</span>${warnBy(i) ? `<span class="wz-w" title="${warnBy(i)} point(s) à corriger">!</span>` : ""}</button>`).join("")}</nav>
     <div class="wz-intro"><h2>${st + 1}. ${STEPS[st].t}</h2><p>${STEPS[st].d}</p></div>
     <div class="wz-body">${body}</div>
     <div class="wz-bar"><button class="btn" data-act="wz-prev" ${st === 0 ? "disabled" : ""}>‹ <span class="lbl-d">${st > 0 ? STEPS[st - 1].t : "Précédent"}</span></button>
@@ -3550,6 +3592,8 @@ async function aoAction(act, a, ev){
   if (act === "pick-mis") { C.pickMis = a.dataset.v; document.querySelectorAll("#pick-mis .seg").forEach(b => b.setAttribute("aria-pressed", b.dataset.v === C.pickMis)); pickRender(); return; }
   if (/^bd-/.test(act)) return bordAction(act, a);
   const ao = curAo(); if (!ao) return;
+  if (/^ao-ver-/.test(act)) return verAction(act, a, ao);
+  if (aoGuardAction(ao, act)) return;
   if (/^ao-dce-/.test(act)) return dceAction(act, a, ao);
   if (act === "ao-win-open") { winSheet(ao); return; }
   if (act === "ao-win-create") { winCreate(ao); return; }
@@ -3601,7 +3645,7 @@ async function aoAction(act, a, ev){
   if (act === "ao-odetail") { ao.offre = {...(ao.offre || {}), detail:a.dataset.v}; await aoSave(ao); render(true); return; }
   if (act === "ao-opt-new") { const eph = effPhases(ao), ph = eph.filter(p => p.stage !== "T").pop() || eph[0]; if (!ph) { toast("Crée d'abord le planning"); goStep(ao, 2); return; } const nl = {...lineFromItem(null, ph.id), lib:"Nouvelle option", option:true}; insertLines(ao, [nl]); C.open[nl.id] = true; ao.step = 4; await aoSave(ao); render(true); setTimeout(() => { const el = document.querySelector(`[data-lid="${nl.id}"] [data-ao="l.lib"]`); if (el) { el.scrollIntoView({block:"center"}); el.focus(); el.select(); } }, 40); return; }
   if (act === "ao-copy-recap") { const R = calcAo(ao); const t = [["Phase", "Début", "Fin", "Jours", "Montant HT"], ...R.ph.map(x => [x.p.nom, ymLab(x.p.a), ymLab(x.p.b), jfmt(x.jours), Math.round(x.prix)]), ["Total", ymLab(R.a), ymLab(R.b), jfmt(R.jours), Math.round(R.tot)]].map(r => r.join("\t")).join("\n"); (await copyText(t)) ? toast("Tableau copié : colle-le dans Excel ou Word") : showCopyBox(t); return; }
-  if (act === "ao-dup") { const n = JSON.parse(JSON.stringify(ao)); n.id = uid(); n.nom = (ao.nom || "Sans titre") + " (copie)"; n.statut = "En cours"; n.created = nowIso(); n.step = 0; C.id = n.id; saveChifUi(); await aoSave(n); render(true); window.scrollTo(0, 0); toast("Chiffrage dupliqué"); return; }
+  if (act === "ao-dup") { const n = JSON.parse(JSON.stringify(ao)); n.id = uid(); n.nom = (ao.nom || "Sans titre") + " (copie)"; n.statut = "En cours"; delete n.versions; delete n.rev; delete n.won; n.created = nowIso(); n.step = 0; C.id = n.id; saveChifUi(); await aoSave(n); render(true); window.scrollTo(0, 0); toast("Chiffrage dupliqué"); return; }
   if (act === "ao-del") { if (!a.classList.contains("armed")) { a.classList.add("armed"); a.textContent = "Confirmer la suppression"; return; } S.aos.delete(ao.id); C.mode = "list"; saveChifUi(); render(true); try { await S.db.doc("ao/" + ao.id).delete(); toast("Chiffrage supprimé"); } catch (e) { fail(e); } return; }
   if (!l) return;
   if (act === "ao-line-open") { C.open[lid] = !C.open[lid]; render(true); return; }
@@ -3626,6 +3670,7 @@ async function aoAction(act, a, ev){
 async function aoChange(el){
   const ao = curAo(); if (!ao) return;
   const f = el.dataset.ao, v = el.type === "checkbox" ? el.checked : el.value;
+  if (aoGuardChange(ao, el)) return;
   if (f.startsWith("dce.")) { dceChange(ao, el, f.slice(4), v); await aoSave(ao); if (el.tagName === "SELECT") render(true); return; }
   const lid = el.closest("[data-lid]")?.dataset.lid, l = lid && ao.lines.find(x => x.id === lid), pid = el.closest("[data-pid]")?.dataset.pid, ph = pid && ao.phases.find(p => p.id === pid);
   if (f.startsWith("l.") && l) {
@@ -3845,7 +3890,7 @@ async function aoPdf(ao){
     y += 2;
     /* destinataire / références */
     const bw = (CW - 6) / 2, left = [["Client", ao.client], ["Maître d'ouvrage", ao.moa], ["Localisation", ao.lieu], ["Opération", ao.type]].filter(x => x[1]);
-    const right = [["N° d'offre", O.num], ["Date", fmt(O.date, true)], ["Validité", O.validite + " jours"], ...(validYmd(ao.remise) ? [["Remise de l'offre", fmt(ao.remise, true)]] : [])];
+    const right = [["N° d'offre", O.num + (aoVerLabel(ao) ? " · " + aoVerLabel(ao) : "")], ["Date", fmt(O.date, true)], ["Validité", O.validite + " jours"], ...(validYmd(ao.remise) ? [["Remise de l'offre", fmt(ao.remise, true)]] : [])];
     const bh = Math.max(left.length, right.length, 1) * 5.4 + 10;
     [[M, "DESTINATAIRE", left.length ? left : [["", "À préciser"]]], [M + bw + 6, "RÉFÉRENCES", right]].forEach(([x, t, rows]) => {
       doc.setFillColor(...SOFT); doc.roundedRect(x, y, bw, bh, 2, 2, "F"); T(t, x + 4, y + 6, {b:1, s:7.4, c:acc, cs:0.4});
@@ -3910,7 +3955,7 @@ async function aoPdf(ao){
     const n = doc.getNumberOfPages(), legal = soc ? [soc.nom, soc.siret ? "SIRET " + soc.siret : "", soc.tva ? "TVA " + soc.tva : ""].filter(Boolean).join(" · ") : "";
     for (let i = 1; i <= n; i++) { doc.setPage(i); doc.setDrawColor(...LINE); doc.setLineWidth(0.3); doc.line(M, H - 13, W - M, H - 13); T(legal || `Offre ${O.num}`, M, H - 8.5, {s:7.4, c:MUT}); T(`Page ${i} / ${n}`, W - M, H - 8.5, {s:7.4, c:MUT, a:"right"}); }
     const buf = doc.output("arraybuffer");
-    await dl.save({filename:`Offre_${fileBase(ao)}_${O.num}.pdf`, data:new Blob([buf], {type:"application/pdf"})});
+    await dl.save({filename:`Offre_${fileBase(ao)}_${O.num}${aoVerLabel(ao) ? "_" + aoVerLabel(ao) : ""}.pdf`, data:new Blob([buf], {type:"application/pdf"})});
     toast("PDF prêt");
   } catch (e) { console.error(e); toast(e && e.code === "declined" ? "Téléchargement annulé." : e && e.message === "jspdf" ? "Le module PDF n'a pas pu se charger. Vérifie ta connexion." : "PDF impossible pour l'instant."); }
 }
@@ -4016,7 +4061,7 @@ async function aoExport(ao){
     if ((ao.missions || []).length) { wsO.mergeCells(`A${yo}:G${yo}`); cell(wsO, `A${yo}`, ao.missions.map(m => MIS[m] ? MIS[m].nom : m).join(" · "), {c:"6B7280"}); yo++; }
     yo++;
     const infoL = [["Client", ao.client], ["Maître d'ouvrage", ao.moa], ["Localisation", ao.lieu], ["Opération", ao.type], ["Montant des travaux (€ HT)", num(ao.budget) || ""], ["Surface (m²)", num(ao.surface) || ""]];
-    const infoR = [["N° d'offre", O.num], ["Date", fmt(O.date, true)], ["Validité", O.validite + " jours"], ["Date de remise", validYmd(ao.remise) ? fmt(ao.remise, true) : ""], ["Durée", R.duree ? `${R.duree} mois` : ""], ["Période", R.a ? `${ymLab(R.a)} – ${ymLab(R.b)}` : ""]];
+    const infoR = [["N° d'offre", O.num + (aoVerLabel(ao) ? " · " + aoVerLabel(ao) : "")], ["Date", fmt(O.date, true)], ["Validité", O.validite + " jours"], ["Date de remise", validYmd(ao.remise) ? fmt(ao.remise, true) : ""], ["Durée", R.duree ? `${R.duree} mois` : ""], ["Période", R.a ? `${ymLab(R.a)} – ${ymLab(R.b)}` : ""]];
     const yb = yo; let budRow = 0;
     infoL.forEach(([k, v], i) => { const rr = yb + i; cell(wsO, `A${rr}`, k, {c:"6B7280"}); wsO.mergeCells(`B${rr}:C${rr}`); cell(wsO, `B${rr}`, v, {b:1, f:typeof v === "number" ? "#,##0" : undefined, al:{horizontal:"left"}}); if (k.startsWith("Montant")) budRow = rr; });
     infoR.forEach(([k, v], i) => { const rr = yb + i; wsO.mergeCells(`D${rr}:E${rr}`); cell(wsO, `D${rr}`, k, {c:"6B7280"}); wsO.mergeCells(`F${rr}:G${rr}`); cell(wsO, `F${rr}`, v, {b:1}); });
@@ -4401,7 +4446,8 @@ function viewBord2(){
   const kT = [["late", all.filter(t => alerte(t) === "late").length, "En retard"], ["week", all.filter(t => ["today", "week"].includes(alerte(t))).length, "Échéance ≤ 7 j"], ["", all.filter(t => !isDone(t)).length, "Ouvertes"], ["done", [...S.tasks.values()].filter(t => isDone(t) && validYmd(t.cloture) && diffDays(td, t.cloture) <= 7).length, "Terminées (7 j)"]];
   const oldH = viewBord(), oi = oldH.indexOf('<div class="panel" style="margin-bottom:14px">'), old = oi >= 0 ? oldH.slice(oi) : '<p class="sub">Aucune tâche.</p>';
   const sg = v => v === null ? "—" : Math.round(v * 100) + " %";
-  return `<div class="view-head"><div><h1>Tableau de bord</h1><div class="sub">Appels d'offres, projets, charge et organisation, calculés en direct.</div></div><div class="pnav"><a class="btn" href="#chiffrage">Chiffrages AO</a></div></div>
+  return `<div class="view-head"><div><div class="eyebrow">${JOURS[parseYmd(td).getDay()]} ${fmt(td, true)} · semaine ${isoWeek(parseYmd(td))}</div><h1>Tableau de bord</h1><div class="sub">Ta journée, ta charge, tes appels d'offres et tes projets, calculés en direct.</div></div><div class="pnav"><a class="btn" href="#jour">Ma journée</a><a class="btn" href="#chiffrage">Chiffrages AO</a></div></div>
+    ${bordTop()}${pcHtml()}
     ${scopeBar()}${teamBordBlock()}<section class="panel bd-b"><div class="bd-h"><h2>Appels d'offres</h2><span class="sub">12 derniers mois pour les gagnés et le taux de réussite</span></div>
       <div class="bd-k">
         <div><span class="kc-l">En cours</span><b>${cur.length}</b><small>${keur(sum(cur))}</small></div>
@@ -4416,10 +4462,6 @@ function viewBord2(){
           <td>${jfmt(R.jours)} j</td><td>${s ? jfmt(s.passe) + " j" : "—"}</td><td class="${s && s.reste < 0 ? "warn" : ""}">${s ? jfmt(s.reste) + " j" : "—"}</td>
           <td>${s ? `<div class="bd-bar ${s.pct > 1 ? "over" : s.pct >= 0.8 ? "hi" : ""}"><i style="width:${Math.min(100, s.pct * 100)}%"></i><span>${Math.round(s.pct * 100)} %</span></div>` : `<button class="btn ghost sm" data-act="bd-ao" data-id="${a.id}">Relier au décompte</button>`}</td><td>${R.b ? ymLab(R.b) : "—"}</td></tr>`).join("")}</tbody></table></div>`
         : '<p class="sub">Aucun AO gagné pour l\'instant. Quand tu passes un chiffrage en « Gagné », l\'app crée le projet et son suivi apparaît ici.</p>'}</section>
-    <section class="panel bd-b"><div class="bd-h"><h2>Plan de charge</h2><span class="sub">Jours prévus par mois sur 12 mois, comparés à ta capacité</span></div>
-      <div class="bd-load">${load.map(x => `<div class="bl-c ${x.w > x.cap + 0.01 ? "sat" : ""}" title="${ymLab(x.m)} : ${jfmt(x.w)} j vendus${x.p ? `, + ${jfmt(x.p)} j si les AO en cours sont gagnés` : ""} · capacité ${jfmt(x.cap)} j"><div class="bl-s"><i class="bl-cap" style="bottom:${x.cap / lmax * 100}%"></i><i class="bl-p" style="height:${(x.w + x.p) / lmax * 100}%"></i><i class="bl-w" style="height:${x.w / lmax * 100}%"></i></div><span>${ymLab(x.m)}</span></div>`).join("")}</div>
-      <div class="legend"><span><i style="background:var(--accent)"></i>AO gagnés</span><span><i class="hatch"></i>Si les AO en cours et envoyés sont gagnés</span><span><i style="background:var(--ink);height:2px"></i>Capacité (heures disponibles − absences)</span></div>
-      ${load.some(x => x.w > x.cap + 0.01) ? `<p class="bd-warn">Mois saturés : ${load.filter(x => x.w > x.cap + 0.01).map(x => ymLab(x.m)).join(", ")}.</p>` : ""}</section>
     <section class="panel bd-b"><div class="bd-h"><h2>Organisation et temps</h2></div>
       <div class="bd-k">${kT.map(([c, n, l]) => `<div><span class="kc-l">${l}</span><b class="${c === "late" && n ? "late" : c === "done" ? "ok" : ""}">${n}</b></div>`).join("")}
         <div><span class="kc-l">Heures du mois</span><b>${hfmt(hM / 60)} h</b><small>sur ${hfmt(cM / 60)} h dues à ce jour</small></div></div>
@@ -4494,6 +4536,11 @@ const HELP = [
         Le badge UO / Temps change le mode ; le bouton ⋯ montre le calcul complet, le prix unitaire, la période et l'option.</li>
       <li><b>Prix</b> : TJM par profil, marge, remise commerciale, arrondi, TVA. Saisis un <b>prix cible</b> pour connaître la remise nécessaire. Les <b>contrôles</b> signalent les lignes à 0 €, les hypothèses vides, les pics de charge et l'écart avec ton ratio habituel.</li>
       <li><b>Synthèse</b> : décomposition par phase et par mission, facturation mensuelle, options, <b>offre PDF</b>, <b>export Excel</b> et statut.</li></ol>
+    <h4>Offre envoyée : verrouillage et versions</h4><p>Dès qu'un chiffrage passe en <b>Envoyé</b> (ou Gagné, Perdu, Abandonné), l'app enregistre la <b>V1</b> et <b>verrouille</b> l'offre : prix, prestations et réglages ne sont plus modifiables, et le statut ne peut plus revenir à « En cours ». Pour une négociation ou une modification interne :</p>
+    <ol class="hp-steps"><li><b>Nouvelle version</b> : choisis le motif (négociation, modification interne, validation interne, correction…) et ajoute un commentaire.</li>
+      <li>Modifie l'offre : le bandeau montre l'écart avec la version précédente.</li>
+      <li><b>Valider la V2</b> l'enregistre et reverrouille l'offre, ou <b>Annuler les modifications</b> revient à la version précédente.</li></ol>
+    <p><b>Historique</b> : chaque version avec sa date, son auteur, son motif, son montant, les changements par rapport à la précédente et son <b>offre PDF</b> (le numéro d'offre porte l'indice V1, V2…). Le statut, la référence du décompte et l'analyse des pièces du marché restent modifiables.</p>
     <h4>Les options</h4><p>Une prestation passe en option avec ⋯ ▸ « En option » ou avec « Option libre » à l'étape Synthèse. Les options sont numérotées, hors total, et présentées à part dans l'offre. « Intégrer » les fait entrer dans le total.</p>
     <h4>L'offre PDF</h4><p>À l'étape Synthèse : choisis l'entreprise émettrice, le numéro, la date, la validité et le niveau de détail (montant seul, par phase ou détail des prestations). Tu peux afficher ou non les jours, les taux, les options, les hypothèses et le bloc « bon pour accord ».</p>
     <h4>L'export Excel</h4><p>Quatre onglets : Offre, Détail, Hypothèses, Facturation. Tout est en formules : les <span class="hp-y">cellules jaunes</span> sont modifiables et le reste se recalcule.</p>${go("chiffrage", "Ouvrir les chiffrages")}`},
@@ -4516,10 +4563,13 @@ const HELP = [
     <ul><li>le <b>projet</b> dans tes listes ;</li><li>sa <b>référence</b> pour le décompte des heures ;</li><li><b>une tâche par phase</b>, avec ses dates, ses heures estimées (jours vendus × heures par jour) et le détail des prestations en commentaire.</li></ul>
     <p>Ensuite, à l'étape Synthèse et dans le Bord : <b>jours vendus</b>, <b>jours passés</b> et <b>reste</b>. Le total vient du décompte des heures sur la référence du projet ; le détail par phase vient des créneaux posés sur les tâches du projet.</p>`},
   {k:"bord", t:"Tableau de bord", html:`
-    <ul><li><b>Appels d'offres</b> : en cours, envoyés, gagnés sur 12 mois, taux de réussite (en nombre et en montant), ratio honoraires / travaux moyen et les 3 prochaines remises.</li>
-      <li><b>Projets gagnés</b> : vendu, passé, reste. La barre passe à l'orange à 80 % de consommation, au rouge en cas de dépassement.</li>
-      <li><b>Plan de charge</b> : sur 12 mois, les jours vendus comparés à ta capacité (heures disponibles moins absences). En hachuré, ce qui s'ajouterait si les AO en cours étaient gagnés. Les mois saturés sont signalés.</li>
-      <li><b>Organisation et temps</b> : tâches en retard et à échéance, heures du mois. Le détail des tâches par projet se déplie en bas.</li></ul>${go("bord", "Ouvrir le tableau de bord")}`},
+    <p>C'est la page d'accueil de l'app (modifiable dans Réglages ▸ Affichage). De haut en bas :</p>
+    <ul><li><b>En bref</b> : heures prévues aujourd'hui, heures de la semaine (réalisées, encore prévues, capacité), tâches en retard, échéances à 7 jours, prochaine remise d'AO.</li>
+      <li><b>Aujourd'hui</b> et <b>À traiter</b> : tes créneaux du jour et les tâches en retard ou à rendre ; un clic ouvre la tâche.</li>
+      <li><b>Plan de charge</b> : 3 mois passés et 8 à venir, en jours ou en heures. Chaque couleur est un projet : <b>plein</b> = temps réalisé (décompte des heures), <b>clair</b> = temps prévu dans l'agenda et AO gagnés, <b>très clair</b> = tâches estimées pas encore placées (réparties sur leurs dates), <b>hachuré</b> = AO en cours et envoyés s'ils étaient gagnés. Le trait est ta <b>capacité</b> : heures par jour de la semaine (Réglages ▸ Planning) moins les jours fériés et tes absences. Elle varie donc d'un mois à l'autre selon le nombre de jours travaillés. Le pourcentage sous chaque mois est la charge rapportée à la capacité.</li>
+      <li>Les AO sont <b>lissés</b> : les jours de chaque phase sont répartis également sur ses mois. Un AO gagné dont les tâches ont été créées est compté par ses tâches, jamais deux fois. Survole un mois pour le détail par projet.</li>
+      <li><b>Appels d'offres</b>, <b>Projets gagnés</b> (vendu, passé, reste), <b>Charge de l'équipe</b> (chefs et administrateurs) et <b>Organisation et temps</b>.</li></ul>${go("bord", "Ouvrir le tableau de bord")}`},
+
   {k:"reglages", t:"Réglages", html:`
     <p>Les réglages sont rangés par thème, avec un sommaire : Affichage, Compte et équipe, Listes, Planning, Décompte des heures, Import / export.</p>
     <ul><li><b>Affichage</b> (propre à chaque appareil) : thème sombre, clair ou automatique, page d'ouverture de l'app, onglets affichés (masque ceux que tu n'utilises pas).</li>
@@ -5037,9 +5087,9 @@ function teamBordBlock(){
 const DISP_KEY = "todobim.disp";
 function dispGet(){ try { return JSON.parse(localStorage.getItem(DISP_KEY) || "{}") || {}; } catch (e) { return {}; } }
 function dispSet(patch){ const d = {...dispGet(), ...patch}; try { localStorage.setItem(DISP_KEY, JSON.stringify(d)); } catch (e) {} applyDisp(); return d; }
-const TAB_OPT = [["taches", "Tâches"], ["planning", "Planning"], ["heures", "Heures"], ["chiffrage", "Chiffrage AO"], ["matrice", "Matrice"], ["bord", "Bord"], ["aide", "Aide"]];
+const TAB_OPT = [["taches", "Tâches"], ["planning", "Planning"], ["heures", "Heures"], ["chiffrage", "Chiffrage AO"], ["matrice", "Matrice"], ["aide", "Aide"]];
 const dispHiddenTab = k => (dispGet().hideTabs || []).includes(k);
-function dispHome(){ const h = dispGet().home; return h && VIEWS.some(v => v.k === h && !v.hidden) ? h : "jour"; }
+function dispHome(){ const h = dispGet().home; return h && VIEWS.some(v => v.k === h && !v.hidden) ? h : "bord"; }
 function applyDisp(){
   const d = dispGet(), th = ["light", "auto"].includes(d.theme) ? d.theme : "dark", R = document.documentElement;
   if (th === "dark") R.removeAttribute("data-theme"); else R.setAttribute("data-theme", th);
@@ -5055,9 +5105,9 @@ function dispPanel(){
   const seg = (v, l) => `<button type="button" data-act="disp-theme" data-v="${v}" aria-pressed="${th === v}">${l}</button>`;
   return `<div class="panel"><h2>Affichage</h2><p>Ces réglages ne concernent que <b style="color:var(--ink)">cet appareil</b> : tu peux avoir un affichage différent sur ton Mac et sur ton iPhone.</p>
     <div class="field"><span class="lbl">Thème</span><div class="segc">${seg("dark", "Sombre")}${seg("light", "Clair")}${seg("auto", "Automatique")}</div><small class="tm-hint">Automatique suit le réglage clair / sombre de l'appareil.</small></div>
-    <label class="field" style="margin-top:12px"><span class="lbl">Page d'ouverture</span><select id="disp-home" class="ctl">${[["jour", "Ma journée"], ...TAB_OPT.filter(([k]) => k !== "aide")].map(([k, l]) => `<option value="${k}" ${dispHome() === k ? "selected" : ""}>${l}</option>`).join("")}</select></label>
+    <label class="field" style="margin-top:12px"><span class="lbl">Page d'ouverture</span><select id="disp-home" class="ctl">${[["bord", "Tableau de bord"], ["jour", "Ma journée"], ...TAB_OPT.filter(([k]) => k !== "aide" && k !== "bord")].map(([k, l]) => `<option value="${k}" ${dispHome() === k ? "selected" : ""}>${l}</option>`).join("")}</select></label>
     <div class="field" style="margin-top:12px"><span class="lbl">Onglets affichés</span><div class="chipset">${TAB_OPT.map(([k, l]) => `<button type="button" class="chip-b sm" data-act="disp-tab" data-k="${k}" aria-pressed="${!hid.includes(k)}">${l}</button>`).join("")}</div>
-      <small class="tm-hint">Masque les onglets que tu n'utilises pas. Ma journée et Réglages restent toujours affichés ; une page masquée reste accessible par ses liens.</small></div></div>`;
+      <small class="tm-hint">Masque les onglets que tu n'utilises pas. Tableau de bord, Ma journée et Réglages restent toujours affichés ; une page masquée reste accessible par ses liens.</small></div></div>`;
 }
 
 /* regroupe les panneaux de réglages par thème, avec un sommaire */
@@ -5113,6 +5163,7 @@ function aoTipHtml(raw){
   if (docs.length) { const lus = docs.filter(x => x.statut === "lu" || x.statut === "so").length, pts = docs.reduce((s, x) => s + (x.points || []).filter(p => String(p.txt || "").trim()).length, 0);
     rows.push(["Pièces du marché", `${lus} / ${docs.length} lue${lus > 1 ? "s" : ""}${pts ? ` · ${pts} point${pts > 1 ? "s" : ""} relevé${pts > 1 ? "s" : ""}` : ""}`]); }
   if (st === "Gagné") { const s = suiviAo(a, R); if (s) rows.push(["Suivi", `<span class="${s.pct > 1 ? "late" : s.pct >= 0.8 ? "today" : ""}">${jfmt(s.passe)} j passés / ${jfmt(s.vendu)} j vendus</span> · reste ${jfmt(s.reste)} j`]); else rows.push(["Suivi", `<span class="mut">pas de référence de décompte</span>`]); }
+  { const l = aoLastVer(raw); if (raw.rev) rows.push(["Version", `<span class="today">V${raw.rev.n} en cours de modification</span> · ${esc(raw.rev.motif)}`]); else if (l) rows.push(["Version", `V${l.n} du ${verDate(l.at)} · ${esc(l.motif)}${aoLocked(raw) ? " · 🔒 verrouillée" : ""}`]); }
   if (a.reference) rows.push(["Référence", esc(a.reference)]);
   const T = typeof TM === "function" ? TM() : null;
   if (T) { const who = a._own && a._own !== T.uid ? T.nameOf(a._own) : "toi"; rows.push(["Partage", `${a._vis === "perso" ? "🔒 Personnel" : a._vis === "svc" ? "Service " + esc(svcName(a._svc)) : "Entreprise"} · créé par ${esc(who)}`]); }
@@ -5142,6 +5193,287 @@ document.addEventListener("pointerout", ev => { if (AOT.cur && !(ev.relatedTarge
 document.addEventListener("pointerdown", () => { clearTimeout(AOT.timer); AOT.cur = null; }, true);
 document.addEventListener("focusin", ev => { const host = aoTipHost(ev.target); if (!host || !ev.target.matches(":focus-visible")) return; const r = host.getBoundingClientRect(); AOT.cur = host; showAoTip(host, r.left + Math.min(r.width / 2, 60)); });
 
+/* ---------- Offres envoyées : verrouillage et versions (négociation, modification interne…) ---------- */
+const AO_LOCK_ST = ["Envoyé", "Gagné", "Perdu", "Abandonné"];
+const VER_MOTIFS = ["Négociation", "Modification interne", "Validation interne", "Correction", "Autre"];
+const VER_KEEP = ["id", "v", "sv", "versions", "rev", "dce", "_own", "_vis", "_svc", "_resp", "statut", "step", "maxStep", "won", "reference", "created", "updated"];
+const aoVersions = ao => (ao && Array.isArray(ao.versions) ? ao.versions : []);
+const aoLastVer = ao => aoVersions(ao).slice(-1)[0] || null;
+const aoLocked = ao => !!ao && AO_LOCK_ST.includes(ao.statut) && !ao.rev;
+const aoVerLabel = ao => ao ? (ao.verLabel || (ao.rev ? "V" + ao.rev.n : aoLastVer(ao) ? "V" + aoLastVer(ao).n : "")) : "";
+const verWho = () => { const T = typeof TM === "function" ? TM() : null; return T ? {by:T.uid, byName:T.nameOf(T.uid)} : {by:"", byName:collabName()}; };
+const verDate = iso => { const d = new Date(iso); return isNaN(d) ? "" : `${fmt(ymd(d), true)} ${z2(d.getHours())}:${z2(d.getMinutes())}`; };
+function aoSnap(ao){ const o = JSON.parse(JSON.stringify(ao)); for (const k of VER_KEEP) if (k !== "id" && k !== "v" && k !== "sv") delete o[k]; return o; }
+function snapAo(ao, v){ return migrateAo({...JSON.parse(JSON.stringify(v.snap)), id:ao.id, v:2, sv:2, statut:ao.statut, dce:ao.dce, versions:[], verLabel:"V" + v.n}); }
+function applySnap(ao, snap){
+  const keep = {}; for (const k of VER_KEEP) if (k in ao) keep[k] = ao[k];
+  for (const k of Object.keys(ao)) delete ao[k];
+  Object.assign(ao, JSON.parse(JSON.stringify(snap)), keep);
+}
+function pushVersion(ao, n, motif, comment){
+  const R = calcAo(ao);
+  ao.versions = [...aoVersions(ao), {n, at:nowIso(), ...verWho(), motif, comment:comment || "", tot:R.tot, jours:R.jours, snap:aoSnap(ao)}];
+}
+const ST_FEM = {"Envoyé":"envoyée", "Gagné":"gagnée", "Perdu":"perdue", "Abandonné":"abandonnée", "En cours":"en cours"};
+const stFem = st => ST_FEM[st] || String(st || "").toLowerCase();
+const lockMsg = ao => `Offre ${stFem(ao.statut)} verrouillée (${aoVerLabel(ao) || "V1"}) : crée une nouvelle version pour la modifier.`;
+const ALLOW_ACT = new Set(["ao-back", "ao-biblio", "ao-socs", "ao-copy-recap", "ao-dup", "ao-del", "ao-filt", "ao-line-open", "ao-ph-toggle", "ao-pdf", "ao-xlsx", "ao-ov-close", "ao-open", "ao-new", "wz-step", "wz-next", "wz-prev"]);
+const actAllowed = act => ALLOW_ACT.has(act) || /^(ao-dce-|ao-win-|ao-ver-|bd-|tm-)/.test(act);
+const fieldAllowed = f => f === "statut" || f === "reference" || f.startsWith("dce.");
+
+/* gardes-fous dans les gestionnaires */
+function aoGuardChange(ao, el){
+  const f = el.dataset.ao, v = el.value;
+  if (f === "statut") {
+    if (v === "En cours" && ao.statut !== "En cours" && (aoVersions(ao).length || AO_LOCK_ST.includes(ao.statut))) { toast("Une offre envoyée ne repasse pas « En cours » : crée une nouvelle version pour la modifier."); render(true); return true; }
+    if (AO_LOCK_ST.includes(v) && !aoVersions(ao).length && !ao.rev) { pushVersion(ao, 1, v === "Envoyé" ? "Offre envoyée" : "Statut : " + v, ""); setTimeout(() => toast(`Version V1 enregistrée : l'offre est verrouillée`), 400); }
+    return false;
+  }
+  if (!aoLocked(ao) || fieldAllowed(f)) return false;
+  toast(lockMsg(ao)); render(true); return true;
+}
+function aoGuardAction(ao, act){
+  if (!aoLocked(ao) || actAllowed(act)) return false;
+  toast(lockMsg(ao)); return true;
+}
+/* après affichage : champs en lecture seule */
+function aoLockPass(root){
+  if (S.view !== "chiffrage" || S.chif.mode !== "ao") return;
+  const ao = curAo(); if (!ao) return;
+  const st = root.querySelector('select[data-ao="statut"]');
+  if (st && (aoVersions(ao).length || AO_LOCK_ST.includes(ao.statut))) [...st.options].forEach(o => { if (o.text === "En cours" && ao.statut !== "En cours") o.disabled = true; });
+  if (!aoLocked(ao)) return;
+  root.querySelector(".wz-body")?.classList.add("ao-locked");
+  root.querySelectorAll("[data-ao]").forEach(el => {
+    if (fieldAllowed(el.dataset.ao)) return;
+    if (el.tagName === "SELECT" || ["checkbox", "radio", "month", "date", "color"].includes(el.type)) el.disabled = true; else el.readOnly = true;
+    el.classList.add("lk");
+  });
+  root.querySelectorAll("[data-act]").forEach(b => { if (b.tagName === "BUTTON" && !actAllowed(b.dataset.act) && !b.closest(".ao-ver")) { b.disabled = true; b.classList.add("lk"); } });
+}
+
+/* bandeau au-dessus des étapes */
+function aoVerBanner(ao){
+  const vs = aoVersions(ao), last = aoLastVer(ao), ro = S.canWrite === false;
+  const hist = vs.length ? `<button class="btn sm" data-act="ao-ver-hist">Historique (${vs.length})</button>` : "";
+  if (ao.rev) {
+    const R = calcAo(ao), base = vs.find(v => v.n === ao.rev.base) || last, d = base ? R.tot - base.tot : 0;
+    return `<div class="ao-ver rev"><span class="ao-ver-i">✎</span><div><b>Version V${ao.rev.n} en cours de modification</b> · ${esc(ao.rev.motif)}${ao.rev.comment ? ` · <i>${esc(ao.rev.comment)}</i>` : ""}<small>${base ? `Par rapport à V${base.n} : <b class="${d > 0 ? "up" : d < 0 ? "down" : ""}">${d >= 0 ? "+" : "−"}${eur(Math.abs(d))}</b> (${eur(R.tot)} HT contre ${eur(base.tot)})` : ""} · non validée : tant qu'elle n'est pas validée, la version V${base ? base.n : 1} reste la référence.</small></div>
+      <div class="ao-ver-b">${ro ? "" : `<button class="btn sm primary" data-act="ao-ver-ok">Valider la V${ao.rev.n}</button><button class="btn sm ${S.verArm && Date.now() - S.verArm < 8000 ? "danger" : "ghost"}" data-act="ao-ver-cancel">${S.verArm && Date.now() - S.verArm < 8000 ? `Confirmer : revenir à la V${base ? base.n : 1}` : "Annuler les modifications"}</button>`}${hist}</div></div>`;
+  }
+  if (aoLocked(ao)) {
+    return `<div class="ao-ver lock"><span class="ao-ver-i">🔒</span><div><b>Offre ${esc(stFem(ao.statut))} · verrouillée</b>${last ? ` · ${"V" + last.n} du ${verDate(last.at)} (${esc(last.motif)}) · ${eur(last.tot)} HT` : " · version initiale"}<small>Les prix, prestations et réglages de l'offre ne sont plus modifiables directement. Pour une négociation ou une modification interne, crée une nouvelle version : l'historique garde chaque version.</small></div>
+      <div class="ao-ver-b">${ro ? "" : `<button class="btn sm primary" data-act="ao-ver-new">Nouvelle version</button>`}${hist}</div></div>`;
+  }
+  return vs.length ? `<div class="ao-ver"><span class="ao-ver-i">⎘</span><div><b>${vs.length} version${vs.length > 1 ? "s" : ""} enregistrée${vs.length > 1 ? "s" : ""}</b><small>Dernière : V${last.n} du ${verDate(last.at)} (${esc(last.motif)}).</small></div><div class="ao-ver-b">${hist}</div></div>` : "";
+}
+function aoVerBadge(a){
+  if (a.rev) return `<span class="pill ver rev" title="Version en cours de modification">✎ V${a.rev.n}</span>`;
+  const l = aoLastVer(a); return l ? `<span class="pill ver" title="Dernière version enregistrée">${aoLocked(a) ? "🔒 " : ""}V${l.n}</span>` : "";
+}
+
+/* différences entre deux versions */
+function aoDiffHtml(a0, a1){
+  const R0 = calcAo(a0), R1 = calcAo(a1), m0 = new Map(R0.lines.map(x => [x.l.id, x])), m1 = new Map(R1.lines.map(x => [x.l.id, x]));
+  const ph = (R, id) => (R.eph.find(p => p.id === id) || {}).nom || "";
+  const add = [], del = [], mod = [];
+  for (const [id, x] of m1) { const y = m0.get(id); if (!y) add.push(x); else if (Math.abs(x.c.prix - y.c.prix) >= 1 || Math.abs(x.c.jours - y.c.jours) >= 0.01 || !!x.l.option !== !!y.l.option) mod.push([y, x]); }
+  for (const [id, y] of m0) if (!m1.has(id)) del.push(y);
+  const P0 = a0.params || {}, P1 = a1.params || {}, par = [];
+  for (const [k, l] of [["marge", "Marge"], ["remise", "Remise commerciale"], ["arrondi", "Arrondi"]]) if (num(P0[k]) !== num(P1[k])) par.push(`${l} : ${k === "arrondi" ? num(P0[k]) + " €" : pct(num(P0[k]))} → <b>${k === "arrondi" ? num(P1[k]) + " €" : pct(num(P1[k]))}</b>`);
+  const t0 = P0.tjm || {}, t1 = P1.tjm || {}; for (const k of new Set([...Object.keys(t0), ...Object.keys(t1)])) if (num(t0[k]) !== num(t1[k])) par.push(`TJM ${esc(k)} : ${eur(num(t0[k]))} → <b>${eur(num(t1[k]))}</b>`);
+  const dT = R1.tot - R0.tot, dJ = R1.jours - R0.jours;
+  const li = (x, txt) => `<li><span>${esc(x.l.lib || "Prestation")}<small>${esc(ph(R1, x.l.phase) || ph(R0, x.l.phase))}</small></span><b>${txt}</b></li>`;
+  const sgn = n => (n >= 0 ? "+" : "−") + eur(Math.abs(n));
+  return `<div class="vd"><p class="vd-t">Total : <b class="${dT > 0 ? "up" : dT < 0 ? "down" : ""}">${sgn(dT)}</b> · jours : ${dJ >= 0 ? "+" : "−"}${jfmt(Math.abs(dJ))} j</p>
+    ${par.length ? `<h5>Réglages</h5><ul class="vd-p">${par.map(x => `<li>${x}</li>`).join("")}</ul>` : ""}
+    ${mod.length ? (() => { const ul = `<ul>${mod.map(([y, x]) => li(x, `${eur(y.c.prix)} → ${eur(x.c.prix)}${!!x.l.option !== !!y.l.option ? (x.l.option ? " · passée en option" : " · intégrée") : ""}`)).join("")}</ul>`;
+      return par.length && mod.length > 8 ? `<h5>Prestations recalculées (${mod.length})</h5><details class="vd-more"><summary>${mod.length} prestations changent de prix à cause des réglages ci-dessus : voir le détail</summary>${ul}</details>` : `<h5>Prestations modifiées (${mod.length})</h5>${ul}`; })() : ""}
+    ${add.length ? `<h5>Prestations ajoutées (${add.length})</h5><ul>${add.map(x => li(x, "+" + eur(x.c.prix))).join("")}</ul>` : ""}
+    ${del.length ? `<h5>Prestations retirées (${del.length})</h5><ul>${del.map(x => li(x, "−" + eur(x.c.prix))).join("")}</ul>` : ""}
+    ${!par.length && !mod.length && !add.length && !del.length ? `<p class="sub" style="margin:0">Aucun changement de prestation ni de réglage de prix.</p>` : ""}</div>`;
+}
+
+/* fenêtres */
+function verSheet(title, body, foot){
+  document.querySelector(".ver-ov")?.remove();
+  const el = document.createElement("div"); el.className = "overlay ao-pick ver-ov"; el.dataset.act = "ao-ov-close";
+  el.innerHTML = `<div class="sheet" role="dialog" aria-label="${esc(title)}"><div class="sheet-h"><h2>${esc(title)}</h2><button class="btn ghost" data-act="ao-ov-close" aria-label="Fermer">${I.close}</button></div><div class="sheet-b">${body}</div>${foot ? `<div class="sheet-f">${foot}</div>` : ""}</div>`;
+  document.body.appendChild(el); return el;
+}
+function verNewSheet(ao){
+  const n = (aoLastVer(ao) ? aoLastVer(ao).n : 1) + 1;
+  verSheet(`Nouvelle version V${n}`, `<p class="sub" style="margin-top:0">La version actuelle (V${n - 1}) est conservée dans l'historique. Tu pourras modifier l'offre, puis valider la V${n} ou annuler tes modifications.</p>
+    <div class="ao-form f1"><div class="field"><span class="lbl">Motif</span><div class="chipset" id="ver-motif">${VER_MOTIFS.map((m, i) => `<label class="chip-b sm tm-ck"><input type="radio" name="vmotif" value="${esc(m)}" ${i === 0 ? "checked" : ""}>${esc(m)}</label>`).join("")}</div></div>
+    <label class="field"><span class="lbl">Commentaire (facultatif)</span><textarea id="ver-com" rows="3" placeholder="ex. Demande du MOA : retirer la mission d'exploitation, remise de 5 %"></textarea></label></div>`,
+    `<span class="spacer"></span><button class="btn" data-act="ao-ov-close">Annuler</button><button class="btn primary" data-act="ao-ver-open" data-n="${n}">Ouvrir la version V${n}</button>`);
+}
+function verHistSheet(ao){
+  const vs = aoVersions(ao).slice().reverse(), all = aoVersions(ao);
+  const cur = ao.rev ? `<div class="vh-i cur"><div class="vh-h"><b>V${ao.rev.n}</b><span class="pill">en cours, non validée</span><span class="vh-m">${esc(ao.rev.motif)}</span><span class="vh-tot">${eur(calcAo(ao).tot)} HT</span></div>
+      <details><summary>Changements par rapport à V${aoLastVer(ao) ? aoLastVer(ao).n : "?"}</summary>${aoLastVer(ao) ? aoDiffHtml(snapAo(ao, aoLastVer(ao)), ao) : ""}</details></div>` : "";
+  verSheet("Versions de l'offre", `${cur}${vs.map(v => { const prev = all.find(x => x.n === v.n - 1) || all[all.indexOf(v) - 1]; const d = prev ? v.tot - prev.tot : 0;
+      return `<div class="vh-i"><div class="vh-h"><b>V${v.n}</b><span class="vh-d">${verDate(v.at)}${v.byName ? " · " + esc(v.byName) : ""}</span><span class="vh-m">${esc(v.motif)}</span><span class="vh-tot">${eur(v.tot)} HT${prev ? ` <small class="${d > 0 ? "up" : d < 0 ? "down" : ""}">${d >= 0 ? "+" : "−"}${eur(Math.abs(d))}</small>` : ""}</span></div>
+        ${v.comment ? `<p class="vh-c">${esc(v.comment)}</p>` : ""}
+        <div class="row vh-a"><button class="btn sm" data-act="ao-ver-pdf" data-n="${v.n}">Offre PDF de la V${v.n}</button>${ao.rev && S.canWrite !== false ? `<button class="btn sm ghost" data-act="ao-ver-restore" data-n="${v.n}">Repartir de la V${v.n}</button>` : ""}</div>
+        ${prev ? `<details><summary>Changements par rapport à V${prev.n}</summary>${aoDiffHtml(snapAo(ao, prev), snapAo(ao, v))}</details>` : ""}</div>`; }).join("")}`, "");
+}
+async function verAction(act, a, ao){
+  const ov = a.closest(".overlay");
+  if (act === "ao-ver-new") { verNewSheet(ao); return; }
+  if (act === "ao-ver-hist") { verHistSheet(ao); return; }
+  if (act === "ao-ver-open") {
+    const n = Number(a.dataset.n), motif = (document.querySelector('input[name="vmotif"]:checked') || {}).value || "Autre", comment = ($("#ver-com") || {}).value || "";
+    if (!aoVersions(ao).length) pushVersion(ao, 1, "Version initiale", "");
+    ao.rev = {n, base:aoLastVer(ao).n, motif, comment:comment.trim(), at:nowIso(), ...verWho()};
+    ov && ov.remove(); await aoSave(ao); render(true); toast(`Version V${n} ouverte : tu peux modifier l'offre`); return;
+  }
+  if (act === "ao-ver-ok") {
+    if (!ao.rev) return;
+    const r = ao.rev; delete ao.rev; pushVersion(ao, r.n, r.motif, r.comment);
+    await aoSave(ao); render(true); toast(`Version V${r.n} validée et verrouillée`); return;
+  }
+  if (act === "ao-ver-cancel") {
+    if (!ao.rev) return;
+    if (!(S.verArm && Date.now() - S.verArm < 8000)) { S.verArm = Date.now(); render(true); toast("Touche encore pour confirmer l'annulation"); return; }
+    S.verArm = 0;
+    const base = aoVersions(ao).find(v => v.n === ao.rev.base) || aoLastVer(ao);
+    if (base) applySnap(ao, base.snap); delete ao.rev;
+    await aoSave(ao); render(true); toast("Modifications annulées : retour à la V" + (base ? base.n : 1)); return;
+  }
+  if (act === "ao-ver-pdf") { const v = aoVersions(ao).find(x => x.n === Number(a.dataset.n)); if (v) aoPdf(snapAo(ao, v)); return; }
+  if (act === "ao-ver-restore") {
+    const v = aoVersions(ao).find(x => x.n === Number(a.dataset.n)); if (!v || !ao.rev) return;
+    if (!a.classList.contains("armed")) { a.classList.add("armed"); a.textContent = `Confirmer : reprendre la V${v.n}`; return; }
+    applySnap(ao, v.snap); ov && ov.remove(); await aoSave(ao); render(true); toast(`Contenu de la V${v.n} repris dans la V${ao.rev.n}`); return;
+  }
+}
+
+/* ---------- Tableau de bord : en bref, aujourd'hui, plan de charge lissé ---------- */
+S.pcUnit = (() => { try { return localStorage.getItem("todobim.pcUnit") || "j"; } catch (e) { return "j"; } })();
+const daysIn = m => { const [y, mo] = m.split("-").map(Number); return new Date(y, mo, 0).getDate(); };
+/* capacité d'un mois : heures par jour de la semaine (Réglages ▸ Planning) − jours fériés − absences */
+function capDetail(m){
+  let base = 0, fer = 0, abs = 0, jo = 0;
+  for (let k = 1; k <= daysIn(m); k++) {
+    const d = `${m}-${z2(k)}`, c = capOn(d); if (c <= 0) continue;
+    jo++; base += c; const a = absOn(d); if (!a) continue;
+    const h = a.part === "j" ? c : c / 2; if (a.auto) fer += h; else abs += h;
+  }
+  return {jo, base, fer, abs, cap:Math.max(0, base - fer - abs)};
+}
+const addTo = (mp, k, v) => { if (v > 0) mp.set(k, (mp.get(k) || 0) + v); };
+function pcData(){
+  const td = today(), m0 = ymOf(td), hj = hjOf(), tom = addDays(td, 1);
+  const months = Array.from({length:12}, (_, i) => ymAdd(m0, i - 3)), mset = new Set(months);
+  const M = new Map(months.map(m => [m, {m, ...capDetail(m), real:new Map(), prev:new Map(), est:new Map(), aoW:new Map(), aoP:new Map()}]));
+  const projOfRow = r => r.projets[0] || (r.ref ? r.ref : "Sans projet");
+  /* réalisé (jusqu'à aujourd'hui) et prévu (agenda, tâches récurrentes) : mêmes règles que le décompte */
+  for (const m of months) { const o = M.get(m); for (let k = 1; k <= daysIn(m); k++) { const d = `${m}-${z2(k)}`; for (const r of decRows(d)) if (r.m > 0) addTo(d <= td ? o.real : o.prev, projOfRow(r), r.m / 60); } }
+  /* tâches estimées pas encore placées : le reste à faire est lissé sur les jours travaillés de leur période */
+  let noDate = 0;
+  for (const t of live("mine")) {
+    if (isDone(t) || t.statut === "Récurrent" || (Array.isArray(t.jours) && t.jours.length)) continue;
+    const est = Number(t.heures) || 0; if (!est) continue;
+    const rem = est - blocsOf(t).reduce((s, b) => s + b.m, 0) / 60; if (rem <= 0.01) continue;
+    const end = validYmd(t.fin) && t.fin >= (t.debut || "") ? t.fin : validYmd(t.echeance) ? t.echeance : "";
+    if (!end) { noDate += rem; continue; }
+    const start = validYmd(t.debut) && t.debut > tom ? t.debut : tom, days = [];
+    if (end >= tom) for (let d = start; d <= end; d = addDays(d, 1)) if (capOn(d) > 0 && !absOn(d)) days.push(d);
+    if (!days.length) { const o = M.get(m0); addTo(o.est, t.projet || "Sans projet", rem); continue; }
+    for (const d of days) { const o = M.get(ymOf(d)); if (o) addTo(o.est, t.projet || "Sans projet", rem / days.length); }
+  }
+  /* AO : jours lissés sur la durée de chaque phase (gagnés sans tâches, et en cours / envoyés) */
+  const tasksAo = new Set([...S.tasks.values()].map(t => t.ao).filter(Boolean));
+  for (const a of [...S.aos.values()].map(migrateAo)) {
+    const won = a.statut === "Gagné", pipe = ["En cours", "Envoyé"].includes(a.statut);
+    if (!(won || pipe) || (won && tasksAo.has(a.id))) continue;
+    const R = calcAo(a), key = (won && a.won && a.won.projet) || a.nom || "AO sans titre";
+    for (const x of R.ph) {
+      if (!x.jours || !x.p.a || !x.p.b) continue;
+      const n = Math.max(1, ymCount(x.p.a, x.p.b)), per = x.jours * hj / n;
+      for (let i = 0; i < n; i++) { const m = ymAdd(x.p.a, i); if (m < m0 || !mset.has(m)) continue; addTo(M.get(m)[won ? "aoW" : "aoP"], key, per); }
+    }
+  }
+  const sum = mp => [...mp.values()].reduce((s, v) => s + v, 0);
+  for (const o of M.values()) { o.r = sum(o.real); o.p = sum(o.prev); o.e = sum(o.est); o.w = sum(o.aoW); o.pp = sum(o.aoP); o.load = o.r + o.p + o.e + o.w; }
+  return {months, M, m0, hj, noDate};
+}
+function pcHtml(){
+  const D = pcData(), U = S.pcUnit === "h" ? "h" : "j", k = U === "h" ? 1 : 1 / D.hj, f = v => (U === "h" ? hfmt(v) : jfmt(Math.round(v * k * 10) / 10)) + " " + U;
+  const L = D.months.map(m => D.M.get(m)), ymax = Math.max(1, ...L.map(o => Math.max(o.cap, o.load + o.pp))) * 1.08;
+  const W = 64, G = 14, H = 190, top = 8, Y = v => top + H - v / ymax * H, X = i => i * (W + G) + G / 2;
+  const sum1 = mp => [...mp.values()].reduce((s, v) => s + v, 0);
+  const projs = new Map(); for (const o of L) for (const mp of [o.real, o.prev, o.est, o.aoW]) for (const [p, v] of mp) projs.set(p, (projs.get(p) || 0) + v);
+  const colOf = p => allProjets().includes(p) ? projColor(p) : "var(--muted)";
+  const bars = L.map((o, i) => {
+    let y = top + H; const segs = [];
+    const seg = (v, fill, op, extra = "") => { if (v <= 0) return; const h = v / ymax * H; y -= h; segs.push(`<rect x="${X(i)}" y="${y.toFixed(1)}" width="${W}" height="${Math.max(0.5, h).toFixed(1)}" style="fill:${fill};opacity:${op}" ${extra}/>`); };
+    for (const [p, v] of [...o.real].sort((a, b) => b[1] - a[1])) seg(v, colOf(p), 1);
+    for (const [p, v] of [...o.prev].sort((a, b) => b[1] - a[1])) seg(v, colOf(p), .5);
+    for (const [p, v] of [...o.est].sort((a, b) => b[1] - a[1])) seg(v, colOf(p), .26);
+    for (const [p, v] of [...o.aoW].sort((a, b) => b[1] - a[1])) seg(v, colOf(p), .5);
+    if (o.pp > 0) seg(o.pp, "url(#pc-hatch)", 1);
+    const cur = o.m === D.m0, past = o.m < D.m0, sat = !past && o.load > o.cap + 0.5;
+    const lines = [`${ymLab(o.m)} — capacité ${f(o.cap)} : ${o.jo} jours travaillés (${hfmt(o.base)} h)${o.fer ? ` − fériés ${hfmt(o.fer)} h` : ""}${o.abs ? ` − absences ${hfmt(o.abs)} h` : ""}`];
+    const det = (lbl, mp) => { if (mp.size) lines.push(`${lbl} ${f(sum1(mp))} : ${[...mp].sort((a, b) => b[1] - a[1]).map(([p, v]) => `${p} ${f(v)}`).join(", ")}`); };
+    det("Réalisé", o.real); det("Prévu (agenda)", o.prev); det("Tâches à placer", o.est); det("AO gagnés", o.aoW); det("Si les AO en cours / envoyés sont gagnés : +", o.aoP);
+    return `<g class="pc-m ${cur ? "cur" : ""} ${sat ? "sat" : ""}"><title>${esc(lines.join("\n"))}</title>
+      <rect x="${X(i) - G / 2}" y="0" width="${W + G}" height="${H + top + 34}" class="pc-hit"/>
+      ${segs.join("")}<line x1="${X(i) - 4}" x2="${X(i) + W + 4}" y1="${Y(o.cap).toFixed(1)}" y2="${Y(o.cap).toFixed(1)}" class="pc-cap"/>
+      <text x="${X(i) + W / 2}" y="${H + top + 15}" class="pc-l">${ymLab(o.m)}</text><text x="${X(i) + W / 2}" y="${H + top + 29}" class="pc-v">${o.cap ? Math.round((o.load) / o.cap * 100) + " %" : "—"}</text></g>`;
+  }).join("");
+  const totW = L.length * (W + G);
+  const legP = [...projs].sort((a, b) => b[1] - a[1]), shown = legP.slice(0, 8);
+  const next3 = L.filter(o => o.m >= D.m0).slice(0, 3), c3 = next3.reduce((s, o) => s + o.cap, 0), l3 = next3.reduce((s, o) => s + o.load, 0);
+  const satM = L.filter(o => o.m >= D.m0 && o.load > o.cap + 0.5);
+  /* tableau par projet */
+  const tab = new Map();
+  for (const o of L) { const add = (mp, col) => { for (const [p, v] of mp) { const r = tab.get(p) || {real:0, prev:0, est:0, ao:0}; r[col] += v; tab.set(p, r); } }; add(o.real, "real"); add(o.prev, "prev"); add(o.est, "est"); add(o.aoW, "ao"); }
+  const rowsT = [...tab].sort((a, b) => (b[1].real + b[1].prev + b[1].est + b[1].ao) - (a[1].real + a[1].prev + a[1].est + a[1].ao));
+  return `<section class="panel bd-b pc"><div class="bd-h"><h2>Plan de charge</h2><span class="sub">3 mois passés et 8 à venir · ${TM && TM() ? "ta charge" : "temps réalisé et prévu par projet"} comparé à ta capacité</span>
+      <div class="segbar pc-u"><button data-act="pc-unit" data-v="j" aria-pressed="${U === "j"}">Jours</button><button data-act="pc-unit" data-v="h" aria-pressed="${U === "h"}">Heures</button></div></div>
+    <div class="bd-k pc-k"><div><span class="kc-l">Charge des 3 prochains mois</span><b class="${l3 > c3 ? "late" : ""}">${c3 ? Math.round(l3 / c3 * 100) + " %" : "—"}</b><small>${f(l3)} sur ${f(c3)} de capacité</small></div>
+      <div><span class="kc-l">AO en cours et envoyés</span><b>${f(next3.reduce((s, o) => s + o.pp, 0))}</b><small>en plus sur 3 mois s'ils sont gagnés</small></div>
+      <div><span class="kc-l">Mois saturés</span><b class="${satM.length ? "late" : "ok"}">${satM.length}</b><small>${satM.length ? satM.map(o => ymLab(o.m)).join(", ") : "aucun sur la période"}</small></div>
+      <div><span class="kc-l">Capacité ce mois</span><b>${f(D.M.get(D.m0).cap)}</b><small>${D.M.get(D.m0).jo} j travaillés${D.M.get(D.m0).fer ? " · fériés déduits" : ""}${D.M.get(D.m0).abs ? " · absences déduites" : ""}</small></div></div>
+    <div class="pc-wrap"><svg class="pc-svg" viewBox="0 0 ${totW} ${H + top + 36}" preserveAspectRatio="none" role="img" aria-label="Plan de charge sur 12 mois">
+      <defs><pattern id="pc-hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" style="fill:color-mix(in srgb,var(--accent) 10%,transparent)"/><line x1="0" y1="0" x2="0" y2="6" style="stroke:var(--accent);stroke-width:2;opacity:.55"/></pattern></defs>
+      <line x1="0" x2="${totW}" y1="${top + H}" y2="${top + H}" class="pc-base"/>${bars}</svg></div>
+    <div class="legend pc-leg">${shown.map(([p]) => `<span><i style="background:${colOf(p)}"></i>${esc(p)}</span>`).join("")}${legP.length > shown.length ? `<span class="mut">+ ${legP.length - shown.length} autres</span>` : ""}</div>
+    <div class="legend pc-leg2"><span><i class="pc-sw full"></i>Réalisé (décompte)</span><span><i class="pc-sw half"></i>Prévu (agenda) et AO gagnés</span><span><i class="pc-sw light"></i>Tâches estimées à placer</span><span><i class="hatch"></i>AO en cours / envoyés, s'ils sont gagnés</span><span><i class="pc-sw cap"></i>Capacité : heures par jour (Réglages ▸ Planning) − fériés − absences</span></div>
+    <p class="sub pc-note">Les AO sont <b>lissés</b> : les jours de chaque phase sont répartis également sur les mois de la phase. Un AO gagné dont les tâches ont été créées est compté par ses tâches, pas deux fois.${D.noDate > 0.5 ? ` ${f(D.noDate)} de tâches estimées n'ont pas de dates : elles ne sont pas dans le graphique.` : ""} Survole un mois pour le détail.</p>
+    ${rowsT.length ? `<details class="bd-more"><summary>Détail par projet</summary><div class="tbl-wrap"><table class="tbl pc-t"><thead><tr><th>Projet</th><th>Réalisé</th><th>Prévu (agenda)</th><th>À placer</th><th>AO gagnés</th><th>Total</th></tr></thead><tbody>${rowsT.map(([p, r]) => `<tr><td><span class="pc-dot" style="background:${colOf(p)}"></span>${esc(p)}</td><td>${r.real ? f(r.real) : "—"}</td><td>${r.prev ? f(r.prev) : "—"}</td><td>${r.est ? f(r.est) : "—"}</td><td>${r.ao ? f(r.ao) : "—"}</td><td><b>${f(r.real + r.prev + r.est + r.ao)}</b></td></tr>`).join("")}</tbody></table></div></details>` : ""}</section>`;
+}
+/* en bref + aujourd'hui */
+function bordTop(){
+  const td = today(), all = live("mine"), mon = mondayOf(td);
+  let wDone = 0, wPrev = 0, wCap = 0;
+  for (let d = mon; d <= addDays(mon, 6); d = addDays(d, 1)) { const m = decRows(d).reduce((s, r) => s + r.m, 0) / 60; if (d <= td) wDone += m; else wPrev += m; wCap += Math.max(0, capOn(d) - absHours(d)); }
+  const tdBl = dayBlocks(td).filter(b => !b.rec || true), tdH = decRows(td).reduce((s, r) => s + r.m, 0) / 60, tdCap = Math.max(0, capOn(td) - absHours(td));
+  const late = all.filter(t => alerte(t) === "late").sort(byDue), soon = all.filter(t => ["today", "week"].includes(alerte(t))).sort(byDue);
+  const aos = [...S.aos.values()].map(migrateAo), nextAo = aos.filter(a => a.statut === "En cours" && validYmd(a.remise) && a.remise >= td).sort((a, b) => a.remise.localeCompare(b.remise))[0];
+  const kc = (l, v, s, cls = "") => `<div><span class="kc-l">${l}</span><b class="${cls}">${v}</b><small>${s}</small></div>`;
+  const nowM = nowMin();
+  const it = b => `<li class="bt-i ${b.e <= nowM ? "past" : b.s <= nowM ? "now" : ""}" data-id="${esc(b.t.id)}"><button class="lnk" data-act="edit"><span class="bt-h">${hhmm(b.s)}–${hhmm(b.e)}</span><span class="bt-t">${esc(b.t.tache)}</span>${b.t.projet ? `<span class="pill proj" style="--pc:${projColor(b.t.projet)}">${esc(b.t.projet)}</span>` : ""}</button></li>`;
+  const tl = t => `<li class="bt-i" data-id="${esc(t.id)}"><button class="lnk" data-act="edit"><span class="bt-h ${alerte(t)}">${validYmd(t.echeance) ? fmt(t.echeance) : "—"}</span><span class="bt-t">${esc(t.tache)}</span>${t.projet ? `<span class="pill proj" style="--pc:${projColor(t.projet)}">${esc(t.projet)}</span>` : ""}</button></li>`;
+  return `<div class="bd-k bd-top">
+      ${kc("Aujourd'hui", hfmt(tdH) + " h", `prévues sur ${hfmt(tdCap)} h disponibles`, tdH > tdCap + 0.25 ? "late" : "")}
+      ${kc("Cette semaine", hfmt(wDone) + " h", `réalisées · ${hfmt(wPrev)} h encore prévues · capacité ${hfmt(wCap)} h`)}
+      ${kc("En retard", late.length, late.length ? "tâches à rattraper" : "rien en retard", late.length ? "late" : "ok")}
+      ${kc("Échéances ≤ 7 j", soon.length, "tâches à rendre")}
+      ${kc("Prochaine remise AO", nextAo ? (diffDays(nextAo.remise, td) ? "J−" + diffDays(nextAo.remise, td) : "Aujourd'hui") : "—", nextAo ? esc(nextAo.nom || "Sans titre") : "aucune remise à venir", nextAo && diffDays(nextAo.remise, td) <= 3 ? "late" : "")}
+    </div>
+    <div class="bd-two">
+      <section class="panel bd-b"><div class="bd-h"><h2>Aujourd'hui</h2><a class="lnk" href="#planning">Agenda ›</a></div>${tdBl.length ? `<ul class="bt-l">${tdBl.slice(0, 8).map(it).join("")}</ul>` : `<p class="sub" style="margin:0">Aucun créneau placé aujourd'hui. <a class="lnk" href="#planning">Organiser ma journée ›</a></p>`}</section>
+      <section class="panel bd-b"><div class="bd-h"><h2>À traiter</h2><a class="lnk" href="#jour">Ma journée ›</a></div>${late.length || soon.length ? `<ul class="bt-l">${[...late, ...soon].slice(0, 7).map(tl).join("")}</ul>` : `<p class="sub" style="margin:0">Rien en retard ni à rendre dans les 7 jours.</p>`}</section>
+    </div>`;
+}
+document.addEventListener("click", ev => {
+  const a = ev.target.closest && ev.target.closest('[data-act="pc-unit"]'); if (!a) return;
+  ev.preventDefault(); ev.stopPropagation(); S.pcUnit = a.dataset.v; try { localStorage.setItem("todobim.pcUnit", S.pcUnit); } catch (e) {} render(true);
+}, true);
+
 /* ---------- Rendu principal ---------- */
 function render(force){
   if (!force && S.ptrDown && Date.now() - S.ptrDown < 4000) { S.pendingRender = true; return; }
@@ -5161,6 +5493,7 @@ function render(force){
   if (!force && PD && PD.active) { S.pendingRender = true; return; }
   const html = {jour:viewJour, planning:viewPlanning, heures:viewHeuresTeam, chiffrage:viewChiffrage, equipe:viewProfil, profil:viewProfil, admin:viewAdmin, matrice:viewMatrice, bord:viewBord2, aide:viewAide, reglages:viewReglages2}[S.view]();
   v.innerHTML = teamBanner() + html; S.built = S.view;
+  if (S.view === "chiffrage") aoLockPass(v);
   if (S.view === "chiffrage") v.querySelectorAll("textarea.fit").forEach(ta => { ta.style.height = "auto"; ta.style.height = ta.scrollHeight + 2 + "px"; });
   if (keep) focusRestore(keep);
   if (S.view === "planning") afterPlanning();
