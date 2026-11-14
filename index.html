@@ -1154,6 +1154,8 @@ html.is-light .gb-t{text-shadow:none}
 .st-h{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 10px;font-weight:600}
 .st-lay .hp-main{gap:0}
 .st-lay .settings{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+
+.tip-sub{margin-top:4px;font-size:13px;color:var(--muted)}
 .mobile-tabs{display:none}
 .auth{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:24px max(16px,env(safe-area-inset-right,0px)) 24px max(16px,env(safe-area-inset-left,0px));overflow-y:auto}
 .auth-card{width:min(400px,100%);display:grid;gap:12px}
@@ -2545,6 +2547,7 @@ function hideTip(){ clearTimeout(TT.timer); TT.cur = null; if (TT.el) TT.el.clas
 document.addEventListener("pointerover", ev => {
   if (ev.pointerType && ev.pointerType !== "mouse") return;
   if (PD && PD.active) return;
+  if (aoTipHost(ev.target)) return;
   const host = tipTarget(ev.target);
   TT.overBar = !!(ev.target.closest && ev.target.closest(".gb"));
   if (host === TT.cur) return;
@@ -4478,6 +4481,7 @@ const HELP = [
       <li><b>Importer un décompte</b> : reprend ton historique depuis ton fichier Excel, sans doublon si tu réimportes. Un jour importé remplace le planning de ce jour-là.</li></ul>
     <p>Les vues Semaine, Mois et Année et l'option « Jusqu'à aujourd'hui » règlent la période affichée et copiée.</p>${go("heures", "Ouvrir le décompte")}`},
   {k:"chiffrage", t:"Chiffrage AO", html:`
+    <p>Sur ordinateur, survole un chiffrage (liste des chiffrages ou tableau de bord) pour voir sa fiche : remise, montant, ratios, missions, planning, pièces du marché lues, suivi s'il est gagné.</p>
     <p>La liste des chiffrages affiche leur statut (en cours, envoyé, gagné, perdu, abandonné), leur montant et la prochaine remise. Un chiffrage se fait en <b>7 étapes</b> ; la barre du bas montre le total en permanence et passe à l'étape suivante.</p>
     <ol class="hp-steps">
       <li><b>Pièces</b> : le registre des pièces du marché et ton analyse (voir la rubrique suivante). Facultatif.</li>
@@ -5090,6 +5094,53 @@ document.addEventListener("change", ev => {
   const t = ev.target; if (!t || t.id !== "disp-home") return;
   ev.stopPropagation(); dispSet({home:t.value}); toast("Page d'ouverture enregistrée");
 }, true);
+
+/* ---------- Info-bulle d'un chiffrage AO (liste des chiffrages, tableau de bord) ---------- */
+function aoTipHtml(raw){
+  const a = migrateAo(JSON.parse(JSON.stringify(raw))), R = calcAo(a), td = today(), rows = [];
+  const st = a.statut || "En cours", col = ST_COL[st] || "--muted";
+  if (validYmd(a.remise)) { const n = diffDays(a.remise, td); rows.push(["Remise", `${fmt(a.remise, true)}${st === "En cours" ? ` · <span class="${n < 0 ? "late" : n <= 7 ? "today" : ""}">${n < 0 ? `dépassée de ${-n} j` : n === 0 ? "aujourd'hui" : `dans ${n} j`}</span>` : ""}`]); }
+  rows.push(["Montant", `<b>${eur(R.tot)} HT</b> · ${jfmt(R.jours)} j${R.tjmMoy ? ` <span class="mut">(${eur(R.tjmMoy)} / j)</span>` : ""}`]);
+  const ratio = [R.pBudget ? pct(R.pBudget) + " des travaux" : "", R.eurM2 ? (Math.round(R.eurM2 * 100) / 100).toLocaleString("fr-FR") + " € / m²" : ""].filter(Boolean).join(" · ");
+  if (ratio) rows.push(["Ratios", ratio]);
+  if (R.opts.length) rows.push(["Options", `${R.opts.length} option${R.opts.length > 1 ? "s" : ""} · ${eur(R.optTot)} HT, hors total`]);
+  if (a.moa && a.moa !== a.client) rows.push(["Maître d'ouvrage", esc(a.moa)]);
+  const op = [a.type, num(a.budget) ? "travaux " + keur(num(a.budget)) : "", num(a.surface) ? num(a.surface).toLocaleString("fr-FR") + " m²" : ""].filter(Boolean).join(" · ");
+  if (op) rows.push(["Opération", esc(op)]);
+  if ((a.missions || []).length) rows.push(["Missions", esc(a.missions.map(m => MIS[m] ? MIS[m].nom : m).join(", "))]);
+  if (R.duree) rows.push(["Planning", `${ymLab(R.a)} → ${ymLab(R.b)} · ${R.duree} mois · ${R.eph.length} phase${R.eph.length > 1 ? "s" : ""}, ${R.base.length} prestation${R.base.length > 1 ? "s" : ""}`]);
+  const docs = (a.dce && a.dce.docs) || [];
+  if (docs.length) { const lus = docs.filter(x => x.statut === "lu" || x.statut === "so").length, pts = docs.reduce((s, x) => s + (x.points || []).filter(p => String(p.txt || "").trim()).length, 0);
+    rows.push(["Pièces du marché", `${lus} / ${docs.length} lue${lus > 1 ? "s" : ""}${pts ? ` · ${pts} point${pts > 1 ? "s" : ""} relevé${pts > 1 ? "s" : ""}` : ""}`]); }
+  if (st === "Gagné") { const s = suiviAo(a, R); if (s) rows.push(["Suivi", `<span class="${s.pct > 1 ? "late" : s.pct >= 0.8 ? "today" : ""}">${jfmt(s.passe)} j passés / ${jfmt(s.vendu)} j vendus</span> · reste ${jfmt(s.reste)} j`]); else rows.push(["Suivi", `<span class="mut">pas de référence de décompte</span>`]); }
+  if (a.reference) rows.push(["Référence", esc(a.reference)]);
+  const T = typeof TM === "function" ? TM() : null;
+  if (T) { const who = a._own && a._own !== T.uid ? T.nameOf(a._own) : "toi"; rows.push(["Partage", `${a._vis === "perso" ? "🔒 Personnel" : a._vis === "svc" ? "Service " + esc(svcName(a._svc)) : "Entreprise"} · créé par ${esc(who)}`]); }
+  if (a.updated) rows.push(["Modifié", fmt(String(a.updated).slice(0, 10), true)]);
+  const sub = [a.client, a.lieu].filter(Boolean).join(" · ");
+  return `<span class="tip-arrow"></span><div class="tip-head"><div class="tip-top"><span class="pill st" style="--sc:var(${col})">${esc(st)}</span>${a.offre && a.offre.num ? `<span class="mut" style="margin-left:auto;font-family:var(--f-mono);font-size:11.5px">${esc(a.offre.num)}</span>` : ""}</div>
+    <div class="tip-t">${esc(a.nom || "Sans titre")}</div>${sub ? `<div class="tip-sub">${esc(sub)}</div>` : ""}</div>
+    <div class="tip-body"><dl>${rows.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("")}</dl><div class="tip-hint">Clic : ouvrir le chiffrage</div></div>`;
+}
+const AOT = {cur:null, timer:0};
+const aoTipHost = el => { const h = el && el.closest && el.closest('[data-act="ao-open"][data-id],[data-act="bd-ao"][data-id]'); return h && S.aos && S.aos.has(h.dataset.id) ? h : null; };
+function showAoTip(host, x){
+  const a = S.aos.get(host.dataset.id); if (!a || !document.body.contains(host)) return;
+  if (!TT.el) { TT.el = document.createElement("div"); TT.el.className = "tip"; TT.el.setAttribute("role", "tooltip"); document.body.appendChild(TT.el); }
+  TT.el.style.setProperty("--pc", `var(${ST_COL[a.statut] || "--accent"})`);
+  try { TT.el.innerHTML = aoTipHtml(a); } catch (e) { console.warn(e); return; }
+  TT.cur = host; TT.anchor = host; TT.x = x; placeTip();
+  requestAnimationFrame(() => TT.el && TT.el.classList.add("on"));
+}
+document.addEventListener("pointerover", ev => {
+  if (ev.pointerType && ev.pointerType !== "mouse") return;
+  const host = aoTipHost(ev.target); if (!host || host === AOT.cur) return;
+  AOT.cur = host; clearTimeout(AOT.timer); const x = ev.clientX;
+  AOT.timer = setTimeout(() => { if (AOT.cur === host) showAoTip(host, x); }, 260);
+});
+document.addEventListener("pointerout", ev => { if (AOT.cur && !(ev.relatedTarget && AOT.cur.contains(ev.relatedTarget))) { clearTimeout(AOT.timer); if (TT.cur === AOT.cur) hideTip(); AOT.cur = null; } });
+document.addEventListener("pointerdown", () => { clearTimeout(AOT.timer); AOT.cur = null; }, true);
+document.addEventListener("focusin", ev => { const host = aoTipHost(ev.target); if (!host || !ev.target.matches(":focus-visible")) return; const r = host.getBoundingClientRect(); AOT.cur = host; showAoTip(host, r.left + Math.min(r.width / 2, 60)); });
 
 /* ---------- Rendu principal ---------- */
 function render(force){
