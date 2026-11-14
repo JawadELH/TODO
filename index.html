@@ -53,7 +53,7 @@ header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;backgroun
 .brand b{color:var(--accent)}
 .cartouche{display:flex;border:1.5px solid var(--ink);font-family:var(--f-mono);font-size:11px;line-height:1.15;flex-shrink:0}
 .cartouche div{padding:3px 8px;border-left:1px solid var(--ink);display:flex;flex-direction:column}
-.cartouche div:first-child{border-left:0}
+.cartouche div:first-of-type{border-left:0}
 .cartouche small{font-family:var(--f-body);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 nav.tabs{display:flex;gap:4px;margin-left:auto}
 nav.tabs a{display:flex;align-items:center;gap:6px;padding:8px 12px;border-radius:8px;text-decoration:none;color:var(--muted);font-weight:500;white-space:nowrap}
@@ -1049,6 +1049,57 @@ span.pt-t{font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:upp
 }
 nav.tabs a[href="#aide"] span{display:none!important} nav.tabs a[href="#aide"]{padding-inline:9px}
 @media (min-width:1241px){ nav.tabs{gap:2px} nav.tabs a{padding:8px 9px} nav.tabs a span[data-s]{font-size:0} nav.tabs a span[data-s]::after{content:attr(data-s);font-size:14px} }
+/* Équipe */
+.cartouche a.ctx-cell{padding:3px 8px;display:flex;flex-direction:column;color:var(--ink);text-decoration:none;max-width:150px;min-width:0}
+.cartouche a.ctx-cell span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600}
+.cartouche a.ctx-cell:hover span,.cartouche a.ctx-cell[aria-current="page"] span{color:var(--accent)}
+.cartouche a.ctx-cell small{display:flex;align-items:center;gap:4px}
+.ctx-cell .badge{font-style:normal;font-family:var(--f-mono);font-size:9px;letter-spacing:0;background:var(--late);color:#fff;border-radius:7px;padding:0 4px;line-height:13px}
+.cartouche:has(#ctx-chip:not([hidden])) div:last-child{display:none}
+.cartouche:has(#ctx-chip:not([hidden])) div{border-left:1px solid var(--line-2)}
+@media (max-width:1100px){ .cartouche:has(#ctx-chip:not([hidden])) div:nth-of-type(1){display:none} .cartouche a.ctx-cell{max-width:120px} }
+.tm-banner{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;justify-content:space-between;margin:14px 0 0;padding:10px 12px;border:1px solid color-mix(in srgb,var(--accent) 45%,var(--line));background:var(--accent-soft);border-radius:var(--r);font-size:13.5px}
+.tm-p{margin-bottom:14px} .tm-p h2{display:flex;align-items:center;gap:8px}
+.tm-opt{font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:1px 8px}
+.tm-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 14px}
+.tm-grid input,.tm-invf input,.tm-invf select,.tm-sv input,.tm-mr select{border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:8px 10px;color:var(--ink);min-width:0;width:100%}
+.tm-spaces,.tm-inv,.tm-mem{display:grid;gap:6px;margin:8px 0}
+.tm-sp,.tm-inv-i{display:flex;align-items:center;justify-content:space-between;gap:10px;border:1px solid var(--line);background:var(--bg);border-radius:9px;padding:9px 12px}
+.tm-sp.cur{border-color:var(--accent)} .tm-sp div,.tm-inv-i>div:first-child,.tm-mn{display:grid;min-width:0} .tm-sp small,.tm-inv-i small,.tm-mn small{color:var(--muted);font-size:12px;overflow:hidden;text-overflow:ellipsis}
+.tm-new{margin-top:10px} .tm-new input{flex:1 1 220px;min-width:0;border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:8px 10px;color:var(--ink)}
+.tm-svcs{display:flex;flex-wrap:wrap;gap:8px}
+.tm-sv{display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--bg);border-radius:9px;padding:6px 8px}
+.tm-sv i{width:10px;height:10px;border-radius:50%;background:var(--sv);flex-shrink:0} .tm-sv input{width:150px;padding:5px 8px} .tm-sv small{color:var(--muted);font-size:12px;white-space:nowrap}
+.tm-m{display:grid;grid-template-columns:minmax(0,1.3fr) 170px minmax(0,1.5fr) auto;gap:8px 12px;align-items:center;border:1px solid var(--line);background:var(--bg);border-radius:9px;padding:8px 10px}
+.tm-ms{display:flex;flex-wrap:wrap;gap:4px} .tm-ma{display:flex;gap:4px;justify-content:flex-end}
+.chip-b.sm{padding:3px 9px;font-size:12px}
+.tm-invf{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px 12px;align-items:end} .tm-invf .wide{grid-column:1/-1}
+.tm-ck{display:inline-flex;align-items:center;gap:6px;cursor:pointer} .tm-ck input{accent-color:var(--accent)}
+.tm-h4{margin:14px 0 4px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.tm-roles{margin-top:10px} .tm-roles summary{cursor:pointer;font-weight:600;font-size:13px} .tm-roles dl{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:4px 12px;font-size:13px;margin:8px 0 0} .tm-roles dt{font-weight:600} .tm-roles dd{margin:0;color:var(--muted)}
+.tm-verif{border:1px dashed color-mix(in srgb,var(--today) 60%,var(--line));border-radius:9px;padding:10px 12px;margin-bottom:10px}
+.tm-ol{margin:6px 0 0;padding-left:20px;display:grid;gap:4px;font-size:13.5px}
+.tm-copy{align-items:center} .ctl-l{display:inline-flex;align-items:center;gap:6px;font-size:13px} .ctl-l select{border:1px solid var(--line);background:var(--bg);border-radius:7px;padding:6px 8px;color:var(--ink)}
+.tm-vis-r{display:flex;flex-wrap:wrap;gap:8px;align-items:center} .tm-vis-r select{width:auto;min-width:150px;border:1px solid var(--line);background:var(--bg);border-radius:7px;padding:6px 8px;color:var(--ink)}
+.tm-hint{display:block;color:var(--muted);font-size:12px;margin-top:4px}
+.tm-vis button[disabled]{opacity:.55;cursor:not-allowed}
+.pill.tm-lock{padding-inline:6px} .pill.tm-svc{color:var(--s-recurrent);border-color:color-mix(in srgb,var(--s-recurrent) 40%,var(--line))} .pill.tm-who{color:var(--accent)}
+.chip-x .tm-sh{font-size:11px;font-weight:600;color:var(--accent);width:auto;padding:0 4px}
+.chip-x.tm-pp{border-style:dashed}
+.tm-scope{margin-bottom:10px}
+.tm-who-b{margin:0} .tm-who-b select{max-width:220px}
+.tm-ro{margin:0 0 12px;padding:8px 12px;border-radius:8px;background:var(--surface-2);color:var(--muted);font-size:13px}
+.tm-lines{overflow-x:auto} .tm-tbl td,.tm-tbl th{padding:6px 8px;font-size:12.5px;text-align:left} .tm-tbl .num{text-align:right;white-space:nowrap} .tm-tbl td small{display:block;color:var(--muted);font-size:11px}
+.tm-tbl td.warn{color:var(--late)}
+.kc-v.sm{font-size:16px}
+.kpi-row.tm-kpis{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:12px} .tm-kpis~.panel{margin-bottom:12px}
+@media (max-width:820px){
+  .kpi-row.tm-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cartouche a.ctx-cell{max-width:110px}
+  .tm-grid,.tm-invf{grid-template-columns:minmax(0,1fr)}
+  .tm-m{grid-template-columns:minmax(0,1fr) auto} .tm-ms{grid-column:1/-1} .tm-ma{grid-column:1/-1;justify-content:flex-start}
+  .tm-grid input,.tm-invf input,.tm-invf select,.tm-sv input,.tm-mr select,.tm-new input,.ctl-l select,.tm-vis-r select{font-size:16px}
+}
 .mobile-tabs{display:none}
 .auth{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:24px max(16px,env(safe-area-inset-right,0px)) 24px max(16px,env(safe-area-inset-left,0px));overflow-y:auto}
 .auth-card{width:min(400px,100%);display:grid;gap:12px}
@@ -1113,7 +1164,7 @@ nav.tabs a[href="#aide"] span{display:none!important} nav.tabs a[href="#aide"]{p
 }
 @media (max-width:460px){
   .brand{font-size:19px}
-  .cartouche div:nth-child(3){display:none}
+  .cartouche div:nth-of-type(3){display:none}
   .cols2,.qprev{grid-template-columns:1fr}
   .seg-label{width:100%}
 }
@@ -1122,7 +1173,7 @@ nav.tabs a[href="#aide"] span{display:none!important} nav.tabs a[href="#aide"]{p
 <script src="./config.js"></script>
 <script src="./firebase-bundle.js"></script>
 <script>
-/* Comptes + synchronisation (Firebase). Chaque utilisateur ne lit et n'écrit que users/<son uid>/... */
+/* Comptes + synchronisation (Firebase). Espace perso : users/<uid>/... ; entreprises : orgs/<id>/... (voir regles_firestore.txt) */
 (function(){
   "use strict";
   var cfg = window.FIREBASE_CONFIG || (typeof firebaseConfig !== "undefined" ? firebaseConfig : null);
@@ -1170,6 +1221,258 @@ nav.tabs a[href="#aide"] span{display:none!important} nav.tabs a[href="#aide"]{p
       }
     };
   }
+
+  /* ==================== Entreprises, services, collaborateurs ==================== */
+  var TEAM = window.TODO_TEAM = {active:false, ctx:"perso", uid:"", email:"", verified:false, orgs:[], invites:[], org:null, me:null, members:new Map(), notice:"", pendingPerso:{}, defVis:null, _l:[]};
+  TEAM.on = function(f){ TEAM._l.push(f); };
+  function emit(){ TEAM._l.forEach(function(f){ try { f(); } catch (e) { console.error(e); } }); }
+  function D(){ return F.doc.apply(null, [fs].concat([].slice.call(arguments))); }
+  function C(){ return F.collection.apply(null, [fs].concat([].slice.call(arguments))); }
+  function nowIso(){ return new Date().toISOString(); }
+  function lsGet(k){ try { return JSON.parse(localStorage.getItem(k) || "null"); } catch (e) { return null; } }
+  function lsSet(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+  function defaultName(email){ var p = String(email || "").split("@")[0].split(/[._+-]/).filter(Boolean); return p.map(function(x){ return x.charAt(0).toUpperCase() + x.slice(1); }).join(" ") || "Collaborateur"; }
+  TEAM.nameOf = function(uid){ var m = TEAM.members.get(uid); return m ? (m.nom || defaultName(m.email)) : ""; };
+  TEAM.isAdmin = function(){ return !!(TEAM.me && TEAM.me.role === "admin"); };
+  TEAM.isChef = function(){ return !!(TEAM.me && TEAM.me.role === "chef"); };
+  TEAM.canBase = function(){ return !TEAM.active || TEAM.isAdmin() || TEAM.isChef(); };
+  TEAM.services = function(){ var s = (TEAM.org && TEAM.org.services) || {}; return Object.keys(s).map(function(k){ return {id:k, nom:s[k].nom || k, couleur:s[k].couleur || ""}; }).sort(function(a, b){ return a.nom.localeCompare(b.nom, "fr"); }); };
+  /* collaborateurs dont je peux voir la charge et le décompte */
+  TEAM.visibleMembers = function(){
+    var out = [];
+    TEAM.members.forEach(function(m, uid){
+      if (uid === TEAM.uid || TEAM.isAdmin() || (TEAM.isChef() && (m.services || []).some(function(s){ return (TEAM.me.services || []).indexOf(s) >= 0; }))) out.push(Object.assign({uid:uid}, m));
+    });
+    return out.sort(function(a, b){ return (a.nom || a.email).localeCompare(b.nom || b.email, "fr"); });
+  };
+
+  /* ---- Base de données d'une entreprise : même interface que l'espace perso ---- */
+  var CACHE = {tasks:new Map(), ao:new Map()};
+  function withMeta(name, id, d){
+    var base = CACHE[name].get(id), out = Object.assign({}, d), me = TEAM.me || {};
+    out._own = base && base._own ? base._own : TEAM.uid;
+    var vis = d._vis || (base && base._vis) || (TEAM.defVis ? TEAM.defVis(name, d) : (name === "ao" ? "org" : "perso"));
+    if (["perso", "svc", "org"].indexOf(vis) < 0) vis = "perso";
+    var svc = vis === "svc" ? (d._svc || (base && base._svc) || (me.services || [])[0] || "") : "";
+    if (vis === "svc" && !svc) vis = "org";
+    out._vis = vis; out._svc = svc;
+    out._resp = d._resp != null ? String(d._resp) : (base && base._resp) || "";
+    return out;
+  }
+  function orgDb(o, uid){
+    function wrap(r, onSet){
+      return {
+        id:r.id, path:r.path,
+        set:function(d){ return soft(F.setDoc(r, onSet ? onSet(d) : d)).catch(function(e){ throw mapErr(e); }); },
+        update:function(d){ return soft(F.updateDoc(r, d)).catch(function(e){ throw mapErr(e); }); },
+        delete:function(){ return soft(F.deleteDoc(r)).catch(function(e){ throw mapErr(e); }); },
+        onSnapshot:function(next, error){ return F.onSnapshot(r, {includeMetadataChanges:true}, function(s){ next(wrapDoc(s)); }, function(e){ error && error({code:"revoked", message:String(e && e.message)}); }); }
+      };
+    }
+    function itemRef(name, id){ var r = D("orgs", o, name, id); return wrap(r, function(d){ return withMeta(name, r.id, d); }); }
+    function itemColl(name){
+      var col = C("orgs", o, name);
+      return {
+        path:name,
+        doc:function(id){ var r = id ? F.doc(col, id) : F.doc(col); return wrap(r, function(d){ return withMeta(name, r.id, d); }); },
+        onSnapshot:function(next, error){
+          var me = TEAM.me || {}, qs = [F.query(col, F.where("_own", "==", uid)), F.query(col, F.where("_resp", "==", uid)), F.query(col, F.where("_vis", "==", "org"))];
+          if (me.role === "admin") qs.push(F.query(col, F.where("_vis", "==", "svc")));
+          else (me.services || []).forEach(function(s){ qs.push(F.query(col, F.where("_vis", "==", "svc"), F.where("_svc", "==", s))); });
+          var parts = qs.map(function(){ return null; }), meta = qs.map(function(){ return {fromCache:true, hasPendingWrites:false}; });
+          function out(){
+            if (parts[0] === null) return;
+            var all = new Map();
+            parts.forEach(function(p){ if (p) p.forEach(function(v, k){ all.set(k, v); }); });
+            CACHE[name] = new Map(); all.forEach(function(v, k){ CACHE[name].set(k, v.data()); });
+            var docs = Array.from(all.values());
+            next({docs:docs, size:docs.length, empty:!docs.length, metadata:{fromCache:meta.some(function(x){ return x.fromCache; }), hasPendingWrites:meta.some(function(x){ return x.hasPendingWrites; })}, docChanges:function(){ return []; }});
+          }
+          var uns = qs.map(function(q, i){
+            return F.onSnapshot(q, {includeMetadataChanges:true}, function(snap){
+              var mp = new Map(); snap.docs.forEach(function(d){ mp.set(d.id, wrapDoc(d)); });
+              parts[i] = mp; meta[i] = {fromCache:snap.metadata.fromCache, hasPendingWrites:snap.metadata.hasPendingWrites}; out();
+            }, function(e){
+              console.warn("Lecture refusée (" + name + " #" + i + ")", e);
+              if (i === 0) { error && error({code:"revoked", message:String(e && e.message)}); return; }
+              parts[i] = new Map(); out();
+            });
+          });
+          return function(){ uns.forEach(function(u){ try { u(); } catch (e) {} }); };
+        }
+      };
+    }
+    /* projets et types : liste commune + projets personnels */
+    var LISTS = {org:{projets:[], types:[], projVis:{}}, perso:{projets:[]}};
+    function listsData(){
+      var op = LISTS.org.projets || [], pp = (LISTS.perso.projets || []).filter(function(p){ return op.indexOf(p) < 0; });
+      var resp = []; TEAM.members.forEach(function(m, k){ resp.push(TEAM.nameOf(k)); });
+      resp.sort(function(a, b){ return a.localeCompare(b, "fr"); });
+      return {projets:op.concat(pp), types:LISTS.org.types || [], responsables:resp, projVis:LISTS.org.projVis || {}, _perso:pp};
+    }
+    function listsRef(){
+      var rO = D("orgs", o, "meta", "lists"), rP = D("orgs", o, "people", uid, "meta", "lists");
+      return {
+        id:"lists", path:"meta/lists",
+        set:function(next){
+          var persoNow = LISTS.perso.projets || [], pp = [], op = [];
+          (next.projets || []).forEach(function(p){ if (persoNow.indexOf(p) >= 0 || TEAM.pendingPerso[p]) pp.push(p); else op.push(p); });
+          TEAM.pendingPerso = {};
+          var org = {projets:op, types:next.types || [], projVis:next.projVis || LISTS.org.projVis || {}};
+          LISTS.org = org; LISTS.perso = {projets:pp};
+          return Promise.all([soft(F.setDoc(rO, org)), soft(F.setDoc(rP, {projets:pp}))]).catch(function(e){ throw mapErr(e); });
+        },
+        onSnapshot:function(next){
+          var got = {o:false, p:false};
+          function out(){ if (got.o && got.p) next({id:"lists", exists:true, data:listsData, metadata:{fromCache:false, hasPendingWrites:false}}); }
+          var u1 = F.onSnapshot(rO, function(s){ LISTS.org = (s.exists() && s.data()) || {projets:[], types:[], projVis:{}}; got.o = true; out(); }, function(){ got.o = true; out(); });
+          var u2 = F.onSnapshot(rP, function(s){ LISTS.perso = (s.exists() && s.data()) || {projets:[]}; got.p = true; out(); }, function(){ got.p = true; out(); });
+          TEAM.on(out);
+          return function(){ u1(); u2(); };
+        }
+      };
+    }
+    TEAM.moveProject = function(name, toPerso){
+      var op = (LISTS.org.projets || []).filter(function(p){ return p !== name; }), pp = (LISTS.perso.projets || []).filter(function(p){ return p !== name; });
+      if (toPerso) pp.push(name); else op.push(name);
+      LISTS.org = Object.assign({}, LISTS.org, {projets:op}); LISTS.perso = {projets:pp};
+      return Promise.all([F.setDoc(D("orgs", o, "meta", "lists"), LISTS.org), F.setDoc(D("orgs", o, "people", uid, "meta", "lists"), LISTS.perso)]);
+    };
+    return {
+      doc:function(path){
+        var p = path.split("/");
+        if (p[0] === "tasks" || p[0] === "ao") return itemRef(p[0], p[1]);
+        if (p[0] === "meta" && p[1] === "lists") return listsRef();
+        if (p[0] === "meta" && p[1] === "prefs") return wrap(D("orgs", o, "people", uid, "meta", "prefs"));
+        if (p[0] === "meta") return wrap(D("orgs", o, "meta", p[1]));
+        if (p[0] === "decompte") return wrap(D("orgs", o, "people", uid, "decompte", p[1]));
+        return wrap(D("orgs", o, "people", uid, p[0], p[1]));
+      },
+      collection:function(name){
+        if (name === "tasks" || name === "ao") return itemColl(name);
+        var c = C("orgs", o, "people", uid, name);
+        return {
+          path:name,
+          doc:function(id){ return wrap(id ? F.doc(c, id) : F.doc(c)); },
+          onSnapshot:function(next, error){
+            return F.onSnapshot(c, {includeMetadataChanges:true}, function(qs){
+              var docs = qs.docs.map(wrapDoc);
+              next({docs:docs, size:docs.length, empty:!docs.length, metadata:{fromCache:qs.metadata.fromCache, hasPendingWrites:qs.metadata.hasPendingWrites}, docChanges:function(){ return []; }});
+            }, function(e){ error && error({code:"revoked", message:String(e && e.message)}); });
+          }
+        };
+      }
+    };
+  }
+
+  /* ---- Actions sur les entreprises ---- */
+  var curUser = null;
+  function saveOrgList(){ return F.setDoc(D("users", TEAM.uid, "meta", "orgs"), {list:TEAM.orgs}); }
+  function addOrgToList(id, nom){ TEAM.orgs = TEAM.orgs.filter(function(x){ return x.id !== id; }).concat([{id:id, nom:nom}]); return saveOrgList(); }
+  TEAM.switchTo = function(ctx, hash){ lsSet("todobim.ctx." + TEAM.uid, ctx); location.hash = hash || (ctx === "perso" ? "#equipe" : "#jour"); location.reload(); };
+  TEAM.createOrg = function(nom){
+    nom = String(nom || "").trim(); if (!nom) return Promise.reject(new Error("nom"));
+    var id = F.doc(C("orgs")).id;
+    return F.setDoc(D("orgs", id), {nom:nom, createdBy:TEAM.uid, created:nowIso(), services:{}})
+      .then(function(){ return F.setDoc(D("orgs", id, "members", TEAM.uid), {email:TEAM.email, nom:defaultName(TEAM.email), role:"admin", services:[], joined:nowIso()}); })
+      .then(function(){ return addOrgToList(id, nom); })
+      .then(function(){ return id; });
+  };
+  TEAM.sendVerification = function(){ return curUser ? F.sendEmailVerification(curUser) : Promise.reject(new Error("user")); };
+  TEAM.checkVerified = function(){
+    if (!curUser) return Promise.resolve(false);
+    return curUser.reload().then(function(){ if (!curUser.emailVerified) return false; return curUser.getIdToken(true).then(function(){ TEAM.verified = true; emit(); return true; }); });
+  };
+  TEAM.acceptInvite = function(inv){
+    if (!TEAM.verified) { var e = new Error("unverified"); e.code = "unverified"; return Promise.reject(e); }
+    return F.setDoc(D("orgs", inv.org, "members", TEAM.uid), {email:TEAM.email, nom:inv.nom || defaultName(TEAM.email), role:inv.role, services:inv.services || [], joined:nowIso()})
+      .then(function(){ return addOrgToList(inv.org, inv.orgName || "Entreprise"); })
+      .then(function(){ return Promise.all([F.deleteDoc(D("invites", inv.id)).catch(function(){}), F.deleteDoc(D("orgs", inv.org, "invites", TEAM.email)).catch(function(){})]); })
+      .then(function(){ TEAM.invites = TEAM.invites.filter(function(x){ return x.id !== inv.id; }); return inv.org; });
+  };
+  TEAM.declineInvite = function(inv){
+    return Promise.all([F.deleteDoc(D("invites", inv.id)), F.deleteDoc(D("orgs", inv.org, "invites", TEAM.email)).catch(function(){})])
+      .then(function(){ TEAM.invites = TEAM.invites.filter(function(x){ return x.id !== inv.id; }); emit(); });
+  };
+  function o(){ return TEAM.org && TEAM.org.id; }
+  TEAM.invite = function(email, role, services, nom){
+    email = String(email || "").trim().toLowerCase();
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return Promise.reject(new Error("email"));
+    var d = {email:email, org:o(), orgName:TEAM.org.nom, role:role || "membre", services:services || [], nom:nom || "", by:TEAM.uid, byName:TEAM.nameOf(TEAM.uid), at:nowIso()};
+    var b = F.writeBatch(fs); b.set(D("invites", email + "__" + o()), d); b.set(D("orgs", o(), "invites", email), d);
+    return b.commit();
+  };
+  TEAM.cancelInvite = function(email){ var b = F.writeBatch(fs); b.delete(D("invites", email + "__" + o())); b.delete(D("orgs", o(), "invites", email)); return b.commit(); };
+  TEAM.setMember = function(uid, patch){ return F.updateDoc(D("orgs", o(), "members", uid), patch); };
+  TEAM.removeMember = function(uid){ return F.deleteDoc(D("orgs", o(), "members", uid)); };
+  TEAM.saveOrg = function(patch){ return F.updateDoc(D("orgs", o()), patch); };
+  TEAM.leave = function(){
+    var id = o();
+    return F.deleteDoc(D("orgs", id, "members", TEAM.uid)).then(function(){ TEAM.orgs = TEAM.orgs.filter(function(x){ return x.id !== id; }); return saveOrgList(); }).then(function(){ TEAM.switchTo("perso"); });
+  };
+  TEAM.publish = function(month, data){ return F.setDoc(D("orgs", o(), "people", TEAM.uid, "pub", month), data); };
+  TEAM.watchPub = function(uid, month, cb){ return F.onSnapshot(D("orgs", o(), "people", uid, "pub", month), function(s){ cb(s.exists() ? s.data() : null); }, function(){ cb(null); }); };
+  TEAM.watchInvites = function(cb){ return F.onSnapshot(C("orgs", o(), "invites"), function(qs){ cb(qs.docs.map(function(d){ return d.data(); })); }, function(){ cb([]); }); };
+  /* lecture de l'espace perso, pour copier ses données dans l'entreprise */
+  TEAM.readPerso = function(){
+    var u = TEAM.uid, out = {};
+    function coll(n){ return F.getDocs(C("users", u, n)).then(function(qs){ out[n] = qs.docs.map(function(d){ return Object.assign({id:d.id}, d.data()); }); }); }
+    function one(n){ return F.getDoc(D("users", u, "meta", n)).then(function(s){ out[n] = s.exists() ? s.data() : null; }); }
+    return Promise.all([coll("tasks"), coll("ao"), one("lists"), one("uo"), one("societes")]).then(function(){ return out; });
+  };
+
+  /* ---- Ouverture : choix de l'espace (perso ou entreprise) ---- */
+  function startTeam(user){
+    TEAM.uid = user.uid; TEAM.email = String(user.email || "").toLowerCase(); TEAM.verified = !!user.emailVerified;
+    var key = "todobim.ctx." + user.uid, snapKey = "todobim.team." + user.uid, ctx = lsGet(key) || "perso";
+    var cached = lsGet(snapKey) || {};
+    var nk = "todobim.notice." + user.uid; if (lsGet(nk)) { TEAM.notice = lsGet(nk); try { localStorage.removeItem(nk); } catch (e) {} }
+    var pOrgs = F.getDoc(D("users", user.uid, "meta", "orgs")).then(function(s){ TEAM.orgs = (s.exists() && s.data().list) || []; }, function(){ TEAM.orgs = cached.orgs || []; });
+    var pInv = F.getDocs(F.query(C("invites"), F.where("email", "==", TEAM.email))).then(function(qs){ TEAM.invites = qs.docs.map(function(d){ return Object.assign({id:d.id}, d.data()); }); }, function(){ TEAM.invites = []; });
+    return Promise.all([pOrgs, pInv]).then(function(){
+      if (ctx === "perso" || !TEAM.orgs.some(function(x){ return x.id === ctx; })) return makeDb(user.uid);
+      return F.getDoc(D("orgs", ctx, "members", user.uid)).then(function(m){
+        return m.exists() ? F.getDoc(D("orgs", ctx)).then(function(og){ return [m, og]; }) : [m, null];
+      }).then(function(r){
+        if (!r[0].exists()) {
+          var nm = (TEAM.orgs.filter(function(x){ return x.id === ctx; })[0] || {}).nom || "l'entreprise";
+          TEAM.notice = "Tu ne fais plus partie de « " + nm + " ». Tu es dans ton espace perso.";
+          TEAM.orgs = TEAM.orgs.filter(function(x){ return x.id !== ctx; }); saveOrgList().catch(function(){});
+          lsSet(key, "perso"); return makeDb(user.uid);
+        }
+        return openOrg(ctx, user.uid, r[0].data(), Object.assign({id:ctx}, r[1].data()));
+      }, function(){
+        if (cached.ctx === ctx && cached.me && cached.org) return openOrg(ctx, user.uid, cached.me, cached.org, cached.members);
+        TEAM.notice = "Connexion à l'entreprise impossible pour l'instant : tu es dans ton espace perso.";
+        return makeDb(user.uid);
+      });
+    }).then(function(db){ emit(); return db; });
+
+    function openOrg(id, uid, me, org, members){
+      TEAM.active = true; TEAM.ctx = id; TEAM.me = me; TEAM.org = org;
+      if (members) Object.keys(members).forEach(function(k){ TEAM.members.set(k, members[k]); });
+      TEAM.members.set(uid, me);
+      function save(){ var mm = {}; TEAM.members.forEach(function(v, k){ mm[k] = v; }); lsSet(snapKey, {ctx:id, me:TEAM.me, org:TEAM.org, members:mm, orgs:TEAM.orgs}); }
+      F.onSnapshot(C("orgs", id, "members"), function(qs){
+        TEAM.members = new Map(); qs.docs.forEach(function(d){ TEAM.members.set(d.id, d.data()); });
+        var nme = TEAM.members.get(uid);
+        if (nme) TEAM.me = nme;
+        save(); emit();
+      }, function(){});
+      /* ma fiche : retrait de l'entreprise, changement de rôle ou de services */
+      F.onSnapshot(D("orgs", id, "members", uid), function(s){
+        if (!s.exists()) { if (s.metadata && s.metadata.fromCache) return;
+          lsSet(key, "perso"); lsSet("todobim.notice." + uid, "Tu ne fais plus partie de « " + ((TEAM.org && TEAM.org.nom) || "l'entreprise") + " ». Tu es dans ton espace perso.");
+          TEAM.orgs = TEAM.orgs.filter(function(x){ return x.id !== id; }); saveOrgList().catch(function(){}).then(function(){ location.reload(); }); return; }
+        var nme = s.data();
+        if (nme.role !== TEAM.me.role || JSON.stringify(nme.services || []) !== JSON.stringify(TEAM.me.services || [])) { TEAM.me = nme; save(); location.reload(); return; }
+      }, function(){});
+      F.onSnapshot(D("orgs", id), function(s){ if (s.exists()) { TEAM.org = Object.assign({id:id}, s.data()); save(); emit(); } }, function(){});
+      save();
+      return orgDb(id, uid);
+    }
+  }
+
 
   /* ---- Export de fichiers (feuille de partage iOS / téléchargement Mac) ---- */
   var MIME = {json:"application/json", csv:"text/csv", xlsx:"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", pdf:"application/pdf"};
@@ -1246,7 +1549,8 @@ nav.tabs a[href="#aide"] span{display:none!important} nav.tabs a[href="#aide"]{p
       if (user) {
         var g = document.getElementById("auth-gate"); if (g) g.remove();
         window.TODO_ACCOUNT = {email:user.email, signOut:function(){ return F.signOut(auth).then(function(){ location.hash = "#jour"; location.reload(); }); }};
-        if (!started) { started = true; resolveDb(makeDb(user.uid)); }
+        curUser = user;
+        if (!started) { started = true; Promise.resolve().then(function(){ return startTeam(user); }).then(resolveDb, function(e){ console.error(e); resolveDb(makeDb(user.uid)); }); }
       } else {
         if (started) { location.reload(); return; }
         showLogin("login");
@@ -1266,6 +1570,7 @@ nav.tabs a[href="#aide"] span{display:none!important} nav.tabs a[href="#aide"]{p
   <div class="wrap">
     <div class="brand">TO DO <b>BIM</b></div>
     <div class="cartouche" aria-label="Date du jour">
+      <a class="ctx-cell" id="ctx-chip" href="#equipe" hidden></a>
       <div><small>Date</small><span id="c-date">—</span></div>
       <div><small>Sem.</small><span id="c-week">—</span></div>
       <div><small>Ouvertes</small><span id="c-open">—</span></div>
@@ -1305,6 +1610,7 @@ const VIEWS = [
   {k:"bord", label:"Bord", icon:'<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>'},
   {k:"reglages", label:"Réglages", icon:'<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>'},
   {k:"aide", label:"Aide", icon:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 4.9.8c0 1.7-2.4 2.2-2.4 3.7M12 17h.01"/>'},
+  {k:"equipe", label:"Équipe", hidden:true, icon:""},
 ];
 const I = {
   check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg>',
@@ -1367,7 +1673,7 @@ function allProjets(){
   return set;
 }
 function projColor(p){ const i = Math.max(0, allProjets().indexOf(p)); return `var(--p${i % 8})`; }
-const live = () => [...S.tasks.values()].filter(t => !t.archived);
+const live = sc => [...S.tasks.values()].filter(t => !t.archived && inScope(t, sc || (S.view === "jour" || S.view === "heures" ? "mine" : null)));
 
 /* ---------- Rendu de morceaux ---------- */
 function pills(t, opts = {}){
@@ -1391,6 +1697,7 @@ function pills(t, opts = {}){
   if (Array.isArray(t.jours) && t.jours.length) out.push(`<span class="pill rec">chaque ${t.jours.slice().sort((x, y) => ((x + 6) % 7) - ((y + 6) % 7)).map(n => JOURS_COURTS[n]).join(", ")}</span>`);
   if (t.responsable && opts.resp) out.push(`<span class="pill">${esc(t.responsable)}</span>`);
   if (isDone(t) && validYmd(t.cloture)) out.push(`<span class="pill">clôturée ${fmt(t.cloture)}</span>`);
+  out.push(teamPills(t));
   return out.join("");
 }
 function taskRow(t, extra = ""){
@@ -1415,9 +1722,10 @@ function renderChrome(){
   $("#c-open").textContent = S.status === "ready" ? open : "—";
   const late = live().filter(t => alerte(t) === "late").length;
   const link = v => `<a href="#${v.k}" ${S.view === v.k ? 'aria-current="page"' : ""}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${v.icon}</svg><span data-s="${v.short || v.label}">${v.label}</span>${v.k === "jour" && late ? `<span class="badge">${late}</span>` : ""}</a>`;
-  $("#tabs").innerHTML = VIEWS.map(link).join("");
-  $("#mtabs").innerHTML = VIEWS.map(link).join("");
-  $("#fab").hidden = !(S.status === "ready" && S.canWrite !== false && S.view !== "reglages" && S.view !== "heures" && S.view !== "chiffrage" && S.view !== "aide");
+  $("#tabs").innerHTML = VIEWS.filter(v => !v.hidden).map(link).join("");
+  $("#mtabs").innerHTML = VIEWS.filter(v => !v.hidden).map(link).join("");
+  $("#fab").hidden = !(S.status === "ready" && S.canWrite !== false && S.view !== "reglages" && S.view !== "heures" && S.view !== "chiffrage" && S.view !== "aide" && S.view !== "equipe");
+  teamChrome();
   { const hb = $("#help-btn"); if (hb) { if (S.view === "aide") hb.setAttribute("aria-current", "page"); else hb.removeAttribute("aria-current"); } }
 }
 
@@ -1491,12 +1799,12 @@ function viewTachesShell(){
       ${[["projet","Par projet"],["echeance","Par échéance"],["priorite","Par priorité"],["statut","Par statut"],["recent","Modifiées récemment"]].map(([v, l]) => `<option value="${v}" ${S.f.sort === v ? "selected" : ""}>${l}</option>`).join("")}
     </select>
   </div>
-  <div class="filters" id="t-segs"></div>
+  ${scopeBar()}<div class="filters" id="t-segs"></div>
   <div id="t-list"></div>`;
 }
 function filteredTasks(){
   const f = S.f;
-  let arr = [...S.tasks.values()].filter(t => f.showArch ? true : !t.archived);
+  let arr = [...S.tasks.values()].filter(t => (f.showArch ? true : !t.archived) && inScope(t));
   if (f.hideDone) arr = arr.filter(t => !isDone(t));
   if (f.projets.length) arr = arr.filter(t => f.projets.includes(t.projet || ""));
   if (f.statuts.length) arr = arr.filter(t => f.statuts.includes(t.statut));
@@ -1514,7 +1822,7 @@ function filteredTasks(){
   return arr.sort(sorters[f.sort] || sorters.projet);
 }
 function updateTaches(){
-  const f = S.f, base = [...S.tasks.values()].filter(t => (f.showArch || !t.archived) && (!f.hideDone || !isDone(t)));
+  const f = S.f, base = [...S.tasks.values()].filter(t => (f.showArch || !t.archived) && (!f.hideDone || !isDone(t)) && inScope(t));
   const cnt = (fn) => base.filter(fn).length;
   const segs = [
     `<div class="seg-block"><span class="seg-label">Projet</span>${allProjets().map(p => segBtn("projets", p, p, f.projets.includes(p), cnt(t => t.projet === p))).join("")}</div>`,
@@ -1555,7 +1863,7 @@ function viewMatrice(){
   const uncl = scope.filter(t => !quadrant(t)).sort(byDue);
   const projBtns = [segBtn("mat", "", "Tous", !pf), ...allProjets().map(p => segBtn("mat", p, p, pf === p))].join("");
   return `<div class="view-head"><div><h1>Matrice d'Eisenhower</h1><div class="sub">Glisse une tâche d'un quadrant à l'autre (ordinateur), ou touche-la pour choisir Urgent / Important.</div></div></div>
-    <div class="seg-block" style="margin-bottom:14px"><span class="seg-label">Projet</span>${projBtns}</div>
+    ${scopeBar()}<div class="seg-block" style="margin-bottom:14px"><span class="seg-label">Projet</span>${projBtns}</div>
     ${!S.tasks.size ? emptyState() : `<div class="matrix">
       <div></div><div class="axis">Urgent</div><div class="axis">Pas urgent</div>
       <div class="axis v">Important</div>${quad(QUADS[0])}${quad(QUADS[1])}
@@ -1605,8 +1913,9 @@ function viewReglages(){
   const doneOld = live().filter(t => isDone(t) && validYmd(t.cloture) && diffDays(today(), t.cloture) > 30).length;
   return `<div class="view-head"><div><h1>Réglages</h1><div class="sub">Listes, import / export Excel, archives et installation sur iPhone.</div></div></div>
   <div class="settings">
-    ${listBlock("projets", "Projets", "Ordre d'affichage des projets dans les filtres et le tableau de bord.")}
-    ${listBlock("responsables", "Responsables", "Proposés dans le champ Responsable.")}
+    ${teamSpacePanel()}
+    ${TM() ? teamProjectsPanel() : listBlock("projets", "Projets", "Ordre d'affichage des projets dans les filtres et le tableau de bord.")}
+    ${TM() ? teamRespPanel() : listBlock("responsables", "Responsables", "Proposés dans le champ Responsable.")}
     ${listBlock("types", "Types", "Exemples : Amélioration, Ajout, Correctif.")}
     <div class="panel"><h2>Planning</h2><p>Heures de travail disponibles <b style="color:var(--ink)">pour chaque jour</b> : elles servent à la jauge de charge de chaque jour et au total de la semaine. Mets 0 pour un jour non travaillé.</p>
       <div class="caps">${JLETTRES.map(([n]) => `<label class="cap-d"><span>${JOURS_COURTS[n]}</span><input type="text" class="set-capd" data-d="${n}" inputmode="decimal" value="${hfmt(capsAll()[n])}" aria-label="Heures disponibles le ${JOURS[n]}" ${S.canWrite === false ? "readonly" : ""}></label>`).join("")}</div>
@@ -1627,7 +1936,7 @@ function viewReglages(){
       <p><b style="color:var(--ink)">${doneOld}</b> tâche${doneOld > 1 ? "s" : ""} terminée${doneOld > 1 ? "s" : ""} depuis plus de 30 jours.</p>
       ${S.canWrite === false ? "" : `<button class="btn" data-act="archive" ${doneOld ? "" : "disabled"}>Archiver ces tâches</button>`}</div>
     <div class="panel"><h2>Compte</h2><p>Connecté : <b style="color:var(--ink)">${esc((window.TODO_ACCOUNT || {}).email || "")}</b></p>
-      <p>Tes tâches sont privées : personne d'autre ne peut les voir. Sur un autre iPhone ou Mac, installe l'app et connecte-toi avec le même e-mail.</p>
+      <p>${TM() ? `Espace : <b style="color:var(--ink)">${esc(TM().org.nom)}</b>. Tes éléments personnels restent visibles par toi seul ; les autres sont partagés selon leur visibilité.` : "Ton espace perso est privé : personne d'autre ne peut le voir."} Sur un autre iPhone ou Mac, installe l'app et connecte-toi avec le même e-mail.</p>
       <div class="row"><button class="btn" data-act="logout">Se déconnecter</button></div></div>
   </div>`;
 }
@@ -1671,7 +1980,9 @@ function planSpan(t){
   if (!t || !validYmd(t.debut)) return null;
   return [t.debut, validYmd(t.fin) && t.fin >= t.debut ? t.fin : t.debut];
 }
-function blocsOf(t){ return Array.isArray(t && t.blocs) ? t.blocs.filter(b => b && validYmd(b.d) && isFinite(b.s) && b.m > 0) : []; }
+function blocsAll(t){ return Array.isArray(t && t.blocs) ? t.blocs.filter(b => b && validYmd(b.d) && isFinite(b.s) && b.m > 0) : []; }
+/* en équipe : seulement mes créneaux (chacun place son temps sur une tâche partagée) */
+function blocsOf(t){ const bl = blocsAll(t), T = TM(); if (!T || t === S.edit) return bl; const own = ownerOf(t); return bl.filter(b => (b.u || own) === T.uid); }
 function schedMin(t){ const byD = {}; for (const b of blocsOf(t)) (byD[b.d] = byD[b.d] || []).push([b.s, b.s + b.m]); return Object.values(byD).reduce((s, iv) => s + unionMin(iv), 0); }
 const firstBlockToday = t => blocsOf(t).filter(b => b.d === today()).sort((a, b) => a.s - b.s)[0];
 function planState(t){
@@ -1682,7 +1993,7 @@ function planState(t){
 }
 function recToday(t){ return !isDone(t) && !t.archived && Array.isArray(t.jours) && t.jours.includes(new Date().getDay()); }
 function recBlocks(t, d){
-  if (!Array.isArray(t.jours) || !t.jours.length || isDone(t) || t.archived || !t.jours.includes(parseYmd(d).getDay())) return [];
+  if (!Array.isArray(t.jours) || !t.jours.length || isDone(t) || t.archived || !t.jours.includes(parseYmd(d).getDay()) || !mineT(t)) return [];
   const s = isFinite(t.recH) ? t.recH : 540, m = Math.max(15, Math.round((Number(t.heures) || 1) * 60));
   return [{d, s, m, rec:true}];
 }
@@ -1698,13 +2009,14 @@ function stateIcons(t){
 }
 /* garde des dates de planning cohérentes avec les créneaux */
 function normalizeSpan(t){
-  const bl = blocsOf(t); if (!bl.length) return t;
+  const bl = blocsAll(t); if (!bl.length) return t;
   const ds = bl.map(b => b.d).sort(); const sp = planSpan(t);
   if (!sp) { t.debut = ds[0]; t.fin = ds[ds.length - 1]; }
   else { t.debut = ds[0] < sp[0] ? ds[0] : sp[0]; t.fin = ds[ds.length - 1] > sp[1] ? ds[ds.length - 1] : sp[1]; }
   return t;
 }
 async function writeBlocs(t, blocs, msg){
+  { const T = TM(); if (T) { const own = ownerOf(t); blocs = [...blocsAll(t).filter(b => (b.u || own) !== T.uid), ...blocs.map(b => ({...b, u:b.u || T.uid}))]; } }
   const upd = normalizeSpan({...t, blocs});
   try { await S.db.doc("tasks/" + t.id).update({blocs, debut:upd.debut || "", fin:upd.fin || "", updated:nowIso()}); if (msg) toast(msg); } catch (e) { fail(e); }
 }
@@ -1712,7 +2024,7 @@ async function writeBlocs(t, blocs, msg){
 /* ===== Agenda horaire ===== */
 function dayBlocks(d, pf){
   const out = [];
-  for (const t of live()) {
+  for (const t of live("all")) {
     if (pf && t.projet !== pf) continue;
     blocsOf(t).forEach((b, i) => { if (b.d === d) out.push({t, i, s:b.s, e:b.s + b.m}); });
     recBlocks(t, d).forEach(b => out.push({t, i:-1, s:b.s, e:b.s + b.m, rec:true}));
@@ -1899,7 +2211,7 @@ function viewPlanning(){
   const mode = (k, l, ic) => `<button data-act="plan-mode" data-m="${k}" aria-pressed="${P.mode === k}">${ic}${l}</button>`;
   return `<div class="view-head plan-head"><div><div class="eyebrow">Planning</div><h1>${title}</h1></div>
       <div class="pnav"><div class="segbar big">${mode("agenda", "Agenda", '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9.5h18M8 13h3M8 16.5h6"/></svg>')}${mode("gantt", "Gantt", '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h9M8 12h10M6 18h7"/></svg>')}</div>${nav}</div></div>
-    <div class="seg-block" style="margin-bottom:12px"><span class="seg-label">Projet</span>${projBtns}</div>
+    ${scopeBar()}<div class="seg-block" style="margin-bottom:12px"><span class="seg-label">Projet</span>${projBtns}</div>
     ${!S.tasks.size ? emptyState() : `<div class="plan-layout ${P.mode}">${side}<section class="pcal">${body}</section></div>`}`;
 }
 function afterPlanning(){
@@ -2229,7 +2541,7 @@ function decItems(d){
   const out = [], dow = parseYmd(d).getDay(), ab = absOn(d);
   for (const t of S.tasks.values()) {
     for (const b of blocsOf(t)) if (b.d === d) out.push({s:b.s, e:b.s + b.m, t});
-    if (Array.isArray(t.jours) && t.jours.includes(dow) && !(ab && ab.part === "j")) {
+    if (Array.isArray(t.jours) && t.jours.includes(dow) && !(ab && ab.part === "j") && mineT(t)) {
       const c = String(t.created || "").slice(0, 10);
       if (validYmd(c) && d < c) continue;
       if ((isDone(t) || t.archived) && !(validYmd(t.cloture) && d <= t.cloture)) continue;
@@ -2727,7 +3039,7 @@ const PRESETS = [
 ];
 function uoBase(){ const b = S.uo && S.uo.v === 2 ? S.uo : {}; return {items:Array.isArray(b.items) && b.items.length ? b.items : UO0, profils:Array.isArray(b.profils) && b.profils.length ? b.profils : PROFILS0, params:{...PARAMS0, ...(b.params || {})}}; }
 const uoItem = id => uoBase().items.find(x => x.id === id);
-async function saveUo(patch){ const cur = uoBase(); S.uo = {...cur, ...patch, v:2, updated:nowIso()}; schedule(); try { await S.db.doc("meta/uo").set(S.uo); } catch (e) { fail(e); } }
+async function saveUo(patch){ if (!canBase()) { toast("Seuls les administrateurs et chefs de service modifient la base."); render(true); return; } const cur = uoBase(); S.uo = {...cur, ...patch, v:2, updated:nowIso()}; schedule(); try { await S.db.doc("meta/uo").set(S.uo); } catch (e) { fail(e); } }
 const profCourt = p => p.court || (p.nom.length > 10 ? p.nom.split(" ")[0] : p.nom);
 
 /* ----- Modèle d'un chiffrage (et reprise des chiffrages de la version précédente) ----- */
@@ -2880,11 +3192,11 @@ function viewAoList(){
     </div>
     ${all.length ? `<div class="seg-block" style="margin-bottom:12px"><span class="seg-label">Statut</span>${["", ...AO_STATUTS].map(s => `<button class="seg" data-act="ao-filt" data-v="${s}" aria-pressed="${f === s}">${s || "Tous"} <span class="c">${s ? all.filter(a => a.statut === s).length : all.length}</span></button>`).join("")}</div>` : ""}
     ${aos.length ? `<div class="ao-list">${aos.map(a => { const R = calcAo(a); return `<button class="ao-card" data-act="ao-open" data-id="${a.id}" style="--sc:var(${ST_COL[a.statut] || "--muted"})">
-        <div class="aoc-top"><span class="pill st" style="--sc:var(${ST_COL[a.statut] || "--muted"})">${esc(a.statut)}</span>${validYmd(a.remise) ? `<span class="aoc-rem">Remise le ${fmt(a.remise, true)}</span>` : ""}${a.statut === "En cours" ? `<span class="aoc-step">Étape ${Math.min(7, (a.step || 0) + 1)} / 7</span>` : ""}</div>
+        <div class="aoc-top"><span class="pill st" style="--sc:var(${ST_COL[a.statut] || "--muted"})">${esc(a.statut)}</span>${aoVisBadge(a)}${validYmd(a.remise) ? `<span class="aoc-rem">Remise le ${fmt(a.remise, true)}</span>` : ""}${a.statut === "En cours" ? `<span class="aoc-step">Étape ${Math.min(7, (a.step || 0) + 1)} / 7</span>` : ""}</div>
         <div class="aoc-t">${esc(a.nom || "Sans titre")}</div><div class="aoc-c">${esc([a.client, a.lieu].filter(Boolean).join(" · ") || (a.missions || []).map(m => MIS[m] ? MIS[m].nom : m).join(", ") || "À compléter")}</div>
         <div class="aoc-n"><b>${eur(R.tot)}</b><span>${jfmt(R.jours)} j</span>${R.pBudget ? `<span>${pct(R.pBudget)} des travaux</span>` : ""}${R.duree ? `<span>${R.duree} mois</span>` : ""}</div></button>`; }).join("")}</div>`
       : `<div class="empty ao-empty"><h2>${all.length ? "Aucun chiffrage avec ce statut" : "Chiffre ton premier appel d'offres"}</h2>
-        <p>Un assistant en 6 étapes : le projet, le planning, les hypothèses, les prestations, le prix, puis la synthèse à remettre. Chaque prestation se chiffre <b>à l'unité d'œuvre</b> (une quantité × un temps ou un prix unitaire) ou <b>au temps</b> (une fréquence par mois × la durée d'une phase).</p>
+        <p>Un assistant en 7 étapes : les pièces du marché, le projet, le planning, les hypothèses, les prestations, le prix, puis la synthèse à remettre. Chaque prestation se chiffre <b>à l'unité d'œuvre</b> (une quantité × un temps ou un prix unitaire) ou <b>au temps</b> (une fréquence par mois × la durée d'une phase).</p>
         ${ro ? "" : `<div class="actions"><button class="btn primary" data-act="ao-new">${I.plus} Nouveau chiffrage</button></div>`}</div>`}`;
 }
 const aoIn = (f, v, attrs = "") => `<input type="text" data-ao="${f}" value="${esc(v ?? "")}" ${attrs} ${S.canWrite === false ? "readonly" : ""}>`;
@@ -2917,6 +3229,7 @@ function stepProjet(ao){
       <div class="ao-form f2" style="margin-top:12px"><label class="field"><span class="lbl">Montant des travaux (€ HT)</span>${nIn("budget", num(ao.budget) ? num(ao.budget).toLocaleString("fr-FR") : "", 'placeholder="ex. 8 000 000"')}</label>
       <label class="field"><span class="lbl">Surface (m²)</span>${nIn("surface", num(ao.surface) ? num(ao.surface).toLocaleString("fr-FR") : "", 'placeholder="ex. 5 000"')}</label></div>
       <p class="sub">Ces deux valeurs donnent les ratios « % des travaux » et « € / m² ». La surface peut aussi servir d'unité d'œuvre.</p></section>
+    ${aoVisPanel(ao)}
     <section class="panel wide"><h3>Missions demandées</h3><p class="sub">Coche les missions de l'AO : elles servent à te proposer les prestations à l'étape 4.</p>
       <div class="mis-grid">${MISSIONS.map(m => { const on = (ao.missions || []).includes(m.k); return `<button class="mis ${on ? "on" : ""}" data-act="ao-mis" data-k="${m.k}" aria-pressed="${on}"><span class="mis-c">${on ? "✓" : ""}</span><span><b>${esc(m.nom)}</b><small>${esc(m.desc)}</small></span></button>`; }).join("")}</div></section>
   </div>`;
@@ -3035,11 +3348,11 @@ function stepPrix(ao, R, ck){
 }
 /* Base des unités d'œuvre */
 function viewUo(){
-  const ro = S.canWrite === false, B = uoBase(), q = norm(S.chif.bq), mf = S.chif.bmis;
+  const ro = S.canWrite === false || !canBase(), B = uoBase(), q = norm(S.chif.bq), mf = S.chif.bmis;
   const items = B.items.filter(x => (!mf || x.mission === mf) && (!q || norm(x.lib + " " + x.cat).includes(q)));
   const groups = new Map(); for (const it of items) { const k = (MIS[it.mission] ? MIS[it.mission].nom : it.mission) + " ▸ " + it.cat; if (!groups.has(k)) groups.set(k, []); groups.get(k).push(it); }
   const dis = ro ? "disabled" : "";
-  return `<div class="view-head"><div><div class="eyebrow"><button class="lnk" data-act="ao-back">‹ Chiffrages</button></div><h1>Base des unités d'œuvre</h1><div class="sub">Temps unitaires, prix unitaires et règles de proposition utilisés par tous tes chiffrages. Modifier la base ne change pas les chiffrages déjà faits.</div></div>
+  return `<div class="view-head"><div><div class="eyebrow"><button class="lnk" data-act="ao-back">‹ Chiffrages</button></div><h1>Base des unités d'œuvre</h1>${baseRoNote()}<div class="sub">Temps unitaires, prix unitaires et règles de proposition utilisés par tous tes chiffrages. Modifier la base ne change pas les chiffrages déjà faits.</div></div>
       <div class="pnav">${ro ? "" : `<button class="btn primary" data-act="bib-new">${I.plus} Unité d'œuvre</button>`}</div></div>
     <div class="settings ao-params">
       <div class="panel"><h2>Profils et TJM par défaut</h2>${B.profils.map(p => `<div class="prof-r"><input type="text" data-bib="prof.nom" data-k="${p.k}" value="${esc(p.nom)}" aria-label="Profil" ${ro ? "readonly" : ""}><input type="text" class="num" data-bib="prof.tjm" data-k="${p.k}" value="${p.tjm}" inputmode="decimal" aria-label="TJM" ${ro ? "readonly" : ""}><span class="sub">€ / j</span></div>`).join("")}</div>
@@ -3257,7 +3570,7 @@ function loadLib(k, ok){
 }
 const socList = () => (S.socs && Array.isArray(S.socs.list) ? S.socs.list : []);
 const COND0 = "Offre valable {validite} jours à compter de sa date d'émission.\nPrix exprimés en euros hors taxes, TVA au taux en vigueur en sus.\nFacturation mensuelle à l'avancement des prestations, règlement à 30 jours.\nToute prestation non décrite dans la présente offre fera l'objet d'un avenant.";
-async function saveSocs(list){ S.socs = {list, updated:nowIso()}; schedule(); try { await S.db.doc("meta/societes").set(S.socs); } catch (e) { fail(e); } }
+async function saveSocs(list){ if (!canBase()) { toast("Seuls les administrateurs et chefs de service modifient les entreprises émettrices."); render(true); return; } S.socs = {list, updated:nowIso()}; schedule(); try { await S.db.doc("meta/societes").set(S.socs); } catch (e) { fail(e); } }
 function offreOf(ao){ const o = ao.offre || {}; return {soc:o.soc || (socList()[0] || {}).id || "", num:o.num || `OF-${(validYmd(o.date) ? o.date : today()).replace(/-/g, "").slice(2)}-${ao.id.slice(-3).toUpperCase()}`, date:validYmd(o.date) ? o.date : today(), validite:o.validite || 90, detail:o.detail || "phase", jours:o.jours !== false, taux:!!o.taux, opts:o.opts !== false, hyp:o.hyp !== false, accord:o.accord !== false, intro:o.intro || "", conditions:o.conditions || ""}; }
 const socOf = ao => socList().find(s => s.id === offreOf(ao).soc) || null;
 const qtyTxt = (l, c) => `${jf4(c.q)} ${plurU(l.unite, c.q)}${l.type === "temps" ? ` (${jf4(num(l.freq))} / mois)` : ""}`;
@@ -3265,8 +3578,8 @@ const condTxt = (ao, soc) => (offreOf(ao).conditions || (soc && soc.conditions) 
 
 /* ----- Page « Mes entreprises » ----- */
 function viewSocs(){
-  const ro = S.canWrite === false, L = socList();
-  return `<div class="view-head"><div><div class="eyebrow"><button class="lnk" data-act="ao-back">‹ Chiffrages</button></div><h1>Mes entreprises</h1><div class="sub">Coordonnées, logo et conditions qui apparaissent en en-tête des offres PDF et des exports Excel. Tu choisis l'entreprise émettrice dans chaque chiffrage.</div></div>
+  const ro = S.canWrite === false || !canBase(), L = socList();
+  return `<div class="view-head"><div><div class="eyebrow"><button class="lnk" data-act="ao-back">‹ Chiffrages</button></div><h1>Mes entreprises</h1>${baseRoNote()}<div class="sub">Coordonnées, logo et conditions qui apparaissent en en-tête des offres PDF et des exports Excel. Tu choisis l'entreprise émettrice dans chaque chiffrage.</div></div>
       <div class="pnav">${ro ? "" : `<button class="btn primary" data-act="ao-soc-new">${I.plus} Entreprise</button>`}</div></div>
     ${L.length ? `<div class="soc-list">${L.map(s => `<section class="panel soc" data-sid="${s.id}" style="--sa:${esc(s.couleur || "#1F6FEB")}">
       <div class="soc-top"><div class="soc-logo">${s.logo ? `<img src="${s.logo}" alt="Logo ${esc(s.nom)}">` : '<span>Pas de logo</span>'}</div>
@@ -3965,7 +4278,7 @@ function viewBord2(){
   const oldH = viewBord(), oi = oldH.indexOf('<div class="panel" style="margin-bottom:14px">'), old = oi >= 0 ? oldH.slice(oi) : '<p class="sub">Aucune tâche.</p>';
   const sg = v => v === null ? "—" : Math.round(v * 100) + " %";
   return `<div class="view-head"><div><h1>Tableau de bord</h1><div class="sub">Appels d'offres, projets, charge et organisation, calculés en direct.</div></div><div class="pnav"><a class="btn" href="#chiffrage">Chiffrages AO</a></div></div>
-    <section class="panel bd-b"><div class="bd-h"><h2>Appels d'offres</h2><span class="sub">12 derniers mois pour les gagnés et le taux de réussite</span></div>
+    ${scopeBar()}${teamBordBlock()}<section class="panel bd-b"><div class="bd-h"><h2>Appels d'offres</h2><span class="sub">12 derniers mois pour les gagnés et le taux de réussite</span></div>
       <div class="bd-k">
         <div><span class="kc-l">En cours</span><b>${cur.length}</b><small>${keur(sum(cur))}</small></div>
         <div><span class="kc-l">Envoyés</span><b>${sent.length}</b><small>${keur(sum(sent))}</small></div>
@@ -4007,6 +4320,7 @@ const HELP = [
       <tr><td><b>Matrice</b></td><td>La matrice d'Eisenhower (urgent / important).</td></tr>
       <tr><td><b>Bord</b></td><td>Le tableau de bord : AO, projets, plan de charge, organisation.</td></tr>
       <tr><td><b>Réglages</b></td><td>Listes, heures de travail, références, import, export.</td></tr>
+      <tr><td><b>Équipe</b></td><td>Entreprise, services, collaborateurs et partage (case « Espace » du cartouche, dans l'app installée).</td></tr>
     </tbody></table>
     <h4>Synchronisation</h4><p>Tes données sont enregistrées dans ton compte et se synchronisent entre ton Mac et ton iPhone. L'app fonctionne aussi sans réseau : les modifications partent dès que la connexion revient.</p>
     <h4>Raccourcis clavier</h4><ul><li>${kbd("N")} : nouvelle tâche.</li><li>${kbd("/")} : chercher dans les tâches.</li><li>${kbd("Cmd")} + ${kbd("Entrée")} : enregistrer la tâche ouverte.</li><li>${kbd("Échap")} : fermer une fenêtre.</li><li>${kbd("Entrée")} dans un champ du chiffrage ou du décompte : valider la saisie.</li></ul>`},
@@ -4087,6 +4401,23 @@ const HELP = [
       <li><b>Importer / Exporter</b> : tes tâches depuis ou vers Excel.</li>
       <li><b>Sauvegarde</b> (app iPhone/Mac) : un fichier JSON avec toutes tes données, à garder dans iCloud Drive. Il se réimporte au même endroit.</li>
       <li><b>Archives</b> : range les tâches terminées depuis plus de 30 jours.</li></ul>${go("reglages", "Ouvrir les réglages")}`},
+  {k:"equipe", t:"Équipe et partage", html:`
+    <p>Dans l'app installée, tu peux travailler à plusieurs dans une <b>entreprise</b>. La case <b>Espace</b> du cartouche, en haut, indique où tu es et ouvre la page <b>Équipe</b>.</p>
+    <h4>Espaces</h4><ul><li><b>Mon espace perso</b> : tes données, visibles par toi seul.</li><li><b>Une entreprise</b> : ses tâches, chiffrages, projets, base des unités d'œuvre et entreprises émettrices sont communs à ses membres. Tu peux appartenir à plusieurs entreprises et passer de l'une à l'autre.</li></ul>
+    <h4>Mettre en place</h4><ol class="hp-steps"><li>Équipe ▸ <b>Créer une entreprise</b> : tu en deviens l'administrateur.</li>
+      <li><b>Services</b> (facultatif) : BIM, Synthèse, Études…</li>
+      <li><b>Inviter un collaborateur</b> : son e-mail, son rôle, ses services. « Copier le message » prépare l'e-mail à lui envoyer.</li>
+      <li>Ton collègue crée son compte avec cette adresse, <b>vérifie son e-mail</b> (lien reçu par mail), puis touche <b>Rejoindre</b>.</li>
+      <li>« Reprendre mes données perso » copie tes tâches et chiffrages existants dans l'entreprise.</li></ol>
+    <h4>Rôles</h4><table class="hp-t"><tbody><tr><td><b>Administrateur</b></td><td>Gère l'entreprise, les services, les collaborateurs, la base des unités d'œuvre et les entreprises émettrices. Voit la charge et le décompte de tous.</td></tr>
+      <tr><td><b>Chef de service</b></td><td>Modifie la base des unités d'œuvre et les entreprises émettrices. Voit la charge et le décompte des membres de ses services.</td></tr>
+      <tr><td><b>Membre</b></td><td>Utilise l'app ; la base et les entreprises émettrices sont en lecture seule.</td></tr></tbody></table>
+    <h4>Visibilité de chaque élément</h4><ul><li><b>🔒 Personnel</b> : toi seul (et la personne à qui tu assignes la tâche).</li><li><b>Service</b> : les membres du service choisi.</li><li><b>Entreprise</b> : tous les membres.</li></ul>
+    <p>Le choix se fait dans la fiche d'une tâche et à l'étape Projet d'un chiffrage. Par défaut, une tâche prend la visibilité de son projet (Réglages ▸ Projets : 🔒 projet perso, ou commun) et un chiffrage est partagé avec l'entreprise. Seul le créateur ou un administrateur change la visibilité. Une tâche perso assignée à un collègue devient visible par l'entreprise.</p>
+    <h4>Au quotidien</h4><ul><li><b>Responsable</b> : choisis un collègue ; la tâche apparaît dans sa journée et son planning.</li>
+      <li><b>Afficher</b> (Tâches, Planning, Matrice, Bord) : mes tâches, un service ou toute l'entreprise. Ma journée et les heures restent toujours les tiennes.</li>
+      <li><b>Créneaux</b> : chacun place son propre temps sur une tâche partagée ; ton agenda et ton décompte ne comptent que tes créneaux.</li>
+      <li><b>Chefs et administrateurs</b> : le Bord montre la charge de l'équipe, et Heures ▸ <b>Collaborateur</b> affiche le décompte d'un collègue (lecture seule, mis à jour à chaque ouverture de l'app par ce collègue).</li></ul>`},
   {k:"exports", t:"Exports et fichiers", html:`
     <table class="hp-t"><thead><tr><th>Fichier</th><th>Où</th><th>Contenu</th></tr></thead><tbody>
       <tr><td>Tâches (.xlsx, .csv)</td><td>Réglages</td><td>Toutes les tâches, archives comprises.</td></tr>
@@ -4098,8 +4429,9 @@ const HELP = [
       <tr><td>Sauvegarde (.json)</td><td>Réglages (app)</td><td>Toutes tes données, pour les restaurer.</td></tr></tbody></table>
     <p>Dans les Excel du chiffrage, les <span class="hp-y">cellules jaunes</span> sont modifiables ; les autres sont calculées.</p>`},
   {k:"faq", t:"Questions fréquentes", html:`
-    <details><summary>Où sont mes données ?</summary><p>Dans ton compte, synchronisé entre tes appareils. Les fichiers du DCE, eux, restent sur ton ordinateur : seuls leurs noms et tes notes sont enregistrés.</p></details>
+    <details><summary>Où sont mes données ?</summary><p>Dans ton compte (espace perso) ou dans l'entreprise, synchronisés entre tes appareils. Les fichiers du DCE, eux, restent sur ton ordinateur : seuls leurs noms et tes notes sont enregistrés.</p></details>
     <details><summary>Le total du décompte ne correspond pas à l'agenda.</summary><p>Le temps en parallèle est partagé entre références, et chaque ligne est arrondie selon le réglage « Arrondi des durées ». Un écart d'une ou deux minutes peut venir de l'arrondi. Vérifie aussi les lignes modifiées à la main (bouton ↺).</p></details>
+    <details><summary>Un collègue ne voit pas ma tâche.</summary><p>Vérifie sa visibilité dans la fiche : 🔒 Personnel n'est visible que par toi. Passe-la en Service ou Entreprise, ou assigne-la-lui. Côté collègue, choisis « Toute l'entreprise » dans Afficher.</p></details>
     <details><summary>Une ligne du décompte est orange.</summary><p>Elle n'a pas de référence. Choisis-la sur la ligne, ou associe une référence par défaut au projet dans les Réglages.</p></details>
     <details><summary>Comment mettre à jour l'app sur iPhone et Mac ?</summary><p>Redépose sur GitHub tous les fichiers du dossier todo-bim reçu, <b>sauf config.js</b>, puis ferme et rouvre l'app. Tes données ne bougent pas.</p></details>
     <details><summary>Je ne peux pas choisir un dossier sur iPhone.</summary><p>Safari ne le permet pas : utilise « Ajouter des fichiers » et sélectionne plusieurs fichiers dans l'app Fichiers.</p></details>
@@ -4118,6 +4450,8 @@ const HELP = [
       <dt>DOE / GPA</dt><dd>Dossier des ouvrages exécutés / garantie de parfait achèvement.</dd>
       <dt>Phase transverse</dt><dd>Phase qui couvre toute la durée du projet (plateforme, pilotage).</dd>
       <dt>Référence</dt><dd>Le code du décompte des heures auquel le temps d'une tâche est rattaché.</dd>
+      <dt>Espace</dt><dd>Ton espace perso ou une entreprise : chacun a ses propres tâches, chiffrages et heures.</dd>
+      <dt>Visibilité</dt><dd>Personnel, Service ou Entreprise : qui voit une tâche ou un chiffrage.</dd>
       <dt>Capacité</dt><dd>Tes heures disponibles, jour par jour, moins les absences et les jours fériés.</dd></dl>`},
 ];
 function viewAide(){
@@ -4138,6 +4472,403 @@ function helpFilter(v){
 }
 document.addEventListener("input", ev => { if (ev.target.id === "hp-q") helpFilter(ev.target.value); });
 
+/* ---------- Équipe : entreprises, services, collaborateurs, partage ---------- */
+const TMX = () => window.TODO_TEAM || null;                         // app en ligne (espace perso ou entreprise)
+const TM = () => (window.TODO_TEAM && window.TODO_TEAM.active ? window.TODO_TEAM : null);   // dans une entreprise
+const ROLES = {admin:"Administrateur", chef:"Chef de service", membre:"Membre"};
+const ROLE_HELP = {admin:"Gère l'entreprise, les services, les collaborateurs, la base des unités d'œuvre et les entreprises émettrices. Voit la charge et le décompte de tous.",
+  chef:"Modifie la base des unités d'œuvre et les entreprises émettrices. Voit la charge et le décompte des membres de ses services.",
+  membre:"Utilise l'app : ses tâches, les éléments partagés avec lui, ses heures."};
+const SV_COLORS = ["#2F81F7", "#3FB950", "#D29922", "#DB61A2", "#A371F7", "#39C5CF", "#F85149", "#8B949E"];
+S.scope = (() => { try { return localStorage.getItem("todobim.scope") || "mine"; } catch (e) { return "mine"; } })();
+S.decWho = ""; S.pub = {}; S.tmInv = null; S.tmBusy = "";
+
+function ownerOf(t){ return (t && (t._resp || t._own)) || ""; }
+function mineT(t){ const T = TM(); if (!T) return true; return ownerOf(t) === T.uid || blocsAll(t).some(b => b.u === T.uid); }
+function inScope(t, sc){
+  const T = TM(); if (!T) return true;
+  sc = sc || S.scope || "mine";
+  if (sc === "all") return true;
+  if (sc === "mine") return mineT(t);
+  if (sc.startsWith("svc:")) { const s = sc.slice(4); if (t._vis === "svc" && t._svc === s) return true; const m = T.members.get(ownerOf(t)); return !!(m && (m.services || []).includes(s)); }
+  return true;
+}
+function svcName(id){ const T = TM(); const s = T && T.services().find(x => x.id === id); return s ? s.nom : "Service"; }
+function canVis(item){ const T = TM(); return !!T && (!item._own || item._own === T.uid || T.isAdmin()); }
+function defaultTaskVis(p){
+  const L = S.lists || {};
+  if (!p || (L._perso || []).includes(p)) return "perso";
+  const pv = (L.projVis || {})[p]; return pv && pv.vis ? pv.vis : "org";
+}
+if (TMX()) TMX().defVis = (name, d) => name === "ao" ? "org" : defaultTaskVis(d && d.projet);
+if (TMX()) TMX().on(() => { if (S.status === "ready" || S.view === "equipe") schedule(); });
+
+/* avant enregistrement d'une tâche (éditeur, ajout rapide, import) */
+function teamBeforeSave(t){
+  const T = TM(); if (!T) return;
+  if (Array.isArray(t._others)) { t.blocs = [...t._others, ...(t.blocs || []).map(b => ({...b, u:b.u || T.uid}))]; }
+  delete t._others;
+  if (t._visAuto) t._vis = defaultTaskVis(t.projet);
+  delete t._visAuto;
+  if (!t.id && t._resp == null) t._resp = T.uid;
+  if (t._resp != null) t.responsable = t._resp ? T.nameOf(t._resp) : "";
+  if (t._vis === "perso" && t._resp && t._resp !== T.uid) { t._vis = "org"; setTimeout(() => toast("Tâche assignée à un collègue : elle est maintenant visible par l'entreprise"), 300); }
+  if (t._vis === "svc" && !t._svc) t._svc = (T.me.services || [])[0] || (T.services()[0] || {}).id || "";
+}
+function teamOpenEditor(src){
+  const T = TM(), e = S.edit; if (!T || !e) return;
+  if (src) { const own = ownerOf(src), all = blocsAll(src); e._others = all.filter(b => (b.u || own) !== T.uid); e.blocs = all.filter(b => (b.u || own) === T.uid).map(b => ({...b, u:T.uid})); }
+  else { e._resp = T.uid; e.responsable = T.nameOf(T.uid); e._vis = defaultTaskVis(e.projet); e._visAuto = true; e._svc = (T.me.services || [])[0] || ""; }
+}
+function teamReadEditor(e){
+  const T = TM(); if (!T) return;
+  const ru = $("#e-resp-u"); if (ru) { e._resp = ru.value; e.responsable = ru.value ? T.nameOf(ru.value) : ""; }
+  const vs = $("#e-vis-svc"); if (vs) e._svc = vs.value;
+}
+function respField(e, ro){
+  const T = TM();
+  const ms = [...T.members.keys()].map(k => [k, T.nameOf(k)]).sort((a, b) => a[1].localeCompare(b[1], "fr"));
+  return `<div class="field"><label for="e-resp-u">Responsable</label><select id="e-resp-u" ${ro ? "disabled" : ""}><option value="">— Personne</option>${ms.map(([k, n]) => `<option value="${esc(k)}" ${e._resp === k ? "selected" : ""}>${esc(n)}${k === T.uid ? " (moi)" : ""}</option>`).join("")}</select></div>`;
+}
+function visField(item, ro, kind){
+  const T = TM(); if (!T) return "";
+  const can = !ro && canVis(item), sv = T.services(), v = item._vis || "perso";
+  const mySv = T.isAdmin() ? sv : sv.filter(s => (T.me.services || []).includes(s.id));
+  const opts = [["perso", "Personnel"], ...(mySv.length ? [["svc", "Service"]] : []), ["org", "Entreprise"]];
+  const hint = !can && !ro ? "Seul le créateur ou un administrateur peut changer la visibilité."
+    : v === "perso" ? "Visible par toi seul" + (kind === "task" ? " (et la personne à qui tu l'assignes)." : ".")
+    : v === "svc" ? "Visible par les membres du service choisi."
+    : `Visible par toute l'entreprise « ${esc(T.org.nom)} ».`;
+  const sel = v === "svc" ? `<select ${kind === "task" ? 'id="e-vis-svc"' : 'class="tm-ao-svc"'} ${can ? "" : "disabled"} aria-label="Service">${mySv.map(s => `<option value="${esc(s.id)}" ${item._svc === s.id ? "selected" : ""}>${esc(s.nom)}</option>`).join("")}</select>` : "";
+  return `<div class="field tm-vis-f"><span class="lbl">Visibilité</span><div class="tm-vis-r"><div class="segc tm-vis">${opts.map(([k, l]) => `<button type="button" data-act="tm-vis" data-kind="${kind}" data-v="${k}" aria-pressed="${v === k}" ${can ? "" : "disabled"}>${k === "perso" ? "🔒 " : ""}${l}</button>`).join("")}</div>${sel}</div><small class="tm-hint">${hint}</small></div>`;
+}
+function teamPills(t){
+  const T = TM(); if (!T) return "";
+  const out = [];
+  if (t._resp && t._resp !== T.uid) out.push(`<span class="pill tm-who">${esc(T.nameOf(t._resp) || t.responsable || "")}</span>`);
+  if (t._vis === "perso") out.push(`<span class="pill tm-lock" title="Personnel : visible par toi seul">🔒</span>`);
+  else if (t._vis === "svc") out.push(`<span class="pill tm-svc">${esc(svcName(t._svc))}</span>`);
+  return out.join("");
+}
+function scopeBar(){
+  const T = TM(); if (!T) return "";
+  const sv = T.services(), sc = S.scope || "mine";
+  const b = (v, l) => `<button class="seg" data-act="tm-scope" data-v="${esc(v)}" aria-pressed="${sc === v}">${esc(l)}</button>`;
+  return `<div class="seg-block tm-scope"><span class="seg-label">Afficher</span>${b("mine", "Mes tâches")}${sv.map(s => b("svc:" + s.id, s.nom)).join("")}${b("all", "Toute l'entreprise")}</div>`;
+}
+function aoVisBadge(a){
+  const T = TM(); if (!T) return "";
+  return a._vis === "perso" ? `<span class="pill tm-lock" title="Personnel">🔒 Perso</span>` : a._vis === "svc" ? `<span class="pill tm-svc">${esc(svcName(a._svc))}</span>` : "";
+}
+function aoVisPanel(ao){
+  const T = TM(); if (!T) return "";
+  const own = ao._own && ao._own !== T.uid ? ` · créé par ${esc(T.nameOf(ao._own) || "un collègue")}` : "";
+  return `<section class="panel wide"><h3>Partage${own}</h3>${visField(ao, S.canWrite === false, "ao")}</section>`;
+}
+const canBase = () => { const T = TMX(); return !T || T.canBase(); };
+const baseRoNote = () => canBase() ? "" : `<p class="tm-ro">Lecture seule : seuls les administrateurs et les chefs de service modifient cette base.</p>`;
+
+/* ---------- Bandeau d'en-tête : espace de travail ---------- */
+function teamChrome(){
+  const T = TMX(), el = $("#ctx-chip"); if (!el) return;
+  if (!T) { el.hidden = true; return; }
+  el.hidden = false;
+  const n = (T.invites || []).length;
+  el.innerHTML = `<small>Espace${n ? ` <i class="badge">${n}</i>` : ""}</small><span>${esc(T.active ? T.org.nom : "Perso")}</span>`;
+  el.title = T.active ? `Entreprise : ${T.org.nom} (${ROLES[T.me.role] || ""})` : "Espace perso";
+  if (S.view === "equipe") el.setAttribute("aria-current", "page"); else el.removeAttribute("aria-current");
+}
+function teamBanner(){
+  const T = TMX(); if (!T || S.view === "equipe") return "";
+  if (T.notice) return `<div class="tm-banner"><span>${esc(T.notice)}</span><button class="btn sm" data-act="tm-notice-ok">OK</button></div>`;
+  const inv = (T.invites || [])[0];
+  if (inv) return `<div class="tm-banner"><span><b>${esc(inv.byName || "Un collègue")}</b> t'invite à rejoindre <b>${esc(inv.orgName)}</b>.</span><a class="btn sm primary" href="#equipe">Voir l'invitation</a></div>`;
+  return "";
+}
+
+/* ---------- Vue Équipe ---------- */
+function viewEquipe(){
+  const T = TMX();
+  if (!T) return `<div class="view-head"><div><div class="eyebrow">Équipe</div><h1>Entreprise et collaborateurs</h1></div></div>
+    <div class="panel"><p>La gestion des entreprises, des services et des collaborateurs se fait dans l'app installée sur ton iPhone ou ton Mac (version en ligne avec compte).</p></div>`;
+  const A = T.active, me = T.me || {}, adm = A && T.isAdmin(), sv = A ? T.services() : [];
+  let h = `<div class="view-head"><div><div class="eyebrow">Équipe</div><h1>${A ? esc(T.org.nom) : "Mon espace perso"}</h1><div class="sub">${A ? `Tu es <b>${ROLES[me.role] || me.role}</b>${(me.services || []).length ? " · " + me.services.map(svcName).map(esc).join(", ") : ""}.` : "Tes données personnelles, visibles par toi seul. Crée une entreprise ou rejoins-en une pour travailler à plusieurs."}</div></div></div>`;
+  if (T.notice) h += `<div class="tm-banner"><span>${esc(T.notice)}</span><button class="btn sm" data-act="tm-notice-ok">OK</button></div>`;
+  /* invitations reçues */
+  if ((T.invites || []).length) {
+    h += `<section class="panel tm-p"><h2>Invitations reçues</h2>${T.verified ? "" : `<div class="tm-verif"><p><b>Vérifie d'abord ton adresse e-mail.</b> Pour rejoindre une entreprise, l'app doit être sûre que <b>${esc(T.email)}</b> est bien à toi.</p>
+        <div class="row"><button class="btn" data-act="tm-verif-send">Envoyer l'e-mail de vérification</button><button class="btn primary" data-act="tm-verif-check">J'ai cliqué sur le lien</button></div><p class="sub" id="tm-verif-msg"></p></div>`}
+      <div class="tm-inv">${T.invites.map(i => `<div class="tm-inv-i"><div><b>${esc(i.orgName)}</b><small>${esc(ROLES[i.role] || i.role)} · invité par ${esc(i.byName || "un administrateur")}</small></div>
+        <div class="row"><button class="btn primary" data-act="tm-inv-ok" data-id="${esc(i.id)}" ${T.verified ? "" : "disabled"}>Rejoindre</button><button class="btn ghost" data-act="tm-inv-no" data-id="${esc(i.id)}">Refuser</button></div></div>`).join("")}</div></section>`;
+  }
+  /* espaces */
+  h += `<section class="panel tm-p"><h2>Espaces de travail</h2><p class="sub">Chaque espace a ses propres tâches, chiffrages et heures. Change d'espace à tout moment.</p>
+    <div class="tm-spaces">${[{id:"perso", nom:"Mon espace perso", sub:"Visible par toi seul"}, ...T.orgs.map(o => ({id:o.id, nom:o.nom, sub:"Entreprise"}))].map(o => { const cur = (A ? T.org.id : "perso") === o.id;
+      return `<div class="tm-sp ${cur ? "cur" : ""}"><div><b>${esc(o.nom)}</b><small>${esc(o.sub)}</small></div>${cur ? '<span class="pill">Ouvert</span>' : `<button class="btn sm" data-act="tm-switch" data-id="${esc(o.id)}">Ouvrir</button>`}</div>`; }).join("")}</div>
+    <form class="row tm-new" data-tm-form="org" autocomplete="off"><input type="text" name="nom" placeholder="Nom de la nouvelle entreprise" aria-label="Nom de la nouvelle entreprise"><button class="btn" type="submit">Créer une entreprise</button></form></section>`;
+  if (!A) return h + `<section class="panel tm-p"><h2>Comment ça marche ?</h2><ol class="tm-ol"><li>Crée l'entreprise : tu en deviens l'administrateur.</li><li>Crée des services si tu veux (facultatif) : BIM, Synthèse, Études…</li><li>Invite tes collègues avec leur adresse e-mail.</li><li>Chaque tâche ou chiffrage est <b>Personnel</b>, partagé avec un <b>Service</b> ou avec toute l'<b>Entreprise</b>.</li></ol></section>`;
+  /* entreprise */
+  const mem = [...T.members.entries()].map(([k, m]) => ({k, ...m})).sort((a, b) => (T.nameOf(a.k)).localeCompare(T.nameOf(b.k), "fr"));
+  h += `<section class="panel tm-p"><h2>Entreprise</h2><div class="tm-grid">
+      <label class="field"><span class="lbl">Nom de l'entreprise</span><input type="text" data-tm="orgnom" value="${esc(T.org.nom)}" ${adm ? "" : "readonly"}></label>
+      <label class="field"><span class="lbl">Ton nom affiché</span><input type="text" data-tm="myname" value="${esc(me.nom || "")}" placeholder="Prénom Nom"></label></div>
+      <p class="sub">${esc(ROLE_HELP[me.role] || "")}</p></section>`;
+  /* services */
+  h += `<section class="panel tm-p"><h2>Services <span class="tm-opt">facultatif</span></h2><p class="sub">Regroupe les collaborateurs (BIM, Synthèse, Études…). Un élément peut alors être partagé avec un seul service, et le chef de service voit la charge et le décompte de son service.</p>
+    ${sv.length ? `<div class="tm-svcs">${sv.map(s => { const n = mem.filter(m => (m.services || []).includes(s.id)).length; return `<div class="tm-sv" style="--sv:${esc(s.couleur || "#8B949E")}"><i></i>${adm ? `<input type="text" data-tm="svnom" data-id="${esc(s.id)}" value="${esc(s.nom)}" aria-label="Nom du service">` : `<b>${esc(s.nom)}</b>`}<small>${n} membre${n > 1 ? "s" : ""}</small>${adm ? `<button class="ic-btn del" data-act="tm-sv-del" data-id="${esc(s.id)}" aria-label="Supprimer le service ${esc(s.nom)}">${I.close}</button>` : ""}</div>`; }).join("")}</div>` : `<p class="sub" style="margin:0">Aucun service.</p>`}
+    ${adm ? `<form class="row tm-new" data-tm-form="svc" autocomplete="off"><input type="text" name="nom" placeholder="ex. BIM, Synthèse, Études" aria-label="Nouveau service"><button class="btn" type="submit">Ajouter un service</button></form>` : ""}</section>`;
+  /* collaborateurs */
+  h += `<section class="panel tm-p"><h2>Collaborateurs <span class="tm-opt">${mem.length}</span></h2><div class="tm-mem">${mem.map(m => {
+      const self = m.k === T.uid;
+      return `<div class="tm-m" data-uid="${esc(m.k)}"><div class="tm-mn"><b>${esc(T.nameOf(m.k))}${self ? " (toi)" : ""}</b><small>${esc(m.email || "")}</small></div>
+        <div class="tm-mr">${adm ? `<select data-tm="role" data-uid="${esc(m.k)}" aria-label="Rôle de ${esc(T.nameOf(m.k))}">${Object.entries(ROLES).map(([k, l]) => `<option value="${k}" ${m.role === k ? "selected" : ""}>${l}</option>`).join("")}</select>` : `<span class="pill">${esc(ROLES[m.role] || m.role)}</span>`}</div>
+        <div class="tm-ms">${sv.map(s => { const on = (m.services || []).includes(s.id); return adm ? `<button class="chip-b sm" data-act="tm-m-svc" data-uid="${esc(m.k)}" data-id="${esc(s.id)}" aria-pressed="${on}">${esc(s.nom)}</button>` : on ? `<span class="pill">${esc(s.nom)}</span>` : ""; }).join("")}</div>
+        <div class="tm-ma">${adm && !self ? `<button class="btn ghost sm" data-act="tm-m-del" data-uid="${esc(m.k)}">Retirer</button>` : ""}</div></div>`; }).join("")}</div>
+    ${adm ? `<details class="tm-roles"><summary>Que peut faire chaque rôle ?</summary><dl>${Object.entries(ROLES).map(([k, l]) => `<dt>${l}</dt><dd>${ROLE_HELP[k]}</dd>`).join("")}</dl></details>` : ""}</section>`;
+  /* invitations */
+  if (adm) {
+    if (!S.tmInv) { S.tmInv = []; S.tmInvUn = T.watchInvites(list => { S.tmInv = list; if (S.view === "equipe") schedule(); }); }
+    const url = location.origin + location.pathname;
+    h += `<section class="panel tm-p"><h2>Inviter un collaborateur</h2>
+      <form class="tm-invf" data-tm-form="invite" autocomplete="off">
+        <label class="field"><span class="lbl">E-mail</span><input type="email" name="email" placeholder="prenom.nom@entreprise.fr" autocapitalize="off" required></label>
+        <label class="field"><span class="lbl">Nom affiché</span><input type="text" name="nom" placeholder="Prénom Nom (facultatif)"></label>
+        <label class="field"><span class="lbl">Rôle</span><select name="role">${Object.entries(ROLES).map(([k, l]) => `<option value="${k}" ${k === "membre" ? "selected" : ""}>${l}</option>`).join("")}</select></label>
+        ${sv.length ? `<div class="field wide"><span class="lbl">Services</span><div class="chipset">${sv.map(s => `<label class="chip-b sm tm-ck"><input type="checkbox" name="svc" value="${esc(s.id)}">${esc(s.nom)}</label>`).join("")}</div></div>` : ""}
+        <div class="wide"><button class="btn primary" type="submit">Inviter</button></div></form>
+      <p class="sub">Ton collègue crée son compte dans l'app avec cette adresse e-mail, vérifie son adresse, puis accepte l'invitation dans <b>Équipe</b>.</p>
+      ${(S.tmInv || []).length ? `<h4 class="tm-h4">En attente</h4><div class="tm-mem">${S.tmInv.map(i => `<div class="tm-m"><div class="tm-mn"><b>${esc(i.nom || i.email)}</b><small>${esc(i.email)}</small></div><div class="tm-mr"><span class="pill">${esc(ROLES[i.role] || i.role)}</span></div>
+        <div class="tm-ms">${(i.services || []).map(s => `<span class="pill">${esc(svcName(s))}</span>`).join("")}</div>
+        <div class="tm-ma"><button class="btn ghost sm" data-act="tm-inv-copy" data-email="${esc(i.email)}" data-url="${esc(url)}">Copier le message</button><button class="btn ghost sm" data-act="tm-inv-cancel" data-email="${esc(i.email)}">Annuler</button></div></div>`).join("")}</div>` : ""}</section>`;
+  }
+  /* reprise des données perso */
+  h += `<section class="panel tm-p"><h2>Reprendre mes données perso</h2><p class="sub">Copie tes tâches${T.canBase() ? ", tes chiffrages, ta base des unités d'œuvre et tes entreprises émettrices" : " et tes chiffrages"} de ton espace perso vers cette entreprise. Ton espace perso n'est pas modifié. Les éléments déjà copiés ne sont pas dupliqués.</p>
+    <div class="row tm-copy"><label class="ctl-l">Tâches copiées en <select id="tm-copy-vis"><option value="perso">🔒 Personnel</option><option value="org">Entreprise</option></select></label>
+      <label class="ctl-l">Chiffrages copiés en <select id="tm-copy-ao"><option value="perso">🔒 Personnel</option><option value="org" selected>Entreprise</option></select></label>
+      <button class="btn" data-act="tm-copy" ${S.tmBusy ? "disabled" : ""}>Copier mes données</button></div><p class="sub" id="tm-copy-msg">${esc(S.tmBusy || S.tmMsg || "")}</p></section>`;
+  const admins = mem.filter(m => m.role === "admin").length;
+  h += `<section class="panel tm-p"><h2>Quitter l'entreprise</h2><p class="sub">Tu n'auras plus accès à ses éléments partagés. Tes éléments personnels restent dans l'entreprise, invisibles pour les autres.</p>
+    <div class="row"><button class="btn danger" data-act="tm-leave" ${adm && admins < 2 ? "disabled" : ""}>Quitter « ${esc(T.org.nom)} »</button></div>${adm && admins < 2 ? `<p class="sub">Tu es le seul administrateur : nomme d'abord un autre administrateur.</p>` : ""}</section>`;
+  return h;
+}
+
+/* ---------- Actions ---------- */
+async function teamAction(act, a){
+  const T = TMX(); if (!T) return;
+  const run = async (p, ok) => { try { await p; if (ok) toast(ok); } catch (e) { console.warn(e); toast(e && e.code === "permission-denied" ? "Action refusée : droits insuffisants." : "Échec. Vérifie ta connexion et réessaie."); } };
+  if (act === "tm-notice-ok") { T.notice = ""; render(true); return; }
+  if (act === "tm-switch") { T.switchTo(a.dataset.id); return; }
+  if (act === "tm-scope") { S.scope = a.dataset.v; try { localStorage.setItem("todobim.scope", S.scope); } catch (e) {} S.built = null; render(true); return; }
+  if (act === "tm-verif-send") { await run(T.sendVerification()); const m = $("#tm-verif-msg"); if (m) m.textContent = `E-mail envoyé à ${T.email}. Ouvre-le, clique sur le lien, puis reviens ici et touche « J'ai cliqué sur le lien ». Pense à regarder les spams.`; return; }
+  if (act === "tm-verif-check") { let ok = false; try { ok = await T.checkVerified(); } catch (e) {} const m = $("#tm-verif-msg"); if (ok) { toast("Adresse vérifiée"); render(true); } else if (m) m.textContent = "Adresse pas encore vérifiée. Clique sur le lien reçu par e-mail, puis réessaie."; return; }
+  if (act === "tm-inv-ok") { const inv = T.invites.find(x => x.id === a.dataset.id); if (!inv) return; a.disabled = true;
+    try { const id = await T.acceptInvite(inv); toast("Bienvenue dans " + inv.orgName); setTimeout(() => T.switchTo(id), 600); } catch (e) { a.disabled = false; toast(e && e.code === "unverified" ? "Vérifie d'abord ton adresse e-mail." : "Impossible de rejoindre : l'invitation a peut-être été annulée."); } return; }
+  if (act === "tm-inv-no") { const inv = T.invites.find(x => x.id === a.dataset.id); if (inv) await run(T.declineInvite(inv), "Invitation refusée"); render(true); return; }
+  if (!T.active) return;
+  const adm = T.isAdmin();
+  if (act === "tm-vis") {
+    if (a.dataset.kind === "task" && S.edit) { readEditorInputs(); S.edit._vis = a.dataset.v; S.edit._visAuto = false; if (S.edit._vis === "svc" && !S.edit._svc) S.edit._svc = (T.me.services || [])[0] || (T.services()[0] || {}).id || ""; renderEditor(); return; }
+    if (a.dataset.kind === "ao") { const ao = curAo(); if (!ao || !canVis(ao)) return; ao._vis = a.dataset.v; if (ao._vis === "svc" && !ao._svc) ao._svc = (T.me.services || [])[0] || (T.services()[0] || {}).id || ""; if (ao._vis !== "svc") ao._svc = ""; await aoSave(ao); render(true); toast(ao._vis === "perso" ? "Chiffrage personnel" : ao._vis === "svc" ? "Partagé avec " + svcName(ao._svc) : "Partagé avec l'entreprise"); return; }
+    return;
+  }
+  if (act === "tm-proj-share") { await shareProject(a.dataset.p, a.dataset.to === "perso"); return; }
+  if (act === "tm-sv-del" && adm) {
+    if (!a.classList.contains("armed")) { a.classList.add("armed"); toast("Touche encore pour supprimer ce service"); return; }
+    const id = a.dataset.id, svs = {...(T.org.services || {})}; delete svs[id];
+    await run(T.saveOrg({services:svs}));
+    for (const [k, m] of T.members) if ((m.services || []).includes(id)) await run(T.setMember(k, {services:m.services.filter(x => x !== id)}));
+    toast("Service supprimé"); return;
+  }
+  if (act === "tm-m-svc" && adm) { const m = T.members.get(a.dataset.uid); if (!m) return; const s = a.dataset.id, cur = m.services || []; await run(T.setMember(a.dataset.uid, {services:cur.includes(s) ? cur.filter(x => x !== s) : [...cur, s]})); return; }
+  if (act === "tm-m-del" && adm) { if (!a.classList.contains("armed")) { a.classList.add("armed"); a.textContent = "Confirmer"; return; } await run(T.removeMember(a.dataset.uid), "Collaborateur retiré"); return; }
+  if (act === "tm-inv-cancel" && adm) { await run(T.cancelInvite(a.dataset.email), "Invitation annulée"); return; }
+  if (act === "tm-inv-copy") { const txt = `Bonjour,\n\nJe t'invite à rejoindre « ${T.org.nom} » sur TO DO BIM.\n1. Ouvre ${a.dataset.url}\n2. Crée ton compte avec l'adresse ${a.dataset.email}\n3. Va dans Équipe (en haut de l'écran), vérifie ton adresse e-mail et accepte l'invitation.\n\nÀ bientôt !`; if (await copyText(txt)) toast("Message copié : colle-le dans un e-mail"); else showCopyBox(txt); return; }
+  if (act === "tm-leave") { if (!a.classList.contains("armed")) { a.classList.add("armed"); a.textContent = "Confirmer : quitter l'entreprise"; return; } await run(T.leave()); return; }
+  if (act === "tm-copy") { await copyPerso(); return; }
+  if (act === "tm-pub-nav" || act === "tm-pub-copy") { await pubAction(act, a); return; }
+  if (act === "tm-who") { S.decWho = a.dataset.uid === T.uid ? "" : a.dataset.uid; render(true); return; }
+}
+document.addEventListener("click", ev => {
+  const a = ev.target.closest && ev.target.closest('[data-act^="tm-"]'); if (!a) return;
+  ev.preventDefault(); ev.stopPropagation(); teamAction(a.dataset.act, a);
+}, true);
+document.addEventListener("submit", async ev => {
+  const f = ev.target.closest && ev.target.closest("[data-tm-form]"); if (!f) return;
+  ev.preventDefault(); ev.stopPropagation();
+  const T = TMX(), k = f.dataset.tmForm, fd = new FormData(f);
+  try {
+    if (k === "org") { const nom = String(fd.get("nom") || "").trim(); if (!nom) { toast("Donne un nom à l'entreprise."); return; } const id = await T.createOrg(nom); toast("Entreprise créée"); setTimeout(() => T.switchTo(id, "#equipe"), 500); return; }
+    if (!T.active || !T.isAdmin()) return;
+    if (k === "svc") { const nom = String(fd.get("nom") || "").trim(); if (!nom) return; const svs = {...(T.org.services || {})}; const id = "s" + Date.now().toString(36); svs[id] = {nom, couleur:SV_COLORS[Object.keys(svs).length % SV_COLORS.length]}; await T.saveOrg({services:svs}); toast("Service ajouté"); return; }
+    if (k === "invite") { const email = String(fd.get("email") || "").trim().toLowerCase();
+      if ([...T.members.values()].some(m => m.email === email)) { toast("Cette personne fait déjà partie de l'entreprise."); return; }
+      await T.invite(email, fd.get("role"), fd.getAll("svc"), String(fd.get("nom") || "").trim()); f.reset(); toast("Invitation enregistrée : copie le message pour la prévenir"); return; }
+  } catch (e) { console.warn(e); toast(e && e.message === "email" ? "Adresse e-mail invalide." : "Échec. Vérifie ta connexion et réessaie."); }
+}, true);
+document.addEventListener("change", async ev => {
+  const t = ev.target; const T = TM(); if (!T || !t.dataset) return;
+  if (t.classList.contains("tm-ao-svc")) { const ao = curAo(); if (ao && canVis(ao)) { ao._svc = t.value; await aoSave(ao); render(true); } return; }
+  const k = t.dataset.tm; if (!k) return;
+  ev.stopPropagation();
+  try {
+    if (k === "myname") { await T.setMember(T.uid, {nom:t.value.trim()}); toast("Nom enregistré"); }
+    if (k === "orgnom" && T.isAdmin() && t.value.trim()) { await T.saveOrg({nom:t.value.trim()}); toast("Nom de l'entreprise enregistré"); }
+    if (k === "svnom" && T.isAdmin() && t.value.trim()) { const svs = {...(T.org.services || {})}; svs[t.dataset.id] = {...svs[t.dataset.id], nom:t.value.trim()}; await T.saveOrg({services:svs}); toast("Service renommé"); }
+    if (k === "role" && T.isAdmin()) {
+      if (t.dataset.uid === T.uid && t.value !== "admin" && [...T.members.values()].filter(m => m.role === "admin").length < 2) { toast("Il faut au moins un administrateur."); render(true); return; }
+      await T.setMember(t.dataset.uid, {role:t.value}); toast("Rôle modifié"); }
+  } catch (e) { console.warn(e); toast("Échec : droits insuffisants ou connexion perdue."); }
+}, true);
+
+/* ---------- Projets personnels / partagés ---------- */
+async function shareProject(p, toPerso){
+  const T = TM(); if (!T || !p) return;
+  const mine = [...S.tasks.values()].filter(t => t.projet === p);
+  if (toPerso && mine.some(t => t._own !== T.uid || (t._resp && t._resp !== T.uid))) { toast("Des collègues ont des tâches dans ce projet : il reste partagé."); return; }
+  try {
+    await T.moveProject(p, toPerso);
+    let n = 0;
+    for (const t of mine) if (t._own === T.uid && (toPerso ? t._vis !== "perso" : t._vis === "perso")) { await S.db.doc("tasks/" + t.id).update({_vis:toPerso ? "perso" : "org", _svc:"", updated:nowIso()}); n++; }
+    toast(toPerso ? `Projet « ${p} » rendu personnel` : `Projet « ${p} » partagé${n ? ` : ${n} tâche${n > 1 ? "s" : ""} visible${n > 1 ? "s" : ""} par l'entreprise` : ""}`);
+  } catch (e) { console.warn(e); toast("Échec du changement de partage."); }
+}
+function teamProjectsPanel(){
+  const T = TM(), L = S.lists, perso = L._perso || [];
+  return `<div class="panel"><h2>Projets</h2><p>🔒 = projet personnel (visible par toi seul). Les autres sont communs à l'entreprise. Une nouvelle tâche prend la visibilité de son projet.</p>
+    <div class="chips">${L.projets.map(v => { const pp = perso.includes(v); return `<span class="chip-x ${pp ? "tm-pp" : ""}">${pp ? "🔒 " : ""}${esc(v)}${S.canWrite === false ? "" : `<button class="tm-sh" data-act="tm-proj-share" data-p="${esc(v)}" data-to="${pp ? "org" : "perso"}" title="${pp ? "Partager avec l'entreprise" : "Rendre personnel"}">${pp ? "Partager" : "Perso"}</button><button data-act="list-del" data-list="projets" data-val="${esc(v)}" aria-label="Retirer ${esc(v)}">${I.close}</button>`}</span>`; }).join("") || `<span class="sub">Aucun pour l'instant.</span>`}</div>
+    ${S.canWrite === false ? "" : `<form class="row" data-list-form="projets"><input type="text" id="add-projets" placeholder="Ajouter un projet commun…" aria-label="Ajouter un projet"><button class="btn" type="submit">Ajouter</button></form>`}</div>`;
+}
+function teamRespPanel(){
+  const T = TM();
+  return `<div class="panel"><h2>Responsables</h2><p>Ce sont les collaborateurs de l'entreprise : ${[...T.members.keys()].map(k => esc(T.nameOf(k))).join(", ")}. Pour en ajouter, invite-les dans <a href="#equipe">Équipe</a>.</p></div>`;
+}
+function teamSpacePanel(){
+  const T = TMX(); if (!T) return "";
+  return `<div class="panel tm-p"><h2>Espace de travail</h2><p>${T.active ? `Entreprise <b style="color:var(--ink)">${esc(T.org.nom)}</b> · ${esc(ROLES[T.me.role] || "")}` : "Espace perso (visible par toi seul)."}</p><div class="row"><a class="btn" href="#equipe">${T.active ? "Équipe et partage" : "Créer ou rejoindre une entreprise"}</a></div></div>`;
+}
+
+/* ---------- Copie de l'espace perso vers l'entreprise ---------- */
+async function copyPerso(){
+  const T = TM(); if (!T || S.tmBusy) return;
+  const vT = ($("#tm-copy-vis") || {}).value || "perso", vA = ($("#tm-copy-ao") || {}).value || "org";
+  const say = m => { S.tmBusy = m; const el = $("#tm-copy-msg"); if (el) el.textContent = m; };
+  say("Lecture de ton espace perso…");
+  try {
+    const P = await T.readPerso();
+    let nt = 0, na = 0;
+    const projs = new Set();
+    for (const t of P.tasks || []) {
+      if (S.tasks.has(t.id)) continue;
+      const {id, ...body} = t;
+      if (t.projet) projs.add(t.projet);
+      const blocs = (Array.isArray(body.blocs) ? body.blocs : []).map(b => ({...b, u:T.uid}));
+      await S.db.doc("tasks/" + id).set({...body, blocs, _vis:vT, _svc:"", _resp:T.uid, responsable:T.nameOf(T.uid)});
+      if (++nt % 10 === 0) say(`${nt} tâches copiées…`);
+    }
+    for (const a of P.ao || []) { if (S.aos.has(a.id)) continue; const {id, ...body} = a; await S.db.doc("ao/" + id).set({...body, _vis:vA, _svc:"", _resp:""}); na++; }
+    const L = S.lists, next = {projets:[...L.projets], responsables:[...L.responsables], types:[...L.types]};
+    const pl = (P.lists && P.lists.projets) || [];
+    for (const p of [...pl, ...projs]) if (p && !next.projets.includes(p)) { next.projets.push(p); if (vT === "perso") T.pendingPerso[p] = true; }
+    for (const ty of (P.lists && P.lists.types) || []) if (ty && !next.types.includes(ty)) next.types.push(ty);
+    await saveLists(next);
+    let extra = "";
+    if (T.canBase()) {
+      if (P.uo && !S.uo) { await S.db.doc("meta/uo").set(P.uo); extra += ", base des unités d'œuvre"; }
+      if (P.societes && !(S.socs && (S.socs.list || []).length)) { await S.db.doc("meta/societes").set(P.societes); extra += ", entreprises émettrices"; }
+    }
+    S.tmBusy = ""; S.tmMsg = `Copie terminée : ${nt} tâche${nt > 1 ? "s" : ""}, ${na} chiffrage${na > 1 ? "s" : ""}${extra}.`; const el = $("#tm-copy-msg"); if (el) el.textContent = S.tmMsg;
+    toast("Données copiées dans l'entreprise");
+  } catch (e) { console.warn(e); S.tmBusy = ""; say("Copie interrompue : vérifie ta connexion et relance (les éléments déjà copiés ne seront pas dupliqués)."); }
+}
+
+/* ---------- Décompte : publication pour le chef de service, vue d'un collaborateur ---------- */
+let pubHash = {}, pubT = 0;
+function pubMonth(m){
+  const [y, mo] = m.split("-").map(Number), last = ymd(new Date(y, mo, 0)), lim = last < today() ? last : today();
+  const lines = [], abs = {}; let tot = 0, cap = 0;
+  for (let d = m + "-01"; d <= lim; d = addDays(d, 1)) {
+    for (const r of decRows(d)) if (r.m > 0) { lines.push({d, m:r.m, ref:r.ref || "", desc:r.desc || "", lieu:r.lieu || "", km:r.km || "", dep:!!r.dep, fact:r.fact || ""}); tot += r.m; }
+    const ab = absOn(d); if (ab && !ab.auto) abs[d] = ab.type + (ab.part !== "j" ? " (½)" : "");
+    cap += Math.max(0, capOn(d) - absHours(d)) * 60;
+  }
+  return {lines, abs, tot, cap, nom:collabName()};
+}
+function teamPublish(){
+  const T = TM(); if (!T || S.status !== "ready" || S.canWrite === false) return;
+  const m0 = today().slice(0, 7), mp = ymd(new Date(parseYmd(m0 + "-01").getFullYear(), parseYmd(m0 + "-01").getMonth() - 1, 1)).slice(0, 7);
+  for (const m of [mp, m0]) {
+    const d = pubMonth(m), h = JSON.stringify(d);
+    if (pubHash[m] === h) continue;
+    pubHash[m] = h; T.publish(m, {...d, updated:nowIso()}).catch(() => { delete pubHash[m]; });
+  }
+}
+setInterval(() => { if (TM()) { clearTimeout(pubT); pubT = setTimeout(teamPublish, 500); } }, 30000);
+setTimeout(() => teamPublish(), 6000);
+const pubWatch = {};
+function pubOf(u, m){
+  const T = TM(), k = u + "|" + m;
+  if (!pubWatch[k]) { pubWatch[k] = true; T.watchPub(u, m, d => { S.pub[k] = d || {lines:[], abs:{}, tot:0, cap:0, none:true}; schedule(); }); }
+  return S.pub[k];
+}
+function whoBar(){
+  const T = TM(); if (!T) return "";
+  const vm = T.visibleMembers(); if (vm.length < 2) return "";
+  const cur = S.decWho || T.uid;
+  return `<div class="seg-block tm-who-b"><span class="seg-label">Collaborateur</span><select class="ctl" data-act-change="tm-who" aria-label="Collaborateur">${vm.map(m => `<option value="${esc(m.uid)}" ${m.uid === cur ? "selected" : ""}>${esc(T.nameOf(m.uid))}${m.uid === T.uid ? " (moi)" : ""}</option>`).join("")}</select></div>`;
+}
+document.addEventListener("change", ev => { const t = ev.target; if (t && t.dataset && t.dataset.actChange === "tm-who") { ev.stopPropagation(); const T = TM(); S.decWho = t.value === (T && T.uid) ? "" : t.value; render(true); } }, true);
+function viewHeuresTeam(){
+  const T = TM();
+  if (!T || !S.decWho || S.decWho === T.uid || !T.visibleMembers().some(m => m.uid === S.decWho)) { S.decWho = ""; const h = viewHeures(); const i = h.indexOf("</h1>"); return i < 0 ? h : h.slice(0, i + 5) + h.slice(i + 5).replace("</div>", "</div>" + whoBar()); }
+  if (!validYmd(S.dec.ref)) S.dec.ref = today();
+  const m = S.dec.ref.slice(0, 7), r = parseYmd(m + "-01"), P = pubOf(S.decWho, m), name = T.nameOf(S.decWho);
+  const label = `${MOIS[r.getMonth()].charAt(0).toUpperCase() + MOIS[r.getMonth()].slice(1)} <span class="ttl-d">${r.getFullYear()}</span>`;
+  let body;
+  if (!P) body = `<p class="sub">Chargement…</p>`;
+  else if (P.none || !P.lines.length) body = `<div class="empty"><h2>Aucune heure publiée</h2><p>${esc(name)} n'a pas encore d'heures sur ce mois, ou n'a pas ouvert l'app depuis. Le décompte se met à jour à chaque ouverture de l'app par le collaborateur.</p></div>`;
+  else {
+    const byRef = new Map(); P.lines.forEach(l => byRef.set(l.ref || "Sans référence", (byRef.get(l.ref || "Sans référence") || 0) + l.m));
+    body = `<div class="kpi-row dec-kpis tm-kpis"><div class="kc"><span class="kc-l">Déclaré</span><span class="kc-v">${hfmt(P.tot / 60)} h</span></div><div class="kc"><span class="kc-l">Disponible</span><span class="kc-v">${hfmt(P.cap / 60)} h</span></div><div class="kc"><span class="kc-l">Écart</span><span class="kc-v ${P.tot >= P.cap ? "ok" : ""}">${P.tot - P.cap >= 0 ? "+" : "−"}${hfmt(Math.abs(P.tot - P.cap) / 60)} h</span></div><div class="kc"><span class="kc-l">Mis à jour</span><span class="kc-v sm">${P.updated ? fmt(P.updated.slice(0, 10)) : "—"}</span></div></div>
+      <section class="panel"><h3>Par référence</h3><table class="tbl tm-tbl"><tbody>${[...byRef].sort((a, b) => b[1] - a[1]).map(([k, v]) => `<tr><td>${esc(k)}</td><td class="num">${hfmt(v / 60)} h</td></tr>`).join("")}</tbody></table></section>
+      <section class="panel"><h3>Lignes</h3><div class="tm-lines"><table class="tbl tm-tbl"><thead><tr><th>Date</th><th class="num">Durée</th><th>Référence</th><th>Description</th></tr></thead><tbody>${P.lines.map(l => `<tr><td>${JOURS_COURTS[parseYmd(l.d).getDay()]} ${fmt(l.d)}</td><td class="num">${hfmt(l.m / 60)} h</td><td>${esc(l.ref || "—")}</td><td>${esc(l.desc)}</td></tr>`).join("")}</tbody></table></div>
+      ${Object.keys(P.abs || {}).length ? `<p class="sub">Absences : ${Object.entries(P.abs).map(([d, x]) => `${fmt(d)} ${esc(x)}`).join(" · ")}</p>` : ""}
+      <div class="row" style="margin-top:10px"><button class="btn" data-act="tm-pub-copy">Copier pour Excel</button></div></section>`;
+  }
+  return `<div class="view-head plan-head"><div><div class="eyebrow">Décompte des heures · ${esc(name)} (lecture seule)</div><h1>${label}</h1></div>${whoBar()}
+    <div class="pnav"><button class="btn" data-act="tm-pub-nav" data-v="-1" aria-label="Mois précédent">‹</button><button class="btn" data-act="tm-pub-nav" data-v="0">Ce mois</button><button class="btn" data-act="tm-pub-nav" data-v="1" aria-label="Mois suivant">›</button></div></div>${body}`;
+}
+async function pubAction(act, a){
+  const T = TM(); if (!T) return;
+  if (act === "tm-pub-nav") { const v = Number(a.dataset.v); if (!v) S.dec.ref = today(); else { const r = parseYmd(S.dec.ref.slice(0, 7) + "-01"); S.dec.ref = ymd(new Date(r.getFullYear(), r.getMonth() + v, 1)); } render(true); return; }
+  const P = S.pub[S.decWho + "|" + S.dec.ref.slice(0, 7)]; if (!P) return;
+  const nom = P.nom || T.nameOf(S.decWho);
+  const txt = P.lines.map(l => [nom, fmt(l.d, true), durXl(l.m), l.ref, l.dep ? "OUI" : "NON", l.lieu, l.km, l.desc, l.fact].join("\t")).join("\n");
+  if (await copyText(txt)) toast(`${P.lines.length} lignes copiées : colle dans Excel (Cmd+V)`); else showCopyBox(txt);
+}
+
+/* ---------- Tableau de bord : charge de l'équipe ---------- */
+function teamBordBlock(){
+  const T = TM(); if (!T || !(T.isAdmin() || T.isChef())) return "";
+  const sc = S.scope || "mine", sF = sc.startsWith("svc:") ? sc.slice(4) : "";
+  const ms = T.visibleMembers().filter(m => !sF || (m.services || []).includes(sF));
+  if (!ms.length) return "";
+  const m0 = today().slice(0, 7), months = [0, 1, 2].map(k => { const r = parseYmd(m0 + "-01"); return ymd(new Date(r.getFullYear(), r.getMonth() + k, 1)).slice(0, 7); });
+  const tasks = [...S.tasks.values()].filter(t => !t.archived);
+  const rows = ms.map(m => {
+    const plan = months.map(mm => { let min = 0; for (const t of tasks) { const own = ownerOf(t); for (const b of blocsAll(t)) if ((b.u || own) === m.uid && b.d.slice(0, 7) === mm) min += b.m; } return min; });
+    const open = tasks.filter(t => !isDone(t) && ownerOf(t) === m.uid), late = open.filter(t => alerte(t) === "late").length;
+    const P = pubOf(m.uid, m0);
+    return {m, plan, open:open.length, late, P};
+  });
+  const MC = mm => { const r = parseYmd(mm + "-01"); return MOIS_COURTS[r.getMonth()]; };
+  return `<section class="panel bd-b"><div class="bd-h"><h2>Charge de l'équipe</h2><span class="sub">${sF ? esc(svcName(sF)) + " · " : ""}heures placées dans l'agenda (éléments partagés) et heures déclarées ce mois</span></div>
+    <div class="tm-lines"><table class="tbl tm-tbl tm-load"><thead><tr><th>Collaborateur</th><th class="num">Déclaré ${MC(m0)}</th>${months.map(mm => `<th class="num">Planifié ${MC(mm)}</th>`).join("")}<th class="num">Ouvertes</th><th class="num">En retard</th></tr></thead>
+    <tbody>${rows.map(r => `<tr><td><b>${esc(T.nameOf(r.m.uid))}</b><small>${esc((r.m.services || []).map(svcName).join(", ") || ROLES[r.m.role] || "")}</small></td>
+      <td class="num">${r.P && !r.P.none ? `${hfmt(r.P.tot / 60)} h<small>/ ${hfmt(r.P.cap / 60)} h</small>` : "—"}</td>${r.plan.map(x => `<td class="num">${x ? hfmt(x / 60) + " h" : "—"}</td>`).join("")}
+      <td class="num">${r.open}</td><td class="num ${r.late ? "warn" : ""}">${r.late || "—"}</td></tr>`).join("")}</tbody></table></div>
+    <p class="sub" style="margin:8px 0 0">Les tâches personnelles des collaborateurs ne sont pas comptées dans « Planifié ». Le détail des heures est dans <a href="#heures">Heures</a> ▸ Collaborateur.</p></section>`;
+}
+
 /* ---------- Rendu principal ---------- */
 function render(force){
   if (!force && S.ptrDown && Date.now() - S.ptrDown < 4000) { S.pendingRender = true; return; }
@@ -4155,8 +4886,8 @@ function render(force){
     return;
   }
   if (!force && PD && PD.active) { S.pendingRender = true; return; }
-  const html = {jour:viewJour, planning:viewPlanning, heures:viewHeures, chiffrage:viewChiffrage, matrice:viewMatrice, bord:viewBord2, aide:viewAide, reglages:viewReglages}[S.view]();
-  v.innerHTML = html; S.built = S.view;
+  const html = {jour:viewJour, planning:viewPlanning, heures:viewHeuresTeam, chiffrage:viewChiffrage, equipe:viewEquipe, matrice:viewMatrice, bord:viewBord2, aide:viewAide, reglages:viewReglages}[S.view]();
+  v.innerHTML = teamBanner() + html; S.built = S.view;
   if (S.view === "chiffrage") v.querySelectorAll("textarea.fit").forEach(ta => { ta.style.height = "auto"; ta.style.height = ta.scrollHeight + 2 + "px"; });
   if (keep) focusRestore(keep);
   if (S.view === "planning") afterPlanning();
@@ -4199,6 +4930,7 @@ const nowIso = () => new Date().toISOString();
 function clean(t){ const {id, ...body} = t; for (const k of Object.keys(body)) if (body[k] === undefined) delete body[k]; return body; }
 async function saveTask(t){
   if (!S.db) return;
+  teamBeforeSave(t);
   const isNew = !t.id;
   const ref = isNew ? S.db.collection("tasks").doc() : S.db.doc("tasks/" + t.id);
   const body = clean({...t, updated: nowIso(), created: t.created || nowIso()});
@@ -4210,7 +4942,7 @@ async function saveTask(t){
 async function ensureInLists(t){
   const L = S.lists, next = {projets:[...L.projets], responsables:[...L.responsables], types:[...L.types]};
   let ch = false;
-  if (t.projet && !next.projets.includes(t.projet)) { next.projets.push(t.projet); ch = true; }
+  if (t.projet && !next.projets.includes(t.projet)) { next.projets.push(t.projet); ch = true; if (TM() && t._vis === "perso") TM().pendingPerso[t.projet] = true; }
   if (t.responsable && !next.responsables.includes(t.responsable)) { next.responsables.push(t.responsable); ch = true; }
   if (t.type && !next.types.includes(t.type)) { next.types.push(t.type); ch = true; }
   if (ch) await saveLists(next);
@@ -4235,6 +4967,7 @@ function openEditor(id, preset = {}){
   S.edit = src ? {...src} : {id:null, projet: preset.projet || S.lastProjet || allProjets()[0] || "", tache:"", statut:"À faire", priorite:"", urgent:null, important:null, echeance:"", responsable: S.lists.responsables[0] || "", theme:"", type:"", cloture:"", commentaires:"", debut: preset.debut || "", fin: preset.debut || "", heures: preset.bloc ? 1 : "", jours:[], blocs: preset.bloc ? [preset.bloc] : [], avancement:0};
   if (!Array.isArray(S.edit.blocs)) S.edit.blocs = [];
   if (!Array.isArray(S.edit.jours)) S.edit.jours = [];
+  teamOpenEditor(src);
   S.delArmed = false;
   renderEditor(true);
 }
@@ -4251,6 +4984,7 @@ function renderEditor(first){
       <div class="field"><label for="e-tache">Tâche</label><textarea id="e-tache" rows="2" ${ro ? "readonly" : ""}>${esc(e.tache)}</textarea></div>
       <div class="field"><span class="lbl">Projet</span><div class="segc">${allProjets().map(p => `<button type="button" data-ed="projet" data-v="${esc(p)}" aria-pressed="${e.projet === p}">${esc(p)}</button>`).join("")}</div></div>
       <div class="field"><label for="e-ref">Référence (décompte des heures)</label><select id="e-ref" ${ro ? "disabled" : ""}><option value="">${refOfProj(e.projet) ? "Selon le projet : " + esc(refOfProj(e.projet)) : "Selon le projet (aucune définie)"}</option>${(e.reference && !refList().includes(e.reference) ? [e.reference, ...refList()] : refList()).map(r => `<option ${e.reference === r ? "selected" : ""}>${esc(r)}</option>`).join("")}</select></div>
+      ${visField(e, ro, "task")}
       <div class="field"><span class="lbl">Statut</span><div class="segc status">${STATUTS.map(s => `<button type="button" data-ed="statut" data-v="${s}" aria-pressed="${e.statut === s}" style="--sc:var(${ST_VAR[s]})">${s}</button>`).join("")}</div></div>
       <div class="qprev">
         <div class="field"><span class="lbl">Urgent</span><div class="segc">${yn("urgent", true, "Oui")}${yn("urgent", false, "Non")}</div></div>
@@ -4283,7 +5017,7 @@ function renderEditor(first){
         </div>
       </div>
       <div class="cols2">
-        <div class="field"><label for="e-resp">Responsable</label><input type="text" id="e-resp" list="dl-resp" value="${esc(e.responsable)}" ${ro ? "readonly" : ""}><datalist id="dl-resp">${S.lists.responsables.map(r => `<option value="${esc(r)}">`).join("")}</datalist></div>
+        ${TM() ? respField(e, ro) : `<div class="field"><label for="e-resp">Responsable</label><input type="text" id="e-resp" list="dl-resp" value="${esc(e.responsable)}" ${ro ? "readonly" : ""}><datalist id="dl-resp">${S.lists.responsables.map(r => `<option value="${esc(r)}">`).join("")}</datalist></div>`}
         <div class="field"><label for="e-theme">Thème</label><input type="text" id="e-theme" list="dl-theme" value="${esc(e.theme)}" ${ro ? "readonly" : ""}><datalist id="dl-theme">${themes.map(r => `<option value="${esc(r)}">`).join("")}</datalist></div>
       </div>
       <div class="cols2">
@@ -4308,6 +5042,7 @@ function readEditorInputs(){
   e.tache = (val("#e-tache") ?? e.tache).trim();
   e.echeance = val("#e-ech") ?? e.echeance;
   e.responsable = (val("#e-resp") ?? e.responsable).trim();
+  teamReadEditor(e);
   e.theme = (val("#e-theme") ?? e.theme).trim();
   e.type = (val("#e-type") ?? e.type).trim();
   e.commentaires = (val("#e-com") ?? e.commentaires).trim();
@@ -4612,7 +5347,7 @@ async function init(){
   db.collection("decompte").onSnapshot(snap => { S.decDocs = Object.fromEntries(snap.docs.map(d => [d.id, d.data()])); if (S.view === "heures") schedule(); }, () => {});
   db.doc("meta/lists").onSnapshot(s => {
     const d = (s.exists && s.data()) || {};
-    S.lists = {projets: Array.isArray(d.projets) ? d.projets : [], responsables: Array.isArray(d.responsables) ? d.responsables : [], types: Array.isArray(d.types) ? d.types : []};
+    S.lists = {projets: Array.isArray(d.projets) ? d.projets : [], responsables: Array.isArray(d.responsables) ? d.responsables : [], types: Array.isArray(d.types) ? d.types : [], _perso: Array.isArray(d._perso) ? d._perso : [], projVis: d.projVis || {}};
     S.listsLoaded = true;
     if (S.view === "taches") S.built = null;
     schedule();

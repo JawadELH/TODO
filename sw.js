@@ -1,5 +1,5 @@
 /* TO DO BIM : fonctionnement hors ligne. Change VERSION à chaque mise à jour des fichiers. */
-const VERSION = "todo-bim-cloud-v15";
+const VERSION = "todo-bim-cloud-v16";
 const FILES = ["./", "./index.html", "./config.js", "./firebase-bundle.js", "./manifest.webmanifest", "./xlsx.core.min.js", "./exceljs.min.js", "./jspdf.umd.min.js",
   "./apple-touch-icon.png", "./icon-192.png", "./icon-512.png", "./icon-512-maskable.png"];
 self.addEventListener("install", e => {
